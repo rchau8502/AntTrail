@@ -106,7 +106,16 @@ export default async function TopicDetailPage({
                     </p>
                   </div>
 
-                  <div className="mt-4 grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(16rem,18rem)]">
+                  <div className="mt-4 grid gap-4">
+                    <div className="rounded-[1.55rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.7),rgba(255,255,255,0.94))] p-5">
+                      <p className="text-sm font-semibold text-sky-700">
+                        First move
+                      </p>
+                      <p className="mt-3 text-base leading-7 text-slate-800">
+                        {card.doThis}
+                      </p>
+                    </div>
+
                     <div className="rounded-[1.55rem] border border-[color:var(--line)] bg-white/90 p-5">
                       <p className="text-sm font-semibold text-sky-700">
                         Looks like
@@ -115,21 +124,12 @@ export default async function TopicDetailPage({
                         {patternTokens.map((token) => (
                           <span
                             key={token}
-                            className="rounded-full border border-sky-100 bg-sky-50 px-3 py-2 font-mono text-sm text-sky-950"
+                            className="max-w-full whitespace-normal break-words rounded-[1rem] border border-sky-100 bg-sky-50 px-3 py-2 font-mono text-sm text-sky-950"
                           >
                             {token}
                           </span>
                         ))}
                       </div>
-                    </div>
-
-                    <div className="rounded-[1.55rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.7),rgba(255,255,255,0.94))] p-5">
-                      <p className="text-sm font-semibold text-sky-700">
-                        First move
-                      </p>
-                      <p className="mt-3 text-base leading-7 text-slate-800">
-                        {card.doThis}
-                      </p>
                     </div>
                   </div>
                 </section>

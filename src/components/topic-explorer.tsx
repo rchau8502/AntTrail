@@ -39,10 +39,18 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
     const matchesQuery =
       normalizedQuery.length === 0 ||
       [
+        card.course,
+        card.unit,
+        card.chapter,
         card.name,
         card.topic,
+        card.looksLike,
+        card.doThis,
+        card.watchOutFor,
+        card.rememberThis,
         card.memoryHook,
         card.useItWhen,
+        ...card.typicalProblemShapes,
         ...card.tags,
       ]
         .join(" ")
@@ -94,7 +102,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search chain rule, slope, limits..."
+              placeholder="Search topic, course, chapter, or pattern..."
               className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none transition focus:border-sky-300"
             />
             <div className="grid gap-3 sm:grid-cols-3">
