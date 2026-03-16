@@ -4,15 +4,15 @@ import Link from "next/link";
 
 import { useLanguage } from "@/components/language-provider";
 import { MathConceptVisual } from "@/components/math-concept-visual";
+import { localizeCard } from "@/content/localization";
 import type { BubbleCard } from "@/content/schema";
+import { getPatternTokens, getRecognitionPrompt } from "@/lib/recognition";
 
 interface TopicDetailViewProps {
   card: BubbleCard;
   relatedCards: BubbleCard[];
   previous?: BubbleCard;
   next?: BubbleCard;
-  recognitionPrompt: string;
-  patternTokens: string[];
 }
 
 const supportSections: Array<{
@@ -38,10 +38,14 @@ export function TopicDetailView({
   relatedCards,
   previous,
   next,
-  recognitionPrompt,
-  patternTokens,
 }: TopicDetailViewProps) {
-  const { courseLabel, difficultyLabel, t } = useLanguage();
+  const { difficultyLabel, locale, t } = useLanguage();
+  const localizedCard = localizeCard(card, locale);
+  const localizedRelatedCards = relatedCards.map((item) => localizeCard(item, locale));
+  const localizedPrevious = previous ? localizeCard(previous, locale) : undefined;
+  const localizedNext = next ? localizeCard(next, locale) : undefined;
+  const localizedRecognitionPrompt = getRecognitionPrompt(localizedCard);
+  const localizedPatternTokens = getPatternTokens(localizedCard);
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
@@ -53,24 +57,24 @@ export function TopicDetailView({
                 {t("navTopics")}
               </Link>
               <span>•</span>
-              <span>{courseLabel(card.course)}</span>
+              <span>{localizedCard.course}</span>
               <span>•</span>
-              <span>{card.unit}</span>
+              <span>{localizedCard.unit}</span>
               <span className="rounded-full bg-sky-100 px-3 py-1 tracking-normal">
-                {difficultyLabel(card.difficulty)}
+                {difficultyLabel(localizedCard.difficulty)}
               </span>
             </div>
 
             <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,24rem)]">
               <div>
                 <h1 className="font-display text-4xl leading-tight text-slate-900 sm:text-5xl">
-                  {card.name}
+                  {localizedCard.name}
                 </h1>
                 <p className="mt-4 max-w-3xl text-lg leading-8 text-[color:var(--muted)]">
-                  {card.memoryHook}
+                  {localizedCard.memoryHook}
                 </p>
               </div>
-              <MathConceptVisual card={card} mode="detail" />
+              <MathConceptVisual card={localizedCard} mode="detail" />
             </div>
 
             <div className="mt-8 grid gap-4 lg:grid-cols-[minmax(0,1.3fr)_minmax(18rem,22rem)]">
@@ -88,7 +92,9 @@ export function TopicDetailView({
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300/80">
                     {t("problemLikeCue")}
                   </p>
-                  <p className="mt-3 font-mono text-balance">{recognitionPrompt}</p>
+                  <p className="mt-3 font-mono text-balance">
+                    {localizedRecognitionPrompt}
+                  </p>
                 </div>
 
                 <div className="mt-4 grid gap-4">
@@ -97,7 +103,7 @@ export function TopicDetailView({
                       {t("firstMove")}
                     </p>
                     <p className="mt-3 text-base leading-7 text-slate-800">
-                      {card.doThis}
+                      {localizedCard.doThis}
                     </p>
                   </div>
 
@@ -106,7 +112,7 @@ export function TopicDetailView({
                       {t("looksLike")}
                     </p>
                     <div className="mt-4 flex flex-wrap gap-2">
-                      {patternTokens.map((token) => (
+                      {localizedPatternTokens.map((token) => (
                         <span
                           key={token}
                           className="max-w-full whitespace-normal break-words rounded-[1rem] border border-sky-100 bg-sky-50 px-3 py-2 font-mono text-sm text-sky-950"
@@ -125,26 +131,26 @@ export function TopicDetailView({
                     {t("trap")}
                   </p>
                   <p className="mt-3 text-base leading-7 text-slate-800">
-                    {card.watchOutFor}
-                  </p>
-                </section>
+                      {localizedCard.watchOutFor}
+                    </p>
+                  </section>
 
                 <section className="rounded-[1.75rem] border border-[color:var(--line)] bg-white/90 p-5">
                   <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
                     {t("keepInMind")}
                   </p>
-                  <p className="mt-3 text-base leading-7 text-slate-800">
-                    {card.useItWhen}
-                  </p>
+                    <p className="mt-3 text-base leading-7 text-slate-800">
+                    {localizedCard.useItWhen}
+                    </p>
                   <div className="mt-4 rounded-[1.35rem] bg-sky-50/80 px-4 py-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
                       {t("memoryHook")}
                     </p>
-                    <p className="mt-2 text-sm leading-6 text-slate-700">
-                      {card.rememberThis}
-                    </p>
-                  </div>
-                </section>
+                      <p className="mt-2 text-sm leading-6 text-slate-700">
+                        {localizedCard.rememberThis}
+                      </p>
+                    </div>
+                  </section>
               </div>
             </div>
 
@@ -158,7 +164,7 @@ export function TopicDetailView({
                     {t(labelKey)}
                   </p>
                   <p className="mt-3 text-sm leading-6 text-slate-700">
-                    {card[valueKey]}
+                    {localizedCard[valueKey]}
                   </p>
                 </section>
               ))}
@@ -172,7 +178,7 @@ export function TopicDetailView({
                   {t("problemShapes")}
                 </p>
                 <div className="mt-4 grid gap-3">
-                  {card.typicalProblemShapes.map((shape, index) => (
+                  {localizedCard.typicalProblemShapes.map((shape, index) => (
                     <div
                       key={shape}
                       className="rounded-[1.5rem] border border-[color:var(--line)] bg-sky-50/80 px-5 py-4"
@@ -188,21 +194,21 @@ export function TopicDetailView({
                 </div>
               </div>
 
-              {card.quickExample ? (
+              {localizedCard.quickExample ? (
                 <div className="rounded-[1.75rem] border border-[color:var(--line)] bg-[linear-gradient(180deg,rgba(214,255,232,0.7),rgba(255,255,255,0.95))] p-5">
                   <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
                     {t("tryThisShape")}
                   </p>
                   <div className="mt-4 rounded-[1.5rem] bg-slate-950 px-4 py-4 text-sky-50">
                     <p className="font-mono text-[1.02rem] leading-8">
-                      {card.quickExample.problem}
+                      {localizedCard.quickExample.problem}
                     </p>
                   </div>
                   <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
                     {t("move")}
                   </p>
                   <p className="mt-2 text-sm leading-6 text-slate-700">
-                    {card.quickExample.move}
+                    {localizedCard.quickExample.move}
                   </p>
                 </div>
               ) : (
@@ -211,7 +217,7 @@ export function TopicDetailView({
                     {t("thinkOfItAs")}
                   </p>
                   <p className="mt-4 text-base leading-7 text-slate-800">
-                    {card.thinkOfItAs}
+                    {localizedCard.thinkOfItAs}
                   </p>
                 </div>
               )}
@@ -228,7 +234,7 @@ export function TopicDetailView({
               </span>
             </div>
             <div className="mt-4 grid gap-4 md:grid-cols-2">
-              {card.miniDrill.map((item, index) => (
+              {localizedCard.miniDrill.map((item, index) => (
                 <div
                   key={item.prompt}
                   className="rounded-[1.75rem] border border-[color:var(--line)] bg-white p-5"
@@ -249,20 +255,20 @@ export function TopicDetailView({
 
           <section className="bubble-shadow flex flex-wrap items-center justify-between gap-3 rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6">
             <div className="flex flex-wrap gap-3">
-              {previous ? (
+              {localizedPrevious ? (
                 <Link
-                  href={`/topics/${previous.id}`}
+                  href={`/topics/${localizedPrevious.id}`}
                   className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
                 >
-                  ← {previous.name}
+                  ← {localizedPrevious.name}
                 </Link>
               ) : null}
-              {next ? (
+              {localizedNext ? (
                 <Link
-                  href={`/topics/${next.id}`}
+                  href={`/topics/${localizedNext.id}`}
                   className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
                 >
-                  {next.name} →
+                  {localizedNext.name} →
                 </Link>
               ) : null}
             </div>
@@ -284,7 +290,7 @@ export function TopicDetailView({
         </article>
 
         <aside className="space-y-6">
-          <MathConceptVisual card={card} mode="detail" />
+          <MathConceptVisual card={localizedCard} mode="detail" />
 
           <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
@@ -292,13 +298,13 @@ export function TopicDetailView({
             </p>
             <div className="mt-4 space-y-3 text-sm text-slate-700">
               <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3">
-                {courseLabel(card.course)}
+                {localizedCard.course}
               </div>
               <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3">
-                {card.chapter}
+                {localizedCard.chapter}
               </div>
               <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3">
-                {card.topic}
+                {localizedCard.topic}
               </div>
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
@@ -315,10 +321,10 @@ export function TopicDetailView({
 
           <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
-              {t("relatedIn")} {card.unit}
+              {t("relatedIn")} {localizedCard.unit}
             </p>
             <div className="mt-4 grid gap-3">
-              {relatedCards.map((related) => (
+              {localizedRelatedCards.map((related) => (
                 <Link
                   key={related.id}
                   href={`/topics/${related.id}`}

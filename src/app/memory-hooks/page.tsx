@@ -3,12 +3,13 @@
 import Link from "next/link";
 
 import { useLanguage } from "@/components/language-provider";
+import { localizeCards } from "@/content/localization";
 import { SiteHeader } from "@/components/site-header";
 import { allCards, groupCardsByCourse, groupCardsByUnit } from "@/lib/bubble";
 
 export default function MemoryHooksPage() {
-  const { courseLabel, t } = useLanguage();
-  const courses = groupCardsByCourse(allCards);
+  const { locale, t } = useLanguage();
+  const courses = groupCardsByCourse(localizeCards(allCards, locale));
 
   return (
     <div className="min-h-screen">
@@ -31,7 +32,7 @@ export default function MemoryHooksPage() {
             <section key={course.course} className="space-y-6">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
-                  {courseLabel(course.course)}
+                  {course.course}
                 </p>
                 <h2 className="mt-2 font-display text-3xl text-slate-900">
                   {course.cards.length} {t("memoryHooks")}

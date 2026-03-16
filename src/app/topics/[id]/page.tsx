@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { TopicDetailView } from "@/components/topic-detail-view";
 import { allCards, getAdjacentCards, getCardById, getRelatedCards } from "@/lib/bubble";
-import { getPatternTokens, getRecognitionPrompt } from "@/lib/recognition";
 
 interface TopicDetailPageProps {
   params: Promise<{
@@ -43,8 +42,6 @@ export default async function TopicDetailPage({
 
   const relatedCards = getRelatedCards(card.id);
   const { previous, next } = getAdjacentCards(card.id);
-  const recognitionPrompt = getRecognitionPrompt(card);
-  const patternTokens = getPatternTokens(card);
 
   return (
     <div className="min-h-screen">
@@ -54,8 +51,6 @@ export default async function TopicDetailPage({
         relatedCards={relatedCards}
         previous={previous}
         next={next}
-        recognitionPrompt={recognitionPrompt}
-        patternTokens={patternTokens}
       />
     </div>
   );

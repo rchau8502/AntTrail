@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import { useLanguage } from "@/components/language-provider";
+import { localizeCards } from "@/content/localization";
 import type { BubbleCard, Unit } from "@/content/schema";
-import { courseTitles, getUnitOptions } from "@/lib/bubble";
+import { getCourseOptions, getUnitOptions } from "@/lib/bubble";
 import { getRecognitionPrompt } from "@/lib/recognition";
 
 interface QuizItem {
@@ -56,17 +57,19 @@ interface RecognitionQuizProps {
 }
 
 export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
-  const { courseLabel, t } = useLanguage();
+  const { locale, t } = useLanguage();
   const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
   const [unitFilter, setUnitFilter] = useState<"All" | Unit>("All");
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [score, setScore] = useState(0);
+  const localizedCards = useMemo(() => localizeCards(cards, locale), [cards, locale]);
+  const courseOptions = getCourseOptions(localizedCards);
 
   const courseScopedCards =
     courseFilter === "All"
-      ? cards
-      : cards.filter((card) => card.course === courseFilter);
+      ? localizedCards
+      : localizedCards.filter((card) => card.course === courseFilter);
   const filteredCards =
     unitFilter === "All"
       ? courseScopedCards
@@ -136,9 +139,9 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
               className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
             >
               <option value="All">{t("allCourses")}</option>
-              {courseTitles.map((course) => (
+              {courseOptions.map((course) => (
                 <option key={course} value={course}>
-                  {courseLabel(course)}
+                  {course}
                 </option>
               ))}
             </select>
@@ -199,7 +202,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
       ) : (
         <section className="bubble-shadow rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
           <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
-            <span>{courseLabel(filteredCards[index]?.course ?? "")}</span>
+            <span>{filteredCards[index]?.course}</span>
             <span>{currentItem.unit}</span>
             <span>
               {index + 1} / {quizItems.length}

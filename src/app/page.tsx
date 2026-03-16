@@ -3,6 +3,7 @@
 import { CourseCoverageChart } from "@/components/course-coverage-chart";
 import { useLanguage } from "@/components/language-provider";
 import { MathConceptVisual } from "@/components/math-concept-visual";
+import { localizeCard } from "@/content/localization";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
@@ -15,8 +16,9 @@ const sampleCards = [
 ].filter((card): card is (typeof allCards)[number] => Boolean(card));
 
 export default function Home() {
-  const { courseLabel, t } = useLanguage();
+  const { courseLabel, locale, t } = useLanguage();
   const stats = getDashboardStats();
+  const localizedSampleCards = sampleCards.map((card) => localizeCard(card, locale));
   const bubbleFields = [
     t("name"),
     t("useItWhen"),
@@ -126,7 +128,7 @@ export default function Home() {
               </div>
 
               <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-                {sampleCards.map((card) => (
+                {localizedSampleCards.map((card) => (
                   <MathConceptVisual key={card.id} card={card} mode="compact" />
                 ))}
               </div>
@@ -196,7 +198,7 @@ export default function Home() {
           </div>
 
           <div className="grid gap-4 lg:grid-cols-3">
-            {sampleCards.map((card) => (
+            {localizedSampleCards.map((card) => (
               <Link
                 key={card.id}
                 href={`/topics/${card.id}`}

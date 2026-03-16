@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import { useLanguage } from "@/components/language-provider";
+import { localizeCards } from "@/content/localization";
 import { MathConceptVisual } from "@/components/math-concept-visual";
 import type { BubbleCard, Difficulty, Unit } from "@/content/schema";
 import {
-  courseTitles,
   difficulties,
   getChapterOptions,
   getCourseOptions,
@@ -20,7 +20,7 @@ interface TopicExplorerProps {
 }
 
 export function TopicExplorer({ cards }: TopicExplorerProps) {
-  const { courseLabel, difficultyLabel, t } = useLanguage();
+  const { difficultyLabel, locale, t } = useLanguage();
   const [query, setQuery] = useState("");
   const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
   const [unitFilter, setUnitFilter] = useState<"All" | Unit>("All");
@@ -28,16 +28,18 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
     "All",
   );
   const [chapterFilter, setChapterFilter] = useState<"All" | string>("All");
+  const localizedCards = useMemo(() => localizeCards(cards, locale), [cards, locale]);
+  const courseOptions = getCourseOptions(localizedCards);
 
   const courseScopedCards =
     courseFilter === "All"
-      ? cards
-      : cards.filter((card) => card.course === courseFilter);
+      ? localizedCards
+      : localizedCards.filter((card) => card.course === courseFilter);
   const unitOptions = getUnitOptions(courseScopedCards);
   const chapterOptions = getChapterOptions(courseScopedCards);
 
   const normalizedQuery = query.trim().toLowerCase();
-  const filteredCards = cards.filter((card) => {
+  const filteredCards = localizedCards.filter((card) => {
     const matchesQuery =
       normalizedQuery.length === 0 ||
       [
@@ -154,9 +156,9 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                   className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
                 >
                   <option value="All">{t("allCourses")}</option>
-                  {courseTitles.map((course) => (
+                  {courseOptions.map((course) => (
                     <option key={course} value={course}>
-                      {courseLabel(course)}
+                      {course}
                     </option>
                   ))}
                 </select>
@@ -237,7 +239,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
-                {courseLabel(course)}
+                {course}
               </p>
               <h2 className="font-display text-3xl text-slate-900">
                 {courseCards.length} {t("topics")}
