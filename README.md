@@ -1,6 +1,6 @@
 # Bubble
 
-Bubble is a shallow-but-useful math learning app for stressed college students who need fast recognition, not long explanations.
+Bubble is a math learning app.
 
 It teaches the outer shell of a topic:
 
@@ -97,23 +97,7 @@ src/
     bubble.ts
 ```
 
-## Run locally
-
-```bash
-npm install
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000).
-
 Current starter content: 35 Calc 1 Bubble Cards across Limits, Derivatives, Applications, and Integrals.
-
-Useful checks:
-
-```bash
-npm run lint
-npm run build
-```
 
 ## Content model
 

@@ -15,8 +15,7 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   title: "Bubble",
-  description:
-    "Bubble is a shallow-but-useful Calculus 1 study app that teaches what a topic is, when to use it, what it looks like, and what to do next.",
+  description: "Bubble is a math learning app.",
 };
 
 export default function RootLayout({

@@ -1,7 +1,7 @@
 {
   "name": "bubble",
   "version": "0.1.0",
-  "description": "Bubble is a shallow-but-useful Calculus 1 study app built for fast pattern recognition and quick action.",
+  "description": "Bubble is a math learning app.",
   "private": true,
   "scripts": {
     "dev": "next dev",
