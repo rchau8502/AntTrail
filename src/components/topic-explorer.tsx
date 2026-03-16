@@ -78,6 +78,13 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
     cards: filteredCards.filter((card) => card.course === course),
   }));
 
+  const hasActiveFilters =
+    query.length > 0 ||
+    courseFilter !== "All" ||
+    unitFilter !== "All" ||
+    difficultyFilter !== "All" ||
+    chapterFilter !== "All";
+
   return (
     <div className="space-y-8">
       <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 sm:p-8">
@@ -95,81 +102,131 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
             </p>
           </div>
 
-          <div className="grid gap-3 rounded-[1.75rem] border border-[color:var(--line)] bg-white/75 p-4">
-            <p className="text-sm font-semibold text-slate-900">
-              Quick filters
-            </p>
-            <input
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search topic, course, chapter, or pattern..."
-              className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none transition focus:border-sky-300"
-            />
-            <div className="grid gap-3 sm:grid-cols-3">
-              <select
-                value={courseFilter}
-                onChange={(event) => {
-                  setCourseFilter(event.target.value);
-                  setUnitFilter("All");
-                  setChapterFilter("All");
-                }}
-                className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
-              >
-                <option value="All">All courses</option>
-                {courseTitles.map((course) => (
-                  <option key={course} value={course}>
-                    {course}
-                  </option>
-                ))}
-              </select>
-
-              <select
-                value={unitFilter}
-                onChange={(event) =>
-                  setUnitFilter(event.target.value as "All" | Unit)
-                }
-                className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
-              >
-                <option value="All">All units</option>
-                {unitOptions.map((unit) => (
-                  <option key={unit} value={unit}>
-                    {unit}
-                  </option>
-                ))}
-              </select>
-
-              <select
-                value={difficultyFilter}
-                onChange={(event) =>
-                  setDifficultyFilter(
-                    event.target.value as "All" | Difficulty,
-                  )
-                }
-                className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
-              >
-                <option value="All">All difficulty</option>
-                {difficulties.map((difficulty) => (
-                  <option key={difficulty} value={difficulty}>
-                    {difficulty}
-                  </option>
-                ))}
-              </select>
-
-              <select
-                value={chapterFilter}
-                onChange={(event) =>
-                  setChapterFilter(event.target.value)
-                }
-                className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
-              >
-                <option value="All">All chapters</option>
-                {chapterOptions.map((chapter) => (
-                  <option key={chapter} value={chapter}>
-                    {chapter}
-                  </option>
-                ))}
-              </select>
+          <div className="grid gap-4 rounded-[1.75rem] border border-[color:var(--line)] bg-white/75 p-4">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-sm font-semibold text-slate-900">
+                  Search everything
+                </p>
+                <p className="mt-1 text-sm leading-6 text-[color:var(--muted)]">
+                  Find by topic, course, chapter, unit, memory hook, or problem shape.
+                </p>
+              </div>
+              {hasActiveFilters ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQuery("");
+                    setCourseFilter("All");
+                    setUnitFilter("All");
+                    setDifficultyFilter("All");
+                    setChapterFilter("All");
+                  }}
+                  className="rounded-full border border-[color:var(--line)] bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
+                >
+                  Clear all
+                </button>
+              ) : null}
             </div>
+
+            <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto]">
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Search chain rule, Taylor series, related rates, Chapter 7..."
+                className="min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none transition focus:border-sky-300"
+              />
+              <div className="rounded-2xl border border-[color:var(--line)] bg-sky-50/80 px-4 py-3 text-sm font-medium text-sky-950">
+                Search all topics
+              </div>
+            </div>
+
+            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+              <label className="grid gap-2">
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
+                  Course
+                </span>
+                <select
+                  value={courseFilter}
+                  onChange={(event) => {
+                    setCourseFilter(event.target.value);
+                    setUnitFilter("All");
+                    setChapterFilter("All");
+                  }}
+                  className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+                >
+                  <option value="All">All courses</option>
+                  {courseTitles.map((course) => (
+                    <option key={course} value={course}>
+                      {course}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="grid gap-2">
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
+                  Unit
+                </span>
+                <select
+                  value={unitFilter}
+                  onChange={(event) =>
+                    setUnitFilter(event.target.value as "All" | Unit)
+                  }
+                  className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+                >
+                  <option value="All">All units</option>
+                  {unitOptions.map((unit) => (
+                    <option key={unit} value={unit}>
+                      {unit}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="grid gap-2">
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
+                  Difficulty
+                </span>
+                <select
+                  value={difficultyFilter}
+                  onChange={(event) =>
+                    setDifficultyFilter(
+                      event.target.value as "All" | Difficulty,
+                    )
+                  }
+                  className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+                >
+                  <option value="All">All difficulty</option>
+                  {difficulties.map((difficulty) => (
+                    <option key={difficulty} value={difficulty}>
+                      {difficulty}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="grid gap-2">
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
+                  Chapter
+                </span>
+                <select
+                  value={chapterFilter}
+                  onChange={(event) =>
+                    setChapterFilter(event.target.value)
+                  }
+                  className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+                >
+                  <option value="All">All chapters</option>
+                  {chapterOptions.map((chapter) => (
+                    <option key={chapter} value={chapter}>
+                      {chapter}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+
             <p className="text-sm text-[color:var(--muted)]">
               {filteredCards.length} card
               {filteredCards.length === 1 ? "" : "s"} ready to scan
