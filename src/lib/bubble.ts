@@ -1,10 +1,18 @@
 import { calcOneCourse } from "@/content/calc1";
 import { calcThreeCourse } from "@/content/calc3";
 import { calcTwoCourse } from "@/content/calc2";
+import { probabilityCourse } from "@/content/probability";
+import { proofCourse } from "@/content/proof";
 import type { BubbleCard, Difficulty, Unit } from "@/content/schema";
 import { difficulties } from "@/content/schema";
 
-export const courses = [calcOneCourse, calcTwoCourse, calcThreeCourse];
+export const courses = [
+  calcOneCourse,
+  calcTwoCourse,
+  calcThreeCourse,
+  proofCourse,
+  probabilityCourse,
+];
 export const allCards = courses.flatMap((course, courseIndex) =>
   [...course.cards]
     .sort((left, right) => left.order - right.order)

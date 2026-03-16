@@ -88,7 +88,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
   return (
     <div className="space-y-8">
       <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 sm:p-8">
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,1.8fr)_minmax(0,1fr)]">
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.25fr)_minmax(24rem,30rem)]">
           <div className="space-y-3">
             <p className="inline-flex rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">
               Topic Dashboard
@@ -129,19 +129,16 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
               ) : null}
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto]">
+            <div className="grid gap-3">
               <input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search chain rule, Taylor series, related rates, Chapter 7..."
                 className="min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none transition focus:border-sky-300"
               />
-              <div className="rounded-2xl border border-[color:var(--line)] bg-sky-50/80 px-4 py-3 text-sm font-medium text-sky-950">
-                Search all topics
-              </div>
             </div>
 
-            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-3 sm:grid-cols-2">
               <label className="grid gap-2">
                 <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
                   Course

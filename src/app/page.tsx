@@ -7,8 +7,8 @@ import { allCards, getDashboardStats } from "@/lib/bubble";
 
 const sampleCards = [
   allCards.find((card) => card.id === "chain-rule"),
-  allCards.find((card) => card.id === "calc2-ratio-test"),
-  allCards.find((card) => card.id === "calc3-stokes-theorem"),
+  allCards.find((card) => card.id === "proof-contradiction"),
+  allCards.find((card) => card.id === "prob-bayes"),
 ].filter((card): card is (typeof allCards)[number] => Boolean(card));
 
 const bubbleFields = [
@@ -36,12 +36,11 @@ export default function Home() {
               </p>
               <div className="space-y-4 pt-2">
                 <h1 className="max-w-[11ch] text-balance font-display text-[clamp(3.4rem,9vw,6.2rem)] leading-[1.08] text-slate-900 sm:leading-[1.02]">
-                  The outer shell of Calculus 1, 2, and 3.
+                  The outer shell of useful math.
                 </h1>
                 <p className="max-w-2xl text-lg leading-8 text-[color:var(--muted)]">
-                  Bubble follows the Stewart 9e calc sequence, from limits and
-                  derivatives to series, multivariable calculus, and vector
-                  calculus.
+                  Bubble now covers calculus, intro to proof, and probability
+                  with fast recognition cues, standard moves, and memory hooks.
                 </p>
               </div>
 
@@ -154,8 +153,9 @@ export default function Home() {
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {[
                 "Spot whether the problem is a chain rule, product rule, or quotient rule situation.",
+                "Recognize when a proof wants contradiction, contrapositive, or induction.",
+                "Read a probability setup fast: count, condition, or use expectation.",
                 "See the standard move before the algebra gets loud.",
-                "Use memory hooks to survive quizzes and exam reviews.",
                 "Study on mobile without reading a wall of text.",
               ].map((item) => (
                 <div

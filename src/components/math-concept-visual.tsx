@@ -20,6 +20,28 @@ function getVisualKind(card: BubbleCard) {
     .toLowerCase();
 
   if (fingerprint.includes("polar")) return "polar";
+  if (
+    fingerprint.includes("probability") ||
+    fingerprint.includes("random") ||
+    fingerprint.includes("bayes") ||
+    fingerprint.includes("expectation") ||
+    fingerprint.includes("variance") ||
+    fingerprint.includes("counting") ||
+    fingerprint.includes("combination") ||
+    fingerprint.includes("permutation")
+  ) {
+    return "probability";
+  }
+  if (
+    fingerprint.includes("proof") ||
+    fingerprint.includes("logic") ||
+    fingerprint.includes("quantifier") ||
+    fingerprint.includes("subset") ||
+    fingerprint.includes("induction") ||
+    fingerprint.includes("equivalence")
+  ) {
+    return "logic";
+  }
   if (fingerprint.includes("series") || fingerprint.includes("sequence"))
     return "series";
   if (
@@ -170,6 +192,42 @@ function VectorField() {
   return <>{arrows}</>;
 }
 
+function LogicFlow() {
+  return (
+    <>
+      <rect x="42" y="44" width="76" height="42" rx="16" fill="#ffffff" stroke="#78c8ff" strokeWidth="2.4" />
+      <rect x="124" y="118" width="86" height="42" rx="16" fill="#ffffff" stroke="#78c8ff" strokeWidth="2.4" />
+      <rect x="218" y="44" width="60" height="42" rx="16" fill="#ffffff" stroke="#ffd2ae" strokeWidth="2.4" />
+      <path d="M 118 64 C 144 64, 152 88, 164 118" fill="none" stroke="#0f6ea6" strokeWidth="3" />
+      <path d="M 202 118 C 216 94, 226 78, 238 68" fill="none" stroke="#0f6ea6" strokeWidth="3" />
+      <path d="M 162 48 L 186 48" fill="none" stroke="#ff9e57" strokeWidth="3" strokeDasharray="6 7" />
+    </>
+  );
+}
+
+function ProbabilityTree() {
+  return (
+    <>
+      <circle cx="62" cy="98" r="7" fill="#0f6ea6" />
+      <line x1="68" y1="98" x2="138" y2="58" stroke="#0f6ea6" strokeWidth="3" />
+      <line x1="68" y1="98" x2="138" y2="138" stroke="#0f6ea6" strokeWidth="3" />
+      <line x1="144" y1="58" x2="232" y2="38" stroke="#0f6ea6" strokeWidth="3" />
+      <line x1="144" y1="58" x2="232" y2="82" stroke="#0f6ea6" strokeWidth="3" />
+      <line x1="144" y1="138" x2="232" y2="116" stroke="#0f6ea6" strokeWidth="3" />
+      <line x1="144" y1="138" x2="232" y2="158" stroke="#0f6ea6" strokeWidth="3" />
+      {[38, 82, 116, 158].map((y) => (
+        <circle key={y} cx="238" cy={y} r="6" fill="#78c8ff" />
+      ))}
+      <text x="102" y="54" fill="#ff9e57" fontSize="14" fontWeight="700">
+        p
+      </text>
+      <text x="102" y="144" fill="#ff9e57" fontSize="14" fontWeight="700">
+        1-p
+      </text>
+    </>
+  );
+}
+
 function renderVisual(kind: string) {
   switch (kind) {
     case "limit":
@@ -246,6 +304,8 @@ function renderVisual(kind: string) {
       );
     case "series":
       return <SparkBars />;
+    case "logic":
+      return <LogicFlow />;
     case "polar":
       return (
         <>
@@ -305,6 +365,8 @@ function renderVisual(kind: string) {
       );
     case "field":
       return <DirectionField />;
+    case "probability":
+      return <ProbabilityTree />;
     case "vector":
     default:
       return <VectorField />;
