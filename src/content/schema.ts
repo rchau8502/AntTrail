@@ -1,0 +1,52 @@
+export const units = [
+  "Limits",
+  "Derivatives",
+  "Applications",
+  "Integrals",
+] as const;
+
+export const difficulties = ["Starter", "Standard", "Stretch"] as const;
+
+export type Unit = (typeof units)[number];
+export type Difficulty = (typeof difficulties)[number];
+
+export interface QuickExample {
+  problem: string;
+  move: string;
+}
+
+export interface MiniDrillItem {
+  prompt: string;
+  answer: string;
+}
+
+export interface BubbleCard {
+  id: string;
+  subject: string;
+  course: string;
+  chapter: string;
+  unit: Unit;
+  topic: string;
+  name: string;
+  order: number;
+  useItWhen: string;
+  looksLike: string;
+  doThis: string;
+  thinkOfItAs: string;
+  watchOutFor: string;
+  rememberThis: string;
+  quickExample?: QuickExample;
+  typicalProblemShapes: string[];
+  miniDrill: MiniDrillItem[];
+  memoryHook: string;
+  tags: string[];
+  difficulty: Difficulty;
+}
+
+export interface CourseContent {
+  id: string;
+  subject: string;
+  title: string;
+  shortDescription: string;
+  cards: BubbleCard[];
+}
