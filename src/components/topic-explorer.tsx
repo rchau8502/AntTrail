@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { useLanguage } from "@/components/language-provider";
 import { MathConceptVisual } from "@/components/math-concept-visual";
 import type { BubbleCard, Difficulty, Unit } from "@/content/schema";
 import {
@@ -19,6 +20,7 @@ interface TopicExplorerProps {
 }
 
 export function TopicExplorer({ cards }: TopicExplorerProps) {
+  const { courseLabel, difficultyLabel, t } = useLanguage();
   const [query, setQuery] = useState("");
   const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
   const [unitFilter, setUnitFilter] = useState<"All" | Unit>("All");
@@ -88,28 +90,27 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
   return (
     <div className="space-y-8">
       <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 sm:p-8">
-        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.25fr)_minmax(24rem,30rem)]">
+        <div className="grid gap-8 2xl:grid-cols-[minmax(0,1.1fr)_minmax(30rem,34rem)]">
           <div className="space-y-3">
             <p className="inline-flex rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">
-              Topic Dashboard
+              {t("topicDashboard")}
             </p>
             <h1 className="font-display text-4xl leading-tight text-slate-900 sm:text-5xl">
-              Find the rule fast.
+              {t("findTheRuleFast")}
             </h1>
             <p className="max-w-2xl text-base leading-7 text-[color:var(--muted)]">
-              Search by pattern, filter by chapter or difficulty, and scan each
-              card like a quick study sheet instead of a textbook chapter.
+              {t("topicDashboardDescription")}
             </p>
           </div>
 
-          <div className="grid gap-4 rounded-[1.75rem] border border-[color:var(--line)] bg-white/75 p-4">
+          <div className="grid gap-5 rounded-[1.75rem] border border-[color:var(--line)] bg-white/80 p-5 sm:p-6">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <p className="text-sm font-semibold text-slate-900">
-                  Search everything
+                  {t("searchEverything")}
                 </p>
                 <p className="mt-1 text-sm leading-6 text-[color:var(--muted)]">
-                  Find by topic, course, chapter, unit, memory hook, or problem shape.
+                  {t("searchEverythingHelp")}
                 </p>
               </div>
               {hasActiveFilters ? (
@@ -124,7 +125,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                   }}
                   className="rounded-full border border-[color:var(--line)] bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
                 >
-                  Clear all
+                  {t("clearAll")}
                 </button>
               ) : null}
             </div>
@@ -133,15 +134,15 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
               <input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search chain rule, Taylor series, related rates, Chapter 7..."
+                placeholder={t("searchPlaceholder")}
                 className="min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none transition focus:border-sky-300"
               />
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               <label className="grid gap-2">
                 <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
-                  Course
+                  {t("course")}
                 </span>
                 <select
                   value={courseFilter}
@@ -152,10 +153,10 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                   }}
                   className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
                 >
-                  <option value="All">All courses</option>
+                  <option value="All">{t("allCourses")}</option>
                   {courseTitles.map((course) => (
                     <option key={course} value={course}>
-                      {course}
+                      {courseLabel(course)}
                     </option>
                   ))}
                 </select>
@@ -163,7 +164,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
 
               <label className="grid gap-2">
                 <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
-                  Unit
+                  {t("unit")}
                 </span>
                 <select
                   value={unitFilter}
@@ -172,7 +173,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                   }
                   className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
                 >
-                  <option value="All">All units</option>
+                  <option value="All">{t("allUnits")}</option>
                   {unitOptions.map((unit) => (
                     <option key={unit} value={unit}>
                       {unit}
@@ -183,7 +184,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
 
               <label className="grid gap-2">
                 <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
-                  Difficulty
+                  {t("difficulty")}
                 </span>
                 <select
                   value={difficultyFilter}
@@ -194,10 +195,10 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                   }
                   className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
                 >
-                  <option value="All">All difficulty</option>
+                  <option value="All">{t("allDifficulty")}</option>
                   {difficulties.map((difficulty) => (
                     <option key={difficulty} value={difficulty}>
-                      {difficulty}
+                      {difficultyLabel(difficulty)}
                     </option>
                   ))}
                 </select>
@@ -205,7 +206,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
 
               <label className="grid gap-2">
                 <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
-                  Chapter
+                  {t("chapter")}
                 </span>
                 <select
                   value={chapterFilter}
@@ -214,7 +215,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                   }
                   className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
                 >
-                  <option value="All">All chapters</option>
+                  <option value="All">{t("allChapters")}</option>
                   {chapterOptions.map((chapter) => (
                     <option key={chapter} value={chapter}>
                       {chapter}
@@ -225,8 +226,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
             </div>
 
             <p className="text-sm text-[color:var(--muted)]">
-              {filteredCards.length} card
-              {filteredCards.length === 1 ? "" : "s"} ready to scan
+              {filteredCards.length} {t("cardsReadyToScan")}
             </p>
           </div>
         </div>
@@ -237,17 +237,17 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
-                {course}
+                {courseLabel(course)}
               </p>
               <h2 className="font-display text-3xl text-slate-900">
-                {courseCards.length} topics
+                {courseCards.length} {t("topics")}
               </h2>
             </div>
           </div>
 
           {courseCards.length === 0 ? (
             <div className="rounded-[1.75rem] border border-dashed border-[color:var(--line-strong)] bg-white/60 p-6 text-sm text-[color:var(--muted)]">
-              No cards match this filter set.
+              {t("noCardsMatch")}
             </div>
           ) : (
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -261,7 +261,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                     <span>{card.unit}</span>
                     <span>{card.chapter}</span>
                     <span className="rounded-full bg-sky-100 px-2 py-1 tracking-normal">
-                      {card.difficulty}
+                      {difficultyLabel(card.difficulty)}
                     </span>
                   </div>
                   <h3 className="mt-4 text-xl font-semibold text-slate-900">
@@ -272,7 +272,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                   </div>
                   <div className="mt-4 rounded-[1.35rem] bg-slate-950 px-4 py-4 text-sky-50">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-300/80">
-                      Problem cue
+                      {t("problemCue")}
                     </p>
                     <p className="mt-2 font-mono text-sm leading-7">
                       {getRecognitionPrompt(card)}
@@ -290,7 +290,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                   </div>
                   <div className="mt-4 rounded-[1.4rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.76),rgba(255,255,255,0.96))] px-4 py-4">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-700">
-                      First move
+                      {t("firstMove")}
                     </p>
                     <p className="mt-2 text-sm leading-6 text-slate-800">
                       {card.doThis}
@@ -298,7 +298,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                   </div>
                   <div className="mt-4 rounded-[1.35rem] border border-rose-100 bg-rose-50/70 px-4 py-4">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-rose-600">
-                      Trap
+                      {t("trap")}
                     </p>
                     <p className="mt-2 text-sm leading-6 text-slate-700">
                       {card.watchOutFor}
@@ -318,7 +318,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                     ))}
                   </div>
                   <p className="mt-4 text-sm font-semibold text-slate-900 transition group-hover:text-sky-700">
-                    Open bubble →
+                    {t("openBubble")} →
                   </p>
                 </Link>
               ))}

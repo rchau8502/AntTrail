@@ -1,4 +1,8 @@
+"use client";
+
 import type { BubbleCard } from "@/content/schema";
+
+import { useLanguage } from "@/components/language-provider";
 
 type VisualMode = "card" | "detail" | "hero" | "compact";
 
@@ -378,6 +382,7 @@ export function MathConceptVisual({
   mode = "card",
   className,
 }: MathConceptVisualProps) {
+  const { courseLabel } = useLanguage();
   const kind = getVisualKind(card);
   const heightClass =
     mode === "hero"
@@ -439,7 +444,7 @@ export function MathConceptVisual({
           {card.unit}
         </div>
         <div className="rounded-full border border-white/70 bg-white/75 px-3 py-1 text-[11px] font-medium text-slate-700">
-          {card.course}
+          {courseLabel(card.course)}
         </div>
       </div>
     </div>

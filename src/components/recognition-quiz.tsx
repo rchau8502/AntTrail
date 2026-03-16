@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { useLanguage } from "@/components/language-provider";
 import type { BubbleCard, Unit } from "@/content/schema";
 import { courseTitles, getUnitOptions } from "@/lib/bubble";
 import { getRecognitionPrompt } from "@/lib/recognition";
@@ -55,6 +56,7 @@ interface RecognitionQuizProps {
 }
 
 export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
+  const { courseLabel, t } = useLanguage();
   const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
   const [unitFilter, setUnitFilter] = useState<"All" | Unit>("All");
   const [index, setIndex] = useState(0);
@@ -114,14 +116,13 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">
             <p className="inline-flex rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">
-              Recognition Quiz
+              {t("recognitionQuiz")}
             </p>
             <h1 className="font-display text-4xl text-slate-900 sm:text-5xl">
-              Pick the move before you solve.
+              {t("pickMoveBeforeSolve")}
             </h1>
             <p className="max-w-2xl text-base leading-7 text-[color:var(--muted)]">
-              This is a pattern test, not a grind test. Read the shape, call the
-              technique, move on.
+              {t("quizDescription")}
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -134,10 +135,10 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
               }}
               className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
             >
-              <option value="All">All courses</option>
+              <option value="All">{t("allCourses")}</option>
               {courseTitles.map((course) => (
                 <option key={course} value={course}>
-                  {course}
+                  {courseLabel(course)}
                 </option>
               ))}
             </select>
@@ -149,7 +150,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
               }}
               className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
             >
-              <option value="All">All units</option>
+              <option value="All">{t("allUnits")}</option>
               {unitOptions.map((unit) => (
                 <option key={unit} value={unit}>
                   {unit}
@@ -157,7 +158,8 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
               ))}
             </select>
             <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white/80 px-5 py-4 text-sm text-[color:var(--muted)]">
-              Score: <span className="font-semibold text-slate-900">{score}</span>
+              {t("score")}:{" "}
+              <span className="font-semibold text-slate-900">{score}</span>
               {!finished && (
                 <>
                   {" "}
@@ -172,41 +174,40 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
       {quizItems.length === 0 ? (
         <section className="bubble-shadow rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-8 text-center">
           <p className="text-base text-[color:var(--muted)]">
-            No quiz cards match this filter.
+            {t("noQuizCards")}
           </p>
         </section>
       ) : finished ? (
         <section className="bubble-shadow rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-8 text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
-            Session complete
+            {t("sessionComplete")}
           </p>
           <h2 className="mt-4 font-display text-4xl text-slate-900">
             {score} / {quizItems.length}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-[color:var(--muted)]">
-            Misses are useful here. The goal is to spot the trigger words and
-            shapes faster on the next pass.
+            {t("missesHelp")}
           </p>
           <button
             type="button"
             onClick={restart}
             className="mt-8 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-900"
           >
-            Run it again
+            {t("runItAgain")}
           </button>
         </section>
       ) : (
         <section className="bubble-shadow rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
           <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
-            <span>{filteredCards[index]?.course}</span>
+            <span>{courseLabel(filteredCards[index]?.course ?? "")}</span>
             <span>{currentItem.unit}</span>
             <span>
-              Question {index + 1} of {quizItems.length}
+              {index + 1} / {quizItems.length}
             </span>
           </div>
           <div className="mt-6 rounded-[2rem] border border-[color:var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,251,255,0.92))] p-6">
             <p className="text-sm font-semibold text-[color:var(--muted)]">
-              Which technique applies first?
+              {t("whichTechniqueApplies")}
             </p>
             <p className="mt-4 text-xl leading-8 text-slate-900 sm:text-2xl">
               {currentItem.prompt}
@@ -243,18 +244,23 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
           {selected && (
             <div className="mt-6 rounded-[1.75rem] border border-[color:var(--line)] bg-sky-50/80 p-5">
               <p className="text-sm font-semibold text-slate-900">
-                {selected === currentItem.answer ? "Correct." : "Try again next round."}
+                {selected === currentItem.answer
+                  ? t("correct")
+                  : t("tryAgainNextRound")}
               </p>
               <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
-                Best call: <span className="font-semibold text-slate-900">{currentItem.answer}</span>.{" "}
-                Hook: {currentItem.hint}
+                {t("bestCall")}:{" "}
+                <span className="font-semibold text-slate-900">
+                  {currentItem.answer}
+                </span>
+                . {t("hook")}: {currentItem.hint}
               </p>
               <button
                 type="button"
                 onClick={next}
                 className="mt-4 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-900"
               >
-                Next question
+                {t("nextQuestion")}
               </button>
             </div>
           )}

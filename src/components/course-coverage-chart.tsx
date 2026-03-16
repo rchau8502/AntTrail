@@ -1,6 +1,10 @@
+"use client";
+
+import { useLanguage } from "@/components/language-provider";
 import { courses } from "@/lib/bubble";
 
 export function CourseCoverageChart() {
+  const { courseLabel, t } = useLanguage();
   const maxCards = Math.max(...courses.map((course) => course.cards.length));
 
   return (
@@ -8,13 +12,15 @@ export function CourseCoverageChart() {
       <div className="flex items-end justify-between gap-4">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
-            Coverage graph
+            {t("courseCoverage")}
           </p>
           <h3 className="mt-2 font-display text-3xl text-slate-900">
-            Cards by course
+            {t("cardsByCourse")}
           </h3>
         </div>
-        <p className="text-sm text-[color:var(--muted)]">Visual scan, not a full syllabus audit</p>
+        <p className="text-sm text-[color:var(--muted)]">
+          {t("visualScanNote")}
+        </p>
       </div>
 
       <div className="mt-6 space-y-4">
@@ -30,9 +36,12 @@ export function CourseCoverageChart() {
           return (
             <div key={course.id} className="space-y-2">
               <div className="flex items-center justify-between gap-4 text-sm">
-                <span className="font-semibold text-slate-900">{course.title}</span>
+                <span className="font-semibold text-slate-900">
+                  {courseLabel(course.title)}
+                </span>
                 <span className="text-[color:var(--muted)]">
-                  {course.cards.length} cards • {course.units.length} units
+                  {course.cards.length} {t("cardsWord")} • {course.units.length}{" "}
+                  {t("unitsWord")}
                 </span>
               </div>
               <div className="h-4 rounded-full bg-white/80 p-1">

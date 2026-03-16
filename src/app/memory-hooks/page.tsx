@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
 
+import { useLanguage } from "@/components/language-provider";
 import { SiteHeader } from "@/components/site-header";
 import { allCards, groupCardsByCourse, groupCardsByUnit } from "@/lib/bubble";
 
 export default function MemoryHooksPage() {
+  const { courseLabel, t } = useLanguage();
   const courses = groupCardsByCourse(allCards);
 
   return (
@@ -12,14 +16,13 @@ export default function MemoryHooksPage() {
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 sm:p-8">
           <p className="inline-flex rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">
-            Memory Hook View
+            {t("memoryHookView")}
           </p>
           <h1 className="mt-4 font-display text-4xl text-slate-900 sm:text-5xl">
-            A full-page cram sheet.
+            {t("fullPageCramSheet")}
           </h1>
           <p className="mt-4 max-w-3xl text-base leading-7 text-[color:var(--muted)]">
-            This view strips each topic down to the line you want in your head
-            five minutes before class, homework, or an exam.
+            {t("memoryHookDescription")}
           </p>
         </section>
 
@@ -28,10 +31,10 @@ export default function MemoryHooksPage() {
             <section key={course.course} className="space-y-6">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
-                  {course.course}
+                  {courseLabel(course.course)}
                 </p>
                 <h2 className="mt-2 font-display text-3xl text-slate-900">
-                  {course.cards.length} memory hooks
+                  {course.cards.length} {t("memoryHooks")}
                 </h2>
               </div>
               <div className="space-y-6">

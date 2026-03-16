@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { useLanguage } from "@/components/language-provider";
 import { MathConceptVisual } from "@/components/math-concept-visual";
 import type { BubbleCard, Unit } from "@/content/schema";
 import { courseTitles, getUnitOptions } from "@/lib/bubble";
@@ -12,6 +13,7 @@ interface StudyModeProps {
 }
 
 export function StudyMode({ cards }: StudyModeProps) {
+  const { courseLabel, difficultyLabel, t } = useLanguage();
   const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
   const [unitFilter, setUnitFilter] = useState<"All" | Unit>("All");
   const [index, setIndex] = useState(0);
@@ -45,14 +47,13 @@ export function StudyMode({ cards }: StudyModeProps) {
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">
             <p className="inline-flex rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">
-              Study Mode
+              {t("studyMode")}
             </p>
             <h1 className="font-display text-4xl text-slate-900 sm:text-5xl">
-              Flip one bubble at a time.
+              {t("flipOneBubble")}
             </h1>
             <p className="max-w-2xl text-base leading-7 text-[color:var(--muted)]">
-              See the concept name first. Try to recall the pattern and move.
-              Reveal only when you are ready.
+              {t("studyDescription")}
             </p>
           </div>
 
@@ -67,10 +68,10 @@ export function StudyMode({ cards }: StudyModeProps) {
               }}
               className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
             >
-              <option value="All">All courses</option>
+              <option value="All">{t("allCourses")}</option>
               {courseTitles.map((course) => (
                 <option key={course} value={course}>
-                  {course}
+                  {courseLabel(course)}
                 </option>
               ))}
             </select>
@@ -83,7 +84,7 @@ export function StudyMode({ cards }: StudyModeProps) {
               }}
               className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
             >
-              <option value="All">All units</option>
+              <option value="All">{t("allUnits")}</option>
               {unitOptions.map((unit) => (
                 <option key={unit} value={unit}>
                   {unit}
@@ -99,17 +100,17 @@ export function StudyMode({ cards }: StudyModeProps) {
 
       <section className="bubble-shadow rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
         <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
-          <span>{currentCard.course}</span>
+          <span>{courseLabel(currentCard.course)}</span>
           <span>{currentCard.unit}</span>
           <span className="rounded-full bg-sky-100 px-3 py-1 tracking-normal">
-            {currentCard.difficulty}
+            {difficultyLabel(currentCard.difficulty)}
           </span>
         </div>
 
         <div className="mt-6 rounded-[2rem] border border-[color:var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(240,249,255,0.92))] p-6 sm:p-8">
           <MathConceptVisual card={currentCard} mode="card" />
           <p className="mt-4 text-sm font-medium uppercase tracking-[0.2em] text-[color:var(--muted)]">
-            Front
+            {t("front")}
           </p>
           <h2 className="mt-4 font-display text-4xl leading-tight text-slate-900 sm:text-5xl">
             {currentCard.name}
@@ -142,27 +143,33 @@ export function StudyMode({ cards }: StudyModeProps) {
               onClick={() => setRevealed(true)}
               className="mt-8 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-900"
             >
-              Reveal the bubble
+              {t("revealBubble")}
             </button>
           ) : (
             <div className="mt-8 grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(16rem,20rem)]">
               <div className="grid gap-4">
                 <div className="rounded-[1.5rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.76),rgba(255,255,255,0.96))] p-4">
-                  <p className="text-sm font-semibold text-sky-700">First move</p>
+                  <p className="text-sm font-semibold text-sky-700">
+                    {t("firstMove")}
+                  </p>
                   <p className="mt-2 text-sm leading-6 text-slate-800">
                     {currentCard.doThis}
                   </p>
                 </div>
 
                 <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white p-4">
-                  <p className="text-sm font-semibold text-sky-700">Use it when</p>
+                  <p className="text-sm font-semibold text-sky-700">
+                    {t("useItWhen")}
+                  </p>
                   <p className="mt-2 text-sm leading-6 text-slate-700">
                     {currentCard.useItWhen}
                   </p>
                 </div>
 
                 <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white p-4">
-                  <p className="text-sm font-semibold text-sky-700">Think of it as</p>
+                  <p className="text-sm font-semibold text-sky-700">
+                    {t("thinkOfItAs")}
+                  </p>
                   <p className="mt-2 text-sm leading-6 text-slate-700">
                     {currentCard.thinkOfItAs}
                   </p>
@@ -171,7 +178,9 @@ export function StudyMode({ cards }: StudyModeProps) {
 
               <div className="grid gap-4">
                 <div className="rounded-[1.5rem] border border-rose-100 bg-rose-50/70 p-4">
-                  <p className="text-sm font-semibold text-rose-600">Trap</p>
+                  <p className="text-sm font-semibold text-rose-600">
+                    {t("trap")}
+                  </p>
                   <p className="mt-2 text-sm leading-6 text-slate-700">
                     {currentCard.watchOutFor}
                   </p>
@@ -179,7 +188,7 @@ export function StudyMode({ cards }: StudyModeProps) {
 
                 <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-sky-50 p-4">
                   <p className="text-sm font-semibold text-sky-700">
-                    Typical problem shapes
+                    {t("typicalProblemShapes")}
                   </p>
                   <div className="mt-3 grid gap-3">
                     {currentCard.typicalProblemShapes.map((shape) => (
@@ -194,7 +203,9 @@ export function StudyMode({ cards }: StudyModeProps) {
                 </div>
 
                 <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white p-4">
-                  <p className="text-sm font-semibold text-sky-700">Remember this</p>
+                  <p className="text-sm font-semibold text-sky-700">
+                    {t("rememberThis")}
+                  </p>
                   <p className="mt-2 text-sm leading-6 text-slate-700">
                     {currentCard.rememberThis}
                   </p>
@@ -208,17 +219,17 @@ export function StudyMode({ cards }: StudyModeProps) {
           <div className="flex gap-3">
             <button
               type="button"
-              onClick={() => move(-1)}
-              className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
-            >
-              Previous
+            onClick={() => move(-1)}
+            className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
+          >
+              {t("previous")}
             </button>
             <button
               type="button"
               onClick={() => move(1)}
               className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
             >
-              Next
+              {t("next")}
             </button>
           </div>
           <button
@@ -226,7 +237,7 @@ export function StudyMode({ cards }: StudyModeProps) {
             onClick={() => setRevealed((value) => !value)}
             className="rounded-full bg-sky-100 px-5 py-3 text-sm font-semibold text-sky-950 transition hover:bg-sky-200"
           >
-            {revealed ? "Hide details" : "Reveal details"}
+            {revealed ? t("hideDetails") : t("revealDetails")}
           </button>
         </div>
       </section>

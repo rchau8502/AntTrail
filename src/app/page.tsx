@@ -1,4 +1,7 @@
+"use client";
+
 import { CourseCoverageChart } from "@/components/course-coverage-chart";
+import { useLanguage } from "@/components/language-provider";
 import { MathConceptVisual } from "@/components/math-concept-visual";
 import Link from "next/link";
 
@@ -11,18 +14,25 @@ const sampleCards = [
   allCards.find((card) => card.id === "prob-bayes"),
 ].filter((card): card is (typeof allCards)[number] => Boolean(card));
 
-const bubbleFields = [
-  "Name",
-  "Use it when",
-  "Looks like",
-  "Do this",
-  "Think of it as",
-  "Watch out for",
-  "Remember this",
-];
-
 export default function Home() {
+  const { courseLabel, t } = useLanguage();
   const stats = getDashboardStats();
+  const bubbleFields = [
+    t("name"),
+    t("useItWhen"),
+    t("looksLike"),
+    t("doThis"),
+    t("thinkOfItAs"),
+    t("watchOutFor"),
+    t("rememberThis"),
+  ];
+  const studentRecognitionItems = [
+    t("recognitionItemOne"),
+    t("recognitionItemTwo"),
+    t("recognitionItemThree"),
+    t("recognitionItemFour"),
+    t("recognitionItemFive"),
+  ];
 
   return (
     <div className="min-h-screen">
@@ -32,15 +42,14 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(18rem,28rem)]">
             <div className="space-y-6">
               <p className="inline-flex rounded-full border border-white/80 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">
-                Bubble Expanded
+                {t("bubbleExpanded")}
               </p>
               <div className="space-y-4 pt-2">
                 <h1 className="max-w-[11ch] text-balance font-display text-[clamp(3.4rem,9vw,6.2rem)] leading-[1.08] text-slate-900 sm:leading-[1.02]">
-                  The outer shell of useful math.
+                  {t("heroTitle")}
                 </h1>
                 <p className="max-w-2xl text-lg leading-8 text-[color:var(--muted)]">
-                  Bubble now covers calculus, intro to proof, and probability
-                  with fast recognition cues, standard moves, and memory hooks.
+                  {t("heroDescription")}
                 </p>
               </div>
 
@@ -49,13 +58,13 @@ export default function Home() {
                   href="/topics"
                   className="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-900"
                 >
-                  Browse all topics
+                  {t("browseAllTopics")}
                 </Link>
                 <Link
                   href="/study"
                   className="rounded-full border border-[color:var(--line-strong)] bg-white/80 px-6 py-3 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
                 >
-                  Jump into study mode
+                  {t("jumpIntoStudyMode")}
                 </Link>
               </div>
 
@@ -65,7 +74,7 @@ export default function Home() {
                     {stats.totalCards}
                   </p>
                   <p className="mt-1 text-sm text-[color:var(--muted)]">
-                    Bubble Cards
+                    {t("bubbleCards")}
                   </p>
                 </div>
                 <div className="rounded-[1.75rem] border border-white/80 bg-white/80 p-4">
@@ -73,27 +82,31 @@ export default function Home() {
                     {stats.courses}
                   </p>
                   <p className="mt-1 text-sm text-[color:var(--muted)]">
-                    Courses
+                    {t("courses")}
                   </p>
                 </div>
                 <div className="rounded-[1.75rem] border border-white/80 bg-white/80 p-4">
                   <p className="text-3xl font-semibold text-slate-900">
                     {stats.units}
                   </p>
-                  <p className="mt-1 text-sm text-[color:var(--muted)]">Units</p>
+                  <p className="mt-1 text-sm text-[color:var(--muted)]">
+                    {t("units")}
+                  </p>
                 </div>
                 <div className="rounded-[1.75rem] border border-white/80 bg-white/80 p-4">
                   <p className="text-3xl font-semibold text-slate-900">
                     {stats.starterCards}
                   </p>
-                  <p className="mt-1 text-sm text-[color:var(--muted)]">Starter cards</p>
+                  <p className="mt-1 text-sm text-[color:var(--muted)]">
+                    {t("starterCards")}
+                  </p>
                 </div>
                 <div className="rounded-[1.75rem] border border-white/80 bg-white/80 p-4">
                   <p className="text-3xl font-semibold text-slate-900">
                     {stats.chapters}
                   </p>
                   <p className="mt-1 text-sm text-[color:var(--muted)]">
-                    Chapter groups
+                    {t("chapterGroups")}
                   </p>
                 </div>
               </div>
@@ -104,10 +117,10 @@ export default function Home() {
                 <div className="bubble-shadow h-12 w-12 rounded-full bg-[radial-gradient(circle_at_30%_30%,_white,_#b9e5ff_55%,_#78c8ff)]" />
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
-                    Bubble philosophy
+                    {t("bubblePhilosophy")}
                   </p>
                   <p className="text-sm text-[color:var(--muted)]">
-                    Light, useful, easy to scan
+                    {t("philosophySubtitle")}
                   </p>
                 </div>
               </div>
@@ -135,8 +148,7 @@ export default function Home() {
               </div>
 
               <p className="text-sm leading-6 text-[color:var(--muted)]">
-                Bubble is intentionally shallow. The app aims for “I know what
-                to do” before “I understand every proof.”
+                {t("shallowUsefulNote")}
               </p>
             </div>
           </div>
@@ -145,19 +157,13 @@ export default function Home() {
         <section className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
           <div className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-8">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
-              What students get
+              {t("whatStudentsGet")}
             </p>
             <h2 className="mt-4 font-display text-4xl text-slate-900">
-              Fast recognition over fake depth.
+              {t("fastRecognition")}
             </h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {[
-                "Spot whether the problem is a chain rule, product rule, or quotient rule situation.",
-                "Recognize when a proof wants contradiction, contrapositive, or induction.",
-                "Read a probability setup fast: count, condition, or use expectation.",
-                "See the standard move before the algebra gets loud.",
-                "Study on mobile without reading a wall of text.",
-              ].map((item) => (
+              {studentRecognitionItems.map((item) => (
                 <div
                   key={item}
                   className="rounded-[1.5rem] border border-[color:var(--line)] bg-white/85 p-4 text-sm leading-6 text-slate-700"
@@ -175,17 +181,17 @@ export default function Home() {
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
-                Sample bubbles
+                {t("sampleBubbles")}
               </p>
               <h2 className="mt-2 font-display text-4xl text-slate-900">
-                Three cards, same teaching pattern.
+                {t("sameTeachingPattern")}
               </h2>
             </div>
             <Link
               href="/topics"
               className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
             >
-              Browse all topics
+              {t("browseAllTopics")}
             </Link>
           </div>
 
@@ -197,7 +203,7 @@ export default function Home() {
                 className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 transition hover:-translate-y-1"
               >
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
-                  {card.course} • {card.unit}
+                  {courseLabel(card.course)} • {card.unit}
                 </p>
                 <h3 className="mt-4 text-2xl font-semibold text-slate-900">
                   {card.name}
@@ -208,19 +214,19 @@ export default function Home() {
                 <div className="mt-5 space-y-3 text-sm leading-6 text-slate-700">
                   <p>
                     <span className="font-semibold text-slate-900">
-                      Use it when:
+                      {t("useItWhen")}:
                     </span>{" "}
                     {card.useItWhen}
                   </p>
                   <p>
                     <span className="font-semibold text-slate-900">
-                      Do this:
+                      {t("doThis")}:
                     </span>{" "}
                     {card.doThis}
                   </p>
                   <p>
                     <span className="font-semibold text-slate-900">
-                      Remember:
+                      {t("rememberThis")}:
                     </span>{" "}
                     {card.rememberThis}
                   </p>
