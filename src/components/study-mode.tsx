@@ -5,6 +5,7 @@ import { useState } from "react";
 import { MathConceptVisual } from "@/components/math-concept-visual";
 import type { BubbleCard, Unit } from "@/content/schema";
 import { courseTitles, getUnitOptions } from "@/lib/bubble";
+import { getPatternTokens, getRecognitionPrompt } from "@/lib/recognition";
 
 interface StudyModeProps {
   cards: BubbleCard[];
@@ -107,12 +108,30 @@ export function StudyMode({ cards }: StudyModeProps) {
 
         <div className="mt-6 rounded-[2rem] border border-[color:var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(240,249,255,0.92))] p-6 sm:p-8">
           <MathConceptVisual card={currentCard} mode="card" />
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-[color:var(--muted)]">
+          <p className="mt-4 text-sm font-medium uppercase tracking-[0.2em] text-[color:var(--muted)]">
             Front
           </p>
           <h2 className="mt-4 font-display text-4xl leading-tight text-slate-900 sm:text-5xl">
             {currentCard.name}
           </h2>
+          <div className="mt-5 rounded-[1.55rem] bg-slate-950 px-5 py-5 text-sky-50">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300/80">
+              Problem cue
+            </p>
+            <p className="mt-3 font-mono text-[1.02rem] leading-8">
+              {getRecognitionPrompt(currentCard)}
+            </p>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {getPatternTokens(currentCard).map((token) => (
+              <span
+                key={token}
+                className="rounded-full border border-sky-100 bg-sky-50 px-3 py-2 font-mono text-sm text-sky-950"
+              >
+                {token}
+              </span>
+            ))}
+          </div>
           <p className="mt-4 max-w-2xl text-lg leading-8 text-[color:var(--muted)]">
             {currentCard.memoryHook}
           </p>
@@ -126,37 +145,59 @@ export function StudyMode({ cards }: StudyModeProps) {
               Reveal the bubble
             </button>
           ) : (
-            <div className="mt-8 grid gap-4 lg:grid-cols-2">
-              {[
-                ["Use it when", currentCard.useItWhen],
-                ["Looks like", currentCard.looksLike],
-                ["Do this", currentCard.doThis],
-                ["Think of it as", currentCard.thinkOfItAs],
-                ["Watch out for", currentCard.watchOutFor],
-                ["Remember this", currentCard.rememberThis],
-              ].map(([label, value]) => (
-                <div
-                  key={label}
-                  className="rounded-[1.5rem] border border-[color:var(--line)] bg-white p-4"
-                >
-                  <p className="text-sm font-semibold text-sky-700">{label}</p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">{value}</p>
+            <div className="mt-8 grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(16rem,20rem)]">
+              <div className="grid gap-4">
+                <div className="rounded-[1.5rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.76),rgba(255,255,255,0.96))] p-4">
+                  <p className="text-sm font-semibold text-sky-700">First move</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-800">
+                    {currentCard.doThis}
+                  </p>
                 </div>
-              ))}
 
-              <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-sky-50 p-4 lg:col-span-2">
-                <p className="text-sm font-semibold text-sky-700">
-                  Typical problem shapes
-                </p>
-                <div className="mt-3 grid gap-3 md:grid-cols-2">
-                  {currentCard.typicalProblemShapes.map((shape) => (
-                    <div
-                      key={shape}
-                      className="rounded-2xl border border-white/80 bg-white/80 px-4 py-3 text-sm leading-6 text-slate-700"
-                    >
-                      {shape}
-                    </div>
-                  ))}
+                <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white p-4">
+                  <p className="text-sm font-semibold text-sky-700">Use it when</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-700">
+                    {currentCard.useItWhen}
+                  </p>
+                </div>
+
+                <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white p-4">
+                  <p className="text-sm font-semibold text-sky-700">Think of it as</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-700">
+                    {currentCard.thinkOfItAs}
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid gap-4">
+                <div className="rounded-[1.5rem] border border-rose-100 bg-rose-50/70 p-4">
+                  <p className="text-sm font-semibold text-rose-600">Trap</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-700">
+                    {currentCard.watchOutFor}
+                  </p>
+                </div>
+
+                <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-sky-50 p-4">
+                  <p className="text-sm font-semibold text-sky-700">
+                    Typical problem shapes
+                  </p>
+                  <div className="mt-3 grid gap-3">
+                    {currentCard.typicalProblemShapes.map((shape) => (
+                      <div
+                        key={shape}
+                        className="rounded-2xl border border-white/80 bg-white/80 px-4 py-3 text-sm leading-6 text-slate-700"
+                      >
+                        {shape}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white p-4">
+                  <p className="text-sm font-semibold text-sky-700">Remember this</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-700">
+                    {currentCard.rememberThis}
+                  </p>
                 </div>
               </div>
             </div>

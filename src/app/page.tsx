@@ -28,14 +28,14 @@ export default function Home() {
     <div className="min-h-screen">
       <SiteHeader />
       <main className="mx-auto flex max-w-7xl flex-col gap-12 px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
-        <section className="bubble-shadow overflow-hidden rounded-[2.5rem] border border-[color:var(--line)] bg-[linear-gradient(140deg,rgba(255,255,255,0.96),rgba(226,243,255,0.78)_55%,rgba(255,236,218,0.92))] p-8 sm:p-10 lg:p-12">
+        <section className="bubble-shadow rounded-[2.5rem] border border-[color:var(--line)] bg-[linear-gradient(140deg,rgba(255,255,255,0.96),rgba(226,243,255,0.78)_55%,rgba(255,236,218,0.92))] p-8 sm:p-10 lg:p-12">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(18rem,28rem)]">
             <div className="space-y-6">
               <p className="inline-flex rounded-full border border-white/80 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">
                 Bubble Expanded
               </p>
-              <div className="space-y-4">
-                <h1 className="max-w-3xl font-display text-5xl leading-[1.05] text-slate-900 sm:text-6xl lg:text-7xl">
+              <div className="space-y-4 pt-2">
+                <h1 className="max-w-[11ch] text-balance font-display text-[clamp(3.4rem,9vw,6.2rem)] leading-[1.08] text-slate-900 sm:leading-[1.02]">
                   The outer shell of Calculus 1, 2, and 3.
                 </h1>
                 <p className="max-w-2xl text-lg leading-8 text-[color:var(--muted)]">

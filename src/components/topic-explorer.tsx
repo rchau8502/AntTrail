@@ -12,6 +12,7 @@ import {
   getCourseOptions,
   getUnitOptions,
 } from "@/lib/bubble";
+import { getPatternTokens, getRecognitionPrompt } from "@/lib/recognition";
 
 interface TopicExplorerProps {
   cards: BubbleCard[];
@@ -207,9 +208,40 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                   <div className="mt-4">
                     <MathConceptVisual card={card} mode="card" />
                   </div>
-                  <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
-                    {card.useItWhen}
-                  </p>
+                  <div className="mt-4 rounded-[1.35rem] bg-slate-950 px-4 py-4 text-sky-50">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-300/80">
+                      Problem cue
+                    </p>
+                    <p className="mt-2 font-mono text-sm leading-7">
+                      {getRecognitionPrompt(card)}
+                    </p>
+                  </div>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {getPatternTokens(card).map((token) => (
+                      <span
+                        key={token}
+                        className="rounded-full border border-sky-100 bg-sky-50 px-3 py-1.5 font-mono text-xs text-sky-950"
+                      >
+                        {token}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-4 rounded-[1.4rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.76),rgba(255,255,255,0.96))] px-4 py-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-700">
+                      First move
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-800">
+                      {card.doThis}
+                    </p>
+                  </div>
+                  <div className="mt-4 rounded-[1.35rem] border border-rose-100 bg-rose-50/70 px-4 py-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-rose-600">
+                      Trap
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-700">
+                      {card.watchOutFor}
+                    </p>
+                  </div>
                   <div className="mt-4 rounded-2xl bg-sky-50/80 px-4 py-3 text-sm font-medium text-sky-950">
                     {card.memoryHook}
                   </div>

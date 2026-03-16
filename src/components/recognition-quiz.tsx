@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import type { BubbleCard, Unit } from "@/content/schema";
 import { courseTitles, getUnitOptions } from "@/lib/bubble";
+import { getRecognitionPrompt } from "@/lib/recognition";
 
 interface QuizItem {
   id: string;
@@ -41,7 +42,7 @@ function buildQuizItems(cards: BubbleCard[]): QuizItem[] {
     return {
       id: card.id,
       unit: card.unit,
-      prompt: card.quickExample?.problem ?? card.typicalProblemShapes[0],
+      prompt: getRecognitionPrompt(card),
       answer: card.name,
       options,
       hint: card.memoryHook,
