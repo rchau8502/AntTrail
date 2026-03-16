@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { MathConceptVisual } from "@/components/math-concept-visual";
 import { SiteHeader } from "@/components/site-header";
-import { calcOneCards, getAdjacentCards, getCardById, getRelatedCards } from "@/lib/bubble";
+import { allCards, getAdjacentCards, getCardById, getRelatedCards } from "@/lib/bubble";
 
 interface TopicDetailPageProps {
   params: Promise<{
@@ -20,7 +21,7 @@ const coreSections = [
 ] as const;
 
 export function generateStaticParams() {
-  return calcOneCards.map((card) => ({
+  return allCards.map((card) => ({
     id: card.id,
   }));
 }
@@ -58,11 +59,13 @@ export default async function TopicDetailPage({
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         <section className="grid gap-6 xl:grid-cols-[minmax(0,2fr)_22rem]">
           <article className="space-y-6">
-            <div className="rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 shadow-[var(--shadow)] sm:p-8">
+            <div className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
               <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
                 <Link href="/topics" className="hover:text-sky-900">
                   Topics
                 </Link>
+                <span>•</span>
+                <span>{card.course}</span>
                 <span>•</span>
                 <span>{card.unit}</span>
                 <span className="rounded-full bg-sky-100 px-3 py-1 tracking-normal">
@@ -70,12 +73,17 @@ export default async function TopicDetailPage({
                 </span>
               </div>
 
-              <h1 className="mt-5 font-display text-4xl leading-tight text-slate-900 sm:text-5xl">
-                {card.name}
-              </h1>
-              <p className="mt-4 max-w-3xl text-lg leading-8 text-[color:var(--muted)]">
-                {card.memoryHook}
-              </p>
+              <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,24rem)]">
+                <div>
+                  <h1 className="font-display text-4xl leading-tight text-slate-900 sm:text-5xl">
+                    {card.name}
+                  </h1>
+                  <p className="mt-4 max-w-3xl text-lg leading-8 text-[color:var(--muted)]">
+                    {card.memoryHook}
+                  </p>
+                </div>
+                <MathConceptVisual card={card} mode="detail" />
+              </div>
 
               <div className="mt-6 grid gap-4 md:grid-cols-2">
                 {coreSections.map(([label, key]) => (
@@ -92,7 +100,7 @@ export default async function TopicDetailPage({
               </div>
             </div>
 
-            <section className="rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 shadow-[var(--shadow)] sm:p-8">
+            <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
               <div className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
@@ -126,7 +134,7 @@ export default async function TopicDetailPage({
               </div>
             </section>
 
-            <section className="rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 shadow-[var(--shadow)] sm:p-8">
+            <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
                 Mini drill
               </p>
@@ -147,7 +155,7 @@ export default async function TopicDetailPage({
               </div>
             </section>
 
-            <section className="flex flex-wrap items-center justify-between gap-3 rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 shadow-[var(--shadow)]">
+            <section className="bubble-shadow flex flex-wrap items-center justify-between gap-3 rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6">
               <div className="flex flex-wrap gap-3">
                 {previous ? (
                   <Link
@@ -184,11 +192,16 @@ export default async function TopicDetailPage({
           </article>
 
           <aside className="space-y-6">
-            <section className="rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 shadow-[var(--shadow)]">
+            <MathConceptVisual card={card} mode="detail" />
+
+            <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
                 Card data
               </p>
               <div className="mt-4 space-y-3 text-sm text-slate-700">
+                <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3">
+                  {card.course}
+                </div>
                 <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3">
                   {card.chapter}
                 </div>
@@ -208,7 +221,7 @@ export default async function TopicDetailPage({
               </div>
             </section>
 
-            <section className="rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 shadow-[var(--shadow)]">
+            <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
                 Related in {card.unit}
               </p>

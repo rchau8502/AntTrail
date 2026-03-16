@@ -1,14 +1,7 @@
-export const units = [
-  "Limits",
-  "Derivatives",
-  "Applications",
-  "Integrals",
-] as const;
-
 export const difficulties = ["Starter", "Standard", "Stretch"] as const;
 
-export type Unit = (typeof units)[number];
 export type Difficulty = (typeof difficulties)[number];
+export type Unit = string;
 
 export interface QuickExample {
   problem: string;
@@ -48,5 +41,7 @@ export interface CourseContent {
   subject: string;
   title: string;
   shortDescription: string;
+  units: string[];
+  chapters: string[];
   cards: BubbleCard[];
 }

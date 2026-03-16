@@ -2,22 +2,29 @@
 
 import { useState } from "react";
 
+import { MathConceptVisual } from "@/components/math-concept-visual";
 import type { BubbleCard, Unit } from "@/content/schema";
-import { units } from "@/lib/bubble";
+import { courseTitles, getUnitOptions } from "@/lib/bubble";
 
 interface StudyModeProps {
   cards: BubbleCard[];
 }
 
 export function StudyMode({ cards }: StudyModeProps) {
+  const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
   const [unitFilter, setUnitFilter] = useState<"All" | Unit>("All");
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
 
+  const courseScopedCards =
+    courseFilter === "All"
+      ? cards
+      : cards.filter((card) => card.course === courseFilter);
   const filteredCards =
     unitFilter === "All"
-      ? cards
-      : cards.filter((card) => card.unit === unitFilter);
+      ? courseScopedCards
+      : courseScopedCards.filter((card) => card.unit === unitFilter);
+  const unitOptions = getUnitOptions(courseScopedCards);
 
   const currentCard = filteredCards[index] ?? filteredCards[0];
 
@@ -33,7 +40,7 @@ export function StudyMode({ cards }: StudyModeProps) {
 
   return (
     <div className="space-y-8">
-      <section className="rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 shadow-[var(--shadow)] sm:p-8">
+      <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 sm:p-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">
             <p className="inline-flex rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">
@@ -50,18 +57,33 @@ export function StudyMode({ cards }: StudyModeProps) {
 
           <div className="flex items-center gap-3">
             <select
+              value={courseFilter}
+              onChange={(event) => {
+                setCourseFilter(event.target.value);
+                setUnitFilter("All");
+                setIndex(0);
+                setRevealed(false);
+              }}
+              className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+            >
+              <option value="All">All courses</option>
+              {courseTitles.map((course) => (
+                <option key={course} value={course}>
+                  {course}
+                </option>
+              ))}
+            </select>
+            <select
               value={unitFilter}
-              onChange={(event) =>
-                {
-                  setUnitFilter(event.target.value as "All" | Unit);
-                  setIndex(0);
-                  setRevealed(false);
-                }
-              }
+              onChange={(event) => {
+                setUnitFilter(event.target.value as "All" | Unit);
+                setIndex(0);
+                setRevealed(false);
+              }}
               className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
             >
               <option value="All">All units</option>
-              {units.map((unit) => (
+              {unitOptions.map((unit) => (
                 <option key={unit} value={unit}>
                   {unit}
                 </option>
@@ -74,8 +96,9 @@ export function StudyMode({ cards }: StudyModeProps) {
         </div>
       </section>
 
-      <section className="rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-6 shadow-[var(--shadow)] sm:p-8">
+      <section className="bubble-shadow rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
         <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+          <span>{currentCard.course}</span>
           <span>{currentCard.unit}</span>
           <span className="rounded-full bg-sky-100 px-3 py-1 tracking-normal">
             {currentCard.difficulty}
@@ -83,6 +106,7 @@ export function StudyMode({ cards }: StudyModeProps) {
         </div>
 
         <div className="mt-6 rounded-[2rem] border border-[color:var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(240,249,255,0.92))] p-6 sm:p-8">
+          <MathConceptVisual card={currentCard} mode="card" />
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-[color:var(--muted)]">
             Front
           </p>

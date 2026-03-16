@@ -49,3 +49,19 @@ body {
 a {
   color: inherit;
 }
+
+.bubble-shadow {
+  box-shadow: var(--shadow);
+}
+
+.bubble-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.22) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.35;
+  pointer-events: none;
+}

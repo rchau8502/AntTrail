@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 
-import type { BubbleCard } from "@/content/schema";
+import type { BubbleCard, Unit } from "@/content/schema";
+import { courseTitles, getUnitOptions } from "@/lib/bubble";
 
 interface QuizItem {
   id: string;
@@ -53,10 +54,22 @@ interface RecognitionQuizProps {
 }
 
 export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
-  const quizItems = buildQuizItems(cards);
+  const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
+  const [unitFilter, setUnitFilter] = useState<"All" | Unit>("All");
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [score, setScore] = useState(0);
+
+  const courseScopedCards =
+    courseFilter === "All"
+      ? cards
+      : cards.filter((card) => card.course === courseFilter);
+  const filteredCards =
+    unitFilter === "All"
+      ? courseScopedCards
+      : courseScopedCards.filter((card) => card.unit === unitFilter);
+  const unitOptions = getUnitOptions(courseScopedCards);
+  const quizItems = buildQuizItems(filteredCards);
 
   const currentItem = quizItems[index];
   const finished = index >= quizItems.length;
@@ -88,9 +101,15 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
     setScore(0);
   }
 
+  function resetSession() {
+    setIndex(0);
+    setSelected(null);
+    setScore(0);
+  }
+
   return (
     <div className="space-y-8">
-      <section className="rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 shadow-[var(--shadow)] sm:p-8">
+      <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 sm:p-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">
             <p className="inline-flex rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">
@@ -104,20 +123,59 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
               technique, move on.
             </p>
           </div>
-          <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white/80 px-5 py-4 text-sm text-[color:var(--muted)]">
-            Score: <span className="font-semibold text-slate-900">{score}</span>
-            {!finished && (
-              <>
-                {" "}
-                / <span className="font-semibold text-slate-900">{index}</span>
-              </>
-            )}
+          <div className="flex flex-wrap items-center gap-3">
+            <select
+              value={courseFilter}
+              onChange={(event) => {
+                setCourseFilter(event.target.value);
+                setUnitFilter("All");
+                resetSession();
+              }}
+              className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+            >
+              <option value="All">All courses</option>
+              {courseTitles.map((course) => (
+                <option key={course} value={course}>
+                  {course}
+                </option>
+              ))}
+            </select>
+            <select
+              value={unitFilter}
+              onChange={(event) => {
+                setUnitFilter(event.target.value as "All" | Unit);
+                resetSession();
+              }}
+              className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+            >
+              <option value="All">All units</option>
+              {unitOptions.map((unit) => (
+                <option key={unit} value={unit}>
+                  {unit}
+                </option>
+              ))}
+            </select>
+            <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white/80 px-5 py-4 text-sm text-[color:var(--muted)]">
+              Score: <span className="font-semibold text-slate-900">{score}</span>
+              {!finished && (
+                <>
+                  {" "}
+                  / <span className="font-semibold text-slate-900">{index}</span>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </section>
 
-      {finished ? (
-        <section className="rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-8 text-center shadow-[var(--shadow)]">
+      {quizItems.length === 0 ? (
+        <section className="bubble-shadow rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-8 text-center">
+          <p className="text-base text-[color:var(--muted)]">
+            No quiz cards match this filter.
+          </p>
+        </section>
+      ) : finished ? (
+        <section className="bubble-shadow rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-8 text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
             Session complete
           </p>
@@ -137,8 +195,9 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
           </button>
         </section>
       ) : (
-        <section className="rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-6 shadow-[var(--shadow)] sm:p-8">
+        <section className="bubble-shadow rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
           <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+            <span>{filteredCards[index]?.course}</span>
             <span>{currentItem.unit}</span>
             <span>
               Question {index + 1} of {quizItems.length}

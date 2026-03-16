@@ -18,7 +18,7 @@ Bubble is built to answer three fast questions:
 - When do I use it?
 - What do I do first?
 
-For the MVP, Bubble focuses on Calculus 1 only.
+Bubble now covers Calculus 1, Calculus 2, and Calculus 3 in Stewart 9e chapter order.
 
 ## Product philosophy
 
@@ -57,14 +57,14 @@ The app also adds:
 - high scanability
 - no bloated explanations
 
-## MVP features
+## Current features
 
-- Landing page with Bubble philosophy and Calc 1 entry point
-- Topic dashboard with grouping, search, difficulty filter, and chapter filter
+- Landing page with Bubble philosophy and full calc-sequence entry point
+- Topic dashboard with course grouping, search, difficulty filter, and chapter filter
 - Bubble Card detail pages
-- Study mode with tap-to-reveal cards
-- Recognition quiz focused on “which technique fits?”
-- Memory Hook view for fast cram review
+- Study mode with course and unit filtering
+- Recognition quiz focused on “which technique fits?” across Calc 1-3
+- Memory Hook view for fast cram review across all courses
 
 ## Tech stack
 
@@ -93,15 +93,17 @@ src/
   content/
     schema.ts
     calc1.ts
+    calc2.ts
+    calc3.ts
   lib/
     bubble.ts
 ```
 
-Current starter content: 35 Calc 1 Bubble Cards across Limits, Derivatives, Applications, and Integrals.
+Current seeded content: 149 Bubble Cards across Calculus 1, Calculus 2, and Calculus 3.
 
 ## Content model
 
-Bubble Cards live in [`src/content/calc1.ts`](./src/content/calc1.ts) and follow the shared schema in [`src/content/schema.ts`](./src/content/schema.ts).
+Bubble Cards live in the course files in [`src/content`](./src/content) and follow the shared schema in [`src/content/schema.ts`](./src/content/schema.ts).
 
 Each card includes fields such as:
 
@@ -127,7 +129,7 @@ Each card includes fields such as:
 
 ## How to add more Bubble Cards
 
-1. Open [`src/content/calc1.ts`](./src/content/calc1.ts).
+1. Open the course file you want to extend in [`src/content`](./src/content).
 2. Add another `makeCalcCard(...)` entry with the same schema.
 3. Give it a unique `id` and the correct `order`, `unit`, and `chapter`.
 4. Keep the copy short, practical, and pattern-first.
@@ -136,7 +138,7 @@ Each card includes fields such as:
 
 ## How to add more courses later
 
-The codebase is already organized for future subjects like Calc 2, Calc 3, Linear Algebra, Differential Equations, and proof-heavy courses.
+The codebase is already organized for future subjects like Linear Algebra, Differential Equations, and proof-heavy courses.
 
 To expand:
 
@@ -145,4 +147,4 @@ To expand:
 3. Register it in [`src/lib/bubble.ts`](./src/lib/bubble.ts).
 4. Add course-aware navigation or routing when the second course is ready.
 
-The current UI is Calc 1-first, but the content layer is separated from the UI so expansion does not require a rewrite.
+The current UI already supports multiple courses, and the content layer stays separated from the UI so more subjects can be added without a rewrite.

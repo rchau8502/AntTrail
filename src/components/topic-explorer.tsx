@@ -3,8 +3,15 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { MathConceptVisual } from "@/components/math-concept-visual";
 import type { BubbleCard, Difficulty, Unit } from "@/content/schema";
-import { chapters, difficulties, units } from "@/lib/bubble";
+import {
+  courseTitles,
+  difficulties,
+  getChapterOptions,
+  getCourseOptions,
+  getUnitOptions,
+} from "@/lib/bubble";
 
 interface TopicExplorerProps {
   cards: BubbleCard[];
@@ -12,12 +19,19 @@ interface TopicExplorerProps {
 
 export function TopicExplorer({ cards }: TopicExplorerProps) {
   const [query, setQuery] = useState("");
+  const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
   const [unitFilter, setUnitFilter] = useState<"All" | Unit>("All");
   const [difficultyFilter, setDifficultyFilter] = useState<"All" | Difficulty>(
     "All",
   );
-  const [chapterFilter, setChapterFilter] =
-    useState<"All" | (typeof chapters)[number]>("All");
+  const [chapterFilter, setChapterFilter] = useState<"All" | string>("All");
+
+  const courseScopedCards =
+    courseFilter === "All"
+      ? cards
+      : cards.filter((card) => card.course === courseFilter);
+  const unitOptions = getUnitOptions(courseScopedCards);
+  const chapterOptions = getChapterOptions(courseScopedCards);
 
   const normalizedQuery = query.trim().toLowerCase();
   const filteredCards = cards.filter((card) => {
@@ -34,23 +48,30 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
         .toLowerCase()
         .includes(normalizedQuery);
 
+    const matchesCourse = courseFilter === "All" || card.course === courseFilter;
     const matchesUnit = unitFilter === "All" || card.unit === unitFilter;
     const matchesDifficulty =
       difficultyFilter === "All" || card.difficulty === difficultyFilter;
     const matchesChapter =
       chapterFilter === "All" || card.chapter === chapterFilter;
 
-    return matchesQuery && matchesUnit && matchesDifficulty && matchesChapter;
+    return (
+      matchesQuery &&
+      matchesCourse &&
+      matchesUnit &&
+      matchesDifficulty &&
+      matchesChapter
+    );
   });
 
-  const groupedCards = units.map((unit) => ({
-    unit,
-    cards: filteredCards.filter((card) => card.unit === unit),
+  const groupedCards = getCourseOptions(filteredCards).map((course) => ({
+    course,
+    cards: filteredCards.filter((card) => card.course === course),
   }));
 
   return (
     <div className="space-y-8">
-      <section className="rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 shadow-[var(--shadow)] sm:p-8">
+      <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 sm:p-8">
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1.8fr)_minmax(0,1fr)]">
           <div className="space-y-3">
             <p className="inline-flex rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">
@@ -77,6 +98,23 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
             />
             <div className="grid gap-3 sm:grid-cols-3">
               <select
+                value={courseFilter}
+                onChange={(event) => {
+                  setCourseFilter(event.target.value);
+                  setUnitFilter("All");
+                  setChapterFilter("All");
+                }}
+                className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+              >
+                <option value="All">All courses</option>
+                {courseTitles.map((course) => (
+                  <option key={course} value={course}>
+                    {course}
+                  </option>
+                ))}
+              </select>
+
+              <select
                 value={unitFilter}
                 onChange={(event) =>
                   setUnitFilter(event.target.value as "All" | Unit)
@@ -84,7 +122,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                 className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
               >
                 <option value="All">All units</option>
-                {units.map((unit) => (
+                {unitOptions.map((unit) => (
                   <option key={unit} value={unit}>
                     {unit}
                   </option>
@@ -111,14 +149,12 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
               <select
                 value={chapterFilter}
                 onChange={(event) =>
-                  setChapterFilter(
-                    event.target.value as "All" | (typeof chapters)[number],
-                  )
+                  setChapterFilter(event.target.value)
                 }
                 className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
               >
                 <option value="All">All chapters</option>
-                {chapters.map((chapter) => (
+                {chapterOptions.map((chapter) => (
                   <option key={chapter} value={chapter}>
                     {chapter}
                   </option>
@@ -133,32 +169,33 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
         </div>
       </section>
 
-      {groupedCards.map(({ unit, cards: unitCards }) => (
-        <section key={unit} className="space-y-4">
+      {groupedCards.map(({ course, cards: courseCards }) => (
+        <section key={course} className="space-y-4">
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
-                {unit}
+                {course}
               </p>
               <h2 className="font-display text-3xl text-slate-900">
-                {unitCards.length} topics
+                {courseCards.length} topics
               </h2>
             </div>
           </div>
 
-          {unitCards.length === 0 ? (
+          {courseCards.length === 0 ? (
             <div className="rounded-[1.75rem] border border-dashed border-[color:var(--line-strong)] bg-white/60 p-6 text-sm text-[color:var(--muted)]">
               No cards match this filter set.
             </div>
           ) : (
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {unitCards.map((card) => (
+              {courseCards.map((card) => (
                 <Link
                   key={card.id}
                   href={`/topics/${card.id}`}
-                  className="group rounded-[1.75rem] border border-[color:var(--line)] bg-[color:var(--surface)] p-5 shadow-[var(--shadow)] transition hover:-translate-y-1 hover:border-sky-200 hover:bg-white"
+                  className="bubble-shadow group rounded-[1.75rem] border border-[color:var(--line)] bg-[color:var(--surface)] p-5 transition hover:-translate-y-1 hover:border-sky-200 hover:bg-white"
                 >
                   <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+                    <span>{card.unit}</span>
                     <span>{card.chapter}</span>
                     <span className="rounded-full bg-sky-100 px-2 py-1 tracking-normal">
                       {card.difficulty}
@@ -167,6 +204,9 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                   <h3 className="mt-4 text-xl font-semibold text-slate-900">
                     {card.name}
                   </h3>
+                  <div className="mt-4">
+                    <MathConceptVisual card={card} mode="card" />
+                  </div>
                   <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
                     {card.useItWhen}
                   </p>
