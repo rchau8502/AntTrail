@@ -5,7 +5,7 @@ function makeCalcCard(
 ): BubbleCard {
   return {
     subject: "Mathematics",
-    course: "Calculus 3",
+    course: "Multivariable Calculus",
     ...card,
   };
 }
@@ -13,9 +13,9 @@ function makeCalcCard(
 export const calcThreeCourse: CourseContent = {
   id: "calc-3",
   subject: "Mathematics",
-  title: "Calculus 3",
+  title: "Multivariable Calculus",
   shortDescription:
-    "Vectors, partial derivatives, multiple integrals, and vector calculus.",
+    "Vectors, partial derivatives, multiple integrals, and multivariable calculus.",
   units: [
     "Vectors & 3D",
     "Vector Functions",

@@ -5,7 +5,7 @@ function makeCalcCard(
 ): BubbleCard {
   return {
     subject: "Mathematics",
-    course: "Calculus 1",
+    course: "Single Variable Calculus 1",
     ...card,
   };
 }
@@ -13,8 +13,9 @@ function makeCalcCard(
 export const calcOneCourse: CourseContent = {
   id: "calc-1",
   subject: "Mathematics",
-  title: "Calculus 1",
-  shortDescription: "Fast Calc 1 review for students who need the move first.",
+  title: "Single Variable Calculus 1",
+  shortDescription:
+    "Fast single-variable calculus review for students who need the move first.",
   units: [
     "Limits",
     "Derivatives",

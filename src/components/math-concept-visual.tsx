@@ -25,6 +25,16 @@ function getVisualKind(card: BubbleCard) {
 
   if (fingerprint.includes("polar")) return "polar";
   if (
+    fingerprint.includes("matrix") ||
+    fingerprint.includes("determinant") ||
+    fingerprint.includes("eigen") ||
+    fingerprint.includes("diagonalization") ||
+    fingerprint.includes("row reduction") ||
+    fingerprint.includes("linear algebra")
+  ) {
+    return "matrix";
+  }
+  if (
     fingerprint.includes("probability") ||
     fingerprint.includes("random") ||
     fingerprint.includes("bayes") ||
@@ -96,7 +106,7 @@ function getVisualKind(card: BubbleCard) {
     return "limit";
   }
 
-  return card.course === "Calculus 3" ? "vector" : "derivative";
+  return card.course === "Multivariable Calculus" ? "vector" : "derivative";
 }
 
 function joinClassNames(...names: Array<string | undefined>) {
@@ -232,6 +242,65 @@ function ProbabilityTree() {
   );
 }
 
+function MatrixGrid() {
+  const cells = [];
+  const tones = ["#78c8ff", "#d8f1ff", "#ffd2ae", "#ffffff"];
+
+  for (let row = 0; row < 3; row += 1) {
+    for (let column = 0; column < 3; column += 1) {
+      cells.push(
+        <rect
+          key={`${row}-${column}`}
+          x={84 + column * 42}
+          y={48 + row * 32}
+          width="28"
+          height="20"
+          rx="7"
+          fill={tones[(row + column) % tones.length]}
+          stroke="#0f6ea6"
+          strokeOpacity="0.28"
+          strokeWidth="1.6"
+        />,
+      );
+    }
+  }
+
+  return (
+    <>
+      <path
+        d="M 66 42 C 54 64, 54 136, 66 158"
+        fill="none"
+        stroke="#0f6ea6"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <path
+        d="M 248 42 C 260 64, 260 136, 248 158"
+        fill="none"
+        stroke="#0f6ea6"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      {cells}
+      <path
+        d="M 210 64 L 246 64"
+        fill="none"
+        stroke="#ff9e57"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <path
+        d="M 236 54 L 246 64 L 236 74"
+        fill="none"
+        stroke="#ff9e57"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </>
+  );
+}
+
 function renderVisual(kind: string) {
   switch (kind) {
     case "limit":
@@ -310,6 +379,8 @@ function renderVisual(kind: string) {
       return <SparkBars />;
     case "logic":
       return <LogicFlow />;
+    case "matrix":
+      return <MatrixGrid />;
     case "polar":
       return (
         <>

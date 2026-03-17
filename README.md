@@ -18,7 +18,7 @@ Bubble is built to answer three fast questions:
 - When do I use it?
 - What do I do first?
 
-Bubble now covers Calculus 1, Calculus 2, and Calculus 3 in Stewart 9e chapter order.
+Bubble now covers Single Variable Calculus 1, Single Variable Calculus 2, Multivariable Calculus, Introduction to Abstract Mathematics, Probability, and Linear Algebra.
 
 ## Product philosophy
 
@@ -59,11 +59,11 @@ The app also adds:
 
 ## Current features
 
-- Landing page with Bubble philosophy and full calc-sequence entry point
+- Landing page with Bubble philosophy and multi-course entry point
 - Topic dashboard with course grouping, search, difficulty filter, and chapter filter
 - Bubble Card detail pages
 - Study mode with course and unit filtering
-- Recognition quiz focused on “which technique fits?” across Calc 1-3
+- Recognition quiz focused on “which technique fits?” across all current courses
 - Memory Hook view for fast cram review across all courses
 
 ## Tech stack
@@ -95,11 +95,14 @@ src/
     calc1.ts
     calc2.ts
     calc3.ts
+    linear-algebra.ts
+    proof.ts
+    probability.ts
   lib/
     bubble.ts
 ```
 
-Current seeded content: 149 Bubble Cards across Calculus 1, Calculus 2, and Calculus 3.
+Current seeded content: 283 Bubble Cards across six courses.
 
 ## Content model
 
@@ -138,7 +141,7 @@ Each card includes fields such as:
 
 ## How to add more courses later
 
-The codebase is already organized for future subjects like Linear Algebra, Differential Equations, and proof-heavy courses.
+The codebase is already organized for future subjects like Differential Equations and other upper-division math courses.
 
 To expand:
 

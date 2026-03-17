@@ -1,6 +1,7 @@
 import { calcOneCourse } from "@/content/calc1";
 import { calcThreeCourse } from "@/content/calc3";
 import { calcTwoCourse } from "@/content/calc2";
+import { linearAlgebraCourse } from "@/content/linear-algebra";
 import { probabilityCourse } from "@/content/probability";
 import { proofCourse } from "@/content/proof";
 import type { BubbleCard, Difficulty, Unit } from "@/content/schema";
@@ -10,6 +11,7 @@ export const courses = [
   calcOneCourse,
   calcTwoCourse,
   calcThreeCourse,
+  linearAlgebraCourse,
   proofCourse,
   probabilityCourse,
 ];

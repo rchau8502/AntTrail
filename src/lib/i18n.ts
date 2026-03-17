@@ -20,7 +20,7 @@ const messages = {
     bubbleExpanded: "Bubble Expanded",
     heroTitle: "The outer shell of useful math.",
     heroDescription:
-      "Bubble now covers calculus, intro to proof, and probability with fast recognition cues, standard moves, and memory hooks.",
+      "Bubble now covers single-variable calculus, multivariable calculus, abstract math, probability, and linear algebra with fast recognition cues, standard moves, and memory hooks.",
     browseAllTopics: "Browse all topics",
     jumpIntoStudyMode: "Jump into study mode",
     bubbleCards: "Bubble Cards",
@@ -141,7 +141,7 @@ const messages = {
     bubbleExpanded: "Bubble ampliado",
     heroTitle: "La capa exterior de las matemáticas útiles.",
     heroDescription:
-      "Bubble ahora cubre cálculo, introducción a pruebas y probabilidad con pistas de reconocimiento, movimientos estándar y ganchos de memoria.",
+      "Bubble ahora cubre cálculo de una variable, cálculo multivariable, matemáticas abstractas, probabilidad y álgebra lineal con pistas de reconocimiento, movimientos estándar y ganchos de memoria.",
     browseAllTopics: "Ver todos los temas",
     jumpIntoStudyMode: "Ir a modo estudio",
     bubbleCards: "Tarjetas Bubble",
@@ -264,10 +264,12 @@ export function translate(locale: Locale, key: TranslationKey) {
 const courseLabels: Record<Locale, Record<string, string>> = {
   en: {},
   es: {
-    "Calculus 1": "Cálculo 1",
-    "Calculus 2": "Cálculo 2",
-    "Calculus 3": "Cálculo 3",
-    "Intro to Proof": "Introducción a Pruebas",
+    "Single Variable Calculus 1": "Cálculo de una Variable 1",
+    "Single Variable Calculus 2": "Cálculo de una Variable 2",
+    "Multivariable Calculus": "Cálculo Multivariable",
+    "Introduction to Abstract Mathematics":
+      "Introducción a las Matemáticas Abstractas",
+    "Linear Algebra": "Álgebra Lineal",
     Probability: "Probabilidad",
   },
 };
