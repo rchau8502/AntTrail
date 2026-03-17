@@ -1,5 +1,6 @@
 import type { BubbleCard, CourseContent, MiniDrillItem, QuickExample } from "@/content/schema";
 import { esCardContent, esCourseContent } from "@/content/translations/es";
+import { zhCardContent, zhCourseContent } from "@/content/translations/zh";
 import { defaultLocale, type Locale } from "@/lib/i18n";
 
 interface LocalizedCardContent {
@@ -39,6 +40,10 @@ const localizedContent: Partial<
   es: {
     cards: esCardContent,
     courses: esCourseContent,
+  },
+  zh: {
+    cards: zhCardContent,
+    courses: zhCourseContent,
   },
 };
 

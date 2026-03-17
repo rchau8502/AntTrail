@@ -1,4 +1,10 @@
-export const locales = ["en", "es"] as const;
+import {
+  zhCourseLabels,
+  zhDifficultyLabels,
+  zhMessages,
+} from "@/lib/i18n-zh";
+
+export const locales = ["en", "es", "zh"] as const;
 
 export type Locale = (typeof locales)[number];
 
@@ -7,6 +13,7 @@ export const defaultLocale: Locale = "en";
 export const localeNames: Record<Locale, string> = {
   en: "English",
   es: "Español",
+  zh: "中文",
 };
 
 const messages = {
@@ -253,6 +260,7 @@ const messages = {
     studyThis: "Estudiar esto",
     quizMode: "Modo quiz",
   },
+  zh: zhMessages,
 } as const;
 
 export type TranslationKey = keyof (typeof messages)["en"];
@@ -272,6 +280,7 @@ const courseLabels: Record<Locale, Record<string, string>> = {
     "Linear Algebra": "Álgebra Lineal",
     Probability: "Probabilidad",
   },
+  zh: zhCourseLabels,
 };
 
 const difficultyLabels: Record<Locale, Record<string, string>> = {
@@ -281,6 +290,7 @@ const difficultyLabels: Record<Locale, Record<string, string>> = {
     Standard: "Estándar",
     Stretch: "Avanzado",
   },
+  zh: zhDifficultyLabels,
 };
 
 export function translateCourseTitle(locale: Locale, title: string) {
@@ -300,6 +310,10 @@ export function detectLocale(preferred: string | null | undefined): Locale {
 
   if (normalized.startsWith("es")) {
     return "es";
+  }
+
+  if (normalized.startsWith("zh")) {
+    return "zh";
   }
 
   return defaultLocale;
