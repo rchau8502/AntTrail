@@ -6426,13 +6426,13 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "抽象数学导论",
     "chapter": "第 2 章：逻辑与证明语言",
     "unit": "逻辑与量词",
-    "topic": "用反证法证明",
-    "name": "反证",
+    "topic": "逆否命题证明",
+    "name": "逆否证明",
     "useItWhen": "结论比直接证明更容易否定",
     "looksLike": "如果 P 那么 Q，但不是 Q 那么不是 P 看起来更干净",
     "doThis": "翻转并否定该陈述，然后证明该版本",
     "thinkOfItAs": "因为前面的路被堵住了，所以走后面的路",
-    "watchOutFor": "证明逆命题而不是逆命题",
+    "watchOutFor": "把逆命题和逆否命题搞混",
     "rememberThis": "翻转并否定两个部分",
     "typicalProblemShapes": [
       "直接证明会变得混乱，但否定的结论很简单",
@@ -6451,7 +6451,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "memoryHook": "翻转它，否定它，证明这一点。",
     "quickExample": {
       "problem": "如果n的平方是偶数，则证明n是偶数。",
-      "move": "使用反证法：如果 n 是奇数，则 n 的平方也是奇数。"
+      "move": "用逆否命题：如果 n 是奇数，那么 n 的平方也是奇数。"
     }
   },
   "proof-contradiction": {
@@ -6459,7 +6459,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "第 2 章：逻辑与证明语言",
     "unit": "逻辑与量词",
     "topic": "反证法",
-    "name": "矛盾",
+    "name": "反证法",
     "useItWhen": "假设相反会产生不可能的结果",
     "looksLike": "假设不...，然后发生冲突",
     "doThis": "假设该声明是错误的并推动直到出现问题",
@@ -6483,7 +6483,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "memoryHook": "假设相反。破坏逻辑。",
     "quickExample": {
       "problem": "诸多非理性证明如何开始？",
-      "move": "假设这个数是有理数，然后推导出不可能数。"
+      "move": "先假设这个数是有理数，再推出矛盾。"
     }
   },
   "proof-quantifiers": {
@@ -6586,14 +6586,14 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "抽象数学导论",
     "chapter": "第 3 章：集合与函数",
     "unit": "集合与函数",
-    "topic": "一对一和 on 函数",
-    "name": "内射与满射",
-    "useItWhen": "证明询问函数是否是一对一的或到",
+    "topic": "单射与满射函数",
+    "name": "单射与满射",
+    "useItWhen": "证明要你判断函数是不是单射、满射或双射",
     "looksLike": "显示 f 是单射、满射或双射",
-    "doThis": "对于单射，从相等的输出开始；对于onto，从目标输出开始",
-    "thinkOfItAs": "单射意味着没有碰撞，满射意味着没有错过",
-    "watchOutFor": "使用错误的起点来获得错误的属性",
-    "rememberThis": "单射开始于输出相等；从选择的目标开始",
+    "doThis": "证单射时从 f(a)=f(b) 开始；证满射时从目标输出 y 开始",
+    "thinkOfItAs": "单射是不撞车，满射是不漏目标",
+    "watchOutFor": "把单射和满射的起手方式用反",
+    "rememberThis": "单射看输出相等；满射从目标 y 开始",
     "typicalProblemShapes": [
       "集合或数系之间的函数",
       "要求双射或反函数逻辑的证明"
@@ -6748,30 +6748,30 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "关系与基数",
     "topic": "等价关系",
     "name": "等价关系",
-    "useItWhen": "关系声称对象在某种程度上是相同的",
-    "looksLike": "显示自反性、对称性和传递性",
-    "doThis": "一一检查三个属性",
+    "useItWhen": "一个关系 ~ 想表达两个对象在某种意义下算同一类",
+    "looksLike": "自反：x~x，对称：x~y => y~x，传递：x~y 且 y~z => x~z",
+    "doThis": "把三段小证明写出来：先证 x~x，再假设 x~y 证 y~x，最后假设 x~y 和 y~z 证 x~z",
     "thinkOfItAs": "合法的同队规则",
-    "watchOutFor": "仅证明一个或两个属性",
-    "rememberThis": "等价意味着三项检查",
+    "watchOutFor": "只做一两个检查，或忘了先取任意的 x、y、z",
+    "rememberThis": "同类关系 = 自反、对称、传递",
     "typicalProblemShapes": [
       "数、集合或函数的关系",
       "关系创建类或分区的证明"
     ],
     "miniDrill": [
       {
-        "prompt": "如果一个关系缺少对称性，它是等价关系吗？",
-        "answer": "不。"
+        "prompt": "自反这一步通常长什么样？",
+        "answer": "先取任意 x，再证明 x~x。"
       },
       {
-        "prompt": "等价关系后面经常出现什么结构？",
-        "answer": "等价类或分区。"
+        "prompt": "传递这一步通常长什么样？",
+        "answer": "先假设 x~y 和 y~z，再证明 x~z。"
       }
     ],
-    "memoryHook": "自反、对称、传递。全部三个。",
+    "memoryHook": "x~x，翻一下，串起来。",
     "quickExample": {
-      "problem": "哪三个属性定义了等价关系？",
-      "move": "自反、对称、传递。"
+      "problem": "等价关系的证明套路怎么写？",
+      "move": "先证 x~x，再证 x~y => y~x，最后证 x~y 且 y~z => x~z。"
     }
   },
   "proof-countable-uncountable": {
@@ -6907,8 +6907,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "第 3 章：集合与函数",
     "unit": "集合与函数",
     "topic": "并集、交集和补集恒等式",
-    "name": "设置操作证明",
-    "useItWhen": "一个问题声称两个集合表达式相等",
+    "name": "集合运算证明",
+    "useItWhen": "题目声称两个集合表达式相等",
     "looksLike": "并集、交集、补集、差集",
     "doThis": "通过两侧的定义追逐一个元素",
     "thinkOfItAs": "没有表的隶属真值表",
@@ -6930,8 +6930,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "遵循一个元素，而不是符号。",
     "quickExample": {
-      "problem": "如何证明 A 相交（B 并 C）等于某物？",
-      "move": "将 x 放在一侧并解开它的含义。"
+      "problem": "怎么证明 A∩(B∪C) 等于另一边？",
+      "move": "任取 x 在一边，把它的集合含义拆开。"
     }
   },
   "proof-composition-inverse": {
@@ -6941,7 +6941,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "复合函数和反函数",
     "name": "复合和逆",
     "useItWhen": "函数已堆叠或者您需要撤消其中一个",
-    "looksLike": "f 由 g、f 逆、一对一和 on 组成",
+    "looksLike": "f 与 g 的复合、f 的逆函数、单射与满射",
     "doThis": "仔细跟踪输入并检查顺序",
     "thinkOfItAs": "链式机器和撤消机器",
     "watchOutFor": "不小心颠倒了构图顺序",
@@ -6973,11 +6973,11 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "除法算法",
     "name": "除法算法",
     "useItWhen": "整数分为商和余数",
-    "looksLike": "a = bq + r 其中 0 小于或等于 r 小于 b",
-    "doThis": "将数字写成商加余数的形式",
-    "thinkOfItAs": "清洁剩余包装",
+    "looksLike": "a = bq + r，其中 0 ≤ r < b",
+    "doThis": "把整数写成商加余数的形式",
+    "thinkOfItAs": "把数拆成整除部分和余数部分",
     "watchOutFor": "忘记余数界限",
-    "rememberThis": "商加上余数，余数很小",
+    "rememberThis": "每个整数都能写成商加小余数",
     "typicalProblemShapes": [
       "奇偶校验或案例模 n 的证明",
       "Gcd 和余数参数"
@@ -6985,17 +6985,17 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "a = bq + r 中的 r 一定是正确的吗？",
-        "answer": "它必须保持在 0 和 b 减 1 之间。"
+        "answer": "必须满足 0 ≤ r < b。"
       },
       {
         "prompt": "除法算法可以帮助你隔离什么？",
-        "answer": "余下班级。"
+        "answer": "余数类。"
       }
     ],
     "memoryHook": "每个整数都是商加上小余数。",
     "quickExample": {
       "problem": "除法算法是什么形式？",
-      "move": "a = bq + r 余数有界。"
+      "move": "a = bq + r，而且余数满足 0 ≤ r < b。"
     }
   },
   "proof-bezout": {
@@ -7066,7 +7066,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "抽象数学导论",
     "chapter": "第 7 章：关系与划分",
     "unit": "关系与基数",
-    "topic": "同等等级",
+    "topic": "等价类",
     "name": "等价类",
     "useItWhen": "等价关系将对象分组到相同类型的桶中",
     "looksLike": "[a]，同余类，相同关系桶",
@@ -7514,14 +7514,14 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "抽象数学导论",
     "chapter": "第 3 章：集合与函数",
     "unit": "集合与函数",
-    "topic": "集合符号和描述集合",
-    "name": "设置符号",
-    "useItWhen": "问题是用大括号、隶属度或集合构建器表示法编写的",
-    "looksLike": "{x in Z : ...}，元素，子集，空集",
-    "doThis": "在证明任何事情之前将符号翻译成简单的英语",
-    "thinkOfItAs": "大声朗读",
-    "watchOutFor": "将 的元素与 的子集混合",
-    "rememberThis": "首先阅读文字集",
+    "topic": "集合记号与集合描述",
+    "name": "集合记号",
+    "useItWhen": "题目用了花括号、属于符号或集合构造表示法",
+    "looksLike": "{x in Z : ...}、属于、子集、空集",
+    "doThis": "先把记号翻成白话，再开始证明",
+    "thinkOfItAs": "先把这个集合念出来",
+    "watchOutFor": "把“元素属于”跟“子集属于”混在一起",
+    "rememberThis": "先用话说清集合是什么意思",
     "typicalProblemShapes": [
       "需要翻译的集合构建器符号",
       "成员资格或子集声明"
@@ -7529,16 +7529,16 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "A 中的 x 是否意味着 x 是一个集合？",
-        "answer": "未必。这意味着x是A的一个元素。"
+        "answer": "不一定。这只表示 x 是 A 的一个元素。"
       },
       {
         "prompt": "可怕的集合符号的快速移动是什么？",
-        "answer": "用简单的英语重写它。"
+        "answer": "先用简单的话把它重写出来。"
       }
     ],
-    "memoryHook": "用简单的英语阅读大括号。",
+    "memoryHook": "先把花括号念成人话。",
     "quickExample": {
-      "problem": "{x in Z : x 是偶数} 是什么意思？",
+      "problem": "{x in Z : x 是偶数} 表示什么？",
       "move": "所有偶数的集合。"
     }
   },
@@ -7548,19 +7548,19 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "集合与函数",
     "topic": "并集、交集和补集",
     "name": "并集、交集、补集",
-    "useItWhen": "集合证明使用并集、交集或补码",
-    "looksLike": "A 并 B、A 交集 B、A 补",
-    "doThis": "将每个符号转换为元素测试，并在需要时证明双向成员资格",
+    "useItWhen": "集合证明里出现并集、交集或补集符号",
+    "looksLike": "A∪B、A∩B、A 的补集",
+    "doThis": "把每个符号翻成元素条件；必要时做双向包含证明",
     "thinkOfItAs": "并集表示或，交集表示和，补集表示非",
-    "watchOutFor": "向符号挥手而不是证明元素成员资格",
-    "rememberThis": "集合证明常常成为成员证明",
+    "watchOutFor": "只盯着符号看，却不去证明元素属于哪边",
+    "rememberThis": "集合证明常常就是元素追踪",
     "typicalProblemShapes": [
       "通过并集和交集设置身份",
       "证明两个集合相等"
     ],
     "miniDrill": [
       {
-        "prompt": "A 交点 B 中的 x 是什么意思？",
+        "prompt": "x ∈ A∩B 是什么意思？",
         "answer": "x 既在 A 又在 B 中。"
       },
       {
@@ -7568,10 +7568,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "显示每个都是另一个的子集。"
       }
     ],
-    "memoryHook": "并或、交和、补非。",
+    "memoryHook": "并是或，交是且，补是否。",
     "quickExample": {
-      "problem": "如何证明 A 是 B 并集 C 的子集？",
-      "move": "在 A 中取 x 并在 B 或 C 中显示 x 土地。"
+      "problem": "怎么证明 A ⊆ B∪C？",
+      "move": "先取任意 x∈A，再证明 x 在 B 或 C 里。"
     }
   },
   "proof-recursive-processes": {
@@ -7597,7 +7597,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "什么证明方法经常与递归相匹配？",
-        "answer": "就职。"
+        "answer": "归纳法。"
       }
     ],
     "memoryHook": "起始值，然后重复规则。",
@@ -7610,57 +7610,57 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "抽象数学导论",
     "chapter": "第 6 章：集合论 II",
     "unit": "集合论 II",
-    "topic": "集合的索引集合",
-    "name": "索引集合",
-    "useItWhen": "问题有 A_i、i 上的并集或多个集合上的交集",
-    "looksLike": "A_i，从 i = 1 到 n 的并集，所有 n 的交集",
-    "doThis": "将索引视为标签并将大联合或交集翻译为单词",
-    "thinkOfItAs": "带有姓名标签的一套系列",
-    "watchOutFor": "忘记该语句是需要一个索引还是所有索引",
-    "rememberThis": "大并集表示某个索引，大交集表示每个索引",
+    "topic": "按索引编号的一族集合",
+    "name": "索引集合族",
+    "useItWhen": "题目里有 A_i、对 i 的并集，或很多集合的交集",
+    "looksLike": "A_i、从 i=1 到 n 的并集、对所有 i 的交集",
+    "doThis": "把索引当成标签，再把大并集或大交集翻成白话",
+    "thinkOfItAs": "一串带编号的集合",
+    "watchOutFor": "忘了题目说的是“某个索引”还是“所有索引”",
+    "rememberThis": "大并集是至少一个，大交集是每一个",
     "typicalProblemShapes": [
       "同时关于多个集合的陈述",
       "嵌套并集和交集"
     ],
     "miniDrill": [
       {
-        "prompt": "交集A_i中的x是指一组还是每组？",
-        "answer": "每一套。"
+        "prompt": "x 在 ⋂A_i 里，表示属于一个还是每一个集合？",
+        "answer": "每一个集合。"
       },
       {
-        "prompt": "我在这里做的索引是什么？",
-        "answer": "它标记了您所指的设置。"
+        "prompt": "这里的索引 i 是干什么的？",
+        "answer": "它只是给这族集合编号。"
       }
     ],
-    "memoryHook": "联盟=一些。交集=全部。",
+    "memoryHook": "并集看至少一个，交集看每一个。",
     "quickExample": {
-      "problem": "联合 A_i 中的 x 是什么意思？",
-      "move": "x 至少属于该族中的一组。"
+      "problem": "x ∈ ⋃A_i 是什么意思？",
+      "move": "x 至少属于这族集合中的一个。"
     }
   },
   "proof-well-defined": {
     "course": "抽象数学导论",
     "chapter": "第 7 章：关系与划分",
     "unit": "关系与基数",
-    "topic": "明确定义的功能和操作",
-    "name": "明确定义",
+    "topic": "定义良好的函数与运算",
+    "name": "定义良好",
     "useItWhen": "一个对象有很多代表，您需要输出不依赖于选择",
-    "looksLike": "[a] 转到...、分数、等价类、mod 类",
-    "doThis": "选择两个等效的代表并显示他们给出相同的输出",
+    "looksLike": "[a] 映到…、分数、等价类、模类",
+    "doThis": "选两个等价代表，证明它们给出的结果一样",
     "thinkOfItAs": "不同的名称，相同的结果",
-    "watchOutFor": "仅检查一名代表并结束",
-    "rememberThis": "新规则必须忽略代表的选择",
+    "watchOutFor": "只检查一个代表就收工",
+    "rememberThis": "规则不能依赖你挑了哪个代表",
     "typicalProblemShapes": [
       "商集或同余类上的函数",
       "使用代表定义的操作"
     ],
     "miniDrill": [
       {
-        "prompt": "是什么打破了明确的规则？",
+        "prompt": "什么会让一个定义不良好？",
         "answer": "两个等效的输入给出不同的输出。"
       },
       {
-        "prompt": "您测试的是一名代表还是两名同等代表？",
+        "prompt": "你要测一个代表还是两个等价代表？",
         "answer": "两个等价的。"
       }
     ],
@@ -7706,32 +7706,32 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "抽象数学导论",
     "chapter": "第 7 章：关系与划分",
     "unit": "关系与基数",
-    "topic": "功能及分区",
-    "name": "功能与分区",
-    "useItWhen": "函数将集合分割成纤维或原像片段",
-    "looksLike": "相同的输出，y 的原像，域分成组",
-    "doThis": "按输出对输入进行分组，并将每一组视为一个块",
-    "thinkOfItAs": "将输入排序到输出桶中",
-    "watchOutFor": "忘记不同的输出给出不相交的桶",
-    "rememberThis": "函数将域划分为纤维",
+    "topic": "函数与划分",
+    "name": "函数与划分",
+    "useItWhen": "函数把一个集合按输出分成原像块",
+    "looksLike": "相同输出、y 的原像、定义域分成几组",
+    "doThis": "按输出给输入分组，把每一组看成一个块",
+    "thinkOfItAs": "把输入按输出分桶",
+    "watchOutFor": "忘了不同输出对应的块彼此不重叠",
+    "rememberThis": "函数会把定义域按输出划分成块",
     "typicalProblemShapes": [
       "函数的原像集",
       "由相等输出构建的分区"
     ],
     "miniDrill": [
       {
-        "prompt": "一个输入可以位于两个不同的光纤中吗？",
+        "prompt": "一个输入会落在两个不同的块里吗？",
         "answer": "不。"
       },
       {
-        "prompt": "什么决定了输入的桶？",
+        "prompt": "什么决定输入属于哪个块？",
         "answer": "其输出值。"
       }
     ],
-    "memoryHook": "相同的输出，相同的桶。",
+    "memoryHook": "同输出，同一块。",
     "quickExample": {
-      "problem": "什么是函数纤维？",
-      "move": "所有输入都落在同一输出上。"
+      "problem": "函数里的一个原像块是什么？",
+      "move": "就是所有会映到同一个输出的输入。"
     }
   },
   "prob-counting-rules": {

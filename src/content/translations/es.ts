@@ -6427,7 +6427,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "Capítulo 2: Lógica y el Lenguaje de las Pruebas",
     "unit": "Lógica y Cuantificadores",
     "topic": "Prueba por contrapositiva",
-    "name": "contrapositivo",
+    "name": "Contraposición",
     "useItWhen": "la conclusión es más fácil de negar que probar directamente",
     "looksLike": "si P entonces Q, pero no Q entonces no P se ve más limpio",
     "doThis": "voltear y negar la afirmación, luego probar esa versión",
@@ -6459,7 +6459,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "Capítulo 2: Lógica y el Lenguaje de las Pruebas",
     "unit": "Lógica y Cuantificadores",
     "topic": "Prueba por contradicción",
-    "name": "contradicción",
+    "name": "Contradicción",
     "useItWhen": "asumir lo contrario crea un resultado imposible",
     "looksLike": "asume que no..., luego llega a un choque",
     "doThis": "asumir que el reclamo es falso y presionar hasta que algo se rompa",
@@ -6586,21 +6586,21 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "course": "Introducción a las Matemáticas Abstractas",
     "chapter": "Capítulo 3: Conjuntos y Funciones",
     "unit": "Conjuntos y Funciones",
-    "topic": "Funciones uno a uno y sobre",
-    "name": "Inyectivo vs Suryectivo",
-    "useItWhen": "una prueba pregunta si una función es uno a uno o sobre",
+    "topic": "Funciones inyectivas y sobreyectivas",
+    "name": "Inyectiva vs Sobreyectiva",
+    "useItWhen": "una prueba pregunta si una función es inyectiva, sobreyectiva o biyectiva",
     "looksLike": "mostrar f es inyectiva, sobreyectiva o biyectiva",
-    "doThis": "para inyectivo, comience con salidas iguales; para on, comience con una salida objetivo",
+    "doThis": "para inyectiva, empieza con salidas iguales; para sobreyectiva, empieza con una salida objetivo",
     "thinkOfItAs": "inyectivo significa que no hay colisión, sobreyectivo significa que no hay fallos",
     "watchOutFor": "usar el punto de partida incorrecto para la propiedad incorrecta",
-    "rememberThis": "la inyectiva comienza con salidas iguales; comienza con el objetivo elegido",
+    "rememberThis": "inyectiva empieza con salidas iguales; sobreyectiva empieza con el objetivo",
     "typicalProblemShapes": [
       "Funciones entre conjuntos o sistemas numéricos",
       "Pruebas que solicitan biyección o lógica de función inversa"
     ],
     "miniDrill": [
       {
-        "prompt": "¿Cuál es el primer paso para la sobreyectiva?",
+        "prompt": "¿Cuál es el primer paso en una prueba sobreyectiva?",
         "answer": "Tome un objetivo arbitrario y en el codominio."
       },
       {
@@ -6748,30 +6748,30 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "unit": "Relaciones y Cardinalidad",
     "topic": "Relaciones de equivalencia",
     "name": "Relaciones de equivalencia",
-    "useItWhen": "una relación afirma que los objetos cuentan como iguales de alguna manera",
-    "looksLike": "mostrar reflexivo, simétrico y transitivo",
-    "doThis": "verifique las tres propiedades una por una",
+    "useItWhen": "una relación ~ se supone que dice que dos objetos cuentan como iguales",
+    "looksLike": "reflexiva: x~x, simétrica: x~y => y~x, transitiva: x~y y y~z => x~z",
+    "doThis": "escribe las tres mini-pruebas: demuestra x~x, asume x~y y demuestra y~x, luego asume x~y y y~z y demuestra x~z",
     "thinkOfItAs": "una regla legal del mismo equipo",
-    "watchOutFor": "demostrando sólo una o dos de las propiedades",
-    "rememberThis": "equivalencia significa tres controles",
+    "watchOutFor": "hacer solo una o dos verificaciones, o no empezar con x, y, z arbitrarios",
+    "rememberThis": "misma relación = reflexiva, simétrica, transitiva",
     "typicalProblemShapes": [
       "Relaciones entre números, conjuntos o funciones.",
       "Pruebas de que una relación crea clases o particiones"
     ],
     "miniDrill": [
       {
-        "prompt": "Si a una relación le falta simetría, ¿es una relación de equivalencia?",
-        "answer": "No."
+        "prompt": "¿Cómo suele verse la parte reflexiva?",
+        "answer": "Toma un x arbitrario y demuestra x~x."
       },
       {
-        "prompt": "¿Qué estructura suele aparecer después de una relación de equivalencia?",
-        "answer": "Clases de equivalencia o una partición."
+        "prompt": "¿Cómo suele verse la parte transitiva?",
+        "answer": "Asume x~y y y~z, luego demuestra x~z."
       }
     ],
-    "memoryHook": "Reflexiva, simétrica, transitiva. Los tres.",
+    "memoryHook": "x~x, voltea, encadena.",
     "quickExample": {
-      "problem": "¿Qué tres propiedades definen una relación de equivalencia?",
-      "move": "Reflexiva, simétrica, transitiva."
+      "problem": "¿Qué patrón de prueba escribes para una relación de equivalencia?",
+      "move": "Demuestra x~x, luego x~y => y~x, luego x~y y y~z => x~z."
     }
   },
   "proof-countable-uncountable": {
@@ -6907,8 +6907,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "Capítulo 3: Conjuntos y Funciones",
     "unit": "Conjuntos y Funciones",
     "topic": "Identidades de unión, intersección y complemento.",
-    "name": "Establecer pruebas de operación",
-    "useItWhen": "un problema afirma que dos expresiones establecidas son iguales",
+    "name": "Pruebas de operaciones con conjuntos",
+    "useItWhen": "un problema afirma que dos expresiones con conjuntos son iguales",
     "looksLike": "unión, intersección, complemento, diferencia de conjunto",
     "doThis": "perseguir un elemento a través de las definiciones en ambos lados",
     "thinkOfItAs": "tablas de verdad de membresía sin la tabla",
@@ -6930,8 +6930,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "Sigue un elemento, no los símbolos.",
     "quickExample": {
-      "problem": "¿Cómo se prueba que A se cruza (B unión C) es igual a algo?",
-      "move": "Tome x en un lado y desempaque lo que eso significa."
+      "problem": "¿Cómo se prueba que A∩(B∪C) es igual a la otra expresión?",
+      "move": "Toma x en un lado y desarma lo que eso significa."
     }
   },
   "proof-composition-inverse": {
@@ -6973,9 +6973,9 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "topic": "Algoritmo de división",
     "name": "Algoritmo de división",
     "useItWhen": "Los números enteros se dividen en cociente y resto.",
-    "looksLike": "a = bq + r con 0 menor o igual que r menor que b",
-    "doThis": "escribe el número en forma de cociente más resto",
-    "thinkOfItAs": "embalaje restante limpio",
+    "looksLike": "a = bq + r con 0 ≤ r < b",
+    "doThis": "escribe el número como cociente más resto",
+    "thinkOfItAs": "separar el número en parte divisible y resto",
     "watchOutFor": "olvidando los límites restantes",
     "rememberThis": "cociente más resto, con resto pequeño",
     "typicalProblemShapes": [
@@ -6985,7 +6985,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "¿Qué debe ser cierto acerca de r en a = bq + r?",
-        "answer": "Tiene que permanecer entre 0 y b menos 1."
+        "answer": "Tiene que cumplir 0 ≤ r < b."
       },
       {
         "prompt": "¿Qué te ayuda a aislar el algoritmo de división?",
@@ -7068,15 +7068,15 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "unit": "Relaciones y Cardinalidad",
     "topic": "Clases de equivalencia",
     "name": "Clases de equivalencia",
-    "useItWhen": "una relación de equivalencia agrupa objetos en depósitos del mismo tipo",
+    "useItWhen": "una relación de equivalencia agrupa objetos en bloques del mismo tipo",
     "looksLike": "[a], clases de congruencia, mismos grupos de relaciones",
     "doThis": "arreglar un elemento y recolectar todo lo equivalente a él",
-    "thinkOfItAs": "un cubo de cosas contaba como lo mismo",
+    "thinkOfItAs": "un bloque de cosas que cuentan como lo mismo",
     "watchOutFor": "Tratar una clase como un solo elemento en lugar de un conjunto completo.",
-    "rememberThis": "una clase es el cubo alrededor de un elemento",
+    "rememberThis": "una clase es el bloque alrededor de un elemento",
     "typicalProblemShapes": [
       "Congruencia mod n clases",
-      "Relaciones que dividen un conjunto en cubos"
+      "Relaciones que dividen un conjunto en bloques"
     ],
     "miniDrill": [
       {
@@ -7088,7 +7088,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Un elemento elegido y la relación."
       }
     ],
-    "memoryHook": "Elige un elemento, toma su cubo.",
+    "memoryHook": "Elige un elemento y toma su bloque.",
     "quickExample": {
       "problem": "¿Qué es [a] bajo una relación de equivalencia?",
       "move": "El conjunto de todo lo equivalente a a."
@@ -7516,10 +7516,10 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "unit": "Conjuntos y Funciones",
     "topic": "Notación de conjuntos y descripción de un conjunto",
     "name": "Notación de conjuntos",
-    "useItWhen": "un problema se escribe con llaves, membresía o notación de constructor de conjuntos",
+    "useItWhen": "un problema se escribe con llaves, pertenencia o notación por comprensión",
     "looksLike": "{x en Z : ...}, elemento de, subconjunto de, conjunto vacío",
-    "doThis": "traducir la notación al inglés simple antes de probar algo",
-    "thinkOfItAs": "leyendo el set en voz alta",
+    "doThis": "traduce la notación a palabras simples antes de demostrar algo",
+    "thinkOfItAs": "leer el conjunto en voz alta",
     "watchOutFor": "mezclar elemento de con subconjunto de",
     "rememberThis": "primero lea el conjunto en palabras",
     "typicalProblemShapes": [
@@ -7528,15 +7528,15 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "¿X en A significa que x es un conjunto?",
+        "prompt": "¿x en A significa que x es un conjunto?",
         "answer": "No necesariamente. Significa que x es un elemento de A."
       },
       {
         "prompt": "¿Cuál es el movimiento rápido para la notación de conjuntos aterradora?",
-        "answer": "Vuelva a escribirlo en inglés sencillo."
+        "answer": "Vuelve a escribirlo con palabras simples."
       }
     ],
-    "memoryHook": "Lea las llaves en inglés sencillo.",
+    "memoryHook": "Lee las llaves en palabras simples.",
     "quickExample": {
       "problem": "¿Qué significa {x en Z: x es par}?",
       "move": "El conjunto de todos los números pares."
@@ -7549,11 +7549,11 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "topic": "Uniones, intersecciones y complementos.",
     "name": "Unión, Intersección, Complemento",
     "useItWhen": "una prueba de conjuntos utiliza símbolos de unión, intersección o complemento",
-    "looksLike": "Una unión B, Una intersección B, Un complemento",
-    "doThis": "Traducir cada símbolo en una prueba de elemento y demostrar membresía en ambos sentidos si es necesario.",
+    "looksLike": "A∪B, A∩B, A complemento",
+    "doThis": "traduce cada símbolo a una condición sobre elementos y, si hace falta, demuestra ambas inclusiones",
     "thinkOfItAs": "unión significa o, intersección significa y, complemento significa no",
-    "watchOutFor": "saludar a los símbolos en lugar de demostrar la pertenencia al elemento",
-    "rememberThis": "las pruebas establecidas a menudo se convierten en pruebas de membresía",
+    "watchOutFor": "mirar solo los símbolos en vez de probar qué elementos pertenecen",
+    "rememberThis": "las pruebas con conjuntos suelen convertirse en pruebas de pertenencia",
     "typicalProblemShapes": [
       "Establecer identidades con unión e intersección.",
       "Demostrar que dos conjuntos son iguales"
@@ -7570,8 +7570,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "Unión o, intersección y, complemento no.",
     "quickExample": {
-      "problem": "¿Cómo se demuestra un subconjunto de B unión C?",
-      "move": "Tome x en A y muestre que x aterriza en B o C."
+      "problem": "¿Cómo se demuestra que A es subconjunto de B∪C?",
+      "move": "Toma x en A y muestra que x cae en B o en C."
     }
   },
   "proof-recursive-processes": {
@@ -7628,7 +7628,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Cada conjunto."
       },
       {
-        "prompt": "¿Qué hace el índice que hago aquí?",
+        "prompt": "¿Qué hace el índice i aquí?",
         "answer": "Etiqueta a qué conjunto te refieres."
       }
     ],
@@ -7643,7 +7643,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "Capítulo 7: Relaciones y Particiones",
     "unit": "Relaciones y Cardinalidad",
     "topic": "Funciones y operaciones bien definidas.",
-    "name": "Bien definido",
+    "name": "Bien definida",
     "useItWhen": "un objeto tiene muchos representantes y necesita que el resultado no dependa de la elección",
     "looksLike": "[a] va a..., fracciones, clases de equivalencia, clases mod",
     "doThis": "Elija dos representantes equivalentes y demuestre que dan el mismo resultado.",
@@ -7708,11 +7708,11 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "unit": "Relaciones y Cardinalidad",
     "topic": "Funciones y particiones",
     "name": "Funciones y particiones",
-    "useItWhen": "una función divide un conjunto en fibras o piezas de preimagen",
-    "looksLike": "Misma salida, preimagen de y, dominio dividido en grupos.",
+    "useItWhen": "una función divide un conjunto en fibras o bloques de preimagen",
+    "looksLike": "misma salida, preimagen de y, dominio dividido en grupos",
     "doThis": "agrupar las entradas por salida y tratar cada grupo como un bloque",
-    "thinkOfItAs": "clasificar las entradas en depósitos de salida",
-    "watchOutFor": "olvidar que diferentes salidas dan cubos separados",
+    "thinkOfItAs": "clasificar las entradas en bloques según la salida",
+    "watchOutFor": "olvidar que salidas distintas dan bloques separados",
     "rememberThis": "una función divide el dominio en fibras",
     "typicalProblemShapes": [
       "Conjuntos de preimagen de una función.",
@@ -7724,7 +7724,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "No."
       },
       {
-        "prompt": "¿Qué decide el depósito de una entrada?",
+        "prompt": "¿Qué decide el bloque de una entrada?",
         "answer": "Su valor de salida."
       }
     ],
@@ -8594,7 +8594,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "LIN encuentra la media. CLT encuentra la forma.",
     "quickExample": {
-      "problem": "¿Qué dice la Ley de los Grandes Números en lenguaje sencillo?",
+      "problem": "¿Qué dice la Ley de los Grandes Números en palabras simples?",
       "move": "Los promedios de largo plazo se acercan a la media verdadera."
     }
   },
@@ -8946,7 +8946,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "Nueva pista, nuevo promedio.",
     "quickExample": {
-      "problem": "¿Qué significa E[X dado Y] en inglés sencillo?",
+      "problem": "¿Qué significa E[X dado Y] en palabras simples?",
       "move": "El valor promedio de X una vez conocido Y."
     }
   },

@@ -498,31 +498,35 @@ export const proofCourse: CourseContent = {
       topic: "Equivalence relations",
       name: "Equivalence Relations",
       order: 14,
-      useItWhen: "a relation claims objects count as the same in some way",
-      looksLike: "show reflexive, symmetric, and transitive",
-      doThis: "check the three properties one by one",
+      useItWhen: "a relation ~ is supposed to mean two objects count as the same",
+      looksLike: "reflexive: x~x, symmetric: x~y => y~x, transitive: x~y and y~z => x~z",
+      doThis:
+        "write the three mini-proofs: show x~x, assume x~y and show y~x, then assume x~y and y~z and show x~z",
       thinkOfItAs: "a legal same-team rule",
-      watchOutFor: "proving only one or two of the properties",
-      rememberThis: "equivalence means three checks",
+      watchOutFor:
+        "proving only one or two checks, or forgetting to start with arbitrary x, y, z",
+      rememberThis: "same relation = reflexive, symmetric, transitive",
       quickExample: {
-        problem: "What three properties define an equivalence relation?",
-        move: "Reflexive, symmetric, transitive.",
+        problem:
+          "What proof pattern do you write for an equivalence relation?",
+        move:
+          "Show x~x, then x~y => y~x, then x~y and y~z => x~z.",
       },
       typicalProblemShapes: [
-        "Relations on numbers, sets, or functions",
-        "Proofs that a relation creates classes or partitions",
+        "A relation like same parity, same remainder mod n, or same length",
+        "A proof that starts with let x, y, z be arbitrary and then runs the three checks",
       ],
       miniDrill: [
         {
-          prompt: "If a relation is missing symmetry, is it an equivalence relation?",
-          answer: "No.",
+          prompt: "What does the reflexive check usually look like?",
+          answer: "Start with an arbitrary x and show x~x.",
         },
         {
-          prompt: "What structure often appears after an equivalence relation?",
-          answer: "Equivalence classes or a partition.",
+          prompt: "What does the transitive check usually look like?",
+          answer: "Assume x~y and y~z, then prove x~z.",
         },
       ],
-      memoryHook: "Reflexive, symmetric, transitive. All three.",
+      memoryHook: "x~x, flip, chain.",
       tags: ["proof", "relations", "equivalence"],
       difficulty: "Standard",
     }),
