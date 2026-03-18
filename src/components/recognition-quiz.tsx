@@ -5,16 +5,19 @@ import { useMemo, useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 import { localizeCards } from "@/content/localization";
 import type { BubbleCard, Unit } from "@/content/schema";
+import type { Locale } from "@/lib/i18n";
 import { getCourseOptions, getUnitOptions } from "@/lib/bubble";
-import { getRecognitionPrompt } from "@/lib/recognition";
+import { getRecognitionPrompt, getTechniqueLabel } from "@/lib/recognition";
 
 interface QuizItem {
   id: string;
   unit: string;
+  courseCode?: string;
   prompt: string;
   answer: string;
   options: string[];
   hint: string;
+  topic: string;
 }
 
 function seededNumber(seed: string) {
@@ -30,24 +33,72 @@ function rotate<T>(items: T[], offset: number) {
   return items.slice(safeOffset).concat(items.slice(0, safeOffset));
 }
 
-function buildQuizItems(cards: BubbleCard[]): QuizItem[] {
+function uniqueTechniqueOptions(
+  pool: BubbleCard[],
+  answer: string,
+  locale: Locale,
+  offset: number,
+  excluded: string[] = [],
+) {
+  const labels = [...excluded];
+  const freshLabels: string[] = [];
+
+  for (const candidate of rotate(pool, offset)) {
+    const label = getTechniqueLabel(candidate, locale);
+
+    if (label === answer || labels.includes(label)) {
+      continue;
+    }
+
+    labels.push(label);
+    freshLabels.push(label);
+
+    if (freshLabels.length === 3) {
+      break;
+    }
+  }
+
+  return freshLabels;
+}
+
+function buildQuizItems(cards: BubbleCard[], locale: Locale): QuizItem[] {
   return cards.map((card) => {
     const sameUnitPool = cards.filter(
       (candidate) => candidate.unit === card.unit && candidate.id !== card.id,
     );
     const fallbackPool = cards.filter((candidate) => candidate.id !== card.id);
-    const pool = sameUnitPool.length >= 3 ? sameUnitPool : fallbackPool;
     const offset = seededNumber(card.id);
-    const distractors = rotate(pool, offset).slice(0, 3).map((item) => item.name);
-    const options = rotate([card.name, ...distractors], offset + 1);
+    const answer = getTechniqueLabel(card, locale);
+    const distractors = uniqueTechniqueOptions(
+      sameUnitPool,
+      answer,
+      locale,
+      offset,
+    );
+    const fallbackDistractors =
+      distractors.length >= 3
+        ? distractors
+        : [
+            ...distractors,
+            ...uniqueTechniqueOptions(
+              fallbackPool,
+              answer,
+              locale,
+              offset + distractors.length + 1,
+              distractors,
+            ),
+          ].slice(0, 3);
+    const options = rotate([answer, ...fallbackDistractors], offset + 1);
 
     return {
       id: card.id,
       unit: card.unit,
+      courseCode: card.courseCode,
       prompt: getRecognitionPrompt(card),
-      answer: card.name,
+      answer,
       options,
       hint: card.memoryHook,
+      topic: card.name,
     };
   });
 }
@@ -75,7 +126,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
       ? courseScopedCards
       : courseScopedCards.filter((card) => card.unit === unitFilter);
   const unitOptions = getUnitOptions(courseScopedCards);
-  const quizItems = buildQuizItems(filteredCards);
+  const quizItems = buildQuizItems(filteredCards, locale);
 
   const currentItem = quizItems[index];
   const finished = index >= quizItems.length;
@@ -203,6 +254,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
         <section className="bubble-shadow rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
           <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
             <span>{filteredCards[index]?.course}</span>
+            {currentItem.courseCode ? <span>{currentItem.courseCode}</span> : null}
             <span>{currentItem.unit}</span>
             <span>
               {index + 1} / {quizItems.length}
@@ -256,7 +308,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
                 <span className="font-semibold text-slate-900">
                   {currentItem.answer}
                 </span>
-                . {t("hook")}: {currentItem.hint}
+                . {t("name")}: {currentItem.topic}. {t("hook")}: {currentItem.hint}
               </p>
               <button
                 type="button"

@@ -7,7 +7,11 @@ import { localizeCards } from "@/content/localization";
 import { MathConceptVisual } from "@/components/math-concept-visual";
 import type { BubbleCard, Unit } from "@/content/schema";
 import { getCourseOptions, getUnitOptions } from "@/lib/bubble";
-import { getPatternTokens, getRecognitionPrompt } from "@/lib/recognition";
+import {
+  getPatternTokens,
+  getRecognitionPrompt,
+  getTechniqueLabel,
+} from "@/lib/recognition";
 
 interface StudyModeProps {
   cards: BubbleCard[];
@@ -104,6 +108,7 @@ export function StudyMode({ cards }: StudyModeProps) {
       <section className="bubble-shadow rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
         <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
           <span>{currentCard.course}</span>
+          {currentCard.courseCode ? <span>{currentCard.courseCode}</span> : null}
           <span>{currentCard.unit}</span>
           <span className="rounded-full bg-sky-100 px-3 py-1 tracking-normal">
             {difficultyLabel(currentCard.difficulty)}
@@ -118,6 +123,12 @@ export function StudyMode({ cards }: StudyModeProps) {
           <h2 className="mt-4 font-display text-4xl leading-tight text-slate-900 sm:text-5xl">
             {currentCard.name}
           </h2>
+          <div className="mt-4 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-sky-100 bg-sky-50/90 px-4 py-2 text-sm font-semibold text-sky-950">
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+              {t("techniqueToTry")}
+            </span>
+            <span>{getTechniqueLabel(currentCard, locale)}</span>
+          </div>
           <div className="mt-5 rounded-[1.55rem] bg-slate-950 px-5 py-5 text-sky-50">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300/80">
               Problem cue

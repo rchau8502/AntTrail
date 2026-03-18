@@ -1,0 +1,241 @@
+import type { BubbleCard, CourseContent } from "@/content/schema";
+
+function makeAlgebraCard(
+  card: Omit<BubbleCard, "subject" | "course" | "courseCode">,
+): BubbleCard {
+  return {
+    subject: "Mathematics",
+    course: "Abstract Algebra I",
+    courseCode: "MATH 120A",
+    ...card,
+  };
+}
+
+export const abstractAlgebraOneCourse: CourseContent = {
+  id: "abstract-algebra-1",
+  subject: "Mathematics",
+  title: "Abstract Algebra I",
+  institution: "UCI",
+  courseCodes: ["MATH 120A"],
+  aliases: ["Groups", "Group Theory"],
+  shortDescription:
+    "UCI-style first group theory with recognition-first subgroup and homomorphism patterns.",
+  units: ["Group Basics", "Subgroups and Cyclic Groups", "Cosets and Homomorphisms"],
+  chapters: [
+    "Chapter 1: Group Basics",
+    "Chapter 2: Subgroups and Cyclic Groups",
+    "Chapter 3: Cosets and Homomorphisms",
+  ],
+  cards: [
+    makeAlgebraCard({
+      id: "alg120a-group-check",
+      chapter: "Chapter 1: Group Basics",
+      unit: "Group Basics",
+      topic: "Checking a group",
+      name: "Group Check",
+      order: 1,
+      useItWhen: "someone claims a set with an operation is a group",
+      looksLike: "(G, *) with closure, identity, inverse questions",
+      doThis: "check operation, associativity, identity, and inverses in that order",
+      thinkOfItAs: "a four-item entrance checklist",
+      watchOutFor: "assuming closure or identity without proving it for the actual set",
+      rememberThis: "group = closed, associative, identity, inverse",
+      quickExample: {
+        problem: "How do you test whether a set with multiplication is a group?",
+        move: "Run the four group checks one by one.",
+      },
+      typicalProblemShapes: [
+        "A set plus an operation asks if it forms a group",
+        "A strange subset of numbers or matrices with a familiar operation",
+      ],
+      miniDrill: [
+        {
+          prompt: "What is the one property students most often assume without checking?",
+          answer: "Closure.",
+        },
+        {
+          prompt: "If associativity already comes from the parent operation, what still needs checking?",
+          answer: "Closure, identity, and inverses inside the set.",
+        },
+      ],
+      memoryHook: "Four checks before you call it a group.",
+      tags: ["groups", "group-test", "math120a"],
+      difficulty: "Starter",
+    }),
+    makeAlgebraCard({
+      id: "alg120a-subgroup-test",
+      chapter: "Chapter 2: Subgroups and Cyclic Groups",
+      unit: "Subgroups and Cyclic Groups",
+      topic: "Subgroup test",
+      name: "Subgroup Test",
+      order: 2,
+      useItWhen: "you need to prove a subset is itself a group",
+      looksLike: "H subset G and prove H <= G",
+      doThis: "use the one-step subgroup test: nonempty and closed under ab^-1",
+      thinkOfItAs: "a shortcut group check for subsets",
+      watchOutFor: "re-proving all four group axioms when the parent group already gives most of them",
+      rememberThis: "subset proof? use ab^-1",
+      quickExample: {
+        problem: "H is a subset of a group G. What technique fits first to prove H is a subgroup?",
+        move: "Use the subgroup test.",
+      },
+      typicalProblemShapes: [
+        "A subset of integers, matrices, or permutations inside a known group",
+        "A proof that asks whether a set is a subgroup of G",
+      ],
+      miniDrill: [
+        {
+          prompt: "What expression does the one-step subgroup test use?",
+          answer: "ab^-1.",
+        },
+        {
+          prompt: "What tiny condition must come before closure under ab^-1?",
+          answer: "The subset must be nonempty.",
+        },
+      ],
+      memoryHook: "Subgroup? Nonempty plus ab^-1.",
+      tags: ["groups", "subgroups", "math120a"],
+      difficulty: "Starter",
+    }),
+    makeAlgebraCard({
+      id: "alg120a-cyclic",
+      chapter: "Chapter 2: Subgroups and Cyclic Groups",
+      unit: "Subgroups and Cyclic Groups",
+      topic: "Cyclic groups",
+      name: "Cyclic Group Pattern",
+      order: 3,
+      useItWhen: "one element is supposed to generate the whole group",
+      looksLike: "<a>, powers of a, multiples of a",
+      doThis: "pick the generator candidate and list its powers or multiples",
+      thinkOfItAs: "one seed grows the whole group",
+      watchOutFor: "calling a group cyclic without showing every element comes from one generator",
+      rememberThis: "cyclic means one generator reaches all",
+      quickExample: {
+        problem: "How do you test whether a finite group is cyclic?",
+        move: "Look for one element whose powers hit every element.",
+      },
+      typicalProblemShapes: [
+        "Questions about generators in Z_n or roots of unity",
+        "A finite group where one element might produce everything",
+      ],
+      miniDrill: [
+        {
+          prompt: "What does <a> mean?",
+          answer: "The subgroup generated by a.",
+        },
+        {
+          prompt: "How do additive groups show generation?",
+          answer: "With multiples instead of powers.",
+        },
+      ],
+      memoryHook: "One generator, whole group.",
+      tags: ["groups", "cyclic", "generators"],
+      difficulty: "Starter",
+    }),
+    makeAlgebraCard({
+      id: "alg120a-cosets",
+      chapter: "Chapter 3: Cosets and Homomorphisms",
+      unit: "Cosets and Homomorphisms",
+      topic: "Cosets",
+      name: "Coset Pattern",
+      order: 4,
+      useItWhen: "you are comparing a subgroup translated by an element",
+      looksLike: "aH, Ha, same size as H, partition of G",
+      doThis: "fix one element and multiply it across the whole subgroup",
+      thinkOfItAs: "slide the whole subgroup over together",
+      watchOutFor: "treating left and right cosets as automatically the same",
+      rememberThis: "a coset is the whole subgroup shifted together",
+      quickExample: {
+        problem: "What does aH usually mean?",
+        move: "Take every h in H and form ah.",
+      },
+      typicalProblemShapes: [
+        "Questions about partitions of a group into equal-size pieces",
+        "Statements using aH or Ha around a subgroup H",
+      ],
+      miniDrill: [
+        {
+          prompt: "Do left and right cosets always match?",
+          answer: "No.",
+        },
+        {
+          prompt: "What size is a coset compared with H?",
+          answer: "The same size.",
+        },
+      ],
+      memoryHook: "Coset = subgroup, shifted together.",
+      tags: ["groups", "cosets", "lagrange"],
+      difficulty: "Standard",
+    }),
+    makeAlgebraCard({
+      id: "alg120a-lagrange",
+      chapter: "Chapter 3: Cosets and Homomorphisms",
+      unit: "Cosets and Homomorphisms",
+      topic: "Lagrange's theorem",
+      name: "Lagrange's Theorem",
+      order: 5,
+      useItWhen: "you need a divisibility fact about subgroup size or element order",
+      looksLike: "|H| divides |G| or ord(a) divides |G|",
+      doThis: "connect subgroup size to equal-size cosets, then use divisibility",
+      thinkOfItAs: "a finite group breaks into equal subgroup-sized tiles",
+      watchOutFor: "running Lagrange backward as if every divisor gives a subgroup",
+      rememberThis: "subgroup size must divide group size",
+      quickExample: {
+        problem: "If |G| = 12, what subgroup sizes are possible by Lagrange?",
+        move: "Only divisors of 12.",
+      },
+      typicalProblemShapes: [
+        "Finite group size and subgroup size questions",
+        "Element-order questions in a finite group",
+      ],
+      miniDrill: [
+        {
+          prompt: "Does every divisor of |G| guarantee a subgroup?",
+          answer: "No. Lagrange only gives a necessary condition.",
+        },
+        {
+          prompt: "What group fact does ord(a) inherit from Lagrange?",
+          answer: "ord(a) divides |G|.",
+        },
+      ],
+      memoryHook: "Cosets tile the group, so sizes divide.",
+      tags: ["groups", "lagrange", "finite-groups"],
+      difficulty: "Standard",
+    }),
+    makeAlgebraCard({
+      id: "alg120a-homomorphism",
+      chapter: "Chapter 3: Cosets and Homomorphisms",
+      unit: "Cosets and Homomorphisms",
+      topic: "Group homomorphisms",
+      name: "Homomorphism Check",
+      order: 6,
+      useItWhen: "a map between groups is supposed to respect the operation",
+      looksLike: "phi(ab) = phi(a)phi(b)",
+      doThis: "write both sides of the operation rule and compare them directly",
+      thinkOfItAs: "the map keeps the group structure alive",
+      watchOutFor: "checking values on examples instead of the actual operation law",
+      rememberThis: "homomorphism means operations survive the map",
+      quickExample: {
+        problem: "How do you prove phi: G -> H is a homomorphism?",
+        move: "Show phi(ab) = phi(a)phi(b) for arbitrary a, b.",
+      },
+      typicalProblemShapes: [
+        "A proposed map between additive or multiplicative groups",
+        "Kernel and image questions built from a map phi",
+      ],
+      miniDrill: [
+        {
+          prompt: "What identity must a homomorphism send e_G to?",
+          answer: "e_H.",
+        },
+        {
+          prompt: "What subgroup shows who maps to the identity?",
+          answer: "The kernel.",
+        },
+      ],
+      memoryHook: "Same operation, different group.",
+      tags: ["groups", "homomorphism", "kernel"],
+      difficulty: "Starter",
+    }),
+  ],
+};

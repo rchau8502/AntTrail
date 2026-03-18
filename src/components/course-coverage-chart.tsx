@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/components/language-provider";
-import { courses } from "@/lib/bubble";
+import { getPrimaryCourseCode, courses } from "@/lib/bubble";
 
 export function CourseCoverageChart() {
   const { courseLabel, t } = useLanguage();
@@ -38,6 +38,9 @@ export function CourseCoverageChart() {
               <div className="flex items-center justify-between gap-4 text-sm">
                 <span className="font-semibold text-slate-900">
                   {courseLabel(course.title)}
+                  {getPrimaryCourseCode(course.title)
+                    ? ` • ${getPrimaryCourseCode(course.title)}`
+                    : ""}
                 </span>
                 <span className="text-[color:var(--muted)]">
                   {course.cards.length} {t("cardsWord")} • {course.units.length}{" "}

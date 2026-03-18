@@ -6,7 +6,11 @@ import { useLanguage } from "@/components/language-provider";
 import { MathConceptVisual } from "@/components/math-concept-visual";
 import { localizeCard } from "@/content/localization";
 import type { BubbleCard } from "@/content/schema";
-import { getPatternTokens, getRecognitionPrompt } from "@/lib/recognition";
+import {
+  getPatternTokens,
+  getRecognitionPrompt,
+  getTechniqueLabel,
+} from "@/lib/recognition";
 
 interface TopicDetailViewProps {
   card: BubbleCard;
@@ -46,6 +50,7 @@ export function TopicDetailView({
   const localizedNext = next ? localizeCard(next, locale) : undefined;
   const localizedRecognitionPrompt = getRecognitionPrompt(localizedCard);
   const localizedPatternTokens = getPatternTokens(localizedCard);
+  const localizedTechniqueLabel = getTechniqueLabel(localizedCard, locale);
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
@@ -58,6 +63,12 @@ export function TopicDetailView({
               </Link>
               <span>•</span>
               <span>{localizedCard.course}</span>
+              {card.courseCode ? (
+                <>
+                  <span>•</span>
+                  <span>{card.courseCode}</span>
+                </>
+              ) : null}
               <span>•</span>
               <span>{localizedCard.unit}</span>
               <span className="rounded-full bg-sky-100 px-3 py-1 tracking-normal">
@@ -98,6 +109,15 @@ export function TopicDetailView({
                 </div>
 
                 <div className="mt-4 grid gap-4">
+                  <div className="rounded-[1.55rem] border border-sky-100 bg-sky-50/90 p-5">
+                    <p className="text-sm font-semibold text-sky-700">
+                      {t("techniqueToTry")}
+                    </p>
+                    <p className="mt-3 text-base font-semibold leading-7 text-slate-900">
+                      {localizedTechniqueLabel}
+                    </p>
+                  </div>
+
                   <div className="rounded-[1.55rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.7),rgba(255,255,255,0.94))] p-5">
                     <p className="text-sm font-semibold text-sky-700">
                       {t("firstMove")}
@@ -300,6 +320,11 @@ export function TopicDetailView({
               <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3">
                 {localizedCard.course}
               </div>
+              {card.courseCode ? (
+                <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3">
+                  {card.courseCode}
+                </div>
+              ) : null}
               <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3">
                 {localizedCard.chapter}
               </div>

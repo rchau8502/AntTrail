@@ -10,10 +10,16 @@ import type { BubbleCard, Difficulty, Unit } from "@/content/schema";
 import {
   difficulties,
   getChapterOptions,
+  getCourseAliases,
   getCourseOptions,
+  getPrimaryCourseCode,
   getUnitOptions,
 } from "@/lib/bubble";
-import { getPatternTokens, getRecognitionPrompt } from "@/lib/recognition";
+import {
+  getPatternTokens,
+  getRecognitionPrompt,
+  getTechniqueLabel,
+} from "@/lib/recognition";
 
 interface TopicExplorerProps {
   cards: BubbleCard[];
@@ -44,6 +50,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
       normalizedQuery.length === 0 ||
       [
         card.course,
+        card.courseCode,
         card.unit,
         card.chapter,
         card.name,
@@ -54,6 +61,9 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
         card.rememberThis,
         card.memoryHook,
         card.useItWhen,
+        getTechniqueLabel(card, locale),
+        ...getCourseAliases(card.course),
+        ...(card.aliases ?? []),
         ...card.typicalProblemShapes,
         ...card.tags,
       ]
@@ -238,9 +248,20 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
         <section key={course} className="space-y-4">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
-                {course}
-              </p>
+              <div className="flex flex-wrap items-center gap-2">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
+                  {course}
+                </p>
+                {courseCards[0]?.courseCode ? (
+                  <span className="rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold text-[color:var(--muted)]">
+                    {courseCards[0].courseCode}
+                  </span>
+                ) : getPrimaryCourseCode(course) ? (
+                  <span className="rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold text-[color:var(--muted)]">
+                    {getPrimaryCourseCode(course)}
+                  </span>
+                ) : null}
+              </div>
               <h2 className="font-display text-3xl text-slate-900">
                 {courseCards.length} {t("topics")}
               </h2>
@@ -261,7 +282,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                 >
                   <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
                     <span>{card.unit}</span>
-                    <span>{card.chapter}</span>
+                    {card.courseCode ? <span>{card.courseCode}</span> : null}
                     <span className="rounded-full bg-sky-100 px-2 py-1 tracking-normal">
                       {difficultyLabel(card.difficulty)}
                     </span>
@@ -269,6 +290,14 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                   <h3 className="mt-4 text-xl font-semibold text-slate-900">
                     {card.name}
                   </h3>
+                  <div className="mt-4 rounded-[1.35rem] border border-sky-100 bg-sky-50/80 px-4 py-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-700">
+                      {t("techniqueToTry")}
+                    </p>
+                    <p className="mt-2 text-sm font-semibold leading-6 text-slate-900">
+                      {getTechniqueLabel(card, locale)}
+                    </p>
+                  </div>
                   <div className="mt-4">
                     <MathConceptVisual card={card} mode="card" />
                   </div>
@@ -310,6 +339,9 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                     {card.memoryHook}
                   </div>
                   <div className="mt-4 flex flex-wrap gap-2 text-xs text-[color:var(--muted)]">
+                    <span className="rounded-full border border-[color:var(--line)] px-3 py-1">
+                      {card.chapter}
+                    </span>
                     {card.tags.slice(0, 3).map((tag) => (
                       <span
                         key={tag}

@@ -7,7 +7,7 @@ import { localizeCard } from "@/content/localization";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
-import { allCards, getDashboardStats } from "@/lib/bubble";
+import { allCards, getDashboardStats, getPrimaryCourseCode } from "@/lib/bubble";
 
 const sampleCards = [
   allCards.find((card) => card.id === "chain-rule"),
@@ -205,7 +205,12 @@ export default function Home() {
                 className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 transition hover:-translate-y-1"
               >
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
-                  {courseLabel(card.course)} • {card.unit}
+                  {courseLabel(card.course)}
+                  {(card.courseCode ?? getPrimaryCourseCode(card.course))
+                    ? ` • ${card.courseCode ?? getPrimaryCourseCode(card.course)}`
+                    : ""}
+                  {" • "}
+                  {card.unit}
                 </p>
                 <h3 className="mt-4 text-2xl font-semibold text-slate-900">
                   {card.name}

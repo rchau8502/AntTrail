@@ -1,7 +1,12 @@
 import { calcOneCourse } from "@/content/calc1";
 import { calcThreeCourse } from "@/content/calc3";
 import { calcTwoCourse } from "@/content/calc2";
+import { differentialEquationsCourse } from "@/content/differential-equations";
 import { linearAlgebraCourse } from "@/content/linear-algebra";
+import { analysisOneCourse } from "@/content/analysis-1";
+import { abstractAlgebraOneCourse } from "@/content/abstract-algebra-1";
+import { linearAlgebraOneCourse } from "@/content/linear-algebra-1";
+import { probabilityTwoCourse } from "@/content/probability-2";
 import { probabilityCourse } from "@/content/probability";
 import { proofCourse } from "@/content/proof";
 import type { BubbleCard, Difficulty, Unit } from "@/content/schema";
@@ -14,6 +19,11 @@ export const courses = [
   linearAlgebraCourse,
   proofCourse,
   probabilityCourse,
+  differentialEquationsCourse,
+  abstractAlgebraOneCourse,
+  linearAlgebraOneCourse,
+  probabilityTwoCourse,
+  analysisOneCourse,
 ];
 export const allCards = courses.flatMap((course, courseIndex) =>
   [...course.cards]
@@ -36,6 +46,18 @@ export function getCardById(id: string) {
 
 export function getCourseByTitle(title: string) {
   return courses.find((course) => course.title === title);
+}
+
+export function getCourseCodes(title: string) {
+  return getCourseByTitle(title)?.courseCodes ?? [];
+}
+
+export function getPrimaryCourseCode(title: string) {
+  return getCourseCodes(title)[0];
+}
+
+export function getCourseAliases(title: string) {
+  return getCourseByTitle(title)?.aliases ?? [];
 }
 
 export function getRelatedCards(id: string) {

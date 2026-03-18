@@ -52,7 +52,14 @@ function getVisualKind(card: BubbleCard) {
     fingerprint.includes("quantifier") ||
     fingerprint.includes("subset") ||
     fingerprint.includes("induction") ||
-    fingerprint.includes("equivalence")
+    fingerprint.includes("equivalence") ||
+    fingerprint.includes("group") ||
+    fingerprint.includes("subgroup") ||
+    fingerprint.includes("homomorphism") ||
+    fingerprint.includes("analysis") ||
+    fingerprint.includes("epsilon") ||
+    fingerprint.includes("cauchy") ||
+    fingerprint.includes("supremum")
   ) {
     return "logic";
   }
@@ -80,7 +87,9 @@ function getVisualKind(card: BubbleCard) {
     fingerprint.includes("differential equation") ||
     fingerprint.includes("direction field") ||
     fingerprint.includes("population") ||
-    fingerprint.includes("related rates")
+    fingerprint.includes("related rates") ||
+    fingerprint.includes("ode") ||
+    fingerprint.includes("laplace")
   ) {
     return "field";
   }
@@ -515,7 +524,7 @@ export function MathConceptVisual({
           {card.unit}
         </div>
         <div className="rounded-full border border-white/70 bg-white/75 px-3 py-1 text-[11px] font-medium text-slate-700">
-          {courseLabel(card.course)}
+          {card.courseCode ?? courseLabel(card.course)}
         </div>
       </div>
     </div>

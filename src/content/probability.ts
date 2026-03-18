@@ -1,11 +1,12 @@
 import type { BubbleCard, CourseContent } from "@/content/schema";
 
 function makeProbabilityCard(
-  card: Omit<BubbleCard, "subject" | "course">,
+  card: Omit<BubbleCard, "subject" | "course" | "courseCode">,
 ): BubbleCard {
   return {
     subject: "Mathematics",
     course: "Probability",
+    courseCode: "MATH 130A",
     ...card,
   };
 }
@@ -14,6 +15,9 @@ export const probabilityCourse: CourseContent = {
   id: "probability",
   subject: "Mathematics",
   title: "Probability",
+  institution: "UCI",
+  courseCodes: ["MATH 130A"],
+  aliases: ["Probability I"],
   shortDescription: "Counting, conditional probability, random variables, and expectation.",
   units: [
     "Counting",

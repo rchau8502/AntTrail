@@ -1,11 +1,12 @@
 import type { BubbleCard, CourseContent } from "@/content/schema";
 
 function makeCalcCard(
-  card: Omit<BubbleCard, "subject" | "course">,
+  card: Omit<BubbleCard, "subject" | "course" | "courseCode">,
 ): BubbleCard {
   return {
     subject: "Mathematics",
     course: "Single Variable Calculus 1",
+    courseCode: "MATH 2A",
     ...card,
   };
 }
@@ -14,6 +15,9 @@ export const calcOneCourse: CourseContent = {
   id: "calc-1",
   subject: "Mathematics",
   title: "Single Variable Calculus 1",
+  institution: "UCI",
+  courseCodes: ["MATH 2A"],
+  aliases: ["Calculus I"],
   shortDescription:
     "Fast single-variable calculus review for students who need the move first.",
   units: [

@@ -1,11 +1,12 @@
 import type { BubbleCard, CourseContent } from "@/content/schema";
 
 function makeLinearCard(
-  card: Omit<BubbleCard, "subject" | "course">,
+  card: Omit<BubbleCard, "subject" | "course" | "courseCode">,
 ): BubbleCard {
   return {
     subject: "Mathematics",
     course: "Linear Algebra",
+    courseCode: "MATH 3A",
     ...card,
   };
 }
@@ -14,6 +15,9 @@ export const linearAlgebraCourse: CourseContent = {
   id: "linear-algebra",
   subject: "Mathematics",
   title: "Linear Algebra",
+  institution: "UCI",
+  courseCodes: ["MATH 3A"],
+  aliases: ["Introduction to Linear Algebra"],
   shortDescription:
     "Matrices, vector spaces, and eigen ideas taught as recognition-first moves.",
   units: [

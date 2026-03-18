@@ -51,6 +51,11 @@ export default function MemoryHooksPage() {
                           href={`/topics/${card.id}`}
                           className="bubble-shadow rounded-[1.75rem] border border-[color:var(--line)] bg-white/90 p-5 transition hover:-translate-y-1"
                         >
+                          {card.courseCode ? (
+                            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+                              {card.courseCode}
+                            </p>
+                          ) : null}
                           <p className="text-sm font-semibold text-slate-900">
                             {card.name}
                           </p>

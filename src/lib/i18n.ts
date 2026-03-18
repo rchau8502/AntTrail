@@ -62,15 +62,15 @@ const messages = {
     recognitionItemFive:
       "Study on mobile without reading a wall of text.",
     topicDashboard: "Topic Dashboard",
-    findTheRuleFast: "Find the rule fast.",
+    findTheRuleFast: "Find the move fast.",
     topicDashboardDescription:
-      "Search by pattern, filter by chapter or difficulty, and scan each card like a quick study sheet instead of a textbook chapter.",
+      "Search by technique first, then by pattern, chapter, or difficulty. Each card should help you spot the move before you start solving.",
     searchEverything: "Search everything",
     searchEverythingHelp:
-      "Find by topic, course, chapter, unit, memory hook, or problem shape.",
+      "Find by technique, topic, course, chapter, unit, memory hook, or problem shape.",
     clearAll: "Clear all",
     searchPlaceholder:
-      "Search chain rule, Taylor series, related rates, Chapter 7...",
+      "Search plug in directly, L'Hospital, integration by parts, contrapositive...",
     course: "Course",
     unit: "Unit",
     difficulty: "Difficulty",
@@ -79,6 +79,7 @@ const messages = {
     topics: "topics",
     noCardsMatch: "No cards match this filter set.",
     problemCue: "Problem cue",
+    techniqueToTry: "Technique to try",
     firstMove: "First move",
     trap: "Trap",
     openBubble: "Open bubble",
@@ -184,15 +185,15 @@ const messages = {
     recognitionItemFive:
       "Estudia en el celular sin leer un muro de texto.",
     topicDashboard: "Panel de temas",
-    findTheRuleFast: "Encuentra la regla rápido.",
+    findTheRuleFast: "Encuentra el movimiento rápido.",
     topicDashboardDescription:
-      "Busca por patrón, filtra por capítulo o dificultad y revisa cada tarjeta como una hoja rápida de estudio.",
+      "Busca primero por técnica, luego por patrón, capítulo o dificultad. Cada tarjeta debe ayudarte a ver el movimiento antes de empezar a resolver.",
     searchEverything: "Buscar en todo",
     searchEverythingHelp:
-      "Busca por tema, curso, capítulo, unidad, gancho de memoria o forma del problema.",
+      "Busca por técnica, tema, curso, capítulo, unidad, gancho de memoria o forma del problema.",
     clearAll: "Limpiar todo",
     searchPlaceholder:
-      "Busca regla de la cadena, serie de Taylor, razones relacionadas, Capítulo 7...",
+      "Busca sustituye directo, l'Hospital, integracion por partes, contraposicion...",
     course: "Curso",
     unit: "Unidad",
     difficulty: "Dificultad",
@@ -201,6 +202,7 @@ const messages = {
     topics: "temas",
     noCardsMatch: "Ninguna tarjeta coincide con estos filtros.",
     problemCue: "Pista del problema",
+    techniqueToTry: "Tecnica a probar",
     firstMove: "Primer movimiento",
     trap: "Trampa",
     openBubble: "Abrir bubble",

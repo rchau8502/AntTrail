@@ -1,11 +1,12 @@
 import type { BubbleCard, CourseContent } from "@/content/schema";
 
 function makeCalcCard(
-  card: Omit<BubbleCard, "subject" | "course">,
+  card: Omit<BubbleCard, "subject" | "course" | "courseCode">,
 ): BubbleCard {
   return {
     subject: "Mathematics",
     course: "Multivariable Calculus",
+    aliases: ["MATH 2D", "MATH 2E"],
     ...card,
   };
 }
@@ -14,6 +15,9 @@ export const calcThreeCourse: CourseContent = {
   id: "calc-3",
   subject: "Mathematics",
   title: "Multivariable Calculus",
+  institution: "UCI",
+  courseCodes: ["MATH 2D", "MATH 2E"],
+  aliases: ["Calculus III", "Multivariable Calculus I and II"],
   shortDescription:
     "Vectors, partial derivatives, multiple integrals, and multivariable calculus.",
   units: [

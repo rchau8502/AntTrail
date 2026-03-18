@@ -17,6 +17,7 @@ export interface BubbleCard {
   id: string;
   subject: string;
   course: string;
+  courseCode?: string;
   chapter: string;
   unit: Unit;
   topic: string;
@@ -33,6 +34,7 @@ export interface BubbleCard {
   miniDrill: MiniDrillItem[];
   memoryHook: string;
   tags: string[];
+  aliases?: string[];
   difficulty: Difficulty;
 }
 
@@ -40,6 +42,9 @@ export interface CourseContent {
   id: string;
   subject: string;
   title: string;
+  institution?: string;
+  courseCodes?: string[];
+  aliases?: string[];
   shortDescription: string;
   units: string[];
   chapters: string[];

@@ -1,11 +1,12 @@
 import type { BubbleCard, CourseContent } from "@/content/schema";
 
 function makeProofCard(
-  card: Omit<BubbleCard, "subject" | "course">,
+  card: Omit<BubbleCard, "subject" | "course" | "courseCode">,
 ): BubbleCard {
   return {
     subject: "Mathematics",
     course: "Introduction to Abstract Mathematics",
+    courseCode: "MATH 13",
     ...card,
   };
 }
@@ -14,6 +15,9 @@ export const proofCourse: CourseContent = {
   id: "intro-proof",
   subject: "Mathematics",
   title: "Introduction to Abstract Mathematics",
+  institution: "UCI",
+  courseCodes: ["MATH 13"],
+  aliases: ["Intro to Proof", "Abstract Math"],
   shortDescription:
     "Logic, proof patterns, sets, induction, and abstract-math writing basics.",
   units: [
