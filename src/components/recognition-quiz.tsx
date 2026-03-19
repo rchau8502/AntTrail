@@ -6,7 +6,11 @@ import { useLanguage } from "@/components/language-provider";
 import { localizeCards } from "@/content/localization";
 import type { BubbleCard, Unit } from "@/content/schema";
 import type { Locale } from "@/lib/i18n";
-import { getCourseOptions, getUnitOptions } from "@/lib/bubble";
+import {
+  getCourseDisplayLabel,
+  getCourseOptions,
+  getUnitOptions,
+} from "@/lib/bubble";
 import { getRecognitionPrompt, getTechniqueLabel } from "@/lib/recognition";
 
 interface QuizItem {
@@ -192,7 +196,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
               <option value="All">{t("allCourses")}</option>
               {courseOptions.map((course) => (
                 <option key={course} value={course}>
-                  {course}
+                  {getCourseDisplayLabel(course, locale)}
                 </option>
               ))}
             </select>
@@ -245,7 +249,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
           <button
             type="button"
             onClick={restart}
-            className="mt-8 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-900"
+            className="mt-8 inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold !text-white transition hover:bg-sky-900 hover:!text-white"
           >
             {t("runItAgain")}
           </button>
@@ -253,8 +257,11 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
       ) : (
         <section className="bubble-shadow rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
           <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
-            <span>{filteredCards[index]?.course}</span>
-            {currentItem.courseCode ? <span>{currentItem.courseCode}</span> : null}
+            <span>
+              {filteredCards[index]
+                ? getCourseDisplayLabel(filteredCards[index].course, locale)
+                : ""}
+            </span>
             <span>{currentItem.unit}</span>
             <span>
               {index + 1} / {quizItems.length}
@@ -313,7 +320,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
               <button
                 type="button"
                 onClick={next}
-                className="mt-4 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-900"
+                className="mt-4 inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold !text-white transition hover:bg-sky-900 hover:!text-white"
               >
                 {t("nextQuestion")}
               </button>

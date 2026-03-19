@@ -46,10 +46,6 @@ body {
   background: rgba(120, 200, 255, 0.35);
 }
 
-a {
-  color: inherit;
-}
-
 .bubble-shadow {
   box-shadow: var(--shadow);
 }

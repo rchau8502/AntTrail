@@ -1,13 +1,18 @@
 "use client";
 
 import { CourseCoverageChart } from "@/components/course-coverage-chart";
+import { CoursePathways } from "@/components/course-pathways";
 import { useLanguage } from "@/components/language-provider";
 import { MathConceptVisual } from "@/components/math-concept-visual";
 import { localizeCard } from "@/content/localization";
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/site-header";
-import { allCards, getDashboardStats, getPrimaryCourseCode } from "@/lib/bubble";
+import {
+  allCards,
+  getCourseDisplayLabel,
+  getDashboardStats,
+} from "@/lib/bubble";
 
 const sampleCards = [
   allCards.find((card) => card.id === "chain-rule"),
@@ -16,7 +21,7 @@ const sampleCards = [
 ].filter((card): card is (typeof allCards)[number] => Boolean(card));
 
 export default function Home() {
-  const { courseLabel, locale, t } = useLanguage();
+  const { locale, t } = useLanguage();
   const stats = getDashboardStats();
   const localizedSampleCards = sampleCards.map((card) => localizeCard(card, locale));
   const bubbleFields = [
@@ -58,7 +63,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-3">
                 <Link
                   href="/topics"
-                  className="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-900"
+                  className="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold !text-white transition hover:bg-sky-900 hover:!text-white"
                 >
                   {t("browseAllTopics")}
                 </Link>
@@ -179,6 +184,8 @@ export default function Home() {
           <CourseCoverageChart />
         </section>
 
+        <CoursePathways />
+
         <section className="space-y-5">
           <div className="flex items-end justify-between gap-4">
             <div>
@@ -205,10 +212,7 @@ export default function Home() {
                 className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 transition hover:-translate-y-1"
               >
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
-                  {courseLabel(card.course)}
-                  {(card.courseCode ?? getPrimaryCourseCode(card.course))
-                    ? ` • ${card.courseCode ?? getPrimaryCourseCode(card.course)}`
-                    : ""}
+                  {getCourseDisplayLabel(card.course, locale)}
                   {" • "}
                   {card.unit}
                 </p>

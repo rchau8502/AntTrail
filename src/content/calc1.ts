@@ -5,7 +5,7 @@ function makeCalcCard(
 ): BubbleCard {
   return {
     subject: "Mathematics",
-    course: "Single Variable Calculus 1",
+    course: "Single-Variable Calculus I",
     courseCode: "MATH 2A",
     ...card,
   };
@@ -14,10 +14,10 @@ function makeCalcCard(
 export const calcOneCourse: CourseContent = {
   id: "calc-1",
   subject: "Mathematics",
-  title: "Single Variable Calculus 1",
+  title: "Single-Variable Calculus I",
   institution: "UCI",
   courseCodes: ["MATH 2A"],
-  aliases: ["Calculus I"],
+  aliases: ["Calculus I", "Single Variable Calculus 1"],
   shortDescription:
     "Fast single-variable calculus review for students who need the move first.",
   units: [

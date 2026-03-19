@@ -4863,7 +4863,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "una partícula se mueve en una curva espacial",
     "looksLike": "Vectores de posición, velocidad y aceleración.",
     "doThis": "diferenciar la posición para la velocidad y nuevamente para la aceleración",
-    "thinkOfItAs": "Calc 1 movimiento con flechas 3D",
+    "thinkOfItAs": "movimiento de una variable con flechas 3D",
     "watchOutFor": "velocidad de mezcla con velocidad",
     "rememberThis": "la velocidad es un vector, la velocidad es su longitud",
     "typicalProblemShapes": [

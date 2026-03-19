@@ -1,0 +1,315 @@
+import type { BubbleCard, CourseContent } from "@/content/schema";
+
+function makeMath2ECard(
+  card: Omit<BubbleCard, "subject" | "course" | "courseCode">,
+): BubbleCard {
+  return {
+    subject: "Mathematics",
+    course: "Multivariable Calculus II",
+    courseCode: "MATH 2E",
+    ...card,
+  };
+}
+
+export const multivariableCalculusTwoCourse: CourseContent = {
+  id: "multivariable-calculus-2",
+  subject: "Mathematics",
+  title: "Multivariable Calculus II",
+  institution: "UCI",
+  courseCodes: ["MATH 2E"],
+  aliases: ["Vector Calculus", "Multivariable Calculus 2"],
+  shortDescription:
+    "UCI-style MATH 2E with vector-valued functions, line and surface integrals, and the big theorems.",
+  units: [
+    "Vector-Valued Functions",
+    "Line Integrals and Vector Fields",
+    "Surface Integrals and Theorems",
+  ],
+  chapters: [
+    "Chapter 1: Vector-Valued Functions",
+    "Chapter 2: Line Integrals and Vector Fields",
+    "Chapter 3: Surface Integrals and Theorems",
+  ],
+  cards: [
+    makeMath2ECard({
+      id: "math2e-vector-functions",
+      chapter: "Chapter 1: Vector-Valued Functions",
+      unit: "Vector-Valued Functions",
+      topic: "Vector-valued functions",
+      name: "Vector-Valued Function",
+      order: 1,
+      useItWhen: "position depends on one parameter like time",
+      looksLike: "r(t) = <x(t), y(t), z(t)>",
+      doThis: "differentiate or integrate each component separately",
+      thinkOfItAs: "three regular functions moving together as one curve",
+      watchOutFor: "treating r(t) like a scalar function instead of a vector package",
+      rememberThis: "vector functions work component by component",
+      quickExample: {
+        problem: "How do you differentiate r(t) = <t, t^2, sin t>?",
+        move: "Differentiate each component.",
+      },
+      typicalProblemShapes: [
+        "A space curve written with a parameter t",
+        "Velocity and acceleration from a position vector",
+      ],
+      miniDrill: [
+        {
+          prompt: "What is r'(t) physically in a motion problem?",
+          answer: "Velocity.",
+        },
+        {
+          prompt: "Do you need a new rule for each component?",
+          answer: "No. Just use the usual single-variable rules component by component.",
+        },
+      ],
+      memoryHook: "Differentiate one slot at a time.",
+      tags: ["math2e", "vector-functions", "space-curves"],
+      difficulty: "Starter",
+    }),
+    makeMath2ECard({
+      id: "math2e-arc-length-curvature",
+      chapter: "Chapter 1: Vector-Valued Functions",
+      unit: "Vector-Valued Functions",
+      topic: "Arc length and curvature",
+      name: "Arc Length and Curvature",
+      order: 2,
+      useItWhen: "a curve problem asks for distance traveled or how sharply it bends",
+      looksLike: "|r'(t)|, unit tangent, curvature kappa",
+      doThis: "get r'(t) first, then use speed for arc length or the tangent change for curvature",
+      thinkOfItAs: "speed tells length; turning tells curvature",
+      watchOutFor: "forgetting arc length uses the magnitude of velocity, not the vector itself",
+      rememberThis: "arc length starts with speed",
+      quickExample: {
+        problem: "What is the first move for arc length of a space curve?",
+        move: "Find |r'(t)|.",
+      },
+      typicalProblemShapes: [
+        "A parametric curve with an arc-length question",
+        "A curve geometry problem using T, N, or curvature",
+      ],
+      miniDrill: [
+        {
+          prompt: "What quantity gets integrated for arc length?",
+          answer: "Speed, which is |r'(t)|.",
+        },
+        {
+          prompt: "What does curvature measure in plain words?",
+          answer: "How sharply the curve turns.",
+        },
+      ],
+      memoryHook: "Length uses speed. Curvature uses turning.",
+      tags: ["math2e", "arc-length", "curvature"],
+      difficulty: "Standard",
+    }),
+    makeMath2ECard({
+      id: "math2e-line-integrals",
+      chapter: "Chapter 2: Line Integrals and Vector Fields",
+      unit: "Line Integrals and Vector Fields",
+      topic: "Line integrals",
+      name: "Line Integral Start",
+      order: 3,
+      useItWhen: "you are adding a quantity along a curve",
+      looksLike: "integral over C, ds, F dot dr",
+      doThis: "parameterize the curve first, then rewrite everything in that parameter",
+      thinkOfItAs: "an ordinary integral riding along a path",
+      watchOutFor: "trying to integrate before writing the curve in a parameter",
+      rememberThis: "line integrals start by parameterizing the path",
+      quickExample: {
+        problem: "What technique fits first for an integral over a curve C?",
+        move: "Parameterize the curve.",
+      },
+      typicalProblemShapes: [
+        "Scalar field integrated with ds",
+        "Vector field work integral F dot dr",
+      ],
+      miniDrill: [
+        {
+          prompt: "What is the universal first move for a line integral?",
+          answer: "Parameterize the curve.",
+        },
+        {
+          prompt: "What extra factor shows up for a scalar line integral?",
+          answer: "The speed term ds = |r'(t)| dt.",
+        },
+      ],
+      memoryHook: "No parameter, no line integral.",
+      tags: ["math2e", "line-integral", "vector-fields"],
+      difficulty: "Starter",
+    }),
+    makeMath2ECard({
+      id: "math2e-conservative-fields",
+      chapter: "Chapter 2: Line Integrals and Vector Fields",
+      unit: "Line Integrals and Vector Fields",
+      topic: "Conservative vector fields",
+      name: "Conservative Field Check",
+      order: 4,
+      useItWhen: "a work integral might depend only on endpoints",
+      looksLike: "gradient field, potential function, path independence",
+      doThis: "look for a potential function or run the conservative test that fits the domain",
+      thinkOfItAs: "the field secretly comes from one scalar energy function",
+      watchOutFor: "using the curl test blindly when the domain has holes",
+      rememberThis: "conservative means endpoint shortcut",
+      quickExample: {
+        problem: "What is the best shortcut when F is conservative?",
+        move: "Use the potential function and subtract endpoint values.",
+      },
+      typicalProblemShapes: [
+        "A line integral with a suspiciously nice vector field",
+        "Questions about path independence or gradient fields",
+      ],
+      miniDrill: [
+        {
+          prompt: "What does conservative buy you for line integrals?",
+          answer: "Path independence.",
+        },
+        {
+          prompt: "What is the fastest computational tool once a potential function is known?",
+          answer: "Evaluate the potential at the endpoints.",
+        },
+      ],
+      memoryHook: "Conservative field = endpoint shortcut.",
+      tags: ["math2e", "conservative", "potential"],
+      difficulty: "Standard",
+    }),
+    makeMath2ECard({
+      id: "math2e-greens-theorem",
+      chapter: "Chapter 2: Line Integrals and Vector Fields",
+      unit: "Line Integrals and Vector Fields",
+      topic: "Green's Theorem",
+      name: "Green's Theorem",
+      order: 5,
+      useItWhen: "a closed plane curve encloses a nice region and the line integral looks painful directly",
+      looksLike: "closed curve C in the plane, P dx + Q dy, double integral shortcut",
+      doThis: "switch the closed line integral to a double integral over the region",
+      thinkOfItAs: "trade boundary work for region work",
+      watchOutFor: "forgetting the curve orientation or using Green on a nonplanar curve",
+      rememberThis: "closed plane loop -> try Green",
+      quickExample: {
+        problem: "A closed counterclockwise plane curve appears. What technique should you test first?",
+        move: "Check whether Green's Theorem is the cleaner route.",
+      },
+      typicalProblemShapes: [
+        "Line integral around a circle, rectangle, or simple closed loop",
+        "A circulation or area-by-line-integral question in the plane",
+      ],
+      miniDrill: [
+        {
+          prompt: "What kind of curve does Green's Theorem want?",
+          answer: "A closed plane curve with the right orientation.",
+        },
+        {
+          prompt: "What replaces the boundary integral after the switch?",
+          answer: "A double integral over the enclosed region.",
+        },
+      ],
+      memoryHook: "Closed plane loop? Boundary to region.",
+      tags: ["math2e", "green", "line-integral"],
+      difficulty: "Standard",
+    }),
+    makeMath2ECard({
+      id: "math2e-surface-integrals",
+      chapter: "Chapter 3: Surface Integrals and Theorems",
+      unit: "Surface Integrals and Theorems",
+      topic: "Surface integrals",
+      name: "Surface Integral Start",
+      order: 6,
+      useItWhen: "you are adding over a surface instead of a curve",
+      looksLike: "double integral over S, dS, flux across a surface",
+      doThis: "parameterize the surface or rewrite it in a standard graph form first",
+      thinkOfItAs: "a double integral spread across a curved sheet",
+      watchOutFor: "forgetting the normal vector or the surface-area factor",
+      rememberThis: "surface integrals start with the surface description",
+      quickExample: {
+        problem: "What is the first move for a flux integral across S?",
+        move: "Get the surface into a usable parameterization or graph form.",
+      },
+      typicalProblemShapes: [
+        "Flux through a plane, sphere, or graph z = f(x, y)",
+        "Scalar surface integral with dS",
+      ],
+      miniDrill: [
+        {
+          prompt: "What extra geometric object does flux need?",
+          answer: "A normal vector.",
+        },
+        {
+          prompt: "What kind of integral usually drives a surface integral after setup?",
+          answer: "A double integral.",
+        },
+      ],
+      memoryHook: "Describe the surface before you integrate on it.",
+      tags: ["math2e", "surface-integral", "flux"],
+      difficulty: "Starter",
+    }),
+    makeMath2ECard({
+      id: "math2e-divergence-curl",
+      chapter: "Chapter 3: Surface Integrals and Theorems",
+      unit: "Surface Integrals and Theorems",
+      topic: "Divergence and curl",
+      name: "Divergence vs Curl",
+      order: 7,
+      useItWhen: "a vector field question asks about source strength or local spin",
+      looksLike: "div F, curl F, source, sink, rotation",
+      doThis: "compute div for spread-out flow and curl for twisting flow",
+      thinkOfItAs: "divergence measures expansion; curl measures spin",
+      watchOutFor: "mixing up which operator matches which physical picture",
+      rememberThis: "div spreads, curl twists",
+      quickExample: {
+        problem: "Which operator should you try first for local spinning?",
+        move: "Curl.",
+      },
+      typicalProblemShapes: [
+        "A vector field with a physical flow interpretation",
+        "A theorem setup using divergence or curl in the integrand",
+      ],
+      miniDrill: [
+        {
+          prompt: "Which operator matches source or sink behavior?",
+          answer: "Divergence.",
+        },
+        {
+          prompt: "Which operator matches local rotation?",
+          answer: "Curl.",
+        },
+      ],
+      memoryHook: "Div spreads. Curl twists.",
+      tags: ["math2e", "divergence", "curl"],
+      difficulty: "Starter",
+    }),
+    makeMath2ECard({
+      id: "math2e-stokes-gauss",
+      chapter: "Chapter 3: Surface Integrals and Theorems",
+      unit: "Surface Integrals and Theorems",
+      topic: "Stokes and Divergence Theorems",
+      name: "Stokes vs Gauss",
+      order: 8,
+      useItWhen: "you can trade a hard surface or boundary integral for an easier matching one",
+      looksLike: "curl with a boundary curve, divergence with a closed surface",
+      doThis: "match the geometry first: boundary curve means Stokes, closed surface means Gauss",
+      thinkOfItAs: "Stokes is edge to surface; Gauss is surface to volume",
+      watchOutFor: "using Gauss on an open surface or Stokes on the wrong boundary orientation",
+      rememberThis: "boundary curve -> Stokes, closed surface -> Gauss",
+      quickExample: {
+        problem: "A closed surface and div F appear. What theorem fits first?",
+        move: "The Divergence Theorem.",
+      },
+      typicalProblemShapes: [
+        "A curl integral over a surface with a boundary curve",
+        "A flux integral over a closed surface around a volume",
+      ],
+      miniDrill: [
+        {
+          prompt: "Which theorem converts a closed-surface flux integral to a triple integral?",
+          answer: "Gauss or the Divergence Theorem.",
+        },
+        {
+          prompt: "Which theorem converts a curl surface integral to a boundary line integral?",
+          answer: "Stokes' Theorem.",
+        },
+      ],
+      memoryHook: "Edge to surface, surface to volume.",
+      tags: ["math2e", "stokes", "gauss", "divergence-theorem"],
+      difficulty: "Standard",
+    }),
+  ],
+};

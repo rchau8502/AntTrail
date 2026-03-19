@@ -23,6 +23,12 @@ export const zhMessages = {
   "courseCoverage": "覆盖图",
   "cardsByCourse": "按课程分类的卡片",
   "visualScanNote": "目视扫描，而不是完整的教学大纲审核",
+  "coursePathways": "课程路径",
+  "pickCourseFirst": "先选你的课程。",
+  "coursePathwaysDescription": "Bubble 现在按 UCI 式课程路径来组织。先选你正在上的课，再去找最先该用的技巧。",
+  "professorLens": "教授视角",
+  "professorLensBody": "如果你来我的 office hours，我会先要你认出这是哪门课的题型，再认出第一步该用什么技巧。章节名没有下一步动作重要。",
+  "allCoursesDescription": "如果你想跨课程复习或比较方法，就一次看全部 Bubble 课程。",
   "cardsWord": "卡片",
   "unitsWord": "单元",
   "sampleBubbles": "示例 Bubble",
@@ -109,12 +115,18 @@ export const zhMessages = {
 } as const;
 
 export const zhCourseLabels: Record<string, string> = {
-  "Single Variable Calculus 1": "单变量微积分 1",
-  "Single Variable Calculus 2": "单变量微积分 2",
-  "Multivariable Calculus": "多元微积分",
+  "Single-Variable Calculus I": "单变量微积分 I",
+  "Single-Variable Calculus II": "单变量微积分 II",
+  "Multivariable Calculus I": "多元微积分 I",
   "Introduction to Abstract Mathematics": "抽象数学导论",
-  "Linear Algebra": "线性代数",
-  "Probability": "概率论"
+  "Introduction to Linear Algebra": "线性代数导论",
+  "Probability I": "概率论 I",
+  "Multivariable Calculus II": "多元微积分 II",
+  "Elementary Differential Equations": "常微分方程",
+  "Introduction to Abstract Algebra: Groups": "抽象代数导论：群",
+  "Linear Algebra I": "线性代数 I",
+  "Probability II": "概率论 II",
+  "Elementary Analysis I": "初等分析 I"
 };
 
 export const zhDifficultyLabels: Record<string, string> = {

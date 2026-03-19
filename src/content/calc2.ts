@@ -5,7 +5,7 @@ function makeCalcCard(
 ): BubbleCard {
   return {
     subject: "Mathematics",
-    course: "Single Variable Calculus 2",
+    course: "Single-Variable Calculus II",
     courseCode: "MATH 2B",
     ...card,
   };
@@ -14,10 +14,10 @@ function makeCalcCard(
 export const calcTwoCourse: CourseContent = {
   id: "calc-2",
   subject: "Mathematics",
-  title: "Single Variable Calculus 2",
+  title: "Single-Variable Calculus II",
   institution: "UCI",
   courseCodes: ["MATH 2B"],
-  aliases: ["Calculus II"],
+  aliases: ["Calculus II", "Single Variable Calculus 2"],
   shortDescription:
     "Integration tricks, polar and parametric ideas, and single-variable series recognition.",
   units: [

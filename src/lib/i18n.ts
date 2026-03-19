@@ -44,6 +44,15 @@ const messages = {
     courseCoverage: "Coverage graph",
     cardsByCourse: "Cards by course",
     visualScanNote: "Visual scan, not a full syllabus audit",
+    coursePathways: "Course pathways",
+    pickCourseFirst: "Pick your course first.",
+    coursePathwaysDescription:
+      "Bubble now follows UCI-style course pathways. Start with the class you are actually taking, then hunt for the first technique that fits the shape.",
+    professorLens: "Professor lens",
+    professorLensBody:
+      "If you were in my office hours, I would want you to identify the course shell first, then the technique. Chapter labels matter less than the move you try next.",
+    allCoursesDescription:
+      "See every Bubble track at once if you want to study across classes or compare methods.",
     cardsWord: "cards",
     unitsWord: "units",
     sampleBubbles: "Sample bubbles",
@@ -166,6 +175,15 @@ const messages = {
     courseCoverage: "Gráfico de cobertura",
     cardsByCourse: "Tarjetas por curso",
     visualScanNote: "Vista rápida, no una auditoría completa del programa",
+    coursePathways: "Rutas de curso",
+    pickCourseFirst: "Elige tu curso primero.",
+    coursePathwaysDescription:
+      "Bubble ahora sigue rutas de curso al estilo UCI. Empieza con la clase que realmente llevas y luego busca la primera técnica que encaja con la forma.",
+    professorLens: "Mirada de profesor",
+    professorLensBody:
+      "Si estuvieras en mis horas de oficina, primero querría que identifiques el curso y luego la técnica. El capítulo importa menos que el siguiente movimiento correcto.",
+    allCoursesDescription:
+      "Mira todas las rutas Bubble a la vez si quieres estudiar entre clases o comparar métodos.",
     cardsWord: "tarjetas",
     unitsWord: "unidades",
     sampleBubbles: "Bubbles de ejemplo",
@@ -274,13 +292,20 @@ export function translate(locale: Locale, key: TranslationKey) {
 const courseLabels: Record<Locale, Record<string, string>> = {
   en: {},
   es: {
-    "Single Variable Calculus 1": "Cálculo de una Variable 1",
-    "Single Variable Calculus 2": "Cálculo de una Variable 2",
-    "Multivariable Calculus": "Cálculo Multivariable",
+    "Single-Variable Calculus I": "Cálculo de una Variable I",
+    "Single-Variable Calculus II": "Cálculo de una Variable II",
+    "Multivariable Calculus I": "Cálculo Multivariable I",
     "Introduction to Abstract Mathematics":
       "Introducción a las Matemáticas Abstractas",
-    "Linear Algebra": "Álgebra Lineal",
-    Probability: "Probabilidad",
+    "Introduction to Linear Algebra": "Introducción al Álgebra Lineal",
+    "Probability I": "Probabilidad I",
+    "Multivariable Calculus II": "Cálculo Multivariable II",
+    "Elementary Differential Equations": "Ecuaciones Diferenciales Elementales",
+    "Introduction to Abstract Algebra: Groups":
+      "Introducción al Álgebra Abstracta: Grupos",
+    "Linear Algebra I": "Álgebra Lineal I",
+    "Probability II": "Probabilidad II",
+    "Elementary Analysis I": "Análisis Elemental I",
   },
   zh: zhCourseLabels,
 };

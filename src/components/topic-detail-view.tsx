@@ -6,6 +6,7 @@ import { useLanguage } from "@/components/language-provider";
 import { MathConceptVisual } from "@/components/math-concept-visual";
 import { localizeCard } from "@/content/localization";
 import type { BubbleCard } from "@/content/schema";
+import { getCourseDisplayLabel } from "@/lib/bubble";
 import {
   getPatternTokens,
   getRecognitionPrompt,
@@ -62,13 +63,7 @@ export function TopicDetailView({
                 {t("navTopics")}
               </Link>
               <span>•</span>
-              <span>{localizedCard.course}</span>
-              {card.courseCode ? (
-                <>
-                  <span>•</span>
-                  <span>{card.courseCode}</span>
-                </>
-              ) : null}
+              <span>{getCourseDisplayLabel(localizedCard.course, locale)}</span>
               <span>•</span>
               <span>{localizedCard.unit}</span>
               <span className="rounded-full bg-sky-100 px-3 py-1 tracking-normal">
@@ -295,7 +290,7 @@ export function TopicDetailView({
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/study"
-                className="rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-900"
+                className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold !text-white transition hover:bg-sky-900 hover:!text-white"
               >
                 {t("studyThis")}
               </Link>
@@ -317,14 +312,9 @@ export function TopicDetailView({
               {t("cardData")}
             </p>
             <div className="mt-4 space-y-3 text-sm text-slate-700">
-              <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3">
-                {localizedCard.course}
-              </div>
-              {card.courseCode ? (
                 <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3">
-                  {card.courseCode}
+                  {getCourseDisplayLabel(localizedCard.course, locale)}
                 </div>
-              ) : null}
               <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3">
                 {localizedCard.chapter}
               </div>

@@ -5,7 +5,7 @@ function makeLinearCard(
 ): BubbleCard {
   return {
     subject: "Mathematics",
-    course: "Linear Algebra",
+    course: "Introduction to Linear Algebra",
     courseCode: "MATH 3A",
     ...card,
   };
@@ -14,10 +14,10 @@ function makeLinearCard(
 export const linearAlgebraCourse: CourseContent = {
   id: "linear-algebra",
   subject: "Mathematics",
-  title: "Linear Algebra",
+  title: "Introduction to Linear Algebra",
   institution: "UCI",
   courseCodes: ["MATH 3A"],
-  aliases: ["Introduction to Linear Algebra"],
+  aliases: ["Linear Algebra"],
   shortDescription:
     "Matrices, vector spaces, and eigen ideas taught as recognition-first moves.",
   units: [

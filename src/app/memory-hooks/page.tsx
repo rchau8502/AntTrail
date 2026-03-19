@@ -5,7 +5,12 @@ import Link from "next/link";
 import { useLanguage } from "@/components/language-provider";
 import { localizeCards } from "@/content/localization";
 import { SiteHeader } from "@/components/site-header";
-import { allCards, groupCardsByCourse, groupCardsByUnit } from "@/lib/bubble";
+import {
+  allCards,
+  getCourseDisplayLabel,
+  groupCardsByCourse,
+  groupCardsByUnit,
+} from "@/lib/bubble";
 
 export default function MemoryHooksPage() {
   const { locale, t } = useLanguage();
@@ -32,7 +37,7 @@ export default function MemoryHooksPage() {
             <section key={course.course} className="space-y-6">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
-                  {course.course}
+                  {getCourseDisplayLabel(course.course, locale)}
                 </p>
                 <h2 className="mt-2 font-display text-3xl text-slate-900">
                   {course.cards.length} {t("memoryHooks")}

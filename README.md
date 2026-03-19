@@ -18,7 +18,7 @@ Bubble is built to answer three fast questions:
 - When do I use it?
 - What do I do first?
 
-Bubble now covers Single Variable Calculus 1, Single Variable Calculus 2, Multivariable Calculus, Introduction to Abstract Mathematics, Probability, and Linear Algebra.
+Bubble now covers Single-Variable Calculus I, Single-Variable Calculus II, Multivariable Calculus I, Multivariable Calculus II, Introduction to Abstract Mathematics, Introduction to Linear Algebra, Probability I, Probability II, Elementary Differential Equations, Introduction to Abstract Algebra: Groups, Linear Algebra I, and Elementary Analysis I.
 
 ## Product philosophy
 

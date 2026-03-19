@@ -5,7 +5,7 @@ function makeAnalysisCard(
 ): BubbleCard {
   return {
     subject: "Mathematics",
-    course: "Analysis I",
+    course: "Elementary Analysis I",
     courseCode: "MATH 140A",
     ...card,
   };
@@ -14,10 +14,10 @@ function makeAnalysisCard(
 export const analysisOneCourse: CourseContent = {
   id: "analysis-1",
   subject: "Mathematics",
-  title: "Analysis I",
+  title: "Elementary Analysis I",
   institution: "UCI",
   courseCodes: ["MATH 140A"],
-  aliases: ["Real Analysis I"],
+  aliases: ["Analysis I", "Real Analysis I"],
   shortDescription:
     "UCI-style proof-based real analysis with sequence, epsilon, and completeness patterns.",
   units: ["Real Number Structure", "Sequences and Limits", "Continuity and Proofs"],
@@ -271,6 +271,146 @@ export const analysisOneCourse: CourseContent = {
       memoryHook: "Bounded chaos still hides a convergent thread.",
       tags: ["analysis", "subsequences", "compactness"],
       difficulty: "Standard",
+    }),
+    makeAnalysisCard({
+      id: "analysis140a-nested-intervals",
+      chapter: "Chapter 1: Real Number Structure",
+      unit: "Real Number Structure",
+      topic: "Nested interval property",
+      name: "Nested Intervals",
+      order: 8,
+      useItWhen: "closed intervals keep shrinking inside each other",
+      looksLike: "[a1, b1] contains [a2, b2] contains [a3, b3]",
+      doThis: "use completeness to conclude there is at least one point trapped in all of them",
+      thinkOfItAs: "a shrinking hallway still leaves one meeting point",
+      watchOutFor: "assuming the intersection is a whole interval when the lengths go to zero",
+      rememberThis: "nested closed intervals cannot all miss each other",
+      quickExample: {
+        problem: "What does the nested interval property guarantee?",
+        move: "At least one common point in all the intervals.",
+      },
+      typicalProblemShapes: [
+        "A sequence of shrinking closed intervals",
+        "Completeness arguments that trap a number by upper and lower bounds",
+      ],
+      miniDrill: [
+        {
+          prompt: "What kind of intervals does this property want?",
+          answer: "Closed intervals nested inside each other.",
+        },
+        {
+          prompt: "What extra fact gives a unique point instead of just a nonempty intersection?",
+          answer: "The lengths go to zero.",
+        },
+      ],
+      memoryHook: "Nested closed intervals still meet.",
+      tags: ["analysis", "nested-intervals", "completeness"],
+      difficulty: "Standard",
+    }),
+    makeAnalysisCard({
+      id: "analysis140a-subsequence-test",
+      chapter: "Chapter 2: Sequences and Limits",
+      unit: "Sequences and Limits",
+      topic: "Subsequence test for divergence",
+      name: "Subsequence Test",
+      order: 9,
+      useItWhen: "you want to prove a sequence does not converge",
+      looksLike: "two subsequences head to different limits",
+      doThis: "find two subsequences with different long-term behavior",
+      thinkOfItAs: "if two tails disagree, the full sequence cannot settle",
+      watchOutFor: "using two random subsequences that do not actually approach different limits",
+      rememberThis: "different subsequence limits kill convergence",
+      quickExample: {
+        problem: "How do you quickly prove (-1)^n does not converge?",
+        move: "Use even and odd subsequences.",
+      },
+      typicalProblemShapes: [
+        "Oscillating sequences",
+        "A divergence proof where the full sequence keeps switching behavior",
+      ],
+      miniDrill: [
+        {
+          prompt: "What is the fastest divergence pattern here?",
+          answer: "Two subsequences with different limits.",
+        },
+        {
+          prompt: "What famous sequence is the classic example?",
+          answer: "(-1)^n.",
+        },
+      ],
+      memoryHook: "Two different tails means no single limit.",
+      tags: ["analysis", "subsequences", "divergence"],
+      difficulty: "Starter",
+    }),
+    makeAnalysisCard({
+      id: "analysis140a-sequential-continuity",
+      chapter: "Chapter 3: Continuity and Core Proofs",
+      unit: "Continuity and Proofs",
+      topic: "Sequential continuity",
+      name: "Sequential Continuity Test",
+      order: 10,
+      useItWhen: "a continuity proof is easier with sequences than epsilon-delta",
+      looksLike: "x_n -> a implies f(x_n) -> f(a)",
+      doThis: "start with an arbitrary sequence x_n -> a and push it through f",
+      thinkOfItAs: "continuity means limits survive the function",
+      watchOutFor: "choosing a special sequence instead of an arbitrary one when proving continuity",
+      rememberThis: "continuous functions preserve sequence limits",
+      quickExample: {
+        problem: "What is the sequence version of continuity at a?",
+        move: "Take any x_n -> a and show f(x_n) -> f(a).",
+      },
+      typicalProblemShapes: [
+        "A proof that continuity follows from a sequence criterion",
+        "A discontinuity proof using one bad sequence",
+      ],
+      miniDrill: [
+        {
+          prompt: "What kind of sequence starts the proof?",
+          answer: "An arbitrary sequence converging to a.",
+        },
+        {
+          prompt: "What does one bad sequence prove?",
+          answer: "Discontinuity.",
+        },
+      ],
+      memoryHook: "Continuity lets limits pass through f.",
+      tags: ["analysis", "sequential-continuity", "continuity"],
+      difficulty: "Standard",
+    }),
+    makeAnalysisCard({
+      id: "analysis140a-ivt",
+      chapter: "Chapter 3: Continuity and Core Proofs",
+      unit: "Continuity and Proofs",
+      topic: "Intermediate Value Theorem",
+      name: "IVT Recognition",
+      order: 11,
+      useItWhen: "a continuous function crosses from one sign or value to another on an interval",
+      looksLike: "f(a) < 0 < f(b) or values on both sides of a target",
+      doThis: "check continuity on the interval, then use IVT to trap the missing value",
+      thinkOfItAs: "a continuous graph cannot teleport over values",
+      watchOutFor: "using IVT without continuity on the full interval",
+      rememberThis: "continuous crossing means the middle value is hit",
+      quickExample: {
+        problem: "f(a) is negative and f(b) is positive. What theorem should you test first?",
+        move: "The Intermediate Value Theorem.",
+      },
+      typicalProblemShapes: [
+        "Existence of a root from opposite signs",
+        "A value-between-two-values question for a continuous function",
+      ],
+      miniDrill: [
+        {
+          prompt: "What is the must-have hypothesis for IVT?",
+          answer: "Continuity on the interval.",
+        },
+        {
+          prompt: "What does opposite sign usually buy you?",
+          answer: "A root somewhere in between.",
+        },
+      ],
+      memoryHook: "No teleporting over middle values.",
+      tags: ["analysis", "ivt", "continuity"],
+      difficulty: "Starter",
     }),
   ],
 };

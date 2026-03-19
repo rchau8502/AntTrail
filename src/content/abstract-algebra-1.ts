@@ -5,7 +5,7 @@ function makeAlgebraCard(
 ): BubbleCard {
   return {
     subject: "Mathematics",
-    course: "Abstract Algebra I",
+    course: "Introduction to Abstract Algebra: Groups",
     courseCode: "MATH 120A",
     ...card,
   };
@@ -14,10 +14,10 @@ function makeAlgebraCard(
 export const abstractAlgebraOneCourse: CourseContent = {
   id: "abstract-algebra-1",
   subject: "Mathematics",
-  title: "Abstract Algebra I",
+  title: "Introduction to Abstract Algebra: Groups",
   institution: "UCI",
   courseCodes: ["MATH 120A"],
-  aliases: ["Groups", "Group Theory"],
+  aliases: ["Abstract Algebra I", "Groups", "Group Theory"],
   shortDescription:
     "UCI-style first group theory with recognition-first subgroup and homomorphism patterns.",
   units: ["Group Basics", "Subgroups and Cyclic Groups", "Cosets and Homomorphisms"],

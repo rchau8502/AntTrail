@@ -5,8 +5,7 @@ function makeCalcCard(
 ): BubbleCard {
   return {
     subject: "Mathematics",
-    course: "Multivariable Calculus",
-    aliases: ["MATH 2D", "MATH 2E"],
+    course: "Multivariable Calculus I",
     ...card,
   };
 }
@@ -14,10 +13,10 @@ function makeCalcCard(
 export const calcThreeCourse: CourseContent = {
   id: "calc-3",
   subject: "Mathematics",
-  title: "Multivariable Calculus",
+  title: "Multivariable Calculus I",
   institution: "UCI",
-  courseCodes: ["MATH 2D", "MATH 2E"],
-  aliases: ["Calculus III", "Multivariable Calculus I and II"],
+  courseCodes: ["MATH 2D"],
+  aliases: ["Calculus III", "Multivariable Calculus"],
   shortDescription:
     "Vectors, partial derivatives, multiple integrals, and multivariable calculus.",
   units: [
@@ -1234,7 +1233,7 @@ export const calcThreeCourse: CourseContent = {
       useItWhen: "a particle moves on a space curve",
       looksLike: "position, velocity, acceleration vectors",
       doThis: "differentiate position for velocity and again for acceleration",
-      thinkOfItAs: "Calc 1 motion with 3D arrows",
+      thinkOfItAs: "single-variable motion with 3D arrows",
       watchOutFor: "mixing speed with velocity",
       rememberThis: "velocity is vector, speed is its length",
       quickExample: {

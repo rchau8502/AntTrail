@@ -17,6 +17,9 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "Bubble",
   description: "Bubble is a math learning app.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

@@ -115,7 +115,9 @@ function getVisualKind(card: BubbleCard) {
     return "limit";
   }
 
-  return card.course === "Multivariable Calculus" ? "vector" : "derivative";
+  return card.course.includes("Multivariable Calculus")
+    ? "vector"
+    : "derivative";
 }
 
 function joinClassNames(...names: Array<string | undefined>) {

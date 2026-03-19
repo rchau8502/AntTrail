@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
+import { CoursePathways } from "@/components/course-pathways";
 import { useLanguage } from "@/components/language-provider";
 import { localizeCards } from "@/content/localization";
 import { MathConceptVisual } from "@/components/math-concept-visual";
@@ -11,6 +12,7 @@ import {
   difficulties,
   getChapterOptions,
   getCourseAliases,
+  getCourseDisplayLabel,
   getCourseOptions,
   getPrimaryCourseCode,
   getUnitOptions,
@@ -23,6 +25,10 @@ import {
 
 interface TopicExplorerProps {
   cards: BubbleCard[];
+}
+
+function slugifyCourse(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 }
 
 export function TopicExplorer({ cards }: TopicExplorerProps) {
@@ -101,6 +107,17 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
 
   return (
     <div className="space-y-8">
+      <CoursePathways
+        selectedCourse={courseFilter}
+        onSelectCourse={(course) => {
+          setQuery("");
+          setCourseFilter(course);
+          setUnitFilter("All");
+          setDifficultyFilter("All");
+          setChapterFilter("All");
+        }}
+      />
+
       <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 sm:p-8">
         <div className="grid gap-8 2xl:grid-cols-[minmax(0,1.1fr)_minmax(30rem,34rem)]">
           <div className="space-y-3">
@@ -168,7 +185,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                   <option value="All">{t("allCourses")}</option>
                   {courseOptions.map((course) => (
                     <option key={course} value={course}>
-                      {course}
+                      {getCourseDisplayLabel(course, locale)}
                     </option>
                   ))}
                 </select>
@@ -245,12 +262,12 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
       </section>
 
       {groupedCards.map(({ course, cards: courseCards }) => (
-        <section key={course} className="space-y-4">
+        <section key={course} id={slugifyCourse(course)} className="space-y-4">
           <div className="flex items-end justify-between gap-4">
             <div>
               <div className="flex flex-wrap items-center gap-2">
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
-                  {course}
+                  {getCourseDisplayLabel(course, locale, { includeCode: false })}
                 </p>
                 {courseCards[0]?.courseCode ? (
                   <span className="rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold text-[color:var(--muted)]">

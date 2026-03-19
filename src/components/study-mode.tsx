@@ -6,7 +6,11 @@ import { useLanguage } from "@/components/language-provider";
 import { localizeCards } from "@/content/localization";
 import { MathConceptVisual } from "@/components/math-concept-visual";
 import type { BubbleCard, Unit } from "@/content/schema";
-import { getCourseOptions, getUnitOptions } from "@/lib/bubble";
+import {
+  getCourseDisplayLabel,
+  getCourseOptions,
+  getUnitOptions,
+} from "@/lib/bubble";
 import {
   getPatternTokens,
   getRecognitionPrompt,
@@ -78,7 +82,7 @@ export function StudyMode({ cards }: StudyModeProps) {
               <option value="All">{t("allCourses")}</option>
               {courseOptions.map((course) => (
                 <option key={course} value={course}>
-                  {course}
+                  {getCourseDisplayLabel(course, locale)}
                 </option>
               ))}
             </select>
@@ -107,8 +111,7 @@ export function StudyMode({ cards }: StudyModeProps) {
 
       <section className="bubble-shadow rounded-[2.25rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
         <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
-          <span>{currentCard.course}</span>
-          {currentCard.courseCode ? <span>{currentCard.courseCode}</span> : null}
+          <span>{getCourseDisplayLabel(currentCard.course, locale)}</span>
           <span>{currentCard.unit}</span>
           <span className="rounded-full bg-sky-100 px-3 py-1 tracking-normal">
             {difficultyLabel(currentCard.difficulty)}
@@ -155,7 +158,7 @@ export function StudyMode({ cards }: StudyModeProps) {
             <button
               type="button"
               onClick={() => setRevealed(true)}
-              className="mt-8 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-900"
+              className="mt-8 inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold !text-white transition hover:bg-sky-900 hover:!text-white"
             >
               {t("revealBubble")}
             </button>

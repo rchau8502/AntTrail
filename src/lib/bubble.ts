@@ -2,6 +2,7 @@ import { calcOneCourse } from "@/content/calc1";
 import { calcThreeCourse } from "@/content/calc3";
 import { calcTwoCourse } from "@/content/calc2";
 import { differentialEquationsCourse } from "@/content/differential-equations";
+import { multivariableCalculusTwoCourse } from "@/content/multivariable-calculus-2";
 import { linearAlgebraCourse } from "@/content/linear-algebra";
 import { analysisOneCourse } from "@/content/analysis-1";
 import { abstractAlgebraOneCourse } from "@/content/abstract-algebra-1";
@@ -11,11 +12,14 @@ import { probabilityCourse } from "@/content/probability";
 import { proofCourse } from "@/content/proof";
 import type { BubbleCard, Difficulty, Unit } from "@/content/schema";
 import { difficulties } from "@/content/schema";
+import type { Locale } from "@/lib/i18n";
+import { translateCourseTitle } from "@/lib/i18n";
 
 export const courses = [
   calcOneCourse,
   calcTwoCourse,
   calcThreeCourse,
+  multivariableCalculusTwoCourse,
   linearAlgebraCourse,
   proofCourse,
   probabilityCourse,
@@ -58,6 +62,21 @@ export function getPrimaryCourseCode(title: string) {
 
 export function getCourseAliases(title: string) {
   return getCourseByTitle(title)?.aliases ?? [];
+}
+
+export function getCourseDisplayLabel(
+  title: string,
+  locale: Locale,
+  options?: { includeCode?: boolean },
+) {
+  const label = translateCourseTitle(locale, title);
+  const courseCode = getPrimaryCourseCode(title);
+
+  if (options?.includeCode === false || !courseCode) {
+    return label;
+  }
+
+  return `${courseCode}: ${label}`;
 }
 
 export function getRelatedCards(id: string) {
