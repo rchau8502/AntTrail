@@ -2,7 +2,6 @@ import type { BubbleCard, CourseContent, MiniDrillItem, QuickExample } from "@/c
 import { esCardContent, esCourseContent } from "@/content/translations/es";
 import { zhCardContent, zhCourseContent } from "@/content/translations/zh";
 import { defaultLocale, type Locale } from "@/lib/i18n";
-import { courses } from "@/lib/bubble";
 
 interface LocalizedCardContent {
   course: string;
@@ -59,15 +58,12 @@ export function localizeCard(card: BubbleCard, locale: Locale) {
     return card;
   }
 
-  const courseId = courses.find((course) => course.title === card.course)?.id;
-  const localizedCourseTitle = courseId
-    ? localizedContent[locale]?.courses[courseId]?.title
-    : undefined;
-
   return {
     ...card,
     ...localizedCard,
-    course: localizedCourseTitle ?? localizedCard.course ?? card.course,
+    // Keep the internal course key canonical so filters/grouping never split
+    // into mixed English and localized buckets.
+    course: card.course,
   };
 }
 

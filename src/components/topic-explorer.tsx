@@ -56,6 +56,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
       normalizedQuery.length === 0 ||
       [
         card.course,
+        getCourseDisplayLabel(card.course, locale),
         card.courseCode,
         card.unit,
         card.chapter,

@@ -11,6 +11,7 @@ export function SiteHeader() {
     { href: "/topics", label: t("navTopics") },
     { href: "/study", label: t("navStudy") },
     { href: "/quiz", label: t("navQuiz") },
+    { href: "/bubblegum", label: t("navBubblegum") },
     { href: "/memory-hooks", label: t("navMemoryHooks") },
   ];
 

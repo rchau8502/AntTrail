@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
+import { Caveat, Fraunces, Plus_Jakarta_Sans } from "next/font/google";
 import { LanguageProvider } from "@/components/language-provider";
 import "./globals.css";
 
@@ -10,6 +10,12 @@ const jakarta = Plus_Jakarta_Sans({
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
   subsets: ["latin"],
   display: "swap",
 });
@@ -30,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${jakarta.variable} ${fraunces.variable} antialiased`}
+        className={`${jakarta.variable} ${fraunces.variable} ${caveat.variable} antialiased`}
       >
         <LanguageProvider>{children}</LanguageProvider>
       </body>

@@ -8,7 +8,7 @@ import { WorkedExamplePhoto } from "@/components/worked-example-photo";
 import { localizeCard } from "@/content/localization";
 import type { BubbleCard } from "@/content/schema";
 import { getCourseDisplayLabel } from "@/lib/bubble";
-import { BUBBLE_PROGRESS_EVENT, isBubbleTopicComplete, isBubblegumTopicMastered, setBubblegumTopicMastered } from "@/lib/progress";
+import { BUBBLE_PROGRESS_EVENT, isBubblegumTopicMastered, setBubblegumTopicMastered } from "@/lib/progress";
 import { getPatternTokens, getRecognitionPrompt, getTechniqueLabel } from "@/lib/recognition";
 
 interface BubblegumQuestion {
@@ -237,12 +237,10 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
   const [selected, setSelected] = useState<string | null>(null);
   const [chews, setChews] = useState(0);
   const [streak, setStreak] = useState(0);
-  const [bubbleComplete, setBubbleComplete] = useState(false);
   const [mastered, setMastered] = useState(false);
 
   useEffect(() => {
     const sync = () => {
-      setBubbleComplete(isBubbleTopicComplete(card.id));
       setMastered(isBubblegumTopicMastered(card.id));
     };
 
@@ -352,15 +350,6 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
           >
             {t("backToBubble")}
           </Link>
-          <span
-            className={`rounded-full px-4 py-3 text-sm font-semibold ${
-              bubbleComplete
-                ? "bg-emerald-100 text-emerald-800"
-                : "bg-amber-100 text-amber-800"
-            }`}
-          >
-            {bubbleComplete ? t("bubblegumUnlocked") : t("bubblegumLocked")}
-          </span>
           {mastered ? (
             <span className="rounded-full bg-rose-100 px-4 py-3 text-sm font-semibold text-rose-700">
               {t("bubblegumMastered")}

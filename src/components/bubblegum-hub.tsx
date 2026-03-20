@@ -7,7 +7,7 @@ import { useLanguage } from "@/components/language-provider";
 import { localizeCards } from "@/content/localization";
 import type { BubbleCard } from "@/content/schema";
 import { getCourseDisplayLabel, getCourseOptions } from "@/lib/bubble";
-import { BUBBLE_PROGRESS_EVENT, isBubbleTopicComplete, isBubblegumTopicMastered } from "@/lib/progress";
+import { BUBBLE_PROGRESS_EVENT, isBubblegumTopicMastered } from "@/lib/progress";
 import { getPatternTokens, getRecognitionPrompt, getTechniqueLabel } from "@/lib/recognition";
 
 interface BubblegumHubProps {
@@ -18,14 +18,12 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
   const { locale, t } = useLanguage();
   const [query, setQuery] = useState("");
   const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
-  const [completedIds, setCompletedIds] = useState<Set<string>>(new Set());
   const [masteredIds, setMasteredIds] = useState<Set<string>>(new Set());
   const localizedCards = useMemo(() => localizeCards(cards, locale), [cards, locale]);
   const courseOptions = getCourseOptions(localizedCards);
 
   useEffect(() => {
     const sync = () => {
-      setCompletedIds(new Set(cards.filter((card) => isBubbleTopicComplete(card.id)).map((card) => card.id)));
       setMasteredIds(new Set(cards.filter((card) => isBubblegumTopicMastered(card.id)).map((card) => card.id)));
     };
 
@@ -50,6 +48,7 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
             card.topic,
             card.unit,
             card.course,
+            getCourseDisplayLabel(card.course, locale),
             card.rememberThis,
             card.memoryHook,
             card.looksLike,
@@ -68,16 +67,7 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
     return matchesCourse && matchesQuery;
   });
 
-  const orderedCards = [...filteredCards].sort((left, right) => {
-    const leftComplete = completedIds.has(left.id) ? 1 : 0;
-    const rightComplete = completedIds.has(right.id) ? 1 : 0;
-
-    if (leftComplete !== rightComplete) {
-      return rightComplete - leftComplete;
-    }
-
-    return left.order - right.order;
-  });
+  const orderedCards = [...filteredCards].sort((left, right) => left.order - right.order);
 
   return (
     <div className="space-y-8">
@@ -115,7 +105,6 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {orderedCards.map((card) => {
-          const complete = completedIds.has(card.id);
           const mastered = masteredIds.has(card.id);
 
           return (
@@ -126,7 +115,7 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
             >
               <div className="flex flex-wrap gap-2">
                 <span className="rounded-full bg-rose-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-rose-700">
-                  {complete ? t("bubblegumUnlocked") : t("bubbleIncomplete")}
+                  Bubblegum
                 </span>
                 {mastered ? (
                   <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">

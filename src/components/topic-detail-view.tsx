@@ -11,9 +11,7 @@ import type { BubbleCard } from "@/content/schema";
 import { getCourseDisplayLabel } from "@/lib/bubble";
 import {
   BUBBLE_PROGRESS_EVENT,
-  isBubbleTopicComplete,
   isBubblegumTopicMastered,
-  setBubbleTopicComplete,
 } from "@/lib/progress";
 import {
   getPatternTokens,
@@ -54,7 +52,6 @@ export function TopicDetailView({
 }: TopicDetailViewProps) {
   const { difficultyLabel, locale, t } = useLanguage();
   const localizedCard = localizeCard(card, locale);
-  const [completed, setCompleted] = useState(false);
   const [bubblegumMastered, setBubblegumMastered] = useState(false);
   const localizedRelatedCards = relatedCards.map((item) => localizeCard(item, locale));
   const localizedPrevious = previous ? localizeCard(previous, locale) : undefined;
@@ -65,7 +62,6 @@ export function TopicDetailView({
 
   useEffect(() => {
     const sync = () => {
-      setCompleted(isBubbleTopicComplete(card.id));
       setBubblegumMastered(isBubblegumTopicMastered(card.id));
     };
 
@@ -339,30 +335,21 @@ export function TopicDetailView({
                   Bubblegum
                 </p>
                 <p className="text-lg font-semibold text-slate-900">
-                  {completed ? t("bubblegumUnlocked") : t("bubblegumLocked")}
+                  {t("openBubblegum")}
                 </p>
                 <p className="max-w-2xl text-sm leading-6 text-[color:var(--muted)]">
-                  {completed ? t("bubbleComplete") : t("bubbleIncomplete")}
+                  {localizedCard.name} drills are always available here.
                   {bubblegumMastered ? ` • ${t("bubblegumMastered")}` : ""}
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <button
-                  type="button"
-                  onClick={() => setBubbleTopicComplete(card.id, !completed)}
-                  className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
+                <Link
+                  href={`/bubblegum/${card.id}`}
+                  className="inline-flex items-center justify-center rounded-full bg-rose-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-rose-700"
                 >
-                  {completed ? t("markBubbleIncomplete") : t("markBubbleComplete")}
-                </button>
-                {completed ? (
-                  <Link
-                    href={`/bubblegum/${card.id}`}
-                    className="inline-flex items-center justify-center rounded-full bg-rose-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-rose-700"
-                  >
-                    {t("openBubblegum")}
-                  </Link>
-                ) : null}
+                  {t("openBubblegum")}
+                </Link>
               </div>
             </div>
           </section>

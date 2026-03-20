@@ -75,6 +75,14 @@ The app also adds:
 - Local structured content in TypeScript files
 - Content kept separate from UI with a reusable typed schema
 
+## AI default
+
+Future AI features in Bubble and Bubblegum should use `gpt-5-mini` by default for the best price-to-performance balance.
+
+- shared config: [`src/lib/ai.ts`](./src/lib/ai.ts)
+- default model: `gpt-5-mini`
+- optional override: `NEXT_PUBLIC_OPENAI_MODEL` or `OPENAI_MODEL`
+
 ## Project structure
 
 ```text
