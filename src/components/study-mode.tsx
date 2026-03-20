@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 import { localizeCards } from "@/content/localization";
 import { MathConceptVisual } from "@/components/math-concept-visual";
+import { WorkedExamplePhoto } from "@/components/worked-example-photo";
 import type { BubbleCard, Unit } from "@/content/schema";
 import {
   getCourseDisplayLabel,
@@ -55,7 +56,7 @@ export function StudyMode({ cards }: StudyModeProps) {
   return (
     <div className="space-y-8">
       <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 sm:p-8">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(20rem,28rem)] xl:items-end">
           <div className="space-y-3">
             <p className="inline-flex rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">
               {t("studyMode")}
@@ -68,7 +69,7 @@ export function StudyMode({ cards }: StudyModeProps) {
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="grid gap-3 sm:grid-cols-2">
             <select
               value={courseFilter}
               onChange={(event) => {
@@ -77,7 +78,7 @@ export function StudyMode({ cards }: StudyModeProps) {
                 setIndex(0);
                 setRevealed(false);
               }}
-              className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+              className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
             >
               <option value="All">{t("allCourses")}</option>
               {courseOptions.map((course) => (
@@ -93,7 +94,7 @@ export function StudyMode({ cards }: StudyModeProps) {
                 setIndex(0);
                 setRevealed(false);
               }}
-              className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+              className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
             >
               <option value="All">{t("allUnits")}</option>
               {unitOptions.map((unit) => (
@@ -102,7 +103,7 @@ export function StudyMode({ cards }: StudyModeProps) {
                 </option>
               ))}
             </select>
-            <div className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm text-[color:var(--muted)]">
+            <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm text-[color:var(--muted)] sm:col-span-2 xl:justify-self-start">
               {index + 1} / {filteredCards.length}
             </div>
           </div>
@@ -134,7 +135,7 @@ export function StudyMode({ cards }: StudyModeProps) {
           </div>
           <div className="mt-5 rounded-[1.55rem] bg-slate-950 px-5 py-5 text-sky-50">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300/80">
-              Problem cue
+              {t("problemCue")}
             </p>
             <p className="mt-3 font-mono text-[1.02rem] leading-8">
               {getRecognitionPrompt(currentCard)}
@@ -163,71 +164,82 @@ export function StudyMode({ cards }: StudyModeProps) {
               {t("revealBubble")}
             </button>
           ) : (
-            <div className="mt-8 grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(16rem,20rem)]">
-              <div className="grid gap-4">
-                <div className="rounded-[1.5rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.76),rgba(255,255,255,0.96))] p-4">
-                  <p className="text-sm font-semibold text-sky-700">
-                    {t("firstMove")}
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-800">
-                    {currentCard.doThis}
-                  </p>
-                </div>
+            <div className="mt-8 space-y-4">
+              <div className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(16rem,20rem)]">
+                <div className="grid gap-4">
+                  <div className="rounded-[1.5rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.76),rgba(255,255,255,0.96))] p-4">
+                    <p className="text-sm font-semibold text-sky-700">
+                      {t("firstMove")}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-800">
+                      {currentCard.doThis}
+                    </p>
+                  </div>
 
-                <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white p-4">
-                  <p className="text-sm font-semibold text-sky-700">
-                    {t("useItWhen")}
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">
-                    {currentCard.useItWhen}
-                  </p>
-                </div>
+                  <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white p-4">
+                    <p className="text-sm font-semibold text-sky-700">
+                      {t("useItWhen")}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-700">
+                      {currentCard.useItWhen}
+                    </p>
+                  </div>
 
-                <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white p-4">
-                  <p className="text-sm font-semibold text-sky-700">
-                    {t("thinkOfItAs")}
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">
-                    {currentCard.thinkOfItAs}
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid gap-4">
-                <div className="rounded-[1.5rem] border border-rose-100 bg-rose-50/70 p-4">
-                  <p className="text-sm font-semibold text-rose-600">
-                    {t("trap")}
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">
-                    {currentCard.watchOutFor}
-                  </p>
-                </div>
-
-                <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-sky-50 p-4">
-                  <p className="text-sm font-semibold text-sky-700">
-                    {t("typicalProblemShapes")}
-                  </p>
-                  <div className="mt-3 grid gap-3">
-                    {currentCard.typicalProblemShapes.map((shape) => (
-                      <div
-                        key={shape}
-                        className="rounded-2xl border border-white/80 bg-white/80 px-4 py-3 text-sm leading-6 text-slate-700"
-                      >
-                        {shape}
-                      </div>
-                    ))}
+                  <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white p-4">
+                    <p className="text-sm font-semibold text-sky-700">
+                      {t("thinkOfItAs")}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-700">
+                      {currentCard.thinkOfItAs}
+                    </p>
                   </div>
                 </div>
 
-                <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white p-4">
-                  <p className="text-sm font-semibold text-sky-700">
-                    {t("rememberThis")}
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">
-                    {currentCard.rememberThis}
-                  </p>
+                <div className="grid gap-4">
+                  <div className="rounded-[1.5rem] border border-rose-100 bg-rose-50/70 p-4">
+                    <p className="text-sm font-semibold text-rose-600">
+                      {t("trap")}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-700">
+                      {currentCard.watchOutFor}
+                    </p>
+                  </div>
+
+                  <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-sky-50 p-4">
+                    <p className="text-sm font-semibold text-sky-700">
+                      {t("typicalProblemShapes")}
+                    </p>
+                    <div className="mt-3 grid gap-3">
+                      {currentCard.typicalProblemShapes.map((shape) => (
+                        <div
+                          key={shape}
+                          className="rounded-2xl border border-white/80 bg-white/80 px-4 py-3 text-sm leading-6 text-slate-700"
+                        >
+                          {shape}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white p-4">
+                    <p className="text-sm font-semibold text-sky-700">
+                      {t("rememberThis")}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-700">
+                      {currentCard.rememberThis}
+                    </p>
+                  </div>
                 </div>
               </div>
+
+              <details className="rounded-[1.5rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-4">
+                <summary className="cursor-pointer list-none text-sm font-semibold uppercase tracking-[0.18em] text-sky-700 [&::-webkit-details-marker]:hidden">
+                  {t("moreSupport")}
+                </summary>
+                <div className="mt-4">
+                  <WorkedExamplePhoto card={currentCard} />
+                </div>
+              </details>
             </div>
           )}
         </div>

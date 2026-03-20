@@ -1,12 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import { useLanguage } from "@/components/language-provider";
 import { MathConceptVisual } from "@/components/math-concept-visual";
+import { WorkedExamplePhoto } from "@/components/worked-example-photo";
 import { localizeCard } from "@/content/localization";
 import type { BubbleCard } from "@/content/schema";
 import { getCourseDisplayLabel } from "@/lib/bubble";
+import {
+  BUBBLE_PROGRESS_EVENT,
+  isBubbleTopicComplete,
+  isBubblegumTopicMastered,
+  setBubbleTopicComplete,
+} from "@/lib/progress";
 import {
   getPatternTokens,
   getRecognitionPrompt,
@@ -46,12 +54,30 @@ export function TopicDetailView({
 }: TopicDetailViewProps) {
   const { difficultyLabel, locale, t } = useLanguage();
   const localizedCard = localizeCard(card, locale);
+  const [completed, setCompleted] = useState(false);
+  const [bubblegumMastered, setBubblegumMastered] = useState(false);
   const localizedRelatedCards = relatedCards.map((item) => localizeCard(item, locale));
   const localizedPrevious = previous ? localizeCard(previous, locale) : undefined;
   const localizedNext = next ? localizeCard(next, locale) : undefined;
   const localizedRecognitionPrompt = getRecognitionPrompt(localizedCard);
   const localizedPatternTokens = getPatternTokens(localizedCard);
   const localizedTechniqueLabel = getTechniqueLabel(localizedCard, locale);
+
+  useEffect(() => {
+    const sync = () => {
+      setCompleted(isBubbleTopicComplete(card.id));
+      setBubblegumMastered(isBubblegumTopicMastered(card.id));
+    };
+
+    sync();
+    window.addEventListener("storage", sync);
+    window.addEventListener(BUBBLE_PROGRESS_EVENT, sync as EventListener);
+
+    return () => {
+      window.removeEventListener("storage", sync);
+      window.removeEventListener(BUBBLE_PROGRESS_EVENT, sync as EventListener);
+    };
+  }, [card.id]);
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
@@ -82,6 +108,60 @@ export function TopicDetailView({
               </div>
               <MathConceptVisual card={localizedCard} mode="detail" />
             </div>
+
+            <section className="mt-6 rounded-[1.75rem] border border-[color:var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,251,255,0.94))] p-5 lg:hidden">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
+                {t("quickScan")}
+              </p>
+              <div className="mt-4 space-y-3">
+                <div className="rounded-[1.35rem] bg-slate-950 px-4 py-4 text-sky-50">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-300/80">
+                    {t("problemCue")}
+                  </p>
+                  <p className="mt-2 font-mono text-sm leading-7">
+                    {localizedRecognitionPrompt}
+                  </p>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-[1.35rem] border border-sky-100 bg-sky-50/90 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+                      {t("techniqueToTry")}
+                    </p>
+                    <p className="mt-2 text-sm font-semibold leading-6 text-slate-900">
+                      {localizedTechniqueLabel}
+                    </p>
+                  </div>
+
+                  <div className="rounded-[1.35rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.7),rgba(255,255,255,0.96))] p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+                      {t("firstMove")}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-800">
+                      {localizedCard.doThis}
+                    </p>
+                  </div>
+
+                  <div className="rounded-[1.35rem] border border-rose-100 bg-rose-50/70 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-rose-600">
+                      {t("trap")}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-800">
+                      {localizedCard.watchOutFor}
+                    </p>
+                  </div>
+
+                  <div className="rounded-[1.35rem] border border-[color:var(--line)] bg-white p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+                      {t("rememberThis")}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-800">
+                      {localizedCard.rememberThis}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
 
             <div className="mt-8 grid gap-4 lg:grid-cols-[minmax(0,1.3fr)_minmax(18rem,22rem)]">
               <section className="rounded-[1.85rem] border border-[color:var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(241,249,255,0.94))] p-5 sm:p-6">
@@ -168,22 +248,6 @@ export function TopicDetailView({
                   </section>
               </div>
             </div>
-
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
-              {supportSections.map(({ labelKey, valueKey }) => (
-                <section
-                  key={labelKey}
-                  className="rounded-[1.75rem] border border-[color:var(--line)] bg-[color:var(--surface)] p-5"
-                >
-                  <p className="text-sm font-semibold text-sky-700">
-                    {t(labelKey)}
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-slate-700">
-                    {localizedCard[valueKey]}
-                  </p>
-                </section>
-              ))}
-            </div>
           </div>
 
           <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
@@ -209,35 +273,35 @@ export function TopicDetailView({
                 </div>
               </div>
 
-              {localizedCard.quickExample ? (
-                <div className="rounded-[1.75rem] border border-[color:var(--line)] bg-[linear-gradient(180deg,rgba(214,255,232,0.7),rgba(255,255,255,0.95))] p-5">
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
-                    {t("tryThisShape")}
-                  </p>
-                  <div className="mt-4 rounded-[1.5rem] bg-slate-950 px-4 py-4 text-sky-50">
-                    <p className="font-mono text-[1.02rem] leading-8">
-                      {localizedCard.quickExample.problem}
-                    </p>
-                  </div>
-                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
-                    {t("move")}
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">
-                    {localizedCard.quickExample.move}
-                  </p>
-                </div>
-              ) : (
-                <div className="rounded-[1.75rem] border border-[color:var(--line)] bg-[linear-gradient(180deg,rgba(214,255,232,0.7),rgba(255,255,255,0.95))] p-5">
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
-                    {t("thinkOfItAs")}
-                  </p>
-                  <p className="mt-4 text-base leading-7 text-slate-800">
-                    {localizedCard.thinkOfItAs}
-                  </p>
-                </div>
-              )}
+              <div className="space-y-3">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
+                  {t("tryThisShape")}
+                </p>
+                <WorkedExamplePhoto card={localizedCard} />
+              </div>
             </div>
           </section>
+
+          <details className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 sm:p-8">
+            <summary className="cursor-pointer list-none text-sm font-semibold uppercase tracking-[0.18em] text-sky-700 [&::-webkit-details-marker]:hidden">
+              {t("moreSupport")}
+            </summary>
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              {supportSections.map(({ labelKey, valueKey }) => (
+                <section
+                  key={labelKey}
+                  className="rounded-[1.75rem] border border-[color:var(--line)] bg-white p-5"
+                >
+                  <p className="text-sm font-semibold text-sky-700">
+                    {t(labelKey)}
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-slate-700">
+                    {localizedCard[valueKey]}
+                  </p>
+                </section>
+              ))}
+            </div>
+          </details>
 
           <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
             <div className="flex flex-wrap items-center justify-between gap-3">
@@ -265,6 +329,41 @@ export function TopicDetailView({
                   </p>
                 </div>
               ))}
+            </div>
+          </section>
+
+          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[linear-gradient(140deg,rgba(255,255,255,0.96),rgba(255,229,239,0.82)_58%,rgba(255,245,251,0.96))] p-6 sm:p-8">
+            <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+              <div className="space-y-3">
+                <p className="inline-flex rounded-full border border-white/80 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-rose-600">
+                  Bubblegum
+                </p>
+                <p className="text-lg font-semibold text-slate-900">
+                  {completed ? t("bubblegumUnlocked") : t("bubblegumLocked")}
+                </p>
+                <p className="max-w-2xl text-sm leading-6 text-[color:var(--muted)]">
+                  {completed ? t("bubbleComplete") : t("bubbleIncomplete")}
+                  {bubblegumMastered ? ` • ${t("bubblegumMastered")}` : ""}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={() => setBubbleTopicComplete(card.id, !completed)}
+                  className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
+                >
+                  {completed ? t("markBubbleIncomplete") : t("markBubbleComplete")}
+                </button>
+                {completed ? (
+                  <Link
+                    href={`/bubblegum/${card.id}`}
+                    className="inline-flex items-center justify-center rounded-full bg-rose-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-rose-700"
+                  >
+                    {t("openBubblegum")}
+                  </Link>
+                ) : null}
+              </div>
             </div>
           </section>
 

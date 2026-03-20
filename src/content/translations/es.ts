@@ -27,7 +27,7 @@ export interface LocalizedCardContent {
 
 export const esCourseContent: Record<string, LocalizedCourseText> = {
   "calc-1": {
-    "title": "Cálculo de una Variable 1",
+    "title": "Cálculo de una Variable I",
     "shortDescription": "Revisión rápida de cálculo de una sola variable para estudiantes que necesitan el cambio primero.",
     "units": [
       "Límites",
@@ -45,7 +45,7 @@ export const esCourseContent: Record<string, LocalizedCourseText> = {
     ]
   },
   "calc-2": {
-    "title": "Cálculo de una Variable 2",
+    "title": "Cálculo de una Variable II",
     "shortDescription": "Trucos de integración, ideas polares y paramétricas y reconocimiento de series de una sola variable.",
     "units": [
       "Funciones Inversas, Exponenciales y Logarítmicas",
@@ -64,7 +64,7 @@ export const esCourseContent: Record<string, LocalizedCourseText> = {
     ]
   },
   "calc-3": {
-    "title": "Cálculo Multivariable",
+    "title": "Cálculo Multivariable I",
     "shortDescription": "Vectores, derivadas parciales, integrales múltiples y cálculo multivariable.",
     "units": [
       "Vectores y 3D",
@@ -82,7 +82,7 @@ export const esCourseContent: Record<string, LocalizedCourseText> = {
     ]
   },
   "linear-algebra": {
-    "title": "Álgebra Lineal",
+    "title": "Introducción al Álgebra Lineal",
     "shortDescription": "Matrices, espacios vectoriales e ideas propias enseñadas como primeros movimientos de reconocimiento.",
     "units": [
       "Sistemas y Reducción por Filas",
@@ -125,7 +125,7 @@ export const esCourseContent: Record<string, LocalizedCourseText> = {
     ]
   },
   "probability": {
-    "title": "Probabilidad",
+    "title": "Probabilidad I",
     "shortDescription": "Conteo, probabilidad condicional, variables aleatorias y expectativa.",
     "units": [
       "Conteo",
@@ -286,7 +286,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "Límites infinitos",
     "useItWhen": "la salida explota cerca de un valor x",
     "looksLike": "1/(x - 2), 1/(x - 2)^2, asíntotas verticales",
-    "doThis": "Comprueba el cartel de cada lado y decide arriba o abajo.",
+    "doThis": "comprueba el signo de cada lado y decide si sube o baja",
     "thinkOfItAs": "un gráfico que sube o baja por una pared vertical",
     "watchOutFor": "asumiendo que ambas partes hacen lo mismo",
     "rememberThis": "Denominador pequeño, producción enorme.",
@@ -2145,7 +2145,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "doThis": "Usa la raíz de r al cuadrado más (dr/dtheta) al cuadrado.",
     "thinkOfItAs": "La longitud polar tiene su propia fórmula de velocidad.",
     "watchOutFor": "olvidando la derivada de r",
-    "rememberThis": "la longitud polar necesita r y r-prime",
+    "rememberThis": "la longitud polar usa r y r'",
     "typicalProblemShapes": [
       "Longitud de una pieza de rosa, limacón o espiral",
       "Curva polar con intervalo en theta"
@@ -2153,14 +2153,14 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "¿Qué dos piezas van debajo de la raíz?",
-        "answer": "r al cuadrado y r-primo al cuadrado."
+        "answer": "r al cuadrado y (r') al cuadrado."
       },
       {
         "prompt": "¿La longitud del arco polar se integra en theta?",
         "answer": "Sí."
       }
     ],
-    "memoryHook": "La longitud polar utiliza r y r-prime.",
+    "memoryHook": "La longitud polar usa r y r'.",
     "quickExample": {
       "problem": "Encuentra la longitud de un bucle polar.",
       "move": "Utilice la fórmula de longitud de arco polar con límites theta."
@@ -2527,7 +2527,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "una serie alterna converge y necesitas la etiqueta más fuerte",
     "looksLike": "probar la serie y luego probar la versión de valor absoluto",
     "doThis": "suelte las señales y pruebe nuevamente",
-    "thinkOfItAs": "quítate el disfraz del cartel y mira lo que queda",
+    "thinkOfItAs": "quita los signos y mira qué serie queda",
     "watchOutFor": "llamando absoluta a cada serie alterna convergente",
     "rememberThis": "absoluto significa que todavía funciona sin los signos",
     "typicalProblemShapes": [
@@ -3543,12 +3543,12 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc3-3d-points": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 12: Vectores y la Geometría del Espacio",
     "unit": "Vectores y 3D",
     "topic": "Puntos 3D y distancia.",
     "name": "Puntos 3D",
-    "useItWhen": "te mueves del avión al espacio x-y-z",
+    "useItWhen": "pasas del plano al espacio x-y-z",
     "looksLike": "(x, y, z)",
     "doThis": "trazar el punto usando tres coordenadas en lugar de dos",
     "thinkOfItAs": "2D con una dirección más",
@@ -3570,8 +3570,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "El 3D es sólo un eje extra.",
     "quickExample": {
-      "problem": "Trama (2, -1, 3).",
-      "move": "Vaya x, luego y, luego suba en z."
+      "problem": "Grafica (2, -1, 3).",
+      "move": "Avanza en x, luego en y, y al final sube en z."
     }
   },
   "calc3-vectors": {
@@ -3607,13 +3607,13 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc3-dot-product": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 12: Vectores y la Geometría del Espacio",
     "unit": "Vectores y 3D",
     "topic": "Producto escalar",
     "name": "Producto escalar",
     "useItWhen": "necesitas ángulo, proyección u ortogonalidad",
-    "looksLike": "tu punto v",
+    "looksLike": "u · v",
     "doThis": "multiplicar los componentes coincidentes y sumar",
     "thinkOfItAs": "qué tan alineadas están dos flechas",
     "watchOutFor": "punto confuso con producto cruzado",
@@ -3634,24 +3634,24 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "Punto = multiplicar, unir, sumar.",
     "quickExample": {
-      "problem": "Busque <1,2,3> punto <4,5,6>.",
-      "move": "Multiplica coincidencias y suma."
+      "problem": "Calcula <1,2,3> · <4,5,6>.",
+      "move": "Multiplica componente con componente y suma."
     }
   },
   "calc3-cross-product": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 12: Vectores y la Geometría del Espacio",
     "unit": "Vectores y 3D",
     "topic": "Producto cruzado",
     "name": "Producto cruzado",
     "useItWhen": "necesitas un vector perpendicular a otros dos",
-    "looksLike": "te cruzas v",
-    "doThis": "utilizar el patrón determinante y la dirección de la derecha",
+    "looksLike": "u x v",
+    "doThis": "usa el patrón del determinante y la regla de la mano derecha",
     "thinkOfItAs": "dos vectores formando un nuevo vector normal",
-    "watchOutFor": "Invirtiendo el orden y volteando el cartel.",
+    "watchOutFor": "cambiar el orden y olvidar que cambia el signo",
     "rememberThis": "cruz da un vector perpendicular",
     "typicalProblemShapes": [
-      "Normales a los aviones.",
+      "Vectores normales a planos",
       "Área de problemas de paralelogramo."
     ],
     "miniDrill": [
@@ -3661,17 +3661,17 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "¿Qué pasa si cambias el pedido?",
-        "answer": "El cartel se voltea."
+        "answer": "Cambia el signo."
       }
     ],
-    "memoryHook": "Cross hace lo normal.",
+    "memoryHook": "El producto cruzado da un vector normal.",
     "quickExample": {
       "problem": "¿Hacia dónde apunta u x v?",
       "move": "Perpendicular a ambos, por la regla de la mano derecha."
     }
   },
   "calc3-lines": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 12: Vectores y la Geometría del Espacio",
     "unit": "Vectores y 3D",
     "topic": "Líneas en el espacio",
@@ -3692,8 +3692,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Un punto y un vector dirección."
       },
       {
-        "prompt": "¿Qué no haces?",
-        "answer": "Se mueve a lo largo de la línea."
+        "prompt": "¿Qué hace t?",
+        "answer": "Te mueve a lo largo de la recta."
       }
     ],
     "memoryHook": "Punto más dirección construye la línea.",
@@ -3703,88 +3703,88 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc3-planes": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 12: Vectores y la Geometría del Espacio",
     "unit": "Vectores y 3D",
-    "topic": "Aviones en el espacio",
-    "name": "Aviones",
+    "topic": "Planos en el espacio",
+    "name": "Planos",
     "useItWhen": "necesitas una superficie plana en 3D",
-    "looksLike": "hacha + por + cz = d",
+    "looksLike": "ax + by + cz = d",
     "doThis": "usar un punto y un vector normal",
-    "thinkOfItAs": "todos los puntos enfrentan la misma normalidad",
+    "thinkOfItAs": "una lámina infinita guiada por un vector normal",
     "watchOutFor": "confundir un vector normal con una dirección dentro del plano",
-    "rememberThis": "vector normal controla el avión",
+    "rememberThis": "el vector normal manda en el plano",
     "typicalProblemShapes": [
       "Ecuaciones planas",
       "Preguntas sobre planos paralelos o perpendiculares"
     ],
     "miniDrill": [
       {
-        "prompt": "¿Qué vector define la orientación del avión?",
+        "prompt": "¿Qué vector fija la orientación del plano?",
         "answer": "El vector normal."
       },
       {
         "prompt": "¿Es ax + by + cz = d una recta o un plano?",
-        "answer": "Un avión."
+        "answer": "Un plano."
       }
     ],
     "memoryHook": "Plano = punto más normal.",
     "quickExample": {
-      "problem": "¿Qué significa <a,b,c> en una ecuación plana?",
+      "problem": "¿Qué significa <a,b,c> en la ecuación de un plano?",
       "move": "Es el vector normal."
     }
   },
   "calc3-quadric-surfaces": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 12: Vectores y la Geometría del Espacio",
     "unit": "Vectores y 3D",
     "topic": "Superficies cuádricas",
     "name": "Superficies cuádricas",
-    "useItWhen": "necesita el mapa rápido y de gran tamaño para nombres de superficies en 3D",
+    "useItWhen": "quieres mirar la ecuación y reconocer rápido qué superficie es",
     "looksLike": "elipsoide, paraboloide, hiperboloide, cono, cilindro",
-    "doThis": "lea los signos, cuente las variables al cuadrado y luego identifique la variable que falta si es un cilindro",
+    "doThis": "mira los signos, revisa qué variables están al cuadrado y fíjate si falta alguna variable",
     "thinkOfItAs": "una lista de verificación de identificación de formas, no un problema de resolución",
     "watchOutFor": "Tratar cada ecuación de variable al cuadrado como la misma superficie.",
     "rememberThis": "signos y variables faltantes nombran la superficie",
     "typicalProblemShapes": [
       "Nombra la superficie de la ecuación.",
-      "Dibuja la forma a partir del patrón de letrero."
+      "Dibuja la forma a partir del patrón de signos."
     ],
     "miniDrill": [
       {
-        "prompt": "¿Qué suele significar cilindro de inmediato?",
+        "prompt": "¿Cuál es la pista más rápida para detectar un cilindro?",
         "answer": "Falta una variable."
       },
       {
         "prompt": "¿Importan aquí los cambios de signos?",
-        "answer": "Sí. A menudo deciden el nombre de la superficie."
+        "answer": "Sí. Muchas veces deciden qué superficie es."
       }
     ],
-    "memoryHook": "Los signos más las variables faltantes indican la forma.",
+    "memoryHook": "Primero mira signos; luego mira si falta una variable.",
     "quickExample": {
       "problem": "¿Qué es lo primero que hay que comprobar en una ecuación de superficie cuádrica?",
       "move": "El patrón de signos y si falta una variable."
     }
   },
   "calc3-cylinders": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 12: Vectores y la Geometría del Espacio",
     "unit": "Vectores y 3D",
     "topic": "Cilindros",
-    "name": "Cilindros en 3D",
+    "name": "Cilindros",
     "useItWhen": "falta una variable en la ecuación",
     "looksLike": "x^2 + y^2 = 4, y = x^2, x^2/4 + z^2 = 1",
-    "doThis": "Grafique la curva 2D en las variables visibles y luego extiéndala para siempre a lo largo de la variable que falta.",
-    "thinkOfItAs": "un gráfico 2D extruido directamente a través del espacio",
-    "watchOutFor": "cilindro pensante siempre significa cilindro circular",
-    "rememberThis": "La variable faltante significa que la gráfica se extiende en esa dirección.",
+    "doThis": "grafica la curva 2D en las variables que sí aparecen y luego extiéndela a lo largo de la variable que falta",
+    "thinkOfItAs": "una gráfica 2D estirada en una dirección",
+    "watchOutFor": "creer que cilindro siempre significa cilindro circular",
+    "rememberThis": "si falta una variable, la curva se estira en esa dirección",
     "typicalProblemShapes": [
       "Cilindro parabólico: y = x^2",
       "Cilindro elíptico: x^2/4 + y^2 = 1"
     ],
     "miniDrill": [
       {
-        "prompt": "Si falta z, ¿en qué dirección gira el cilindro?",
+        "prompt": "Si falta z, ¿en qué dirección se extiende el cilindro?",
         "answer": "A lo largo del eje z."
       },
       {
@@ -3792,18 +3792,18 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Sí."
       }
     ],
-    "memoryHook": "Variable faltante = gráfico estirado.",
+    "memoryHook": "Falta una variable, se estira la gráfica.",
     "quickExample": {
       "problem": "¿Qué superficie es y = x^2 en 3D?",
       "move": "Un cilindro parabólico que se extiende a lo largo del eje z."
     }
   },
   "calc3-ellipsoid": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 12: Vectores y la Geometría del Espacio",
     "unit": "Vectores y 3D",
     "topic": "Elipsoides",
-    "name": "elipsoide",
+    "name": "Elipsoide",
     "useItWhen": "los tres términos al cuadrado son positivos y equivalen a una constante",
     "looksLike": "x^2/a^2 + y^2/b^2 + z^2/c^2 = 1",
     "doThis": "lea las longitudes de intersección de los denominadores e imagine una esfera estirada",
@@ -3831,7 +3831,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc3-paraboloids": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 12: Vectores y la Geometría del Espacio",
     "unit": "Vectores y 3D",
     "topic": "Paraboloides",
@@ -3856,14 +3856,14 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Un paraboloide hiperbólico en forma de silla de montar."
       }
     ],
-    "memoryHook": "El mismo cuenco de letrero. Silla de montar de signo opuesto.",
+    "memoryHook": "Mismo signo: cuenco. Signos opuestos: silla.",
     "quickExample": {
       "problem": "¿Qué forma tiene z = x^2 - y^2?",
       "move": "Un paraboloide hiperbólico, la forma de silla de montar."
     }
   },
   "calc3-hyperboloids-and-cones": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 12: Vectores y la Geometría del Espacio",
     "unit": "Vectores y 3D",
     "topic": "Hiperboloides y conos",
@@ -3871,9 +3871,9 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "Los términos cuadrados muestran cambios de signo y la superficie no está cerrada.",
     "looksLike": "x^2 + y^2 - z^2 = 1, -x^2 - y^2 + z^2 = 1, x^2 + y^2 = z^2",
     "doThis": "use el patrón constante y de signos para separar una hoja, dos hojas y un cono",
-    "thinkOfItAs": "los hiperboloides son tubos partidos o comprimidos; Los conos golpean una punta afilada.",
+    "thinkOfItAs": "los hiperboloides se abren; los conos terminan en punta",
     "watchOutFor": "mezclar el cono con un hiperboloide porque ambos usan cambios de signo",
-    "rememberThis": "igual a 0-estilo encuentro en un punto significa sensación de cono",
+    "rememberThis": "si todo se junta en una punta, piensa en cono",
     "typicalProblemShapes": [
       "Hiperboloide de una hoja",
       "Hiperboloide de dos hojas o doble cono."
@@ -3916,7 +3916,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Un componente a la vez."
       },
       {
-        "prompt": "¿Cómo se suele llamar r-prime en movimiento?",
+        "prompt": "¿Cómo se suele llamar r'(t) en movimiento?",
         "answer": "Velocidad."
       }
     ],
@@ -4264,7 +4264,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "¿Cuántas integraciones ocurren?",
+        "prompt": "¿Cuántas integrales aparecen?",
         "answer": "Dos."
       },
       {
@@ -4727,17 +4727,17 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc3-divergence-and-curl": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 16: Cálculo Vectorial",
     "unit": "Cálculo Vectorial",
-    "topic": "Divergencia y rizo",
-    "name": "Divergencia y rizo",
-    "useItWhen": "necesita extensión local o giro local de un campo",
-    "looksLike": "div F y rizo F",
-    "doThis": "leer divergencia como fuente/sumidero y curl como rotación",
+    "topic": "Divergencia y rotacional",
+    "name": "Divergencia y rotacional",
+    "useItWhen": "quieres saber si un campo se abre hacia afuera o gira localmente",
+    "looksLike": "div F y curl F",
+    "doThis": "lee la divergencia como fuente/sumidero y el rotacional como giro local",
     "thinkOfItAs": "propagación versus giro",
     "watchOutFor": "mezclando lo que mide cada uno",
-    "rememberThis": "diferenciales de divergencia, giros de rizo",
+    "rememberThis": "divergencia abre; rotacional gira",
     "typicalProblemShapes": [
       "Comportamiento del campo en un punto",
       "Pruebas antes de usar grandes teoremas."
@@ -4745,21 +4745,21 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "¿Cuál mide el giro?",
-        "answer": "Rizo."
+        "answer": "Rotacional."
       },
       {
         "prompt": "¿Cuál mide el comportamiento de fuente o sumidero?",
         "answer": "Divergencia."
       }
     ],
-    "memoryHook": "Divergir = extenderse. Curl = girar.",
+    "memoryHook": "Divergencia = se abre. Rotacional = gira.",
     "quickExample": {
-      "problem": "¿Qué describe curl?",
+      "problem": "¿Qué describe el rotacional?",
       "move": "Rotación local."
     }
   },
   "calc3-divergence-theorem": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 16: Cálculo Vectorial",
     "unit": "Cálculo Vectorial",
     "topic": "Teorema de divergencia",
@@ -4767,7 +4767,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "El flujo de superficie cerrada debe convertirse en una integral triple.",
     "looksLike": "flujo a través de una superficie cerrada",
     "doThis": "intercambiar flujo de superficie por integral triple de divergencia",
-    "thinkOfItAs": "el flujo de la piel se vuelve hacia el interior y se extiende",
+    "thinkOfItAs": "cambiar flujo por la frontera por suma de divergencia dentro del volumen",
     "watchOutFor": "usarlo en una superficie abierta",
     "rememberThis": "El flujo de superficie cerrada puede convertirse en integral de volumen.",
     "typicalProblemShapes": [
@@ -4784,24 +4784,24 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Divergencia."
       }
     ],
-    "memoryHook": "¿Piel cerrada? Muévete hacia adentro con divergencia.",
+    "memoryHook": "Superficie cerrada: piensa en el volumen de adentro.",
     "quickExample": {
       "problem": "¿Qué intercambia el teorema?",
-      "move": "Fundente de superficie cerrada para un interior triple integral."
+      "move": "Flujo sobre una superficie cerrada por una integral triple de la divergencia."
     }
   },
   "calc3-stokes-theorem": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 16: Cálculo Vectorial",
     "unit": "Cálculo Vectorial",
-    "topic": "teorema de stokes",
+    "topic": "Teorema de Stokes",
     "name": "Teorema de Stokes",
     "useItWhen": "una integral de línea alrededor de una curva espacial debería convertirse en una integral de superficie",
     "looksLike": "curva límite de una superficie en 3D",
-    "doThis": "cambiar la integral de línea límite por la integral de superficie de curl",
+    "doThis": "cambia la integral de línea del borde por una integral de superficie del rotacional",
     "thinkOfItAs": "Teorema de Green 3D",
     "watchOutFor": "no coincidir con la orientación del límite y la superficie normal",
-    "rememberThis": "El trabajo de límites puede volverse rizado a través de la superficie.",
+    "rememberThis": "integral de línea en el borde = rotacional sobre la superficie",
     "typicalProblemShapes": [
       "Curva de espacio cerrado que delimita una superficie.",
       "Integrales de línea que son más fáciles como problemas de superficie."
@@ -4809,16 +4809,16 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "¿Qué cantidad de campo aparece dentro de la integral de superficie?",
-        "answer": "Rizo."
+        "answer": "Rotacional."
       },
       {
         "prompt": "¿A qué teorema común se parece esto en 2D?",
         "answer": "Teorema de Green."
       }
     ],
-    "memoryHook": "Stokes es verde en 3D.",
+    "memoryHook": "Stokes = Green en 3D.",
     "quickExample": {
-      "problem": "¿Qué teorema convierte una integral de línea límite en una integral de superficie de curl?",
+      "problem": "¿Qué teorema cambia una integral de línea del borde por una integral de superficie del rotacional?",
       "move": "Teorema de Stokes."
     }
   },
@@ -4951,14 +4951,14 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc3-space-curve-arc-length": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 13: Funciones Vectoriales",
     "unit": "Funciones Vectoriales",
     "topic": "Longitud de arco de las curvas espaciales.",
     "name": "Longitud del arco de la curva espacial",
     "useItWhen": "necesitas la longitud real de un camino 3D",
     "looksLike": "r(t) en un intervalo de a a b",
-    "doThis": "integrar la magnitud de r-primo de t",
+    "doThis": "integra la magnitud de r'(t)",
     "thinkOfItAs": "Distancia 3D sumada a lo largo del camino",
     "watchOutFor": "olvidando la magnitud de la velocidad dentro de la integral",
     "rememberThis": "La longitud del camino proviene de la velocidad.",
@@ -4968,8 +4968,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "¿La longitud del arco utiliza r-prime o r-double-prime?",
-        "answer": "r-prime."
+        "prompt": "¿La longitud de arco usa r'(t) o r''(t)?",
+        "answer": "r'(t)."
       },
       {
         "prompt": "¿Se integra el vector o su magnitud?",
@@ -4978,22 +4978,22 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "Longitud de la curva espacial = velocidad integrada.",
     "quickExample": {
-      "problem": "¿Qué hay dentro de la integral de longitud de arco para r(t)?",
-      "move": "La magnitud de r-primo(t)."
+      "problem": "¿Qué va dentro de la integral de longitud de arco para r(t)?",
+      "move": "La magnitud de r'(t)."
     }
   },
   "calc3-surface-area-double-integrals": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 15: Integrales Múltiples",
     "unit": "Integrales Múltiples",
     "topic": "Área de superficie",
     "name": "Área de superficie con integrales dobles",
-    "useItWhen": "una superficie z = f(x,y) necesita un área de piel real",
-    "looksLike": "encontrar el área de una superficie sobre una región",
-    "doThis": "utilizar el factor raíz de área de superficie sobre la región base",
-    "thinkOfItAs": "región plana debajo, piel inclinada arriba",
+    "useItWhen": "quieres el área real de una superficie z = f(x,y)",
+    "looksLike": "hallar el área de una superficie sobre una región",
+    "doThis": "usa el factor de inclinación sobre la región base",
+    "thinkOfItAs": "una región plana abajo y una superficie inclinada arriba",
     "watchOutFor": "olvidando los parciales de 1 más al cuadrado debajo de la raíz",
-    "rememberThis": "el área de superficie agrega un factor raíz a dA",
+    "rememberThis": "el área de superficie es dA por un factor de inclinación",
     "typicalProblemShapes": [
       "Área de superficie para z = f(x,y)",
       "Una región en el plano xy emparejada con una superficie encima de ella."
@@ -5015,12 +5015,12 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc3-summary-theorems": {
-    "course": "Cálculo Multivariable",
+    "course": "Cálculo Multivariable I",
     "chapter": "Capítulo 16: Cálculo Vectorial",
     "unit": "Cálculo Vectorial",
     "topic": "Resumen de los grandes teoremas del cálculo vectorial",
     "name": "Panorama general del cálculo vectorial",
-    "useItWhen": "sigues mezclando Green, Stokes, divergencia y FTC integral de línea",
+    "useItWhen": "sigues confundiendo Green, Stokes, el teorema de la divergencia y el FTC para integrales de línea",
     "looksLike": "diferentes teoremas integrales con límites, superficies o regiones",
     "doThis": "Relacionar el teorema con el objeto: trayectoria, superficie o volumen.",
     "thinkOfItAs": "la misma idea moviéndose a través de 1D, 2D y 3D",
@@ -5459,7 +5459,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "memoryHook": "Span = todo lo que estos vectores pueden construir.",
     "quickExample": {
       "problem": "¿Qué suele dar el intervalo de dos vectores no paralelos en R2?",
-      "move": "Generalmente todo el avión."
+      "move": "Normalmente todo el plano."
     }
   },
   "la-linear-independence": {
@@ -7837,11 +7837,11 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "topic": "Coeficientes multinomiales",
     "name": "Coeficientes multinomiales",
     "useItWhen": "un conjunto se divide en varios grupos etiquetados",
-    "looksLike": "dividir n objetos en cubos de tamaños a, b, c",
+    "looksLike": "dividir n objetos en grupos de tamaños a, b, c",
     "doThis": "contar cuántas formas de dividirse en los tamaños de grupo",
-    "thinkOfItAs": "combinaciones con más de dos cubos",
+    "thinkOfItAs": "combinaciones con más de dos grupos",
     "watchOutFor": "Tratar una división de muchos grupos como una simple elección.",
-    "rememberThis": "muchos cubos significa multinomial",
+    "rememberThis": "muchos grupos etiquetados significa multinomial",
     "typicalProblemShapes": [
       "Asignar objetos en categorías etiquetadas",
       "Cuente los resultados con varios totales de categorías fijos"
@@ -7849,7 +7849,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "¿Cuál es la idea multinomial en una frase?",
-        "answer": "Dividir en varios cubos."
+        "answer": "Dividir en varios grupos."
       },
       {
         "prompt": "¿Es solo una elección de un paso cuando hay 3 o más grupos etiquetados?",
@@ -8503,48 +8503,48 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "prob-variance-sum": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 7: Covarianza y Varianza de Sumas de Variables Aleatorias",
     "unit": "Esperanza y Varianza",
-    "topic": "Variación de sumas",
-    "name": "Variación de una suma",
+    "topic": "Varianza de una suma",
+    "name": "Varianza de una suma",
     "useItWhen": "se están agregando varias piezas aleatorias",
     "looksLike": "Var(X + Y), sumas independientes, términos de covarianza",
-    "doThis": "primero verifique la independencia antes de agregar variaciones",
-    "thinkOfItAs": "spread combina, pero no siempre gratis",
-    "watchOutFor": "agregar variaciones a ciegas sin verificar la dependencia",
-    "rememberThis": "la variación se suma limpiamente sólo bajo independencia",
+    "doThis": "primero revisa si hay independencia antes de sumar varianzas",
+    "thinkOfItAs": "la dispersión también se suma, pero no siempre gratis",
+    "watchOutFor": "sumar varianzas sin revisar dependencia",
+    "rememberThis": "la varianza se suma limpio solo con independencia",
     "typicalProblemShapes": [
       "Sumas de variables aleatorias",
       "Comparaciones entre reglas de expectativa y varianza"
     ],
     "miniDrill": [
       {
-        "prompt": "¿La variación siempre suma la misma expectativa?",
+        "prompt": "¿La varianza se suma tan fácil como la esperanza?",
         "answer": "No."
       },
       {
-        "prompt": "¿Qué condición hace que la variación se sume limpiamente?",
+        "prompt": "¿Qué condición hace que las varianzas se sumen limpio?",
         "answer": "Independencia."
       }
     ],
-    "memoryHook": "La expectativa siempre suma. La variación necesita ayuda.",
+    "memoryHook": "La esperanza siempre suma. La varianza necesita independencia.",
     "quickExample": {
       "problem": "¿Cuándo Var(X + Y) es igual a Var(X) + Var(Y)?",
       "move": "Cuando X e Y son independientes."
     }
   },
   "prob-indicator": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 6: Propiedades de la Esperanza",
     "unit": "Esperanza y Varianza",
     "topic": "Variables indicadoras",
     "name": "Variables indicadoras",
     "useItWhen": "quieres contar eventos aleatorios con banderas 0-1",
     "looksLike": "I_A, evento ocurrió o no, conteo esperado",
-    "doThis": "convierta cada evento en un cambio 0-1, luego sume los cambios",
-    "thinkOfItAs": "pequeños mostradores de encendido y apagado",
-    "watchOutFor": "olvidar los indicadores también son variables aleatorias",
+    "doThis": "convierte cada evento en un interruptor 0-1 y luego suma los interruptores",
+    "thinkOfItAs": "interruptores pequeños para contar",
+    "watchOutFor": "olvidar que los indicadores también son variables aleatorias",
     "rememberThis": "contar con interruptores 0-1",
     "typicalProblemShapes": [
       "Número esperado de coincidencias, colisiones o aciertos",
@@ -8560,22 +8560,22 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Conteo esperado."
       }
     ],
-    "memoryHook": "Si se puede contar, pruebe con un cambio de 0-1.",
+    "memoryHook": "Si puedes contar, prueba con un 0-1.",
     "quickExample": {
       "problem": "¿Por qué utilizar variables indicadoras?",
       "move": "Convierten los problemas de conteo en problemas de expectativas."
     }
   },
   "prob-lln": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 9: Teorema Central del Límite",
     "unit": "Concentración y Límites",
     "topic": "Ley de los grandes números",
     "name": "Ley de los grandes números",
-    "useItWhen": "Los promedios muestrales siguen creciendo y usted se preocupa por el centro a largo plazo.",
+    "useItWhen": "los promedios muestrales crecen y te importa a qué valor se estabilizan",
     "looksLike": "promedio de muchos ensayos, frecuencia a largo plazo, media muestral",
     "doThis": "separar hacia dónde va el promedio y qué forma tiene la distribución",
-    "thinkOfItAs": "Las carreras largas se asientan cerca de la verdadera media.",
+    "thinkOfItAs": "a la larga, el promedio se pega a la media real",
     "watchOutFor": "confundiendo LLN con CLT",
     "rememberThis": "LLN dice adónde van los promedios; CLT dice cómo se ven",
     "typicalProblemShapes": [
@@ -8592,27 +8592,27 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "El teorema del límite central."
       }
     ],
-    "memoryHook": "LIN encuentra la media. CLT encuentra la forma.",
+    "memoryHook": "La ley de los grandes números dice adónde va el promedio; el CLT dice qué forma toma.",
     "quickExample": {
       "problem": "¿Qué dice la Ley de los Grandes Números en palabras simples?",
       "move": "Los promedios de largo plazo se acercan a la media verdadera."
     }
   },
   "prob-stars-and-bars": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 1: Análisis Combinatorio",
     "unit": "Conteo",
     "topic": "Contar soluciones enteras no negativas",
     "name": "Estrellas y barras",
     "useItWhen": "cuentas formas de dividir un total en grupos",
     "looksLike": "x1 + x2 + ... + xn = k con xi no negativo",
-    "doThis": "convierte el total en estrellas y usa barras para dividir los cubos",
-    "thinkOfItAs": "una fila de objetos con divisores",
+    "doThis": "convierte el total en estrellas y usa barras para separar las cajas",
+    "thinkOfItAs": "una fila de objetos con separadores",
     "watchOutFor": "olvidando si se permite el cero",
-    "rememberThis": "suma en cubos significa estrellas y barras",
+    "rememberThis": "si repartes un total entre cajas, piensa en estrellas y barras",
     "typicalProblemShapes": [
       "Recuentos de soluciones enteras no negativas",
-      "Distribuya bolas idénticas en contenedores."
+      "Repartir bolas idénticas en cajas"
     ],
     "miniDrill": [
       {
@@ -8620,25 +8620,25 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Cambie cada variable hacia abajo en 1 antes de contar."
       },
       {
-        "prompt": "¿Las estrellas y las barras cuentan cubos ordenados o grupos desordenados?",
-        "answer": "Cubos pedidos."
+        "prompt": "¿En estrellas y barras las cajas tienen orden?",
+        "answer": "Sí, las cajas son distintas."
       }
     ],
-    "memoryHook": "Objetos y divisores.",
+    "memoryHook": "Estrellas para el total, barras para separar.",
     "quickExample": {
       "problem": "¿Qué patrón se ajusta a x1 + x2 + x3 = 7 con xi no negativo?",
       "move": "Estrellas y barras."
     }
   },
   "prob-equally-likely": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 2: Probabilidad: Lo Básico",
     "unit": "Bases de Probabilidad",
     "topic": "Resultados igualmente probables",
     "name": "Resultados igualmente probables",
     "useItWhen": "cada resultado es igualmente probable",
     "looksLike": "dado justo, sorteo de cartas justo, permutación aleatoria, espacio muestral uniforme",
-    "doThis": "contar los resultados favorables sobre los resultados totales",
+    "doThis": "primero confirma que todo sea equiprobable, luego cuenta favorables sobre totales",
     "thinkOfItAs": "la probabilidad se convierte en una fracción del espacio muestral",
     "watchOutFor": "Usar favorable sobre el total cuando los resultados no son igualmente probables.",
     "rememberThis": "el conteo funciona solo después de una verificación de igualdad de probabilidades",
@@ -8663,15 +8663,15 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "prob-secretary-problem": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 2: Probabilidad: Lo Básico",
     "unit": "Bases de Probabilidad",
-    "topic": "problema de secretaria",
-    "name": "Problema de secretaria",
+    "topic": "problema del secretario",
+    "name": "Problema del secretario",
     "useItWhen": "Las opciones llegan una por una y las opciones rechazadas desaparecen para siempre.",
     "looksLike": "secuencia de entrevista, regla del mejor hasta ahora, deténgase y elija ahora",
     "doThis": "omita una muestra inicial y luego elija la primera opción que supere todo lo visto hasta ahora",
-    "thinkOfItAs": "Pruebe primero, luego salte al primer destacado.",
+    "thinkOfItAs": "primero observa, luego toma al primer candidato que rompa el récord",
     "watchOutFor": "tratando de comparar con futuros candidatos que no has visto",
     "rememberThis": "omita algunos y luego tome el siguiente mejor hasta ahora",
     "typicalProblemShapes": [
@@ -8688,21 +8688,21 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Observe primero, luego elija el siguiente récord."
       }
     ],
-    "memoryHook": "Pruebe y luego elija el siguiente producto destacado.",
+    "memoryHook": "Mira un tramo, luego elige al siguiente mejor hasta ahora.",
     "quickExample": {
       "problem": "¿Cuál es la pista de reconocimiento para los problemas estilo secretaria?",
       "move": "Elección secuencial sin vuelta atrás."
     }
   },
   "prob-coupon-collector": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 3: Variables Aleatorias Discretas",
     "unit": "Variables Aleatorias",
     "topic": "Coleccionista de cupones",
     "name": "Coleccionista de cupones",
     "useItWhen": "Sigues probando hasta que haya aparecido cada tipo.",
     "looksLike": "recoger todos los n tipos, sorteos repetidos, tiempo de espera",
-    "doThis": "dividir la espera total en etapas y agregar las esperas esperadas",
+    "doThis": "divide la espera total en etapas y suma los tiempos esperados de cada etapa",
     "thinkOfItAs": "el último elemento que falta es el que tarda más",
     "watchOutFor": "Tratar cada nueva etapa del cupón como si tuviera la misma oportunidad.",
     "rememberThis": "Los problemas de recopilación de todos se dividen en etapas.",
@@ -8727,7 +8727,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "prob-negative-binomial": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 3: Variables Aleatorias Discretas",
     "unit": "Variables Aleatorias",
     "topic": "Patrón binomial negativo",
@@ -8759,7 +8759,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "prob-hypergeometric": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 3: Variables Aleatorias Discretas",
     "unit": "Variables Aleatorias",
     "topic": "patrón hipergeométrico",
@@ -8791,7 +8791,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "prob-uniform-continuous": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 4: Variables Aleatorias Continuas",
     "unit": "Variables Aleatorias",
     "topic": "Distribución uniforme continua",
@@ -8823,7 +8823,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "prob-exponential": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 4: Variables Aleatorias Continuas",
     "unit": "Variables Aleatorias",
     "topic": "Distribución exponencial",
@@ -8845,7 +8845,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "¿Qué distribución discreta es su socio de conteo cercano?",
-        "answer": "Poison."
+        "answer": "Poisson."
       }
     ],
     "memoryHook": "Espera exponencial para el próximo evento.",
@@ -8855,7 +8855,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "prob-normal-approximation": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 4: Variables Aleatorias Continuas",
     "unit": "Variables Aleatorias",
     "topic": "Aproximación normal a un binomio",
@@ -8887,15 +8887,15 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "prob-conditional-distribution": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 5: Distribución Conjunta e Independencia",
     "unit": "Comportamiento Conjunto",
     "topic": "Distribuciones condicionales",
     "name": "Distribución condicional",
     "useItWhen": "una variable está fijada y quieres la otra después de esa información",
     "looksLike": "X dado Y = y, PMF condicional, densidad condicional",
-    "doThis": "congelar la información proporcionada, luego volver a normalizar dentro de esa porción",
-    "thinkOfItAs": "haciendo zoom en una franja de la imagen conjunta",
+    "doThis": "fija la información dada y luego renormaliza dentro de esa parte",
+    "thinkOfItAs": "hacer zoom en una rebanada de la distribución conjunta",
     "watchOutFor": "usando la probabilidad total original después del condicionamiento",
     "rememberThis": "condición primero, luego renormalizar",
     "typicalProblemShapes": [
@@ -8909,23 +8909,23 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "¿A qué deben sumar aún las probabilidades condicionales?",
-        "answer": "1 dentro de la rebanada acondicionada."
+        "answer": "1 dentro de la rebanada condicionada."
       }
     ],
-    "memoryHook": "Primero corte y luego vuelva a escalar.",
+    "memoryHook": "Primero cortas; luego reescalas.",
     "quickExample": {
       "problem": "¿Qué sucede con una distribución conjunta cuando se condiciona Y = y?",
       "move": "Lo cortas y vuelves a escalar dentro de esa rebanada."
     }
   },
   "prob-conditional-expectation": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 7: Covarianza y Varianza de Sumas de Variables Aleatorias",
     "unit": "Esperanza y Varianza",
     "topic": "Expectativa condicional",
     "name": "Expectativa condicional",
     "useItWhen": "la información adicional cambia su mejor estimación promedio",
-    "looksLike": "E[X dado Y], promedio después de la información, regla de la torre",
+    "looksLike": "E[X | Y], promedio después de saber algo, regla de la torre",
     "doThis": "tomar primero el valor esperado dentro del mundo condicionado",
     "thinkOfItAs": "el promedio después de que llega la nueva pista",
     "watchOutFor": "Tratar la expectativa condicional como un único número fijo en cada situación.",
@@ -8951,11 +8951,11 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "prob-chernoff": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 8: Introducción a las Desigualdades de Concentración",
     "unit": "Concentración y Límites",
     "topic": "Límites de Chernoff",
-    "name": "Chernoff obligado",
+    "name": "Cota de Chernoff",
     "useItWhen": "una suma de muchas variables independientes de estilo indicador debe permanecer cerca de su media",
     "looksLike": "probabilidad de cola para una suma binomial, estilo exp(-c n) limitado",
     "doThis": "reconocerlo como la herramienta de concentración más precisa para sumas independientes",
@@ -8983,7 +8983,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "prob-bernoulli-pattern": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 3: Variables Aleatorias Discretas",
     "unit": "Variables Aleatorias",
     "topic": "patrón de bernoulli",
@@ -9015,7 +9015,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "prob-gamma-pattern": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 4: Variables Aleatorias Continuas",
     "unit": "Variables Aleatorias",
     "topic": "Patrón de distribución gamma",
@@ -9043,18 +9043,18 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "memoryHook": "Exponencial espera a uno, gamma espera a muchos.",
     "quickExample": {
       "problem": "¿Qué distribución continua generaliza la espera exponencial?",
-      "move": "Gama."
+      "move": "Gamma."
     }
   },
   "prob-independent-rvs": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 5: Distribución Conjunta e Independencia",
     "unit": "Comportamiento Conjunto",
     "topic": "Variables aleatorias independientes",
     "name": "Variables aleatorias independientes",
     "useItWhen": "el comportamiento conjunto debe dividirse en partes separadas",
-    "looksLike": "factores pmf articulares, factores de densidad articular, una variable no dice nada sobre la otra",
-    "doThis": "comprobar si la unión es igual al producto de los marginales",
+    "looksLike": "la pmf conjunta factoriza, la densidad conjunta factoriza, una variable no dice nada sobre la otra",
+    "doThis": "comprueba si la conjunta es el producto de las marginales",
     "thinkOfItAs": "dos historias aleatorias que no interfieren",
     "watchOutFor": "asumir independencia solo porque las variables parecen no estar relacionadas",
     "rememberThis": "independencia significa conjunto igual al producto",
@@ -9072,14 +9072,14 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "No."
       }
     ],
-    "memoryHook": "La articulación se divide en dos partes.",
+    "memoryHook": "Independencia = conjunta partida en dos.",
     "quickExample": {
       "problem": "¿Qué es la prueba rápida de independencia de una mesa conjunta?",
       "move": "Compare las entradas conjuntas con los productos marginales."
     }
   },
   "prob-sum-independent-rvs": {
-    "course": "Probabilidad",
+    "course": "Probabilidad I",
     "chapter": "Capítulo 5: Distribución Conjunta e Independencia",
     "unit": "Comportamiento Conjunto",
     "topic": "Sumas de variables aleatorias independientes",

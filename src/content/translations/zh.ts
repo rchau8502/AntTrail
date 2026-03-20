@@ -27,7 +27,7 @@ export interface LocalizedCardContent {
 
 export const zhCourseContent: Record<string, LocalizedCourseText> = {
   "calc-1": {
-    "title": "单变量微积分 1",
+    "title": "单变量微积分 I",
     "shortDescription": "给需要先看题型和步骤的学生做的快速单变量微积分复习。",
     "units": [
       "极限",
@@ -45,7 +45,7 @@ export const zhCourseContent: Record<string, LocalizedCourseText> = {
     ]
   },
   "calc-2": {
-    "title": "单变量微积分 2",
+    "title": "单变量微积分 II",
     "shortDescription": "积分技巧、参数与极坐标，以及单变量级数识别。",
     "units": [
       "反函数、指数与对数函数",
@@ -64,7 +64,7 @@ export const zhCourseContent: Record<string, LocalizedCourseText> = {
     ]
   },
   "calc-3": {
-    "title": "多元微积分",
+    "title": "多元微积分 I",
     "shortDescription": "向量、偏导数、重积分和多元微积分。",
     "units": [
       "向量与三维空间",
@@ -82,8 +82,8 @@ export const zhCourseContent: Record<string, LocalizedCourseText> = {
     ]
   },
   "linear-algebra": {
-    "title": "线性代数",
-    "shortDescription": "把矩阵、向量空间和特征值概念压缩成识别优先的第一步。",
+    "title": "线性代数导论",
+    "shortDescription": "把矩阵、向量空间和特征值这些核心概念压缩成先认题型、先认第一步的复习卡。",
     "units": [
       "线性方程组与行化简",
       "矩阵",
@@ -114,7 +114,7 @@ export const zhCourseContent: Record<string, LocalizedCourseText> = {
       "关系与基数"
     ],
     "chapters": [
-      "第 1 章：范式转变",
+      "第 1 章：思维方式的转变",
       "第 2 章：逻辑与证明语言",
       "第 3 章：集合与函数",
       "第 4 章：整除与欧几里得算法",
@@ -125,7 +125,7 @@ export const zhCourseContent: Record<string, LocalizedCourseText> = {
     ]
   },
   "probability": {
-    "title": "概率论",
+    "title": "概率论 I",
     "shortDescription": "计数、条件概率、随机变量和期望。",
     "units": [
       "计数",
@@ -151,7 +151,7 @@ export const zhCourseContent: Record<string, LocalizedCourseText> = {
 
 export const zhCardContent: Record<string, LocalizedCardContent> = {
   "intuitive-limit": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 1 章：函数与极限",
     "unit": "极限",
     "topic": "极限的直观想法",
@@ -160,7 +160,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "looksLike": "当 x 变为数字时的图形、表格或 lim",
     "doThis": "从左、右看并命名目标值",
     "thinkOfItAs": "走到一扇门前，但没有跨过门",
-    "watchOutFor": "在该点与在该点附近混合",
+    "watchOutFor": "把点上的值和靠近这个点的情况混为一谈",
     "rememberThis": "极限是关于接近，而不是在",
     "typicalProblemShapes": [
       "图表询问曲线接近 x = a 时的 y 值",
@@ -183,7 +183,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "direct-substitution": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 1 章：函数与极限",
     "unit": "极限",
     "topic": "直接替代",
@@ -195,7 +195,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "watchOutFor": "获取 0/0 并仍在尝试插入",
     "rememberThis": "没有中断意味着只需插入",
     "typicalProblemShapes": [
-      "像 x^3 - 4x + 7 这样的多项式",
+      "像 x^3 - 4x + 7 这种多项式",
       "目标处分母不为零的有理表达式"
     ],
     "miniDrill": [
@@ -205,7 +205,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "你插入并得到 0/0。保持直接替换还是切换？",
-        "answer": "转变。 0/0表示先简化。"
+        "answer": "换方法。0/0 说明要先化简。"
       }
     ],
     "memoryHook": "无需中断，只需插入即可。",
@@ -215,7 +215,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "factoring-0-0": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 1 章：函数与极限",
     "unit": "极限",
     "topic": "因式分解去除 0/0",
@@ -247,7 +247,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "rationalizing": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 1 章：函数与极限",
     "unit": "极限",
     "topic": "合理化",
@@ -279,7 +279,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "infinite-limits": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 1 章：函数与极限",
     "unit": "极限",
     "topic": "无限极限",
@@ -311,7 +311,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "limits-at-infinity": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 1 章：函数与极限",
     "unit": "极限",
     "topic": "无穷大极限",
@@ -343,7 +343,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "continuity": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 1 章：函数与极限",
     "unit": "极限",
     "topic": "连续性",
@@ -375,7 +375,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "derivative-slope-rate": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 2 章：导数",
     "unit": "导数",
     "topic": "导数作为斜率和变化率",
@@ -407,7 +407,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "derivative-definition": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 2 章：导数",
     "unit": "导数",
     "topic": "定义的导数",
@@ -439,7 +439,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "power-rule": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 2 章：导数",
     "unit": "导数",
     "topic": "权力法则",
@@ -471,7 +471,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "constant-rule": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 2 章：导数",
     "unit": "导数",
     "topic": "不变的规则",
@@ -503,7 +503,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "sum-difference-rules": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 2 章：导数",
     "unit": "导数",
     "topic": "和与差规则",
@@ -535,7 +535,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "product-rule": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 2 章：导数",
     "unit": "导数",
     "topic": "产品规则",
@@ -567,7 +567,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "quotient-rule": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 2 章：导数",
     "unit": "导数",
     "topic": "商规则",
@@ -599,7 +599,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "chain-rule": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 2 章：导数",
     "unit": "导数",
     "topic": "链式法则",
@@ -631,7 +631,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "implicit-differentiation": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 2 章：导数",
     "unit": "导数",
     "topic": "隐式微分",
@@ -663,7 +663,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "logarithmic-differentiation": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 2 章：导数",
     "unit": "导数",
     "topic": "对数微分",
@@ -695,7 +695,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "higher-derivatives": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 2 章：导数",
     "unit": "导数",
     "topic": "更高的导数",
@@ -727,7 +727,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "tangent-line": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 3 章：导数的应用",
     "unit": "应用",
     "topic": "切线",
@@ -759,7 +759,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "normal-line": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 3 章：导数的应用",
     "unit": "应用",
     "topic": "正常线",
@@ -791,7 +791,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "increasing-decreasing": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 3 章：导数的应用",
     "unit": "应用",
     "topic": "增加和减少",
@@ -823,7 +823,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "local-max-min": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 3 章：导数的应用",
     "unit": "应用",
     "topic": "局部最大值和最小值",
@@ -855,7 +855,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "concavity": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 3 章：导数的应用",
     "unit": "应用",
     "topic": "凹",
@@ -887,7 +887,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "inflection-points": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 3 章：导数的应用",
     "unit": "应用",
     "topic": "拐点",
@@ -919,7 +919,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "first-derivative-test": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 3 章：导数的应用",
     "unit": "应用",
     "topic": "一阶导数测试",
@@ -951,7 +951,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "second-derivative-test": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 3 章：导数的应用",
     "unit": "应用",
     "topic": "二阶导数测试",
@@ -983,7 +983,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "optimization": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 3 章：导数的应用",
     "unit": "应用",
     "topic": "优化",
@@ -1015,7 +1015,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "related-rates": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 3 章：导数的应用",
     "unit": "应用",
     "topic": "相关价格",
@@ -1047,7 +1047,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "linear-approximation": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 3 章：导数的应用",
     "unit": "应用",
     "topic": "线性近似",
@@ -1079,7 +1079,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "antiderivative-idea": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 4 章：积分",
     "unit": "积分",
     "topic": "反派生思想",
@@ -1111,7 +1111,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "indefinite-integral": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 4 章：积分",
     "unit": "积分",
     "topic": "不定积分",
@@ -1143,7 +1143,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "integral-power-rule": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 4 章：积分",
     "unit": "积分",
     "topic": "积分的基本幂法则",
@@ -1175,7 +1175,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "definite-integral-area": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 4 章：积分",
     "unit": "积分",
     "topic": "定积分作为面积概念",
@@ -1207,7 +1207,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "ftc-practical": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 4 章：积分",
     "unit": "积分",
     "topic": "微积分基本定理",
@@ -1239,7 +1239,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "u-substitution": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 4 章：积分",
     "unit": "积分",
     "topic": "u-替换基本介绍",
@@ -1271,7 +1271,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "mean-value-theorem": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 3 章：导数的应用",
     "unit": "应用",
     "topic": "中值定理",
@@ -1303,7 +1303,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "curve-sketching": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 3 章：导数的应用",
     "unit": "应用",
     "topic": "曲线绘制总结",
@@ -1335,7 +1335,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "newtons-method": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 3 章：导数的应用",
     "unit": "应用",
     "topic": "牛顿法",
@@ -1367,7 +1367,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "areas-between-curves": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 5 章：积分的应用",
     "unit": "积分应用",
     "topic": "曲线之间的区域",
@@ -1399,7 +1399,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "disk-washer-method": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 5 章：积分的应用",
     "unit": "积分应用",
     "topic": "按圆盘和垫圈计算的体积",
@@ -1431,7 +1431,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "shell-method": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 5 章：积分的应用",
     "unit": "积分应用",
     "topic": "圆柱壳的体积",
@@ -1463,7 +1463,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "work-integrals": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 5 章：积分的应用",
     "unit": "积分应用",
     "topic": "工作",
@@ -1495,7 +1495,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "average-value-function": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 5 章：积分的应用",
     "unit": "积分应用",
     "topic": "函数的平均值",
@@ -1527,7 +1527,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "limit-laws": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 1 章：函数与极限",
     "unit": "极限",
     "topic": "使用极限定律计算极限",
@@ -1559,7 +1559,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "derivative-as-function": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 2 章：导数",
     "unit": "导数",
     "topic": "作为函数的导数",
@@ -1591,7 +1591,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "trig-derivatives": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 2 章：导数",
     "unit": "导数",
     "topic": "三角函数的导数",
@@ -1623,7 +1623,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "differentials": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 2 章：导数",
     "unit": "导数",
     "topic": "线性近似和微分",
@@ -1655,7 +1655,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "area-distance-problems": {
-    "course": "单变量微积分 1",
+    "course": "单变量微积分 I",
     "chapter": "第 4 章：积分",
     "unit": "积分",
     "topic": "面积和距离问题",
@@ -1687,7 +1687,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-integration-by-parts": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 7 章：积分技巧",
     "unit": "积分技巧",
     "topic": "分部整合",
@@ -1719,7 +1719,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-trig-integrals": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 7 章：积分技巧",
     "unit": "积分技巧",
     "topic": "三角积分",
@@ -1751,7 +1751,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-trig-substitution": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 7 章：积分技巧",
     "unit": "积分技巧",
     "topic": "三角函数替换",
@@ -1783,7 +1783,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-partial-fractions": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 7 章：积分技巧",
     "unit": "积分技巧",
     "topic": "部分分数",
@@ -1815,7 +1815,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-improper-integrals": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 7 章：积分技巧",
     "unit": "积分技巧",
     "topic": "不恰当的积分",
@@ -1847,7 +1847,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-numerical-integration": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 7 章：积分技巧",
     "unit": "积分技巧",
     "topic": "数值积分",
@@ -1879,7 +1879,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-arc-length": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 8 章：积分的更多应用",
     "unit": "应用与曲线",
     "topic": "弧长",
@@ -1911,7 +1911,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-surface-area": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 8 章：积分的更多应用",
     "unit": "应用与曲线",
     "topic": "回转表面积",
@@ -1943,7 +1943,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-parametric-curves": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 10 章：参数方程与极坐标",
     "unit": "应用与曲线",
     "topic": "参数曲线",
@@ -1975,7 +1975,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-parametric-derivatives": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 10 章：参数方程与极坐标",
     "unit": "应用与曲线",
     "topic": "参数曲线的导数",
@@ -2007,7 +2007,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-parametric-arc-length": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 10 章：参数方程与极坐标",
     "unit": "应用与曲线",
     "topic": "参数曲线的弧长",
@@ -2039,7 +2039,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-polar-coordinates": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 10 章：参数方程与极坐标",
     "unit": "应用与曲线",
     "topic": "极坐标",
@@ -2071,7 +2071,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-polar-area": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 10 章：参数方程与极坐标",
     "unit": "应用与曲线",
     "topic": "极坐标面积",
@@ -2103,7 +2103,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-polar-slope": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 10 章：参数方程与极坐标",
     "unit": "应用与曲线",
     "topic": "极曲线的斜率",
@@ -2135,7 +2135,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-polar-arc-length": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 10 章：参数方程与极坐标",
     "unit": "应用与曲线",
     "topic": "极坐标中的弧长",
@@ -2167,7 +2167,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-sequences": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "序列",
@@ -2199,7 +2199,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-sequence-limits": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "序列的极限",
@@ -2231,7 +2231,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-series-basics": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "系列基础知识",
@@ -2263,7 +2263,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-geometric-series": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "几何系列",
@@ -2295,7 +2295,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-telescoping-series": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "伸缩系列",
@@ -2327,7 +2327,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-nth-term-test": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "第N项测试",
@@ -2359,7 +2359,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-integral-test": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "整体测试",
@@ -2391,7 +2391,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-p-series": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "P系列",
@@ -2423,7 +2423,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-comparison-test": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "对比测试",
@@ -2455,7 +2455,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-limit-comparison-test": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "极限对比测试",
@@ -2487,7 +2487,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-alternating-series-test": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "交替串联试验",
@@ -2519,7 +2519,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-absolute-conditional": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "绝对收敛和条件收敛",
@@ -2551,7 +2551,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-ratio-test": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "比率测试",
@@ -2583,7 +2583,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-root-test": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "根测试",
@@ -2615,7 +2615,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-power-series": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "动力系列",
@@ -2647,7 +2647,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-radius-interval": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "收敛半径和区间",
@@ -2679,7 +2679,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-taylor-polynomials": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "泰勒多项式",
@@ -2711,7 +2711,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-taylor-series": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "泰勒级数",
@@ -2743,7 +2743,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-maclaurin-series": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "麦克劳林级数",
@@ -2775,7 +2775,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-common-series": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "常见麦克劳林级数",
@@ -2807,7 +2807,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-inverse-functions": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 6 章：反函数、指数与对数函数",
     "unit": "反函数、指数与对数函数",
     "topic": "反函数及其导数",
@@ -2839,7 +2839,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-exponential-derivatives": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 6 章：反函数、指数与对数函数",
     "unit": "反函数、指数与对数函数",
     "topic": "指数函数及其导数",
@@ -2871,7 +2871,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-log-functions": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 6 章：反函数、指数与对数函数",
     "unit": "反函数、指数与对数函数",
     "topic": "对数函数",
@@ -2903,7 +2903,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-growth-decay": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 6 章：反函数、指数与对数函数",
     "unit": "反函数、指数与对数函数",
     "topic": "指数增长和衰退",
@@ -2935,7 +2935,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-inverse-trig": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 6 章：反函数、指数与对数函数",
     "unit": "反函数、指数与对数函数",
     "topic": "反三角函数",
@@ -2967,7 +2967,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-lhopitals-rule": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 6 章：反函数、指数与对数函数",
     "unit": "反函数、指数与对数函数",
     "topic": "不定形式和 l'Hospital 规则",
@@ -2999,7 +2999,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-center-of-mass": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 8 章：积分的更多应用",
     "unit": "应用与曲线",
     "topic": "质心",
@@ -3031,7 +3031,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-hydrostatic-force": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 8 章：积分的更多应用",
     "unit": "应用与曲线",
     "topic": "静水力",
@@ -3063,7 +3063,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-probability-density": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 8 章：积分的更多应用",
     "unit": "应用与曲线",
     "topic": "概率密度",
@@ -3095,7 +3095,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-direction-fields": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 9 章：微分方程",
     "unit": "微分方程",
     "topic": "方向场和欧拉方法",
@@ -3127,7 +3127,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-separable-equations": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 9 章：微分方程",
     "unit": "微分方程",
     "topic": "可分离方程",
@@ -3159,7 +3159,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-population-growth-models": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 9 章：微分方程",
     "unit": "微分方程",
     "topic": "人口增长模型",
@@ -3191,7 +3191,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-linear-differential-equations": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 9 章：微分方程",
     "unit": "微分方程",
     "topic": "线性方程组",
@@ -3223,7 +3223,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-hyperbolic-functions": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 6 章：反函数、指数与对数函数",
     "unit": "反函数、指数与对数函数",
     "topic": "双曲函数",
@@ -3255,7 +3255,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-integration-strategy": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 7 章：积分技巧",
     "unit": "积分技巧",
     "topic": "整合策略",
@@ -3287,7 +3287,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-integration-tables-tech": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 7 章：积分技巧",
     "unit": "积分技巧",
     "topic": "使用表格和技术进行集成",
@@ -3319,7 +3319,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-econ-bio-applications": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 8 章：积分的更多应用",
     "unit": "应用与曲线",
     "topic": "在经济学和生物学中的应用",
@@ -3351,7 +3351,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-modeling-differential-equations": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 9 章：微分方程",
     "unit": "微分方程",
     "topic": "使用微分方程建模",
@@ -3383,7 +3383,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-predator-prey": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 9 章：微分方程",
     "unit": "微分方程",
     "topic": "捕食者-被捕食者系统",
@@ -3415,7 +3415,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-conic-sections": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 10 章：参数方程与极坐标",
     "unit": "应用与曲线",
     "topic": "圆锥截面",
@@ -3447,7 +3447,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-polar-conics": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 10 章：参数方程与极坐标",
     "unit": "应用与曲线",
     "topic": "极坐标中的圆锥曲线",
@@ -3479,7 +3479,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-series-strategy": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "测试策略系列",
@@ -3511,7 +3511,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc2-taylor-applications": {
-    "course": "单变量微积分 2",
+    "course": "单变量微积分 II",
     "chapter": "第 11 章：数列、级数与幂级数",
     "unit": "数列与级数",
     "topic": "泰勒多项式的应用",
@@ -3703,16 +3703,16 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc3-planes": {
-    "course": "多元微积分",
+    "course": "多元微积分 I",
     "chapter": "第 12 章：向量与空间几何",
     "unit": "向量与三维空间",
-    "topic": "太空中的飞机",
-    "name": "飞机",
-    "useItWhen": "您需要 3D 平面",
+    "topic": "空间中的平面",
+    "name": "平面",
+    "useItWhen": "你要在三维空间里认平面或写平面方程",
     "looksLike": "ax + by + cz = d",
     "doThis": "使用一个点和一个法向量",
-    "thinkOfItAs": "所有点都面向相同的法线",
-    "watchOutFor": "将法线向量与平面内的方向混淆",
+    "thinkOfItAs": "同一张无限延伸的平板",
+    "watchOutFor": "把法向量和面内方向向量混在一起",
     "rememberThis": "法线向量控制平面",
     "typicalProblemShapes": [
       "平面方程",
@@ -3725,26 +3725,26 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "ax + by + cz = d 是直线还是平面？",
-        "answer": "一架飞机。"
+        "answer": "一个平面。"
       }
     ],
-    "memoryHook": "平面 = 点加法线。",
+    "memoryHook": "平面 = 一点 + 法向量。",
     "quickExample": {
       "problem": "平面方程中<a,b,c>是什么意思？",
       "move": "它是法向量。"
     }
   },
   "calc3-quadric-surfaces": {
-    "course": "多元微积分",
+    "course": "多元微积分 I",
     "chapter": "第 12 章：向量与空间几何",
     "unit": "向量与三维空间",
     "topic": "二次曲面",
     "name": "二次曲面",
-    "useItWhen": "您需要 3D 表面名称的快速大图地图",
-    "looksLike": "椭球面、抛物面、双曲面、圆锥体、圆柱体",
-    "doThis": "读取符号，计算变量的平方，然后找出缺失的变量（如果它是圆柱体）",
+    "useItWhen": "你要看方程就快速认出三维曲面的名字",
+    "looksLike": "椭球面、抛物面、双曲面、圆锥面、柱面",
+    "doThis": "先看平方项的正负号，再看有没有变量缺席，最后看常数在等号哪边",
     "thinkOfItAs": "形状识别清单，而不是解决问题",
-    "watchOutFor": "将每个平方变量方程视为同一个曲面",
+    "watchOutFor": "看到都是平方项，就以为所有曲面长得一样",
     "rememberThis": "符号和缺失变量命名表面",
     "typicalProblemShapes": [
       "根据方程命名曲面",
@@ -3752,39 +3752,39 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "气缸通常意味着什么？",
-        "answer": "缺少一个变量。"
+        "prompt": "柱面的最快识别线索是什么？",
+        "answer": "少了一个变量。"
       },
       {
         "prompt": "这里标志的改变重要吗？",
-        "answer": "是的。他们通常决定表面名称。"
+        "answer": "对，正负号经常直接决定曲面类型。"
       }
     ],
-    "memoryHook": "符号加上缺失的变量可以说明形状。",
+    "memoryHook": "先看符号，再看缺谁。",
     "quickExample": {
       "problem": "在二次曲面方程中首先要检查什么？",
       "move": "符号模式以及变量是否缺失。"
     }
   },
   "calc3-cylinders": {
-    "course": "多元微积分",
+    "course": "多元微积分 I",
     "chapter": "第 12 章：向量与空间几何",
     "unit": "向量与三维空间",
-    "topic": "气缸",
-    "name": "3D 圆柱体",
-    "useItWhen": "方程中缺少一个变量",
+    "topic": "柱面",
+    "name": "柱面",
+    "useItWhen": "方程里少了一个变量",
     "looksLike": "x^2 + y^2 = 4，y = x^2，x^2/4 + z^2 = 1",
     "doThis": "在可见变量中绘制二维曲线，然后沿着缺失变量将其永远延伸",
-    "thinkOfItAs": "直接穿过空间的二维图形",
-    "watchOutFor": "思考圆柱体总是意味着圆柱体",
-    "rememberThis": "缺少变量意味着图形朝该方向延伸",
+    "thinkOfItAs": "把二维图像沿着某个轴一直拉长",
+    "watchOutFor": "以为柱面一定是圆柱，其实抛物线也能拉成柱面",
+    "rememberThis": "少一个变量，就沿那个方向一直拉",
     "typicalProblemShapes": [
       "抛物柱面： y = x^2",
       "椭圆柱：x^2/4 + y^2 = 1"
     ],
     "miniDrill": [
       {
-        "prompt": "如果缺少 z，则圆柱体朝哪个方向运行？",
+        "prompt": "如果缺 z，柱面沿哪个方向延伸？",
         "answer": "沿 z 轴。"
       },
       {
@@ -3792,7 +3792,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "是的。"
       }
     ],
-    "memoryHook": "缺失变量=拉伸图。",
+    "memoryHook": "少谁，就沿谁拉长。",
     "quickExample": {
       "problem": "3D 中 y = x^2 是什么曲面？",
       "move": "沿 z 轴延伸的抛物柱面。"
@@ -4365,13 +4365,13 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "必须出现什么额外因素？",
-        "answer": "河"
+        "answer": "r。"
       }
     ],
     "memoryHook": "圆形区域？转到极坐标并添加 r。",
     "quickExample": {
       "problem": "极坐标二重积分中出现什么额外因子？",
-      "move": "河"
+      "move": "r。"
     }
   },
   "calc3-triple-integrals": {
@@ -4407,7 +4407,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc3-cylindrical-coordinates": {
-    "course": "多元微积分",
+    "course": "多元微积分 I",
     "chapter": "第 15 章：重积分",
     "unit": "重积分",
     "topic": "圆柱坐标",
@@ -4419,7 +4419,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "watchOutFor": "忘记雅可比因子 r",
     "rememberThis": "圆柱 = 极坐标 z",
     "typicalProblemShapes": [
-      "气缸和管子",
+      "圆柱体、管状区域",
       "x^2 + y^2 的积函数"
     ],
     "miniDrill": [
@@ -4429,25 +4429,25 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "还出现什么额外因素？",
-        "answer": "河"
+        "answer": "r。"
       }
     ],
-    "memoryHook": "极地在楼下，z在楼上。",
+    "memoryHook": "下面用极坐标，上面保留 z。",
     "quickExample": {
       "problem": "什么时候圆柱形比矩形更好？",
       "move": "当实体绕 z 轴呈圆形时。"
     }
   },
   "calc3-spherical-coordinates": {
-    "course": "多元微积分",
+    "course": "多元微积分 I",
     "chapter": "第 15 章：重积分",
     "unit": "重积分",
     "topic": "球坐标",
     "name": "球坐标",
     "useItWhen": "固体是球形或球体友好的",
-    "looksLike": "球体、锥体、rho^2 项",
-    "doThis": "切换到 rho、theta、phi 并包含完整的雅可比行列式",
-    "thinkOfItAs": "3D极坐标",
+    "looksLike": "球体、球壳、锥体、rho^2 sin(phi)",
+    "doThis": "换成 rho、theta、phi，并带上完整的雅可比因子",
+    "thinkOfItAs": "三维版极坐标",
     "watchOutFor": "混淆了 phi 和 theta 或忘记了正弦因子",
     "rememberThis": "球面问题，例如球坐标",
     "typicalProblemShapes": [
@@ -4457,14 +4457,14 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "雅可比行列式中出现了什么额外的三角因子？",
-        "answer": "新披。"
+        "answer": "sin(phi)。"
       },
       {
         "prompt": "球体的最佳坐标？",
-        "answer": "球形。"
+        "answer": "球坐标。"
       }
     ],
-    "memoryHook": "球体形状？变成球形。",
+    "memoryHook": "球对称，就改球坐标。",
     "quickExample": {
       "problem": "什么样的实体通常需要球坐标？",
       "move": "球体或球壳。"
@@ -4727,17 +4727,17 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc3-divergence-and-curl": {
-    "course": "多元微积分",
+    "course": "多元微积分 I",
     "chapter": "第 16 章：向量分析",
     "unit": "向量分析",
-    "topic": "发散和旋度",
-    "name": "发散和卷曲",
-    "useItWhen": "你需要一个领域的局部展开或局部旋转",
-    "looksLike": "div F 和curl F",
-    "doThis": "将散度读作源/汇，将旋度读作旋转",
-    "thinkOfItAs": "传播与旋转",
-    "watchOutFor": "混合每个人的衡量标准",
-    "rememberThis": "散度扩散，旋度旋转",
+    "topic": "散度和旋度",
+    "name": "散度和旋度",
+    "useItWhen": "你要看向量场在一点附近是往外散还是在打转",
+    "looksLike": "div F 和 curl F",
+    "doThis": "把散度读成源/汇，把旋度读成局部打转",
+    "thinkOfItAs": "一个看会不会往外冒，一个看会不会绕圈",
+    "watchOutFor": "把散度和旋度的物理意思弄反",
+    "rememberThis": "散度看外散，旋度看打转",
     "typicalProblemShapes": [
       "某一点的场行为",
       "使用大定理之前的测试"
@@ -4745,21 +4745,21 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "哪一个测量旋转？",
-        "answer": "卷曲。"
+        "answer": "旋度。"
       },
       {
         "prompt": "哪一个衡量源行为或汇行为？",
-        "answer": "分歧。"
+        "answer": "散度。"
       }
     ],
-    "memoryHook": "发散=传播。卷曲=旋转。",
+    "memoryHook": "散度外散，旋度打转。",
     "quickExample": {
-      "problem": "卷曲描述什么？",
-      "move": "本地轮换。"
+      "problem": "旋度描述什么？",
+      "move": "局部旋转。"
     }
   },
   "calc3-divergence-theorem": {
-    "course": "多元微积分",
+    "course": "多元微积分 I",
     "chapter": "第 16 章：向量分析",
     "unit": "向量分析",
     "topic": "散度定理",
@@ -4767,7 +4767,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "闭面通量应该成为三重积分",
     "looksLike": "穿过封闭表面的通量",
     "doThis": "将表面通量交换为散度三重积分",
-    "thinkOfItAs": "皮肤流动向内扩散",
+    "thinkOfItAs": "把边界上的通量改写成体积里的散度总和",
     "watchOutFor": "在开放表面上使用它",
     "rememberThis": "闭合表面通量可以变成体积积分",
     "typicalProblemShapes": [
@@ -4781,27 +4781,27 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "三重积分里面显示了什么？",
-        "answer": "分歧。"
+        "answer": "散度。"
       }
     ],
-    "memoryHook": "封闭皮肤？向内移动，发散。",
+    "memoryHook": "封闭曲面通量，想到体积里的散度。",
     "quickExample": {
       "problem": "该定理交易什么？",
       "move": "内部三重积分的闭面通量。"
     }
   },
   "calc3-stokes-theorem": {
-    "course": "多元微积分",
+    "course": "多元微积分 I",
     "chapter": "第 16 章：向量分析",
     "unit": "向量分析",
     "topic": "斯托克斯定理",
     "name": "斯托克斯定理",
     "useItWhen": "空间曲线周围的线积分应该变成曲面积分",
     "looksLike": "3D 曲面的边界曲线",
-    "doThis": "将边界线积分替换为旋度的表面积分",
+    "doThis": "把边界线积分改写成曲面上的旋度积分",
     "thinkOfItAs": "3D 格林定理",
     "watchOutFor": "边界方向和表面法线不匹配",
-    "rememberThis": "边界功可以变成穿过表面的卷曲",
+    "rememberThis": "边界线积分可以换成曲面上的旋度",
     "typicalProblemShapes": [
       "包围曲面的闭合空间曲线",
       "线积分比曲面问题更容易"
@@ -4809,16 +4809,16 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "表面积分内部出现什么场量？",
-        "answer": "卷曲。"
+        "answer": "旋度。"
       },
       {
         "prompt": "这在二维中是什么样的常见定理？",
         "answer": "格林定理。"
       }
     ],
-    "memoryHook": "斯托克斯在 3D 中是绿色的。",
+    "memoryHook": "Stokes = 3D 版 Green。",
     "quickExample": {
-      "problem": "什么定理将边界线积分转化为旋度的表面积分？",
+      "problem": "哪个定理把边界线积分改写成旋度的曲面积分？",
       "move": "斯托克斯定理。"
     }
   },
@@ -4951,14 +4951,14 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc3-space-curve-arc-length": {
-    "course": "多元微积分",
+    "course": "多元微积分 I",
     "chapter": "第 13 章：向量函数",
     "unit": "向量函数",
     "topic": "空间曲线的弧长",
     "name": "空间曲线弧长",
-    "useItWhen": "您需要 3D 路径的实际长度",
+    "useItWhen": "你要求三维路径的真实长度",
     "looksLike": "r(t) 在从 a 到 b 的区间上",
-    "doThis": "对 t 的 r 素数的大小进行积分",
+    "doThis": "把 |r'(t)| 对 t 积分",
     "thinkOfItAs": "沿路径累加的 3D 距离",
     "watchOutFor": "忘记积分内的速度大小",
     "rememberThis": "路径长度来自速度",
@@ -4968,8 +4968,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "弧长使用r-素数还是r-双素数？",
-        "answer": "r-素数。"
+        "prompt": "弧长公式里用 r'(t) 还是 r''(t)？",
+        "answer": "r'(t)。"
       },
       {
         "prompt": "你对向量或其大小进行积分吗？",
@@ -4978,22 +4978,22 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "空间曲线长度=积分速度。",
     "quickExample": {
-      "problem": "r(t) 的弧长积分里面有什么？",
-      "move": "r-prime(t) 的大小。"
+      "problem": "r(t) 的弧长积分里面放什么？",
+      "move": "|r'(t)|。"
     }
   },
   "calc3-surface-area-double-integrals": {
-    "course": "多元微积分",
+    "course": "多元微积分 I",
     "chapter": "第 15 章：重积分",
     "unit": "重积分",
     "topic": "表面积",
     "name": "二重积分表面积",
-    "useItWhen": "表面 z = f(x,y) 需要实际皮肤面积",
+    "useItWhen": "你要求曲面 z = f(x,y) 的真实表面积",
     "looksLike": "求一个区域上的表面面积",
-    "doThis": "使用基础区域的表面积根因子",
-    "thinkOfItAs": "下面是平坦区域，上面是倾斜的皮肤",
+    "doThis": "在底面区域上乘上表面积的根号因子",
+    "thinkOfItAs": "底下是平面区域，上面铺着一层倾斜曲面",
     "watchOutFor": "忘记了根下的 1 加部分平方",
-    "rememberThis": "表面积为 dA 添加根因子",
+    "rememberThis": "表面积就是 dA 多乘一个倾斜因子",
     "typicalProblemShapes": [
       "z 的表面积 = f(x,y)",
       "xy 平面中的区域与其上方的表面配对"
@@ -5015,12 +5015,12 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "calc3-summary-theorems": {
-    "course": "多元微积分",
+    "course": "多元微积分 I",
     "chapter": "第 16 章：向量分析",
     "unit": "向量分析",
     "topic": "大向量微积分定理总结",
     "name": "向量微积分大图",
-    "useItWhen": "你总是混淆格林、斯托克斯、散度和线积分 FTC",
+    "useItWhen": "你老是把 Green、Stokes、散度定理和线积分基本定理混在一起",
     "looksLike": "具有边界、表面或区域的不同积分定理",
     "doThis": "将定理与对象匹配：路径、表面或体积",
     "thinkOfItAs": "相同的想法在 1D、2D 和 3D 中移动",
@@ -5042,56 +5042,56 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "路径、曲面、体积：将定理与形状相匹配。",
     "quickExample": {
-      "problem": "如果问题有一个体积和通过其边界的通量，您会怎么想？",
+      "problem": "如果题目给了一个体积，还问穿过边界的通量，你该想到什么？",
       "move": "发散定理。"
     }
   },
   "la-linear-systems": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 1 章：线性方程组与行化简",
     "unit": "线性方程组与行化简",
     "topic": "线性方程组",
     "name": "线性系统",
-    "useItWhen": "多个方程与相同的变量相关",
-    "looksLike": "x + y = 3、2x - y = 1，方程多于一行",
-    "doThis": "组织系统并一起解决，而不是一次一行",
-    "thinkOfItAs": "一个谜题有很多线索",
-    "watchOutFor": "将每个方程视为一个单独的问题",
-    "rememberThis": "相同的变量意味着一个系统",
+    "useItWhen": "几个方程都围着同一组未知数转",
+    "looksLike": "x + y = 3，2x - y = 1，一整组共享同样未知数的方程",
+    "doThis": "先把它当成一个方程组，一起处理，不要一行一行拆开看",
+    "thinkOfItAs": "一个题里给了你好几条线索",
+    "watchOutFor": "把每个方程拆开，当成单独的小题",
+    "rememberThis": "未知数相同，就把它当成一个系统",
     "typicalProblemShapes": [
-      "共享 x、y、z 的方程组",
-      "要求一个解决方案、无解决方案或无数个解决方案的问题"
+      "几条方程都含 x、y、z",
+      "问你唯一解、无解或无穷多解"
     ],
     "miniDrill": [
       {
-        "prompt": "如果三个方程共享 x、y、z，那么这是一个系统还是三个独立的工作？",
+        "prompt": "如果三个方程都在解 x、y、z，这是一个系统还是三道分开的题？",
         "answer": "一个系统。"
       },
       {
-        "prompt": "这里的第一个识别线索是什么？",
-        "answer": "相同的变量在多个方程中重复出现。"
+        "prompt": "这里最先该认出的线索是什么？",
+        "answer": "同样的未知数在多个方程里反复出现。"
       }
     ],
-    "memoryHook": "共享变量意味着共享系统。",
+    "memoryHook": "同一组未知数，就是同一个系统。",
     "quickExample": {
-      "problem": "两个方程，两个未知数。大的设定是什么？",
-      "move": "将其视为一个系统并排列变量。"
+      "problem": "两个方程、两个未知数。先把它看成什么？",
+      "move": "先把它当成一个方程组，并把同类变量对齐。"
     }
   },
   "la-augmented-matrix": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 1 章：线性方程组与行化简",
     "unit": "线性方程组与行化简",
     "topic": "增广矩阵",
     "name": "增广矩阵",
-    "useItWhen": "你想要紧凑矩阵形式的系统",
+    "useItWhen": "你想把方程组压缩成矩阵形式",
     "looksLike": "[系数|常数]",
-    "doThis": "去掉变量，保留数字，然后使用条形图得出答案",
-    "thinkOfItAs": "删除该词的系统",
+    "doThis": "把变量名拿掉，只保留数字，右边那一列放常数",
+    "thinkOfItAs": "把文字拿掉后的方程组",
     "watchOutFor": "将系数列与答案列混合",
     "rememberThis": "左侧系数，右侧常数",
     "typicalProblemShapes": [
-      "重写为数字矩形的系统",
+      "把方程组改写成一个数字表格",
       "对矩阵而不是方程进行行运算"
     ],
     "miniDrill": [
@@ -5107,24 +5107,24 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "memoryHook": "仅数字，答案在右侧。",
     "quickExample": {
       "problem": "x + 2y = 5 和 3x - y = 4",
-      "move": "把它变成一个增广矩阵，右边有一个常量列。"
-    }
+      "move": "把它写成增广矩阵，右边那一列放常数。"
+  }
   },
   "la-row-reduction": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 1 章：线性方程组与行化简",
     "unit": "线性方程组与行化简",
-    "topic": "行减少",
-    "name": "减少行数",
-    "useItWhen": "你需要将系统清理成更简单的形式",
-    "looksLike": "交换行、缩放行、添加行的倍数",
-    "doThis": "使用合法的行移动直到枢轴突出",
-    "thinkOfItAs": "清理流量，以便显示重要数字",
-    "watchOutFor": "移动到一行但不更新整行",
-    "rememberThis": "行移动清理系统，而不是改变它",
+    "topic": "行化简",
+    "name": "行化简",
+    "useItWhen": "你想把方程组整理成更容易看懂的形式",
+    "looksLike": "交换行、倍乘某一行、把一行加到另一行",
+    "doThis": "用合法的行变换把主元位置做出来",
+    "thinkOfItAs": "先把矩阵整理干净，再看结构",
+    "watchOutFor": "只改了一部分，没把整行一起更新",
+    "rememberThis": "行变换是在整理系统，不是在换题",
     "typicalProblemShapes": [
       "高斯消去法",
-      "询问 REF 或 RREF 的问题"
+      "问你 REF 或 RREF 的题"
     ],
     "miniDrill": [
       {
@@ -5132,8 +5132,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "是的。"
       },
       {
-        "prompt": "为什么要减少行数？",
-        "answer": "使解决方案结构更易于阅读。"
+        "prompt": "为什么要做行化简？",
+        "answer": "为了让解的结构更容易看出来。"
       }
     ],
     "memoryHook": "清理行，直到结构显示出来。",
@@ -5143,15 +5143,15 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-pivots-free-variables": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 1 章：线性方程组与行化简",
     "unit": "线性方程组与行化简",
     "topic": "枢轴变量和自由变量",
     "name": "枢轴变量与自由变量",
-    "useItWhen": "简化的矩阵已完成，您需要解决方案的形状",
-    "looksLike": "有些柱子有枢轴，有些没有",
-    "doThis": "标记枢轴列，然后让非枢轴列空闲",
-    "thinkOfItAs": "枢轴列领先，自由列漫游",
+    "useItWhen": "矩阵已经化简完，你要判断解的结构",
+    "looksLike": "有些列有主元，有些列没有",
+    "doThis": "先找主元列；没有主元的列就对应自由变量",
+    "thinkOfItAs": "有主元的列负责带头，没主元的列可以自由取值",
     "watchOutFor": "将每个变量称为枢轴变量",
     "rememberThis": "列中没有主元意味着自由变量",
     "typicalProblemShapes": [
@@ -5165,17 +5165,17 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "如何发现主元变量？",
-        "answer": "它的立柱有一个枢轴。"
+        "answer": "它所在的列里有主元。"
       }
     ],
     "memoryHook": "无主元，自由变量。",
     "quickExample": {
       "problem": "简化矩阵仅在第 1 列和第 3 列中具有主元",
-      "move": "第 2 列和第 4 列免费。"
+      "move": "第 2 列和第 4 列是自由变量列。"
     }
   },
   "la-matrix-operations": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 2 章：矩阵代数",
     "unit": "矩阵",
     "topic": "矩阵加法和标量乘法",
@@ -5207,7 +5207,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-matrix-multiplication": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 2 章：矩阵代数",
     "unit": "矩阵",
     "topic": "矩阵乘法",
@@ -5239,7 +5239,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-identity-matrix": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 2 章：矩阵代数",
     "unit": "矩阵",
     "topic": "单位矩阵",
@@ -5271,7 +5271,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-inverse-matrix": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 2 章：矩阵代数",
     "unit": "矩阵",
     "topic": "逆矩阵",
@@ -5303,7 +5303,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-determinant": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 3 章：行列式",
     "unit": "行列式",
     "topic": "行列式",
@@ -5335,19 +5335,19 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-rank": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 3 章：行列式",
     "unit": "行列式",
     "topic": "秩",
     "name": "秩",
     "useItWhen": "你想要独立枢轴方向的数量",
     "looksLike": "等级 A，主元计数，梯形形式的非零行",
-    "doThis": "行减少并计算枢轴位置",
+    "doThis": "先做行化简，再数主元个数",
     "thinkOfItAs": "矩阵保留了多少真实信息",
     "watchOutFor": "计算每一行而不是枢轴行",
     "rememberThis": "排名是枢轴数",
     "typicalProblemShapes": [
-      "行减少后的枢轴计数",
+      "行化简后去数主元个数",
       "关于满级或不足级的问题"
     ],
     "miniDrill": [
@@ -5367,7 +5367,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-vector-space": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 4 章：向量空间",
     "unit": "向量空间",
     "topic": "向量空间的想法",
@@ -5399,7 +5399,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-subspace-test": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 4 章：向量空间",
     "unit": "向量空间",
     "topic": "子空间测试",
@@ -5431,7 +5431,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-span": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 4 章：向量空间",
     "unit": "向量空间",
     "topic": "跨度",
@@ -5463,14 +5463,14 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-linear-independence": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 4 章：向量空间",
     "unit": "向量空间",
     "topic": "线性独立性",
     "name": "线性无关性",
     "useItWhen": "你需要知道一个向量是否是由其他向量秘密构建的",
     "looksLike": "独立集或从属集",
-    "doThis": "将组合设置为零并测试是否只有简单的解决方案有效",
+    "doThis": "把线性组合设成 0，再看是否只能得到平凡解",
     "thinkOfItAs": "每个向量都有自己的重量",
     "watchOutFor": "当一个向量冗余时调用一组独立",
     "rememberThis": "只有零系数解才意味着独立",
@@ -5481,7 +5481,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "独立的坏兆头是什么？",
-        "answer": "零组合的一个重要解决方案。"
+        "answer": "出现非平凡解。"
       },
       {
         "prompt": "如果一个向量是其他向量的组合，是独立的还是相关的？",
@@ -5495,7 +5495,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-basis-dimension": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 4 章：向量空间",
     "unit": "向量空间",
     "topic": "依据和维度",
@@ -5527,7 +5527,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-dot-orthogonality": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 5 章：正交性",
     "unit": "正交性",
     "topic": "点积和正交性",
@@ -5559,7 +5559,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-projection": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 5 章：正交性",
     "unit": "正交性",
     "topic": "投影",
@@ -5591,7 +5591,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-linear-transformation": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 6 章：特征值与线性变换",
     "unit": "线性变换与特征值",
     "topic": "线性变换",
@@ -5623,7 +5623,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-eigenvalues-eigenvectors": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 6 章：特征值与线性变换",
     "unit": "线性变换与特征值",
     "topic": "特征值和特征向量",
@@ -5655,7 +5655,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-diagonalization": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 6 章：特征值与线性变换",
     "unit": "线性变换与特征值",
     "topic": "对角化",
@@ -5687,7 +5687,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-consistency": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 1 章：线性方程组与行化简",
     "unit": "线性方程组与行化简",
     "topic": "一致与不一致系统",
@@ -5719,7 +5719,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-homogeneous-system": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 1 章：线性方程组与行化简",
     "unit": "线性方程组与行化简",
     "topic": "均质系统",
@@ -5728,11 +5728,11 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "looksLike": "斧头 = 0",
     "doThis": "记住零解总是存在，然后检查自由变量",
     "thinkOfItAs": "没有外部推动的系统",
-    "watchOutFor": "忘记琐碎的解决方案始终存在",
+    "watchOutFor": "忘了平凡解永远都在",
     "rememberThis": "Ax = 0 总是至少有零解",
     "typicalProblemShapes": [
       "零空间设置",
-      "关于非平凡解决方案的问题"
+      "问你什么时候会有非平凡解"
     ],
     "miniDrill": [
       {
@@ -5746,12 +5746,12 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "同质意味着零总是有效的。",
     "quickExample": {
-      "problem": "每个同构系统都有什么解决方案？",
-      "move": "平凡的零解。"
+      "problem": "每个齐次系统一定先有什么解？",
+      "move": "先有平凡解 x = 0。"
     }
   },
   "la-transpose-symmetric": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 2 章：矩阵代数",
     "unit": "矩阵",
     "topic": "转置和对称矩阵",
@@ -5783,7 +5783,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-cofactor-cramers": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 3 章：行列式",
     "unit": "行列式",
     "topic": "辅因子展开和克莱默规则",
@@ -5815,7 +5815,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-column-null-space": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 4 章：向量空间",
     "unit": "向量空间",
     "topic": "列空间和零空间",
@@ -5847,7 +5847,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-coordinates-change-basis": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 4 章：向量空间",
     "unit": "向量空间",
     "topic": "坐标和基础变化",
@@ -5879,7 +5879,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-orthonormal-gram-schmidt": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 5 章：正交性",
     "unit": "正交性",
     "topic": "正交集和 Gram-Schmidt",
@@ -5911,7 +5911,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-least-squares": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 5 章：正交性",
     "unit": "正交性",
     "topic": "最小二乘法",
@@ -5943,7 +5943,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-characteristic-polynomial": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 6 章：特征值与线性变换",
     "unit": "线性变换与特征值",
     "topic": "特征多项式",
@@ -5975,7 +5975,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-echelon-vs-rref": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 1 章：线性方程组与行化简",
     "unit": "线性方程组与行化简",
     "topic": "梯形形式与简化梯形形式",
@@ -5988,7 +5988,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "rememberThis": "RREF 表示主元 1，上方和下方均为零",
     "typicalProblemShapes": [
       "对简化矩阵进行分类",
-      "在 REF 处停止行减少或继续转到 RREF"
+      "在 REF 停下，还是继续化到 RREF"
     ],
     "miniDrill": [
       {
@@ -6007,7 +6007,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-ax-equals-b": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 1 章：线性方程组与行化简",
     "unit": "线性方程组与行化简",
     "topic": "矩阵方程 Ax = b",
@@ -6039,7 +6039,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-invertible-matrix-theorem": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 2 章：矩阵代数",
     "unit": "矩阵",
     "topic": "可逆矩阵定理",
@@ -6071,7 +6071,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-lu-factorization": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 2 章：矩阵代数",
     "unit": "矩阵",
     "topic": "LU 因式分解",
@@ -6079,7 +6079,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "您可以使用相同的矩阵 A 求解多个系统",
     "looksLike": "A = LU，下限乘以上限",
     "doThis": "因式分解一次，然后求解 Ly = b 和 Ux = y",
-    "thinkOfItAs": "将工作预先分成两个更容易的解决方案",
+    "thinkOfItAs": "先拆成两个更容易解的小步骤",
     "watchOutFor": "在检查主元问题是否强制行交换之前尝试 LU",
     "rememberThis": "因式分解一次，求解两次",
     "typicalProblemShapes": [
@@ -6096,14 +6096,14 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Ly = b。"
       }
     ],
-    "memoryHook": "LU 将一个困难的解决方案分成两个简单的解决方案。",
+    "memoryHook": "LU 就是把一个难题拆成两个较容易的小题。",
     "quickExample": {
       "problem": "为什么每次都使用 LU 而不是从头开始行缩减？",
       "move": "当 A 保持不变时，可以节省工作量。"
     }
   },
   "la-determinant-zero-test": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 3 章：行列式",
     "unit": "行列式",
     "topic": "det = 0 告诉您什么",
@@ -6135,7 +6135,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-rank-nullity": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 4 章：向量空间",
     "unit": "向量空间",
     "topic": "秩无效定理",
@@ -6167,7 +6167,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-orthogonal-matrix": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 5 章：正交性",
     "unit": "正交性",
     "topic": "正交矩阵",
@@ -6199,7 +6199,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-matrix-of-transformation": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 6 章：特征值与线性变换",
     "unit": "线性变换与特征值",
     "topic": "线性变换的矩阵",
@@ -6231,7 +6231,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-kernel-range": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 6 章：特征值与线性变换",
     "unit": "线性变换与特征值",
     "topic": "内核和范围",
@@ -6263,7 +6263,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-one-to-one-onto": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 6 章：特征值与线性变换",
     "unit": "线性变换与特征值",
     "topic": "线性映射的一对一与onto",
@@ -6295,7 +6295,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "la-eigenspace": {
-    "course": "线性代数",
+    "course": "线性代数导论",
     "chapter": "第 6 章：特征值与线性变换",
     "unit": "线性变换与特征值",
     "topic": "特征空间",
@@ -6328,51 +6328,51 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "proof-what-counts": {
     "course": "抽象数学导论",
-    "chapter": "第 1 章：范式转变",
+    "chapter": "第 1 章：思维方式的转变",
     "unit": "证明基础",
     "topic": "什么才算证明",
     "name": "什么才算证明",
-    "useItWhen": "你需要证明一个陈述的合理性，而不仅仅是测试示例",
-    "looksLike": "证明……，证明……，证明为什么……",
+    "useItWhen": "题目要你真正证明一个结论，不只是试几个例子",
+    "looksLike": "prove that..., show that..., justify why...",
     "doThis": "从已知事实开始，建立一条强制得出结论的链条",
-    "thinkOfItAs": "堵住每一个漏洞，而不仅仅是营造一种氛围",
+    "thinkOfItAs": "不是给个感觉，而是把每个漏洞都堵上",
     "watchOutFor": "使用一个例子来证明整个陈述",
-    "rememberThis": "例子表明，证明完成",
+    "rememberThis": "例子只能提示，证明才算结束",
     "typicalProblemShapes": [
-      "关于所有整数或所有实数的通用陈述",
-      "例子令人信服但不能解决问题的主张"
+      "关于所有整数或所有实数的全称命题",
+      "看几个例子好像对，但还不能算证完的题"
     ],
     "miniDrill": [
       {
         "prompt": "一个正确的例子能证明一个普遍的说法吗？",
-        "answer": "不。它仅表明索赔可以发生一次。"
+        "answer": "不能。它只说明这件事发生过一次。"
       },
       {
         "prompt": "证明应该如何得出结论？",
-        "answer": "使其不可避免地脱离公认的事实。"
+        "answer": "让结论从已知事实里被一步步逼出来。"
       }
     ],
-    "memoryHook": "举例说明。证据锁定它。",
+    "memoryHook": "例子只带路，证明才锁死。",
     "quickExample": {
       "problem": "为什么检查 n = 1, 2, 3 还不够？",
-      "move": "因为索赔是针对所有案件，而不是少数案件。"
+      "move": "因为题目说的是所有情况，不是只看几个例子。"
     }
   },
   "proof-definitions": {
     "course": "抽象数学导论",
-    "chapter": "第 1 章：范式转变",
+    "chapter": "第 1 章：思维方式的转变",
     "unit": "证明基础",
     "topic": "定义、定理和猜想",
     "name": "定义与定理",
-    "useItWhen": "你需要知道是解压定义还是证明主张",
+    "useItWhen": "你要先分清楚：这里该拆定义，还是该证明一个结论",
     "looksLike": "偶数、单射、定理、猜想",
-    "doThis": "如果是定义，则将其解压；如果它是一个定理，请证明它或使用它",
+    "doThis": "如果是定义，就先把定义拆开；如果是定理，就证明它或直接调用它",
     "thinkOfItAs": "定义是游戏规则，定理是游戏中的胜利",
     "watchOutFor": "试图证明一个定义而不是使用它",
-    "rememberThis": "定义被解开，定理被证明",
+    "rememberThis": "定义要拆开，定理要证明或调用",
     "typicalProblemShapes": [
       "证明以偶数、素数、单射或子集等词开头",
-      "一个问题询问一个陈述是否被证明还是仍然是一个猜想"
+      "题目问一个结论到底已经被证明，还是还只是猜想"
     ],
     "miniDrill": [
       {
@@ -6386,8 +6386,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "技术词？打开定义。",
     "quickExample": {
-      "problem": "为了证明一个数是偶数，你首先要达到什么目的？",
-      "move": "定义：写为2k。"
+      "problem": "要证明一个数是偶数，第一步该写什么？",
+      "move": "先用定义，把它写成 2k。"
     }
   },
   "proof-direct": {
@@ -6397,23 +6397,23 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "直接证明",
     "name": "直接证明",
     "useItWhen": "你可以从假设开始并推进",
-    "looksLike": "if P then Q 并且从 P 到 Q 的路径很简单",
-    "doThis": "假设假设，使用代数或定义，得出结论",
+    "looksLike": "如果 P 则 Q，而且从 P 推到 Q 的路很直接",
+    "doThis": "先假设 P 成立，再用代数或定义一步步推到 Q",
     "thinkOfItAs": "从起点直走到终点",
     "watchOutFor": "从结论开始并假装证明了这一点",
-    "rememberThis": "假设P，达到Q",
+    "rememberThis": "先假设 P，再推出 Q",
     "typicalProblemShapes": [
-      "具有代数结构的 If-then 语句",
+      "带代数结构的“如果…那么…”命题",
       "定义和替换推动证明的主张"
     ],
     "miniDrill": [
       {
         "prompt": "在直接证明“如果 P 那么 Q”时，你首先假设什么？",
-        "answer": "假设P。"
+        "answer": "先假设 P。"
       },
       {
         "prompt": "直接证明通常会提前解开定义吗？",
-        "answer": "是的。这通常就是整个行动。"
+        "answer": "是的，很多时候这就是整道题的关键。"
       }
     ],
     "memoryHook": "从 P 出发，步行至 Q。",
@@ -6808,13 +6808,13 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "proof-counterexample": {
     "course": "抽象数学导论",
-    "chapter": "第 1 章：范式转变",
+    "chapter": "第 1 章：思维方式的转变",
     "unit": "证明基础",
     "topic": "反例",
     "name": "反例",
     "useItWhen": "普遍的主张可能是错误的",
     "looksLike": "对于所有人...、每一个...、总是...、无一例外",
-    "doThis": "找到一个违反索赔要求的案例",
+    "doThis": "找一个真的违背原命题条件的反例",
     "thinkOfItAs": "一条裂缝就能打破整面墙",
     "watchOutFor": "给出一个实际上不符合主张的例子",
     "rememberThis": "一个真正的例外会杀死一条通用语句",
@@ -6824,8 +6824,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "你需要多少反例才能推翻一个普遍的主张？",
-        "answer": "只有一张有效的。"
+        "prompt": "要推翻一个全称命题，需要几个反例？",
+        "answer": "一个就够。"
       },
       {
         "prompt": "反例可以忽略陈述的条件吗？",
@@ -6842,14 +6842,14 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "抽象数学导论",
     "chapter": "第 2 章：逻辑与证明语言",
     "unit": "逻辑与量词",
-    "topic": "逆与逆",
-    "name": "逆向与逆向",
+    "topic": "逆命题、否命题与逆否命题",
+    "name": "逆、否、逆否",
     "useItWhen": "if-then 语句被翻转或否定",
     "looksLike": "如果 P 则 Q，如果 Q 则 P，如果不是 P 则不是 Q",
     "doThis": "在证明任何事情之前标记每个版本",
     "thinkOfItAs": "相同的词，不同的接线",
     "watchOutFor": "将逆命题与反命题混淆",
-    "rememberThis": "逆向翻转、逆否定、反证两者都做",
+    "rememberThis": "逆命题只翻，否命题只否，逆否命题又翻又否",
     "typicalProblemShapes": [
       "使用蕴涵语句进行逻辑预热",
       "询问哪种形式与原始陈述相符时出现问题"
@@ -6857,11 +6857,11 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "哪个版本在逻辑上等同于 if P then Q：逆向或逆向？",
-        "answer": "反证。"
+        "answer": "逆否命题。"
       },
       {
         "prompt": "if P then Q 的倒数是什么？",
-        "answer": "如果不是 P 则不是 Q。"
+        "answer": "如果 Q，那么 P。"
       }
     ],
     "memoryHook": "在证明之前命名版本。",
@@ -7201,7 +7201,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "doThis": "涵盖每一个案例并证明每一个案例中的主张",
     "thinkOfItAs": "几个简短的证明而不是一个复杂的证明",
     "watchOutFor": "遗漏一个案例或让两个案例严重重叠",
-    "rememberThis": "拆分干净，完成所有案件",
+    "rememberThis": "分类要分干净，每一种情况都要做完",
     "typicalProblemShapes": [
       "奇偶校验证明",
       "绝对值或基于符号的参数"
@@ -7235,7 +7235,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "watchOutFor": "展示存在而忘记独特性",
     "rememberThis": "唯一意味着存在加上只有一个",
     "typicalProblemShapes": [
-      "只有一种解决方案声称",
+      "题目说“存在且唯一”",
       "涉及唯一对象的定义"
     ],
     "miniDrill": [
@@ -7448,13 +7448,13 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "proof-planning-writing": {
     "course": "抽象数学导论",
-    "chapter": "第 1 章：范式转变",
+    "chapter": "第 1 章：思维方式的转变",
     "unit": "证明基础",
     "topic": "规划并撰写证明",
     "name": "首先计划证明",
     "useItWhen": "您知道该主张但不知道如何开始",
     "looksLike": "证明...，空白页，一次有太多想法",
-    "doThis": "重写声明，解压定义，测试小案例，然后在写作前绘制草图",
+    "doThis": "先把命题改写清楚，拆开定义，试几个小例子，再动手正式写",
     "thinkOfItAs": "首先是草稿，其次是干净的校样",
     "watchOutFor": "在你知道下一步之前尝试写出完美的证明",
     "rememberThis": "首先是凌乱的草稿，然后是干净的故事",
@@ -7475,7 +7475,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "memoryHook": "解释、素描，然后写作。",
     "quickExample": {
       "problem": "在写正式句子之前你会做什么？",
-      "move": "解释索赔并绘制路线。"
+      "move": "先把命题讲清楚，再想证明路线。"
     }
   },
   "proof-propositions": {
@@ -8332,7 +8332,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "一个分区。"
       },
       {
-        "prompt": "案件可以重叠吗？",
+        "prompt": "不同情况之间可以重叠吗？",
         "answer": "不。"
       }
     ],
@@ -8599,20 +8599,20 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "prob-stars-and-bars": {
-    "course": "概率论",
+    "course": "概率论 I",
     "chapter": "第 1 章：组合分析",
     "unit": "计数",
     "topic": "计算非负整数解",
-    "name": "星星和酒吧",
-    "useItWhen": "你计算将总数分成不同桶的方法",
+    "name": "插板法（Stars and Bars）",
+    "useItWhen": "你在数把总数分到几个盒子里的方法数",
     "looksLike": "x1 + x2 + ... + xn = k 且 xi 非负",
-    "doThis": "将总数变成星星并使用条形图分割桶",
+    "doThis": "把总数看成一排星号，再插分隔板把它们分进不同盒子",
     "thinkOfItAs": "一排带有分隔线的物体",
     "watchOutFor": "忘记是否允许零",
-    "rememberThis": "总和放入桶中意味着星形和条形",
+    "rememberThis": "总数分盒子，先想插板法",
     "typicalProblemShapes": [
       "非负整数解计数",
-      "将相同的球分配到垃圾箱中"
+      "把相同的球分到不同盒子里"
     ],
     "miniDrill": [
       {
@@ -8620,25 +8620,25 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "计数前将每个变量向下移动 1。"
       },
       {
-        "prompt": "星形和条形是否​​计算有序桶或无序组？",
-        "answer": "订购了桶。"
+        "prompt": "插板法里，盒子是有顺序的吗？",
+        "answer": "有顺序。"
       }
     ],
-    "memoryHook": "对象和分隔线。",
+    "memoryHook": "星号排开，隔板插进去。",
     "quickExample": {
       "problem": "什么模式适合 x1 + x2 + x3 = 7 且 xi 非负？",
-      "move": "星星和酒吧。"
+      "move": "插板法。"
     }
   },
   "prob-equally-likely": {
-    "course": "概率论",
+    "course": "概率论 I",
     "chapter": "第 2 章：概率基础",
     "unit": "概率基础",
     "topic": "同等可能的结果",
     "name": "同等可能的结果",
     "useItWhen": "每个结果都有相同的可能性",
     "looksLike": "公平骰子、公平抽牌、随机排列、均匀样本空间",
-    "doThis": "将有利结果计入总结果",
+    "doThis": "先确认等可能，再用有利结果除以总结果",
     "thinkOfItAs": "概率成为样本空间的一部分",
     "watchOutFor": "当结果的可能性不同时，使用有利而非总体",
     "rememberThis": "仅在等似然检查后计数才有效",
@@ -8648,7 +8648,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "如果结果的权重不同，您可以使用有利优于总计吗？",
+        "prompt": "如果各结果机会不一样，还能直接用有利比总数吗？",
         "answer": "不。"
       },
       {
@@ -8658,12 +8658,12 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "先机会均等，再算数。",
     "quickExample": {
-      "problem": "公平骰子问题的第一个概率移动是什么？",
+      "problem": "公平骰子题的第一步通常是什么？",
       "move": "数出好的结果并除以 6。"
     }
   },
   "prob-secretary-problem": {
-    "course": "概率论",
+    "course": "概率论 I",
     "chapter": "第 2 章：概率基础",
     "unit": "概率基础",
     "topic": "秘书问题",
@@ -8680,7 +8680,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "您可以在经典设置中返回被拒绝的候选人吗？",
+        "prompt": "经典秘书问题里，被拒的人还能回头选吗？",
         "answer": "不。"
       },
       {

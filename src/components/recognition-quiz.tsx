@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 
 import { useLanguage } from "@/components/language-provider";
 import { localizeCards } from "@/content/localization";
+import { WorkedExamplePhoto } from "@/components/worked-example-photo";
 import type { BubbleCard, Unit } from "@/content/schema";
 import type { Locale } from "@/lib/i18n";
 import {
@@ -133,6 +134,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
   const quizItems = buildQuizItems(filteredCards, locale);
 
   const currentItem = quizItems[index];
+  const currentCard = filteredCards[index];
   const finished = index >= quizItems.length;
 
   if (!currentItem && !finished) {
@@ -171,7 +173,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
   return (
     <div className="space-y-8">
       <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 sm:p-8">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(22rem,32rem)] xl:items-end">
           <div className="space-y-3">
             <p className="inline-flex rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">
               {t("recognitionQuiz")}
@@ -183,7 +185,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
               {t("quizDescription")}
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="grid gap-3 sm:grid-cols-2">
             <select
               value={courseFilter}
               onChange={(event) => {
@@ -191,7 +193,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
                 setUnitFilter("All");
                 resetSession();
               }}
-              className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+              className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
             >
               <option value="All">{t("allCourses")}</option>
               {courseOptions.map((course) => (
@@ -206,7 +208,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
                 setUnitFilter(event.target.value as "All" | Unit);
                 resetSession();
               }}
-              className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+              className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
             >
               <option value="All">{t("allUnits")}</option>
               {unitOptions.map((unit) => (
@@ -215,7 +217,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
                 </option>
               ))}
             </select>
-            <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white/80 px-5 py-4 text-sm text-[color:var(--muted)]">
+            <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white/80 px-5 py-4 text-sm text-[color:var(--muted)] sm:col-span-2 xl:justify-self-start">
               {t("score")}:{" "}
               <span className="font-semibold text-slate-900">{score}</span>
               {!finished && (
@@ -317,6 +319,11 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
                 </span>
                 . {t("name")}: {currentItem.topic}. {t("hook")}: {currentItem.hint}
               </p>
+              {currentCard ? (
+                <div className="mt-4">
+                  <WorkedExamplePhoto card={currentCard} />
+                </div>
+              ) : null}
               <button
                 type="button"
                 onClick={next}
