@@ -49,6 +49,7 @@ export const zhMessages = {
   "searchEverything": "搜索全部内容",
   "searchEverythingHelp": "按技巧、主题、课程、章节、单元、记忆点或题型查找。",
   "clearAll": "清除全部",
+  "filters": "筛选",
   "searchPlaceholder": "搜索直接代入、洛必达、分部积分、逆否证明...",
   "course": "课程",
   "unit": "单元",

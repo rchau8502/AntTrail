@@ -79,6 +79,7 @@ const messages = {
     searchEverythingHelp:
       "Find by technique, topic, course, chapter, unit, memory hook, or problem shape.",
     clearAll: "Clear all",
+    filters: "Filters",
     searchPlaceholder:
       "Search plug in directly, L'Hospital, integration by parts, contrapositive...",
     course: "Course",
@@ -238,6 +239,7 @@ const messages = {
     searchEverythingHelp:
       "Busca por técnica, tema, curso, capítulo, unidad, gancho de memoria o forma del problema.",
     clearAll: "Limpiar todo",
+    filters: "Filtros",
     searchPlaceholder:
       "Busca sustitución directa, l'Hospital, integración por partes, contraposición...",
     course: "Curso",

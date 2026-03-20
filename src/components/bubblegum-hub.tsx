@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 import { localizeCards } from "@/content/localization";
 import type { BubbleCard } from "@/content/schema";
-import { getCourseDisplayLabel } from "@/lib/bubble";
+import { getCourseDisplayLabel, getCourseOptions } from "@/lib/bubble";
 import { BUBBLE_PROGRESS_EVENT, isBubbleTopicComplete, isBubblegumTopicMastered } from "@/lib/progress";
 import { getPatternTokens, getRecognitionPrompt, getTechniqueLabel } from "@/lib/recognition";
 
@@ -17,9 +17,11 @@ interface BubblegumHubProps {
 export function BubblegumHub({ cards }: BubblegumHubProps) {
   const { locale, t } = useLanguage();
   const [query, setQuery] = useState("");
+  const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
   const [completedIds, setCompletedIds] = useState<Set<string>>(new Set());
   const [masteredIds, setMasteredIds] = useState<Set<string>>(new Set());
   const localizedCards = useMemo(() => localizeCards(cards, locale), [cards, locale]);
+  const courseOptions = getCourseOptions(localizedCards);
 
   useEffect(() => {
     const sync = () => {
@@ -38,29 +40,33 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
   }, [cards]);
 
   const normalizedQuery = query.trim().toLowerCase();
-  const filteredCards = localizedCards.filter((card) =>
-    normalizedQuery.length === 0
-      ? true
-      : [
-          card.name,
-          card.topic,
-          card.unit,
-          card.course,
-          card.rememberThis,
-          card.memoryHook,
-          card.looksLike,
-          card.doThis,
-          card.watchOutFor,
-          getTechniqueLabel(card, locale),
-          getRecognitionPrompt(card),
-          ...getPatternTokens(card),
-          ...card.typicalProblemShapes,
-          ...card.tags,
-        ]
-          .join(" ")
-          .toLowerCase()
-          .includes(normalizedQuery),
-  );
+  const filteredCards = localizedCards.filter((card) => {
+    const matchesCourse = courseFilter === "All" || card.course === courseFilter;
+    const matchesQuery =
+      normalizedQuery.length === 0
+        ? true
+        : [
+            card.name,
+            card.topic,
+            card.unit,
+            card.course,
+            card.rememberThis,
+            card.memoryHook,
+            card.looksLike,
+            card.doThis,
+            card.watchOutFor,
+            getTechniqueLabel(card, locale),
+            getRecognitionPrompt(card),
+            ...getPatternTokens(card),
+            ...card.typicalProblemShapes,
+            ...card.tags,
+          ]
+            .join(" ")
+            .toLowerCase()
+            .includes(normalizedQuery);
+
+    return matchesCourse && matchesQuery;
+  });
 
   const orderedCards = [...filteredCards].sort((left, right) => {
     const leftComplete = completedIds.has(left.id) ? 1 : 0;
@@ -85,12 +91,26 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
         <p className="mt-4 max-w-3xl text-base leading-7 text-[color:var(--muted)]">
           {t("bubblegumDescription")}
         </p>
-        <input
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder={t("searchPlaceholder")}
-          className="mt-6 w-full rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none transition focus:border-rose-200"
-        />
+        <div className="mt-6 grid gap-3 sm:grid-cols-[minmax(0,1fr)_14rem]">
+          <input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder={t("searchPlaceholder")}
+            className="w-full rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none transition focus:border-rose-200"
+          />
+          <select
+            value={courseFilter}
+            onChange={(event) => setCourseFilter(event.target.value)}
+            className="w-full rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+          >
+            <option value="All">{t("allCourses")}</option>
+            {courseOptions.map((course) => (
+              <option key={course} value={course}>
+                {getCourseDisplayLabel(course, locale)}
+              </option>
+            ))}
+          </select>
+        </div>
       </section>
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -118,6 +138,9 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
                 {getCourseDisplayLabel(card.course, locale)}
               </p>
               <h2 className="mt-3 text-xl font-semibold text-slate-900">{card.name}</h2>
+              <div className="mt-3 inline-flex max-w-full rounded-full border border-rose-100 bg-rose-50 px-3 py-2 text-xs font-semibold text-rose-700">
+                {getTechniqueLabel(card, locale)}
+              </div>
               <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
                 {card.memoryHook}
               </p>
