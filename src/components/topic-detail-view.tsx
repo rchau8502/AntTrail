@@ -9,6 +9,7 @@ import { WorkedExamplePhoto } from "@/components/worked-example-photo";
 import { localizeCard } from "@/content/localization";
 import type { BubbleCard } from "@/content/schema";
 import { getCourseDisplayLabel } from "@/lib/bubble";
+import { buildBubblegumDrill } from "@/lib/bubblegum";
 import {
   BUBBLE_PROGRESS_EVENT,
   isBubblegumTopicMastered,
@@ -44,6 +45,64 @@ const supportSections: Array<{
   { labelKey: "rememberThis", valueKey: "rememberThis" },
 ];
 
+const teachingCopy = {
+  en: {
+    learnThisTopic: "Learn this topic",
+    oneLineIdea: "One-line idea",
+    tinyStarter: "Tiny starter",
+    notationHelp: "Notation help",
+    easyToHardPath: "Easy to hard path",
+    nextAfterThis: "Next after this",
+    bubblegumNote: "Bubblegum starts with warm-up, then moves to quiz, midterm, and final-style practice.",
+    warmup: "Warm-up",
+    quiz: "Quiz",
+    midterm: "Midterm",
+    final: "Final",
+  },
+  es: {
+    learnThisTopic: "Aprende este tema",
+    oneLineIdea: "Idea en una linea",
+    tinyStarter: "Mini arranque",
+    notationHelp: "Ayuda de notacion",
+    easyToHardPath: "Ruta de facil a dificil",
+    nextAfterThis: "Lo que sigue",
+    bubblegumNote: "Bubblegum empieza con calentamiento y luego pasa a practica estilo quiz, parcial y final.",
+    warmup: "Calentamiento",
+    quiz: "Quiz",
+    midterm: "Parcial",
+    final: "Final",
+  },
+  zh: {
+    learnThisTopic: "学这个主题",
+    oneLineIdea: "一句话先懂",
+    tinyStarter: "最小起步题",
+    notationHelp: "符号提示",
+    easyToHardPath: "从易到难",
+    nextAfterThis: "接下来练什么",
+    bubblegumNote: "Bubblegum 会先从热身开始，再进入小测、期中、期末风格练习。",
+    warmup: "热身",
+    quiz: "小测",
+    midterm: "期中",
+    final: "期末",
+  },
+} as const;
+
+function getPrimerLine(
+  locale: keyof typeof teachingCopy,
+  card: BubbleCard,
+  technique: string,
+) {
+  if (locale === "es") {
+    return `${card.name} aparece cuando ${card.useItWhen}. La jugada base es ${technique}.`;
+  }
+
+  if (locale === "zh") {
+    return `${card.name} 会在 ${card.useItWhen} 时出现。基础做法先用 ${technique}。`;
+  }
+
+  return `${card.name} shows up when ${card.useItWhen}. The base move is ${technique}.`;
+}
+
 export function TopicDetailView({
   card,
   relatedCards,
@@ -52,6 +111,7 @@ export function TopicDetailView({
 }: TopicDetailViewProps) {
   const { difficultyLabel, locale, t } = useLanguage();
   const localizedCard = localizeCard(card, locale);
+  const teach = teachingCopy[locale] ?? teachingCopy.en;
   const [bubblegumMastered, setBubblegumMastered] = useState(false);
   const localizedRelatedCards = relatedCards.map((item) => localizeCard(item, locale));
   const localizedPrevious = previous ? localizeCard(previous, locale) : undefined;
@@ -59,6 +119,11 @@ export function TopicDetailView({
   const localizedRecognitionPrompt = getRecognitionPrompt(localizedCard);
   const localizedPatternTokens = getPatternTokens(localizedCard);
   const localizedTechniqueLabel = getTechniqueLabel(localizedCard, locale);
+  const warmupDrill = buildBubblegumDrill(localizedCard, locale, "warmup", 0);
+  const quizDrill = buildBubblegumDrill(localizedCard, locale, "quiz", 0);
+  const midtermDrill = buildBubblegumDrill(localizedCard, locale, "midterm", 0);
+  const finalDrill = buildBubblegumDrill(localizedCard, locale, "final", 0);
+  const primerLine = getPrimerLine(locale, localizedCard, localizedTechniqueLabel);
 
   useEffect(() => {
     const sync = () => {
@@ -154,6 +219,73 @@ export function TopicDetailView({
                     <p className="mt-2 text-sm leading-6 text-slate-800">
                       {localizedCard.rememberThis}
                     </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className="mt-8 rounded-[1.85rem] border border-[color:var(--line)] bg-[linear-gradient(140deg,rgba(255,255,255,0.98),rgba(255,247,251,0.94))] p-5 sm:p-6">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-rose-600">
+                  {teach.learnThisTopic}
+                </p>
+                <span className="rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--muted)]">
+                  {teach.easyToHardPath}
+                </span>
+              </div>
+
+              <div className="mt-5 grid gap-4 xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+                <div className="space-y-4">
+                  <div className="rounded-[1.55rem] border border-[color:var(--line)] bg-white/90 p-5">
+                    <p className="text-sm font-semibold text-rose-600">{teach.oneLineIdea}</p>
+                    <p className="mt-3 text-base leading-7 text-slate-900">{primerLine}</p>
+                  </div>
+
+                  <div className="rounded-[1.55rem] border border-sky-100 bg-sky-50/90 p-5">
+                    <p className="text-sm font-semibold text-sky-700">{t("whyThisFits")}</p>
+                    <p className="mt-3 text-base leading-7 text-slate-900">{warmupDrill.whyFits}</p>
+                  </div>
+
+                  {warmupDrill.notationHelp.length > 0 ? (
+                    <div className="rounded-[1.55rem] border border-amber-100 bg-amber-50/90 p-5">
+                      <p className="text-sm font-semibold text-amber-700">{teach.notationHelp}</p>
+                      <div className="mt-3 space-y-3 text-sm leading-6 text-slate-800">
+                        {warmupDrill.notationHelp.map((item) => (
+                          <p key={item}>{item}</p>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+
+                <div className="space-y-4">
+                  <div className="rounded-[1.55rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.7),rgba(255,255,255,0.96))] p-5">
+                    <p className="text-sm font-semibold text-emerald-700">{teach.tinyStarter}</p>
+                    <p className="mt-3 text-base font-semibold leading-7 text-slate-900">
+                      {warmupDrill.prompt}
+                    </p>
+                    <p className="mt-4 text-sm leading-6 text-slate-700">
+                      <span className="font-semibold text-slate-900">{t("firstMove")}:</span>{" "}
+                      {warmupDrill.firstStep}
+                    </p>
+                  </div>
+
+                  <div className="rounded-[1.55rem] border border-[color:var(--line)] bg-white/90 p-5">
+                    <p className="text-sm font-semibold text-sky-700">{teach.nextAfterThis}</p>
+                    <div className="mt-4 space-y-3 text-sm leading-6 text-slate-800">
+                      <div className="rounded-2xl bg-slate-50 px-4 py-3">
+                        <span className="font-semibold text-slate-900">{teach.warmup}:</span> {warmupDrill.prompt}
+                      </div>
+                      <div className="rounded-2xl bg-slate-50 px-4 py-3">
+                        <span className="font-semibold text-slate-900">{teach.quiz}:</span> {quizDrill.prompt}
+                      </div>
+                      <div className="rounded-2xl bg-slate-50 px-4 py-3">
+                        <span className="font-semibold text-slate-900">{teach.midterm}:</span> {midtermDrill.prompt}
+                      </div>
+                      <div className="rounded-2xl bg-slate-50 px-4 py-3">
+                        <span className="font-semibold text-slate-900">{teach.final}:</span> {finalDrill.prompt}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -338,7 +470,7 @@ export function TopicDetailView({
                   {t("openBubblegum")}
                 </p>
                 <p className="max-w-2xl text-sm leading-6 text-[color:var(--muted)]">
-                  {localizedCard.name} drills are always available here.
+                  {localizedCard.name} drills are always available here. {teach.bubblegumNote}
                   {bubblegumMastered ? ` • ${t("bubblegumMastered")}` : ""}
                 </p>
               </div>

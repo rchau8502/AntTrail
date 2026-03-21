@@ -52,6 +52,10 @@ export function getCourseByTitle(title: string) {
   return courses.find((course) => course.title === title);
 }
 
+export function getCourseById(id: string) {
+  return courses.find((course) => course.id === id);
+}
+
 export function getCourseCodes(title: string) {
   return getCourseByTitle(title)?.courseCodes ?? [];
 }

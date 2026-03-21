@@ -3,7 +3,7 @@ export const zhMessages = {
   "navTopics": "主题",
   "navStudy": "学习模式",
   "navQuiz": "测验",
-  "navBubblegum": "Bubblegum 反复练",
+  "navBubblegum": "Bubblegum",
   "navMemoryHooks": "记忆钩子",
   "language": "语言",
   "bubbleExpanded": "Bubble 扩展版",

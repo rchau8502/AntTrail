@@ -1,13 +1,22 @@
 import type { BubbleCard } from "@/content/schema";
 import type { Locale } from "@/lib/i18n";
-import { getTechniqueLabel } from "@/lib/recognition";
+import {
+  getPatternTokens,
+  getRecognitionPrompt,
+  getTechniqueLabel,
+} from "@/lib/recognition";
 
-export type BubblegumLevel = "quiz" | "midterm" | "final";
+export type BubblegumLevel = "warmup" | "quiz" | "midterm" | "final";
+type ExamLevel = Exclude<BubblegumLevel, "warmup">;
 
 export interface BubblegumDrill {
   level: BubblegumLevel;
   prompt: string;
   technique: string;
+  whyFits: string;
+  notationHelp: string[];
+  missedBecause: string;
+  nextLookFor: string;
   firstStep: string;
   setup: string;
   fullPath: string[];
@@ -29,6 +38,8 @@ interface DrillSeed {
   fullPath: string[];
   answer: string;
   selfCheck: string;
+  whyFits?: string;
+  notationHelp?: string[];
 }
 
 function text(locale: Locale, value: LocalizedText) {
@@ -51,7 +62,7 @@ function signature(card: BubbleCard) {
     .toLowerCase();
 }
 
-function pick(level: BubblegumLevel, variant: number, groups: Record<BubblegumLevel, DrillSeed[]>) {
+function pick(level: ExamLevel, variant: number, groups: Record<ExamLevel, DrillSeed[]>) {
   const options = groups[level];
   return options[variant % options.length];
 }
@@ -133,7 +144,685 @@ function fallbackDrill(card: BubbleCard, locale: Locale): DrillSeed {
   };
 }
 
-function directSubstitution(locale: Locale, level: BubblegumLevel, variant: number): DrillSeed {
+function firstChunk(text: string) {
+  return text
+    .split(/\s*(?:,|;|\.| then | and then | after that |，|；|。|然后|再)\s*/i)[0]
+    .trim();
+}
+
+function guessVerb(sig: string): "solve" | "find" | "evaluate" | "prove" | "identify" {
+  if (
+    sig.includes("proof") ||
+    sig.includes("equivalence") ||
+    sig.includes("contrapositive") ||
+    sig.includes("contradiction") ||
+    sig.includes("induction")
+  ) {
+    return "prove";
+  }
+
+  if (sig.includes("limit") || sig.includes("integral")) {
+    return "evaluate";
+  }
+
+  if (sig.includes("surface") || sig.includes("quadric") || sig.includes("cylinder")) {
+    return "identify";
+  }
+
+  if (
+    sig.includes("derivative") ||
+    sig.includes("chain rule") ||
+    sig.includes("product rule") ||
+    sig.includes("quotient rule") ||
+    sig.includes("bayes") ||
+    sig.includes("eigen")
+  ) {
+    return "find";
+  }
+
+  return "solve";
+}
+
+function buildWhyFits(card: BubbleCard, locale: Locale, technique: string) {
+  const sig = signature(card);
+
+  if (sig.includes("equivalence relation")) {
+    return text(locale, {
+      en: "This belongs here because the relation must pass three checks: reflexive, symmetric, and transitive.",
+      es: "Esto va aqui porque la relacion tiene que pasar tres chequeos: reflexiva, simetrica y transitiva.",
+      zh: "这题属于这里，因为一个关系要过三关：自反、对称、传递。",
+    });
+  }
+
+  if (sig.includes("contrapositive")) {
+    return text(locale, {
+      en: "This fits contrapositive because the original statement is cleaner after you flip and negate it.",
+      es: "Esto encaja con contraposicion porque el enunciado se vuelve mas limpio al voltearlo y negarlo.",
+      zh: "这题适合逆否证明，因为把命题翻过去再否定后会更好做。",
+    });
+  }
+
+  if (sig.includes("contradiction")) {
+    return text(locale, {
+      en: "This fits contradiction because you can assume the opposite and force an impossible outcome.",
+      es: "Esto encaja con contradiccion porque puedes suponer lo contrario y llegar a algo imposible.",
+      zh: "这题适合反证法，因为先假设相反结论，再把它逼到矛盾。",
+    });
+  }
+
+  if (sig.includes("bayes") || sig.includes("conditional")) {
+    return text(locale, {
+      en: "This fits because the question gives one condition and asks you to reverse or restrict the probability after that condition.",
+      es: "Esto encaja porque la pregunta te da una condicion y luego te pide restringir o invertir la probabilidad dentro de esa condicion.",
+      zh: "这题属于这里，因为题目先给了条件，再问条件下的概率，或者反过来追原因。",
+    });
+  }
+
+  if (sig.includes("linear systems") || sig.includes("row reduction") || sig.includes("augmented matrix")) {
+    return text(locale, {
+      en: "This fits because several equations or rows are tied to the same variables, so you solve the whole system together.",
+      es: "Esto encaja porque varias ecuaciones o filas comparten las mismas variables, asi que se resuelve todo el sistema junto.",
+      zh: "这题属于这里，因为多行方程绑着同一组未知数，所以要把整个系统一起处理。",
+    });
+  }
+
+  if (sig.includes("chain rule")) {
+    return text(locale, {
+      en: "This fits chain rule because one function is stuffed inside another and both layers change.",
+      es: "Esto encaja con regla de la cadena porque una funcion esta metida dentro de otra y cambian las dos capas.",
+      zh: "这题适合链式法则，因为一个函数塞在另一个函数里面，两层都在变。",
+    });
+  }
+
+  if (sig.includes("direct-substitution")) {
+    return text(locale, {
+      en: "This fits direct substitution because plugging in the target value does not break the expression.",
+      es: "Esto encaja con sustitucion directa porque al meter el valor objetivo la expresion no se rompe.",
+      zh: "这题适合直接代入，因为把目标值代进去后表达式不会坏掉。",
+    });
+  }
+
+  if (sig.includes("factoring")) {
+    return text(locale, {
+      en: "This fits factoring because plugging in first gives 0/0, so there is a hidden factor to expose.",
+      es: "Esto encaja con factorizacion porque al sustituir primero sale 0/0, asi que hay un factor escondido.",
+      zh: "这题适合因式分解，因为先代入会得到 0/0，说明里面藏着公因子。",
+    });
+  }
+
+  if (sig.includes("surface") || sig.includes("quadric") || sig.includes("cylinder")) {
+    return text(locale, {
+      en: "This fits surface recognition because the whole job is to match the equation shape to the standard graph family.",
+      es: "Esto encaja con reconocimiento de superficies porque todo el trabajo es emparejar la forma de la ecuacion con una familia grafica conocida.",
+      zh: "这题属于曲面识别，因为核心任务就是把方程形状对上标准图形家族。",
+    });
+  }
+
+  return text(locale, {
+    en: `This belongs here because the usual move is ${technique} and the shape matches ${card.looksLike}.`,
+    es: `Esto va aqui porque la jugada usual es ${technique} y la forma coincide con ${card.looksLike}.`,
+    zh: `这题属于这里，因为常用方法是 ${technique}，而题型长得像 ${card.looksLike}。`,
+  });
+}
+
+function buildNotationHelp(card: BubbleCard, locale: Locale) {
+  const sig = signature(card);
+
+  if (sig.includes("equivalence relation")) {
+    return [
+      text(locale, {
+        en: "~ means 'is related to'.",
+        es: "~ significa 'esta relacionado con'.",
+        zh: "~ 表示“有这种关系”。",
+      }),
+      text(locale, {
+        en: "Reflexive = x~x, symmetric = x~y => y~x, transitive = x~y and y~z => x~z.",
+        es: "Reflexiva = x~x, simetrica = x~y => y~x, transitiva = x~y y y~z => x~z.",
+        zh: "自反 = x~x，对称 = x~y => y~x，传递 = x~y 且 y~z => x~z。",
+      }),
+    ];
+  }
+
+  if (sig.includes("contrapositive")) {
+    return [
+      text(locale, {
+        en: "Contrapositive of 'if P then Q' is 'if not Q then not P'.",
+        es: "La contraposicion de 'si P entonces Q' es 'si no Q entonces no P'.",
+        zh: "“若 P 则 Q”的逆否命题是“若非 Q 则非 P”。",
+      }),
+    ];
+  }
+
+  if (sig.includes("bayes") || sig.includes("conditional")) {
+    return [
+      text(locale, {
+        en: "P(A|B) means probability of A given that B already happened.",
+        es: "P(A|B) significa probabilidad de A dado que B ya ocurrio.",
+        zh: "P(A|B) 表示“在 B 已发生的条件下，A 的概率”。",
+      }),
+    ];
+  }
+
+  if (sig.includes("linear systems") || sig.includes("augmented matrix")) {
+    return [
+      text(locale, {
+        en: "[A|b] means coefficient matrix on the left, constants on the right.",
+        es: "[A|b] significa coeficientes a la izquierda y constantes a la derecha.",
+        zh: "[A|b] 表示左边是系数，右边是常数列。",
+      }),
+    ];
+  }
+
+  if (sig.includes("row reduction")) {
+    return [
+      text(locale, {
+        en: "RREF means reduced row echelon form.",
+        es: "RREF significa forma escalonada reducida por filas.",
+        zh: "RREF 表示“最简行阶梯形”。",
+      }),
+    ];
+  }
+
+  if (sig.includes("bayes") || sig.includes("probability")) {
+    return [
+      text(locale, {
+        en: "Write hidden-cause probability in the numerator and all successful paths in the denominator.",
+        es: "Pon la causa escondida en el numerador y todos los caminos exitosos en el denominador.",
+        zh: "分子写你真正想要的那条路径，分母写所有能到达该结果的路径。",
+      }),
+    ];
+  }
+
+  if (sig.includes("limit")) {
+    return [
+      text(locale, {
+        en: "lim_{x→a} asks what the output heads toward as x gets close to a.",
+        es: "lim_{x→a} pregunta a que valor se acerca la salida cuando x se acerca a a.",
+        zh: "lim_{x→a} 问的是 x 靠近 a 时，输出往哪里靠。",
+      }),
+    ];
+  }
+
+  return [];
+}
+
+function buildMissedBecause(card: BubbleCard, locale: Locale, technique: string) {
+  const cue = getRecognitionPrompt(card);
+
+  return text(locale, {
+    en: `If you missed this, the usual reason is that the cue "${cue}" did not get linked to ${technique} soon enough.`,
+    es: `Si fallaste aqui, la razon usual es que la pista "${cue}" no se conecto a tiempo con ${technique}.`,
+    zh: `如果这里做错，常见原因是没有及时把题目提示“${cue}”和 ${technique} 连起来。`,
+  });
+}
+
+function buildNextLookFor(card: BubbleCard, locale: Locale) {
+  const tokens = getPatternTokens(card);
+  const pattern = tokens.length > 0 ? tokens.join(", ") : card.looksLike;
+
+  return text(locale, {
+    en: `Next time, look for these trigger clues first: ${pattern}.`,
+    es: `La proxima vez, busca primero estas pistas disparadoras: ${pattern}.`,
+    zh: `下次先抓这些触发线索：${pattern}。`,
+  });
+}
+
+function buildWarmupDrill(card: BubbleCard, locale: Locale, technique: string): BubblegumDrill {
+  const sig = signature(card);
+  const problem = card.quickExample?.problem ?? card.typicalProblemShapes[0] ?? card.looksLike;
+  const firstStep = card.quickExample?.move ?? firstChunk(card.doThis) ?? card.doThis;
+
+  return {
+    level: "warmup",
+    prompt: workThis(locale, problem, guessVerb(sig)),
+    technique,
+    whyFits: buildWhyFits(card, locale, technique),
+    notationHelp: buildNotationHelp(card, locale),
+    missedBecause: buildMissedBecause(card, locale, technique),
+    nextLookFor: buildNextLookFor(card, locale),
+    firstStep,
+    setup: text(locale, {
+      en: `Start with the friendliest version of ${card.name}.`,
+      es: `Empieza con la version mas amable de ${card.name}.`,
+      zh: `先从 ${card.name} 最友好的版本开始。`,
+    }),
+    fullPath: [
+      firstStep,
+      card.quickExample?.move ?? card.doThis,
+      card.rememberThis,
+    ],
+    answer: card.quickExample?.move ?? firstStep,
+    commonMiss: card.watchOutFor,
+    selfCheck: card.memoryHook,
+  };
+}
+
+function proofPractice(locale: Locale, level: ExamLevel, variant: number, sig: string): DrillSeed | null {
+  if (sig.includes("proof-direct")) {
+    return pick(level, variant, {
+      quiz: [
+        {
+          prompt: workThis(locale, text(locale, {
+            en: "if n is even, then n^2 is even",
+            es: "si n es par, entonces n^2 es par",
+            zh: "若 n 是偶数，则 n^2 是偶数",
+          }), "prove"),
+          firstStep: "Start from the hypothesis and write n = 2k.",
+          setup: "Direct proof works because the definition pushes straight to the conclusion.",
+          fullPath: ["Assume n = 2k", "Then n^2 = (2k)^2 = 4k^2 = 2(2k^2)", "So n^2 is even"],
+          answer: "The statement is proved directly.",
+          selfCheck: "Assume P, reach Q.",
+        },
+      ],
+      midterm: [
+        {
+          prompt: workThis(locale, text(locale, {
+            en: "if a and b are divisible by 3, then a + b is divisible by 3",
+            es: "si a y b son divisibles por 3, entonces a + b es divisible por 3",
+            zh: "若 a 和 b 都能被 3 整除，则 a + b 也能被 3 整除",
+          }), "prove"),
+          firstStep: "Write a = 3m and b = 3n.",
+          setup: "Use the divisibility definition directly.",
+          fullPath: ["Assume a = 3m and b = 3n", "Then a + b = 3m + 3n = 3(m + n)", "So a + b is divisible by 3"],
+          answer: "The sum is divisible by 3.",
+          selfCheck: "Definition first, algebra second.",
+        },
+      ],
+      final: [
+        {
+          prompt: workThis(locale, text(locale, {
+            en: "if A ⊆ B and B ⊆ C, then A ⊆ C",
+            es: "si A ⊆ B y B ⊆ C, entonces A ⊆ C",
+            zh: "若 A ⊆ B 且 B ⊆ C，则 A ⊆ C",
+          }), "prove"),
+          firstStep: "Take an arbitrary x in A.",
+          setup: "Subset proofs are direct element-chasing.",
+          fullPath: ["Let x ∈ A", "Since A ⊆ B, we get x ∈ B", "Since B ⊆ C, we get x ∈ C, so A ⊆ C"],
+          answer: "Therefore A ⊆ C.",
+          selfCheck: "Subset proof = pick an element and chase it.",
+        },
+      ],
+    });
+  }
+
+  if (sig.includes("proof-induction")) {
+    return pick(level, variant, {
+      quiz: [
+        {
+          prompt: workThis(locale, "1 + 2 + ... + n = n(n + 1)/2", "prove"),
+          firstStep: "Do the base case n = 1.",
+          setup: "Then assume the statement for k and prove it for k + 1.",
+          fullPath: ["Base case: 1 = 1(2)/2", "Induction hypothesis: 1+...+k = k(k+1)/2", "Add k+1 and simplify to get (k+1)(k+2)/2"],
+          answer: "The formula holds for all n >= 1.",
+          selfCheck: "Base, assume k, prove k+1.",
+        },
+      ],
+      midterm: [
+        {
+          prompt: workThis(locale, "2^n >= n + 1 for all n >= 0", "prove"),
+          firstStep: "Check n = 0, then assume the claim at n = k.",
+          setup: "Use the induction hypothesis inside the k+1 line.",
+          fullPath: ["Base case: 1 >= 1", "Assume 2^k >= k+1", "Then 2^{k+1} = 2·2^k >= 2k+2 >= k+2"],
+          answer: "So the claim holds for every n >= 0.",
+          selfCheck: "The k-case must appear inside the k+1 work.",
+        },
+      ],
+      final: [
+        {
+          prompt: workThis(locale, "7 divides 8^n - 1 for all n >= 1", "prove"),
+          firstStep: "Use n = 1 as the base case and rewrite the k+1 line to show 8^k - 1 inside it.",
+          setup: "Induction works best when the new expression contains the old one.",
+          fullPath: ["Base case: 8 - 1 = 7", "Assume 7 | (8^k - 1)", "Then 8^{k+1} - 1 = 8(8^k - 1) + 7, so it is divisible by 7"],
+          answer: "Hence 7 divides 8^n - 1 for all n >= 1.",
+          selfCheck: "Rewrite k+1 until the induction hypothesis shows up.",
+        },
+      ],
+    });
+  }
+
+  if (sig.includes("proof-counterexample")) {
+    return pick(level, variant, {
+      quiz: [
+        {
+          prompt: workThis(locale, text(locale, {
+            en: "disprove: every prime is odd",
+            es: "refuta: todo primo es impar",
+            zh: "反驳：每个素数都是奇数",
+          }), "prove"),
+          firstStep: "Look for one legal exception.",
+          setup: "A single real counterexample is enough.",
+          fullPath: ["Take 2", "2 is prime", "2 is not odd, so the claim fails"],
+          answer: "Counterexample: 2.",
+          selfCheck: "One valid exception kills a universal claim.",
+        },
+      ],
+      midterm: [
+        {
+          prompt: workThis(locale, text(locale, {
+            en: "disprove: every continuous function is differentiable",
+            es: "refuta: toda funcion continua es diferenciable",
+            zh: "反驳：每个连续函数都可导",
+          }), "prove"),
+          firstStep: "Pick a classic corner function.",
+          setup: "The best counterexample fits the assumptions but breaks the conclusion.",
+          fullPath: ["Use f(x)=|x|", "It is continuous everywhere", "At x=0 the one-sided derivatives disagree, so it is not differentiable"],
+          answer: "Counterexample: f(x)=|x|.",
+          selfCheck: "The counterexample must satisfy the setup exactly.",
+        },
+      ],
+      final: [
+        {
+          prompt: workThis(locale, text(locale, {
+            en: "disprove: if ab = 0, then a = 0 and b = 0",
+            es: "refuta: si ab = 0, entonces a = 0 y b = 0",
+            zh: "反驳：若 ab = 0，则 a = 0 且 b = 0",
+          }), "prove"),
+          firstStep: "Make one factor zero and the other factor nonzero.",
+          setup: "You only need one legal pair.",
+          fullPath: ["Take a = 0 and b = 5", "Then ab = 0", "But b ≠ 0, so the statement is false"],
+          answer: "Counterexample: (0, 5).",
+          selfCheck: "Universal statement? One broken case is enough.",
+        },
+      ],
+    });
+  }
+
+  return null;
+}
+
+function analysisPractice(locale: Locale, level: ExamLevel, variant: number, sig: string): DrillSeed | null {
+  if (sig.includes("analysis140a-supremum")) {
+    return pick(level, variant, {
+      quiz: [
+        {
+          prompt: workThis(locale, "A = {x in R : x < 2}. Show that sup A = 2.", "prove"),
+          firstStep: "Do the two supremum checks: upper bound, then least upper bound.",
+          setup: "Supremum proofs always split into those two parts.",
+          fullPath: ["Every x in A satisfies x < 2, so 2 is an upper bound", "Take any epsilon > 0; then 2 - epsilon/2 is still in A", "So no smaller number can be an upper bound"],
+          answer: "Therefore sup A = 2.",
+          selfCheck: "Supremum = upper bound plus leastness.",
+        },
+      ],
+      midterm: [
+        {
+          prompt: workThis(locale, "B = {1 - 1/n : n in N}. Show that sup B = 1.", "prove"),
+          firstStep: "Show 1 bounds the set, then get arbitrarily close from below.",
+          setup: "Use the epsilon version of leastness.",
+          fullPath: ["1 - 1/n < 1 for every n, so 1 is an upper bound", "Given epsilon > 0, choose n > 1/epsilon", "Then 1 - 1/n > 1 - epsilon, so 1 is the least upper bound"],
+          answer: "sup B = 1.",
+          selfCheck: "To prove leastness, get within epsilon from below.",
+        },
+      ],
+      final: [
+        {
+          prompt: workThis(locale, "If s = sup A and epsilon > 0, show there exists a in A with s - epsilon < a <= s.", "prove"),
+          firstStep: "Argue by contradiction from the definition of least upper bound.",
+          setup: "If no such a existed, s - epsilon would already be an upper bound.",
+          fullPath: ["Assume no element of A is bigger than s - epsilon", "Then every a in A satisfies a <= s - epsilon", "So s - epsilon is an upper bound, contradicting that s is the least upper bound"],
+          answer: "Such an a must exist.",
+          selfCheck: "Least upper bound means you cannot slide the ceiling lower.",
+        },
+      ],
+    });
+  }
+
+  if (sig.includes("analysis140a-sequence-limit")) {
+    return pick(level, variant, {
+      quiz: [
+        {
+          prompt: workThis(locale, "Prove that 1/n -> 0.", "prove"),
+          firstStep: "Start with epsilon > 0 and solve 1/n < epsilon.",
+          setup: "Sequence limit proofs turn the target into an N-condition.",
+          fullPath: ["Need 1/n < epsilon", "Choose N > 1/epsilon", "Then n >= N implies 1/n <= 1/N < epsilon"],
+          answer: "Therefore 1/n -> 0.",
+          selfCheck: "Given epsilon, solve for N.",
+        },
+      ],
+      midterm: [
+        {
+          prompt: workThis(locale, "Prove that (2n+1)/n -> 2.", "prove"),
+          firstStep: "Rewrite the difference from 2 before choosing N.",
+          setup: "|(2n+1)/n - 2| simplifies to 1/n.",
+          fullPath: ["|(2n+1)/n - 2| = |1/n|", "Need 1/n < epsilon", "Choose N > 1/epsilon"],
+          answer: "So (2n+1)/n converges to 2.",
+          selfCheck: "Simplify |a_n - L| before touching N.",
+        },
+      ],
+      final: [
+        {
+          prompt: workThis(locale, "Prove that (3n-4)/(n+2) -> 3.", "prove"),
+          firstStep: "Compute |(3n-4)/(n+2) - 3| first.",
+          setup: "Turn the abstract limit statement into a clean inequality in n.",
+          fullPath: ["|(3n-4)/(n+2) - 3| = |(-10)/(n+2)|", "Need 10/(n+2) < epsilon", "Choose N > 10/epsilon"],
+          answer: "Hence the sequence converges to 3.",
+          selfCheck: "Always simplify the absolute difference first.",
+        },
+      ],
+    });
+  }
+
+  if (sig.includes("analysis140a-continuity")) {
+    return pick(level, variant, {
+      quiz: [
+        {
+          prompt: workThis(locale, "Prove f(x)=2x is continuous at a.", "prove"),
+          firstStep: "Start from |2x - 2a| < epsilon.",
+          setup: "Work backward to choose a delta.",
+          fullPath: ["|2x - 2a| = 2|x-a|", "Want 2|x-a| < epsilon", "Choose delta = epsilon/2"],
+          answer: "delta = epsilon/2 works.",
+          selfCheck: "Epsilon asks, delta answers.",
+        },
+      ],
+      midterm: [
+        {
+          prompt: workThis(locale, "Prove f(x)=x^2 is continuous at a.", "prove"),
+          firstStep: "Factor |x^2-a^2| into |x-a||x+a|.",
+          setup: "Control the extra |x+a| term by first forcing x to stay near a.",
+          fullPath: ["Assume |x-a| < 1 so |x+a| <= |x-a| + 2|a| < 1 + 2|a|", "Then |x^2-a^2| < |x-a|(1+2|a|)", "Choose delta = min(1, epsilon/(1+2|a|))"],
+          answer: "delta = min(1, epsilon/(1+2|a|)) works.",
+          selfCheck: "When extra factors appear, first box x into a small neighborhood.",
+        },
+      ],
+      final: [
+        {
+          prompt: workThis(locale, "Prove f(x)=1/x is continuous at a != 0.", "prove"),
+          firstStep: "Write |1/x - 1/a| as |x-a| / |ax|.",
+          setup: "You must keep x away from 0 before choosing the final delta.",
+          fullPath: ["Force |x-a| < |a|/2, then |x| > |a|/2", "So |ax| > |a|^2/2", "Then choose delta = min(|a|/2, epsilon|a|^2/2)"],
+          answer: "A suitable delta is min(|a|/2, epsilon|a|^2/2).",
+          selfCheck: "Continuity of fractions needs a denominator safety fence first.",
+        },
+      ],
+    });
+  }
+
+  if (sig.includes("analysis140a-cauchy")) {
+    return pick(level, variant, {
+      quiz: [
+        {
+          prompt: workThis(locale, "What must you show to prove a sequence is Cauchy?", "prove"),
+          firstStep: "Write the tail-to-tail goal |a_n - a_m| < epsilon.",
+          setup: "Cauchy proofs compare late terms to each other, not to a known limit.",
+          fullPath: ["Start with epsilon > 0", "Choose N so m,n >= N force the tail difference small", "State the required inequality explicitly"],
+          answer: "Show that for every epsilon > 0, there exists N so m,n >= N implies |a_n-a_m| < epsilon.",
+          selfCheck: "Cauchy means late terms bunch together.",
+        },
+      ],
+      midterm: [
+        {
+          prompt: workThis(locale, "Show that a_n = 1/n is Cauchy.", "prove"),
+          firstStep: "Bound |1/n - 1/m| by something easier, like 1/n + 1/m.",
+          setup: "Then make both terms small when n and m are large.",
+          fullPath: ["Assume m,n >= N", "|1/n - 1/m| <= 1/n + 1/m <= 2/N", "Choose N > 2/epsilon"],
+          answer: "So 1/n is Cauchy.",
+          selfCheck: "For Cauchy, find an easy bound on the tail difference.",
+        },
+      ],
+      final: [
+        {
+          prompt: workThis(locale, "If a_n converges, explain why it is Cauchy.", "prove"),
+          firstStep: "Compare both a_n and a_m to the same limit L.",
+          setup: "Use the triangle inequality.",
+          fullPath: ["Given epsilon > 0, choose N so n >= N implies |a_n-L| < epsilon/2", "Then for m,n >= N, |a_n-a_m| <= |a_n-L| + |a_m-L|", "< epsilon/2 + epsilon/2 = epsilon"],
+          answer: "Every convergent sequence is Cauchy.",
+          selfCheck: "One common anchor point can control two tail terms at once.",
+        },
+      ],
+    });
+  }
+
+  return null;
+}
+
+function linearAlgebraPractice(locale: Locale, level: ExamLevel, variant: number, sig: string): DrillSeed | null {
+  if (sig.includes("la-subspace-test")) {
+    return pick(level, variant, {
+      quiz: [
+        {
+          prompt: workThis(locale, "W = {(x,y): x+y=0}. Is W a subspace of R^2?", "prove"),
+          firstStep: "Check zero vector, closure under addition, and closure under scalar multiplication.",
+          setup: "Subspace test is always the same three checks.",
+          fullPath: ["(0,0) satisfies x+y=0", "If x1+y1=0 and x2+y2=0, then (x1+x2)+(y1+y2)=0", "If x+y=0, then c x + c y = c(x+y)=0"],
+          answer: "Yes, W is a subspace.",
+          selfCheck: "Zero, add, scale.",
+        },
+      ],
+      midterm: [
+        {
+          prompt: workThis(locale, "W = {(x,y): x+y=1}. Is W a subspace of R^2?", "prove"),
+          firstStep: "Check the zero vector first.",
+          setup: "Failing the zero-vector check kills the subspace immediately.",
+          fullPath: ["(0,0) does not satisfy x+y=1", "So W does not contain the zero vector", "Therefore W is not a subspace"],
+          answer: "No, W is not a subspace.",
+          selfCheck: "If zero is missing, stop there.",
+        },
+      ],
+      final: [
+        {
+          prompt: workThis(locale, "W = {(x,y,z): x-2y+z=0}. Is W a subspace of R^3?", "prove"),
+          firstStep: "Run the three closure checks.",
+          setup: "Linear equations equal to 0 usually pass the subspace test.",
+          fullPath: ["Zero vector works", "Addition preserves the equation", "Scalar multiplication preserves the equation"], 
+          answer: "Yes, W is a subspace of R^3.",
+          selfCheck: "Homogeneous linear conditions usually signal subspace.",
+        },
+      ],
+    });
+  }
+
+  if (sig.includes("la-linear-independence")) {
+    return pick(level, variant, {
+      quiz: [
+        {
+          prompt: workThis(locale, "Are (1,0) and (0,1) linearly independent?", "prove"),
+          firstStep: "Set c1(1,0)+c2(0,1)=(0,0) and solve.",
+          setup: "Independence means only the trivial combination gives zero.",
+          fullPath: ["c1=0 and c2=0", "Only the trivial solution works", "So the vectors are independent"],
+          answer: "Yes, they are linearly independent.",
+          selfCheck: "Independent means no nontrivial zero combination.",
+        },
+      ],
+      midterm: [
+        {
+          prompt: workThis(locale, "Are (1,2) and (2,4) linearly independent?", "prove"),
+          firstStep: "Look for whether one vector is a scalar multiple of the other.",
+          setup: "Scalar multiples are automatically dependent.",
+          fullPath: ["(2,4)=2(1,2)", "So one vector brings no new direction", "Therefore the set is linearly dependent"],
+          answer: "No, they are dependent.",
+          selfCheck: "Multiple of another vector means dependent.",
+        },
+      ],
+      final: [
+        {
+          prompt: workThis(locale, "Decide whether {(1,0,1),(0,1,1),(1,1,2)} is linearly independent.", "prove"),
+          firstStep: "Check whether one vector is already a combination of the others.",
+          setup: "If v3 = v1 + v2, the set is dependent.",
+          fullPath: ["(1,1,2) = (1,0,1) + (0,1,1)", "So one vector is redundant", "Hence the set is dependent"],
+          answer: "The set is linearly dependent.",
+          selfCheck: "Redundant vector = dependence.",
+        },
+      ],
+    });
+  }
+
+  return null;
+}
+
+function probabilityPractice(locale: Locale, level: ExamLevel, variant: number, sig: string): DrillSeed | null {
+  if (sig.includes("prob-combinations")) {
+    return pick(level, variant, {
+      quiz: [
+        {
+          prompt: workThis(locale, "How many ways can you choose 3 students from 8?", "find"),
+          firstStep: "Use a combination because order does not matter.",
+          setup: "This is choose, not arrange.",
+          fullPath: ["C(8,3) = 8!/(3!5!)", "= 56"],
+          answer: "56",
+          selfCheck: "Choosing a group means combinations.",
+        },
+      ],
+      midterm: [
+        {
+          prompt: workThis(locale, "A committee of 4 is chosen from 10 people. How many committees are possible?", "find"),
+          firstStep: "Use C(10,4).",
+          setup: "Committees ignore order.",
+          fullPath: ["C(10,4)=10!/(4!6!)", "=210"],
+          answer: "210",
+          selfCheck: "Committee = combination.",
+        },
+      ],
+      final: [
+        {
+          prompt: workThis(locale, "From 6 women and 5 men, how many 4-person groups contain exactly 2 women?", "find"),
+          firstStep: "Split the counting by category: choose women and choose men.",
+          setup: "Exactly 2 women means 2 women and 2 men.",
+          fullPath: ["Choose 2 women: C(6,2)=15", "Choose 2 men: C(5,2)=10", "Multiply: 15·10 = 150"],
+          answer: "150",
+          selfCheck: "Exact-category counting usually means choose each category separately, then multiply.",
+        },
+      ],
+    });
+  }
+
+  if (sig.includes("prob-independence")) {
+    return pick(level, variant, {
+      quiz: [
+        {
+          prompt: workThis(locale, "If P(A)=0.5, P(B)=0.4, and P(A∩B)=0.2, are A and B independent?", "find"),
+          firstStep: "Compare P(A∩B) to P(A)P(B).",
+          setup: "Independence means product rule exactly.",
+          fullPath: ["P(A)P(B)=0.5·0.4=0.2", "This matches P(A∩B)", "So A and B are independent"],
+          answer: "Yes, A and B are independent.",
+          selfCheck: "Independent means intersection equals product.",
+        },
+      ],
+      midterm: [
+        {
+          prompt: workThis(locale, "A fair coin is flipped twice. Are 'first flip is H' and 'second flip is H' independent?", "find"),
+          firstStep: "Check whether one event changes the probability of the other.",
+          setup: "Separate flips should not affect each other.",
+          fullPath: ["P(first H)=1/2 and P(second H)=1/2", "P(both H)=1/4", "Since 1/4=(1/2)(1/2), the events are independent"],
+          answer: "Yes, they are independent.",
+          selfCheck: "If one event does not change the other, independence is plausible.",
+        },
+      ],
+      final: [
+        {
+          prompt: workThis(locale, "A card is drawn from a deck. Are A='card is a heart' and B='card is a face card' independent?", "find"),
+          firstStep: "Compute P(A), P(B), and P(A∩B).",
+          setup: "Compare the intersection to the product.",
+          fullPath: ["P(A)=13/52=1/4", "P(B)=12/52=3/13, and P(A∩B)=3/52", "Since (1/4)(3/13)=3/52, the events are independent"],
+          answer: "Yes, they are independent.",
+          selfCheck: "Count the overlap, then compare to the product.",
+        },
+      ],
+    });
+  }
+
+  return null;
+}
+
+function directSubstitution(locale: Locale, level: ExamLevel, variant: number): DrillSeed {
   return pick(level, variant, {
     quiz: [
       {
@@ -168,7 +857,7 @@ function directSubstitution(locale: Locale, level: BubblegumLevel, variant: numb
   });
 }
 
-function factoringLimit(locale: Locale, level: BubblegumLevel, variant: number): DrillSeed {
+function factoringLimit(locale: Locale, level: ExamLevel, variant: number): DrillSeed {
   return pick(level, variant, {
     quiz: [
       {
@@ -203,7 +892,7 @@ function factoringLimit(locale: Locale, level: BubblegumLevel, variant: number):
   });
 }
 
-function chainRule(locale: Locale, level: BubblegumLevel, variant: number): DrillSeed {
+function chainRule(locale: Locale, level: ExamLevel, variant: number): DrillSeed {
   return pick(level, variant, {
     quiz: [
       {
@@ -238,7 +927,7 @@ function chainRule(locale: Locale, level: BubblegumLevel, variant: number): Dril
   });
 }
 
-function integrationByParts(locale: Locale, level: BubblegumLevel, variant: number): DrillSeed {
+function integrationByParts(locale: Locale, level: ExamLevel, variant: number): DrillSeed {
   return pick(level, variant, {
     quiz: [
       {
@@ -273,7 +962,7 @@ function integrationByParts(locale: Locale, level: BubblegumLevel, variant: numb
   });
 }
 
-function proofEquivalence(locale: Locale, level: BubblegumLevel, variant: number): DrillSeed {
+function proofEquivalence(locale: Locale, level: ExamLevel, variant: number): DrillSeed {
   return pick(level, variant, {
     quiz: [
       {
@@ -320,7 +1009,7 @@ function proofEquivalence(locale: Locale, level: BubblegumLevel, variant: number
   });
 }
 
-function proofMethod(locale: Locale, level: BubblegumLevel, variant: number, sig: string): DrillSeed | null {
+function proofMethod(locale: Locale, level: ExamLevel, variant: number, sig: string): DrillSeed | null {
   if (sig.includes("contrapositive")) {
     return pick(level, variant, {
       quiz: [
@@ -512,7 +1201,7 @@ function proofMethod(locale: Locale, level: BubblegumLevel, variant: number, sig
   return null;
 }
 
-function linearAlgebra(locale: Locale, level: BubblegumLevel, variant: number, sig: string): DrillSeed | null {
+function linearAlgebra(locale: Locale, level: ExamLevel, variant: number, sig: string): DrillSeed | null {
   if (sig.includes("linear systems") || sig.includes("system")) {
     return pick(level, variant, {
       quiz: [
@@ -664,7 +1353,7 @@ function linearAlgebra(locale: Locale, level: BubblegumLevel, variant: number, s
   return null;
 }
 
-function probability(locale: Locale, level: BubblegumLevel, variant: number, sig: string): DrillSeed | null {
+function probability(locale: Locale, level: ExamLevel, variant: number, sig: string): DrillSeed | null {
   if (sig.includes("bayes")) {
     return pick(level, variant, {
       quiz: [
@@ -773,7 +1462,7 @@ function probability(locale: Locale, level: BubblegumLevel, variant: number, sig
   return null;
 }
 
-function multivariable(locale: Locale, level: BubblegumLevel, variant: number, sig: string): DrillSeed | null {
+function multivariable(locale: Locale, level: ExamLevel, variant: number, sig: string): DrillSeed | null {
   if (sig.includes("surface") || sig.includes("quadric") || sig.includes("cylinder")) {
     return pick(level, variant, {
       quiz: [
@@ -847,7 +1536,7 @@ function multivariable(locale: Locale, level: BubblegumLevel, variant: number, s
   return null;
 }
 
-function derivativeOrIntegral(locale: Locale, level: BubblegumLevel, variant: number, sig: string): DrillSeed | null {
+function derivativeOrIntegral(locale: Locale, level: ExamLevel, variant: number, sig: string): DrillSeed | null {
   if (sig.includes("product rule")) {
     return pick(level, variant, {
       quiz: [
@@ -1035,6 +1724,10 @@ export function buildBubblegumDrill(
   const sig = signature(card);
   const technique = getTechniqueLabel(card, locale);
 
+  if (level === "warmup") {
+    return buildWarmupDrill(card, locale, technique);
+  }
+
   const seed =
     (sig.includes("direct-substitution") && directSubstitution(locale, level, variant)) ||
     (sig.includes("factoring") && factoringLimit(locale, level, variant)) ||
@@ -1104,9 +1797,13 @@ export function buildBubblegumDrill(
       ],
     })) ||
     proofMethod(locale, level, variant, sig) ||
+    proofPractice(locale, level, variant, sig) ||
     (sig.includes("equivalence relation") && proofEquivalence(locale, level, variant)) ||
     linearAlgebra(locale, level, variant, sig) ||
+    linearAlgebraPractice(locale, level, variant, sig) ||
     probability(locale, level, variant, sig) ||
+    probabilityPractice(locale, level, variant, sig) ||
+    analysisPractice(locale, level, variant, sig) ||
     multivariable(locale, level, variant, sig) ||
     (sig.includes("chain rule") && chainRule(locale, level, variant)) ||
     (sig.includes("integration by parts") && integrationByParts(locale, level, variant)) ||
@@ -1117,6 +1814,10 @@ export function buildBubblegumDrill(
     level,
     prompt: seed.prompt,
     technique,
+    whyFits: seed.whyFits ?? buildWhyFits(card, locale, technique),
+    notationHelp: seed.notationHelp ?? buildNotationHelp(card, locale),
+    missedBecause: buildMissedBecause(card, locale, technique),
+    nextLookFor: buildNextLookFor(card, locale),
     firstStep: seed.firstStep,
     setup: seed.setup,
     fullPath: seed.fullPath,

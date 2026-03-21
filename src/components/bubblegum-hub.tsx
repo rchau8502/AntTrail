@@ -8,24 +8,50 @@ import { localizeCards } from "@/content/localization";
 import type { BubbleCard } from "@/content/schema";
 import { getCourseDisplayLabel, getCourseOptions } from "@/lib/bubble";
 import { buildBubblegumDrill } from "@/lib/bubblegum";
-import { BUBBLE_PROGRESS_EVENT, isBubblegumTopicMastered } from "@/lib/progress";
+import {
+  BUBBLE_PROGRESS_EVENT,
+  getBubblegumTopicProgressMap,
+  isBubblegumTopicMastered,
+  type BubblegumTopicProgress,
+} from "@/lib/progress";
 import { getPatternTokens, getRecognitionPrompt, getTechniqueLabel } from "@/lib/recognition";
 
 interface BubblegumHubProps {
   cards: BubbleCard[];
 }
 
+const hubCopy = {
+  en: {
+    weakTopics: "Weak topics",
+    weakHelp: "Bubblegum is tracking these misses on this device so you can chew the weak spots first.",
+    misses: "misses",
+  },
+  es: {
+    weakTopics: "Temas flojos",
+    weakHelp: "Bubblegum esta guardando estos fallos en este dispositivo para que mastiques primero los puntos debiles.",
+    misses: "fallos",
+  },
+  zh: {
+    weakTopics: "薄弱主题",
+    weakHelp: "Bubblegum 会在这台设备上记录这些失误，方便你先补最弱的点。",
+    misses: "错题次数",
+  },
+} as const;
+
 export function BubblegumHub({ cards }: BubblegumHubProps) {
   const { locale, t } = useLanguage();
+  const ui = hubCopy[locale] ?? hubCopy.en;
   const [query, setQuery] = useState("");
   const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
   const [masteredIds, setMasteredIds] = useState<Set<string>>(new Set());
+  const [progressMap, setProgressMap] = useState<Record<string, BubblegumTopicProgress>>({});
   const localizedCards = useMemo(() => localizeCards(cards, locale), [cards, locale]);
   const courseOptions = getCourseOptions(localizedCards);
 
   useEffect(() => {
     const sync = () => {
       setMasteredIds(new Set(cards.filter((card) => isBubblegumTopicMastered(card.id)).map((card) => card.id)));
+      setProgressMap(getBubblegumTopicProgressMap());
     };
 
     sync();
@@ -70,6 +96,18 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
   });
 
   const orderedCards = [...filteredCards].sort((left, right) => left.order - right.order);
+  const weakCards = [...localizedCards]
+    .map((card) => ({
+      card,
+      progress: progressMap[card.id] ?? { gotIt: 0, missedIt: 0 },
+    }))
+    .filter(({ progress }) => progress.missedIt > 0)
+    .sort(
+      (left, right) =>
+        right.progress.missedIt - left.progress.missedIt ||
+        left.progress.gotIt - right.progress.gotIt,
+    )
+    .slice(0, 6);
 
   return (
     <div className="space-y-8">
@@ -105,10 +143,38 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
         </div>
       </section>
 
+      {weakCards.length > 0 ? (
+        <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-rose-600">
+            {ui.weakTopics}
+          </p>
+          <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
+            {ui.weakHelp}
+          </p>
+          <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {weakCards.map(({ card, progress }) => (
+              <Link
+                key={card.id}
+                href={`/bubblegum/${card.id}`}
+                className="rounded-[1.6rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-5 transition hover:border-rose-200"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-rose-600">
+                  {progress.missedIt} {ui.misses}
+                </p>
+                <h2 className="mt-3 text-lg font-semibold text-slate-900">{card.name}</h2>
+                <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
+                  {getTechniqueLabel(card, locale)}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {orderedCards.map((card) => {
           const mastered = masteredIds.has(card.id);
-          const preview = buildBubblegumDrill(card, locale, "quiz", 0);
+          const preview = buildBubblegumDrill(card, locale, "warmup", 0);
 
           return (
             <Link
@@ -134,6 +200,9 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
                 {getTechniqueLabel(card, locale)}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-700">
+                  Warm-up
+                </span>
                 <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-700">
                   Quiz
                 </span>

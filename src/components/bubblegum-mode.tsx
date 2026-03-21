@@ -11,6 +11,7 @@ import { getCourseDisplayLabel } from "@/lib/bubble";
 import { buildBubblegumDrill, type BubblegumLevel } from "@/lib/bubblegum";
 import {
   BUBBLE_PROGRESS_EVENT,
+  recordBubblegumAttempt,
   isBubblegumTopicMastered,
   setBubblegumTopicMastered,
 } from "@/lib/progress";
@@ -25,14 +26,17 @@ function softnessLabel(level: number) {
   return "●".repeat(level) + "○".repeat(Math.max(0, 5 - level));
 }
 
-const levelOrder: BubblegumLevel[] = ["quiz", "midterm", "final"];
+const levelOrder: BubblegumLevel[] = ["warmup", "quiz", "midterm", "final"];
 
 const bubblegumCopy = {
   en: {
+    warmup: "Warm-up",
     quiz: "Quiz style",
     midterm: "Midterm style",
     final: "Final style",
     actualProblem: "Actual problem",
+    whyFits: "Why this fits",
+    notationHelp: "Notation help",
     revealTechnique: "Reveal technique",
     revealFirstStep: "Reveal first step",
     revealSetup: "Reveal setup",
@@ -42,6 +46,8 @@ const bubblegumCopy = {
     answer: "Answer",
     commonMiss: "Common miss",
     selfCheck: "Self-check",
+    missedBecause: "Why you likely missed it",
+    nextLookFor: "Next time look for this",
     gotIt: "I got it",
     missedIt: "I missed it",
     chewAnother: "Chew another problem",
@@ -51,10 +57,13 @@ const bubblegumCopy = {
     missedItHelp: "Use the path below, then chew one more problem from the same set.",
   },
   es: {
+    warmup: "Calentamiento",
     quiz: "Estilo quiz",
     midterm: "Estilo parcial",
     final: "Estilo final",
     actualProblem: "Problema real",
+    whyFits: "Por que va aqui",
+    notationHelp: "Ayuda de notacion",
     revealTechnique: "Mostrar tecnica",
     revealFirstStep: "Mostrar primer paso",
     revealSetup: "Mostrar planteamiento",
@@ -64,6 +73,8 @@ const bubblegumCopy = {
     answer: "Respuesta",
     commonMiss: "Error tipico",
     selfCheck: "Autochequeo",
+    missedBecause: "Por que probablemente fallaste",
+    nextLookFor: "La proxima vez busca esto",
     gotIt: "Lo saque",
     missedIt: "Lo falle",
     chewAnother: "Masticar otro problema",
@@ -73,10 +84,13 @@ const bubblegumCopy = {
     missedItHelp: "Usa el camino de solucion y luego mastica otra variacion del mismo tema.",
   },
   zh: {
+    warmup: "热身题型",
     quiz: "小测题型",
     midterm: "期中题型",
     final: "期末题型",
     actualProblem: "真实题目",
+    whyFits: "为什么是这类题",
+    notationHelp: "符号提示",
     revealTechnique: "显示方法",
     revealFirstStep: "显示第一步",
     revealSetup: "显示列式",
@@ -86,6 +100,8 @@ const bubblegumCopy = {
     answer: "答案",
     commonMiss: "常见失误",
     selfCheck: "自查",
+    missedBecause: "这次为什么容易错",
+    nextLookFor: "下次先看这个",
     gotIt: "我做出来了",
     missedIt: "我没做出来",
     chewAnother: "再嚼一题",
@@ -166,6 +182,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
     setShowSetup(true);
     setShowPath(true);
     setShowAnswer(true);
+    recordBubblegumAttempt(card.id, nextOutcome);
 
     if (nextOutcome === "gotIt") {
       setStreak((value) => value + 1);
@@ -271,6 +288,28 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
           </p>
         </div>
 
+        <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-sky-50/80 p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+              {ui.whyFits}
+            </p>
+            <p className="mt-3 text-base leading-7 text-slate-900">{drill.whyFits}</p>
+          </div>
+
+          {drill.notationHelp.length > 0 ? (
+            <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-amber-50/80 p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">
+                {ui.notationHelp}
+              </p>
+              <div className="mt-3 space-y-3 text-sm leading-6 text-slate-900">
+                {drill.notationHelp.map((item) => (
+                  <p key={item}>{item}</p>
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </div>
+
         <div className="mt-6 flex flex-wrap gap-3">
           <button
             type="button"
@@ -371,6 +410,19 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
                 <p className="mt-3 text-sm leading-6 text-[color:var(--muted)]">
                   <span className="font-semibold text-slate-900">{ui.selfCheck}:</span>{" "}
                   {drill.selfCheck}
+                </p>
+              </div>
+            ) : null}
+
+            {outcome === "missedIt" ? (
+              <div className="rounded-[1.75rem] border border-amber-200 bg-amber-50/80 p-5">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-amber-700">
+                  {ui.missedBecause}
+                </p>
+                <p className="mt-3 text-sm leading-6 text-slate-800">{drill.missedBecause}</p>
+                <p className="mt-4 text-sm leading-6 text-slate-800">
+                  <span className="font-semibold text-slate-900">{ui.nextLookFor}:</span>{" "}
+                  {drill.nextLookFor}
                 </p>
               </div>
             ) : null}

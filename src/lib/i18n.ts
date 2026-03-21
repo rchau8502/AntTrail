@@ -22,7 +22,7 @@ const messages = {
     navTopics: "Topics",
     navStudy: "Study Mode",
     navQuiz: "Quiz",
-    navBubblegum: "Bubblegum drills",
+    navBubblegum: "Bubblegum",
     navMemoryHooks: "Memory Hooks",
     language: "Language",
     bubbleExpanded: "Bubble Expanded",

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo } from "react";
 
 import { useLanguage } from "@/components/language-provider";
@@ -44,41 +45,54 @@ export function CoursePathways({
       </div>
 
       <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        <button
-          type="button"
-          onClick={() => onSelectCourse?.("All")}
-          className={`rounded-[1.75rem] border p-5 text-left transition ${
-            selectedCourse === "All"
-              ? "border-sky-200 bg-sky-50/90"
-              : "border-[color:var(--line)] bg-white/85 hover:border-sky-200 hover:bg-white"
-          }`}
-        >
-          <div className="flex items-center justify-between gap-3">
-            <p className="text-lg font-semibold text-slate-900">{t("allCourses")}</p>
-            <span className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-white">
-              {courses.length}
-            </span>
-          </div>
-          <p className="mt-3 text-sm leading-6 text-[color:var(--muted)]">
-            {t("allCoursesDescription")}
-          </p>
-        </button>
+        {onSelectCourse ? (
+          <button
+            type="button"
+            onClick={() => onSelectCourse("All")}
+            className={`rounded-[1.75rem] border p-5 text-left transition ${
+              selectedCourse === "All"
+                ? "border-sky-200 bg-sky-50/90"
+                : "border-[color:var(--line)] bg-white/85 hover:border-sky-200 hover:bg-white"
+            }`}
+          >
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-lg font-semibold text-slate-900">{t("allCourses")}</p>
+              <span className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-white">
+                {courses.length}
+              </span>
+            </div>
+            <p className="mt-3 text-sm leading-6 text-[color:var(--muted)]">
+              {t("allCoursesDescription")}
+            </p>
+          </button>
+        ) : (
+          <Link
+            href="/topics"
+            className="rounded-[1.75rem] border border-[color:var(--line)] bg-white/85 p-5 text-left transition hover:border-sky-200 hover:bg-white"
+          >
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-lg font-semibold text-slate-900">{t("allCourses")}</p>
+              <span className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-white">
+                {courses.length}
+              </span>
+            </div>
+            <p className="mt-3 text-sm leading-6 text-[color:var(--muted)]">
+              {t("allCoursesDescription")}
+            </p>
+          </Link>
+        )}
 
         {localizedCourses.map((course) => {
           const primaryCode = course.courseCodes?.[0];
           const isSelected = selectedCourse === course.title;
+          const cardClasses = `rounded-[1.75rem] border p-5 text-left transition ${
+            isSelected
+              ? "border-sky-200 bg-sky-50/90"
+              : "border-[color:var(--line)] bg-white/85 hover:border-sky-200 hover:bg-white"
+          }`;
 
-          return (
-            <button
-              key={course.id}
-              type="button"
-              onClick={() => onSelectCourse?.(isSelected ? "All" : course.title)}
-              className={`rounded-[1.75rem] border p-5 text-left transition ${
-                isSelected
-                  ? "border-sky-200 bg-sky-50/90"
-                  : "border-[color:var(--line)] bg-white/85 hover:border-sky-200 hover:bg-white"
-              }`}
-            >
+          const content = (
+            <>
               <div className="flex flex-wrap items-center gap-2">
                 {primaryCode ? (
                   <span className="rounded-full border border-sky-100 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-sky-700">
@@ -97,7 +111,26 @@ export function CoursePathways({
               <p className="mt-3 text-sm leading-6 text-[color:var(--muted)]">
                 {course.shortDescription}
               </p>
-            </button>
+            </>
+          );
+
+          if (onSelectCourse) {
+            return (
+              <button
+                key={course.id}
+                type="button"
+                onClick={() => onSelectCourse(isSelected ? "All" : course.title)}
+                className={cardClasses}
+              >
+                {content}
+              </button>
+            );
+          }
+
+          return (
+            <Link key={course.id} href={`/courses/${course.id}`} className={cardClasses}>
+              {content}
+            </Link>
           );
         })}
       </div>
