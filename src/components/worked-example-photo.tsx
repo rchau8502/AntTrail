@@ -7,6 +7,9 @@ import { useLanguage } from "@/components/language-provider";
 
 interface WorkedExamplePhotoProps {
   card: BubbleCard;
+  problem?: string;
+  firstMove?: string;
+  caption?: string;
 }
 
 function getBackground(card: BubbleCard) {
@@ -41,10 +44,15 @@ function getBackground(card: BubbleCard) {
   return "/images/worked-examples/notebook-blue.png";
 }
 
-export function WorkedExamplePhoto({ card }: WorkedExamplePhotoProps) {
+export function WorkedExamplePhoto({
+  card,
+  problem: problemOverride,
+  firstMove: firstMoveOverride,
+  caption,
+}: WorkedExamplePhotoProps) {
   const { t } = useLanguage();
-  const problem = card.quickExample?.problem ?? card.looksLike;
-  const firstMove = card.quickExample?.move ?? card.doThis;
+  const problem = problemOverride ?? card.quickExample?.problem ?? card.looksLike;
+  const firstMove = firstMoveOverride ?? card.quickExample?.move ?? card.doThis;
 
   return (
     <div className="relative overflow-hidden rounded-[1.75rem] border border-[color:var(--line)] bg-slate-100">
@@ -84,7 +92,7 @@ export function WorkedExamplePhoto({ card }: WorkedExamplePhotoProps) {
           </div>
 
           <div className="mt-auto self-end rounded-full bg-slate-900/78 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
-            {card.name}
+            {caption ?? card.name}
           </div>
         </div>
       </div>

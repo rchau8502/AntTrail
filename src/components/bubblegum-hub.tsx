@@ -7,6 +7,7 @@ import { useLanguage } from "@/components/language-provider";
 import { localizeCards } from "@/content/localization";
 import type { BubbleCard } from "@/content/schema";
 import { getCourseDisplayLabel, getCourseOptions } from "@/lib/bubble";
+import { buildBubblegumDrill } from "@/lib/bubblegum";
 import { BUBBLE_PROGRESS_EVENT, isBubblegumTopicMastered } from "@/lib/progress";
 import { getPatternTokens, getRecognitionPrompt, getTechniqueLabel } from "@/lib/recognition";
 
@@ -54,6 +55,7 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
             card.looksLike,
             card.doThis,
             card.watchOutFor,
+            buildBubblegumDrill(card, locale, "quiz", 0).prompt,
             getTechniqueLabel(card, locale),
             getRecognitionPrompt(card),
             ...getPatternTokens(card),
@@ -106,6 +108,7 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {orderedCards.map((card) => {
           const mastered = masteredIds.has(card.id);
+          const preview = buildBubblegumDrill(card, locale, "quiz", 0);
 
           return (
             <Link
@@ -130,8 +133,19 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
               <div className="mt-3 inline-flex max-w-full rounded-full border border-rose-100 bg-rose-50 px-3 py-2 text-xs font-semibold text-rose-700">
                 {getTechniqueLabel(card, locale)}
               </div>
-              <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
-                {card.memoryHook}
+              <div className="mt-3 flex flex-wrap gap-2">
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-700">
+                  Quiz
+                </span>
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-700">
+                  Midterm
+                </span>
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-700">
+                  Final
+                </span>
+              </div>
+              <p className="mt-3 text-sm leading-6 text-[color:var(--muted)]">
+                {preview.prompt}
               </p>
             </Link>
           );

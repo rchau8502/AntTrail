@@ -8,236 +8,109 @@ import { WorkedExamplePhoto } from "@/components/worked-example-photo";
 import { localizeCard } from "@/content/localization";
 import type { BubbleCard } from "@/content/schema";
 import { getCourseDisplayLabel } from "@/lib/bubble";
-import { BUBBLE_PROGRESS_EVENT, isBubblegumTopicMastered, setBubblegumTopicMastered } from "@/lib/progress";
-import { getPatternTokens, getRecognitionPrompt, getTechniqueLabel } from "@/lib/recognition";
-
-interface BubblegumQuestion {
-  kind: "technique" | "firstMove" | "trap" | "pattern" | "memory" | "metaphor";
-  prompt: string;
-  answer: string;
-  options: string[];
-  note: string;
-}
+import { buildBubblegumDrill, type BubblegumLevel } from "@/lib/bubblegum";
+import {
+  BUBBLE_PROGRESS_EVENT,
+  isBubblegumTopicMastered,
+  setBubblegumTopicMastered,
+} from "@/lib/progress";
 
 interface BubblegumModeProps {
   card: BubbleCard;
 }
 
-function firstChunk(text: string) {
-  return text
-    .split(/\s*(?:,|;|\.| then | and then | after that | luego | despues | después | y luego |，|；|。|然后|再)\s*/i)[0]
-    .trim();
-}
-
-function uniqueOptions(answer: string, extras: string[]) {
-  const seen = new Set<string>();
-  const items: string[] = [];
-
-  for (const value of [answer, ...extras]) {
-    const cleaned = value.trim();
-
-    if (!cleaned || seen.has(cleaned)) {
-      continue;
-    }
-
-    seen.add(cleaned);
-    items.push(cleaned);
-  }
-
-  return items;
-}
-
-function rotate<T>(items: T[], offset: number) {
-  if (items.length === 0) {
-    return items;
-  }
-
-  const safeOffset = offset % items.length;
-  return items.slice(safeOffset).concat(items.slice(0, safeOffset));
-}
-
-function buildBubblegumQuestion(card: BubbleCard, locale: ReturnType<typeof useLanguage>["locale"], round: number): BubblegumQuestion {
-  const technique = getTechniqueLabel(card, locale);
-  const firstMove = firstChunk(card.doThis) || card.doThis;
-  const trap = card.watchOutFor;
-  const remember = card.rememberThis;
-  const metaphor = card.thinkOfItAs;
-  const shapes = card.typicalProblemShapes;
-  const patternTokens = getPatternTokens(card);
-  const cue = getRecognitionPrompt(card);
-  const sampleShape = shapes[round % Math.max(shapes.length, 1)] ?? cue;
-  const clue = patternTokens[round % Math.max(patternTokens.length, 1)] ?? card.looksLike;
-  const type = round % 6;
-
-  if (type === 0) {
-    const options = rotate(
-      uniqueOptions(technique, [firstMove, trap, remember, metaphor]).slice(0, 4),
-      round + 1,
-    );
-
-    return {
-      kind: "technique",
-      prompt: sampleShape,
-      answer: technique,
-      options,
-      note: remember,
-    };
-  }
-
-  if (type === 1) {
-    const options = rotate(
-      uniqueOptions(firstMove, [technique, trap, remember, metaphor]).slice(0, 4),
-      round + 2,
-    );
-
-    return {
-      kind: "firstMove",
-      prompt: cue,
-      answer: firstMove,
-      options,
-      note: remember,
-    };
-  }
-
-  if (type === 2) {
-    const options = rotate(
-      uniqueOptions(trap, [firstMove, remember, technique, metaphor]).slice(0, 4),
-      round + 3,
-    );
-
-    return {
-      kind: "trap",
-      prompt: sampleShape,
-      answer: trap,
-      options,
-      note: trap,
-    };
-  }
-
-  if (type === 3) {
-    const options = rotate(
-      uniqueOptions(clue, [remember, trap, technique, firstMove]).slice(0, 4),
-      round + 4,
-    );
-
-    return {
-      kind: "pattern",
-      prompt: card.name,
-      answer: clue,
-      options,
-      note: technique,
-    };
-  }
-
-  if (type === 4) {
-    const options = rotate(
-      uniqueOptions(remember, [metaphor, trap, firstMove, technique]).slice(0, 4),
-      round + 5,
-    );
-
-    return {
-      kind: "memory",
-      prompt: cue,
-      answer: remember,
-      options,
-      note: technique,
-    };
-  }
-
-  const options = rotate(
-    uniqueOptions(metaphor, [remember, firstMove, trap, technique]).slice(0, 4),
-    round + 6,
-  );
-
-  return {
-    kind: "metaphor",
-    prompt: card.name,
-    answer: metaphor,
-    options,
-    note: remember,
-  };
-}
+type Outcome = "gotIt" | "missedIt";
 
 function softnessLabel(level: number) {
   return "●".repeat(level) + "○".repeat(Math.max(0, 5 - level));
 }
 
-function getBubblegumFeedback(
-  question: BubblegumQuestion,
-  locale: ReturnType<typeof useLanguage>["locale"],
-  selected: string,
-) {
-  const correct = selected === question.answer;
+const levelOrder: BubblegumLevel[] = ["quiz", "midterm", "final"];
 
-  const messages = {
-    en: {
-      fit: {
-        technique: `This cue points to ${question.answer}.`,
-        firstMove: `This is the first clean move: ${question.answer}.`,
-        trap: "That is the main mistake to avoid here.",
-        pattern: "That is the shape clue to recognize first.",
-        memory: "That is the short line worth keeping in your head.",
-        metaphor: "That picture is the quickest way to remember the topic.",
-      },
-      miss: {
-        technique: `That option is a move, but this shape points to ${question.answer}.`,
-        firstMove: `That is not the first step. Start with ${question.answer}.`,
-        trap: `That is not the usual miss here. The common trap is ${question.answer}.`,
-        pattern: `That clue does not match the main shape here. Look for ${question.answer}.`,
-        memory: `That line is not the key takeaway here. Keep ${question.answer}.`,
-        metaphor: `That image is not the best memory cue here. Use ${question.answer}.`,
-      },
-    },
-    es: {
-      fit: {
-        technique: `Esta pista apunta a ${question.answer}.`,
-        firstMove: `Este es el primer paso limpio: ${question.answer}.`,
-        trap: "Ese es el error típico que conviene evitar aquí.",
-        pattern: "Esa es la forma que conviene reconocer primero.",
-        memory: "Esa es la frase corta que vale la pena guardar.",
-        metaphor: "Esa imagen es la forma más rápida de recordarlo.",
-      },
-      miss: {
-        technique: `Esa opción nombra una técnica, pero esta forma apunta a ${question.answer}.`,
-        firstMove: `Esa no es la primera jugada. Empieza con ${question.answer}.`,
-        trap: `Ese no es el error típico aquí. La trampa común es ${question.answer}.`,
-        pattern: `Esa pista no coincide con la forma principal. Busca ${question.answer}.`,
-        memory: `Esa frase no es la idea clave aquí. Quédate con ${question.answer}.`,
-        metaphor: `Esa imagen no es la mejor pista de memoria aquí. Usa ${question.answer}.`,
-      },
-    },
-    zh: {
-      fit: {
-        technique: `这道题型先指向 ${question.answer}。`,
-        firstMove: `这里最干净的第一步就是：${question.answer}。`,
-        trap: "这就是这里最常见的坑。",
-        pattern: "这就是你该先认出来的题型线索。",
-        memory: "这句才是最值得先记住的短句。",
-        metaphor: "这个比喻是最快的记忆图像。",
-      },
-      miss: {
-        technique: `你选的也是一种方法，但这道题型更明显地指向 ${question.answer}。`,
-        firstMove: `这不是第一步，应该先从 ${question.answer} 开始。`,
-        trap: `这不是这里最常见的失误，真正的坑是 ${question.answer}。`,
-        pattern: `这条线索和主题型不匹配，先抓 ${question.answer}。`,
-        memory: `这句不是这里最核心的记忆点，先记 ${question.answer}。`,
-        metaphor: `这个比喻不够贴切，先用 ${question.answer} 来记。`,
-      },
-    },
-  } as const;
-
-  const bundle = messages[locale] ?? messages.en;
-  return correct ? bundle.fit[question.kind] : bundle.miss[question.kind];
-}
+const bubblegumCopy = {
+  en: {
+    quiz: "Quiz style",
+    midterm: "Midterm style",
+    final: "Final style",
+    actualProblem: "Actual problem",
+    revealTechnique: "Reveal technique",
+    revealFirstStep: "Reveal first step",
+    revealSetup: "Reveal setup",
+    revealPath: "Reveal full path",
+    revealAnswer: "Reveal answer",
+    solutionPath: "Solution path",
+    answer: "Answer",
+    commonMiss: "Common miss",
+    selfCheck: "Self-check",
+    gotIt: "I got it",
+    missedIt: "I missed it",
+    chewAnother: "Chew another problem",
+    tryItFirst:
+      "Treat this like a real quiz or midterm prompt. Work it out first, then reveal as much help as you need.",
+    gotItHelp: "Good. Keep the steps tight and try the next variation.",
+    missedItHelp: "Use the path below, then chew one more problem from the same set.",
+  },
+  es: {
+    quiz: "Estilo quiz",
+    midterm: "Estilo parcial",
+    final: "Estilo final",
+    actualProblem: "Problema real",
+    revealTechnique: "Mostrar tecnica",
+    revealFirstStep: "Mostrar primer paso",
+    revealSetup: "Mostrar planteamiento",
+    revealPath: "Mostrar camino completo",
+    revealAnswer: "Mostrar respuesta",
+    solutionPath: "Camino de solucion",
+    answer: "Respuesta",
+    commonMiss: "Error tipico",
+    selfCheck: "Autochequeo",
+    gotIt: "Lo saque",
+    missedIt: "Lo falle",
+    chewAnother: "Masticar otro problema",
+    tryItFirst:
+      "Tratalo como un quiz, parcial o final real. Intentalo primero y revela ayuda solo cuando la necesites.",
+    gotItHelp: "Bien. Mantén los pasos limpios y pasa a otra variacion.",
+    missedItHelp: "Usa el camino de solucion y luego mastica otra variacion del mismo tema.",
+  },
+  zh: {
+    quiz: "小测题型",
+    midterm: "期中题型",
+    final: "期末题型",
+    actualProblem: "真实题目",
+    revealTechnique: "显示方法",
+    revealFirstStep: "显示第一步",
+    revealSetup: "显示列式",
+    revealPath: "显示完整思路",
+    revealAnswer: "显示答案",
+    solutionPath: "解题路径",
+    answer: "答案",
+    commonMiss: "常见失误",
+    selfCheck: "自查",
+    gotIt: "我做出来了",
+    missedIt: "我没做出来",
+    chewAnother: "再嚼一题",
+    tryItFirst: "把它当成真的小测、期中或期末题。先自己做，再按需要一点点展开提示。",
+    gotItHelp: "很好。继续把步骤压紧，再做下一题。",
+    missedItHelp: "先顺着下面的解题路径过一遍，再嚼同主题的下一题。",
+  },
+} as const;
 
 export function BubblegumMode({ card }: BubblegumModeProps) {
   const { locale, t } = useLanguage();
   const localizedCard = useMemo(() => localizeCard(card, locale), [card, locale]);
-  const [round, setRound] = useState(0);
-  const [selected, setSelected] = useState<string | null>(null);
+  const ui = bubblegumCopy[locale] ?? bubblegumCopy.en;
+
+  const [level, setLevel] = useState<BubblegumLevel>("quiz");
+  const [variant, setVariant] = useState(0);
   const [chews, setChews] = useState(0);
   const [streak, setStreak] = useState(0);
   const [mastered, setMastered] = useState(false);
+  const [outcome, setOutcome] = useState<Outcome | null>(null);
+  const [showTechnique, setShowTechnique] = useState(false);
+  const [showStep, setShowStep] = useState(false);
+  const [showSetup, setShowSetup] = useState(false);
+  const [showPath, setShowPath] = useState(false);
+  const [showAnswer, setShowAnswer] = useState(false);
 
   useEffect(() => {
     const sync = () => {
@@ -254,49 +127,58 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
     };
   }, [card.id]);
 
-  const question = useMemo(
-    () => buildBubblegumQuestion(localizedCard, locale, round),
-    [localizedCard, locale, round],
+  const drill = useMemo(
+    () => buildBubblegumDrill(localizedCard, locale, level, variant),
+    [localizedCard, locale, level, variant],
   );
   const softness = Math.max(1, Math.min(5, Math.floor((chews + streak) / 2) + 1));
   const readyToSpit = softness >= 5 && streak >= 3;
 
-  function choose(option: string) {
-    if (selected) {
-      return;
-    }
+  function resetRevealState() {
+    setOutcome(null);
+    setShowTechnique(false);
+    setShowStep(false);
+    setShowSetup(false);
+    setShowPath(false);
+    setShowAnswer(false);
+  }
 
-    setSelected(option);
-    setChews((value) => value + 1);
-
-    if (option === question.answer) {
-      setStreak((value) => value + 1);
-    } else {
-      setStreak(0);
-    }
+  function changeLevel(nextLevel: BubblegumLevel) {
+    setLevel(nextLevel);
+    setVariant(0);
+    resetRevealState();
   }
 
   function nextVariation() {
-    setSelected(null);
-    setRound((value) => value + 1);
+    setVariant((value) => value + 1);
+    resetRevealState();
+  }
+
+  function record(nextOutcome: Outcome) {
+    if (outcome) {
+      return;
+    }
+
+    setOutcome(nextOutcome);
+    setChews((value) => value + 1);
+    setShowTechnique(true);
+    setShowStep(true);
+    setShowSetup(true);
+    setShowPath(true);
+    setShowAnswer(true);
+
+    if (nextOutcome === "gotIt") {
+      setStreak((value) => value + 1);
+      return;
+    }
+
+    setStreak(0);
   }
 
   function spitItOut() {
     setBubblegumTopicMastered(card.id, true);
     setMastered(true);
   }
-
-  const promptLabels = {
-    technique: t("whichTechniqueApplies"),
-    firstMove: t("firstMove"),
-    trap: t("trap"),
-    pattern: t("looksLike"),
-    memory: t("memoryHook"),
-    metaphor: t("thinkOfItAs"),
-  } as const;
-  const feedback = selected
-    ? getBubblegumFeedback(question, locale, selected)
-    : null;
 
   return (
     <div className="space-y-8">
@@ -310,7 +192,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
               {t("bubblegumTitle")}
             </h1>
             <p className="max-w-3xl text-base leading-7 text-[color:var(--muted)]">
-              {t("bubblegumDescription")}
+              {ui.tryItFirst}
             </p>
             <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-rose-600">
               <span>{getCourseDisplayLabel(localizedCard.course, locale)}</span>
@@ -359,103 +241,211 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
       </section>
 
       <section className="bubble-shadow rounded-[2.2rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
-        <div className="rounded-[1.85rem] border border-[color:var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,244,248,0.94))] p-6">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-rose-600">
-            {promptLabels[question.kind]}
-          </p>
-          <p className="mt-4 text-xl leading-8 text-slate-900 sm:text-2xl">
-            {question.prompt}
-          </p>
-        </div>
-
-        <div className="mt-6 grid gap-3 md:grid-cols-2">
-          {question.options.map((option) => {
-            const isCorrect = option === question.answer;
-            const isSelected = option === selected;
-            let tone = "border-[color:var(--line)] bg-white hover:border-rose-200";
-
-            if (selected && isCorrect) {
-              tone = "border-emerald-200 bg-emerald-50";
-            } else if (selected && isSelected && !isCorrect) {
-              tone = "border-rose-200 bg-rose-50";
-            }
+        <div className="flex flex-wrap gap-3">
+          {levelOrder.map((option) => {
+            const active = option === level;
 
             return (
               <button
                 key={option}
                 type="button"
-                onClick={() => choose(option)}
-                className={`rounded-[1.5rem] border p-5 text-left text-sm font-semibold text-slate-900 transition ${tone}`}
+                onClick={() => changeLevel(option)}
+                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                  active
+                    ? "bg-rose-600 text-white"
+                    : "border border-[color:var(--line)] bg-white text-slate-900 hover:border-rose-200"
+                }`}
               >
-                {option}
+                {ui[option]}
               </button>
             );
           })}
         </div>
 
-        {selected ? (
-          <div className="mt-6 space-y-4">
-            <div className="rounded-[1.75rem] border border-[color:var(--line)] bg-rose-50/70 p-5">
-              <p className="text-sm font-semibold text-slate-900">
-                {selected === question.answer ? t("correct") : t("tryAgainNextRound")}
+        <div className="mt-6 rounded-[1.85rem] border border-[color:var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,244,248,0.94))] p-6">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-rose-600">
+            {ui.actualProblem}
+          </p>
+          <p className="mt-4 text-xl leading-8 text-slate-900 sm:text-2xl">
+            {drill.prompt}
+          </p>
+        </div>
+
+        <div className="mt-6 flex flex-wrap gap-3">
+          <button
+            type="button"
+            onClick={() => setShowTechnique(true)}
+            className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
+          >
+            {ui.revealTechnique}
+          </button>
+          <button
+            type="button"
+            onClick={() => setShowStep(true)}
+            className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
+          >
+            {ui.revealFirstStep}
+          </button>
+          <button
+            type="button"
+            onClick={() => setShowSetup(true)}
+            className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
+          >
+            {ui.revealSetup}
+          </button>
+          <button
+            type="button"
+            onClick={() => setShowPath(true)}
+            className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
+          >
+            {ui.revealPath}
+          </button>
+          <button
+            type="button"
+            onClick={() => setShowAnswer(true)}
+            className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
+          >
+            {ui.revealAnswer}
+          </button>
+        </div>
+
+        <div className="mt-6 grid gap-4 lg:grid-cols-2">
+          {showTechnique ? (
+            <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-rose-50/70 p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-rose-600">
+                {t("techniqueToTry")}
               </p>
-              <p className="mt-2 text-sm leading-6 text-slate-700">
-                <span className="font-semibold text-slate-900">
-                  {selected === question.answer ? t("whyThisFits") : t("whyThatMisses")}:
-                </span>{" "}
-                {feedback}
-              </p>
-              <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
-                {t("bestCall")}:{" "}
-                <span className="font-semibold text-slate-900">{question.answer}</span>.{" "}
-                {t("hook")}: {question.note}
-              </p>
+              <p className="mt-3 text-base leading-7 text-slate-900">{drill.technique}</p>
             </div>
+          ) : null}
 
-            <WorkedExamplePhoto card={localizedCard} />
+          {showStep ? (
+            <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-emerald-50/70 p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">
+                {t("firstMove")}
+              </p>
+              <p className="mt-3 text-base leading-7 text-slate-900">{drill.firstStep}</p>
+            </div>
+          ) : null}
 
-            {mastered ? (
-              <div className="rounded-[1.75rem] border border-rose-200 bg-rose-50/70 p-5">
-                <p className="text-sm font-semibold text-rose-700">
-                  {t("bubblegumMastered")}
+          {showSetup ? (
+            <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-sky-50/80 p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+                {ui.revealSetup}
+              </p>
+              <p className="mt-3 text-base leading-7 text-slate-900">{drill.setup}</p>
+            </div>
+          ) : null}
+
+          <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
+              {ui.commonMiss}
+            </p>
+            <p className="mt-3 text-base leading-7 text-slate-900">{drill.commonMiss}</p>
+          </div>
+        </div>
+
+        {showPath || showAnswer ? (
+          <div className="mt-6 space-y-4">
+            {showPath ? (
+              <div className="rounded-[1.75rem] border border-[color:var(--line)] bg-slate-50 p-5">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-700">
+                  {ui.solutionPath}
                 </p>
-                <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
-                  {t("bubblegumMasteredHelp")}
+                <ol className="mt-4 space-y-3 text-sm leading-7 text-slate-900">
+                  {drill.fullPath.map((step) => (
+                    <li key={step} className="rounded-2xl bg-white px-4 py-3">
+                      {step}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ) : null}
+
+            {showAnswer ? (
+              <div className="rounded-[1.75rem] border border-rose-200 bg-rose-50/70 p-5">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-rose-700">
+                  {ui.answer}
+                </p>
+                <p className="mt-3 text-base leading-7 text-slate-900">{drill.answer}</p>
+                <p className="mt-3 text-sm leading-6 text-[color:var(--muted)]">
+                  <span className="font-semibold text-slate-900">{ui.selfCheck}:</span>{" "}
+                  {drill.selfCheck}
                 </p>
               </div>
-            ) : readyToSpit ? (
-              <div className="rounded-[1.75rem] border border-rose-200 bg-rose-50/70 p-5">
-                <p className="text-sm font-semibold text-rose-700">
-                  {t("bubblegumReady")}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-3">
-                  <button
-                    type="button"
-                    onClick={spitItOut}
-                    className="inline-flex items-center justify-center rounded-full bg-rose-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-rose-700"
-                  >
-                    {t("spitItOut")}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={nextVariation}
-                    className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
-                  >
-                    {t("keepChewing")}
-                  </button>
-                </div>
-              </div>
-            ) : (
+            ) : null}
+
+            <WorkedExamplePhoto
+              card={localizedCard}
+              problem={drill.prompt}
+              firstMove={drill.firstStep}
+              caption={`${localizedCard.name} · ${ui[level]}`}
+            />
+          </div>
+        ) : null}
+
+        <div className="mt-6 rounded-[1.75rem] border border-[color:var(--line)] bg-white/80 p-5">
+          <p className="text-sm leading-6 text-[color:var(--muted)]">{ui.tryItFirst}</p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => record("gotIt")}
+              className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700"
+            >
+              {ui.gotIt}
+            </button>
+            <button
+              type="button"
+              onClick={() => record("missedIt")}
+              className="inline-flex items-center justify-center rounded-full bg-rose-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-rose-700"
+            >
+              {ui.missedIt}
+            </button>
+          </div>
+
+          {outcome ? (
+            <p className="mt-4 text-sm leading-6 text-[color:var(--muted)]">
+              {outcome === "gotIt" ? ui.gotItHelp : ui.missedItHelp}
+            </p>
+          ) : null}
+        </div>
+
+        {mastered ? (
+          <div className="mt-6 rounded-[1.75rem] border border-rose-200 bg-rose-50/70 p-5">
+            <p className="text-sm font-semibold text-rose-700">{t("bubblegumMastered")}</p>
+            <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
+              {t("bubblegumMasteredHelp")}
+            </p>
+          </div>
+        ) : readyToSpit ? (
+          <div className="mt-6 rounded-[1.75rem] border border-rose-200 bg-rose-50/70 p-5">
+            <p className="text-sm font-semibold text-rose-700">{t("bubblegumReady")}</p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={spitItOut}
+                className="inline-flex items-center justify-center rounded-full bg-rose-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-rose-700"
+              >
+                {t("spitItOut")}
+              </button>
               <button
                 type="button"
                 onClick={nextVariation}
-                className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold !text-white transition hover:bg-rose-700 hover:!text-white"
+                className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
               >
-                {t("chewNext")}
+                {ui.chewAnother}
               </button>
-            )}
+            </div>
           </div>
-        ) : null}
+        ) : (
+          <button
+            type="button"
+            onClick={nextVariation}
+            className="mt-6 inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold !text-white transition hover:bg-rose-700 hover:!text-white"
+          >
+            {ui.chewAnother}
+          </button>
+        )}
       </section>
     </div>
   );
