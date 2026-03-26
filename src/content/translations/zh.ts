@@ -4237,7 +4237,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "这里通常出现什么符号？",
-        "answer": "拉姆达。"
+        "answer": "λ。"
       }
     ],
     "memoryHook": "约束问题？排列渐变。",
@@ -5407,7 +5407,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "该问题询问向量空间内的集合本身是否是向量空间",
     "looksLike": "证明 W 是 V 的子空间",
     "doThis": "检查零，在加法下关闭，在标量乘法下关闭",
-    "thinkOfItAs": "快速弹跳测试",
+    "thinkOfItAs": "一个三步快检",
     "watchOutFor": "忘记检查零向量",
     "rememberThis": "归零、相加、缩放",
     "typicalProblemShapes": [
@@ -5426,7 +5426,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "归零、相加、缩放。",
     "quickExample": {
-      "problem": "集合由线性方程定义。您应该运行什么测试？",
+      "problem": "集合由线性方程定义。先跑什么测试？",
       "move": "子空间测试。"
     }
   },
@@ -5434,21 +5434,21 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "线性代数导论",
     "chapter": "第 4 章：向量空间",
     "unit": "向量空间",
-    "topic": "跨度",
-    "name": "跨度",
+    "topic": "张成",
+    "name": "张成",
     "useItWhen": "你需要给定向量的所有线性组合",
-    "looksLike": "v1、v2、v3 的跨度",
-    "doThis": "允许任意标量组合并询问它们可以到达什么空间",
-    "thinkOfItAs": "向量的范围",
-    "watchOutFor": "思维广度意味着列出的向量本身",
-    "rememberThis": "span 表示所有线性组合",
+    "looksLike": "span{v1, v2, v3}",
+    "doThis": "把所有线性组合都放开，看这些向量能铺出什么空间",
+    "thinkOfItAs": "这些向量能搭出来的全部地盘",
+    "watchOutFor": "把 span 误当成原来那几个向量本身",
+    "rememberThis": "span 就是所有线性组合",
     "typicalProblemShapes": [
       "这些向量生成什么空间？",
       "关于通过组合达到目标向量的问题"
     ],
     "miniDrill": [
       {
-        "prompt": "跨度是指一种组合还是所有组合？",
+        "prompt": "张成指一种组合还是所有组合？",
         "answer": "所有组合。"
       },
       {
@@ -5456,10 +5456,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "这些向量可以构建什么？"
       }
     ],
-    "memoryHook": "跨度 = 这些向量可以构建的所有内容。",
+    "memoryHook": "张成 = 这些向量能拼出来的所有东西。",
     "quickExample": {
       "problem": "R2 中两个不平行向量的跨度通常给出什么？",
-      "move": "通常是整个飞机。"
+      "move": "通常是整个平面。"
     }
   },
   "la-linear-independence": {
@@ -5498,32 +5498,32 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "线性代数导论",
     "chapter": "第 4 章：向量空间",
     "unit": "向量空间",
-    "topic": "依据和维度",
-    "name": "依据与维度",
-    "useItWhen": "您需要主要构建块和空间大小",
-    "looksLike": "找到一个基础，维度是什么",
-    "doThis": "寻找一个既独立又跨越的集合，然后对它进行计数",
+    "topic": "基与维数",
+    "name": "基与维数",
+    "useItWhen": "你想找出这个空间最核心的生成向量，以及空间有几维",
+    "looksLike": "找一组基；这个空间的维数是多少",
+    "doThis": "找一组既线性无关、又能张成整个空间的向量，然后数个数",
     "thinkOfItAs": "最小的完整工具包",
-    "watchOutFor": "使用跨越但不独立的集合",
-    "rememberThis": "基础=独立+跨越",
+    "watchOutFor": "用了能张成空间却带冗余向量的集合",
+    "rememberThis": "基 = 线性无关 + 张成",
     "typicalProblemShapes": [
       "找到子空间的基础",
       "找到枢轴或基向量后计算维度"
     ],
     "miniDrill": [
       {
-        "prompt": "基础必须完成哪两项工作？",
-        "answer": "跨越空间并保持独立。"
+        "prompt": "一组基必须同时做到哪两件事？",
+        "answer": "张成空间，而且保持线性无关。"
       },
       {
-        "prompt": "一条直线的尺寸是多少？",
-        "answer": "基中向量的数量。"
+        "prompt": "维数指的是什么？",
+        "answer": "一组基中向量的个数。"
       }
     ],
-    "memoryHook": "基础构建空间，无需额外的东西。",
+    "memoryHook": "基能搭起整个空间，而且没有多余向量。",
     "quickExample": {
-      "problem": "维度算什么？",
-      "move": "您需要多少个基向量。"
+      "problem": "维数到底在数什么？",
+      "move": "它在数一组基里有多少个向量。"
     }
   },
   "la-dot-orthogonality": {
@@ -5601,7 +5601,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "doThis": "检查规则是否遵循加法和标量乘法",
     "thinkOfItAs": "一台在不打破线性规则的情况下弯曲空间的机器",
     "watchOutFor": "称每个向量规则为线性",
-    "rememberThis": "线性意味着相加和规模生存",
+    "rememberThis": "线性就是加法和数乘都保住",
     "typicalProblemShapes": [
       "向量到向量的映射规则",
       "询问变换是否是线性的问题"
@@ -5629,13 +5629,13 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "特征值和特征向量",
     "name": "特征值和特征向量",
     "useItWhen": "变换拉伸向量而不使其偏离其线",
-    "looksLike": "Av = 拉姆达 v",
+    "looksLike": "Av = λv",
     "doThis": "寻找矩阵作用后保持在同一直线上的方向",
     "thinkOfItAs": "矩阵遵循的特殊方向",
     "watchOutFor": "认为每个向量都是特征向量",
     "rememberThis": "同一条线，新尺寸",
     "typicalProblemShapes": [
-      "Av = 拉姆达 v",
+      "Av = λv",
       "查找矩阵的特征值或特征向量"
     ],
     "miniDrill": [
@@ -5651,7 +5651,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "memoryHook": "特征向量保持直线。",
     "quickExample": {
       "problem": "是什么使 v 成为特征向量？",
-      "move": "Av 与 v 落在同一行。"
+      "move": "Av 仍然落在 v 张成的那条直线上。"
     }
   },
   "la-diagonalization": {
@@ -5661,13 +5661,13 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "对角化",
     "name": "对角化",
     "useItWhen": "你想要一个更容易的特征基形式重写的矩阵",
-    "looksLike": "A = P D P 逆",
+    "looksLike": "A = P D P^-1",
     "doThis": "收集足够的独立特征向量来构建 P",
     "thinkOfItAs": "更改为矩阵最喜欢的坐标",
     "watchOutFor": "在没有足够独立特征向量的情况下尝试对角化",
     "rememberThis": "足够的特征向量使矩阵呈对角线",
     "typicalProblemShapes": [
-      "A = P D P 逆设定",
+      "A = P D P^-1 这种设定",
       "询问矩阵是否可对角化的问题"
     ],
     "miniDrill": [
@@ -5683,7 +5683,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "memoryHook": "足够的特征向量解锁对角形式。",
     "quickExample": {
       "problem": "对角化的最大要求是什么？",
-      "move": "您需要足够的独立特征向量。"
+      "move": "你得有足够多的线性无关特征向量。"
     }
   },
   "la-consistency": {
@@ -5949,8 +5949,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "特征多项式",
     "name": "特征多项式",
     "useItWhen": "你需要矩阵的特征值",
-    "looksLike": "det(A - 拉姆达 I) = 0",
-    "doThis": "设 A 减去 lambda I，求行列式，并求解",
+    "looksLike": "det(A - λI) = 0",
+    "doThis": "写出 A - λI，求行列式，再解方程",
     "thinkOfItAs": "特征值查找方程",
     "watchOutFor": "忘记 lambda I 部分",
     "rememberThis": "特征值来自 det(A 减去 lambda I)",
@@ -5961,17 +5961,17 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "A 在行列式之前减去什么？",
-        "answer": "Lambda 乘以恒等式。"
+        "answer": "λI。"
       },
       {
         "prompt": "特征多项式的根给出什么？",
         "answer": "特征值。"
       }
     ],
-    "memoryHook": "减去 lambda I，然后求解。",
+    "memoryHook": "先写 A - λI，再解行列式方程。",
     "quickExample": {
       "problem": "什么方程开始特征值搜索？",
-      "move": "det(A - 拉姆达 I) = 0。"
+      "move": "det(A - λI) = 0。"
     }
   },
   "la-echelon-vs-rref": {
@@ -6312,8 +6312,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "您为特征空间工作构建什么矩阵？",
-        "answer": "A——拉姆达 I。"
+        "prompt": "求特征空间时要先写什么矩阵？",
+        "answer": "A - λI。"
       },
       {
         "prompt": "零向量是特征向量吗？",
@@ -8190,7 +8190,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "name": "协方差和相关性",
     "useItWhen": "你需要知道两个变量是否一起移动",
     "looksLike": "Cov(X,Y)，Corr(X,Y)",
-    "doThis": "使用协方差来确定关系的方向，使用相关性来确定缩放强度",
+    "doThis": "先用协方差看同向还是反向，再用相关系数看强弱",
     "thinkOfItAs": "它们是一起上升、相反还是几乎没有联系",
     "watchOutFor": "将零相关性视为保证独立性",
     "rememberThis": "相关性是缩放协方差",
@@ -8208,7 +8208,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "不。"
       }
     ],
-    "memoryHook": "协方差表明方向。相关性重新调整了它的尺度。",
+    "memoryHook": "协方差看方向，相关系数看强弱。",
     "quickExample": {
       "problem": "正协方差表明什么？",
       "move": "变量往往朝同一方向移动。"
@@ -8252,12 +8252,12 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "集中与极限定理",
     "topic": "中心极限定理",
     "name": "中心极限定理",
-    "useItWhen": "显示许多随机片段的总和或平均值",
+    "useItWhen": "题目在问很多随机量的总和或样本均值",
     "looksLike": "大 n、样本均值、标准化总和",
-    "doThis": "将总和或平均值归一化并近似为正常形状",
-    "thinkOfItAs": "许多随机的凹凸混合成钟形曲线",
+    "doThis": "先把总和或均值标准化，再用正态近似",
+    "thinkOfItAs": "很多小随机扰动混在一起，最后磨成钟形曲线",
     "watchOutFor": "在样本量很小或依赖性很强的情况下使用 CLT，而不检查假设",
-    "rememberThis": "许多小的随机碎片通常看起来很正常",
+    "rememberThis": "很多小随机量加起来，常常会看起来像正态",
     "typicalProblemShapes": [
       "大 n 的样本均值",
       "独立项之和的近似概率"
@@ -8272,7 +8272,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "正常的钟形曲线。"
       }
     ],
-    "memoryHook": "大的随机总和逐渐趋于正常。",
+    "memoryHook": "大样本下，总和和均值常往正态靠。",
     "quickExample": {
       "problem": "在 CLT 下什么通常会变得近似正常？",
       "move": "许多变量的适当标准化的总和或平均值。"

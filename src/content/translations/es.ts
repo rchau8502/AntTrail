@@ -5402,17 +5402,17 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "course": "Álgebra Lineal",
     "chapter": "Capítulo 4: Espacios Vectoriales",
     "unit": "Espacios Vectoriales",
-    "topic": "prueba subespacial",
-    "name": "Prueba subespacial",
+    "topic": "Prueba de subespacio",
+    "name": "Prueba de subespacio",
     "useItWhen": "el problema pregunta si un conjunto dentro de un espacio vectorial es en sí mismo un espacio vectorial",
     "looksLike": "mostrar W es un subespacio de V",
     "doThis": "comprobar cero, cerrado bajo suma, cerrado bajo multiplicación escalar",
-    "thinkOfItAs": "la prueba del saltador rápido",
+    "thinkOfItAs": "un chequeo rápido de tres pasos",
     "watchOutFor": "olvidándose de comprobar el vector cero",
     "rememberThis": "cero, sumar, escalar",
     "typicalProblemShapes": [
       "Conjuntos definidos por condiciones lineales.",
-      "Preguntas subespaciales o no subespaciales"
+      "Preguntas de subespacio o no subespacio"
     ],
     "miniDrill": [
       {
@@ -5427,20 +5427,20 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "memoryHook": "Cero, sumar, escalar.",
     "quickExample": {
       "problem": "Un conjunto está definido por una ecuación lineal. ¿Qué prueba deberías realizar?",
-      "move": "La prueba subespacial."
+      "move": "La prueba de subespacio."
     }
   },
   "la-span": {
     "course": "Álgebra Lineal",
     "chapter": "Capítulo 4: Espacios Vectoriales",
     "unit": "Espacios Vectoriales",
-    "topic": "lapso",
-    "name": "lapso",
+    "topic": "Span",
+    "name": "Span",
     "useItWhen": "necesitas todas las combinaciones lineales de vectores dados",
-    "looksLike": "lapso de v1, v2, v3",
-    "doThis": "permitir combinaciones escalares arbitrarias y preguntar qué espacio pueden alcanzar",
+    "looksLike": "span{v1, v2, v3}",
+    "doThis": "permite combinaciones lineales y pregunta qué espacio generan",
     "thinkOfItAs": "el alcance de los vectores",
-    "watchOutFor": "lapso de pensamiento significa solo los vectores enumerados en sí",
+    "watchOutFor": "pensar que span significa solo la lista original de vectores",
     "rememberThis": "span significa todas las combinaciones lineales",
     "typicalProblemShapes": [
       "¿Qué espacio generan estos vectores?",
@@ -5458,7 +5458,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "Span = todo lo que estos vectores pueden construir.",
     "quickExample": {
-      "problem": "¿Qué suele dar el intervalo de dos vectores no paralelos en R2?",
+      "problem": "¿Qué suele dar el span de dos vectores no paralelos en R2?",
       "move": "Normalmente todo el plano."
     }
   },
@@ -5502,10 +5502,10 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "Base y dimensión",
     "useItWhen": "necesitas los bloques de construcción principales y el tamaño del espacio",
     "looksLike": "encontrar una base, ¿cuál es la dimensión?",
-    "doThis": "busque un conjunto que sea independiente y abarcador, luego cuéntelo",
+    "doThis": "busca un conjunto linealmente independiente que además genere el espacio, y luego cuéntalo",
     "thinkOfItAs": "el kit de herramientas completo más pequeño",
-    "watchOutFor": "usando un conjunto que se extiende pero no es independiente",
-    "rememberThis": "base = independiente + abarcadora",
+    "watchOutFor": "usar un conjunto que genera el espacio pero tiene vectores redundantes",
+    "rememberThis": "base = independiente + genera",
     "typicalProblemShapes": [
       "Encuentra una base para un subespacio",
       "Cuente la dimensión después de encontrar pivotes o vectores base"
@@ -5513,17 +5513,17 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "¿Qué dos trabajos debe hacer una base?",
-        "answer": "Amplía el espacio y mantente independiente."
+        "answer": "Generar el espacio y seguir siendo independiente."
       },
       {
         "prompt": "¿Qué es la dimensión en una línea?",
         "answer": "El número de vectores en una base."
       }
     ],
-    "memoryHook": "Basis construye el espacio sin extras.",
+    "memoryHook": "Una base construye el espacio sin vectores de sobra.",
     "quickExample": {
       "problem": "¿Qué cuenta la dimensión?",
-      "move": "Cuántos vectores base necesitas."
+      "move": "Cuántos vectores hay en una base."
     }
   },
   "la-dot-orthogonality": {
@@ -5592,8 +5592,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-linear-transformation": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 6: Eigenvalores y Transformaciones Lineales",
-    "unit": "Transformaciones y Eigen",
+    "chapter": "Capítulo 6: Valores Propios y Transformaciones Lineales",
+    "unit": "Transformaciones lineales y valores propios",
     "topic": "Transformaciones lineales",
     "name": "Transformación lineal",
     "useItWhen": "una regla toma vectores y los envía de manera que preserve la estructura",
@@ -5601,7 +5601,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "doThis": "comprobar si la regla respeta la suma y la multiplicación escalar",
     "thinkOfItAs": "una máquina que dobla el espacio sin romper las reglas lineales",
     "watchOutFor": "llamando lineal a cada regla vectorial",
-    "rememberThis": "lineal significa agregar y escalar sobrevivir",
+    "rememberThis": "lineal significa que suma y escala siguen funcionando",
     "typicalProblemShapes": [
       "Reglas que asignan vectores a vectores.",
       "Preguntas sobre si una transformación es lineal"
@@ -5624,18 +5624,18 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-eigenvalues-eigenvectors": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 6: Eigenvalores y Transformaciones Lineales",
-    "unit": "Transformaciones y Eigen",
+    "chapter": "Capítulo 6: Valores Propios y Transformaciones Lineales",
+    "unit": "Transformaciones lineales y valores propios",
     "topic": "Valores propios y vectores propios",
     "name": "Valores propios y vectores propios",
     "useItWhen": "una transformación estira un vector sin alejarlo de su línea",
-    "looksLike": "Av = lambdav",
+    "looksLike": "Av = λv",
     "doThis": "buscar direcciones que permanezcan en la misma línea después de que actúa la matriz",
     "thinkOfItAs": "direcciones especiales que respeta la matriz",
     "watchOutFor": "pensar que cada vector es un vector propio",
     "rememberThis": "Misma línea, nuevo tamaño.",
     "typicalProblemShapes": [
-      "Av = lambdav",
+      "Av = λv",
       "Encontrar valores propios o vectores propios de una matriz."
     ],
     "miniDrill": [
@@ -5648,7 +5648,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Su tamaño, por el valor propio."
       }
     ],
-    "memoryHook": "Eigenvector mantiene la línea.",
+    "memoryHook": "El vector propio se queda en la misma recta.",
     "quickExample": {
       "problem": "¿Qué hace que v sea un vector propio?",
       "move": "Av cae en la misma línea que v."
@@ -5656,18 +5656,18 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-diagonalization": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 6: Eigenvalores y Transformaciones Lineales",
-    "unit": "Transformaciones y Eigen",
+    "chapter": "Capítulo 6: Valores Propios y Transformaciones Lineales",
+    "unit": "Transformaciones lineales y valores propios",
     "topic": "Diagonalización",
     "name": "Diagonalización",
     "useItWhen": "desea una matriz reescrita en una forma de base propia mucho más sencilla",
-    "looksLike": "A = P D P inversa",
+    "looksLike": "A = P D P^-1",
     "doThis": "recopilar suficientes vectores propios independientes para construir P",
     "thinkOfItAs": "cambiando a las coordenadas favoritas de la matriz",
     "watchOutFor": "tratando de diagonalizar sin suficientes vectores propios independientes",
     "rememberThis": "suficientes vectores propios hacen que la matriz se vuelva diagonal",
     "typicalProblemShapes": [
-      "A = P D P configuración inversa",
+      "Una factorización tipo A = P D P^-1",
       "Preguntas sobre si una matriz es diagonalizable"
     ],
     "miniDrill": [
@@ -8065,7 +8065,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "doThis": "medir la distancia promedio al cuadrado desde la media",
     "thinkOfItAs": "qué tan ruidosa es la variable aleatoria",
     "watchOutFor": "Tratar la varianza como la desviación estándar o como la media misma.",
-    "rememberThis": "medidas de varianza extendidas",
+    "rememberThis": "la varianza mide la dispersión",
     "typicalProblemShapes": [
       "Preguntas sobre riesgo o volatilidad",
       "Variación de sumas y transformaciones."
@@ -8077,12 +8077,12 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "¿La varianza mide el centro o la dispersión?",
-        "answer": "Difundir."
+        "answer": "La dispersión."
       }
     ],
-    "memoryHook": "La media es el centro. La variación está repartida.",
+    "memoryHook": "La media marca el centro. La varianza mide qué tanto se abre.",
     "quickExample": {
-      "problem": "¿Qué le dice la variación que no le dice la expectativa?",
+      "problem": "¿Qué te dice la varianza que no te dice la esperanza?",
       "move": "Qué tan dispersos están los resultados."
     }
   },
@@ -8190,7 +8190,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "Covarianza y correlación",
     "useItWhen": "necesitas saber si dos variables se mueven juntas",
     "looksLike": "Cov(X,Y), Corr(X,Y)",
-    "doThis": "use la covarianza para la dirección de la relación y la correlación para la fuerza escalada",
+    "doThis": "usa la covarianza para la dirección y la correlación para la fuerza sin unidades",
     "thinkOfItAs": "¿Se elevan juntos, caen opuestos o apenas se conectan?",
     "watchOutFor": "Tratar la correlación cero como independencia garantizada.",
     "rememberThis": "la correlación es covarianza escalada",
@@ -8225,15 +8225,15 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "doThis": "use Markov para variables no negativas y Chebyshev cuando la varianza esté disponible",
     "thinkOfItAs": "barandillas rugosas pero confiables",
     "watchOutFor": "esperando que estos límites sean nítidos",
-    "rememberThis": "Markov usa la media, Chebyshev usa la variación",
+    "rememberThis": "Markov usa la media; Chebyshev usa la varianza",
     "typicalProblemShapes": [
       "Límites superiores de las probabilidades de cola",
-      "Preguntas con expectativa o variación pero sin distribución exacta"
+      "Preguntas con esperanza o varianza pero sin distribución exacta"
     ],
     "miniDrill": [
       {
         "prompt": "¿Qué ingrediente adicional necesita Chebyshev más allá de sus expectativas?",
-        "answer": "Variación."
+        "answer": "Varianza."
       },
       {
         "prompt": "¿Cuál es la principal función de estas desigualdades?",
@@ -8254,7 +8254,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "Teorema del límite central",
     "useItWhen": "aparece una suma o promedio de muchas piezas aleatorias",
     "looksLike": "n grande, media muestral, suma estandarizada",
-    "doThis": "normalizar la suma o promediar y aproximar con una forma normal",
+    "doThis": "estandariza la suma o la media y luego usa la aproximación normal",
     "thinkOfItAs": "muchos bultos aleatorios que se mezclan en una curva de campana",
     "watchOutFor": "usar CLT con tamaños de muestra pequeños o una fuerte dependencia sin verificar los supuestos",
     "rememberThis": "muchas piezas pequeñas al azar a menudo parecen normales",
@@ -9151,7 +9151,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "un problema necesita un salto rápido para estar lejos de la media",
     "looksLike": "P(X grande), límite de desviación, probabilidad no exacta",
     "doThis": "Elija el límite más aproximado que se ajuste a la información que realmente tiene.",
-    "thinkOfItAs": "Elija el martillo correcto: solo media, variación o fuerte independencia.",
+    "thinkOfItAs": "elige la herramienta correcta: solo media, varianza o independencia fuerte",
     "watchOutFor": "perseguir una distribución exacta cuando el problema sólo quiere un límite",
     "rememberThis": "Markov usa la media, Chebyshev usa la varianza, Chernoff usa la independencia",
     "typicalProblemShapes": [

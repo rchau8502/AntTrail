@@ -61,10 +61,13 @@ The app also adds:
 
 - Landing page with Bubble philosophy and multi-course entry point
 - Topic dashboard with course grouping, search, difficulty filter, and chapter filter
-- Bubble Card detail pages
+- Course landing pages with most-tested patterns, starter shelves, and weak-topic review
+- Bubble Card detail pages with teaching layers, notation help, and guided next steps
 - Study mode with course and unit filtering
 - Recognition quiz focused on “which technique fits?” across all current courses
+- Bubblegum problem drills with warm-up, quiz, midterm, and final levels
 - Memory Hook view for fast cram review across all courses
+- English, Spanish, and Chinese UI plus localized topic content
 
 ## Tech stack
 
@@ -89,16 +92,23 @@ Future AI features in Bubble and Bubblegum should use `gpt-5-mini` by default fo
 src/
   app/
     page.tsx
+    bubblegum/
+    courses/
     topics/
     study/
     quiz/
     memory-hooks/
   components/
+    bubblegum-hub.tsx
+    bubblegum-mode.tsx
+    course-landing-view.tsx
+    course-pathways.tsx
     site-header.tsx
     topic-explorer.tsx
     study-mode.tsx
     recognition-quiz.tsx
   content/
+    bubblegum-banks.ts
     schema.ts
     calc1.ts
     calc2.ts
@@ -108,9 +118,11 @@ src/
     probability.ts
   lib/
     bubble.ts
+    bubblegum.ts
+    course-guides.ts
 ```
 
-Current seeded content: 283 Bubble Cards across six courses.
+Current seeded content: 349 Bubble Cards across 12 courses.
 
 ## Content model
 
@@ -146,6 +158,14 @@ Each card includes fields such as:
 4. Keep the copy short, practical, and pattern-first.
 5. Every card should feel like: here is the shape, here is when it shows up, here is the move, do not miss this trap.
 6. The dashboard, detail pages, study mode, quiz, and memory hooks will pick it up automatically.
+
+## How to add hand-built Bubblegum drills
+
+1. Open [`src/content/bubblegum-banks.ts`](./src/content/bubblegum-banks.ts).
+2. Add a new entry keyed by the card `id`.
+3. Add `quiz`, `midterm`, or `final` seeds with localized `en`, `es`, and `zh` text.
+4. Bubblegum will use that bank first before falling back to generated drills.
+5. This is the easiest place for professor-tuned practice sets and more realistic exam-style prompts.
 
 ## How to add more courses later
 

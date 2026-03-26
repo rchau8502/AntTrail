@@ -1,4 +1,5 @@
 import type { BubbleCard } from "@/content/schema";
+import { bubblegumBanks, type BubblegumBankSeed } from "@/content/bubblegum-banks";
 import type { Locale } from "@/lib/i18n";
 import {
   getPatternTokens,
@@ -40,6 +41,38 @@ interface DrillSeed {
   selfCheck: string;
   whyFits?: string;
   notationHelp?: string[];
+}
+
+function localizeBankText(locale: Locale, value: LocalizedText) {
+  return value[locale] ?? value.en;
+}
+
+function localizeBankSeed(locale: Locale, seed: BubblegumBankSeed): DrillSeed {
+  return {
+    prompt: localizeBankText(locale, seed.prompt),
+    firstStep: localizeBankText(locale, seed.firstStep),
+    setup: localizeBankText(locale, seed.setup),
+    fullPath: seed.fullPath.map((step) => localizeBankText(locale, step)),
+    answer: localizeBankText(locale, seed.answer),
+    selfCheck: localizeBankText(locale, seed.selfCheck),
+    whyFits: seed.whyFits ? localizeBankText(locale, seed.whyFits) : undefined,
+    notationHelp: seed.notationHelp?.map((item) => localizeBankText(locale, item)),
+  };
+}
+
+function getBubblegumBankSeed(
+  card: BubbleCard,
+  locale: Locale,
+  level: ExamLevel,
+  variant: number,
+) {
+  const bank = bubblegumBanks[card.id]?.[level];
+
+  if (!bank || bank.length === 0) {
+    return null;
+  }
+
+  return localizeBankSeed(locale, bank[variant % bank.length]);
 }
 
 function text(locale: Locale, value: LocalizedText) {
@@ -1729,6 +1762,7 @@ export function buildBubblegumDrill(
   }
 
   const seed =
+    getBubblegumBankSeed(card, locale, level, variant) ||
     (sig.includes("direct-substitution") && directSubstitution(locale, level, variant)) ||
     (sig.includes("factoring") && factoringLimit(locale, level, variant)) ||
     (sig.includes("rationalizing") &&
