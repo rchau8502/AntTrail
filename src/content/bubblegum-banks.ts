@@ -908,4 +908,472 @@ export const bubblegumBanks: Partial<
       },
     ],
   },
+  "proof-quantifiers": {
+    quiz: [
+      {
+        prompt: {
+          en: "Negate: 'For every real x, x^2 >= 0.'",
+          es: "Niega: 'Para todo real x, x^2 >= 0.'",
+          zh: "否定：‘对所有实数 x，都有 x^2 >= 0。’",
+        },
+        firstStep: {
+          en: "Flip 'for every' to 'there exists' and negate the statement after it.",
+          es: "Cambia 'para todo' por 'existe' y niega la afirmación de adentro.",
+          zh: "先把‘对所有’翻成‘存在’，再把后面的条件否掉。",
+        },
+        setup: {
+          en: "Quantifier negation always flips the quantifier and negates the property.",
+          es: "Negar cuantificadores siempre cambia el cuantificador y niega la propiedad.",
+          zh: "量词否定的固定套路，就是先翻量词，再否条件。",
+        },
+        fullPath: [
+          { en: "Start from 'for every x'.", es: "从 'para todo x' 开始。", zh: "先看到‘对所有 x’。" },
+          { en: "Negation becomes 'there exists x'.", es: "否定后变成 'existe x'.", zh: "否定后先变成‘存在某个 x’。" },
+          { en: "Then negate x^2 >= 0 to x^2 < 0.", es: "Luego niega x^2 >= 0 a x^2 < 0.", zh: "再把 x^2 >= 0 否成 x^2 < 0。" },
+        ],
+        answer: {
+          en: "There exists a real x such that x^2 < 0.",
+          es: "Existe un real x tal que x^2 < 0.",
+          zh: "存在实数 x，使得 x^2 < 0。",
+        },
+        selfCheck: {
+          en: "Negate a quantifier by flipping it first.",
+          es: "Niega un cuantificador cambiándolo primero.",
+          zh: "量词先翻，再否内容。",
+        },
+      },
+    ],
+  },
+  "proof-biconditional": {
+    midterm: [
+      {
+        prompt: {
+          en: "How do you prove 'n is even if and only if n^2 is even'?",
+          es: "¿Cómo pruebas 'n es par si y solo si n^2 es par'?",
+          zh: "怎么证明‘n 是偶数，当且仅当 n^2 是偶数’？",
+        },
+        firstStep: {
+          en: "Split it into two directions.",
+          es: "Sepáralo en dos direcciones.",
+          zh: "先拆成两个方向来证。",
+        },
+        setup: {
+          en: "An 'if and only if' proof is always two proofs unless one direction is already known.",
+          es: "Una prueba de 'si y solo si' siempre son dos pruebas, salvo que una dirección ya esté hecha.",
+          zh: "‘当且仅当’本质上就是双向证明，除非有一边已经现成。",
+        },
+        fullPath: [
+          { en: "Prove: if n is even, then n^2 is even.", es: "Prueba: si n es par, entonces n^2 es par.", zh: "先证：若 n 是偶数，则 n^2 是偶数。" },
+          { en: "Then prove: if n^2 is even, then n is even.", es: "Luego prueba: si n^2 es par, entonces n es par.", zh: "再证：若 n^2 是偶数，则 n 是偶数。" },
+          { en: "Once both directions are done, the biconditional is done.", es: "Cuando ambas direcciones están hechas, queda probado el bicondicional.", zh: "两个方向都做完，双条件就证完了。" },
+        ],
+        answer: {
+          en: "Prove both directions separately.",
+          es: "Prueba las dos direcciones por separado.",
+          zh: "把两个方向分别证明。",
+        },
+        selfCheck: {
+          en: "Iff = forward and backward.",
+          es: "Iff = ida y vuelta.",
+          zh: "当且仅当 = 正向 + 反向。",
+        },
+      },
+    ],
+  },
+  "proof-equivalence-classes": {
+    quiz: [
+      {
+        prompt: {
+          en: "For congruence mod 3, what belongs in the class [1]?",
+          es: "Para congruencia módulo 3, ¿qué pertenece a la clase [1]?",
+          zh: "模 3 同余里，[1] 这个等价类里有哪些数？",
+        },
+        firstStep: {
+          en: "List numbers that differ from 1 by a multiple of 3.",
+          es: "Enumera números que difieren de 1 por un múltiplo de 3.",
+          zh: "先写所有和 1 相差 3 的倍数的数。",
+        },
+        setup: {
+          en: "An equivalence class gathers everything related to one representative.",
+          es: "Una clase de equivalencia reúne todo lo relacionado con un representante.",
+          zh: "等价类就是把所有跟这个代表元有同样关系的元素收在一起。",
+        },
+        fullPath: [
+          { en: "Start from 1.", es: "Empieza con 1.", zh: "从 1 开始。" },
+          { en: "Add or subtract multiples of 3: ..., -5, -2, 1, 4, 7, ...", es: "Suma o resta múltiplos de 3: ..., -5, -2, 1, 4, 7, ...", zh: "加减 3 的倍数：..., -5, -2, 1, 4, 7, ..." },
+          { en: "Those are exactly the integers congruent to 1 mod 3.", es: "Esos son exactamente los enteros congruentes con 1 módulo 3.", zh: "这些正是所有模 3 余 1 的整数。" },
+        ],
+        answer: {
+          en: "{..., -5, -2, 1, 4, 7, ...}",
+          es: "{..., -5, -2, 1, 4, 7, ...}",
+          zh: "{..., -5, -2, 1, 4, 7, ...}",
+        },
+        selfCheck: {
+          en: "Equivalence class = everything related to one representative.",
+          es: "Clase de equivalencia = todo lo relacionado con un representante.",
+          zh: "等价类 = 跟某个代表元有关的全部元素。",
+        },
+      },
+    ],
+  },
+  "proof-well-defined": {
+    final: [
+      {
+        prompt: {
+          en: "A function is defined on equivalence classes by picking representatives. What must you prove first?",
+          es: "Una función se define sobre clases de equivalencia eligiendo representantes. ¿Qué debes probar primero?",
+          zh: "一个函数是在等价类上通过选代表元来定义的。第一件必须证明的事是什么？",
+        },
+        firstStep: {
+          en: "Show the output does not depend on which representative you chose.",
+          es: "Demuestra que la salida no depende del representante elegido.",
+          zh: "先证输出不依赖你选的是哪个代表元。",
+        },
+        setup: {
+          en: "Well-defined means different names for the same class cannot give different outputs.",
+          es: "Bien definida significa que dos nombres distintos de la misma clase no pueden dar salidas distintas.",
+          zh: "定义良好就是：同一个等价类换个代表元，不能跑出不同答案。",
+        },
+        fullPath: [
+          { en: "Take two representatives a and b from the same class.", es: "Toma dos representantes a y b de la misma clase.", zh: "取同一个等价类里的两个代表元 a 和 b。" },
+          { en: "Assume a ~ b.", es: "Supón a ~ b.", zh: "先假设 a ~ b。" },
+          { en: "Show the formula gives the same output for a and b.", es: "Demuestra que la fórmula produce la misma salida para a y b.", zh: "证明代入公式后，a 和 b 的输出相同。" },
+        ],
+        answer: {
+          en: "Prove the rule is independent of the representative.",
+          es: "Prueba que la regla es independiente del representante.",
+          zh: "证明这条规则与代表元无关。",
+        },
+        selfCheck: {
+          en: "Well-defined = same class, same output.",
+          es: "Bien definida = misma clase, misma salida.",
+          zh: "定义良好 = 同类同输出。",
+        },
+      },
+    ],
+  },
+  "la121a-subspace-test": {
+    quiz: [
+      {
+        prompt: {
+          en: "Is W = {(x,y,z) : x + y + z = 0} a subspace of R^3?",
+          es: "¿Es W = {(x,y,z) : x + y + z = 0} un subespacio de R^3?",
+          zh: "W = {(x,y,z) : x + y + z = 0} 是 R^3 的子空间吗？",
+        },
+        firstStep: {
+          en: "Run zero, addition, and scalar multiplication in that order.",
+          es: "Haz las pruebas de cero, suma y multiplicación escalar, en ese orden.",
+          zh: "按顺序跑零向量、加法、数乘这三项检查。",
+        },
+        setup: {
+          en: "A homogeneous linear equation usually signals a subspace, but you still show the three checks.",
+          es: "Una ecuación lineal homogénea suele señalar subespacio, pero igual debes mostrar las tres pruebas.",
+          zh: "齐次线性方程通常很像子空间，但你还是要把三步检验写出来。",
+        },
+        fullPath: [
+          { en: "(0,0,0) satisfies x+y+z=0.", es: "(0,0,0) cumple x+y+z=0.", zh: "(0,0,0) 满足 x+y+z=0。" },
+          { en: "If u and v satisfy the equation, then u+v also satisfies it.", es: "Si u y v satisfacen la ecuación, entonces u+v también la satisface.", zh: "若 u 和 v 都满足方程，则 u+v 也满足。" },
+          { en: "If u satisfies it, then cu also satisfies it.", es: "Si u la satisface, entonces cu también.", zh: "若 u 满足，则 cu 也满足。" },
+        ],
+        answer: {
+          en: "Yes, it is a subspace.",
+          es: "Sí, es un subespacio.",
+          zh: "是，它是子空间。",
+        },
+        selfCheck: {
+          en: "Homogeneous condition + zero/add/scale = subspace pattern.",
+          es: "Condición homogénea + cero/suma/escala = patrón de subespacio.",
+          zh: "齐次条件 + 零/加/乘 = 子空间套路。",
+        },
+      },
+    ],
+  },
+  "la121a-basis": {
+    midterm: [
+      {
+        prompt: {
+          en: "What are the two separate jobs you must prove to show S is a basis for V?",
+          es: "¿Cuáles son las dos tareas separadas que debes probar para mostrar que S es una base de V?",
+          zh: "若要证明 S 是 V 的一组基，必须分别证明哪两件事？",
+        },
+        firstStep: {
+          en: "Split the proof into spanning and linear independence.",
+          es: "Divide la prueba en generación e independencia lineal.",
+          zh: "先把证明拆成“张成”和“线性无关”两半。",
+        },
+        setup: {
+          en: "A basis must do both jobs, and each job is proved differently.",
+          es: "Una base debe cumplir ambos trabajos, y cada uno se prueba distinto.",
+          zh: "一组基必须两头都过关，而且这两部分的证明方法通常不一样。",
+        },
+        fullPath: [
+          { en: "Show every vector in V can be built from S.", es: "Prueba que todo vector de V se puede construir con S.", zh: "先证 V 里每个向量都能由 S 线性组合出来。" },
+          { en: "Then show the zero combination forces all coefficients to be zero.", es: "Luego prueba que la combinación cero obliga a que todos los coeficientes sean cero.", zh: "再证零组合只能让所有系数都为零。" },
+          { en: "Once both are done, S is a basis.", es: "Cuando ambas partes están hechas, S es una base.", zh: "两边都做完，S 才是一组基。" },
+        ],
+        answer: {
+          en: "Show S spans V and is linearly independent.",
+          es: "Prueba que S genera V y es linealmente independiente.",
+          zh: "证明 S 张成 V 且线性无关。",
+        },
+        selfCheck: {
+          en: "Basis = enough vectors, but no extra vectors.",
+          es: "Base = suficientes vectores, pero sin sobrar.",
+          zh: "基 = 够用，但不冗余。",
+        },
+      },
+    ],
+  },
+  "la121a-linear-map": {
+    quiz: [
+      {
+        prompt: {
+          en: "How do you start proving T is a linear map?",
+          es: "¿Cómo empiezas a probar que T es una transformación lineal?",
+          zh: "证明 T 是线性映射，第一步怎么开？",
+        },
+        firstStep: {
+          en: "Write the two tests: T(u+v)=T(u)+T(v) and T(cv)=cT(v).",
+          es: "Escribe las dos pruebas: T(u+v)=T(u)+T(v) y T(cv)=cT(v).",
+          zh: "先写出两条检验：T(u+v)=T(u)+T(v)，以及 T(cv)=cT(v)。",
+        },
+        setup: {
+          en: "Linearity means preserving addition and scalar multiplication on arbitrary inputs.",
+          es: "Linealidad significa preservar suma y multiplicación escalar para entradas arbitrarias.",
+          zh: "线性映射的核心，就是对任意输入都保住加法和数乘。",
+        },
+        fullPath: [
+          { en: "Take arbitrary u and v.", es: "Toma u y v arbitrarios.", zh: "先取任意 u 和 v。" },
+          { en: "Compute T(u+v) and compare to T(u)+T(v).", es: "Calcula T(u+v) y compáralo con T(u)+T(v).", zh: "计算 T(u+v)，并与 T(u)+T(v) 比较。" },
+          { en: "Then do the scalar test T(cv)=cT(v).", es: "Luego haz la prueba escalar T(cv)=cT(v).", zh: "再做数乘检验 T(cv)=cT(v)。" },
+        ],
+        answer: {
+          en: "Check additivity and scalar compatibility.",
+          es: "Comprueba aditividad y compatibilidad escalar.",
+          zh: "检验加法和数乘是否都保住。",
+        },
+        selfCheck: {
+          en: "Linear map = preserve add and scale.",
+          es: "Transformación lineal = preservar suma y escala.",
+          zh: "线性映射 = 保住加法和数乘。",
+        },
+      },
+    ],
+  },
+  "la121a-kernel-image": {
+    midterm: [
+      {
+        prompt: {
+          en: "To find ker(T), what equation do you solve first?",
+          es: "Para hallar ker(T), ¿qué ecuación resuelves primero?",
+          zh: "求 ker(T) 时，第一条方程该怎么写？",
+        },
+        firstStep: {
+          en: "Set T(v)=0.",
+          es: "Pon T(v)=0.",
+          zh: "先令 T(v)=0。",
+        },
+        setup: {
+          en: "The kernel is the full set of inputs that disappear under T.",
+          es: "El kernel es el conjunto completo de entradas que desaparecen bajo T.",
+          zh: "核空间就是所有被 T 送去 0 的输入。",
+        },
+        fullPath: [
+          { en: "Write T(v)=0.", es: "Escribe T(v)=0.", zh: "先写 T(v)=0。" },
+          { en: "Solve for all vectors v that satisfy it.", es: "Resuelve todos los vectores v que la satisfacen.", zh: "解出所有满足它的向量 v。" },
+          { en: "That whole solution set is ker(T).", es: "Todo ese conjunto solución es ker(T).", zh: "整个解集就是 ker(T)。" },
+        ],
+        answer: {
+          en: "Solve T(v)=0.",
+          es: "Resuelve T(v)=0.",
+          zh: "解 T(v)=0。",
+        },
+        selfCheck: {
+          en: "Kernel = what disappears.",
+          es: "Kernel = lo que desaparece.",
+          zh: "核空间 = 消失掉的输入。",
+        },
+      },
+    ],
+  },
+  "la121a-rank-nullity": {
+    final: [
+      {
+        prompt: {
+          en: "If T: R^6 -> R^4 has nullity 2, what does rank-nullity give you for rank(T)?",
+          es: "Si T: R^6 -> R^4 tiene nulidad 2, ¿qué te da rango-nulidad para rank(T)?",
+          zh: "若 T: R^6 -> R^4 的零度是 2，秩-零度定理会给出 rank(T) 是多少？",
+        },
+        firstStep: {
+          en: "Use the domain dimension on the left side of the formula.",
+          es: "Usa la dimensión del dominio en el lado izquierdo de la fórmula.",
+          zh: "公式左边要放定义域的维数。",
+        },
+        setup: {
+          en: "Rank-nullity uses dim(domain) = nullity + rank.",
+          es: "Rango-nulidad usa dim(dominio) = nulidad + rango.",
+          zh: "秩-零度定理是 dim(定义域) = nullity + rank。",
+        },
+        fullPath: [
+          { en: "dim(domain) = 6.", es: "dim(dominio) = 6.", zh: "定义域维数是 6。" },
+          { en: "So 6 = 2 + rank(T).", es: "Entonces 6 = 2 + rank(T).", zh: "所以 6 = 2 + rank(T)。" },
+          { en: "Hence rank(T) = 4.", es: "Por tanto rank(T) = 4.", zh: "因此 rank(T) = 4。" },
+        ],
+        answer: {
+          en: "rank(T) = 4",
+          es: "rank(T) = 4",
+          zh: "rank(T) = 4",
+        },
+        selfCheck: {
+          en: "Rank-nullity starts from the domain, not the codomain.",
+          es: "Rango-nulidad empieza con el dominio, no con el codominio.",
+          zh: "秩-零度左边看定义域，不看值域。",
+        },
+      },
+    ],
+  },
+  "la121a-matrix-of-map": {
+    final: [
+      {
+        prompt: {
+          en: "How do you build [T]_B when B = {b1, b2, ..., bn}?",
+          es: "¿Cómo construyes [T]_B cuando B = {b1, b2, ..., bn}?",
+          zh: "当 B = {b1, b2, ..., bn} 时，[T]_B 该怎么构造？",
+        },
+        firstStep: {
+          en: "Apply T to each basis vector first.",
+          es: "Aplica T primero a cada vector de la base.",
+          zh: "先把 T 作用到每个基向量上。",
+        },
+        setup: {
+          en: "The columns of the matrix come from the images of the basis vectors, written in coordinates.",
+          es: "Las columnas de la matriz salen de las imágenes de los vectores base, escritas en coordenadas.",
+          zh: "矩阵的列，就是各个基向量送进去后的像，再写成坐标。",
+        },
+        fullPath: [
+          { en: "Compute T(b1), T(b2), ..., T(bn).", es: "Calcula T(b1), T(b2), ..., T(bn).", zh: "先算 T(b1), T(b2), ..., T(bn)。" },
+          { en: "Write each output in the target basis.", es: "Escribe cada salida en la base objetivo.", zh: "把每个输出改写成目标基底下的坐标。" },
+          { en: "Use those coordinate columns to form [T].", es: "Usa esas columnas de coordenadas para formar [T].", zh: "这些坐标列拼起来就是 [T]。" },
+        ],
+        answer: {
+          en: "Columns come from T applied to the basis vectors.",
+          es: "Las columnas salen de aplicar T a los vectores base.",
+          zh: "列向量来自 T 作用在各个基向量后的结果。",
+        },
+        selfCheck: {
+          en: "Basis in, columns out.",
+          es: "Base entra, columnas salen.",
+          zh: "基向量进去，列向量出来。",
+        },
+      },
+    ],
+  },
+  "analysis140a-contradiction": {
+    quiz: [
+      {
+        prompt: {
+          en: "When is contradiction the cleanest first move in analysis?",
+          es: "¿Cuándo es contradicción la primera jugada más limpia en análisis?",
+          zh: "在分析里，什么时候第一招最适合用反证法？",
+        },
+        firstStep: {
+          en: "Use contradiction when the direct route is messy but the opposite statement quickly forces something impossible.",
+          es: "Usa contradicción cuando la ruta directa es sucia pero la negación obliga rápido a algo imposible.",
+          zh: "当正面硬证很脏，但否命题一拿出来就能很快逼出矛盾时，先想反证法。",
+        },
+        setup: {
+          en: "Analysis contradiction proofs often assume the opposite of a limit, bound, or supremum claim.",
+          es: "En análisis, las contradicciones suelen empezar suponiendo lo contrario de un límite, una cota o una afirmación de supremo.",
+          zh: "分析里的反证题，常常是先假设极限、界、上确界之类的结论不成立。",
+        },
+        fullPath: [
+          { en: "Assume the desired conclusion fails.", es: "Supón que falla la conclusión deseada.", zh: "先假设目标结论不成立。" },
+          { en: "Push that assumption against the definitions you already know.", es: "Empuja esa suposición contra las definiciones que ya tienes.", zh: "再把这个假设和已有定义或性质硬碰。" },
+          { en: "Once an impossible inequality or conflict appears, close the contradiction.", es: "一旦出现不可能的不等式或冲突，就收尾成矛盾。", zh: "一旦出现不可能的不等式或冲突，就收成矛盾。" },
+        ],
+        answer: {
+          en: "Use contradiction when the negation quickly breaks a known definition or bound.",
+          es: "Usa contradicción cuando la negación rompe rápido una definición o una cota conocida.",
+          zh: "当否命题会很快撞坏某个已知定义或界时，就该用反证法。",
+        },
+        selfCheck: {
+          en: "Assume the opposite, then squeeze it into something impossible.",
+          es: "Supón lo contrario y apriétalo hasta algo imposible.",
+          zh: "先假设相反，再把它逼进死路。",
+        },
+      },
+    ],
+  },
+  "analysis140a-bolzano-weierstrass": {
+    midterm: [
+      {
+        prompt: {
+          en: "A bounded sequence in R is given. What theorem should you try first if the question asks for a convergent subsequence?",
+          es: "Se te da una sucesión acotada en R. ¿Qué teorema debes probar primero si la pregunta pide una subsucesión convergente?",
+          zh: "给你一个有界实数列。如果题目要你找收敛子列，第一反应该用什么定理？",
+        },
+        firstStep: {
+          en: "Use Bolzano-Weierstrass.",
+          es: "Usa Bolzano-Weierstrass.",
+          zh: "先用 Bolzano-Weierstrass 定理。",
+        },
+        setup: {
+          en: "Bounded sequence in R plus convergent subsequence request is the classic trigger.",
+          es: "Sucesión acotada en R más petición de subsucesión convergente es el disparador clásico.",
+          zh: "‘实数列有界’再加‘找收敛子列’，这就是最标准的触发组合。",
+        },
+        fullPath: [
+          { en: "Check boundedness.", es: "Verifica que esté acotada.", zh: "先确认数列有界。" },
+          { en: "Invoke Bolzano-Weierstrass.", es: "Invoca Bolzano-Weierstrass.", zh: "直接调用 Bolzano-Weierstrass。" },
+          { en: "Conclude that a convergent subsequence exists.", es: "Concluye que existe una subsucesión convergente.", zh: "于是可推出存在收敛子列。" },
+        ],
+        answer: {
+          en: "Use Bolzano-Weierstrass: a bounded sequence has a convergent subsequence.",
+          es: "Usa Bolzano-Weierstrass: una sucesión acotada tiene una subsucesión convergente.",
+          zh: "用 Bolzano-Weierstrass：有界实数列一定有收敛子列。",
+        },
+        selfCheck: {
+          en: "Bounded in R? Think convergent subsequence.",
+          es: "¿Acotada en R? Piensa en subsucesión convergente.",
+          zh: "实数列有界？就先想收敛子列。",
+        },
+      },
+    ],
+  },
+  "analysis140a-sequential-continuity": {
+    final: [
+      {
+        prompt: {
+          en: "How do you prove f is continuous at a using the sequential definition?",
+          es: "¿Cómo pruebas que f es continua en a usando la definición secuencial?",
+          zh: "如果用序列定义来证 f 在 a 处连续，该怎么起手？",
+        },
+        firstStep: {
+          en: "Take any sequence x_n -> a and show f(x_n) -> f(a).",
+          es: "Toma una sucesión cualquiera x_n -> a y demuestra que f(x_n) -> f(a).",
+          zh: "先取任意满足 x_n -> a 的序列，再证 f(x_n) -> f(a)。",
+        },
+        setup: {
+          en: "Sequential continuity turns a pointwise continuity proof into a sequence test.",
+          es: "La continuidad secuencial convierte la continuidad puntual en una prueba con sucesiones.",
+          zh: "序列连续性就是把点态连续，改写成‘任意靠近 a 的序列都被送到 f(a)’。",
+        },
+        fullPath: [
+          { en: "Start with an arbitrary sequence x_n converging to a.", es: "Empieza con una sucesión arbitraria x_n que converge a a.", zh: "先取任意收敛到 a 的序列 x_n。" },
+          { en: "Apply the formula for f(x_n).", es: "Aplica la fórmula de f(x_n).", zh: "把它代进 f(x_n)。" },
+          { en: "Show the outputs converge to f(a).", es: "Muestra que las salidas convergen a f(a).", zh: "证明输出收敛到 f(a)。" },
+        ],
+        answer: {
+          en: "Show x_n -> a implies f(x_n) -> f(a).",
+          es: "Demuestra que x_n -> a implica f(x_n) -> f(a).",
+          zh: "证明 x_n -> a 会推出 f(x_n) -> f(a)。",
+        },
+        selfCheck: {
+          en: "Sequential continuity = send convergent inputs to convergent outputs.",
+          es: "Continuidad secuencial = mandar entradas convergentes a salidas convergentes.",
+          zh: "序列连续 = 收敛输入送出收敛输出。",
+        },
+      },
+    ],
+  },
 };
