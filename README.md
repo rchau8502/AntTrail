@@ -166,6 +166,9 @@ Each card includes fields such as:
 3. Add `quiz`, `midterm`, or `final` seeds with localized `en`, `es`, and `zh` text.
 4. Bubblegum will use that bank first before falling back to generated drills.
 5. This is the easiest place for professor-tuned practice sets and more realistic exam-style prompts.
+6. Run `npm run validate:bubblegum` to catch missing card ids, empty levels, or broken localized fields before pushing changes.
+
+More collaborator guidance lives in [`docs/BUBBLEGUM_BANKS.md`](./docs/BUBBLEGUM_BANKS.md).
 
 ## How to add more courses later
 
