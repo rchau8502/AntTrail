@@ -19,7 +19,7 @@ export const analysisOneCourse: CourseContent = {
   courseCodes: ["MATH 140A"],
   aliases: ["Analysis I", "Real Analysis I"],
   shortDescription:
-    "UCI-style real analysis built around completeness, sequence proofs, series tests, continuity, and uniform convergence.",
+    "Ross-style elementary analysis for MATH 140A, centered on completeness, sequences, continuity, series, and uniform convergence.",
   units: [
     "Foundations of the Real Numbers",
     "Sequences and Limits",

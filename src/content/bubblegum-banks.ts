@@ -3281,4 +3281,1012 @@ export const bubblegumBanks: Partial<
       },
     ],
   },
+  "calc3-gradient": {
+    quiz: [
+      {
+        prompt: {
+          en: "For f(x,y)=x^2y+y^3, find ∇f.",
+          es: "Para f(x,y)=x^2y+y^3, halla ∇f.",
+          zh: "设 f(x,y)=x^2y+y^3，求 ∇f。",
+        },
+        firstStep: {
+          en: "Compute the x-partial and y-partial, then package them together.",
+          es: "Calcula la parcial en x y la parcial en y, y luego jun­talas.",
+          zh: "先分别求 x 偏导和 y 偏导，再把它们打包起来。",
+        },
+        setup: {
+          en: "The gradient is just the vector of first partial derivatives.",
+          es: "El gradiente es simplemente el vector de derivadas parciales primeras.",
+          zh: "梯度本质上就是一阶偏导数组成的向量。",
+        },
+        fullPath: [
+          { en: "∂f/∂x = 2xy.", es: "∂f/∂x = 2xy.", zh: "∂f/∂x = 2xy。" },
+          { en: "∂f/∂y = x^2 + 3y^2.", es: "∂f/∂y = x^2 + 3y^2.", zh: "∂f/∂y = x^2 + 3y^2。" },
+          { en: "So ∇f = <2xy, x^2+3y^2>.", es: "Entonces ∇f = <2xy, x^2+3y^2>.", zh: "所以 ∇f = <2xy, x^2+3y^2>。" },
+        ],
+        answer: {
+          en: "<2xy, x^2+3y^2>",
+          es: "<2xy, x^2+3y^2>",
+          zh: "<2xy, x^2+3y^2>",
+        },
+        selfCheck: {
+          en: "Gradient = collect the first partials into one vector.",
+          es: "Gradiente = juntar las derivadas parciales primeras en un vector.",
+          zh: "梯度 = 把一阶偏导收集成一个向量。",
+        },
+      },
+    ],
+  },
+  "calc3-lagrange-multipliers": {
+    midterm: [
+      {
+        prompt: {
+          en: "What system do you set up first to optimize f(x,y)=xy subject to x^2+y^2=1?",
+          es: "¿Que sistema armas primero para optimizar f(x,y)=xy con la restriccion x^2+y^2=1?",
+          zh: "要在约束 x^2+y^2=1 下优化 f(x,y)=xy，第一步该列什么方程组？",
+        },
+        firstStep: {
+          en: "Write ∇f = λ∇g together with the constraint.",
+          es: "Escribe ∇f = λ∇g junto con la restriccion.",
+          zh: "先写 ∇f = λ∇g，再加上原约束。",
+        },
+        setup: {
+          en: "Lagrange multiplier problems begin with parallel gradients, not with plugging random points.",
+          es: "Los problemas de multiplicadores de Lagrange empiezan con gradientes paralelos, no probando puntos al azar.",
+          zh: "拉格朗日乘子法的第一步是“梯度平行”，不是乱代点。",
+        },
+        fullPath: [
+          { en: "Take g(x,y)=x^2+y^2.", es: "Toma g(x,y)=x^2+y^2.", zh: "先设约束函数 g(x,y)=x^2+y^2。" },
+          { en: "Compute ∇f=<y,x> and ∇g=<2x,2y>.", es: "Calcula ∇f=<y,x> y ∇g=<2x,2y>.", zh: "计算 ∇f=<y,x>，∇g=<2x,2y>。" },
+          { en: "Set <y,x> = λ<2x,2y> and keep x^2+y^2=1.", es: "Plantea <y,x> = λ<2x,2y> y conserva x^2+y^2=1.", zh: "列出 <y,x> = λ<2x,2y>，并保留 x^2+y^2=1。" },
+        ],
+        answer: {
+          en: "Use <y,x> = λ<2x,2y> with x^2+y^2=1.",
+          es: "Usa <y,x> = λ<2x,2y> con x^2+y^2=1.",
+          zh: "列出 <y,x> = λ<2x,2y>，并加上 x^2+y^2=1。",
+        },
+        selfCheck: {
+          en: "Lagrange = gradient of objective parallel to gradient of constraint.",
+          es: "Lagrange = gradiente del objetivo paralelo al gradiente de la restriccion.",
+          zh: "拉格朗日乘子法 = 目标函数梯度与约束梯度平行。",
+        },
+      },
+    ],
+  },
+  "math2e-vector-functions": {
+    quiz: [
+      {
+        prompt: {
+          en: "Differentiate r(t)=<t, t^2, sin t>.",
+          es: "Deriva r(t)=<t, t^2, sin t>.",
+          zh: "求导 r(t)=<t, t^2, sin t>。",
+        },
+        firstStep: {
+          en: "Differentiate each component separately.",
+          es: "Deriva cada componente por separado.",
+          zh: "把每个分量分别求导。",
+        },
+        setup: {
+          en: "Vector-valued functions use the same derivative rules as single-variable functions, just component by component.",
+          es: "Las funciones vectoriales usan las mismas reglas de derivacion que calculo de una variable, solo que componente por componente.",
+          zh: "向量值函数的求导规则和一元微积分一样，只是分量逐个来。",
+        },
+        fullPath: [
+          { en: "d/dt of t is 1.", es: "d/dt de t es 1.", zh: "t 的导数是 1。" },
+          { en: "d/dt of t^2 is 2t.", es: "d/dt de t^2 es 2t.", zh: "t^2 的导数是 2t。" },
+          { en: "d/dt of sin t is cos t, so r'(t)=<1,2t,cos t>.", es: "d/dt de sin t es cos t, asi que r'(t)=<1,2t,cos t>.", zh: "sin t 的导数是 cos t，所以 r'(t)=<1,2t,cos t>。" },
+        ],
+        answer: {
+          en: "<1, 2t, cos t>",
+          es: "<1, 2t, cos t>",
+          zh: "<1, 2t, cos t>",
+        },
+        selfCheck: {
+          en: "Vector functions differentiate slot by slot.",
+          es: "Las funciones vectoriales se derivan casilla por casilla.",
+          zh: "向量值函数就是一格一格地求导。",
+        },
+      },
+    ],
+  },
+  "math2e-arc-length-curvature": {
+    quiz: [
+      {
+        prompt: {
+          en: "What quantity do you integrate first to get arc length of a space curve r(t)?",
+          es: "¿Que cantidad integras primero para obtener la longitud de arco de una curva espacial r(t)?",
+          zh: "要求空间曲线 r(t) 的弧长，首先要积分哪个量？",
+        },
+        firstStep: {
+          en: "Find the speed |r'(t)|.",
+          es: "Halla la rapidez |r'(t)|.",
+          zh: "先求速度大小 |r'(t)|。",
+        },
+        setup: {
+          en: "Arc length uses speed, not the raw velocity vector.",
+          es: "La longitud de arco usa rapidez, no el vector velocidad sin procesar.",
+          zh: "弧长公式要用速度大小，不是直接拿速度向量本身。",
+        },
+        fullPath: [
+          { en: "Differentiate the position vector to get r'(t).", es: "Deriva el vector posicion para obtener r'(t).", zh: "先对位置向量求导，得到 r'(t)。" },
+          { en: "Take its magnitude |r'(t)|.", es: "Toma su magnitud |r'(t)|.", zh: "再取模长 |r'(t)|。" },
+          { en: "Integrate that speed over the parameter interval.", es: "Integra esa rapidez sobre el intervalo del parametro.", zh: "最后在参数区间上积分这个速度大小。" },
+        ],
+        answer: {
+          en: "Integrate |r'(t)|.",
+          es: "Integra |r'(t)|.",
+          zh: "积分 |r'(t)|。",
+        },
+        selfCheck: {
+          en: "Arc length starts with speed.",
+          es: "La longitud de arco empieza con la rapidez.",
+          zh: "弧长一定从速度大小开始。",
+        },
+      },
+    ],
+  },
+  "math2e-greens-theorem": {
+    quiz: [
+      {
+        prompt: {
+          en: "A counterclockwise closed curve in the plane surrounds a nice region, and the line integral is P dx + Q dy. What theorem should you test first?",
+          es: "Una curva cerrada antihoraria en el plano rodea una region sencilla, y la integral de linea es P dx + Q dy. ¿Que teorema pruebas primero?",
+          zh: "平面上一条逆时针闭曲线围住一个好区域，线积分写成 P dx + Q dy。第一步该试哪个定理？",
+        },
+        firstStep: {
+          en: "Check Green's Theorem.",
+          es: "Revisa el Teorema de Green.",
+          zh: "先看 Green 定理能不能用。",
+        },
+        setup: {
+          en: "Closed plane loop plus P dx + Q dy is the classic Green trigger.",
+          es: "Curva plana cerrada mas P dx + Q dy es el disparador clasico de Green.",
+          zh: "平面闭曲线加上 P dx + Q dy，就是 Green 定理最典型的触发形状。",
+        },
+        fullPath: [
+          { en: "The curve is closed and lies in the plane.", es: "La curva es cerrada y vive en el plano.", zh: "这条曲线是闭合的，而且就在平面里。" },
+          { en: "The integral has the exact P dx + Q dy form.", es: "La integral tiene exactamente la forma P dx + Q dy.", zh: "积分形式也正是 P dx + Q dy。" },
+          { en: "So switch to the double integral from Green's Theorem.", es: "Asi que cambia a la integral doble de Green.", zh: "所以应改用 Green 定理对应的二重积分。" },
+        ],
+        answer: {
+          en: "Green's Theorem.",
+          es: "El Teorema de Green.",
+          zh: "Green 定理。",
+        },
+        selfCheck: {
+          en: "Closed plane loop plus Pdx+Qdy -> Green.",
+          es: "Curva plana cerrada mas Pdx+Qdy -> Green.",
+          zh: "平面闭曲线加 Pdx+Qdy -> Green。",
+        },
+      },
+    ],
+  },
+  "math2e-motion-in-space": {
+    quiz: [
+      {
+        prompt: {
+          en: "If r(t) is the position vector of a particle, what are r'(t) and r''(t)?",
+          es: "Si r(t) es el vector posicion de una particula, ¿que son r'(t) y r''(t)?",
+          zh: "如果 r(t) 是粒子的位置向量，那么 r'(t) 和 r''(t) 分别是什么？",
+        },
+        firstStep: {
+          en: "Think of the motion chain: position, then velocity, then acceleration.",
+          es: "Piensa en la cadena del movimiento: posicion, luego velocidad, luego aceleracion.",
+          zh: "先想清楚运动链条：位置，然后速度，再然后加速度。",
+        },
+        setup: {
+          en: "Motion in space is just vector-valued functions interpreted physically.",
+          es: "El movimiento en el espacio es solo una funcion vectorial interpretada fisicamente.",
+          zh: "空间运动，本质上就是给向量值函数加上物理意义。",
+        },
+        fullPath: [
+          { en: "Start with r(t) as position.", es: "Empieza con r(t) como posicion.", zh: "先把 r(t) 看成位置。" },
+          { en: "Differentiate once to get velocity r'(t).", es: "Deriva una vez para obtener la velocidad r'(t).", zh: "求一次导，得到速度 r'(t)。" },
+          { en: "Differentiate again to get acceleration r''(t).", es: "Deriva otra vez para obtener la aceleracion r''(t).", zh: "再求一次导，得到加速度 r''(t)。" },
+        ],
+        answer: {
+          en: "r'(t) is velocity and r''(t) is acceleration.",
+          es: "r'(t) es velocidad y r''(t) es aceleracion.",
+          zh: "r'(t) 是速度，r''(t) 是加速度。",
+        },
+        selfCheck: {
+          en: "Position -> velocity -> acceleration.",
+          es: "Posicion -> velocidad -> aceleracion.",
+          zh: "位置 -> 速度 -> 加速度。",
+        },
+      },
+    ],
+  },
+  "math2e-ftc-line-integrals": {
+    quiz: [
+      {
+        prompt: {
+          en: "A line integral runs over a gradient field F=∇φ from A to B. What expression should replace the full integral?",
+          es: "Una integral de linea corre sobre un campo gradiente F=∇φ desde A hasta B. ¿Que expresion debe reemplazar la integral completa?",
+          zh: "一条线积分对应的是梯度场 F=∇φ，从 A 到 B。完整积分应被什么表达式取代？",
+        },
+        firstStep: {
+          en: "Use the potential at the endpoints.",
+          es: "Usa el potencial en los extremos.",
+          zh: "直接看势函数在两个端点的值。",
+        },
+        setup: {
+          en: "This theorem is the line-integral version of “antiderivative at the endpoint.”",
+          es: "Este teorema es la version para integrales de linea de “antiderivada en el extremo”.",
+          zh: "这个定理就是把一元微积分里“原函数代端点”的思想搬到了线积分里。",
+        },
+        fullPath: [
+          { en: "Recognize that F is a gradient field.", es: "Reconoce que F es un campo gradiente.", zh: "先认出 F 是梯度场。" },
+          { en: "So the path does not matter; only endpoints matter.", es: "Entonces la trayectoria no importa; solo importan los extremos.", zh: "于是路径本身不重要，只看端点。" },
+          { en: "Replace the integral with φ(B)-φ(A).", es: "Reemplaza la integral por φ(B)-φ(A).", zh: "把积分直接改成 φ(B)-φ(A)。" },
+        ],
+        answer: {
+          en: "φ(B)-φ(A)",
+          es: "φ(B)-φ(A)",
+          zh: "φ(B)-φ(A)",
+        },
+        selfCheck: {
+          en: "Gradient field means endpoint subtraction.",
+          es: "Campo gradiente significa resta de extremos.",
+          zh: "梯度场就意味着端点相减。",
+        },
+      },
+    ],
+  },
+  "math2e-parametric-surfaces": {
+    quiz: [
+      {
+        prompt: {
+          en: "For a surface r(u,v), what expression gives the surface-area factor?",
+          es: "Para una superficie r(u,v), ¿que expresion da el factor de area superficial?",
+          zh: "对于参数曲面 r(u,v)，哪个表达式给出面积因子？",
+        },
+        firstStep: {
+          en: "Differentiate with respect to u and v, then cross them.",
+          es: "Deriva respecto de u y v, y luego cruza esos vectores.",
+          zh: "先分别对 u 和 v 求导，再做叉积。",
+        },
+        setup: {
+          en: "A parameterized surface is built from two tangent directions, so area comes from their cross product.",
+          es: "Una superficie parametrizada se construye con dos direcciones tangentes, por eso el area sale de su producto cruz.",
+          zh: "参数曲面由两个切向方向织出来，所以面积因子来自这两个方向的叉积。",
+        },
+        fullPath: [
+          { en: "Compute r_u and r_v.", es: "Calcula r_u y r_v.", zh: "先算 r_u 和 r_v。" },
+          { en: "Take the cross product r_u × r_v.", es: "Toma el producto cruz r_u × r_v.", zh: "再算叉积 r_u × r_v。" },
+          { en: "The area factor is |r_u × r_v|.", es: "El factor de area es |r_u × r_v|.", zh: "面积因子就是 |r_u × r_v|。" },
+        ],
+        answer: {
+          en: "|r_u × r_v|",
+          es: "|r_u × r_v|",
+          zh: "|r_u × r_v|",
+        },
+        selfCheck: {
+          en: "Two surface directions, then cross.",
+          es: "Dos direcciones sobre la superficie, luego producto cruz.",
+          zh: "两个曲面方向，最后做叉积。",
+        },
+      },
+    ],
+  },
+  "calc3-multivariable-limits": {
+    quiz: [
+      {
+        prompt: {
+          en: "Why is trying two different paths a fast test for whether a multivariable limit does not exist?",
+          es: "¿Por que probar dos caminos distintos es una prueba rapida de que un limite multivariable no existe?",
+          zh: "为什么试两条不同路径，是判断多元极限不存在的快捷方法？",
+        },
+        firstStep: {
+          en: "Compare what the function approaches along different routes to the same point.",
+          es: "Compara a que valor se acerca la funcion por rutas distintas al mismo punto.",
+          zh: "先比较函数沿不同路径逼近同一点时，各自逼近什么值。",
+        },
+        setup: {
+          en: "A multivariable limit can exist only if every path agrees on the same target.",
+          es: "Un limite multivariable solo puede existir si todos los caminos coinciden en el mismo valor.",
+          zh: "多元极限若存在，所有路径都必须逼近同一个值。",
+        },
+        fullPath: [
+          { en: "Choose two easy paths, like y=0 and y=x.", es: "Elige dos caminos faciles, como y=0 y y=x.", zh: "先选两条简单路径，比如 y=0 和 y=x。" },
+          { en: "Compute the limiting value along each path.", es: "Calcula el valor limite en cada camino.", zh: "分别算这两条路径上的极限值。" },
+          { en: "If the two answers differ, the overall limit does not exist.", es: "Si las dos respuestas difieren, el limite total no existe.", zh: "如果两个答案不同，那么总极限不存在。" },
+        ],
+        answer: {
+          en: "Different path limits kill the overall limit.",
+          es: "Si los limites por caminos difieren, el limite total no existe.",
+          zh: "不同路径给出不同极限值，就说明总极限不存在。",
+        },
+        selfCheck: {
+          en: "Two paths, two answers, no limit.",
+          es: "Dos caminos, dos respuestas, no hay limite.",
+          zh: "两条路径、两个答案、极限不存在。",
+        },
+      },
+    ],
+  },
+  "calc3-tangent-plane": {
+    quiz: [
+      {
+        prompt: {
+          en: "What ingredients do you need first to write the tangent plane to z=f(x,y) at (a,b)?",
+          es: "¿Que ingredientes necesitas primero para escribir el plano tangente a z=f(x,y) en (a,b)?",
+          zh: "要写 z=f(x,y) 在 (a,b) 处的切平面，最先需要哪几个量？",
+        },
+        firstStep: {
+          en: "Get the point, f_x(a,b), and f_y(a,b).",
+          es: "Consigue el punto, f_x(a,b) y f_y(a,b).",
+          zh: "先拿到切点、f_x(a,b) 和 f_y(a,b)。",
+        },
+        setup: {
+          en: "A tangent plane is the two-variable version of a tangent line: point plus slope data.",
+          es: "Un plano tangente es la version de dos variables de una recta tangente: punto mas datos de pendiente.",
+          zh: "切平面就是二元函数版本的切线：一点再加上两个方向的斜率信息。",
+        },
+        fullPath: [
+          { en: "Find the point (a,b,f(a,b)).", es: "Encuentra el punto (a,b,f(a,b)).", zh: "先找到切点 (a,b,f(a,b))。" },
+          { en: "Compute the partial derivatives f_x(a,b) and f_y(a,b).", es: "Calcula las derivadas parciales f_x(a,b) y f_y(a,b).", zh: "再计算偏导数 f_x(a,b) 和 f_y(a,b)。" },
+          { en: "Use z-f(a,b)=f_x(a,b)(x-a)+f_y(a,b)(y-b).", es: "Usa z-f(a,b)=f_x(a,b)(x-a)+f_y(a,b)(y-b).", zh: "代入公式 z-f(a,b)=f_x(a,b)(x-a)+f_y(a,b)(y-b)。" },
+        ],
+        answer: {
+          en: "Point plus the two partials: f(a,b), f_x(a,b), f_y(a,b).",
+          es: "El punto mas las dos parciales: f(a,b), f_x(a,b), f_y(a,b).",
+          zh: "切点加两个偏导：f(a,b)、f_x(a,b)、f_y(a,b)。",
+        },
+        selfCheck: {
+          en: "Tangent plane = point plus x-slope plus y-slope.",
+          es: "Plano tangente = punto mas pendiente en x mas pendiente en y.",
+          zh: "切平面 = 一点 + x 方向斜率 + y 方向斜率。",
+        },
+      },
+    ],
+  },
+  "calc3-directional-derivative": {
+    quiz: [
+      {
+        prompt: {
+          en: "What two objects do you need to compute a directional derivative fast with the gradient formula?",
+          es: "¿Que dos objetos necesitas para calcular rapido una derivada direccional con la formula del gradiente?",
+          zh: "用梯度公式快速算方向导数，需要先准备哪两个对象？",
+        },
+        firstStep: {
+          en: "Find the gradient and a unit direction vector.",
+          es: "Encuentra el gradiente y un vector direccion unitario.",
+          zh: "先找到梯度向量和单位方向向量。",
+        },
+        setup: {
+          en: "Directional derivatives become a dot-product problem once the direction is normalized.",
+          es: "Las derivadas direccionales se vuelven un problema de producto punto una vez que la direccion esta normalizada.",
+          zh: "方向导数一旦把方向单位化，本质上就变成一个点积问题。",
+        },
+        fullPath: [
+          { en: "Compute ∇f at the point.", es: "Calcula ∇f en el punto.", zh: "先算出该点处的 ∇f。" },
+          { en: "Turn the direction into a unit vector u.", es: "Convierte la direccion en un vector unitario u.", zh: "把给定方向化成单位向量 u。" },
+          { en: "Then D_u f = ∇f · u.", es: "Entonces D_u f = ∇f · u.", zh: "然后用 D_u f = ∇f · u。" },
+        ],
+        answer: {
+          en: "The gradient and a unit direction vector.",
+          es: "El gradiente y un vector direccion unitario.",
+          zh: "梯度向量和单位方向向量。",
+        },
+        selfCheck: {
+          en: "Directional derivative = gradient dot unit direction.",
+          es: "Derivada direccional = gradiente por direccion unitaria en producto punto.",
+          zh: "方向导数 = 梯度点乘单位方向向量。",
+        },
+      },
+    ],
+  },
+  "calc3-iterated-integrals": {
+    quiz: [
+      {
+        prompt: {
+          en: "In an iterated integral ∫∫_R f(x,y) dA over a rectangle, what does the inner integral do?",
+          es: "En una integral iterada ∫∫_R f(x,y) dA sobre un rectangulo, ¿que hace la integral interior?",
+          zh: "对矩形区域上的迭代积分 ∫∫_R f(x,y) dA，内层积分在做什么？",
+        },
+        firstStep: {
+          en: "Treat the outer variable as frozen while the inner variable runs first.",
+          es: "Trata la variable exterior como congelada mientras la interior corre primero.",
+          zh: "先把外层变量冻结，让内层变量先跑完。",
+        },
+        setup: {
+          en: "Iterated integrals are double integrals unpacked into one variable at a time.",
+          es: "Las integrales iteradas son integrales dobles desempacadas, una variable a la vez.",
+          zh: "迭代积分就是把二重积分拆成“一次先积一个变量”。",
+        },
+        fullPath: [
+          { en: "The inner integral sweeps along one direction first.", es: "La integral interior barre primero en una direccion.", zh: "内层积分先沿一个方向扫过去。" },
+          { en: "During that sweep, the outer variable stays fixed.", es: "Durante ese barrido, la variable exterior queda fija.", zh: "在这一步里，外层变量保持不动。" },
+          { en: "The outer integral then adds those accumulated slices.", es: "Luego la integral exterior suma esas tiras acumuladas.", zh: "外层积分再把这些累积好的切片加起来。" },
+        ],
+        answer: {
+          en: "It accumulates along one variable while the other stays fixed.",
+          es: "Acumula en una variable mientras la otra queda fija.",
+          zh: "它先对一个变量累加，而另一个变量保持固定。",
+        },
+        selfCheck: {
+          en: "Inner runs first, outer waits.",
+          es: "La interior va primero y la exterior espera.",
+          zh: "内层先跑，外层先等着。",
+        },
+      },
+    ],
+  },
+  "calc3-change-of-variables": {
+    quiz: [
+      {
+        prompt: {
+          en: "What extra factor must appear when you change variables in a double or triple integral?",
+          es: "¿Que factor extra debe aparecer cuando cambias variables en una integral doble o triple?",
+          zh: "在二重或三重积分里换变量时，必须额外出现哪个因子？",
+        },
+        firstStep: {
+          en: "Look for the Jacobian.",
+          es: "Busca el Jacobiano.",
+          zh: "先找 Jacobian 因子。",
+        },
+        setup: {
+          en: "Change of variables is not only swapping symbols. You must also scale area or volume correctly.",
+          es: "Cambiar variables no es solo cambiar simbolos. Tambien hay que escalar bien el area o el volumen.",
+          zh: "换元不只是把符号改掉，还必须把面积或体积的缩放一起补上。",
+        },
+        fullPath: [
+          { en: "Write the transformation between old and new variables.", es: "Escribe la transformacion entre variables viejas y nuevas.", zh: "先写出新旧变量之间的变换关系。" },
+          { en: "Compute the determinant of the Jacobian matrix.", es: "Calcula el determinante de la matriz Jacobiana.", zh: "再计算 Jacobian 矩阵的行列式。" },
+          { en: "Use its absolute value as the extra factor.", es: "Usa su valor absoluto como factor extra.", zh: "把它的绝对值作为额外因子乘进去。" },
+        ],
+        answer: {
+          en: "The absolute value of the Jacobian determinant.",
+          es: "El valor absoluto del determinante Jacobiano.",
+          zh: "Jacobian 行列式的绝对值。",
+        },
+        selfCheck: {
+          en: "Change variables -> do not forget the Jacobian.",
+          es: "Cambio de variables -> no olvides el Jacobiano.",
+          zh: "一换元，就要想到 Jacobian。",
+        },
+      },
+    ],
+  },
+  "calc3-vector-fields": {
+    quiz: [
+      {
+        prompt: {
+          en: "What is a vector field in plain language?",
+          es: "¿Que es un campo vectorial en palabras simples?",
+          zh: "用最直白的话讲，什么是向量场？",
+        },
+        firstStep: {
+          en: "Think of every point in space getting its own arrow.",
+          es: "Piensa en cada punto del espacio recibiendo su propia flecha.",
+          zh: "先想成：空间里每个点都分配到一支箭头。",
+        },
+        setup: {
+          en: "A vector field is not one vector. It is a vector attached to every point in a region.",
+          es: "Un campo vectorial no es un solo vector. Es un vector pegado a cada punto de una region.",
+          zh: "向量场不是一个向量，而是区域里每个点都带着一个向量。",
+        },
+        fullPath: [
+          { en: "Pick a point (x,y,z).", es: "Elige un punto (x,y,z).", zh: "先看一个点 (x,y,z)。" },
+          { en: "The field assigns a vector to that point.", es: "El campo asigna un vector a ese punto.", zh: "向量场会给这个点分配一个向量。" },
+          { en: "Doing that at every point creates the whole field picture.", es: "Hacer eso en todos los puntos crea la imagen completa del campo.", zh: "所有点都这样分配起来，就组成了整个向量场。" },
+        ],
+        answer: {
+          en: "A rule that assigns a vector to each point.",
+          es: "Una regla que asigna un vector a cada punto.",
+          zh: "给每个点分配一个向量的规则。",
+        },
+        selfCheck: {
+          en: "One point, one arrow; all points, a field.",
+          es: "Un punto, una flecha; todos los puntos, un campo.",
+          zh: "一个点一支箭头，所有点合起来就是向量场。",
+        },
+      },
+    ],
+  },
+  "calc3-flux": {
+    quiz: [
+      {
+        prompt: {
+          en: "What physical picture does flux usually measure?",
+          es: "¿Que imagen fisica suele medir el flujo?",
+          zh: "通量通常在测什么样的物理图像？",
+        },
+        firstStep: {
+          en: "Think of how much field passes through a surface.",
+          es: "Piensa en cuanto campo atraviesa una superficie.",
+          zh: "先想有多少场穿过一个曲面。",
+        },
+        setup: {
+          en: "Flux is about flow through a surface, not movement along a curve.",
+          es: "El flujo trata del paso a traves de una superficie, no del movimiento a lo largo de una curva.",
+          zh: "通量看的是穿过曲面的流动，不是沿着曲线走的累积。",
+        },
+        fullPath: [
+          { en: "Take the vector field and the surface normal.", es: "Toma el campo vectorial y la normal de la superficie.", zh: "先看向量场和曲面的法向量。" },
+          { en: "The dot product checks how much the field points through the surface.", es: "El producto punto revisa cuanto del campo apunta a traves de la superficie.", zh: "点积会测出场有多少是朝着穿过曲面的方向。" },
+          { en: "Adding that over the whole surface gives flux.", es: "Sumar eso sobre toda la superficie da el flujo.", zh: "再把这些穿过量在整个曲面上累加起来，就是通量。" },
+        ],
+        answer: {
+          en: "How much of the field passes through the surface.",
+          es: "Cuanto del campo atraviesa la superficie.",
+          zh: "有多少向量场穿过这个曲面。",
+        },
+        selfCheck: {
+          en: "Flux = through the surface, not along the edge.",
+          es: "Flujo = a traves de la superficie, no a lo largo del borde.",
+          zh: "通量 = 穿过曲面，不是沿着边走。",
+        },
+      },
+    ],
+  },
+  "calc3-stokes-theorem": {
+    quiz: [
+      {
+        prompt: {
+          en: "A surface has a boundary curve and the integrand uses curl F. Which theorem should you try first?",
+          es: "Una superficie tiene curva frontera y el integrando usa curl F. ¿Que teorema debes probar primero?",
+          zh: "一个曲面带有边界曲线，而且被积对象出现了 curl F。第一步该试哪个定理？",
+        },
+        firstStep: {
+          en: "Match boundary-plus-curl to Stokes.",
+          es: "Relaciona frontera mas curl con Stokes.",
+          zh: "把“边界曲线 + curl”直接对应到 Stokes 定理。",
+        },
+        setup: {
+          en: "Stokes turns a curl surface integral into a line integral around the boundary curve.",
+          es: "Stokes convierte una integral de superficie con curl en una integral de linea sobre la curva frontera.",
+          zh: "Stokes 定理会把含 curl 的曲面积分，变成边界曲线上的线积分。",
+        },
+        fullPath: [
+          { en: "You are not on a closed surface; you have a boundary curve.", es: "No estas en una superficie cerrada; tienes una curva frontera.", zh: "这里不是闭曲面，而是带边界的曲面。" },
+          { en: "The integrand uses curl F, not divergence.", es: "El integrando usa curl F, no divergencia.", zh: "被积对象是 curl F，不是 divergence。" },
+          { en: "So the geometry and operator both point to Stokes' Theorem.", es: "Asi que la geometria y el operador apuntan a Stokes.", zh: "所以从几何和算子两边看，都应该想到 Stokes 定理。" },
+        ],
+        answer: {
+          en: "Stokes' Theorem.",
+          es: "El Teorema de Stokes.",
+          zh: "Stokes 定理。",
+        },
+        selfCheck: {
+          en: "Boundary curve + curl -> Stokes.",
+          es: "Curva frontera + curl -> Stokes.",
+          zh: "边界曲线 + curl -> Stokes。",
+        },
+      },
+    ],
+  },
+  "calc3-vector-valued-functions": {
+    quiz: [
+      {
+        prompt: {
+          en: "For r(t)=<t, t^2, 1-t>, what is r(2)?",
+          es: "Para r(t)=<t, t^2, 1-t>, ¿cuanto vale r(2)?",
+          zh: "设 r(t)=<t, t^2, 1-t>，求 r(2)。",
+        },
+        firstStep: {
+          en: "Plug the parameter into each component separately.",
+          es: "Sustituye el parametro en cada componente por separado.",
+          zh: "把参数分别代入每个分量。",
+        },
+        setup: {
+          en: "A vector-valued function is just a package of ordinary functions moving together.",
+          es: "Una funcion vectorial es solo un paquete de funciones ordinarias moviendose juntas.",
+          zh: "向量值函数本质上就是几个普通函数打包在一起一起动。",
+        },
+        fullPath: [
+          { en: "The first component at t=2 is 2.", es: "La primera componente en t=2 es 2.", zh: "第一个分量在 t=2 时是 2。" },
+          { en: "The second component is 2^2=4.", es: "La segunda componente es 2^2=4.", zh: "第二个分量是 2^2=4。" },
+          { en: "The third component is 1-2=-1, so r(2)=<2,4,-1>.", es: "La tercera componente es 1-2=-1, asi que r(2)=<2,4,-1>.", zh: "第三个分量是 1-2=-1，所以 r(2)=<2,4,-1>。" },
+        ],
+        answer: {
+          en: "<2,4,-1>",
+          es: "<2,4,-1>",
+          zh: "<2,4,-1>",
+        },
+        selfCheck: {
+          en: "Vector-valued function evaluation is slot-by-slot.",
+          es: "Evaluar una funcion vectorial se hace casilla por casilla.",
+          zh: "向量值函数代值，就是一格一格来。",
+        },
+      },
+    ],
+  },
+  "calc3-curvature": {
+    quiz: [
+      {
+        prompt: {
+          en: "In plain language, what does curvature measure?",
+          es: "En palabras simples, ¿que mide la curvatura?",
+          zh: "用最直白的话说，曲率在测什么？",
+        },
+        firstStep: {
+          en: "Think about how sharply the path turns.",
+          es: "Piensa en que tan bruscamente gira la trayectoria.",
+          zh: "先想这条路径转弯有多急。",
+        },
+        setup: {
+          en: "Curvature is a turning question, not a speed question.",
+          es: "La curvatura es una pregunta de giro, no de rapidez.",
+          zh: "曲率看的是转弯，不是速度大小。",
+        },
+        fullPath: [
+          { en: "A straight line barely turns.", es: "Una recta casi no gira.", zh: "直线几乎不转弯。" },
+          { en: "A tight bend turns quickly.", es: "Una curva cerrada gira rapidamente.", zh: "弯得很紧的曲线会很快转向。" },
+          { en: "So curvature measures how sharply the curve bends.", es: "Asi que la curvatura mide que tan bruscamente se dobla la curva.", zh: "所以曲率就是在衡量曲线弯得有多厉害。" },
+        ],
+        answer: {
+          en: "How sharply a curve turns.",
+          es: "Que tan bruscamente gira una curva.",
+          zh: "曲线转弯有多急。",
+        },
+        selfCheck: {
+          en: "Curvature = turning, not just moving.",
+          es: "Curvatura = girar, no solo moverse.",
+          zh: "曲率看转弯，不只是看在动。",
+        },
+      },
+    ],
+  },
+  "calc3-polar-double-integrals": {
+    quiz: [
+      {
+        prompt: {
+          en: "What extra factor appears when you switch a double integral from x,y to polar coordinates?",
+          es: "¿Que factor extra aparece al cambiar una integral doble de x,y a coordenadas polares?",
+          zh: "把二重积分从 x,y 换到极坐标时，会多出哪个因子？",
+        },
+        firstStep: {
+          en: "Look for the Jacobian factor r.",
+          es: "Busca el factor Jacobiano r.",
+          zh: "先想到 Jacobian 因子 r。",
+        },
+        setup: {
+          en: "Polar double integrals are not just x=r cosθ and y=r sinθ. The area element changes too.",
+          es: "Las integrales dobles polares no son solo x=r cosθ y y=r sinθ. El elemento de area tambien cambia.",
+          zh: "极坐标二重积分不只是把 x,y 改成 r cosθ、r sinθ，面积元也一起变了。",
+        },
+        fullPath: [
+          { en: "Rewrite x and y using r and θ.", es: "Reescribe x e y usando r y θ.", zh: "先用 r 和 θ 改写 x、y。" },
+          { en: "The area element dA becomes r dr dθ.", es: "El elemento de area dA se vuelve r dr dθ.", zh: "面积元 dA 会变成 r dr dθ。" },
+          { en: "So every polar double integral needs that extra r factor.", es: "Asi que toda integral doble polar necesita ese factor extra r.", zh: "所以每个极坐标二重积分都要多乘一个 r。" },
+        ],
+        answer: {
+          en: "An extra factor of r.",
+          es: "Un factor extra r.",
+          zh: "额外的 r 因子。",
+        },
+        selfCheck: {
+          en: "Polar double integral -> do not forget the r.",
+          es: "Integral doble polar -> no olvides la r.",
+          zh: "极坐标二重积分，一定别忘了 r。",
+        },
+      },
+    ],
+  },
+  "calc3-triple-integrals": {
+    quiz: [
+      {
+        prompt: {
+          en: "What does a triple integral usually accumulate?",
+          es: "¿Que acumula normalmente una integral triple?",
+          zh: "三重积分通常在累加什么？",
+        },
+        firstStep: {
+          en: "Think of tiny volume boxes instead of tiny area tiles.",
+          es: "Piensa en pequenas cajas de volumen en vez de pequenos mosaicos de area.",
+          zh: "先想很多小体积盒子，而不是小面积块。",
+        },
+        setup: {
+          en: "A triple integral is the 3D version of accumulation over a region.",
+          es: "Una integral triple es la version 3D de acumular sobre una region.",
+          zh: "三重积分就是在三维区域上做累加的版本。",
+        },
+        fullPath: [
+          { en: "The region is chopped into tiny boxes.", es: "La region se corta en cajitas diminutas.", zh: "先把区域切成很多很小的盒子。" },
+          { en: "Each box contributes f(x,y,z) times a tiny volume.", es: "Cada caja aporta f(x,y,z) por un volumen pequeno.", zh: "每个小盒子贡献的是 f(x,y,z) 乘一个很小的体积。" },
+          { en: "The triple integral adds all those volume contributions.", es: "La integral triple suma todas esas contribuciones de volumen.", zh: "三重积分就是把这些体积贡献全部加起来。" },
+        ],
+        answer: {
+          en: "Tiny volume-weighted contributions f(x,y,z) dV.",
+          es: "Pequenas contribuciones ponderadas por volumen, f(x,y,z) dV.",
+          zh: "很多形如 f(x,y,z) dV 的小体积贡献。",
+        },
+        selfCheck: {
+          en: "Double integral = tiles. Triple integral = boxes.",
+          es: "Integral doble = mosaicos. Integral triple = cajas.",
+          zh: "二重积分像小方块，三重积分像小盒子。",
+        },
+      },
+    ],
+  },
+  "calc3-cylindrical-coordinates": {
+    quiz: [
+      {
+        prompt: {
+          en: "When should you try cylindrical coordinates first?",
+          es: "¿Cuando deberias probar primero coordenadas cilindricas?",
+          zh: "什么时候应该第一时间想到柱坐标？",
+        },
+        firstStep: {
+          en: "Look for circular symmetry around the z-axis.",
+          es: "Busca simetria circular alrededor del eje z.",
+          zh: "先看是不是绕 z 轴有圆形对称。",
+        },
+        setup: {
+          en: "Cylindrical coordinates are polar coordinates plus height z.",
+          es: "Las coordenadas cilindricas son coordenadas polares mas la altura z.",
+          zh: "柱坐标本质上就是“极坐标 + 高度 z”。",
+        },
+        fullPath: [
+          { en: "If x^2+y^2 shows up a lot, think radial symmetry.", es: "Si aparece mucho x^2+y^2, piensa en simetria radial.", zh: "如果经常出现 x^2+y^2，就先想径向对称。" },
+          { en: "Keep z as z, and change only the x-y part to polar form.", es: "Deja z como z y cambia solo la parte x-y a forma polar.", zh: "保留 z 不动，只把 x-y 平面部分改成极坐标。" },
+          { en: "That is exactly cylindrical coordinates.", es: "Eso es exactamente coordenadas cilindricas.", zh: "这正是柱坐标。" },
+        ],
+        answer: {
+          en: "When the region or integrand has circular symmetry in x and y.",
+          es: "Cuando la region o el integrando tienen simetria circular en x y y.",
+          zh: "当区域或被积函数在 x-y 平面里有圆对称时。",
+        },
+        selfCheck: {
+          en: "Polar in x-y, keep z alone.",
+          es: "Polar en x-y y deja z sola.",
+          zh: "x-y 用极坐标，z 保持不变。",
+        },
+      },
+    ],
+  },
+  "calc3-spherical-coordinates": {
+    quiz: [
+      {
+        prompt: {
+          en: "What kind of geometry usually signals spherical coordinates?",
+          es: "¿Que tipo de geometria suele indicar coordenadas esfericas?",
+          zh: "什么样的几何形状通常会提示你用球坐标？",
+        },
+        firstStep: {
+          en: "Look for spheres or expressions built from x^2+y^2+z^2.",
+          es: "Busca esferas o expresiones hechas de x^2+y^2+z^2.",
+          zh: "先看有没有球体，或经常出现 x^2+y^2+z^2。",
+        },
+        setup: {
+          en: "Spherical coordinates are best when the geometry is centered and radial in all three dimensions.",
+          es: "Las coordenadas esfericas sirven mejor cuando la geometria es centrada y radial en las tres dimensiones.",
+          zh: "球坐标最适合的是三维里处处径向、以原点为中心的几何形状。",
+        },
+        fullPath: [
+          { en: "A sphere depends on distance from the origin.", es: "Una esfera depende de la distancia al origen.", zh: "球体的本质是“离原点多远”。" },
+          { en: "That distance is built from x^2+y^2+z^2.", es: "Esa distancia se construye con x^2+y^2+z^2.", zh: "这个距离正是由 x^2+y^2+z^2 组成的。" },
+          { en: "So spherical coordinates are the natural fit.", es: "Asi que las coordenadas esfericas son el ajuste natural.", zh: "所以球坐标就是最自然的选择。" },
+        ],
+        answer: {
+          en: "Spheres and full 3D radial symmetry.",
+          es: "Esferas y simetria radial completa en 3D.",
+          zh: "球体以及三维的整体径向对称。",
+        },
+        selfCheck: {
+          en: "If it looks spherical, try spherical.",
+          es: "Si parece esferico, prueba esfericas.",
+          zh: "像球，就先想球坐标。",
+        },
+      },
+    ],
+  },
+  "calc3-double-integral-applications": {
+    quiz: [
+      {
+        prompt: {
+          en: "What extra ingredient turns a plain double integral into a mass problem?",
+          es: "¿Que ingrediente extra convierte una integral doble simple en un problema de masa?",
+          zh: "把普通二重积分变成质量问题，需要额外加上什么？",
+        },
+        firstStep: {
+          en: "Look for density.",
+          es: "Busca la densidad.",
+          zh: "先找密度函数。",
+        },
+        setup: {
+          en: "Application problems usually keep the same region but change what the integrand means.",
+          es: "Los problemas de aplicacion suelen mantener la misma region y cambiar lo que significa el integrando.",
+          zh: "应用题通常不是换区域，而是换被积函数代表的意义。",
+        },
+        fullPath: [
+          { en: "Area uses integrand 1.", es: "El area usa integrando 1.", zh: "求面积时，被积函数可以看成 1。" },
+          { en: "Mass uses density ρ(x,y).", es: "La masa usa densidad ρ(x,y).", zh: "求质量时，被积函数变成密度 ρ(x,y)。" },
+          { en: "So mass is built by integrating density over the region.", es: "Asi que la masa se construye integrando la densidad sobre la region.", zh: "所以质量就是把密度在整个区域上积分起来。" },
+        ],
+        answer: {
+          en: "A density function.",
+          es: "Una funcion de densidad.",
+          zh: "密度函数。",
+        },
+        selfCheck: {
+          en: "Same region, new meaning in the integrand.",
+          es: "Misma region, nuevo significado en el integrando.",
+          zh: "区域不变，被积函数的意义变了。",
+        },
+      },
+    ],
+  },
+  "calc3-surface-area-double-integrals": {
+    quiz: [
+      {
+        prompt: {
+          en: "For z=f(x,y), what square-root factor appears in the surface-area formula?",
+          es: "Para z=f(x,y), ¿que factor con raiz aparece en la formula de area superficial?",
+          zh: "对曲面 z=f(x,y)，曲面积分公式里会出现哪个根号因子？",
+        },
+        firstStep: {
+          en: "Start from the partial derivatives f_x and f_y.",
+          es: "Empieza con las derivadas parciales f_x y f_y.",
+          zh: "先从偏导数 f_x 和 f_y 开始。",
+        },
+        setup: {
+          en: "Surface area of a graph is area in the xy-plane times a tilt factor.",
+          es: "El area superficial de una grafica es el area en el plano xy multiplicada por un factor de inclinacion.",
+          zh: "图形曲面的面积，本质上是 xy 平面面积再乘上一个倾斜修正因子。",
+        },
+        fullPath: [
+          { en: "Compute f_x and f_y.", es: "Calcula f_x y f_y.", zh: "先算 f_x 和 f_y。" },
+          { en: "Build the tilt factor sqrt(1+f_x^2+f_y^2).", es: "Construye el factor de inclinacion sqrt(1+f_x^2+f_y^2).", zh: "构造倾斜因子 sqrt(1+f_x^2+f_y^2)。" },
+          { en: "Multiply that factor into dA before integrating.", es: "Multiplica ese factor por dA antes de integrar.", zh: "积分前要把这个因子乘进 dA。" },
+        ],
+        answer: {
+          en: "sqrt(1+f_x^2+f_y^2)",
+          es: "sqrt(1+f_x^2+f_y^2)",
+          zh: "sqrt(1+f_x^2+f_y^2)",
+        },
+        selfCheck: {
+          en: "Surface area of z=f(x,y) always starts with 1+f_x^2+f_y^2 under the root.",
+          es: "El area superficial de z=f(x,y) siempre empieza con 1+f_x^2+f_y^2 bajo la raiz.",
+          zh: "z=f(x,y) 的曲面积分，一定从根号下 1+f_x^2+f_y^2 开始。",
+        },
+      },
+    ],
+  },
+  "analysis140a-completeness": {
+    quiz: [
+      {
+        prompt: {
+          en: "What two hypotheses let you invoke completeness to get a supremum?",
+          es: "¿Que dos hipotesis te permiten invocar completitud para obtener un supremo?",
+          zh: "要调用完备性得到上确界，需要哪两个前提？",
+        },
+        firstStep: {
+          en: "Check the set is nonempty and bounded above.",
+          es: "Verifica que el conjunto sea no vacio y acotado superiormente.",
+          zh: "先检查这个集合非空而且有上界。",
+        },
+        setup: {
+          en: "Completeness is not a magic word you can say anytime. The set has to satisfy the trigger conditions first.",
+          es: "La completitud no es una palabra magica que puedes decir en cualquier momento. El conjunto debe cumplir antes las condiciones de disparo.",
+          zh: "完备性不是随时都能喊出来的魔法词，必须先满足触发条件。",
+        },
+        fullPath: [
+          { en: "Check that the set is not empty.", es: "Comprueba que el conjunto no este vacio.", zh: "先确认集合不是空的。" },
+          { en: "Check that some upper bound exists.", es: "Comprueba que exista alguna cota superior.", zh: "再确认它确实有某个上界。" },
+          { en: "Then completeness guarantees a least upper bound in R.", es: "Entonces la completitud garantiza una minima cota superior en R.", zh: "这样完备性就保证它在 R 中有最小上界。" },
+        ],
+        answer: {
+          en: "Nonempty and bounded above.",
+          es: "No vacio y acotado superiormente.",
+          zh: "非空，并且有上界。",
+        },
+        selfCheck: {
+          en: "No set check, no completeness call.",
+          es: "Sin revisar el conjunto, no puedes llamar a completitud.",
+          zh: "不先检查集合条件，就不能乱用完备性。",
+        },
+      },
+    ],
+  },
+  "analysis140a-nested-intervals": {
+    quiz: [
+      {
+        prompt: {
+          en: "What does the nested interval property guarantee for [a1,b1] ⊇ [a2,b2] ⊇ [a3,b3] ⊇ ... ?",
+          es: "¿Que garantiza la propiedad de intervalos encajados para [a1,b1] ⊇ [a2,b2] ⊇ [a3,b3] ⊇ ... ?",
+          zh: "对 [a1,b1] ⊇ [a2,b2] ⊇ [a3,b3] ⊇ ... 这样的嵌套区间，嵌套区间性质保证什么？",
+        },
+        firstStep: {
+          en: "Focus on the common intersection point, not on each interval separately.",
+          es: "Concéntrate en el punto comun de interseccion, no en cada intervalo por separado.",
+          zh: "先盯住“共同交点”这个结论，而不是一段一段单独看。",
+        },
+        setup: {
+          en: "Nested closed intervals cannot all slip past each other forever.",
+          es: "Los intervalos cerrados encajados no pueden esquivarse para siempre.",
+          zh: "嵌套的闭区间不可能永远彼此错开。",
+        },
+        fullPath: [
+          { en: "Each later interval sits inside the earlier ones.", es: "Cada intervalo posterior vive dentro de los anteriores.", zh: "后面的每个区间都包含在前面的区间里。" },
+          { en: "Because they are closed and nested, they must share at least one common point.", es: "Como son cerrados y encajados, deben compartir al menos un punto comun.", zh: "因为它们是闭的而且层层嵌套，所以至少共有一个点。" },
+          { en: "If the lengths go to 0, that common point is unique.", es: "Si las longitudes tienden a 0, ese punto comun es unico.", zh: "如果长度还趋于 0，那么这个公共点就是唯一的。" },
+        ],
+        answer: {
+          en: "The intersection is nonempty; if lengths go to 0, it is a single point.",
+          es: "La interseccion no es vacia; si las longitudes van a 0, es un solo punto.",
+          zh: "它们的交集非空；若长度趋于 0，则交集只剩一个点。",
+        },
+        selfCheck: {
+          en: "Nested closed intervals still meet.",
+          es: "Los intervalos cerrados encajados siguen intersectandose.",
+          zh: "嵌套闭区间一定还会相交。",
+        },
+      },
+    ],
+  },
+  "analysis140a-series": {
+    quiz: [
+      {
+        prompt: {
+          en: "What sequence do you build first when you want to study Σ a_n?",
+          es: "¿Que sucesion construyes primero cuando quieres estudiar Σ a_n?",
+          zh: "研究 Σ a_n 时，第一步应该先构造哪一个数列？",
+        },
+        firstStep: {
+          en: "Build the partial sums.",
+          es: "Construye las sumas parciales.",
+          zh: "先构造部分和数列。",
+        },
+        setup: {
+          en: "A series is not a single object floating in space. It is the limit of its partial sums.",
+          es: "Una serie no es un objeto suelto en el aire. Es el limite de sus sumas parciales.",
+          zh: "级数不是一个凭空悬着的对象，它本质上是部分和数列的极限。",
+        },
+        fullPath: [
+          { en: "Set s_n = a_1 + a_2 + ... + a_n.", es: "Define s_n = a_1 + a_2 + ... + a_n.", zh: "先定义 s_n = a_1 + a_2 + ... + a_n。" },
+          { en: "Then ask whether the sequence s_n converges.", es: "Luego pregunta si la sucesion s_n converge.", zh: "然后去问这个部分和数列 s_n 是否收敛。" },
+          { en: "If s_n converges, the series converges to that limit.", es: "Si s_n converge, la serie converge a ese limite.", zh: "如果 s_n 收敛，那么这个级数就收敛到那个极限。" },
+        ],
+        answer: {
+          en: "The sequence of partial sums.",
+          es: "La sucesion de sumas parciales.",
+          zh: "部分和数列。",
+        },
+        selfCheck: {
+          en: "Series = partial sums first.",
+          es: "Serie = primero sumas parciales.",
+          zh: "级数 = 先看部分和。",
+        },
+      },
+    ],
+  },
+  "analysis140a-continuity": {
+    quiz: [
+      {
+        prompt: {
+          en: "In an epsilon-delta continuity proof at a, what inequality do you usually start from?",
+          es: "En una prueba epsilon-delta de continuidad en a, ¿desde que desigualdad sueles empezar?",
+          zh: "在 a 点的 epsilon-delta 连续性证明里，通常从哪个不等式开始？",
+        },
+        firstStep: {
+          en: "Start from |f(x)-f(a)|<epsilon and work backward.",
+          es: "Empieza con |f(x)-f(a)|<epsilon y trabaja hacia atras.",
+          zh: "先从 |f(x)-f(a)|<epsilon 倒推。",
+        },
+        setup: {
+          en: "Continuity proofs are usually backward-design proofs: start from the target and solve for what x must satisfy.",
+          es: "Las pruebas de continuidad suelen ser pruebas de diseño hacia atras: empiezas desde la meta y resuelves que debe cumplir x.",
+          zh: "连续性证明通常是倒推设计：先从目标出发，再解出 x 需要满足什么条件。",
+        },
+        fullPath: [
+          { en: "Write the target inequality |f(x)-f(a)|<epsilon.", es: "Escribe la desigualdad objetivo |f(x)-f(a)|<epsilon.", zh: "先写出目标不等式 |f(x)-f(a)|<epsilon。" },
+          { en: "Algebraically force that target using a condition on |x-a|.", es: "Fuerza esa meta algebraicamente usando una condicion sobre |x-a|.", zh: "再用代数方法把它转化成关于 |x-a| 的条件。" },
+          { en: "Choose delta from that condition.", es: "Elige delta a partir de esa condicion.", zh: "最后根据这个条件选出 delta。" },
+        ],
+        answer: {
+          en: "|f(x)-f(a)|<epsilon",
+          es: "|f(x)-f(a)|<epsilon",
+          zh: "|f(x)-f(a)|<epsilon",
+        },
+        selfCheck: {
+          en: "Continuity proof = target first, delta second.",
+          es: "Prueba de continuidad = meta primero, delta despues.",
+          zh: "连续性证明 = 目标先写出来，delta 后面再选。",
+        },
+      },
+    ],
+  },
 };

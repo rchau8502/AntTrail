@@ -14,6 +14,9 @@
   --bubble-warm: #ffe3c8;
   --bubble-mint: #d6ffe8;
   --shadow: 0 24px 60px rgba(78, 135, 181, 0.14);
+  --font-plus-jakarta: "Avenir Next", "Avenir", "Gill Sans", "Segoe UI", sans-serif;
+  --font-fraunces: "Baskerville", "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Georgia", serif;
+  --font-caveat: "Bradley Hand", "Segoe Print", "Marker Felt", cursive;
 }
 
 @theme inline {

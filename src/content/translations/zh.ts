@@ -65,7 +65,7 @@ export const zhCourseContent: Record<string, LocalizedCourseText> = {
   },
   "calc-3": {
     "title": "多元微积分 I",
-    "shortDescription": "向量、偏导数、重积分和多元微积分。",
+    "shortDescription": "按 Stewart 组织的 MATH 2D，重点覆盖第 12-15 章，并轻量衔接第 16 章的向量分析思想。",
     "units": [
       "向量与三维空间",
       "向量函数",
@@ -78,6 +78,19 @@ export const zhCourseContent: Record<string, LocalizedCourseText> = {
       "第 13 章：向量函数",
       "第 14 章：偏导数",
       "第 15 章：重积分",
+      "第 16 章：向量分析"
+    ]
+  },
+  "multivariable-calculus-2": {
+    "title": "多元微积分 II",
+    "shortDescription": "按 Stewart 第 13 章向量函数与第 16 章向量分析整理的 MATH 2E。",
+    "units": [
+      "向量函数",
+      "线积分与向量场",
+      "曲面积分与大定理"
+    ],
+    "chapters": [
+      "第 13 章：向量函数",
       "第 16 章：向量分析"
     ]
   },

@@ -65,7 +65,7 @@ export const esCourseContent: Record<string, LocalizedCourseText> = {
   },
   "calc-3": {
     "title": "Cálculo Multivariable I",
-    "shortDescription": "Vectores, derivadas parciales, integrales múltiples y cálculo multivariable.",
+    "shortDescription": "MATH 2D alineado con Stewart, centrado en los capítulos 12-15, con un puente ligero hacia las ideas de cálculo vectorial del capítulo 16.",
     "units": [
       "Vectores y 3D",
       "Funciones Vectoriales",
@@ -78,6 +78,19 @@ export const esCourseContent: Record<string, LocalizedCourseText> = {
       "Capítulo 13: Funciones Vectoriales",
       "Capítulo 14: Derivadas Parciales",
       "Capítulo 15: Integrales Múltiples",
+      "Capítulo 16: Cálculo Vectorial"
+    ]
+  },
+  "multivariable-calculus-2": {
+    "title": "Cálculo Multivariable II",
+    "shortDescription": "MATH 2E alineado con Stewart a partir del Capítulo 13 sobre funciones vectoriales y del Capítulo 16 sobre cálculo vectorial.",
+    "units": [
+      "Funciones Vectoriales",
+      "Integrales de Línea y Campos Vectoriales",
+      "Integrales de Superficie y Teoremas"
+    ],
+    "chapters": [
+      "Capítulo 13: Funciones Vectoriales",
       "Capítulo 16: Cálculo Vectorial"
     ]
   },

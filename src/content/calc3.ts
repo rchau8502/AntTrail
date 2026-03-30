@@ -18,7 +18,7 @@ export const calcThreeCourse: CourseContent = {
   courseCodes: ["MATH 2D"],
   aliases: ["Calculus III", "Multivariable Calculus"],
   shortDescription:
-    "Vectors, partial derivatives, multiple integrals, and multivariable calculus.",
+    "Stewart-aligned MATH 2D centered on Chapters 12-15, with a light bridge into Chapter 16 vector-calculus ideas.",
   units: [
     "Vectors & 3D",
     "Vector Functions",

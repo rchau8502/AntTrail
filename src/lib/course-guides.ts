@@ -189,9 +189,9 @@ export const courseGuides: Partial<Record<string, CourseGuide>> = {
   },
   "analysis-1": {
     overview: {
-      en: "This course is UCI-style real analysis: completeness, sequence proofs, series tests, continuity, and uniform convergence.",
-      es: "Este curso es analisis real al estilo UCI: completitud, pruebas con sucesiones, criterios de series, continuidad y convergencia uniforme.",
-      zh: "这门课是 UCI 风格的实分析：完备性、数列证明、级数判别、连续性和一致收敛。",
+      en: "This course is Ross-style elementary analysis: completeness, sequence proofs, continuity, series, and uniform convergence.",
+      es: "Este curso es analisis elemental al estilo Ross: completitud, pruebas con sucesiones, continuidad, series y convergencia uniforme.",
+      zh: "这门课是 Ross 风格的初等分析：完备性、数列证明、连续性、级数和一致收敛。",
     },
     survivalAdvice: {
       en: "The hard part is usually choosing the right proof pattern fast: completeness, epsilon-N, monotone+bdd, Cauchy, series-test match, epsilon-delta, or sequential continuity.",
