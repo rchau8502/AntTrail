@@ -7,11 +7,12 @@ import { localizeCards } from "@/content/localization";
 import { MathConceptVisual } from "@/components/math-concept-visual";
 import { WorkedExamplePhoto } from "@/components/worked-example-photo";
 import type { BubbleCard, Unit } from "@/content/schema";
+import { buildBubblegumDrill } from "@/lib/bubblegum";
 import {
   getCourseDisplayLabel,
   getCourseOptions,
   getUnitOptions,
-} from "@/lib/bubble";
+} from "@/lib/course-catalog";
 import {
   getPatternTokens,
   getRecognitionPrompt,
@@ -64,6 +65,8 @@ export function StudyMode({ cards }: StudyModeProps) {
   if (!currentCard) {
     return null;
   }
+
+  const studyDrill = buildBubblegumDrill(currentCard, locale, "warmup", 0);
 
   function move(delta: number) {
     const nextIndex = (index + delta + visibleCards.length) % visibleCards.length;
@@ -173,9 +176,9 @@ export function StudyMode({ cards }: StudyModeProps) {
             </p>
           </div>
           <div className="mt-4 flex flex-wrap gap-2">
-            {getPatternTokens(currentCard).map((token) => (
+            {getPatternTokens(currentCard).map((token, index) => (
               <span
-                key={token}
+                key={`${token}-${index}`}
                 className="rounded-full border border-sky-100 bg-sky-50 px-3 py-2 font-mono text-sm text-sky-950"
               >
                 {token}
@@ -241,9 +244,9 @@ export function StudyMode({ cards }: StudyModeProps) {
                       {t("typicalProblemShapes")}
                     </p>
                     <div className="mt-3 grid gap-3">
-                      {currentCard.typicalProblemShapes.map((shape) => (
+                      {currentCard.typicalProblemShapes.map((shape, index) => (
                         <div
-                          key={shape}
+                          key={`${shape}-${index}`}
                           className="rounded-2xl border border-white/80 bg-white/80 px-4 py-3 text-sm leading-6 text-slate-700"
                         >
                           {shape}
@@ -268,20 +271,28 @@ export function StudyMode({ cards }: StudyModeProps) {
                   {t("moreSupport")}
                 </summary>
                 <div className="mt-4">
-                  <WorkedExamplePhoto card={currentCard} />
+                  <WorkedExamplePhoto
+                    card={currentCard}
+                    problem={studyDrill.prompt}
+                    firstMove={studyDrill.firstStep}
+                    setup={studyDrill.setup}
+                    steps={studyDrill.fullPath}
+                    answer={studyDrill.answer}
+                    caption={`${currentCard.name} · Warm-up`}
+                  />
                 </div>
               </details>
             </div>
           )}
         </div>
 
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex gap-3">
+        <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:items-center sm:justify-between">
+          <div className="grid grid-cols-2 gap-3 sm:flex">
             <button
               type="button"
-            onClick={() => move(-1)}
-            className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
-          >
+              onClick={() => move(-1)}
+              className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
+            >
               {t("previous")}
             </button>
             <button
@@ -295,7 +306,7 @@ export function StudyMode({ cards }: StudyModeProps) {
           <button
             type="button"
             onClick={() => setRevealed((value) => !value)}
-            className="rounded-full bg-sky-100 px-5 py-3 text-sm font-semibold text-sky-950 transition hover:bg-sky-200"
+            className="inline-flex w-full items-center justify-center rounded-full bg-sky-100 px-5 py-3 text-sm font-semibold text-sky-950 transition hover:bg-sky-200 sm:w-auto"
           >
             {revealed ? t("hideDetails") : t("revealDetails")}
           </button>

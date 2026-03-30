@@ -9,14 +9,14 @@ import { localizeCards } from "@/content/localization";
 import { MathConceptVisual } from "@/components/math-concept-visual";
 import type { BubbleCard, Difficulty, Unit } from "@/content/schema";
 import {
-  difficulties,
   getChapterOptions,
   getCourseAliases,
   getCourseDisplayLabel,
   getCourseOptions,
   getPrimaryCourseCode,
   getUnitOptions,
-} from "@/lib/bubble";
+} from "@/lib/course-catalog";
+import { difficulties } from "@/content/schema";
 import {
   getPatternTokens,
   getRecognitionPrompt,
@@ -154,6 +154,105 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
     difficultyFilter !== "All" ||
     chapterFilter !== "All";
 
+  const filterControls = (
+    <>
+      <div className="grid gap-3">
+        <input
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder={t("searchPlaceholder")}
+          className="min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3.5 text-sm outline-none transition focus:border-sky-300"
+        />
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        <label className="grid gap-2">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
+            {t("course")}
+          </span>
+          <select
+            value={courseFilter}
+            onChange={(event) => {
+              setCourseFilter(event.target.value);
+              setUnitFilter("All");
+              setChapterFilter("All");
+            }}
+            className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+          >
+            <option value="All">{t("allCourses")}</option>
+            {courseOptions.map((course) => (
+              <option key={course} value={course}>
+                {getCourseDisplayLabel(course, locale)}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="grid gap-2">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
+            {t("unit")}
+          </span>
+          <select
+            value={unitFilter}
+            onChange={(event) =>
+              setUnitFilter(event.target.value as "All" | Unit)
+            }
+            className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+          >
+            <option value="All">{t("allUnits")}</option>
+            {unitOptions.map((unit) => (
+              <option key={unit} value={unit}>
+                {unit}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="grid gap-2">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
+            {t("difficulty")}
+          </span>
+          <select
+            value={difficultyFilter}
+            onChange={(event) =>
+              setDifficultyFilter(
+                event.target.value as "All" | Difficulty,
+              )
+            }
+            className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+          >
+            <option value="All">{t("allDifficulty")}</option>
+            {difficulties.map((difficulty) => (
+              <option key={difficulty} value={difficulty}>
+                {difficultyLabel(difficulty)}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="grid gap-2">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
+            {t("chapter")}
+          </span>
+          <select
+            value={chapterFilter}
+            onChange={(event) =>
+              setChapterFilter(event.target.value)
+            }
+            className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+          >
+            <option value="All">{t("allChapters")}</option>
+            {chapterOptions.map((chapter) => (
+              <option key={chapter} value={chapter}>
+                {chapter}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+    </>
+  );
+
   return (
     <div className="space-y-8">
       <CoursePathways
@@ -167,8 +266,8 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
         }}
       />
 
-      <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 sm:p-8">
-        <div className="grid gap-8 2xl:grid-cols-[minmax(0,1.1fr)_minmax(30rem,34rem)]">
+      <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-5 sm:p-8">
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(24rem,32rem)] xl:items-start">
           <div className="space-y-3">
             <p className="inline-flex rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">
               {t("topicDashboard")}
@@ -181,7 +280,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
             </p>
           </div>
 
-          <div className="grid gap-5 rounded-[1.75rem] border border-[color:var(--line)] bg-white/80 p-5 sm:p-6">
+          <div className="grid gap-4 rounded-[1.75rem] border border-[color:var(--line)] bg-white/85 p-4 sm:p-6">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <p className="text-sm font-semibold text-slate-900">
@@ -212,11 +311,11 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
               ) : null}
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="grid gap-3 sm:grid-cols-2">
               <button
                 type="button"
                 onClick={() => setBrowseMode("search")}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                className={`inline-flex items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition ${
                   browseMode === "search"
                     ? "bg-slate-950 text-white"
                     : "border border-[color:var(--line)] bg-white text-slate-900"
@@ -227,7 +326,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
               <button
                 type="button"
                 onClick={() => setBrowseMode("syllabus")}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                className={`inline-flex items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition ${
                   browseMode === "syllabus"
                     ? "bg-slate-950 text-white"
                     : "border border-[color:var(--line)] bg-white text-slate-900"
@@ -237,104 +336,25 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
               </button>
             </div>
 
-            <div className="grid gap-3">
-              <input
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder={t("searchPlaceholder")}
-                className="min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none transition focus:border-sky-300"
-              />
+            <details
+              className="rounded-[1.5rem] border border-[color:var(--line)] bg-slate-50/80 p-4 sm:hidden"
+            >
+              <summary className="cursor-pointer list-none text-sm font-semibold uppercase tracking-[0.18em] text-sky-700 [&::-webkit-details-marker]:hidden">
+                {t("searchAndFilters")}
+              </summary>
+              <div className="mt-4 grid gap-4">{filterControls}</div>
+            </details>
+
+            <div className="hidden gap-4 sm:grid">{filterControls}</div>
+
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="rounded-full border border-[color:var(--line)] bg-sky-50 px-3 py-1.5 text-sm font-medium text-sky-950">
+                {filteredCards.length} {t("cardsReadyToScan")}
+              </span>
+              <span className="rounded-full border border-[color:var(--line)] bg-white px-3 py-1.5 text-sm text-[color:var(--muted)]">
+                {browseMode === "search" ? t("searchAndFilters") : t("syllabusFlow")}
+              </span>
             </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="grid gap-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
-                  {t("course")}
-                </span>
-                <select
-                  value={courseFilter}
-                  onChange={(event) => {
-                    setCourseFilter(event.target.value);
-                    setUnitFilter("All");
-                    setChapterFilter("All");
-                  }}
-                  className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
-                >
-                  <option value="All">{t("allCourses")}</option>
-                  {courseOptions.map((course) => (
-                    <option key={course} value={course}>
-                      {getCourseDisplayLabel(course, locale)}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="grid gap-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
-                  {t("unit")}
-                </span>
-                <select
-                  value={unitFilter}
-                  onChange={(event) =>
-                    setUnitFilter(event.target.value as "All" | Unit)
-                  }
-                  className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
-                >
-                  <option value="All">{t("allUnits")}</option>
-                  {unitOptions.map((unit) => (
-                    <option key={unit} value={unit}>
-                      {unit}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="grid gap-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
-                  {t("difficulty")}
-                </span>
-                <select
-                  value={difficultyFilter}
-                  onChange={(event) =>
-                    setDifficultyFilter(
-                      event.target.value as "All" | Difficulty,
-                    )
-                  }
-                  className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
-                >
-                  <option value="All">{t("allDifficulty")}</option>
-                  {difficulties.map((difficulty) => (
-                    <option key={difficulty} value={difficulty}>
-                      {difficultyLabel(difficulty)}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="grid gap-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
-                  {t("chapter")}
-                </span>
-                <select
-                  value={chapterFilter}
-                  onChange={(event) =>
-                    setChapterFilter(event.target.value)
-                  }
-                  className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
-                >
-                  <option value="All">{t("allChapters")}</option>
-                  {chapterOptions.map((chapter) => (
-                    <option key={chapter} value={chapter}>
-                      {chapter}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </div>
-
-            <p className="text-sm text-[color:var(--muted)]">
-              {filteredCards.length} {t("cardsReadyToScan")}
-            </p>
           </div>
         </div>
       </section>
@@ -374,7 +394,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                 <Link
                   key={card.id}
                   href={`/topics/${card.id}`}
-                  className="bubble-shadow group rounded-[1.75rem] border border-[color:var(--line)] bg-[color:var(--surface)] p-5 transition hover:-translate-y-1 hover:border-sky-200 hover:bg-white"
+                  className="bubble-shadow group rounded-[1.6rem] border border-[color:var(--line)] bg-[color:var(--surface)] p-4 sm:p-5 transition hover:-translate-y-1 hover:border-sky-200 hover:bg-white"
                 >
                   <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
                     <span>{card.unit}</span>
@@ -394,21 +414,21 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                       {getTechniqueLabel(card, locale)}
                     </p>
                   </div>
-                  <div className="mt-4">
+                  <div className="mt-4 hidden sm:block">
                     <MathConceptVisual card={card} mode="card" />
                   </div>
                   <div className="mt-4 rounded-[1.35rem] bg-slate-950 px-4 py-4 text-sky-50">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-300/80">
                       {t("problemCue")}
                     </p>
-                    <p className="mt-2 font-mono text-sm leading-7">
+                    <p className="mt-2 font-mono text-xs leading-6 sm:text-sm sm:leading-7">
                       {getRecognitionPrompt(card)}
                     </p>
                   </div>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {getPatternTokens(card).map((token) => (
+                    {getPatternTokens(card).slice(0, 3).map((token, index) => (
                       <span
-                        key={token}
+                        key={`${token}-${index}`}
                         className="rounded-full border border-sky-100 bg-sky-50 px-3 py-1.5 font-mono text-xs text-sky-950"
                       >
                         {token}
@@ -438,9 +458,9 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                     <span className="rounded-full border border-[color:var(--line)] px-3 py-1">
                       {card.chapter}
                     </span>
-                    {card.tags.slice(0, 3).map((tag) => (
+                    {card.tags.slice(0, 3).map((tag, index) => (
                       <span
-                        key={tag}
+                        key={`${tag}-${index}`}
                         className="rounded-full border border-[color:var(--line)] px-3 py-1"
                       >
                         {tag}

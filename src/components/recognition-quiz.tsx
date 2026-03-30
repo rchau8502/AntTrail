@@ -6,12 +6,13 @@ import { useLanguage } from "@/components/language-provider";
 import { localizeCards } from "@/content/localization";
 import { WorkedExamplePhoto } from "@/components/worked-example-photo";
 import type { BubbleCard, Unit } from "@/content/schema";
+import { buildBubblegumDrill } from "@/lib/bubblegum";
 import type { Locale } from "@/lib/i18n";
 import {
   getCourseDisplayLabel,
   getCourseOptions,
   getUnitOptions,
-} from "@/lib/bubble";
+} from "@/lib/course-catalog";
 import { getRecognitionPrompt, getTechniqueLabel } from "@/lib/recognition";
 
 interface QuizItem {
@@ -154,6 +155,8 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
   const currentItem = quizItems[index];
   const currentCard = visibleCards[index];
   const finished = index >= quizItems.length;
+  const quizDrill =
+    currentCard ? buildBubblegumDrill(currentCard, locale, "quiz", 0) : undefined;
 
   if (!currentItem && !finished) {
     return null;
@@ -309,7 +312,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
           </div>
 
           <div className="mt-6 grid gap-3 md:grid-cols-2">
-            {currentItem.options.map((option) => {
+            {currentItem.options.map((option, index) => {
               const isCorrect = option === currentItem.answer;
               const isSelected = option === selected;
 
@@ -324,7 +327,7 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
 
               return (
                 <button
-                  key={option}
+                  key={`${option}-${index}`}
                   type="button"
                   onClick={() => choose(option)}
                   className={`rounded-[1.5rem] border p-5 text-left text-sm font-semibold text-slate-900 transition ${tone}`}
@@ -351,13 +354,21 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
               </p>
               {currentCard ? (
                 <div className="mt-4">
-                  <WorkedExamplePhoto card={currentCard} />
+                  <WorkedExamplePhoto
+                    card={currentCard}
+                    problem={quizDrill?.prompt}
+                    firstMove={quizDrill?.firstStep}
+                    setup={quizDrill?.setup}
+                    steps={quizDrill?.fullPath}
+                    answer={quizDrill?.answer}
+                    caption={`${currentCard.name} · Quiz`}
+                  />
                 </div>
               ) : null}
               <button
                 type="button"
                 onClick={next}
-                className="mt-4 inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold !text-white transition hover:bg-sky-900 hover:!text-white"
+                className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold !text-white transition hover:bg-sky-900 hover:!text-white sm:w-auto"
               >
                 {t("nextQuestion")}
               </button>

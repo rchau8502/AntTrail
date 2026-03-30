@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 import { localizeCard, localizeCourse } from "@/content/localization";
 import type { CourseContent } from "@/content/schema";
-import { getCourseDisplayLabel } from "@/lib/bubble";
+import { getCourseDisplayLabel } from "@/lib/course-catalog";
 import { buildBubblegumDrill } from "@/lib/bubblegum";
 import { getGuideCards, type CourseGuide } from "@/lib/course-guides";
 import {
@@ -186,7 +186,7 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
 
   return (
     <div className="space-y-8">
-      <section className="bubble-shadow rounded-[2.2rem] border border-[color:var(--line)] bg-[linear-gradient(140deg,rgba(255,255,255,0.98),rgba(235,247,255,0.86)_55%,rgba(255,240,244,0.95))] p-8 sm:p-10">
+      <section className="bubble-shadow rounded-[2.2rem] border border-[color:var(--line)] bg-[linear-gradient(140deg,rgba(255,255,255,0.98),rgba(235,247,255,0.86)_55%,rgba(255,240,244,0.95))] p-5 sm:p-10">
         <div className="space-y-5">
           <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
             {course.courseCodes?.map((code) => (
@@ -208,18 +208,18 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
           </div>
           {guide ? (
             <div className="grid gap-4 lg:grid-cols-2">
-              <div className="rounded-[1.6rem] border border-[color:var(--line)] bg-white/80 p-5">
+              <div className="rounded-[1.6rem] border border-[color:var(--line)] bg-white/80 p-4 sm:p-5">
                 <p className="text-sm font-semibold text-sky-700">
                   {guide.overview[locale] ?? guide.overview.en}
                 </p>
               </div>
-              <div className="rounded-[1.6rem] border border-[color:var(--line)] bg-white/80 p-5 text-sm leading-6 text-slate-700">
+              <div className="rounded-[1.6rem] border border-[color:var(--line)] bg-white/80 p-4 text-sm leading-6 text-slate-700 sm:p-5">
                 {guide.survivalAdvice[locale] ?? guide.survivalAdvice.en}
               </div>
             </div>
           ) : null}
           <div className="grid gap-4 lg:grid-cols-2">
-            <div className="rounded-[1.6rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.76),rgba(255,255,255,0.96))] p-5">
+            <div className="rounded-[1.6rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.76),rgba(255,255,255,0.96))] p-4 sm:p-5">
               <p className="text-sm font-semibold text-emerald-700">
                 {ui.whatBubbleTeaches}
               </p>
@@ -227,7 +227,7 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
                 {ui.teachesHelp}
               </p>
             </div>
-            <div className="rounded-[1.6rem] border border-amber-200 bg-amber-50/80 p-5">
+            <div className="rounded-[1.6rem] border border-amber-200 bg-amber-50/80 p-4 sm:p-5">
               <p className="text-sm font-semibold text-amber-700">
                 {ui.whatBubbleNeeds}
               </p>
@@ -240,7 +240,7 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
       </section>
 
       <section className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-        <div className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
+        <div className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-5 sm:p-8">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
             {ui.mostTested}
           </p>
@@ -263,16 +263,16 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
                   <p className="mt-3 rounded-2xl bg-white px-4 py-3 text-sm leading-6 text-slate-900">
                     {preview.prompt}
                   </p>
-                  <div className="mt-4 flex flex-wrap gap-3">
+                  <div className="mt-4 grid gap-3 sm:flex sm:flex-wrap">
                     <Link
                       href={`/topics/${card.id}`}
-                      className="rounded-full border border-[color:var(--line)] bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
+                      className="inline-flex items-center justify-center rounded-full border border-[color:var(--line)] bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
                     >
                       {ui.studyCard}
                     </Link>
                     <Link
                       href={`/bubblegum/${card.id}`}
-                      className="rounded-full bg-rose-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-rose-700"
+                      className="inline-flex items-center justify-center rounded-full bg-rose-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-rose-700"
                     >
                       {ui.drillNow}
                     </Link>
@@ -284,7 +284,7 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
         </div>
 
         <div className="space-y-6">
-          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6">
+          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-5 sm:p-6">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
               {ui.sectionChecklist}
             </p>
@@ -314,7 +314,7 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
             </div>
           </section>
 
-          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6">
+          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-5 sm:p-6">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
               {ui.starterShelf}
             </p>
@@ -334,7 +334,7 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
             </div>
           </section>
 
-          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6">
+          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-5 sm:p-6">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
               {ui.corePath}
             </p>
@@ -359,7 +359,7 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
           </section>
 
           {optionalShelf.length ? (
-            <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6">
+            <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-5 sm:p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-amber-700">
                 {ui.optionalExtras}
               </p>
@@ -384,7 +384,7 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
             </section>
           ) : null}
 
-          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6">
+          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-5 sm:p-6">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-rose-600">
               {ui.weakTopics}
             </p>

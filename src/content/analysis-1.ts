@@ -113,8 +113,12 @@ export const analysisOneCourse: CourseContent = {
       name: "Supremum Pattern",
       order: 3,
       useItWhen: "a problem asks for least upper bound or greatest lower bound",
+      whatItMeans:
+        "The supremum of a set is the smallest number that still lies above every point in the set. It can sit outside the set; it just has to be the tightest top bound.",
       looksLike: "sup A, inf A, upper bound, lower bound",
       doThis: "prove two parts: it is a bound, and anything smaller fails",
+      whyThisMove:
+        "That proof pattern is just the definition unpacked. 'Supremum' means 'least upper bound', so you must prove both pieces: upper bound first, then leastness.",
       thinkOfItAs: "top fence with no lower fence above it",
       watchOutFor: "showing it is an upper bound but not the least one",
       rememberThis: "supremum proofs are always two checks",
@@ -148,8 +152,12 @@ export const analysisOneCourse: CourseContent = {
       name: "Completeness Trigger",
       order: 4,
       useItWhen: "a nonempty set is bounded above and the proof needs a least upper bound",
+      whatItMeans:
+        "Completeness says the real numbers do not have missing least-upper-bound holes. If a set is nonempty and bounded above, its supremum exists in R.",
       looksLike: "nonempty set, bounded above, sup A exists",
       doThis: "check nonempty and bounded above, then call completeness",
+      whyThisMove:
+        "You use completeness when the hard part is existence. Once the set satisfies the two hypotheses, completeness gives you a supremum to work with for the rest of the proof.",
       thinkOfItAs: "R has no missing least-upper-bound holes",
       watchOutFor: "calling completeness before you verify both hypotheses",
       rememberThis: "nonempty plus bounded above buys a supremum",
@@ -218,8 +226,12 @@ export const analysisOneCourse: CourseContent = {
       name: "Sequence Convergence Proof",
       order: 6,
       useItWhen: "you need to prove a_n tends to L",
+      whatItMeans:
+        "Sequence convergence means the terms eventually get as close to L as you want and stay that close after some index.",
       looksLike: "for every epsilon > 0 there exists N",
       doThis: "start with epsilon, solve |a_n - L| < epsilon, then choose N",
+      whyThisMove:
+        "This is not just a style choice. The epsilon-N statement is the definition of convergence, so a real proof has to show exactly how large n must be to force the distance below epsilon.",
       thinkOfItAs: "turn the target into an N-threshold",
       watchOutFor: "writing the epsilon definition without actually choosing an N",
       rememberThis: "epsilon proof means solve for N",
@@ -323,8 +335,12 @@ export const analysisOneCourse: CourseContent = {
       name: "Monotone + Bounded",
       order: 9,
       useItWhen: "a sequence is monotone and you want convergence fast",
+      whatItMeans:
+        "Monotone means the sequence only moves one way. Bounded means it cannot escape forever in that direction.",
       looksLike: "increasing and bounded above, or decreasing and bounded below",
       doThis: "state monotone plus bounded, then point to monotone convergence",
+      whyThisMove:
+        "The theorem is built exactly for this shape. One-way motion stops oscillation, and the bound stops runaway behavior, so the sequence has to settle at a limit.",
       thinkOfItAs: "if it moves one way and cannot escape, it must settle",
       watchOutFor: "showing monotone but forgetting the bound",
       rememberThis: "monotone and bounded means convergent",
@@ -358,9 +374,13 @@ export const analysisOneCourse: CourseContent = {
       name: "Cauchy Sequence Pattern",
       order: 10,
       useItWhen: "you want an internal convergence test without naming the limit first",
+      whatItMeans:
+        "A Cauchy sequence means the tail terms get arbitrarily close to each other, even before you know what the limit is.",
       looksLike:
         "for every epsilon > 0 there exists N so m, n >= N implies |a_n - a_m| < epsilon",
       doThis: "compare late terms to each other instead of guessing the limit",
+      whyThisMove:
+        "That is the definition. A Cauchy proof has to control tail-to-tail distance |a_n-a_m| directly, because the whole point is to avoid assuming the limit first.",
       thinkOfItAs: "the tail of the sequence bunches together",
       watchOutFor: "trying to prove Cauchy by already assuming the limit exists",
       rememberThis: "Cauchy means late terms get arbitrarily close to each other",

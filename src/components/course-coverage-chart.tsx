@@ -1,11 +1,14 @@
 "use client";
 
 import { useLanguage } from "@/components/language-provider";
-import { getPrimaryCourseCode, courses } from "@/lib/bubble";
+import {
+  courseCatalog,
+  getPrimaryCourseCode,
+} from "@/lib/course-catalog";
 
 export function CourseCoverageChart() {
   const { courseLabel, t } = useLanguage();
-  const maxCards = Math.max(...courses.map((course) => course.cards.length));
+  const maxCards = Math.max(...courseCatalog.map((course) => course.cardCount));
 
   return (
     <div className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(236,247,255,0.78))] p-6">
@@ -24,8 +27,8 @@ export function CourseCoverageChart() {
       </div>
 
       <div className="mt-6 space-y-4">
-        {courses.map((course, index) => {
-          const width = `${(course.cards.length / maxCards) * 100}%`;
+        {courseCatalog.map((course, index) => {
+          const width = `${(course.cardCount / maxCards) * 100}%`;
           const tone =
             index === 0
               ? "from-sky-300 to-sky-500"
@@ -43,7 +46,7 @@ export function CourseCoverageChart() {
                     : ""}
                 </span>
                 <span className="text-[color:var(--muted)]">
-                  {course.cards.length} {t("cardsWord")} • {course.units.length}{" "}
+                  {course.cardCount} {t("cardsWord")} • {course.unitCount}{" "}
                   {t("unitsWord")}
                 </span>
               </div>

@@ -8,12 +8,13 @@ import { MathConceptVisual } from "@/components/math-concept-visual";
 import { WorkedExamplePhoto } from "@/components/worked-example-photo";
 import { localizeCard } from "@/content/localization";
 import type { BubbleCard } from "@/content/schema";
-import { getCourseDisplayLabel } from "@/lib/bubble";
+import { getCourseDisplayLabel } from "@/lib/course-catalog";
 import { buildBubblegumDrill } from "@/lib/bubblegum";
 import {
   BUBBLE_PROGRESS_EVENT,
   isBubblegumTopicMastered,
 } from "@/lib/progress";
+import { getTeachingScaffold } from "@/lib/teaching";
 import {
   getPatternTokens,
   getRecognitionPrompt,
@@ -48,6 +49,8 @@ const supportSections: Array<{
 const teachingCopy = {
   en: {
     learnThisTopic: "Learn this topic",
+    whatItMeans: "What it means",
+    whyThisMove: "Why this move",
     oneLineIdea: "One-line idea",
     tinyStarter: "Tiny starter",
     notationHelp: "Notation help",
@@ -64,6 +67,8 @@ const teachingCopy = {
   },
   es: {
     learnThisTopic: "Aprende este tema",
+    whatItMeans: "Que significa",
+    whyThisMove: "Por que esta forma de prueba o solucion",
     oneLineIdea: "Idea en una linea",
     tinyStarter: "Mini arranque",
     notationHelp: "Ayuda de notacion",
@@ -80,6 +85,8 @@ const teachingCopy = {
   },
   zh: {
     learnThisTopic: "学这个主题",
+    whatItMeans: "它到底是什么意思",
+    whyThisMove: "为什么这里要这样证明 / 这样做",
     oneLineIdea: "一句话先懂",
     tinyStarter: "最小起步题",
     notationHelp: "符号提示",
@@ -143,6 +150,7 @@ export function TopicDetailView({
   const midtermDrill = buildBubblegumDrill(localizedCard, locale, "midterm", 0);
   const finalDrill = buildBubblegumDrill(localizedCard, locale, "final", 0);
   const primerLine = getPrimerLine(locale, localizedCard, localizedTechniqueLabel);
+  const teachingScaffold = getTeachingScaffold(localizedCard, locale);
   const optionalTopic = isOptionalCard(card);
 
   useEffect(() => {
@@ -254,7 +262,7 @@ export function TopicDetailView({
               </div>
             </section>
 
-            <section className="mt-8 rounded-[1.85rem] border border-[color:var(--line)] bg-[linear-gradient(140deg,rgba(255,255,255,0.98),rgba(255,247,251,0.94))] p-5 sm:p-6">
+            <section className="mt-8 rounded-[1.85rem] border border-[color:var(--line)] bg-[linear-gradient(140deg,rgba(255,255,255,0.98),rgba(255,247,251,0.94))] p-4 sm:p-6">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-rose-600">
                   {teach.learnThisTopic}
@@ -266,18 +274,32 @@ export function TopicDetailView({
 
               <div className="mt-5 grid gap-4 xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
                 <div className="space-y-4">
-                  <div className="rounded-[1.55rem] border border-[color:var(--line)] bg-white/90 p-5">
+                  <div className="rounded-[1.55rem] border border-[color:var(--line)] bg-white/90 p-4 sm:p-5">
+                    <p className="text-sm font-semibold text-rose-600">{teach.whatItMeans}</p>
+                    <p className="mt-3 text-base leading-7 text-slate-900">
+                      {teachingScaffold.whatItMeans}
+                    </p>
+                  </div>
+
+                  <div className="rounded-[1.55rem] border border-violet-100 bg-violet-50/90 p-4 sm:p-5">
+                    <p className="text-sm font-semibold text-violet-700">{teach.whyThisMove}</p>
+                    <p className="mt-3 text-base leading-7 text-slate-900">
+                      {teachingScaffold.whyThisMove}
+                    </p>
+                  </div>
+
+                  <div className="rounded-[1.55rem] border border-[color:var(--line)] bg-white/90 p-4 sm:p-5">
                     <p className="text-sm font-semibold text-rose-600">{teach.oneLineIdea}</p>
                     <p className="mt-3 text-base leading-7 text-slate-900">{primerLine}</p>
                   </div>
 
-                  <div className="rounded-[1.55rem] border border-sky-100 bg-sky-50/90 p-5">
+                  <div className="rounded-[1.55rem] border border-sky-100 bg-sky-50/90 p-4 sm:p-5">
                     <p className="text-sm font-semibold text-sky-700">{t("whyThisFits")}</p>
                     <p className="mt-3 text-base leading-7 text-slate-900">{warmupDrill.whyFits}</p>
                   </div>
 
                   {warmupDrill.notationHelp.length > 0 ? (
-                    <div className="rounded-[1.55rem] border border-amber-100 bg-amber-50/90 p-5">
+                    <div className="rounded-[1.55rem] border border-amber-100 bg-amber-50/90 p-4 sm:p-5">
                       <p className="text-sm font-semibold text-amber-700">{teach.notationHelp}</p>
                       <div className="mt-3 space-y-3 text-sm leading-6 text-slate-800">
                         {warmupDrill.notationHelp.map((item) => (
@@ -289,7 +311,7 @@ export function TopicDetailView({
                 </div>
 
                 <div className="space-y-4">
-                  <div className="rounded-[1.55rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.7),rgba(255,255,255,0.96))] p-5">
+                  <div className="rounded-[1.55rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.7),rgba(255,255,255,0.96))] p-4 sm:p-5">
                     <p className="text-sm font-semibold text-emerald-700">{teach.tinyStarter}</p>
                     <p className="mt-3 text-base font-semibold leading-7 text-slate-900">
                       {warmupDrill.prompt}
@@ -300,7 +322,7 @@ export function TopicDetailView({
                     </p>
                   </div>
 
-                  <div className="rounded-[1.55rem] border border-[color:var(--line)] bg-white/90 p-5">
+                  <div className="rounded-[1.55rem] border border-[color:var(--line)] bg-white/90 p-4 sm:p-5">
                     <p className="text-sm font-semibold text-sky-700">{teach.nextAfterThis}</p>
                     <div className="mt-4 space-y-3 text-sm leading-6 text-slate-800">
                       <div className="rounded-2xl bg-slate-50 px-4 py-3">
@@ -342,7 +364,7 @@ export function TopicDetailView({
                 </div>
 
                 <div className="mt-4 grid gap-4">
-                  <div className="rounded-[1.55rem] border border-sky-100 bg-sky-50/90 p-5">
+                  <div className="rounded-[1.55rem] border border-sky-100 bg-sky-50/90 p-4 sm:p-5">
                     <p className="text-sm font-semibold text-sky-700">
                       {t("techniqueToTry")}
                     </p>
@@ -351,7 +373,7 @@ export function TopicDetailView({
                     </p>
                   </div>
 
-                  <div className="rounded-[1.55rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.7),rgba(255,255,255,0.94))] p-5">
+                  <div className="rounded-[1.55rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.7),rgba(255,255,255,0.94))] p-4 sm:p-5">
                     <p className="text-sm font-semibold text-sky-700">
                       {t("firstMove")}
                     </p>
@@ -360,14 +382,14 @@ export function TopicDetailView({
                     </p>
                   </div>
 
-                  <div className="rounded-[1.55rem] border border-[color:var(--line)] bg-white/90 p-5">
+                  <div className="rounded-[1.55rem] border border-[color:var(--line)] bg-white/90 p-4 sm:p-5">
                     <p className="text-sm font-semibold text-sky-700">
                       {t("looksLike")}
                     </p>
                     <div className="mt-4 flex flex-wrap gap-2">
-                      {localizedPatternTokens.map((token) => (
+                      {localizedPatternTokens.map((token, index) => (
                         <span
-                          key={token}
+                          key={`${token}-${index}`}
                           className="max-w-full whitespace-normal break-words rounded-[1rem] border border-sky-100 bg-sky-50 px-3 py-2 font-mono text-sm text-sky-950"
                         >
                           {token}
@@ -408,7 +430,39 @@ export function TopicDetailView({
             </div>
           </div>
 
-          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
+          <details className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 sm:hidden">
+            <summary className="cursor-pointer list-none text-sm font-semibold uppercase tracking-[0.18em] text-sky-700 [&::-webkit-details-marker]:hidden">
+              {t("problemShapes")}
+            </summary>
+            <div className="mt-5 grid gap-6">
+              <div>
+                <div className="grid gap-3">
+                  {localizedCard.typicalProblemShapes.map((shape, index) => (
+                    <div
+                      key={`${shape}-${index}`}
+                      className="rounded-[1.5rem] border border-[color:var(--line)] bg-sky-50/80 px-5 py-4"
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+                        {t("shape")} {index + 1}
+                      </p>
+                      <p className="mt-3 text-base leading-7 text-slate-800">
+                        {shape}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
+                  {t("tryThisShape")}
+                </p>
+                <WorkedExamplePhoto card={localizedCard} />
+              </div>
+            </div>
+          </details>
+
+          <section className="bubble-shadow hidden rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 sm:block sm:p-8">
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
@@ -417,7 +471,7 @@ export function TopicDetailView({
                 <div className="mt-4 grid gap-3">
                   {localizedCard.typicalProblemShapes.map((shape, index) => (
                     <div
-                      key={shape}
+                      key={`${shape}-${index}`}
                       className="rounded-[1.5rem] border border-[color:var(--line)] bg-sky-50/80 px-5 py-4"
                     >
                       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
@@ -461,7 +515,31 @@ export function TopicDetailView({
             </div>
           </details>
 
-          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
+          <details className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 sm:hidden">
+            <summary className="cursor-pointer list-none text-sm font-semibold uppercase tracking-[0.18em] text-sky-700 [&::-webkit-details-marker]:hidden">
+              {t("recognitionChecks")}
+            </summary>
+            <div className="mt-5 grid gap-4">
+              {localizedCard.miniDrill.map((item, index) => (
+                <div
+                  key={`${item.prompt}-${index}`}
+                  className="rounded-[1.75rem] border border-[color:var(--line)] bg-white p-5"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+                    {t("check")} {index + 1}
+                  </p>
+                  <p className="mt-3 text-base font-semibold leading-7 text-slate-900">
+                    {item.prompt}
+                  </p>
+                  <p className="mt-4 rounded-[1.3rem] bg-sky-50/80 px-4 py-4 text-sm leading-6 text-[color:var(--muted)]">
+                    {item.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </details>
+
+          <section className="bubble-shadow hidden rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6 sm:block sm:p-8">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
                 {t("recognitionChecks")}
@@ -473,7 +551,7 @@ export function TopicDetailView({
             <div className="mt-4 grid gap-4 md:grid-cols-2">
               {localizedCard.miniDrill.map((item, index) => (
                 <div
-                  key={item.prompt}
+                  key={`${item.prompt}-${index}`}
                   className="rounded-[1.75rem] border border-[color:var(--line)] bg-white p-5"
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
@@ -517,11 +595,11 @@ export function TopicDetailView({
           </section>
 
           <section className="bubble-shadow flex flex-wrap items-center justify-between gap-3 rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-6">
-            <div className="flex flex-wrap gap-3">
+            <div className="grid w-full gap-3 sm:flex sm:w-auto sm:flex-wrap">
               {localizedPrevious ? (
                 <Link
                   href={`/topics/${localizedPrevious.id}`}
-                  className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
+                  className="inline-flex items-center justify-center rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
                 >
                   ← {localizedPrevious.name}
                 </Link>
@@ -529,13 +607,13 @@ export function TopicDetailView({
               {localizedNext ? (
                 <Link
                   href={`/topics/${localizedNext.id}`}
-                  className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
+                  className="inline-flex items-center justify-center rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
                 >
                   {localizedNext.name} →
                 </Link>
               ) : null}
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="grid w-full gap-3 sm:flex sm:w-auto sm:flex-wrap">
               <Link
                 href="/study"
                 className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold !text-white transition hover:bg-sky-900 hover:!text-white"
@@ -553,9 +631,38 @@ export function TopicDetailView({
         </article>
 
         <aside className="space-y-6">
-          <MathConceptVisual card={localizedCard} mode="detail" />
+          <div className="hidden xl:block">
+            <MathConceptVisual card={localizedCard} mode="detail" />
+          </div>
 
-          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6">
+          <details className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 xl:hidden">
+            <summary className="cursor-pointer list-none text-sm font-semibold uppercase tracking-[0.18em] text-sky-700 [&::-webkit-details-marker]:hidden">
+              {t("cardData")}
+            </summary>
+            <div className="mt-4 space-y-3 text-sm text-slate-700">
+              <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3">
+                {getCourseDisplayLabel(localizedCard.course, locale)}
+              </div>
+              <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3">
+                {localizedCard.chapter}
+              </div>
+              <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3">
+                {localizedCard.topic}
+              </div>
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {card.tags.map((tag, index) => (
+                <span
+                  key={`${tag}-${index}`}
+                  className="rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs text-[color:var(--muted)]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </details>
+
+          <section className="bubble-shadow hidden rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 xl:block">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
               {t("cardData")}
             </p>
@@ -571,9 +678,9 @@ export function TopicDetailView({
               </div>
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
-              {card.tags.map((tag) => (
+              {card.tags.map((tag, index) => (
                 <span
-                  key={tag}
+                  key={`${tag}-${index}`}
                   className="rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs text-[color:var(--muted)]"
                 >
                   {tag}
@@ -582,7 +689,27 @@ export function TopicDetailView({
             </div>
           </section>
 
-          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6">
+          <details className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 xl:hidden">
+            <summary className="cursor-pointer list-none text-sm font-semibold uppercase tracking-[0.18em] text-sky-700 [&::-webkit-details-marker]:hidden">
+              {t("relatedIn")} {localizedCard.unit}
+            </summary>
+            <div className="mt-4 grid gap-3">
+              {localizedRelatedCards.map((related) => (
+                <Link
+                  key={related.id}
+                  href={`/topics/${related.id}`}
+                  className="rounded-[1.5rem] border border-[color:var(--line)] bg-white px-4 py-4 transition hover:border-sky-200"
+                >
+                  <p className="font-semibold text-slate-900">{related.name}</p>
+                  <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
+                    {related.memoryHook}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </details>
+
+          <section className="bubble-shadow hidden rounded-[2rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-6 xl:block">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
               {t("relatedIn")} {localizedCard.unit}
             </p>
@@ -603,6 +730,29 @@ export function TopicDetailView({
           </section>
         </aside>
       </section>
+
+      <div className="fixed inset-x-0 bottom-3 z-20 px-4 sm:hidden">
+        <div className="bubble-shadow grid grid-cols-3 gap-2 rounded-[1.4rem] border border-[color:var(--line)] bg-white/92 p-2 backdrop-blur">
+          <Link
+            href={`/bubblegum/${card.id}`}
+            className="inline-flex items-center justify-center rounded-[1rem] bg-rose-600 px-3 py-3 text-xs font-semibold text-white"
+          >
+            Bubblegum
+          </Link>
+          <Link
+            href="/study"
+            className="inline-flex items-center justify-center rounded-[1rem] border border-[color:var(--line)] bg-white px-3 py-3 text-xs font-semibold text-slate-900"
+          >
+            {t("studyThis")}
+          </Link>
+          <Link
+            href="/quiz"
+            className="inline-flex items-center justify-center rounded-[1rem] border border-[color:var(--line)] bg-white px-3 py-3 text-xs font-semibold text-slate-900"
+          >
+            {t("quizMode")}
+          </Link>
+        </div>
+      </div>
     </main>
   );
 }

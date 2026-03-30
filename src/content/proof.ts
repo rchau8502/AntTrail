@@ -118,8 +118,12 @@ export const proofCourse: CourseContent = {
       name: "Direct Proof",
       order: 3,
       useItWhen: "you can start from the hypothesis and push forward",
+      whatItMeans:
+        "A direct proof means you start from the assumption you are given and use definitions, algebra, or earlier facts until the conclusion appears.",
       looksLike: "if P then Q and the path from P to Q is straightforward",
       doThis: "assume the hypothesis, use algebra or definitions, and land on the conclusion",
+      whyThisMove:
+        "You use direct proof when the hypothesis already contains the right raw material. If P naturally unfolds into Q, the cleanest proof is to walk straight from P to Q.",
       thinkOfItAs: "walking straight from start to finish",
       watchOutFor: "starting from the conclusion and pretending that proves it",
       rememberThis: "assume P, reach Q",
@@ -153,8 +157,12 @@ export const proofCourse: CourseContent = {
       name: "Contrapositive",
       order: 4,
       useItWhen: "the conclusion is easier to negate than prove directly",
+      whatItMeans:
+        "The contrapositive of 'if P then Q' is 'if not Q then not P.' It is logically equivalent to the original statement.",
       looksLike: "if P then Q, but not Q then not P looks cleaner",
       doThis: "flip and negate the statement, then prove that version",
+      whyThisMove:
+        "You use contrapositive when the original route from P to Q is awkward, but the route from not Q to not P is cleaner. It works because the two statements are logically equivalent.",
       thinkOfItAs: "taking the back road because the front road is blocked",
       watchOutFor: "proving the converse instead of the contrapositive",
       rememberThis: "flip and negate both parts",
@@ -188,8 +196,12 @@ export const proofCourse: CourseContent = {
       name: "Contradiction",
       order: 5,
       useItWhen: "assuming the opposite creates an impossible result",
+      whatItMeans:
+        "A contradiction proof assumes the statement you want is false and then derives something impossible, so the original statement must be true.",
       looksLike: "assume not..., then reach a clash",
       doThis: "assume the claim is false and push until something breaks",
+      whyThisMove:
+        "You use contradiction when the negation is easy to write down and that bad assumption traps itself. The point is not surprise; the point is reaching a real impossibility.",
       thinkOfItAs: "following a bad path until it crashes",
       watchOutFor: "ending with something surprising but not actually impossible",
       rememberThis: "assume the opposite, force a contradiction",
@@ -433,8 +445,12 @@ export const proofCourse: CourseContent = {
       name: "Proof by Induction",
       order: 12,
       useItWhen: "a statement depends on a positive integer n",
+      whatItMeans:
+        "Induction proves a statement for every positive integer by starting the chain and showing each case forces the next one.",
       looksLike: "prove for all n, recursive formulas, sums, inequalities",
       doThis: "do base case, assume k case, then prove k plus 1 case",
+      whyThisMove:
+        "You use induction when the n+1 case can be built from the n case. The proof works because once the base case is true and each case pushes to the next, the whole chain goes through.",
       thinkOfItAs: "setting up dominoes and then tipping one",
       watchOutFor: "using the thing you are trying to prove without saying it is the inductive hypothesis",
       rememberThis: "base, assume, push forward",
@@ -503,9 +519,13 @@ export const proofCourse: CourseContent = {
       name: "Equivalence Relations",
       order: 14,
       useItWhen: "a relation ~ is supposed to mean two objects count as the same",
+      whatItMeans:
+        "An equivalence relation is a rule for saying when two objects count as the same type. To deserve that name, the rule must pass reflexive, symmetric, and transitive checks.",
       looksLike: "reflexive: x~x, symmetric: x~y => y~x, transitive: x~y and y~z => x~z",
       doThis:
         "write the three mini-proofs: show x~x, assume x~y and show y~x, then assume x~y and y~z and show x~z",
+      whyThisMove:
+        "That three-part proof is not a trick; it is the definition. A relation is only an equivalence relation if all three properties hold, so the proof must check each one separately.",
       thinkOfItAs: "a legal same-team rule",
       watchOutFor:
         "proving only one or two checks, or forgetting to start with arbitrary x, y, z",

@@ -24,8 +24,10 @@ export interface BubbleCard {
   name: string;
   order: number;
   useItWhen: string;
+  whatItMeans?: string;
   looksLike: string;
   doThis: string;
+  whyThisMove?: string;
   thinkOfItAs: string;
   watchOutFor: string;
   rememberThis: string;

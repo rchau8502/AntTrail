@@ -6,7 +6,10 @@ import { useEffect, useMemo, useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 import { localizeCards } from "@/content/localization";
 import type { BubbleCard } from "@/content/schema";
-import { getCourseDisplayLabel, getCourseOptions } from "@/lib/bubble";
+import {
+  getCourseDisplayLabel,
+  getCourseOptions,
+} from "@/lib/course-catalog";
 import { buildBubblegumDrill } from "@/lib/bubblegum";
 import {
   BUBBLE_PROGRESS_EVENT,
@@ -141,17 +144,17 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
         <p className="mt-4 max-w-3xl text-base leading-7 text-[color:var(--muted)]">
           {t("bubblegumDescription")}
         </p>
-        <div className="mt-6 grid gap-3 sm:grid-cols-[minmax(0,1fr)_14rem]">
+        <div className="mt-6 grid gap-3 lg:grid-cols-[minmax(0,1fr)_16rem]">
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder={t("searchPlaceholder")}
-            className="w-full rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none transition focus:border-rose-200"
+            className="w-full rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3.5 text-sm outline-none transition focus:border-rose-200"
           />
           <select
             value={courseFilter}
             onChange={(event) => setCourseFilter(event.target.value)}
-            className="w-full rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
+            className="w-full rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3.5 text-sm outline-none"
           >
             <option value="All">{t("allCourses")}</option>
             {courseOptions.map((course) => (
@@ -170,6 +173,14 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
           />
           <span>{t("currentSyllabusOnly")}</span>
         </label>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <span className="rounded-full border border-[color:var(--line)] bg-white px-3 py-1.5 text-sm text-[color:var(--muted)]">
+            {orderedCards.length} {t("topics")}
+          </span>
+          <span className="rounded-full border border-[color:var(--line)] bg-rose-50 px-3 py-1.5 text-sm font-medium text-rose-700">
+            Bubblegum
+          </span>
+        </div>
       </section>
 
       {weakCards.length > 0 ? (
@@ -209,7 +220,7 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
             <Link
               key={card.id}
               href={`/bubblegum/${card.id}`}
-              className="bubble-shadow rounded-[1.75rem] border border-[color:var(--line)] bg-white/90 p-5 transition hover:-translate-y-1"
+              className="bubble-shadow rounded-[1.6rem] border border-[color:var(--line)] bg-white/90 p-4 sm:p-5 transition hover:-translate-y-1"
             >
               <div className="flex flex-wrap gap-2">
                 <span className="rounded-full bg-rose-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-rose-700">
@@ -228,7 +239,7 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
               <div className="mt-3 inline-flex max-w-full rounded-full border border-rose-100 bg-rose-50 px-3 py-2 text-xs font-semibold text-rose-700">
                 {getTechniqueLabel(card, locale)}
               </div>
-              <div className="mt-3 flex flex-wrap gap-2">
+              <div className="-mx-1 mt-3 flex gap-2 overflow-x-auto px-1 pb-1">
                 <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-700">
                   Warm-up
                 </span>

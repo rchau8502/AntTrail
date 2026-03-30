@@ -7,7 +7,7 @@ import { useLanguage } from "@/components/language-provider";
 import { WorkedExamplePhoto } from "@/components/worked-example-photo";
 import { localizeCard } from "@/content/localization";
 import type { BubbleCard } from "@/content/schema";
-import { getCourseDisplayLabel } from "@/lib/bubble";
+import { getCourseDisplayLabel } from "@/lib/course-catalog";
 import { buildBubblegumDrill, type BubblegumLevel } from "@/lib/bubblegum";
 import {
   BUBBLE_PROGRESS_EVENT,
@@ -242,10 +242,10 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
           </div>
         </div>
 
-        <div className="mt-5 flex flex-wrap gap-3">
+        <div className="mt-5 grid gap-3 sm:flex sm:flex-wrap">
           <Link
             href={`/topics/${card.id}`}
-            className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
+            className="inline-flex items-center justify-center rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
           >
             {t("backToBubble")}
           </Link>
@@ -258,7 +258,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
       </section>
 
       <section className="bubble-shadow rounded-[2.2rem] border border-[color:var(--line)] bg-white/90 p-6 sm:p-8">
-        <div className="flex flex-wrap gap-3">
+        <div className="grid gap-3 sm:flex sm:flex-wrap">
           {levelOrder.map((option) => {
             const active = option === level;
 
@@ -267,7 +267,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
                 key={option}
                 type="button"
                 onClick={() => changeLevel(option)}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                className={`inline-flex items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition ${
                   active
                     ? "bg-rose-600 text-white"
                     : "border border-[color:var(--line)] bg-white text-slate-900 hover:border-rose-200"
@@ -302,47 +302,47 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
                 {ui.notationHelp}
               </p>
               <div className="mt-3 space-y-3 text-sm leading-6 text-slate-900">
-                {drill.notationHelp.map((item) => (
-                  <p key={item}>{item}</p>
+                {drill.notationHelp.map((item, index) => (
+                  <p key={`${item}-${index}`}>{item}</p>
                 ))}
               </div>
             </div>
           ) : null}
         </div>
 
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap">
           <button
             type="button"
             onClick={() => setShowTechnique(true)}
-            className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
+            className="inline-flex items-center justify-center rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
           >
             {ui.revealTechnique}
           </button>
           <button
             type="button"
             onClick={() => setShowStep(true)}
-            className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
+            className="inline-flex items-center justify-center rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
           >
             {ui.revealFirstStep}
           </button>
           <button
             type="button"
             onClick={() => setShowSetup(true)}
-            className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
+            className="inline-flex items-center justify-center rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
           >
             {ui.revealSetup}
           </button>
           <button
             type="button"
             onClick={() => setShowPath(true)}
-            className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
+            className="inline-flex items-center justify-center rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
           >
             {ui.revealPath}
           </button>
           <button
             type="button"
             onClick={() => setShowAnswer(true)}
-            className="rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
+            className="inline-flex items-center justify-center rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
           >
             {ui.revealAnswer}
           </button>
@@ -392,8 +392,8 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
                   {ui.solutionPath}
                 </p>
                 <ol className="mt-4 space-y-3 text-sm leading-7 text-slate-900">
-                  {drill.fullPath.map((step) => (
-                    <li key={step} className="rounded-2xl bg-white px-4 py-3">
+                  {drill.fullPath.map((step, index) => (
+                    <li key={`${step}-${index}`} className="rounded-2xl bg-white px-4 py-3">
                       {step}
                     </li>
                   ))}
@@ -431,6 +431,9 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
               card={localizedCard}
               problem={drill.prompt}
               firstMove={drill.firstStep}
+              setup={drill.setup}
+              steps={drill.fullPath}
+              answer={drill.answer}
               caption={`${localizedCard.name} · ${ui[level]}`}
             />
           </div>
@@ -438,7 +441,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
 
         <div className="mt-6 rounded-[1.75rem] border border-[color:var(--line)] bg-white/80 p-5">
           <p className="text-sm leading-6 text-[color:var(--muted)]">{ui.tryItFirst}</p>
-          <div className="mt-4 flex flex-wrap gap-3">
+          <div className="mt-4 grid gap-3 sm:flex sm:flex-wrap">
             <button
               type="button"
               onClick={() => record("gotIt")}
@@ -472,7 +475,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
         ) : readyToSpit ? (
           <div className="mt-6 rounded-[1.75rem] border border-rose-200 bg-rose-50/70 p-5">
             <p className="text-sm font-semibold text-rose-700">{t("bubblegumReady")}</p>
-            <div className="mt-4 flex flex-wrap gap-3">
+            <div className="mt-4 grid gap-3 sm:flex sm:flex-wrap">
               <button
                 type="button"
                 onClick={spitItOut}
@@ -483,7 +486,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
               <button
                 type="button"
                 onClick={nextVariation}
-                className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
+                className="inline-flex items-center justify-center rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
               >
                 {ui.chewAnother}
               </button>
@@ -493,7 +496,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
           <button
             type="button"
             onClick={nextVariation}
-            className="mt-6 inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold !text-white transition hover:bg-rose-700 hover:!text-white"
+            className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold !text-white transition hover:bg-rose-700 hover:!text-white sm:w-auto"
           >
             {ui.chewAnother}
           </button>
