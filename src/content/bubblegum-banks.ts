@@ -20,6 +20,114 @@ type BankLevel = "quiz" | "midterm" | "final";
 export const bubblegumBanks: Partial<
   Record<string, Partial<Record<BankLevel, BubblegumBankSeed[]>>>
 > = {
+  "calc3-parametric-equations": {
+    quiz: [
+      {
+        prompt: {
+          en: "A curve is given by x=t^2-1 and y=t+2. What should you track first before sketching?",
+          es: "Una curva viene dada por x=t^2-1 y y=t+2. ¿Que debes seguir primero antes de esbozarla?",
+          zh: "一条曲线由 x=t^2-1 和 y=t+2 给出。下笔前第一件该跟踪什么？",
+        },
+        firstStep: {
+          en: "Read how x and y both move as t changes.",
+          es: "Lee como cambian x e y al cambiar t.",
+          zh: "先看 t 变化时，x 和 y 怎么一起动。",
+        },
+        setup: {
+          en: "Parametric-curve questions start by treating t as the driver, not by forcing everything into y=f(x) too early.",
+          es: "Las preguntas de curvas parametrizadas empiezan tratando a t como el conductor, no forzando todo a y=f(x) demasiado pronto.",
+          zh: "参数曲线题先把 t 当成驾驶员，不要一上来就硬改成 y=f(x)。",
+        },
+        fullPath: [
+          { en: "Pick a few t-values and see where the point lands.", es: "Prueba algunos valores de t y mira donde cae el punto.", zh: "先代几个 t 值，看看点落在哪里。" },
+          { en: "Notice how the point moves as t increases.", es: "Observa como se mueve el punto cuando t aumenta.", zh: "再观察 t 变大时，点是怎么移动的。" },
+          { en: "Only after that should you worry about the traced shape.", es: "Solo despues de eso conviene pensar en la forma completa.", zh: "最后再去判断整条曲线的形状。" },
+        ],
+        answer: {
+          en: "Track the motion of the point as t changes.",
+          es: "Sigue el movimiento del punto al cambiar t.",
+          zh: "先跟踪点随 t 变化的运动。",
+        },
+        selfCheck: {
+          en: "Parametric sketch first asks how the point moves.",
+          es: "Un bosquejo parametrico primero pregunta como se mueve el punto.",
+          zh: "参数图第一问永远是：这个点怎么动。",
+        },
+      },
+    ],
+  },
+  "calc3-parametric-calculus": {
+    quiz: [
+      {
+        prompt: {
+          en: "For x=t^2+1 and y=t^3-t, what is the first formula to write if the problem asks for dy/dx?",
+          es: "Para x=t^2+1 y y=t^3-t, ¿que formula escribes primero si te piden dy/dx?",
+          zh: "若 x=t^2+1, y=t^3-t，题目要 dy/dx，第一步该写什么公式？",
+        },
+        firstStep: {
+          en: "Write dy/dx as (dy/dt)/(dx/dt).",
+          es: "Escribe dy/dx como (dy/dt)/(dx/dt).",
+          zh: "先写 dy/dx = (dy/dt)/(dx/dt)。",
+        },
+        setup: {
+          en: "Parametric slope problems are about comparing the y-rate to the x-rate.",
+          es: "Los problemas de pendiente parametrica comparan la tasa en y con la tasa en x.",
+          zh: "参数曲线的斜率，本质上是 y 的变化率除以 x 的变化率。",
+        },
+        fullPath: [
+          { en: "Differentiate y with respect to t.", es: "Deriva y respecto de t.", zh: "先对 y 关于 t 求导。" },
+          { en: "Differentiate x with respect to t.", es: "Deriva x respecto de t.", zh: "再对 x 关于 t 求导。" },
+          { en: "Divide the two rates to get dy/dx.", es: "Divide las dos tasas para obtener dy/dx.", zh: "最后把两个变化率相除，得到 dy/dx。" },
+        ],
+        answer: {
+          en: "dy/dx = (dy/dt)/(dx/dt)",
+          es: "dy/dx = (dy/dt)/(dx/dt)",
+          zh: "dy/dx = (dy/dt)/(dx/dt)",
+        },
+        selfCheck: {
+          en: "Parametric slope = y-rate over x-rate.",
+          es: "Pendiente parametrica = tasa en y sobre tasa en x.",
+          zh: "参数斜率 = y 变化率 ÷ x 变化率。",
+        },
+      },
+    ],
+  },
+  "calc3-polar-coordinates": {
+    quiz: [
+      {
+        prompt: {
+          en: "A curve is given by r = 2 + 2 cos theta. What two things should you think first before sketching?",
+          es: "Una curva viene dada por r = 2 + 2 cos theta. ¿Que dos cosas debes pensar primero antes de dibujarla?",
+          zh: "曲线给成 r = 2 + 2 cos theta。下笔前最先要想哪两件事？",
+        },
+        firstStep: {
+          en: "Think radius and angle, not x and y.",
+          es: "Piensa en radio y angulo, no en x e y.",
+          zh: "先想半径和角度，不是先想 x 和 y。",
+        },
+        setup: {
+          en: "Polar-graph questions become easier once you treat r as distance from the origin and theta as direction.",
+          es: "Las graficas polares se vuelven mas faciles cuando tratas r como distancia al origen y theta como direccion.",
+          zh: "极坐标图一旦把 r 看成离原点多远、把 theta 看成朝哪个方向，就会好很多。",
+        },
+        fullPath: [
+          { en: "Check how far the point is from the origin for key theta-values.", es: "Mira que tan lejos esta el punto del origen para angulos clave.", zh: "先看几个关键角度时，点离原点有多远。" },
+          { en: "Use theta to know which direction that radius points.", es: "Usa theta para saber hacia que direccion apunta ese radio.", zh: "再用 theta 判断这个半径朝哪个方向。" },
+          { en: "Then connect the traced positions into the curve.", es: "Luego conecta esas posiciones para formar la curva.", zh: "最后把这些位置连起来形成整条曲线。" },
+        ],
+        answer: {
+          en: "Think distance from the origin and direction angle.",
+          es: "Piensa en la distancia al origen y en el angulo de direccion.",
+          zh: "先想离原点多远，再想朝哪个角度。",
+        },
+        selfCheck: {
+          en: "Polar = radius first, angle second.",
+          es: "Polar = primero radio, luego angulo.",
+          zh: "极坐标 = 先半径，后角度。",
+        },
+      },
+    ],
+  },
   "proof-functions": {
     quiz: [
       {
@@ -3064,6 +3172,40 @@ export const bubblegumBanks: Partial<
         },
       },
     ],
+    midterm: [
+      {
+        prompt: {
+          en: "For f(x,y)=e^(xy)+x/y, find f_y.",
+          es: "Para f(x,y)=e^(xy)+x/y, halla f_y.",
+          zh: "设 f(x,y)=e^(xy)+x/y，求 f_y。",
+        },
+        firstStep: {
+          en: "Freeze x and differentiate every term with respect to y.",
+          es: "Congela x y deriva cada termino respecto de y.",
+          zh: "先把 x 冻结，然后每一项都对 y 求偏导。",
+        },
+        setup: {
+          en: "Midterm partials usually mix product and chain-rule behavior, but the freeze-the-other-variable rule still controls the whole move.",
+          es: "En parcial, las parciales suelen mezclar producto y regla de la cadena, pero la regla de congelar la otra variable sigue mandando.",
+          zh: "考试里的偏导常会混上乘法和链式法则，但最核心的规则仍然是：其他变量先冻结。",
+        },
+        fullPath: [
+          { en: "Differentiate e^(xy) as x e^(xy), because xy has y-derivative x.", es: "Deriva e^(xy) como x e^(xy), porque la derivada de xy respecto de y es x.", zh: "e^(xy) 对 y 求偏导时得到 x e^(xy)，因为 xy 对 y 的导数是 x。" },
+          { en: "Differentiate x/y as -x/y^2, treating x as constant.", es: "Deriva x/y como -x/y^2, tratando x como constante.", zh: "x/y 对 y 求偏导得到 -x/y^2，把 x 当常数。" },
+          { en: "So f_y = x e^(xy) - x/y^2.", es: "Entonces f_y = x e^(xy) - x/y^2.", zh: "所以 f_y = x e^(xy) - x/y^2。" },
+        ],
+        answer: {
+          en: "x e^(xy) - x/y^2",
+          es: "x e^(xy) - x/y^2",
+          zh: "x e^(xy) - x/y^2",
+        },
+        selfCheck: {
+          en: "Harder partial, same rule: freeze the other variable.",
+          es: "Parcial mas dura, misma regla: congela la otra variable.",
+          zh: "偏导再难，核心规则也没变：别动另一个变量。",
+        },
+      },
+    ],
   },
   "calc3-double-integrals": {
     quiz: [
@@ -3097,6 +3239,40 @@ export const bubblegumBanks: Partial<
           en: "Single integral = strips. Double integral = tiles.",
           es: "Integral simple = tiras. Integral doble = azulejos.",
           zh: "单积分像条带，二重积分像小方块。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "Set up ∬_R (x+2y) dA over the rectangle 0≤x≤2, 1≤y≤4 as an iterated integral.",
+          es: "Plantea ∬_R (x+2y) dA sobre el rectangulo 0≤x≤2, 1≤y≤4 como integral iterada.",
+          zh: "把矩形区域 0≤x≤2, 1≤y≤4 上的 ∬_R (x+2y) dA 写成迭代积分。",
+        },
+        firstStep: {
+          en: "Read the x- and y-bounds directly from the rectangle.",
+          es: "Lee directamente los limites de x e y a partir del rectangulo.",
+          zh: "先直接从矩形读出 x 和 y 的上下限。",
+        },
+        setup: {
+          en: "For a rectangle, the bounds are independent, so setup should feel clean and direct.",
+          es: "En un rectangulo, los limites son independientes, asi que el planteamiento debe salir limpio y directo.",
+          zh: "矩形区域的积分限彼此独立，所以设定应该非常直接。",
+        },
+        fullPath: [
+          { en: "Use 0 to 2 for x and 1 to 4 for y.", es: "Usa 0 a 2 para x y 1 a 4 para y.", zh: "x 用 0 到 2，y 用 1 到 4。" },
+          { en: "Either order works because it is a rectangle.", es: "Cualquier orden sirve porque es un rectangulo.", zh: "因为是矩形，所以两种积分次序都可以。" },
+          { en: "One clean setup is ∫_0^2 ∫_1^4 (x+2y) dy dx.", es: "Un planteamiento limpio es ∫_0^2 ∫_1^4 (x+2y) dy dx.", zh: "一种干净写法是 ∫_0^2 ∫_1^4 (x+2y) dy dx。" },
+        ],
+        answer: {
+          en: "∫_0^2 ∫_1^4 (x+2y) dy dx",
+          es: "∫_0^2 ∫_1^4 (x+2y) dy dx",
+          zh: "∫_0^2 ∫_1^4 (x+2y) dy dx",
+        },
+        selfCheck: {
+          en: "Rectangle region = independent bounds.",
+          es: "Region rectangular = limites independientes.",
+          zh: "矩形区域 = 积分限互不依赖。",
         },
       },
     ],
@@ -3313,6 +3489,40 @@ export const bubblegumBanks: Partial<
           en: "Gradient = collect the first partials into one vector.",
           es: "Gradiente = juntar las derivadas parciales primeras en un vector.",
           zh: "梯度 = 把一阶偏导收集成一个向量。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "For f(x,y)=x^2+y^2 at (1,-2), what direction gives the fastest increase?",
+          es: "Para f(x,y)=x^2+y^2 en (1,-2), ¿que direccion da el aumento mas rapido?",
+          zh: "对 f(x,y)=x^2+y^2，在点 (1,-2) 处，哪个方向增长最快？",
+        },
+        firstStep: {
+          en: "Compute the gradient at the point.",
+          es: "Calcula el gradiente en ese punto.",
+          zh: "先算出该点的梯度。",
+        },
+        setup: {
+          en: "Fastest increase means follow the gradient at that point, not some random direction.",
+          es: "Aumento mas rapido significa seguir el gradiente en ese punto, no una direccion al azar.",
+          zh: "“增长最快”就等于沿着该点的梯度方向走，不是随便挑个方向。",
+        },
+        fullPath: [
+          { en: "∇f = <2x,2y>.", es: "∇f = <2x,2y>.", zh: "先求得 ∇f = <2x,2y>。" },
+          { en: "At (1,-2), that becomes <2,-4>.", es: "En (1,-2), eso da <2,-4>.", zh: "代入 (1,-2) 得到 <2,-4>。" },
+          { en: "So the fastest-increase direction is along <2,-4> or its unit version.", es: "Entonces la direccion de aumento mas rapido es <2,-4> 或 su version unitaria.", zh: "所以最快上升方向就是 <2,-4>，或它对应的单位向量方向。" },
+        ],
+        answer: {
+          en: "Along the gradient direction <2,-4>.",
+          es: "En la direccion del gradiente <2,-4>.",
+          zh: "沿梯度方向 <2,-4>。",
+        },
+        selfCheck: {
+          en: "Fastest increase = gradient direction.",
+          es: "Aumento mas rapido = direccion del gradiente.",
+          zh: "增长最快 = 梯度方向。",
         },
       },
     ],
@@ -3604,6 +3814,40 @@ export const bubblegumBanks: Partial<
         },
       },
     ],
+    midterm: [
+      {
+        prompt: {
+          en: "Test whether lim_(x,y)->(0,0) (xy)/(x^2+y^2) exists.",
+          es: "Comprueba si existe lim_(x,y)->(0,0) (xy)/(x^2+y^2).",
+          zh: "判断 lim_(x,y)->(0,0) (xy)/(x^2+y^2) 是否存在。",
+        },
+        firstStep: {
+          en: "Try two simple paths that hit the origin.",
+          es: "Prueba dos caminos sencillos que lleguen al origen.",
+          zh: "先试两条简单路径逼近原点。",
+        },
+        setup: {
+          en: "This is a classic path-comparison limit. One clean disagreement is enough to kill the limit.",
+          es: "Este es un limite clasico de comparacion por caminos. Una sola discrepancia limpia basta para matar el limite.",
+          zh: "这是典型的路径比较极限题。只要找到一次明确不一致，极限就直接不存在。",
+        },
+        fullPath: [
+          { en: "Along y=0, the expression becomes 0.", es: "Por y=0, la expresion se vuelve 0.", zh: "沿 y=0 这条路径，式子变成 0。" },
+          { en: "Along y=x, it becomes x^2/(2x^2)=1/2.", es: "Por y=x, se vuelve x^2/(2x^2)=1/2.", zh: "沿 y=x，式子变成 x^2/(2x^2)=1/2。" },
+          { en: "The path limits disagree, so the limit does not exist.", es: "Los limites por caminos no coinciden, asi que el limite no existe.", zh: "两条路径给出的极限不同，所以总极限不存在。" },
+        ],
+        answer: {
+          en: "The limit does not exist.",
+          es: "El limite no existe.",
+          zh: "极限不存在。",
+        },
+        selfCheck: {
+          en: "One path 0, one path 1/2 -> dead limit.",
+          es: "Un camino da 0 y otro da 1/2 -> limite muerto.",
+          zh: "一路是 0，一路是 1/2 -> 极限直接死掉。",
+        },
+      },
+    ],
   },
   "calc3-tangent-plane": {
     quiz: [
@@ -3637,6 +3881,40 @@ export const bubblegumBanks: Partial<
           en: "Tangent plane = point plus x-slope plus y-slope.",
           es: "Plano tangente = punto mas pendiente en x mas pendiente en y.",
           zh: "切平面 = 一点 + x 方向斜率 + y 方向斜率。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "Find the tangent plane to z=x^2+y^2 at (1,2).",
+          es: "Halla el plano tangente a z=x^2+y^2 en (1,2).",
+          zh: "求曲面 z=x^2+y^2 在 (1,2) 处的切平面。",
+        },
+        firstStep: {
+          en: "Compute the point on the surface and the two first partials there.",
+          es: "Calcula el punto sobre la superficie y las dos parciales en ese lugar.",
+          zh: "先求曲面上的点，再求该点的两个一阶偏导。",
+        },
+        setup: {
+          en: "This is the most standard tangent-plane workflow: point, partials, formula.",
+          es: "Este es el flujo mas estandar para plano tangente: punto, parciales, formula.",
+          zh: "这是最标准的切平面流程：点、偏导、套公式。",
+        },
+        fullPath: [
+          { en: "f(1,2)=5, so the point is (1,2,5).", es: "f(1,2)=5, asi que el punto es (1,2,5).", zh: "f(1,2)=5，所以切点是 (1,2,5)。" },
+          { en: "f_x=2x and f_y=2y, so at (1,2) they are 2 and 4.", es: "f_x=2x y f_y=2y, asi que en (1,2) valen 2 y 4.", zh: "f_x=2x，f_y=2y，所以在 (1,2) 处它们分别是 2 和 4。" },
+          { en: "Use z-5 = 2(x-1) + 4(y-2).", es: "Usa z-5 = 2(x-1) + 4(y-2).", zh: "代入公式得到 z-5 = 2(x-1) + 4(y-2)。" },
+        ],
+        answer: {
+          en: "z-5 = 2(x-1) + 4(y-2)",
+          es: "z-5 = 2(x-1) + 4(y-2)",
+          zh: "z-5 = 2(x-1) + 4(y-2)",
+        },
+        selfCheck: {
+          en: "Point on surface first, then partial slopes.",
+          es: "Primero el punto de la superficie, luego las pendientes parciales.",
+          zh: "先找曲面上的点，再带入偏导斜率。",
         },
       },
     ],
@@ -3676,6 +3954,40 @@ export const bubblegumBanks: Partial<
         },
       },
     ],
+    midterm: [
+      {
+        prompt: {
+          en: "For f(x,y)=x^2y at (1,2), find the directional derivative toward v=<3,4>.",
+          es: "Para f(x,y)=x^2y en (1,2), halla la derivada direccional hacia v=<3,4>.",
+          zh: "设 f(x,y)=x^2y，在 (1,2) 处求沿 v=<3,4> 方向的方向导数。",
+        },
+        firstStep: {
+          en: "Normalize the direction vector before dotting with the gradient.",
+          es: "Normaliza el vector direccion antes de hacer el producto punto con el gradiente.",
+          zh: "先把方向向量单位化，再去和梯度做点积。",
+        },
+        setup: {
+          en: "Most directional-derivative mistakes come from skipping the unit-vector step.",
+          es: "La mayoria de los errores en derivadas direccionales vienen de saltarse el paso de vector unitario.",
+          zh: "方向导数最常见的错误，就是忘了先把方向向量变成单位向量。",
+        },
+        fullPath: [
+          { en: "Compute ∇f=<2xy,x^2>, so at (1,2) it is <4,1>.", es: "Calcula ∇f=<2xy,x^2>, asi que en (1,2) es <4,1>.", zh: "先算 ∇f=<2xy,x^2>，所以在 (1,2) 处是 <4,1>。" },
+          { en: "Turn <3,4> into the unit vector <3/5,4/5>.", es: "Convierte <3,4> en el vector unitario <3/5,4/5>.", zh: "把 <3,4> 化成单位向量 <3/5,4/5>。" },
+          { en: "Dot them: <4,1>·<3/5,4/5> = 16/5.", es: "Haz el producto punto: <4,1>·<3/5,4/5> = 16/5.", zh: "做点积：<4,1>·<3/5,4/5> = 16/5。" },
+        ],
+        answer: {
+          en: "16/5",
+          es: "16/5",
+          zh: "16/5",
+        },
+        selfCheck: {
+          en: "Gradient first, unit direction second.",
+          es: "Gradiente primero, direccion unitaria despues.",
+          zh: "先梯度，后单位方向。",
+        },
+      },
+    ],
   },
   "calc3-iterated-integrals": {
     quiz: [
@@ -3709,6 +4021,40 @@ export const bubblegumBanks: Partial<
           en: "Inner runs first, outer waits.",
           es: "La interior va primero y la exterior espera.",
           zh: "内层先跑，外层先等着。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "Evaluate ∫_0^1 ∫_1^3 (x+2y) dy dx. What should you do with the inner integral first?",
+          es: "Evalua ∫_0^1 ∫_1^3 (x+2y) dy dx. ¿Que haces primero con la integral interior?",
+          zh: "计算 ∫_0^1 ∫_1^3 (x+2y) dy dx。第一步内层积分该怎么做？",
+        },
+        firstStep: {
+          en: "Treat x as a constant while integrating in y.",
+          es: "Trata x como constante mientras integras en y.",
+          zh: "内层对 y 积分时，把 x 当成常数。",
+        },
+        setup: {
+          en: "The whole point of iterated integrals is that the inner variable moves first while the outer one stays frozen.",
+          es: "La idea central de las integrales iteradas es que la variable interior se mueve primero mientras la exterior queda congelada.",
+          zh: "迭代积分的核心就是：内层变量先动，外层变量暂时不动。",
+        },
+        fullPath: [
+          { en: "Integrate x+2y with respect to y to get xy+y^2.", es: "Integra x+2y respecto de y para obtener xy+y^2.", zh: "对 y 积分，x+2y 变成 xy+y^2。" },
+          { en: "Evaluate from y=1 to y=3, keeping x untouched.", es: "Evalua de y=1 a y=3 dejando x intacta.", zh: "再把 y 从 1 代到 3，x 先不动。" },
+          { en: "Then integrate the resulting x-expression from 0 to 1.", es: "Luego integra la expresion resultante en x desde 0 hasta 1.", zh: "最后再把得到的 x 表达式从 0 到 1 积分。" },
+        ],
+        answer: {
+          en: "Treat x as constant in the inner y-integral.",
+          es: "Trata x como constante en la integral interior en y.",
+          zh: "内层关于 y 的积分里，把 x 当常数。",
+        },
+        selfCheck: {
+          en: "Inner variable moves. Outer variable waits.",
+          es: "La variable interior se mueve. La exterior espera.",
+          zh: "内层变量先走，外层变量先等。",
         },
       },
     ],
@@ -4285,6 +4631,686 @@ export const bubblegumBanks: Partial<
           en: "Continuity proof = target first, delta second.",
           es: "Prueba de continuidad = meta primero, delta despues.",
           zh: "连续性证明 = 目标先写出来，delta 后面再选。",
+        },
+      },
+    ],
+  },
+  "calc3-cross-product": {
+    quiz: [
+      {
+        prompt: {
+          en: "What does the cross product u x v give you immediately?",
+          es: "¿Que te da inmediatamente el producto cruz u x v?",
+          zh: "向量叉积 u x v 最直接给出什么？",
+        },
+        firstStep: {
+          en: "Think perpendicular direction first, not just determinant mechanics.",
+          es: "Primero piensa en una direccion perpendicular, no solo en el determinante.",
+          zh: "先想“垂直方向”，不要只想行列式计算。",
+        },
+        setup: {
+          en: "Cross product is the standard move when a problem asks for a normal vector in 3D.",
+          es: "El producto cruz es la jugada estandar cuando el problema pide un vector normal en 3D.",
+          zh: "只要题目要三维里的法向量，叉积通常就是标准动作。",
+        },
+        fullPath: [
+          { en: "Check that you are in R^3 and need something perpendicular to both vectors.", es: "Primero confirma que estas en R^3 y necesitas algo perpendicular a ambos vectores.", zh: "先确认你在 R^3，而且需要一个同时垂直于两个向量的东西。" },
+          { en: "Compute u x v with the determinant pattern.", es: "再用行列式模板算出 u x v.", zh: "再按行列式模板算出 u x v。" },
+          { en: "Use that result as the normal direction.", es: "把结果当作法向方向来用.", zh: "把结果当作法向方向使用。" },
+        ],
+        answer: {
+          en: "A vector perpendicular to both u and v.",
+          es: "Un vector perpendicular a u y v.",
+          zh: "一个同时垂直于 u 和 v 的向量。",
+        },
+        selfCheck: {
+          en: "Cross product = normal vector generator.",
+          es: "Producto cruz = generador de vectores normales.",
+          zh: "叉积 = 法向量生成器。",
+        },
+      },
+    ],
+  },
+  "calc3-lines": {
+    quiz: [
+      {
+        prompt: {
+          en: "A line passes through P0 and points in direction v. What form should you write first?",
+          es: "Una recta pasa por P0 y apunta en la direccion v. ¿Que forma escribes primero?",
+          zh: "一条直线经过点 P0，方向是 v。第一步应写什么形式？",
+        },
+        firstStep: {
+          en: "Start with point plus parameter times direction.",
+          es: "Empieza con punto mas parametro por direccion.",
+          zh: "先写“点 + 参数乘方向向量”。",
+        },
+        setup: {
+          en: "Lines in space are easiest when you treat them as one anchor point plus one direction vector.",
+          es: "Las rectas en el espacio son mas faciles si las tratas como un punto base mas un vector direccion.",
+          zh: "空间直线最自然的写法，就是一个基点加一个方向向量。",
+        },
+        fullPath: [
+          { en: "Take the given point P0 as the anchor.", es: "Toma el punto dado P0 como base.", zh: "把给定点 P0 当成起点。" },
+          { en: "Use v as the direction vector.", es: "Usa v como vector direccion.", zh: "把 v 当作方向向量。" },
+          { en: "Write r(t)=P0+t v.", es: "Escribe r(t)=P0+t v.", zh: "写成 r(t)=P0+t v。" },
+        ],
+        answer: {
+          en: "r(t)=P0+t v",
+          es: "r(t)=P0+t v",
+          zh: "r(t)=P0+t v",
+        },
+        selfCheck: {
+          en: "Line = anchor point plus direction times parameter.",
+          es: "Recta = punto base mas direccion por parametro.",
+          zh: "直线 = 基点 + 参数 × 方向。",
+        },
+      },
+    ],
+  },
+  "calc3-cylinders": {
+    quiz: [
+      {
+        prompt: {
+          en: "If an equation in x, y, z is missing one variable entirely, what surface should you suspect first?",
+          es: "Si una ecuacion en x, y, z omite por completo una variable, ¿que superficie debes sospechar primero?",
+          zh: "如果一个 x, y, z 的方程完全少掉一个变量，第一反应该是什么曲面？",
+        },
+        firstStep: {
+          en: "Spot the missing variable and extend the 2D curve along that axis.",
+          es: "Detecta la variable ausente y extiende la curva 2D a lo largo de ese eje.",
+          zh: "先找缺失的变量，再把对应二维曲线沿那个轴拉伸出去。",
+        },
+        setup: {
+          en: "Missing-variable surfaces are classic cylinder-recognition questions.",
+          es: "Las superficies con una variable ausente son preguntas clasicas de reconocimiento de cilindros.",
+          zh: "少一个变量的曲面，基本就是柱面识别题。",
+        },
+        fullPath: [
+          { en: "Ignore the missing variable for a moment.", es: "Ignora por un momento la variable ausente.", zh: "先暂时忽略那个没出现的变量。" },
+          { en: "Read the remaining equation as a 2D curve.", es: "Lee la ecuacion restante como una curva en 2D.", zh: "把剩下的方程先看成二维平面曲线。" },
+          { en: "Extrude that curve along the missing-variable axis to get a cylinder.", es: "Extiende esa curva a lo largo del eje de la variable ausente para obtener un cilindro.", zh: "再沿缺失变量对应的轴方向拉伸，就得到柱面。" },
+        ],
+        answer: {
+          en: "A cylinder built by extending a 2D curve along the missing axis.",
+          es: "Un cilindro formado al extender una curva 2D por el eje ausente.",
+          zh: "把二维曲线沿缺失变量方向拉伸出来的柱面。",
+        },
+        selfCheck: {
+          en: "Missing variable = think cylinder.",
+          es: "Variable ausente = piensa en cilindro.",
+          zh: "少一个变量 = 先想柱面。",
+        },
+      },
+    ],
+  },
+  "calc3-ellipsoid": {
+    quiz: [
+      {
+        prompt: {
+          en: "What surface does x^2/a^2 + y^2/b^2 + z^2/c^2 = 1 represent?",
+          es: "¿Que superficie representa x^2/a^2 + y^2/b^2 + z^2/c^2 = 1?",
+          zh: "方程 x^2/a^2 + y^2/b^2 + z^2/c^2 = 1 表示什么曲面？",
+        },
+        firstStep: {
+          en: "See all three squared variables added with positive signs and equal to 1.",
+          es: "Fijate en las tres variables al cuadrado, todas con signo positivo, igualadas a 1.",
+          zh: "先看到三个平方项全是正号，而且和等于 1。",
+        },
+        setup: {
+          en: "An ellipsoid is just the 3D stretched-sphere pattern.",
+          es: "Un elipsoide es simplemente el patron de una esfera estirada en 3D.",
+          zh: "椭球面就是三维里被拉伸过的球面形状。",
+        },
+        fullPath: [
+          { en: "Check that x^2, y^2, z^2 all appear and all have positive coefficients.", es: "Comprueba que x^2, y^2, z^2 aparecen con coeficientes positivos.", zh: "先确认 x^2、y^2、z^2 都出现，而且系数都是正的。" },
+          { en: "Check the equation is normalized to 1.", es: "Comprueba que la ecuacion esta igualada a 1.", zh: "再确认方程右边是 1。" },
+          { en: "That is the standard ellipsoid form.", es: "Esa es la forma estandar del elipsoide.", zh: "这就是椭球面的标准形式。" },
+        ],
+        answer: {
+          en: "An ellipsoid.",
+          es: "Un elipsoide.",
+          zh: "椭球面。",
+        },
+        selfCheck: {
+          en: "All plus signs, all squares, equals 1 -> ellipsoid.",
+          es: "Todos positivos, todos cuadrados, igual a 1 -> elipsoide.",
+          zh: "全是平方、全是正号、和等于 1 -> 椭球面。",
+        },
+      },
+    ],
+  },
+  "calc3-paraboloids": {
+    quiz: [
+      {
+        prompt: {
+          en: "Which visual clue usually separates a paraboloid from an ellipsoid?",
+          es: "¿Que pista visual suele separar un paraboloide de un elipsoide?",
+          zh: "抛物面和椭球面最常见的区分线索是什么？",
+        },
+        firstStep: {
+          en: "Look for one variable not squared, acting like the output direction.",
+          es: "Busca una variable sin cuadrado, actuando como direccion de salida.",
+          zh: "看有没有一个变量没有平方，像是在当输出方向。",
+        },
+        setup: {
+          en: "Paraboloids usually look like one variable equals a sum or difference of squares.",
+          es: "Los paraboloides suelen verse como una variable igual a una suma o diferencia de cuadrados.",
+          zh: "抛物面常见形状是“一个变量 = 若干平方项的和或差”。",
+        },
+        fullPath: [
+          { en: "Check whether one variable is linear while the others are squared.", es: "Comprueba si una variable es lineal y las otras aparecen al cuadrado.", zh: "先看是不是一个变量一次、另外几个变量是平方。" },
+          { en: "If the squares add, think elliptic paraboloid; if they subtract, think hyperbolic paraboloid.", es: "Si los cuadrados se suman, piensa en paraboloide eliptico; si se restan, piensa en paraboloide hiperbolico.", zh: "平方项相加，多半是椭圆抛物面；平方项相减，多半是双曲抛物面。" },
+          { en: "Use the linear variable to see which axis the surface opens along.", es: "Usa la variable lineal para ver a lo largo de que eje se abre la superficie.", zh: "再用那个一次变量判断曲面朝哪个轴张开。" },
+        ],
+        answer: {
+          en: "One unsquared variable equals a sum or difference of squares.",
+          es: "Una variable sin cuadrado igual a una suma o diferencia de cuadrados.",
+          zh: "一个没平方的变量等于若干平方项的和或差。",
+        },
+        selfCheck: {
+          en: "Unsquared variable + squared variables = paraboloid territory.",
+          es: "Variable sin cuadrado + variables al cuadrado = territorio de paraboloides.",
+          zh: "一个一次变量配上几个平方项 = 抛物面地盘。",
+        },
+      },
+    ],
+  },
+  "calc3-hyperboloids-and-cones": {
+    quiz: [
+      {
+        prompt: {
+          en: "What sign pattern tells you a quadric might be a hyperboloid or cone instead of an ellipsoid?",
+          es: "¿Que patron de signos te dice que una cuadrica puede ser un hiperboloide o un cono en vez de un elipsoide?",
+          zh: "什么符号模式会提醒你这可能是双曲面或圆锥，而不是椭球面？",
+        },
+        firstStep: {
+          en: "Look for mixed plus and minus signs among the squared terms.",
+          es: "Busca signos positivos y negativos mezclados entre los terminos cuadrados.",
+          zh: "先看平方项之间是不是正负号混在一起。",
+        },
+        setup: {
+          en: "Once the squared terms split into positive and negative groups, the surface stops being a closed ball-like shape.",
+          es: "Cuando los terminos cuadrados se separan en grupos positivos y negativos, la superficie deja de ser una forma cerrada tipo bola.",
+          zh: "只要平方项开始分成正负两组，曲面通常就不再是封闭的球状物了。",
+        },
+        fullPath: [
+          { en: "Check the signs on x^2, y^2, z^2.", es: "Mira los signos de x^2, y^2, z^2.", zh: "先检查 x^2、y^2、z^2 前面的正负号。" },
+          { en: "Mixed signs suggest hyperboloid-style geometry.", es: "Los signos mezclados sugieren geometria de hiperboloide.", zh: "正负号混合，通常就进入双曲面类的几何。" },
+          { en: "If the equation equals 0 with that pattern, think cone; if it equals 1, think hyperboloid.", es: "Si la ecuacion vale 0 con ese patron, piensa en cono; si vale 1, piensa en hiperboloide.", zh: "如果这种符号模式右边等于 0，先想圆锥；若右边等于 1，先想双曲面。" },
+        ],
+        answer: {
+          en: "Mixed signs on the squared terms; equals 0 suggests cone, equals 1 suggests hyperboloid.",
+          es: "Signos mezclados en los cuadrados; igual a 0 sugiere cono, igual a 1 sugiere hiperboloide.",
+          zh: "平方项正负混合；右边等于 0 常是圆锥，等于 1 常是双曲面。",
+        },
+        selfCheck: {
+          en: "Mixed signs break the ellipsoid pattern.",
+          es: "Los signos mezclados rompen el patron del elipsoide.",
+          zh: "正负混合，就不是椭球那套了。",
+        },
+      },
+    ],
+  },
+  "calc3-multivariable-chain-rule": {
+    quiz: [
+      {
+        prompt: {
+          en: "If z = f(x,y), x = x(t), and y = y(t), what is the first idea you should write for dz/dt?",
+          es: "Si z = f(x,y), x = x(t), y = y(t), ¿cual es la primera idea que debes escribir para dz/dt?",
+          zh: "如果 z = f(x,y)，而 x = x(t), y = y(t)，那么写 dz/dt 时第一想法是什么？",
+        },
+        firstStep: {
+          en: "Add the x-path contribution and the y-path contribution.",
+          es: "Suma la contribucion por la ruta de x y la contribucion por la ruta de y.",
+          zh: "把 x 路径贡献和 y 路径贡献加起来。",
+        },
+        setup: {
+          en: "Multivariable chain rule means every changing input gets its own partial-derivative term.",
+          es: "La regla de la cadena multivariable significa que cada entrada cambiante aporta su propio termino con derivada parcial.",
+          zh: "多元链式法则的意思是：每个在变的输入，都要贡献自己那一项。",
+        },
+        fullPath: [
+          { en: "Take f_x times dx/dt.", es: "Toma f_x por dx/dt.", zh: "先写 f_x 乘 dx/dt。" },
+          { en: "Take f_y times dy/dt.", es: "Toma f_y por dy/dt.", zh: "再写 f_y 乘 dy/dt。" },
+          { en: "Add them: dz/dt = f_x dx/dt + f_y dy/dt.", es: "Sumalos: dz/dt = f_x dx/dt + f_y dy/dt.", zh: "把它们相加：dz/dt = f_x dx/dt + f_y dy/dt。" },
+        ],
+        answer: {
+          en: "dz/dt = f_x dx/dt + f_y dy/dt",
+          es: "dz/dt = f_x dx/dt + f_y dy/dt",
+          zh: "dz/dt = f_x dx/dt + f_y dy/dt",
+        },
+        selfCheck: {
+          en: "One changing input, one term.",
+          es: "Una entrada que cambia, un termino.",
+          zh: "一个变化输入，对应一项。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "If z=x^2+y^2, x=t^2, and y=3t, what is dz/dt?",
+          es: "Si z=x^2+y^2, x=t^2 y y=3t, ¿cual es dz/dt?",
+          zh: "若 z=x^2+y^2，x=t^2，y=3t，求 dz/dt。",
+        },
+        firstStep: {
+          en: "Write one term for the x-path and one term for the y-path.",
+          es: "Escribe un termino para la ruta de x y otro para la ruta de y.",
+          zh: "先为 x 路径写一项，再为 y 路径写一项。",
+        },
+        setup: {
+          en: "Midterm chain-rule questions often become easy once you force yourself to account for every dependency path.",
+          es: "Las preguntas de parcial sobre regla de la cadena se vuelven faciles cuando obligas a contar cada ruta de dependencia.",
+          zh: "考试里的多元链式法则，一旦老老实实把每条依赖路径都写出来，就会简单很多。",
+        },
+        fullPath: [
+          { en: "Compute f_x=2x and f_y=2y.", es: "Calcula f_x=2x y f_y=2y.", zh: "先算 f_x=2x，f_y=2y。" },
+          { en: "Compute dx/dt=2t and dy/dt=3.", es: "Calcula dx/dt=2t y dy/dt=3.", zh: "再算 dx/dt=2t，dy/dt=3。" },
+          { en: "Use dz/dt = f_x dx/dt + f_y dy/dt = 2x(2t)+2y(3), then replace x=t^2 and y=3t to get 4t^3+18t.", es: "Usa dz/dt = f_x dx/dt + f_y dy/dt = 2x(2t)+2y(3), luego sustituye x=t^2 e y=3t para obtener 4t^3+18t.", zh: "代入 dz/dt = f_x dx/dt + f_y dy/dt = 2x(2t)+2y(3)，再用 x=t^2、y=3t 得到 4t^3+18t。" },
+        ],
+        answer: {
+          en: "4t^3 + 18t",
+          es: "4t^3 + 18t",
+          zh: "4t^3 + 18t",
+        },
+        selfCheck: {
+          en: "Every changing input contributes a term.",
+          es: "Cada entrada que cambia aporta un termino.",
+          zh: "每个在变的输入都要出一项。",
+        },
+      },
+    ],
+  },
+  "calc3-two-variable-extrema": {
+    quiz: [
+      {
+        prompt: {
+          en: "What point should you hunt first when looking for local extrema of f(x,y)?",
+          es: "¿Que puntos debes buscar primero al buscar extremos locales de f(x,y)?",
+          zh: "找 f(x,y) 的局部极值时，第一步要找什么点？",
+        },
+        firstStep: {
+          en: "Find the critical points where both first partials vanish or fail to exist.",
+          es: "Busca los puntos criticos donde ambas derivadas parciales valen cero o no existen.",
+          zh: "先找临界点：两个一阶偏导都为零，或至少有一个不存在。",
+        },
+        setup: {
+          en: "Second-derivative tests come after you locate the candidate points.",
+          es: "Las pruebas de segunda derivada vienen despues de localizar los puntos candidatos.",
+          zh: "二阶导数判别法要等你先找到候选点以后才上场。",
+        },
+        fullPath: [
+          { en: "Compute f_x and f_y.", es: "Calcula f_x y f_y.", zh: "先算 f_x 和 f_y。" },
+          { en: "Solve f_x = 0 and f_y = 0 together, while also checking where partials fail.", es: "Resuelve f_x = 0 y f_y = 0 al mismo tiempo, y tambien revisa donde las parciales no existen.", zh: "联立 f_x = 0 与 f_y = 0，并额外检查偏导不存在的点。" },
+          { en: "Those points are the candidates for the second-derivative test.", es: "Esos puntos son los candidatos para la prueba de segunda derivada.", zh: "这些点就是后面做二阶导数判别的候选点。" },
+        ],
+        answer: {
+          en: "Critical points.",
+          es: "Puntos criticos.",
+          zh: "临界点。",
+        },
+        selfCheck: {
+          en: "No critical points, no local-extrema test.",
+          es: "Sin puntos criticos, no hay prueba de extremos locales.",
+          zh: "不先找临界点，就没法谈局部极值。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "For f(x,y)=x^2+y^2-4x-6y, what is the first system to solve when looking for local extrema?",
+          es: "Para f(x,y)=x^2+y^2-4x-6y, ¿cual es el primer sistema que resuelves al buscar extremos locales?",
+          zh: "设 f(x,y)=x^2+y^2-4x-6y，找局部极值时第一步要解什么方程组？",
+        },
+        firstStep: {
+          en: "Set both first partial derivatives equal to zero.",
+          es: "Iguala a cero las dos derivadas parciales primeras.",
+          zh: "先把两个一阶偏导都设为 0。",
+        },
+        setup: {
+          en: "Two-variable extrema problems start by locating critical points before any second-derivative classification.",
+          es: "Los extremos en dos variables empiezan localizando puntos criticos antes de cualquier clasificacion de segunda derivada.",
+          zh: "二元极值题永远先找临界点，之后才谈二阶导数判别。",
+        },
+        fullPath: [
+          { en: "Compute f_x = 2x-4 and f_y = 2y-6.", es: "Calcula f_x = 2x-4 y f_y = 2y-6.", zh: "先算 f_x = 2x-4，f_y = 2y-6。" },
+          { en: "Set 2x-4=0 and 2y-6=0.", es: "Plantea 2x-4=0 y 2y-6=0.", zh: "联立 2x-4=0 和 2y-6=0。" },
+          { en: "So the critical point is (2,3).", es: "Asi que el punto critico es (2,3).", zh: "所以临界点是 (2,3)。" },
+        ],
+        answer: {
+          en: "Solve f_x=0 and f_y=0.",
+          es: "Resolver f_x=0 y f_y=0.",
+          zh: "先解 f_x=0 和 f_y=0。",
+        },
+        selfCheck: {
+          en: "Critical point first, classification second.",
+          es: "Punto critico primero, clasificacion despues.",
+          zh: "先找临界点，再做分类。",
+        },
+      },
+    ],
+  },
+  "calc3-changing-order": {
+    midterm: [
+      {
+        prompt: {
+          en: "When should you change the order of integration in a double integral?",
+          es: "¿Cuando conviene cambiar el orden de integracion en una integral doble?",
+          zh: "二重积分什么时候应该换积分次序？",
+        },
+        firstStep: {
+          en: "Redraw the region and see whether the current order creates ugly bounds.",
+          es: "Vuelve a dibujar la region y mira si el orden actual produce limites feos.",
+          zh: "先重画积分区域，看看当前次序是不是把上下限搞得很难看。",
+        },
+        setup: {
+          en: "Changing order is a region-reading move, not a symbol-pushing move.",
+          es: "Cambiar el orden es una jugada de leer regiones, no de empujar simbolos.",
+          zh: "换次序本质上是“读区域”，不是盲目搬符号。",
+        },
+        fullPath: [
+          { en: "Sketch or mentally rebuild the region from the current bounds.", es: "Haz un dibujo o reconstruye mentalmente la region a partir de los limites actuales.", zh: "先根据原来的积分限画出区域。" },
+          { en: "Describe the same region with the opposite slicing direction.", es: "Describe la misma region con el corte en la direccion opuesta.", zh: "再用相反方向的切片方式重新描述这个区域。" },
+          { en: "Use the new order if it makes the bounds or the integrand easier.", es: "Usa el nuevo orden si hace mas facil los limites o el integrando.", zh: "如果新次序让积分限或被积函数明显更简单，就改用它。" },
+        ],
+        answer: {
+          en: "Change order when the opposite slicing makes the region or integral easier.",
+          es: "Cambia el orden cuando el corte opuesto vuelve mas facil la region o la integral.",
+          zh: "当反方向切片能让区域描述或积分本身更简单时，就该换次序。",
+        },
+        selfCheck: {
+          en: "Change order = redraw region, then reslice.",
+          es: "Cambiar orden = redibujar region y volver a cortar.",
+          zh: "换次序 = 先重画区域，再重新切片。",
+        },
+      },
+    ],
+  },
+  "calc3-ftc-line-integrals": {
+    quiz: [
+      {
+        prompt: {
+          en: "If F is conservative and F = grad f, what replaces the whole line integral from A to B?",
+          es: "Si F es conservativo y F = grad f, ¿que reemplaza toda la integral de linea de A a B?",
+          zh: "如果 F 是保守场且 F = grad f，那么从 A 到 B 的整条线积分可直接换成什么？",
+        },
+        firstStep: {
+          en: "Jump from the path to the potential values at the endpoints.",
+          es: "Salta del camino a los valores del potencial en los extremos.",
+          zh: "直接从路径跳到势函数在两个端点的取值。",
+        },
+        setup: {
+          en: "The fundamental theorem for line integrals kills the path once a potential function exists.",
+          es: "El teorema fundamental de las integrales de linea elimina el camino una vez existe una funcion potencial.",
+          zh: "一旦存在势函数，线积分基本定理就让你不用再管路径细节。",
+        },
+        fullPath: [
+          { en: "Identify the potential function f.", es: "Identifica la funcion potencial f.", zh: "先认出势函数 f。" },
+          { en: "Evaluate f at the endpoint B.", es: "算出终点 B 的 f 值.", zh: "算终点 B 处的 f 值。" },
+          { en: "Subtract the value at the start A: f(B)-f(A).", es: "Resta el valor del inicio A: f(B)-f(A).", zh: "再减去起点 A 的值：f(B)-f(A)。" },
+        ],
+        answer: {
+          en: "f(B)-f(A)",
+          es: "f(B)-f(A)",
+          zh: "f(B)-f(A)",
+        },
+        selfCheck: {
+          en: "Conservative field + potential = endpoint subtraction.",
+          es: "Campo conservativo + potencial = resta de extremos.",
+          zh: "保守场 + 势函数 = 端点相减。",
+        },
+      },
+    ],
+  },
+  "calc3-divergence-and-curl": {
+    quiz: [
+      {
+        prompt: {
+          en: "What is the quick meaning difference between divergence and curl?",
+          es: "¿Cual es la diferencia rapida de significado entre divergencia y rotacional?",
+          zh: "散度和旋度最简短的意义区别是什么？",
+        },
+        firstStep: {
+          en: "Think outflow for divergence and spin for curl.",
+          es: "Piensa en salida neta para divergencia y giro para rotacional.",
+          zh: "散度先想净流出，旋度先想打转。",
+        },
+        setup: {
+          en: "These are field-behavior detectors: one for source/sink behavior and one for local rotation.",
+          es: "Son detectores del comportamiento del campo: uno para fuente/sumidero y otro para rotacion local.",
+          zh: "它们都是向量场行为探测器：一个看源汇，一个看局部旋转。",
+        },
+        fullPath: [
+          { en: "Use divergence to measure net outflow from a tiny box.", es: "Usa divergencia para medir el flujo neto que sale de una cajita.", zh: "散度衡量一个小盒子里的净流出。" },
+          { en: "Use curl to measure local spinning tendency.", es: "Usa rotacional para medir la tendencia local a girar.", zh: "旋度衡量局部打转的趋势。" },
+          { en: "Keep those physical pictures before computing formulas.", es: "Mantén esas imagenes fisicas antes de calcular formulas.", zh: "先抓住这两个物理图像，再去算公式。" },
+        ],
+        answer: {
+          en: "Divergence measures outflow; curl measures local rotation.",
+          es: "La divergencia mide salida neta; el rotacional mide rotacion local.",
+          zh: "散度看净流出；旋度看局部旋转。",
+        },
+        selfCheck: {
+          en: "Divergence = source/sink. Curl = spin.",
+          es: "Divergencia = fuente/sumidero. Rotacional = giro.",
+          zh: "散度 = 源汇；旋度 = 打转。",
+        },
+      },
+    ],
+  },
+  "calc3-parametric-surfaces": {
+    quiz: [
+      {
+        prompt: {
+          en: "If a surface is given by r(u,v), what two tangent vectors do you form first?",
+          es: "Si una superficie viene dada por r(u,v), ¿que dos vectores tangentes formas primero?",
+          zh: "如果曲面由 r(u,v) 给出，第一步要先形成哪两个切向量？",
+        },
+        firstStep: {
+          en: "Differentiate with respect to u and v.",
+          es: "Deriva respecto de u y de v.",
+          zh: "分别对 u 和 v 求偏导。",
+        },
+        setup: {
+          en: "Parametric surfaces naturally come with two tangent directions, one for each parameter.",
+          es: "Las superficies parametrizadas vienen naturalmente con dos direcciones tangentes, una por cada parametro.",
+          zh: "参数曲面天然带着两条切向方向，每个参数对应一条。",
+        },
+        fullPath: [
+          { en: "Compute r_u.", es: "Calcula r_u.", zh: "先算 r_u。" },
+          { en: "Compute r_v.", es: "Calcula r_v.", zh: "再算 r_v。" },
+          { en: "Use r_u and r_v to build the tangent plane or normal vector.", es: "Usa r_u y r_v para construir el plano tangente o el vector normal.", zh: "再用 r_u 和 r_v 去构造切平面或法向量。" },
+        ],
+        answer: {
+          en: "r_u and r_v",
+          es: "r_u y r_v",
+          zh: "r_u 和 r_v",
+        },
+        selfCheck: {
+          en: "Parametric surface = two parameters, two tangent vectors.",
+          es: "Superficie parametrizada = dos parametros, dos vectores tangentes.",
+          zh: "参数曲面 = 两个参数，两条切向量。",
+        },
+      },
+    ],
+  },
+  "calc3-3d-points": {
+    quiz: [
+      {
+        prompt: {
+          en: "Plot the point (2, -1, 3). What should you read first before drawing?",
+          es: "Traza el punto (2, -1, 3). ¿Que debes leer primero antes de dibujarlo?",
+          zh: "画出点 (2, -1, 3)。下笔前第一步先看什么？",
+        },
+        firstStep: {
+          en: "Read the coordinates in x, then y, then z order.",
+          es: "Lee las coordenadas en orden x, luego y, luego z.",
+          zh: "先按 x、y、z 的顺序读坐标。",
+        },
+        setup: {
+          en: "Early 3D questions are mostly recognition questions: which axis does each coordinate control?",
+          es: "Las primeras preguntas de 3D suelen ser de reconocimiento: que eje controla cada coordenada.",
+          zh: "最早的三维题本质上是识别题：每个坐标到底控制哪一条轴。",
+        },
+        fullPath: [
+          { en: "Move 2 units along the x-axis.", es: "先沿 x 轴走 2 个单位.", zh: "先沿 x 轴走 2 格。" },
+          { en: "Then move -1 in the y-direction.", es: "再沿 y 方向走 -1.", zh: "再沿 y 方向走 -1 格。" },
+          { en: "Then move up 3 in z.", es: "最后在 z 方向上走 3.", zh: "最后在 z 方向上升 3 格。" },
+        ],
+        answer: {
+          en: "Read x, then y, then z.",
+          es: "Lee x, luego y, luego z.",
+          zh: "先读 x，再读 y，最后读 z。",
+        },
+        selfCheck: {
+          en: "3D point = three axes, fixed order.",
+          es: "Punto 3D = tres ejes, orden fijo.",
+          zh: "三维点 = 三条轴，顺序固定。",
+        },
+      },
+    ],
+  },
+  "calc3-vectors": {
+    quiz: [
+      {
+        prompt: {
+          en: "What is the fastest way to read the vector <2, -1, 3>?",
+          es: "¿Cual es la forma mas rapida de leer el vector <2, -1, 3>?",
+          zh: "向量 <2, -1, 3> 最快该怎么理解？",
+        },
+        firstStep: {
+          en: "Read it as a move, not as a location.",
+          es: "Leelo como un movimiento, no como una ubicacion.",
+          zh: "把它看成一个位移，不是一个地点。",
+        },
+        setup: {
+          en: "The biggest beginner mistake is mixing up points and vectors.",
+          es: "El mayor error al empezar es mezclar puntos con vectores.",
+          zh: "刚学时最大的错误，就是把点和向量混为一谈。",
+        },
+        fullPath: [
+          { en: "Use the entries as directional changes.", es: "Usa las entradas como cambios de direccion.", zh: "把各分量看成沿坐标轴的位移量。" },
+          { en: "Think right 2, back 1, up 3.", es: "Piensa: 2 a la derecha, 1 hacia atras, 3 hacia arriba.", zh: "想成：向右 2、向后 1、向上 3。" },
+          { en: "That is an arrow, not a pinned point.", es: "Eso es una flecha, no un punto fijo.", zh: "这是一支箭头，不是固定的点。" },
+        ],
+        answer: {
+          en: "As a move with direction and size.",
+          es: "Como un movimiento con direccion y tamaño.",
+          zh: "看成一个有方向和长度的位移。",
+        },
+        selfCheck: {
+          en: "Point locates. Vector moves.",
+          es: "El punto ubica. El vector mueve.",
+          zh: "点是位置，向量是位移。",
+        },
+      },
+    ],
+  },
+  "calc3-dot-product": {
+    quiz: [
+      {
+        prompt: {
+          en: "Given u=<1,2,3> and v=<4,5,6>, what move starts the dot product?",
+          es: "Dados u=<1,2,3> y v=<4,5,6>, ¿que movimiento inicia el producto punto?",
+          zh: "给定 u=<1,2,3>, v=<4,5,6>，点积第一步做什么？",
+        },
+        firstStep: {
+          en: "Multiply matching components and add.",
+          es: "Multiplica componentes que corresponden y suma.",
+          zh: "对应分量相乘，再相加。",
+        },
+        setup: {
+          en: "Dot-product questions are usually about alignment, angle, or orthogonality, but the raw move is always the same.",
+          es: "Las preguntas de producto punto suelen tratar de alineacion, angulo u ortogonalidad, pero el movimiento base siempre es el mismo.",
+          zh: "点积题常常包着角度、投影或垂直外壳，但底层动作始终一样。",
+        },
+        fullPath: [
+          { en: "Pair 1 with 4, 2 with 5, and 3 with 6.", es: "Empareja 1 con 4, 2 con 5 y 3 con 6.", zh: "先把 1 配 4，2 配 5，3 配 6。" },
+          { en: "Multiply each pair.", es: "Multiplica cada pareja.", zh: "每一对分别相乘。" },
+          { en: "Add the three products to get one number.", es: "Suma los tres productos para obtener un solo numero.", zh: "再把三项乘积加起来，得到一个数。" },
+        ],
+        answer: {
+          en: "Match, multiply, add.",
+          es: "Emparejar, multiplicar y sumar.",
+          zh: "对应、相乘、再相加。",
+        },
+        selfCheck: {
+          en: "Dot product outputs a number.",
+          es: "El producto punto da un numero.",
+          zh: "点积的结果是一个数。",
+        },
+      },
+    ],
+  },
+  "calc3-motion-in-space": {
+    quiz: [
+      {
+        prompt: {
+          en: "A particle has position r(t). What are the first two derivative ideas you should know?",
+          es: "Una particula tiene posicion r(t). ¿Cuales son las dos primeras ideas de derivada que debes saber?",
+          zh: "一个粒子的位置是 r(t)。你最先要知道哪两个导数动作？",
+        },
+        firstStep: {
+          en: "Differentiate once for velocity and again for acceleration.",
+          es: "Deriva una vez para la velocidad y otra vez para la aceleracion.",
+          zh: "先求一次导得速度，再求一次导得加速度。",
+        },
+        setup: {
+          en: "Motion-in-space questions are just single-variable motion wearing vector notation.",
+          es: "Las preguntas de movimiento en el espacio son movimiento de una variable usando notacion vectorial.",
+          zh: "空间运动题本质上还是单变量运动，只是换成了向量写法。",
+        },
+        fullPath: [
+          { en: "Start from the position vector r(t).", es: "Empieza desde el vector de posicion r(t).", zh: "先从位置向量 r(t) 出发。" },
+          { en: "Differentiate to get v(t)=r'(t).", es: "Deriva para obtener v(t)=r'(t).", zh: "求导得到 v(t)=r'(t)。" },
+          { en: "Differentiate again to get a(t)=r''(t).", es: "Deriva otra vez para obtener a(t)=r''(t).", zh: "再求一次导得到 a(t)=r''(t)。" },
+        ],
+        answer: {
+          en: "Velocity is r'(t) and acceleration is r''(t).",
+          es: "La velocidad es r'(t) y la aceleracion es r''(t).",
+          zh: "速度是 r'(t)，加速度是 r''(t)。",
+        },
+        selfCheck: {
+          en: "Position -> velocity -> acceleration.",
+          es: "Posicion -> velocidad -> aceleracion.",
+          zh: "位置 -> 速度 -> 加速度。",
+        },
+      },
+    ],
+  },
+  "calc3-multivariable-functions": {
+    quiz: [
+      {
+        prompt: {
+          en: "If z=f(x,y), what should you picture first?",
+          es: "Si z=f(x,y), ¿que debes imaginar primero?",
+          zh: "如果 z=f(x,y)，第一时间该想成什么？",
+        },
+        firstStep: {
+          en: "Picture a surface sitting in 3D.",
+          es: "Imagina una superficie en 3D.",
+          zh: "先把它想成三维空间里的一张曲面。",
+        },
+        setup: {
+          en: "This section gets easier once students stop thinking 'two outputs' and remember it is still one output from two inputs.",
+          es: "Esta seccion se vuelve mas facil cuando recuerdas que no son dos salidas, sino una sola salida producida por dos entradas.",
+          zh: "这节课会简单很多，只要记住它不是“两输出”，而是“两个输入对应一个输出”。",
+        },
+        fullPath: [
+          { en: "Treat x and y as the inputs.", es: "Trata x y y como entradas.", zh: "先把 x 和 y 当作输入。" },
+          { en: "Treat z as the single output value.", es: "Trata z como el valor unico de salida.", zh: "把 z 当成唯一输出值。" },
+          { en: "That usually graphs as a surface in 3D.", es: "Eso suele graficarse como una superficie en 3D.", zh: "这种关系通常画成三维曲面。" },
+        ],
+        answer: {
+          en: "A surface in 3D.",
+          es: "Una superficie en 3D.",
+          zh: "三维空间中的一张曲面。",
+        },
+        selfCheck: {
+          en: "Two inputs, one output.",
+          es: "Dos entradas, una salida.",
+          zh: "两个输入，一个输出。",
         },
       },
     ],

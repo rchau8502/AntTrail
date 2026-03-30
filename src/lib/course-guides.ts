@@ -66,28 +66,32 @@ export const courseGuides: Partial<Record<string, CourseGuide>> = {
   },
   "calc-3": {
     overview: {
-      en: "This course is multivariable calculus: 3D geometry, partial derivatives, multiple integrals, and recognizing surfaces fast.",
-      es: "Este curso es calculo multivariable: geometria 3D, derivadas parciales, integrales multiples y reconocimiento rapido de superficies.",
-      zh: "这门课是多元微积分：三维几何、偏导数、多重积分，以及快速识别曲面。",
+      en: "This MATH 2D flow starts with Sections 10.1-10.3, then moves through 12.1-12.6, 13.1-13.3, 14.1-14.8, and stops the core at 15.3.",
+      es: "Este flujo de MATH 2D empieza con las secciones 10.1-10.3, luego pasa por 12.1-12.6, 13.1-13.3, 14.1-14.8 y cierra el nucleo en 15.3.",
+      zh: "这版 MATH 2D 按真实课表走：先 10.1-10.3，再到 12.1-12.6、13.1-13.3、14.1-14.8，核心内容停在 15.3。",
     },
     survivalAdvice: {
-      en: "The biggest win is naming the object before doing algebra: point, vector, plane, surface, gradient, or double integral setup.",
-      es: "La mayor ventaja es nombrar el objeto antes del algebra: punto, vector, plano, superficie, gradiente o montaje de integral doble.",
-      zh: "最关键的是先认出对象，再做计算：点、向量、平面、曲面、梯度，还是二重积分设定。",
+      en: "The biggest win is to name the section-style move first: parametric, polar, plane, quadric surface, partial derivative, gradient, Lagrange, or double-integral setup.",
+      es: "La mayor ventaja es nombrar primero el movimiento de la seccion: parametrico, polar, plano, superficie cuadrica, derivada parcial, gradiente, Lagrange o montaje de integral doble.",
+      zh: "最关键的是先认出这题属于哪种 section-style 动作：参数、极坐标、平面、二次曲面、偏导、梯度、拉格朗日，还是二重积分设定。",
     },
     mostTestedIds: [
+      "calc3-parametric-calculus",
+      "calc3-polar-coordinates",
       "calc3-planes",
       "calc3-quadric-surfaces",
       "calc3-partial-derivatives",
       "calc3-gradient",
-      "calc3-double-integrals",
       "calc3-lagrange-multipliers",
+      "calc3-iterated-integrals",
     ],
     starterIds: [
+      "calc3-parametric-equations",
+      "calc3-parametric-calculus",
+      "calc3-polar-coordinates",
       "calc3-3d-points",
       "calc3-vectors",
-      "calc3-dot-product",
-      "calc3-planes",
+      "calc3-planes"
     ],
   },
   "multivariable-calculus-2": {

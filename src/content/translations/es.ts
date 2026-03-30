@@ -65,20 +65,22 @@ export const esCourseContent: Record<string, LocalizedCourseText> = {
   },
   "calc-3": {
     "title": "Cálculo Multivariable I",
-    "shortDescription": "MATH 2D alineado con Stewart, centrado en los capítulos 12-15, con un puente ligero hacia las ideas de cálculo vectorial del capítulo 16.",
+    "shortDescription": "MATH 2D alineado con el plan sugerido de Winter 2026: secciones 10.1-10.3, 12.1-12.6, 13.1-13.3, 14.1-14.8 y el nucleo hasta 15.3.",
     "units": [
-      "Vectores y 3D",
+      "Arranque Paramétrico y Polar",
+      "Vectores y Geometría 3D",
       "Funciones Vectoriales",
       "Derivadas Parciales",
-      "Integrales Múltiples",
-      "Cálculo Vectorial"
+      "Integrales Dobles",
+      "Extras Posteriores u Opcionales"
     ],
     "chapters": [
-      "Capítulo 12: Vectores y la Geometría del Espacio",
-      "Capítulo 13: Funciones Vectoriales",
-      "Capítulo 14: Derivadas Parciales",
-      "Capítulo 15: Integrales Múltiples",
-      "Capítulo 16: Cálculo Vectorial"
+      "Secciones 10.1-10.3: Ecuaciones Paramétricas y Coordenadas Polares",
+      "Secciones 12.1-12.6: Vectores y la Geometría del Espacio",
+      "Secciones 13.1-13.3: Funciones Vectoriales",
+      "Secciones 14.1-14.8: Derivadas Parciales",
+      "Secciones 15.1-15.3: Integrales Dobles",
+      "Extras posteriores u opcionales fuera del nucleo de Winter 2026"
     ]
   },
   "multivariable-calculus-2": {
