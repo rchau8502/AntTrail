@@ -5315,4 +5315,144 @@ export const bubblegumBanks: Partial<
       },
     ],
   },
+  "calc3-vector-derivatives-integrals": {
+    quiz: [
+      {
+        prompt: {
+          en: "If r(t)=<t^2, sin t, e^t>, what is the first move to find r'(t)?",
+          es: "Si r(t)=<t^2, sin t, e^t>, ¿cual es el primer paso para hallar r'(t)?",
+          zh: "若 r(t)=<t^2, sin t, e^t>，求 r'(t) 的第一步是什么？",
+        },
+        firstStep: {
+          en: "Differentiate each component separately.",
+          es: "Deriva cada componente por separado.",
+          zh: "把每个分量分别求导。",
+        },
+        setup: {
+          en: "Vector derivatives look bigger than scalar derivatives, but the rule is simpler than students expect: lane by lane.",
+          es: "Las derivadas vectoriales parecen mas grandes que las escalares, pero la regla es mas simple de lo que parece: carril por carril.",
+          zh: "向量求导看起来更大，但规则反而很直接：每个分量各做各的。",
+        },
+        fullPath: [
+          { en: "Differentiate t^2 to get 2t.", es: "Deriva t^2 y obtienes 2t.", zh: "t^2 求导得到 2t。" },
+          { en: "Differentiate sin t to get cos t.", es: "Deriva sin t y obtienes cos t.", zh: "sin t 求导得到 cos t。" },
+          { en: "Differentiate e^t to get e^t, so r'(t)=<2t, cos t, e^t>.", es: "Deriva e^t y obtienes e^t, asi que r'(t)=<2t, cos t, e^t>.", zh: "e^t 求导还是 e^t，所以 r'(t)=<2t, cos t, e^t>。" },
+        ],
+        answer: {
+          en: "Differentiate component by component.",
+          es: "Derivar componente por componente.",
+          zh: "按分量分别求导。",
+        },
+        selfCheck: {
+          en: "Vector derivative = one component at a time.",
+          es: "Derivada vectorial = una componente a la vez.",
+          zh: "向量求导 = 一个分量一个分量来。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "If r'(t)=<2t, cos t, e^t>, what should an antiderivative vector look like?",
+          es: "Si r'(t)=<2t, cos t, e^t>, ¿como debe verse un vector antiderivado?",
+          zh: "如果 r'(t)=<2t, cos t, e^t>，它的一个原函数向量应该长什么样？",
+        },
+        firstStep: {
+          en: "Integrate each component and remember the constant vector.",
+          es: "Integra cada componente y recuerda el vector constante.",
+          zh: "每个分量分别积分，并记得最后要加常向量。",
+        },
+        setup: {
+          en: "Vector antiderivatives work the same way as scalar ones, except the constant becomes a vector.",
+          es: "Las antiderivadas vectoriales funcionan igual que las escalares, excepto que la constante ahora es un vector.",
+          zh: "向量积分和普通积分本质一样，只是积分常数变成了一个常向量。",
+        },
+        fullPath: [
+          { en: "Integrate 2t to get t^2.", es: "Integra 2t y obtienes t^2.", zh: "2t 积分得到 t^2。" },
+          { en: "Integrate cos t to get sin t, and e^t to get e^t.", es: "Integra cos t para obtener sin t, y e^t para obtener e^t.", zh: "cos t 积分得到 sin t，e^t 积分还是 e^t。" },
+          { en: "So one antiderivative is <t^2, sin t, e^t> + C.", es: "Entonces una antiderivada es <t^2, sin t, e^t> + C.", zh: "所以一个原函数向量是 <t^2, sin t, e^t> + C。" },
+        ],
+        answer: {
+          en: "<t^2, sin t, e^t> + C",
+          es: "<t^2, sin t, e^t> + C",
+          zh: "<t^2, sin t, e^t> + C",
+        },
+        selfCheck: {
+          en: "Vector integral = integrate each lane, then add a constant vector.",
+          es: "Integral vectorial = integra cada carril y luego suma un vector constante.",
+          zh: "向量积分 = 分量分别积分，再加常向量。",
+        },
+      },
+    ],
+  },
+  "calc3-space-curve-arc-length": {
+    quiz: [
+      {
+        prompt: {
+          en: "What goes inside the arc-length integral for a space curve r(t)?",
+          es: "¿Que va dentro de la integral de longitud de arco para una curva espacial r(t)?",
+          zh: "空间曲线 r(t) 的弧长积分里，积分号里面该放什么？",
+        },
+        firstStep: {
+          en: "Differentiate r(t) and take the magnitude.",
+          es: "Deriva r(t) y toma la magnitud.",
+          zh: "先求 r(t) 的导数，再取它的长度。",
+        },
+        setup: {
+          en: "Arc length in space uses speed, not the raw vector and not the acceleration.",
+          es: "La longitud de arco en el espacio usa rapidez, no el vector crudo ni la aceleracion.",
+          zh: "空间弧长用的是速度大小，不是原向量本身，也不是加速度。",
+        },
+        fullPath: [
+          { en: "Find r'(t).", es: "Halla r'(t).", zh: "先求 r'(t)。" },
+          { en: "Compute |r'(t)|.", es: "Calcula |r'(t)|.", zh: "再算 |r'(t)|。" },
+          { en: "Integrate |r'(t)| over the t-interval.", es: "Integra |r'(t)| en el intervalo de t.", zh: "最后在给定 t 区间上积分 |r'(t)|。" },
+        ],
+        answer: {
+          en: "|r'(t)|",
+          es: "|r'(t)|",
+          zh: "|r'(t)|",
+        },
+        selfCheck: {
+          en: "Space-curve length = integrate speed.",
+          es: "Longitud de curva espacial = integrar la rapidez.",
+          zh: "空间曲线弧长 = 积分速度大小。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "For r(t)=<t, t^2, 2t> on 0≤t≤1, what is the setup for the arc length?",
+          es: "Para r(t)=<t, t^2, 2t> en 0≤t≤1, ¿cual es el planteamiento de la longitud de arco?",
+          zh: "对 r(t)=<t, t^2, 2t>，0≤t≤1，弧长的设定式是什么？",
+        },
+        firstStep: {
+          en: "Differentiate first, then build the speed under the root.",
+          es: "Deriva primero y luego construye la rapidez bajo la raiz.",
+          zh: "先求导，再把速度大小写进根号里。",
+        },
+        setup: {
+          en: "Arc-length setup questions usually test whether you can get from r(t) to the speed formula cleanly.",
+          es: "Las preguntas de planteamiento de longitud de arco suelen medir si puedes pasar limpiamente de r(t) a la formula de rapidez.",
+          zh: "弧长设定题通常考的是：你能不能从 r(t) 干净地走到速度大小公式。",
+        },
+        fullPath: [
+          { en: "Compute r'(t)=<1,2t,2>.", es: "Calcula r'(t)=<1,2t,2>.", zh: "先求得 r'(t)=<1,2t,2>。" },
+          { en: "Then |r'(t)| = sqrt(1 + 4t^2 + 4) = sqrt(5+4t^2).", es: "Entonces |r'(t)| = sqrt(1 + 4t^2 + 4) = sqrt(5+4t^2).", zh: "所以 |r'(t)| = sqrt(1 + 4t^2 + 4) = sqrt(5+4t^2)。" },
+          { en: "So the setup is ∫_0^1 sqrt(5+4t^2) dt.", es: "Asi que el planteamiento es ∫_0^1 sqrt(5+4t^2) dt.", zh: "因此弧长设定式是 ∫_0^1 sqrt(5+4t^2) dt。" },
+        ],
+        answer: {
+          en: "∫_0^1 sqrt(5+4t^2) dt",
+          es: "∫_0^1 sqrt(5+4t^2) dt",
+          zh: "∫_0^1 sqrt(5+4t^2) dt",
+        },
+        selfCheck: {
+          en: "Differentiate first, then square-sum-root.",
+          es: "Primero deriva, luego suma cuadrados y saca raiz.",
+          zh: "先求导，再平方相加开根号。",
+        },
+      },
+    ],
+  },
 };
