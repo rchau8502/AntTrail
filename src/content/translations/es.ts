@@ -28,7 +28,7 @@ export interface LocalizedCardContent {
 export const esCourseContent: Record<string, LocalizedCourseText> = {
   "calc-1": {
     "title": "Cálculo de una Variable I",
-    "shortDescription": "Revisión rápida de cálculo de una sola variable para estudiantes que necesitan el cambio primero.",
+    "shortDescription": "Repaso al estilo Stewart de cálculo de una variable con límites, derivación, forma de la gráfica e integrales iniciales.",
     "units": [
       "Límites",
       "Derivadas",
@@ -37,30 +37,30 @@ export const esCourseContent: Record<string, LocalizedCourseText> = {
       "Aplicaciones de la Integración"
     ],
     "chapters": [
-      "Capítulo 1: Funciones y Límites",
-      "Capítulo 2: Derivadas",
-      "Capítulo 3: Aplicaciones de la Derivación",
-      "Capítulo 4: Integrales",
-      "Capítulo 5: Aplicaciones de la Integración"
+      "Capítulo 2: Límites y Derivadas",
+      "Capítulo 3: Reglas de Derivación",
+      "Capítulo 4: Aplicaciones de la Derivación",
+      "Capítulo 5: Integrales",
+      "Capítulo 6: Aplicaciones de la Integración"
     ]
   },
   "calc-2": {
     "title": "Cálculo de una Variable II",
-    "shortDescription": "Trucos de integración, ideas polares y paramétricas y reconocimiento de series de una sola variable.",
+    "shortDescription": "Segundo curso de cálculo al estilo Stewart con técnicas de integración, aplicaciones, ecuaciones diferenciales, curvas paramétricas y polares, y series.",
     "units": [
-      "Funciones Inversas, Exponenciales y Logarítmicas",
       "Técnicas de Integración",
       "Aplicaciones y Curvas",
       "Ecuaciones Diferenciales",
-      "Sucesiones y Series"
+      "Sucesiones y Series",
+      "Temas Puente"
     ],
     "chapters": [
-      "Capítulo 6: Funciones Inversas, Exponenciales y Logarítmicas",
       "Capítulo 7: Técnicas de Integración",
       "Capítulo 8: Más Aplicaciones de la Integración",
       "Capítulo 9: Ecuaciones Diferenciales",
       "Capítulo 10: Ecuaciones Paramétricas y Coordenadas Polares",
-      "Capítulo 11: Sucesiones, Series y Series de Potencias"
+      "Capítulo 11: Sucesiones, Series y Series de Potencias",
+      "Temas Puente: Trascendentales y l'Hospital"
     ]
   },
   "calc-3": {
@@ -83,22 +83,22 @@ export const esCourseContent: Record<string, LocalizedCourseText> = {
   },
   "linear-algebra": {
     "title": "Introducción al Álgebra Lineal",
-    "shortDescription": "Matrices, espacios vectoriales e ideas propias enseñadas como primeros movimientos de reconocimiento.",
+    "shortDescription": "MATH 3A alineado con el texto: sistemas, matrices, determinantes, espacios vectoriales, espacios con producto interno e ideas propias.",
     "units": [
-      "Sistemas y Reducción por Filas",
+      "Sistemas de Ecuaciones Lineales",
       "Matrices",
       "Determinantes",
       "Espacios Vectoriales",
-      "Ortogonalidad",
-      "Transformaciones y Eigen"
+      "Espacios con Producto Interno",
+      "Transformaciones Lineales y Valores Propios"
     ],
     "chapters": [
-      "Capítulo 1: Sistemas y Reducción por Filas",
-      "Capítulo 2: Álgebra de Matrices",
+      "Capítulo 1: Sistemas de Ecuaciones Lineales",
+      "Capítulo 2: Matrices",
       "Capítulo 3: Determinantes",
       "Capítulo 4: Espacios Vectoriales",
-      "Capítulo 5: Ortogonalidad",
-      "Capítulo 6: Eigenvalores y Transformaciones Lineales"
+      "Capítulo 5: Espacios con Producto Interno",
+      "Capítulo 6: Transformaciones Lineales y Valores Propios"
     ]
   },
   "intro-proof": {
@@ -152,7 +152,7 @@ export const esCourseContent: Record<string, LocalizedCourseText> = {
 export const esCardContent: Record<string, LocalizedCardContent> = {
   "intuitive-limit": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 1: Funciones y Límites",
+    "chapter": "Capítulo 2: Límites y Derivadas",
     "unit": "Límites",
     "topic": "Idea intuitiva de un límite.",
     "name": "Idea de límite intuitiva",
@@ -184,7 +184,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "direct-substitution": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 1: Funciones y Límites",
+    "chapter": "Capítulo 2: Límites y Derivadas",
     "unit": "Límites",
     "topic": "Sustitución directa",
     "name": "Sustitución directa",
@@ -216,7 +216,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "factoring-0-0": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 1: Funciones y Límites",
+    "chapter": "Capítulo 2: Límites y Derivadas",
     "unit": "Límites",
     "topic": "Factorizando para eliminar 0/0",
     "name": "Factorizando 0/0",
@@ -248,7 +248,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "rationalizing": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 1: Funciones y Límites",
+    "chapter": "Capítulo 2: Límites y Derivadas",
     "unit": "Límites",
     "topic": "Racionalización",
     "name": "Racionalizando un límite",
@@ -280,7 +280,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "infinite-limits": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 1: Funciones y Límites",
+    "chapter": "Capítulo 2: Límites y Derivadas",
     "unit": "Límites",
     "topic": "Límites infinitos",
     "name": "Límites infinitos",
@@ -312,7 +312,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "limits-at-infinity": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 1: Funciones y Límites",
+    "chapter": "Capítulo 2: Límites y Derivadas",
     "unit": "Límites",
     "topic": "Límites al infinito",
     "name": "Límites en el infinito",
@@ -344,7 +344,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "continuity": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 1: Funciones y Límites",
+    "chapter": "Capítulo 2: Límites y Derivadas",
     "unit": "Límites",
     "topic": "Continuidad",
     "name": "Continuidad",
@@ -376,7 +376,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "derivative-slope-rate": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 2: Derivadas",
+    "chapter": "Capítulo 3: Reglas de Derivación",
     "unit": "Derivadas",
     "topic": "Derivada como pendiente y tasa de cambio",
     "name": "Derivada = Pendiente / Tasa",
@@ -408,7 +408,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "derivative-definition": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 2: Derivadas",
+    "chapter": "Capítulo 3: Reglas de Derivación",
     "unit": "Derivadas",
     "topic": "Derivado de la definición",
     "name": "Derivado de la definición",
@@ -440,7 +440,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "power-rule": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 2: Derivadas",
+    "chapter": "Capítulo 3: Reglas de Derivación",
     "unit": "Derivadas",
     "topic": "regla de poder",
     "name": "Regla de poder",
@@ -472,7 +472,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "constant-rule": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 2: Derivadas",
+    "chapter": "Capítulo 3: Reglas de Derivación",
     "unit": "Derivadas",
     "topic": "Regla constante",
     "name": "Regla constante",
@@ -504,7 +504,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "sum-difference-rules": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 2: Derivadas",
+    "chapter": "Capítulo 3: Reglas de Derivación",
     "unit": "Derivadas",
     "topic": "Reglas de suma y diferencia",
     "name": "Reglas de suma y diferencia",
@@ -536,7 +536,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "product-rule": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 2: Derivadas",
+    "chapter": "Capítulo 3: Reglas de Derivación",
     "unit": "Derivadas",
     "topic": "regla del producto",
     "name": "Regla del producto",
@@ -568,7 +568,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "quotient-rule": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 2: Derivadas",
+    "chapter": "Capítulo 3: Reglas de Derivación",
     "unit": "Derivadas",
     "topic": "regla del cociente",
     "name": "Regla del cociente",
@@ -600,7 +600,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "chain-rule": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 2: Derivadas",
+    "chapter": "Capítulo 3: Reglas de Derivación",
     "unit": "Derivadas",
     "topic": "regla de la cadena",
     "name": "Regla de la cadena",
@@ -632,7 +632,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "implicit-differentiation": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 2: Derivadas",
+    "chapter": "Capítulo 3: Reglas de Derivación",
     "unit": "Derivadas",
     "topic": "Diferenciación implícita",
     "name": "Diferenciación implícita",
@@ -664,7 +664,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "logarithmic-differentiation": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 2: Derivadas",
+    "chapter": "Capítulo 3: Reglas de Derivación",
     "unit": "Derivadas",
     "topic": "Diferenciación logarítmica",
     "name": "Diferenciación logarítmica",
@@ -696,7 +696,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "higher-derivatives": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 2: Derivadas",
+    "chapter": "Capítulo 3: Reglas de Derivación",
     "unit": "Derivadas",
     "topic": "Derivados superiores",
     "name": "Derivados más altos",
@@ -728,7 +728,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "tangent-line": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 3: Aplicaciones de la Derivación",
+    "chapter": "Capítulo 4: Aplicaciones de la Derivación",
     "unit": "Aplicaciones",
     "topic": "recta tangente",
     "name": "Línea tangente",
@@ -760,7 +760,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "normal-line": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 3: Aplicaciones de la Derivación",
+    "chapter": "Capítulo 4: Aplicaciones de la Derivación",
     "unit": "Aplicaciones",
     "topic": "linea normal",
     "name": "Línea Normal",
@@ -792,7 +792,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "increasing-decreasing": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 3: Aplicaciones de la Derivación",
+    "chapter": "Capítulo 4: Aplicaciones de la Derivación",
     "unit": "Aplicaciones",
     "topic": "Creciendo y disminuyendo",
     "name": "Creciente/Decreciente",
@@ -824,7 +824,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "local-max-min": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 3: Aplicaciones de la Derivación",
+    "chapter": "Capítulo 4: Aplicaciones de la Derivación",
     "unit": "Aplicaciones",
     "topic": "Máximo y mínimo locales",
     "name": "Máx./Mín. locales",
@@ -856,7 +856,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "concavity": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 3: Aplicaciones de la Derivación",
+    "chapter": "Capítulo 4: Aplicaciones de la Derivación",
     "unit": "Aplicaciones",
     "topic": "Concavidad",
     "name": "Concavidad",
@@ -888,7 +888,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "inflection-points": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 3: Aplicaciones de la Derivación",
+    "chapter": "Capítulo 4: Aplicaciones de la Derivación",
     "unit": "Aplicaciones",
     "topic": "Puntos de inflexión",
     "name": "Puntos de inflexión",
@@ -920,7 +920,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "first-derivative-test": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 3: Aplicaciones de la Derivación",
+    "chapter": "Capítulo 4: Aplicaciones de la Derivación",
     "unit": "Aplicaciones",
     "topic": "Prueba de la primera derivada",
     "name": "Primera prueba derivada",
@@ -952,7 +952,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "second-derivative-test": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 3: Aplicaciones de la Derivación",
+    "chapter": "Capítulo 4: Aplicaciones de la Derivación",
     "unit": "Aplicaciones",
     "topic": "Prueba de la segunda derivada",
     "name": "Prueba de la segunda derivada",
@@ -984,7 +984,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "optimization": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 3: Aplicaciones de la Derivación",
+    "chapter": "Capítulo 4: Aplicaciones de la Derivación",
     "unit": "Aplicaciones",
     "topic": "Optimización",
     "name": "Optimización",
@@ -1016,7 +1016,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "related-rates": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 3: Aplicaciones de la Derivación",
+    "chapter": "Capítulo 4: Aplicaciones de la Derivación",
     "unit": "Aplicaciones",
     "topic": "Tarifas relacionadas",
     "name": "Tarifas relacionadas",
@@ -1048,7 +1048,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "linear-approximation": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 3: Aplicaciones de la Derivación",
+    "chapter": "Capítulo 4: Aplicaciones de la Derivación",
     "unit": "Aplicaciones",
     "topic": "Aproximación lineal",
     "name": "Aproximación lineal",
@@ -1080,7 +1080,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "antiderivative-idea": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 4: Integrales",
+    "chapter": "Capítulo 5: Integrales",
     "unit": "Integrales",
     "topic": "idea antiderivada",
     "name": "Idea antiderivada",
@@ -1112,7 +1112,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "indefinite-integral": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 4: Integrales",
+    "chapter": "Capítulo 5: Integrales",
     "unit": "Integrales",
     "topic": "Integral indefinida",
     "name": "Integral indefinida",
@@ -1144,7 +1144,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "integral-power-rule": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 4: Integrales",
+    "chapter": "Capítulo 5: Integrales",
     "unit": "Integrales",
     "topic": "Regla de potencia básica para integrales",
     "name": "Regla de potencia integral",
@@ -1176,7 +1176,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "definite-integral-area": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 4: Integrales",
+    "chapter": "Capítulo 5: Integrales",
     "unit": "Integrales",
     "topic": "Integral definida como idea de área",
     "name": "Integral definida = Área firmada",
@@ -1208,7 +1208,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "ftc-practical": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 4: Integrales",
+    "chapter": "Capítulo 5: Integrales",
     "unit": "Integrales",
     "topic": "Teorema fundamental del cálculo",
     "name": "Uso práctico de la FTC",
@@ -1240,7 +1240,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "u-substitution": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 4: Integrales",
+    "chapter": "Capítulo 5: Integrales",
     "unit": "Integrales",
     "topic": "Introducción básica a la sustitución en U",
     "name": "u-sustitución",
@@ -1272,7 +1272,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "mean-value-theorem": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 3: Aplicaciones de la Derivación",
+    "chapter": "Capítulo 4: Aplicaciones de la Derivación",
     "unit": "Aplicaciones",
     "topic": "Teorema del valor medio",
     "name": "Teorema del valor medio",
@@ -1304,7 +1304,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "curve-sketching": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 3: Aplicaciones de la Derivación",
+    "chapter": "Capítulo 4: Aplicaciones de la Derivación",
     "unit": "Aplicaciones",
     "topic": "Resumen de bocetos de curvas",
     "name": "Dibujo de curvas",
@@ -1336,7 +1336,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "newtons-method": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 3: Aplicaciones de la Derivación",
+    "chapter": "Capítulo 4: Aplicaciones de la Derivación",
     "unit": "Aplicaciones",
     "topic": "El método de Newton",
     "name": "El método de Newton",
@@ -1368,7 +1368,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "areas-between-curves": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 5: Aplicaciones de la Integración",
+    "chapter": "Capítulo 6: Aplicaciones de la Integración",
     "unit": "Aplicaciones de la Integración",
     "topic": "Áreas entre curvas",
     "name": "Área entre curvas",
@@ -1400,7 +1400,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "disk-washer-method": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 5: Aplicaciones de la Integración",
+    "chapter": "Capítulo 6: Aplicaciones de la Integración",
     "unit": "Aplicaciones de la Integración",
     "topic": "Volúmenes por discos y arandelas.",
     "name": "Método de disco/lavadora",
@@ -1432,7 +1432,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "shell-method": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 5: Aplicaciones de la Integración",
+    "chapter": "Capítulo 6: Aplicaciones de la Integración",
     "unit": "Aplicaciones de la Integración",
     "topic": "Volúmenes por carcasas cilíndricas.",
     "name": "Método de cáscara",
@@ -1464,7 +1464,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "work-integrals": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 5: Aplicaciones de la Integración",
+    "chapter": "Capítulo 6: Aplicaciones de la Integración",
     "unit": "Aplicaciones de la Integración",
     "topic": "trabajo",
     "name": "Trabajar como integral",
@@ -1496,7 +1496,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "average-value-function": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 5: Aplicaciones de la Integración",
+    "chapter": "Capítulo 6: Aplicaciones de la Integración",
     "unit": "Aplicaciones de la Integración",
     "topic": "Valor medio de una función",
     "name": "Valor promedio de una función",
@@ -1528,7 +1528,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "limit-laws": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 1: Funciones y Límites",
+    "chapter": "Capítulo 2: Límites y Derivadas",
     "unit": "Límites",
     "topic": "Calcular límites usando leyes de límites",
     "name": "Leyes límite",
@@ -1560,7 +1560,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "derivative-as-function": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 2: Derivadas",
+    "chapter": "Capítulo 3: Reglas de Derivación",
     "unit": "Derivadas",
     "topic": "La derivada como función.",
     "name": "Función derivada",
@@ -1592,7 +1592,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "trig-derivatives": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 2: Derivadas",
+    "chapter": "Capítulo 3: Reglas de Derivación",
     "unit": "Derivadas",
     "topic": "Derivadas de funciones trigonométricas",
     "name": "Derivados trigonométricos",
@@ -1624,7 +1624,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "differentials": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 2: Derivadas",
+    "chapter": "Capítulo 3: Reglas de Derivación",
     "unit": "Derivadas",
     "topic": "Aproximaciones lineales y diferenciales.",
     "name": "Diferenciales",
@@ -1656,7 +1656,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "area-distance-problems": {
     "course": "Cálculo de una Variable 1",
-    "chapter": "Capítulo 4: Integrales",
+    "chapter": "Capítulo 5: Integrales",
     "unit": "Integrales",
     "topic": "Problemas de área y distancia.",
     "name": "Problemas de área y distancia",
@@ -2808,8 +2808,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "calc2-inverse-functions": {
     "course": "Cálculo de una Variable 2",
-    "chapter": "Capítulo 6: Funciones Inversas, Exponenciales y Logarítmicas",
-    "unit": "Funciones Inversas, Exponenciales y Logarítmicas",
+    "chapter": "Temas Puente: Trascendentales y l'Hospital",
+    "unit": "Temas Puente",
     "topic": "Funciones inversas y sus derivadas.",
     "name": "Funciones inversas",
     "useItWhen": "es necesario deshacer una función",
@@ -2840,8 +2840,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "calc2-exponential-derivatives": {
     "course": "Cálculo de una Variable 2",
-    "chapter": "Capítulo 6: Funciones Inversas, Exponenciales y Logarítmicas",
-    "unit": "Funciones Inversas, Exponenciales y Logarítmicas",
+    "chapter": "Temas Puente: Trascendentales y l'Hospital",
+    "unit": "Temas Puente",
     "topic": "Funciones exponenciales y sus derivadas.",
     "name": "Derivadas exponenciales",
     "useItWhen": "la variable esta en el exponente",
@@ -2872,8 +2872,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "calc2-log-functions": {
     "course": "Cálculo de una Variable 2",
-    "chapter": "Capítulo 6: Funciones Inversas, Exponenciales y Logarítmicas",
-    "unit": "Funciones Inversas, Exponenciales y Logarítmicas",
+    "chapter": "Temas Puente: Trascendentales y l'Hospital",
+    "unit": "Temas Puente",
     "topic": "Funciones logarítmicas",
     "name": "Funciones de registro",
     "useItWhen": "necesitas deshacer un exponencial o simplificar productos y potencias",
@@ -2904,8 +2904,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "calc2-growth-decay": {
     "course": "Cálculo de una Variable 2",
-    "chapter": "Capítulo 6: Funciones Inversas, Exponenciales y Logarítmicas",
-    "unit": "Funciones Inversas, Exponenciales y Logarítmicas",
+    "chapter": "Temas Puente: Trascendentales y l'Hospital",
+    "unit": "Temas Puente",
     "topic": "Crecimiento y decadencia exponencial",
     "name": "Crecimiento y decadencia",
     "useItWhen": "una tasa es proporcional a la cantidad actual",
@@ -2936,8 +2936,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "calc2-inverse-trig": {
     "course": "Cálculo de una Variable 2",
-    "chapter": "Capítulo 6: Funciones Inversas, Exponenciales y Logarítmicas",
-    "unit": "Funciones Inversas, Exponenciales y Logarítmicas",
+    "chapter": "Temas Puente: Trascendentales y l'Hospital",
+    "unit": "Temas Puente",
     "topic": "Funciones trigonométricas inversas",
     "name": "Funciones trigonométricas inversas",
     "useItWhen": "necesitas el ángulo que dio un valor trigonométrico",
@@ -2968,8 +2968,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "calc2-lhopitals-rule": {
     "course": "Cálculo de una Variable 2",
-    "chapter": "Capítulo 6: Funciones Inversas, Exponenciales y Logarítmicas",
-    "unit": "Funciones Inversas, Exponenciales y Logarítmicas",
+    "chapter": "Temas Puente: Trascendentales y l'Hospital",
+    "unit": "Temas Puente",
     "topic": "Formas indeterminadas y regla de l'Hospital",
     "name": "La regla del hospital",
     "useItWhen": "un límite da 0/0 o infinito/infinito",
@@ -3224,8 +3224,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "calc2-hyperbolic-functions": {
     "course": "Cálculo de una Variable 2",
-    "chapter": "Capítulo 6: Funciones Inversas, Exponenciales y Logarítmicas",
-    "unit": "Funciones Inversas, Exponenciales y Logarítmicas",
+    "chapter": "Temas Puente: Trascendentales y l'Hospital",
+    "unit": "Temas Puente",
     "topic": "Funciones hiperbólicas",
     "name": "Funciones hiperbólicas",
     "useItWhen": "aparece sinh, cosh o tanh",
@@ -5048,8 +5048,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-linear-systems": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 1: Sistemas y Reducción por Filas",
-    "unit": "Sistemas y Reducción por Filas",
+    "chapter": "Capítulo 1: Sistemas de Ecuaciones Lineales",
+    "unit": "Sistemas de Ecuaciones Lineales",
     "topic": "Sistemas de ecuaciones lineales.",
     "name": "Sistemas Lineales",
     "useItWhen": "Varias ecuaciones están ligadas a las mismas variables.",
@@ -5080,8 +5080,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-augmented-matrix": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 1: Sistemas y Reducción por Filas",
-    "unit": "Sistemas y Reducción por Filas",
+    "chapter": "Capítulo 1: Sistemas de Ecuaciones Lineales",
+    "unit": "Sistemas de Ecuaciones Lineales",
     "topic": "matriz aumentada",
     "name": "Matriz aumentada",
     "useItWhen": "quieres el sistema en forma de matriz compacta",
@@ -5112,8 +5112,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-row-reduction": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 1: Sistemas y Reducción por Filas",
-    "unit": "Sistemas y Reducción por Filas",
+    "chapter": "Capítulo 1: Sistemas de Ecuaciones Lineales",
+    "unit": "Sistemas de Ecuaciones Lineales",
     "topic": "Reducción de filas",
     "name": "Reducción de filas",
     "useItWhen": "necesitas limpiar un sistema en una forma más fácil",
@@ -5144,8 +5144,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-pivots-free-variables": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 1: Sistemas y Reducción por Filas",
-    "unit": "Sistemas y Reducción por Filas",
+    "chapter": "Capítulo 1: Sistemas de Ecuaciones Lineales",
+    "unit": "Sistemas de Ecuaciones Lineales",
     "topic": "Pivote y variables libres",
     "name": "Pivote vs variables libres",
     "useItWhen": "La matriz reducida está terminada y necesitas la forma de la solución.",
@@ -5176,7 +5176,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-matrix-operations": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 2: Álgebra de Matrices",
+    "chapter": "Capítulo 2: Matrices",
     "unit": "Matrices",
     "topic": "Suma de matrices y multiplicación escalar.",
     "name": "Operaciones matriciales básicas",
@@ -5208,7 +5208,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-matrix-multiplication": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 2: Álgebra de Matrices",
+    "chapter": "Capítulo 2: Matrices",
     "unit": "Matrices",
     "topic": "Multiplicación de matrices",
     "name": "Multiplicación de matrices",
@@ -5240,7 +5240,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-identity-matrix": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 2: Álgebra de Matrices",
+    "chapter": "Capítulo 2: Matrices",
     "unit": "Matrices",
     "topic": "Matriz de identidad",
     "name": "Matriz de identidad",
@@ -5272,7 +5272,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-inverse-matrix": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 2: Álgebra de Matrices",
+    "chapter": "Capítulo 2: Matrices",
     "unit": "Matrices",
     "topic": "matriz inversa",
     "name": "Matriz inversa",
@@ -5688,8 +5688,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-consistency": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 1: Sistemas y Reducción por Filas",
-    "unit": "Sistemas y Reducción por Filas",
+    "chapter": "Capítulo 1: Sistemas de Ecuaciones Lineales",
+    "unit": "Sistemas de Ecuaciones Lineales",
     "topic": "Sistemas consistentes versus inconsistentes",
     "name": "Consistente versus inconsistente",
     "useItWhen": "La reducción de filas termina y es necesario clasificar el sistema.",
@@ -5720,8 +5720,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-homogeneous-system": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 1: Sistemas y Reducción por Filas",
-    "unit": "Sistemas y Reducción por Filas",
+    "chapter": "Capítulo 1: Sistemas de Ecuaciones Lineales",
+    "unit": "Sistemas de Ecuaciones Lineales",
     "topic": "Sistemas homogéneos",
     "name": "Sistema Homogéneo",
     "useItWhen": "el lado derecho es todo ceros",
@@ -5752,7 +5752,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-transpose-symmetric": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 2: Álgebra de Matrices",
+    "chapter": "Capítulo 2: Matrices",
     "unit": "Matrices",
     "topic": "Matrices transpuestas y simétricas.",
     "name": "Transpuesta y simétrica",
@@ -5944,7 +5944,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-characteristic-polynomial": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 6: Eigenvalores y Transformaciones Lineales",
+    "chapter": "Capítulo 6: Transformaciones Lineales y Valores Propios",
     "unit": "Transformaciones y Eigen",
     "topic": "Polinomio característico",
     "name": "Polinomio característico",
@@ -5976,8 +5976,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-echelon-vs-rref": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 1: Sistemas y Reducción por Filas",
-    "unit": "Sistemas y Reducción por Filas",
+    "chapter": "Capítulo 1: Sistemas de Ecuaciones Lineales",
+    "unit": "Sistemas de Ecuaciones Lineales",
     "topic": "Forma escalonada versus forma escalonada reducida",
     "name": "REF frente a RREF",
     "useItWhen": "una matriz está casi limpia y necesita nombrar el formulario",
@@ -6008,8 +6008,8 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-ax-equals-b": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 1: Sistemas y Reducción por Filas",
-    "unit": "Sistemas y Reducción por Filas",
+    "chapter": "Capítulo 1: Sistemas de Ecuaciones Lineales",
+    "unit": "Sistemas de Ecuaciones Lineales",
     "topic": "Ecuación matricial Ax = b",
     "name": "hacha = b",
     "useItWhen": "un sistema se escribe como una ecuación matricial",
@@ -6040,7 +6040,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-invertible-matrix-theorem": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 2: Álgebra de Matrices",
+    "chapter": "Capítulo 2: Matrices",
     "unit": "Matrices",
     "topic": "Teorema de la matriz invertible",
     "name": "Teorema de la matriz invertible",
@@ -6072,7 +6072,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-lu-factorization": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 2: Álgebra de Matrices",
+    "chapter": "Capítulo 2: Matrices",
     "unit": "Matrices",
     "topic": "factorización LU",
     "name": "Factorización LU",
@@ -6200,7 +6200,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-matrix-of-transformation": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 6: Eigenvalores y Transformaciones Lineales",
+    "chapter": "Capítulo 6: Transformaciones Lineales y Valores Propios",
     "unit": "Transformaciones y Eigen",
     "topic": "Matriz de una transformación lineal",
     "name": "Matriz de una transformación",
@@ -6232,7 +6232,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-kernel-range": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 6: Eigenvalores y Transformaciones Lineales",
+    "chapter": "Capítulo 6: Transformaciones Lineales y Valores Propios",
     "unit": "Transformaciones y Eigen",
     "topic": "Núcleo y rango",
     "name": "Núcleo vs rango",
@@ -6264,7 +6264,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-one-to-one-onto": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 6: Eigenvalores y Transformaciones Lineales",
+    "chapter": "Capítulo 6: Transformaciones Lineales y Valores Propios",
     "unit": "Transformaciones y Eigen",
     "topic": "Uno a uno versus uno para mapas lineales",
     "name": "Uno a uno frente a uno",
@@ -6296,7 +6296,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-eigenspace": {
     "course": "Álgebra Lineal",
-    "chapter": "Capítulo 6: Eigenvalores y Transformaciones Lineales",
+    "chapter": "Capítulo 6: Transformaciones Lineales y Valores Propios",
     "unit": "Transformaciones y Eigen",
     "topic": "Espacios propios",
     "name": "Espacio propio",
@@ -9204,6 +9204,166 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "quickExample": {
       "problem": "¿Cuáles son los dos primeros movimientos de configuración de CLT?",
       "move": "Resta la media y divide por la desviación estándar."
+    }
+  },
+  "tangent-velocity-problems": {
+    "course": "Cálculo de una Variable I",
+    "chapter": "Capítulo 2: Límites y Derivadas",
+    "unit": "Límites",
+    "topic": "Problemas de tangente y velocidad",
+    "name": "Problemas de tangente y velocidad",
+    "useItWhen": "el curso está mostrando de dónde salen los límites y las derivadas",
+    "looksLike": "pendiente promedio acercándose, recta secante a tangente, velocidad promedio a instantánea",
+    "doThis": "empieza con la tasa promedio y luego haz que la separación se acerque a 0",
+    "thinkOfItAs": "hacer zoom hasta que una tasa promedio se vuelva la tasa exacta de un instante",
+    "watchOutFor": "tratar la tasa promedio y la instantánea como si fueran iguales demasiado pronto",
+    "rememberThis": "la derivada nace cuando encoges la fórmula de tasa promedio",
+    "typicalProblemShapes": [
+      "Una pendiente secante que se convierte en pendiente tangente",
+      "Una función de posición con velocidad promedio en [t, t+h]"
+    ],
+    "miniDrill": [
+      {
+        "prompt": "¿Qué se hace pequeño en el montaje de la recta tangente?",
+        "answer": "La separación horizontal entre los dos puntos."
+      },
+      {
+        "prompt": "¿Qué tasa aparece primero en un problema de velocidad?",
+        "answer": "La velocidad promedio."
+      }
+    ],
+    "memoryHook": "Primero promedio, luego instante cuando la brecha se encoge.",
+    "quickExample": {
+      "problem": "¿Cómo pasas de velocidad promedio a velocidad instantánea?",
+      "move": "Toma la fórmula de velocidad promedio y deja que la diferencia de tiempo vaya a 0."
+    }
+  },
+  "precise-limit-definition": {
+    "course": "Cálculo de una Variable I",
+    "chapter": "Capítulo 2: Límites y Derivadas",
+    "unit": "Límites",
+    "topic": "Definición precisa de límite",
+    "name": "Definición precisa de límite",
+    "useItWhen": "la clase deja los dibujos y quiere una prueba real con epsilon",
+    "looksLike": "para todo epsilon > 0 existe delta > 0",
+    "doThis": "empieza por qué tan cerca debe quedar la salida y trabaja hacia atrás para decidir qué tan cerca debe estar x",
+    "thinkOfItAs": "epsilon pide cercanía en y y delta paga esa cercanía con una regla para x",
+    "watchOutFor": "escribir la definición sin elegir un delta que de verdad funcione",
+    "rememberThis": "epsilon es la meta en y; delta es la regla en x",
+    "typicalProblemShapes": [
+      "Una prueba de que lim f(x)=L usando la definición",
+      "Una función polinómica o lineal simple donde delta se puede resolver explícitamente"
+    ],
+    "miniDrill": [
+      {
+        "prompt": "¿Qué letra controla el error de salida?",
+        "answer": "Epsilon."
+      },
+      {
+        "prompt": "¿De qué debe depender delta?",
+        "answer": "De epsilon."
+      }
+    ],
+    "memoryHook": "Trabaja hacia atrás de epsilon a delta.",
+    "quickExample": {
+      "problem": "¿Cuál es el verdadero primer paso en una prueba epsilon-delta?",
+      "move": "Empieza con |f(x)-L| < epsilon y trabaja hacia atrás."
+    }
+  },
+  "la-system-applications": {
+    "course": "Introducción al Álgebra Lineal",
+    "chapter": "Capítulo 1: Sistemas de Ecuaciones Lineales",
+    "unit": "Sistemas de Ecuaciones Lineales",
+    "topic": "Aplicaciones de sistemas de ecuaciones lineales",
+    "name": "Aplicaciones de sistemas",
+    "useItWhen": "un problema verbal en realidad quiere varias ecuaciones lineales al mismo tiempo",
+    "looksLike": "flujos de red, ajuste de curvas, mezclas, balanceo, coeficientes desconocidos",
+    "doThis": "define las incógnitas, escribe una ecuación por condición y luego resuelve el sistema",
+    "thinkOfItAs": "convertir una historia en una caja de ecuaciones resoluble",
+    "watchOutFor": "empezar a eliminar antes de organizar las variables y ecuaciones",
+    "rememberThis": "variables primero, matriz después",
+    "typicalProblemShapes": [
+      "Ajuste de un polinomio a partir de puntos dados",
+      "Ecuaciones de flujo o de red construidas con reglas de conservación"
+    ],
+    "miniDrill": [
+      {
+        "prompt": "¿Qué debe venir antes de la matriz aumentada en un problema verbal?",
+        "answer": "Una lista clara de incógnitas y ecuaciones."
+      },
+      {
+        "prompt": "¿Qué estructura escondida une estas aplicaciones?",
+        "answer": "Un sistema lineal."
+      }
+    ],
+    "memoryHook": "Primero la historia, luego el sistema.",
+    "quickExample": {
+      "problem": "¿Cómo empiezas un problema de ajuste de curvas o de red?",
+      "move": "Elige las incógnitas y escribe una ecuación lineal por cada pista."
+    }
+  },
+  "la-elementary-matrices": {
+    "course": "Introducción al Álgebra Lineal",
+    "chapter": "Capítulo 2: Matrices",
+    "unit": "Matrices",
+    "topic": "Matrices elementales",
+    "name": "Matrices elementales",
+    "useItWhen": "una operación por filas se escribe como multiplicación matricial",
+    "looksLike": "EA, un intercambio o reemplazo de fila codificado como matriz",
+    "doThis": "empieza con la identidad y modifícala para que imite ese movimiento de fila",
+    "thinkOfItAs": "una sola operación por filas empaquetada como matriz",
+    "watchOutFor": "olvidar que multiplicar a la izquierda cambia filas, no columnas",
+    "rememberThis": "matriz elemental = una operación de fila en forma matricial",
+    "typicalProblemShapes": [
+      "Escribir una operación de fila como multiplicación por E",
+      "Conectar la eliminación con productos de matrices"
+    ],
+    "miniDrill": [
+      {
+        "prompt": "¿Qué matriz modificas para crear una matriz elemental?",
+        "answer": "La matriz identidad."
+      },
+      {
+        "prompt": "¿Sobre qué actúa la multiplicación por la izquierda con E?",
+        "answer": "Sobre las filas."
+      }
+    ],
+    "memoryHook": "Identidad más un truco de fila da E.",
+    "quickExample": {
+      "problem": "¿Cómo construyes la matriz de una sola operación de fila?",
+      "move": "Modifica la identidad para que coincida con ese movimiento."
+    }
+  },
+  "la-markov-chains": {
+    "course": "Introducción al Álgebra Lineal",
+    "chapter": "Capítulo 2: Matrices",
+    "unit": "Matrices",
+    "topic": "Cadenas de Markov",
+    "name": "Cadenas de Markov",
+    "useItWhen": "un sistema cambia de estado con porcentajes de transición fijos",
+    "looksLike": "matriz de transición, vector de estado, estado siguiente = P por estado actual",
+    "doThis": "arma la matriz de transición y multiplícala por el vector de estado actual",
+    "thinkOfItAs": "el estado de hoy alimentando al de mañana por una máquina de probabilidades",
+    "watchOutFor": "confundir la matriz de transición con el vector de estado actual",
+    "rememberThis": "estado ahora, transición después",
+    "typicalProblemShapes": [
+      "Movimiento de población o de cuota de mercado entre categorías",
+      "Encontrar el siguiente estado o el comportamiento estacionario"
+    ],
+    "miniDrill": [
+      {
+        "prompt": "¿Qué guarda la matriz de transición?",
+        "answer": "Cómo pasa el sistema de un estado al siguiente."
+      },
+      {
+        "prompt": "¿Qué almacena la distribución actual?",
+        "answer": "El vector de estado."
+      }
+    ],
+    "memoryHook": "Estado actual entra, estado siguiente sale.",
+    "quickExample": {
+      "problem": "¿Cuál es el primer movimiento matricial en una cadena de Markov?",
+      "move": "Multiplicar el vector de estado actual por la matriz de transición."
     }
   }
 };

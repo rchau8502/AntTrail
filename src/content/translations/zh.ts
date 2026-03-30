@@ -28,7 +28,7 @@ export interface LocalizedCardContent {
 export const zhCourseContent: Record<string, LocalizedCourseText> = {
   "calc-1": {
     "title": "单变量微积分 I",
-    "shortDescription": "给需要先看题型和步骤的学生做的快速单变量微积分复习。",
+    "shortDescription": "按 Stewart 单变量教材整理的复习：极限、求导、图像形状和最初步的积分。",
     "units": [
       "极限",
       "导数",
@@ -37,30 +37,30 @@ export const zhCourseContent: Record<string, LocalizedCourseText> = {
       "积分应用"
     ],
     "chapters": [
-      "第 1 章：函数与极限",
-      "第 2 章：导数",
-      "第 3 章：导数的应用",
-      "第 4 章：积分",
-      "第 5 章：积分的应用"
+      "第 2 章：极限与导数",
+      "第 3 章：求导法则",
+      "第 4 章：导数的应用",
+      "第 5 章：积分",
+      "第 6 章：积分的应用"
     ]
   },
   "calc-2": {
     "title": "单变量微积分 II",
-    "shortDescription": "积分技巧、参数与极坐标，以及单变量级数识别。",
+    "shortDescription": "按 Stewart 第二阶段单变量内容整理：积分技巧、应用、微分方程、参数与极坐标，以及级数。",
     "units": [
-      "反函数、指数与对数函数",
       "积分技巧",
       "应用与曲线",
       "微分方程",
-      "数列与级数"
+      "数列与级数",
+      "衔接主题"
     ],
     "chapters": [
-      "第 6 章：反函数、指数与对数函数",
       "第 7 章：积分技巧",
       "第 8 章：积分的更多应用",
       "第 9 章：微分方程",
       "第 10 章：参数方程与极坐标",
-      "第 11 章：数列、级数与幂级数"
+      "第 11 章：数列、级数与幂级数",
+      "衔接主题：超越函数与 l'Hospital 法则"
     ]
   },
   "calc-3": {
@@ -83,22 +83,22 @@ export const zhCourseContent: Record<string, LocalizedCourseText> = {
   },
   "linear-algebra": {
     "title": "线性代数导论",
-    "shortDescription": "把矩阵、向量空间和特征值这些核心概念压缩成先认题型、先认第一步的复习卡。",
+    "shortDescription": "按 MATH 3A 教材整理：线性方程组、矩阵、行列式、向量空间、内积空间，以及特征值主题。",
     "units": [
-      "线性方程组与行化简",
+      "线性方程组",
       "矩阵",
       "行列式",
       "向量空间",
-      "正交性",
+      "内积空间",
       "线性变换与特征值"
     ],
     "chapters": [
-      "第 1 章：线性方程组与行化简",
-      "第 2 章：矩阵代数",
+      "第 1 章：线性方程组",
+      "第 2 章：矩阵",
       "第 3 章：行列式",
       "第 4 章：向量空间",
-      "第 5 章：正交性",
-      "第 6 章：特征值与线性变换"
+      "第 5 章：内积空间",
+      "第 6 章：线性变换与特征值"
     ]
   },
   "intro-proof": {
@@ -152,7 +152,7 @@ export const zhCourseContent: Record<string, LocalizedCourseText> = {
 export const zhCardContent: Record<string, LocalizedCardContent> = {
   "intuitive-limit": {
     "course": "单变量微积分 I",
-    "chapter": "第 1 章：函数与极限",
+    "chapter": "第 2 章：极限与导数",
     "unit": "极限",
     "topic": "极限的直观想法",
     "name": "直观的极限理念",
@@ -184,7 +184,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "direct-substitution": {
     "course": "单变量微积分 I",
-    "chapter": "第 1 章：函数与极限",
+    "chapter": "第 2 章：极限与导数",
     "unit": "极限",
     "topic": "直接替代",
     "name": "直接替代",
@@ -216,7 +216,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "factoring-0-0": {
     "course": "单变量微积分 I",
-    "chapter": "第 1 章：函数与极限",
+    "chapter": "第 2 章：极限与导数",
     "unit": "极限",
     "topic": "因式分解去除 0/0",
     "name": "因式分解 0/0",
@@ -248,7 +248,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "rationalizing": {
     "course": "单变量微积分 I",
-    "chapter": "第 1 章：函数与极限",
+    "chapter": "第 2 章：极限与导数",
     "unit": "极限",
     "topic": "合理化",
     "name": "合理化限制",
@@ -280,7 +280,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "infinite-limits": {
     "course": "单变量微积分 I",
-    "chapter": "第 1 章：函数与极限",
+    "chapter": "第 2 章：极限与导数",
     "unit": "极限",
     "topic": "无限极限",
     "name": "无限极限",
@@ -312,7 +312,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "limits-at-infinity": {
     "course": "单变量微积分 I",
-    "chapter": "第 1 章：函数与极限",
+    "chapter": "第 2 章：极限与导数",
     "unit": "极限",
     "topic": "无穷大极限",
     "name": "无穷大极限",
@@ -344,7 +344,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "continuity": {
     "course": "单变量微积分 I",
-    "chapter": "第 1 章：函数与极限",
+    "chapter": "第 2 章：极限与导数",
     "unit": "极限",
     "topic": "连续性",
     "name": "连续性",
@@ -376,7 +376,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "derivative-slope-rate": {
     "course": "单变量微积分 I",
-    "chapter": "第 2 章：导数",
+    "chapter": "第 3 章：求导法则",
     "unit": "导数",
     "topic": "导数作为斜率和变化率",
     "name": "导数 = 斜率 / 比率",
@@ -408,7 +408,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "derivative-definition": {
     "course": "单变量微积分 I",
-    "chapter": "第 2 章：导数",
+    "chapter": "第 3 章：求导法则",
     "unit": "导数",
     "topic": "定义的导数",
     "name": "定义的导数",
@@ -440,7 +440,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "power-rule": {
     "course": "单变量微积分 I",
-    "chapter": "第 2 章：导数",
+    "chapter": "第 3 章：求导法则",
     "unit": "导数",
     "topic": "权力法则",
     "name": "幂律",
@@ -472,7 +472,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "constant-rule": {
     "course": "单变量微积分 I",
-    "chapter": "第 2 章：导数",
+    "chapter": "第 3 章：求导法则",
     "unit": "导数",
     "topic": "不变的规则",
     "name": "恒定规则",
@@ -504,7 +504,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "sum-difference-rules": {
     "course": "单变量微积分 I",
-    "chapter": "第 2 章：导数",
+    "chapter": "第 3 章：求导法则",
     "unit": "导数",
     "topic": "和与差规则",
     "name": "和与差规则",
@@ -536,7 +536,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "product-rule": {
     "course": "单变量微积分 I",
-    "chapter": "第 2 章：导数",
+    "chapter": "第 3 章：求导法则",
     "unit": "导数",
     "topic": "产品规则",
     "name": "产品规则",
@@ -568,7 +568,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "quotient-rule": {
     "course": "单变量微积分 I",
-    "chapter": "第 2 章：导数",
+    "chapter": "第 3 章：求导法则",
     "unit": "导数",
     "topic": "商规则",
     "name": "商规则",
@@ -600,7 +600,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "chain-rule": {
     "course": "单变量微积分 I",
-    "chapter": "第 2 章：导数",
+    "chapter": "第 3 章：求导法则",
     "unit": "导数",
     "topic": "链式法则",
     "name": "链式法则",
@@ -632,7 +632,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "implicit-differentiation": {
     "course": "单变量微积分 I",
-    "chapter": "第 2 章：导数",
+    "chapter": "第 3 章：求导法则",
     "unit": "导数",
     "topic": "隐式微分",
     "name": "隐式微分",
@@ -664,7 +664,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "logarithmic-differentiation": {
     "course": "单变量微积分 I",
-    "chapter": "第 2 章：导数",
+    "chapter": "第 3 章：求导法则",
     "unit": "导数",
     "topic": "对数微分",
     "name": "对数微分",
@@ -696,7 +696,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "higher-derivatives": {
     "course": "单变量微积分 I",
-    "chapter": "第 2 章：导数",
+    "chapter": "第 3 章：求导法则",
     "unit": "导数",
     "topic": "更高的导数",
     "name": "高阶导数",
@@ -728,7 +728,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "tangent-line": {
     "course": "单变量微积分 I",
-    "chapter": "第 3 章：导数的应用",
+    "chapter": "第 4 章：导数的应用",
     "unit": "应用",
     "topic": "切线",
     "name": "切线",
@@ -760,7 +760,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "normal-line": {
     "course": "单变量微积分 I",
-    "chapter": "第 3 章：导数的应用",
+    "chapter": "第 4 章：导数的应用",
     "unit": "应用",
     "topic": "正常线",
     "name": "法线",
@@ -792,7 +792,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "increasing-decreasing": {
     "course": "单变量微积分 I",
-    "chapter": "第 3 章：导数的应用",
+    "chapter": "第 4 章：导数的应用",
     "unit": "应用",
     "topic": "增加和减少",
     "name": "增加/减少",
@@ -824,7 +824,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "local-max-min": {
     "course": "单变量微积分 I",
-    "chapter": "第 3 章：导数的应用",
+    "chapter": "第 4 章：导数的应用",
     "unit": "应用",
     "topic": "局部最大值和最小值",
     "name": "局部最大/最小",
@@ -856,7 +856,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "concavity": {
     "course": "单变量微积分 I",
-    "chapter": "第 3 章：导数的应用",
+    "chapter": "第 4 章：导数的应用",
     "unit": "应用",
     "topic": "凹",
     "name": "凹",
@@ -888,7 +888,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "inflection-points": {
     "course": "单变量微积分 I",
-    "chapter": "第 3 章：导数的应用",
+    "chapter": "第 4 章：导数的应用",
     "unit": "应用",
     "topic": "拐点",
     "name": "拐点",
@@ -920,7 +920,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "first-derivative-test": {
     "course": "单变量微积分 I",
-    "chapter": "第 3 章：导数的应用",
+    "chapter": "第 4 章：导数的应用",
     "unit": "应用",
     "topic": "一阶导数测试",
     "name": "一阶导数测试",
@@ -952,7 +952,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "second-derivative-test": {
     "course": "单变量微积分 I",
-    "chapter": "第 3 章：导数的应用",
+    "chapter": "第 4 章：导数的应用",
     "unit": "应用",
     "topic": "二阶导数测试",
     "name": "二阶导数检验",
@@ -984,7 +984,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "optimization": {
     "course": "单变量微积分 I",
-    "chapter": "第 3 章：导数的应用",
+    "chapter": "第 4 章：导数的应用",
     "unit": "应用",
     "topic": "优化",
     "name": "优化",
@@ -1016,7 +1016,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "related-rates": {
     "course": "单变量微积分 I",
-    "chapter": "第 3 章：导数的应用",
+    "chapter": "第 4 章：导数的应用",
     "unit": "应用",
     "topic": "相关价格",
     "name": "相关价格",
@@ -1048,7 +1048,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "linear-approximation": {
     "course": "单变量微积分 I",
-    "chapter": "第 3 章：导数的应用",
+    "chapter": "第 4 章：导数的应用",
     "unit": "应用",
     "topic": "线性近似",
     "name": "线性近似",
@@ -1080,7 +1080,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "antiderivative-idea": {
     "course": "单变量微积分 I",
-    "chapter": "第 4 章：积分",
+    "chapter": "第 5 章：积分",
     "unit": "积分",
     "topic": "反派生思想",
     "name": "反派生思想",
@@ -1112,7 +1112,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "indefinite-integral": {
     "course": "单变量微积分 I",
-    "chapter": "第 4 章：积分",
+    "chapter": "第 5 章：积分",
     "unit": "积分",
     "topic": "不定积分",
     "name": "不定积分",
@@ -1144,7 +1144,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "integral-power-rule": {
     "course": "单变量微积分 I",
-    "chapter": "第 4 章：积分",
+    "chapter": "第 5 章：积分",
     "unit": "积分",
     "topic": "积分的基本幂法则",
     "name": "积分幂法则",
@@ -1176,7 +1176,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "definite-integral-area": {
     "course": "单变量微积分 I",
-    "chapter": "第 4 章：积分",
+    "chapter": "第 5 章：积分",
     "unit": "积分",
     "topic": "定积分作为面积概念",
     "name": "定积分 = 有符号面积",
@@ -1208,7 +1208,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "ftc-practical": {
     "course": "单变量微积分 I",
-    "chapter": "第 4 章：积分",
+    "chapter": "第 5 章：积分",
     "unit": "积分",
     "topic": "微积分基本定理",
     "name": "联邦贸易委员会实际使用",
@@ -1240,7 +1240,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "u-substitution": {
     "course": "单变量微积分 I",
-    "chapter": "第 4 章：积分",
+    "chapter": "第 5 章：积分",
     "unit": "积分",
     "topic": "u-替换基本介绍",
     "name": "u-替代",
@@ -1272,7 +1272,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "mean-value-theorem": {
     "course": "单变量微积分 I",
-    "chapter": "第 3 章：导数的应用",
+    "chapter": "第 4 章：导数的应用",
     "unit": "应用",
     "topic": "中值定理",
     "name": "中值定理",
@@ -1304,7 +1304,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "curve-sketching": {
     "course": "单变量微积分 I",
-    "chapter": "第 3 章：导数的应用",
+    "chapter": "第 4 章：导数的应用",
     "unit": "应用",
     "topic": "曲线绘制总结",
     "name": "曲线绘制",
@@ -1336,7 +1336,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "newtons-method": {
     "course": "单变量微积分 I",
-    "chapter": "第 3 章：导数的应用",
+    "chapter": "第 4 章：导数的应用",
     "unit": "应用",
     "topic": "牛顿法",
     "name": "牛顿法",
@@ -1368,7 +1368,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "areas-between-curves": {
     "course": "单变量微积分 I",
-    "chapter": "第 5 章：积分的应用",
+    "chapter": "第 6 章：积分的应用",
     "unit": "积分应用",
     "topic": "曲线之间的区域",
     "name": "曲线之间的面积",
@@ -1400,7 +1400,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "disk-washer-method": {
     "course": "单变量微积分 I",
-    "chapter": "第 5 章：积分的应用",
+    "chapter": "第 6 章：积分的应用",
     "unit": "积分应用",
     "topic": "按圆盘和垫圈计算的体积",
     "name": "圆盘/垫圈法",
@@ -1432,7 +1432,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "shell-method": {
     "course": "单变量微积分 I",
-    "chapter": "第 5 章：积分的应用",
+    "chapter": "第 6 章：积分的应用",
     "unit": "积分应用",
     "topic": "圆柱壳的体积",
     "name": "壳法",
@@ -1464,7 +1464,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "work-integrals": {
     "course": "单变量微积分 I",
-    "chapter": "第 5 章：积分的应用",
+    "chapter": "第 6 章：积分的应用",
     "unit": "积分应用",
     "topic": "工作",
     "name": "作为一个整体工作",
@@ -1496,7 +1496,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "average-value-function": {
     "course": "单变量微积分 I",
-    "chapter": "第 5 章：积分的应用",
+    "chapter": "第 6 章：积分的应用",
     "unit": "积分应用",
     "topic": "函数的平均值",
     "name": "函数的平均值",
@@ -1528,7 +1528,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "limit-laws": {
     "course": "单变量微积分 I",
-    "chapter": "第 1 章：函数与极限",
+    "chapter": "第 2 章：极限与导数",
     "unit": "极限",
     "topic": "使用极限定律计算极限",
     "name": "限制法则",
@@ -1560,7 +1560,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "derivative-as-function": {
     "course": "单变量微积分 I",
-    "chapter": "第 2 章：导数",
+    "chapter": "第 3 章：求导法则",
     "unit": "导数",
     "topic": "作为函数的导数",
     "name": "导数函数",
@@ -1592,7 +1592,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "trig-derivatives": {
     "course": "单变量微积分 I",
-    "chapter": "第 2 章：导数",
+    "chapter": "第 3 章：求导法则",
     "unit": "导数",
     "topic": "三角函数的导数",
     "name": "三角导数",
@@ -1624,7 +1624,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "differentials": {
     "course": "单变量微积分 I",
-    "chapter": "第 2 章：导数",
+    "chapter": "第 3 章：求导法则",
     "unit": "导数",
     "topic": "线性近似和微分",
     "name": "差速器",
@@ -1656,7 +1656,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "area-distance-problems": {
     "course": "单变量微积分 I",
-    "chapter": "第 4 章：积分",
+    "chapter": "第 5 章：积分",
     "unit": "积分",
     "topic": "面积和距离问题",
     "name": "面积和距离问题",
@@ -2808,8 +2808,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "calc2-inverse-functions": {
     "course": "单变量微积分 II",
-    "chapter": "第 6 章：反函数、指数与对数函数",
-    "unit": "反函数、指数与对数函数",
+    "chapter": "衔接主题：超越函数与 l'Hospital 法则",
+    "unit": "衔接主题",
     "topic": "反函数及其导数",
     "name": "反函数",
     "useItWhen": "需要撤消某个功能",
@@ -2840,8 +2840,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "calc2-exponential-derivatives": {
     "course": "单变量微积分 II",
-    "chapter": "第 6 章：反函数、指数与对数函数",
-    "unit": "反函数、指数与对数函数",
+    "chapter": "衔接主题：超越函数与 l'Hospital 法则",
+    "unit": "衔接主题",
     "topic": "指数函数及其导数",
     "name": "指数导数",
     "useItWhen": "变量在指数中",
@@ -2872,8 +2872,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "calc2-log-functions": {
     "course": "单变量微积分 II",
-    "chapter": "第 6 章：反函数、指数与对数函数",
-    "unit": "反函数、指数与对数函数",
+    "chapter": "衔接主题：超越函数与 l'Hospital 法则",
+    "unit": "衔接主题",
     "topic": "对数函数",
     "name": "日志功能",
     "useItWhen": "你需要撤销指数或简化乘积和幂",
@@ -2904,8 +2904,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "calc2-growth-decay": {
     "course": "单变量微积分 II",
-    "chapter": "第 6 章：反函数、指数与对数函数",
-    "unit": "反函数、指数与对数函数",
+    "chapter": "衔接主题：超越函数与 l'Hospital 法则",
+    "unit": "衔接主题",
     "topic": "指数增长和衰退",
     "name": "成长与衰退",
     "useItWhen": "利率与当前金额成正比",
@@ -2936,8 +2936,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "calc2-inverse-trig": {
     "course": "单变量微积分 II",
-    "chapter": "第 6 章：反函数、指数与对数函数",
-    "unit": "反函数、指数与对数函数",
+    "chapter": "衔接主题：超越函数与 l'Hospital 法则",
+    "unit": "衔接主题",
     "topic": "反三角函数",
     "name": "反三角函数",
     "useItWhen": "你需要给出三角值的角度",
@@ -2968,8 +2968,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "calc2-lhopitals-rule": {
     "course": "单变量微积分 II",
-    "chapter": "第 6 章：反函数、指数与对数函数",
-    "unit": "反函数、指数与对数函数",
+    "chapter": "衔接主题：超越函数与 l'Hospital 法则",
+    "unit": "衔接主题",
     "topic": "不定形式和 l'Hospital 规则",
     "name": "医院法则",
     "useItWhen": "极限给出 0/0 或无穷大/无穷大",
@@ -3224,8 +3224,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "calc2-hyperbolic-functions": {
     "course": "单变量微积分 II",
-    "chapter": "第 6 章：反函数、指数与对数函数",
-    "unit": "反函数、指数与对数函数",
+    "chapter": "衔接主题：超越函数与 l'Hospital 法则",
+    "unit": "衔接主题",
     "topic": "双曲函数",
     "name": "双曲函数",
     "useItWhen": "sinh、cosh 或 tanh 出现",
@@ -5048,8 +5048,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-linear-systems": {
     "course": "线性代数导论",
-    "chapter": "第 1 章：线性方程组与行化简",
-    "unit": "线性方程组与行化简",
+    "chapter": "第 1 章：线性方程组",
+    "unit": "线性方程组",
     "topic": "线性方程组",
     "name": "线性系统",
     "useItWhen": "几个方程都围着同一组未知数转",
@@ -5080,8 +5080,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-augmented-matrix": {
     "course": "线性代数导论",
-    "chapter": "第 1 章：线性方程组与行化简",
-    "unit": "线性方程组与行化简",
+    "chapter": "第 1 章：线性方程组",
+    "unit": "线性方程组",
     "topic": "增广矩阵",
     "name": "增广矩阵",
     "useItWhen": "你想把方程组压缩成矩阵形式",
@@ -5112,8 +5112,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-row-reduction": {
     "course": "线性代数导论",
-    "chapter": "第 1 章：线性方程组与行化简",
-    "unit": "线性方程组与行化简",
+    "chapter": "第 1 章：线性方程组",
+    "unit": "线性方程组",
     "topic": "行化简",
     "name": "行化简",
     "useItWhen": "你想把方程组整理成更容易看懂的形式",
@@ -5144,8 +5144,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-pivots-free-variables": {
     "course": "线性代数导论",
-    "chapter": "第 1 章：线性方程组与行化简",
-    "unit": "线性方程组与行化简",
+    "chapter": "第 1 章：线性方程组",
+    "unit": "线性方程组",
     "topic": "枢轴变量和自由变量",
     "name": "枢轴变量与自由变量",
     "useItWhen": "矩阵已经化简完，你要判断解的结构",
@@ -5176,7 +5176,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-matrix-operations": {
     "course": "线性代数导论",
-    "chapter": "第 2 章：矩阵代数",
+    "chapter": "第 2 章：矩阵",
     "unit": "矩阵",
     "topic": "矩阵加法和标量乘法",
     "name": "基本矩阵运算",
@@ -5208,7 +5208,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-matrix-multiplication": {
     "course": "线性代数导论",
-    "chapter": "第 2 章：矩阵代数",
+    "chapter": "第 2 章：矩阵",
     "unit": "矩阵",
     "topic": "矩阵乘法",
     "name": "矩阵乘法",
@@ -5240,7 +5240,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-identity-matrix": {
     "course": "线性代数导论",
-    "chapter": "第 2 章：矩阵代数",
+    "chapter": "第 2 章：矩阵",
     "unit": "矩阵",
     "topic": "单位矩阵",
     "name": "单位矩阵",
@@ -5272,7 +5272,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-inverse-matrix": {
     "course": "线性代数导论",
-    "chapter": "第 2 章：矩阵代数",
+    "chapter": "第 2 章：矩阵",
     "unit": "矩阵",
     "topic": "逆矩阵",
     "name": "逆矩阵",
@@ -5528,7 +5528,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-dot-orthogonality": {
     "course": "线性代数导论",
-    "chapter": "第 5 章：正交性",
+    "chapter": "第 5 章：内积空间",
     "unit": "正交性",
     "topic": "点积和正交性",
     "name": "正交性",
@@ -5560,7 +5560,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-projection": {
     "course": "线性代数导论",
-    "chapter": "第 5 章：正交性",
+    "chapter": "第 5 章：内积空间",
     "unit": "正交性",
     "topic": "投影",
     "name": "投影",
@@ -5592,7 +5592,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-linear-transformation": {
     "course": "线性代数导论",
-    "chapter": "第 6 章：特征值与线性变换",
+    "chapter": "第 6 章：线性变换与特征值",
     "unit": "线性变换与特征值",
     "topic": "线性变换",
     "name": "线性变换",
@@ -5624,7 +5624,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-eigenvalues-eigenvectors": {
     "course": "线性代数导论",
-    "chapter": "第 6 章：特征值与线性变换",
+    "chapter": "第 6 章：线性变换与特征值",
     "unit": "线性变换与特征值",
     "topic": "特征值和特征向量",
     "name": "特征值和特征向量",
@@ -5656,7 +5656,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-diagonalization": {
     "course": "线性代数导论",
-    "chapter": "第 6 章：特征值与线性变换",
+    "chapter": "第 6 章：线性变换与特征值",
     "unit": "线性变换与特征值",
     "topic": "对角化",
     "name": "对角化",
@@ -5688,8 +5688,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-consistency": {
     "course": "线性代数导论",
-    "chapter": "第 1 章：线性方程组与行化简",
-    "unit": "线性方程组与行化简",
+    "chapter": "第 1 章：线性方程组",
+    "unit": "线性方程组",
     "topic": "一致与不一致系统",
     "name": "一致与不一致",
     "useItWhen": "行缩减完成，需要对系统进行分类",
@@ -5720,8 +5720,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-homogeneous-system": {
     "course": "线性代数导论",
-    "chapter": "第 1 章：线性方程组与行化简",
-    "unit": "线性方程组与行化简",
+    "chapter": "第 1 章：线性方程组",
+    "unit": "线性方程组",
     "topic": "均质系统",
     "name": "均质系统",
     "useItWhen": "右边全是零",
@@ -5752,7 +5752,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-transpose-symmetric": {
     "course": "线性代数导论",
-    "chapter": "第 2 章：矩阵代数",
+    "chapter": "第 2 章：矩阵",
     "unit": "矩阵",
     "topic": "转置和对称矩阵",
     "name": "转置和对称",
@@ -5880,7 +5880,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-orthonormal-gram-schmidt": {
     "course": "线性代数导论",
-    "chapter": "第 5 章：正交性",
+    "chapter": "第 5 章：内积空间",
     "unit": "正交性",
     "topic": "正交集和 Gram-Schmidt",
     "name": "正交和格拉姆-施密特",
@@ -5912,7 +5912,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-least-squares": {
     "course": "线性代数导论",
-    "chapter": "第 5 章：正交性",
+    "chapter": "第 5 章：内积空间",
     "unit": "正交性",
     "topic": "最小二乘法",
     "name": "最小二乘法",
@@ -5944,7 +5944,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-characteristic-polynomial": {
     "course": "线性代数导论",
-    "chapter": "第 6 章：特征值与线性变换",
+    "chapter": "第 6 章：线性变换与特征值",
     "unit": "线性变换与特征值",
     "topic": "特征多项式",
     "name": "特征多项式",
@@ -5976,8 +5976,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-echelon-vs-rref": {
     "course": "线性代数导论",
-    "chapter": "第 1 章：线性方程组与行化简",
-    "unit": "线性方程组与行化简",
+    "chapter": "第 1 章：线性方程组",
+    "unit": "线性方程组",
     "topic": "梯形形式与简化梯形形式",
     "name": "REF 与 RREF",
     "useItWhen": "矩阵几乎已清理完毕，您需要命名该形式",
@@ -6008,8 +6008,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-ax-equals-b": {
     "course": "线性代数导论",
-    "chapter": "第 1 章：线性方程组与行化简",
-    "unit": "线性方程组与行化简",
+    "chapter": "第 1 章：线性方程组",
+    "unit": "线性方程组",
     "topic": "矩阵方程 Ax = b",
     "name": "轴=b",
     "useItWhen": "系统被写成一个矩阵方程",
@@ -6040,7 +6040,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-invertible-matrix-theorem": {
     "course": "线性代数导论",
-    "chapter": "第 2 章：矩阵代数",
+    "chapter": "第 2 章：矩阵",
     "unit": "矩阵",
     "topic": "可逆矩阵定理",
     "name": "可逆矩阵定理",
@@ -6072,7 +6072,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-lu-factorization": {
     "course": "线性代数导论",
-    "chapter": "第 2 章：矩阵代数",
+    "chapter": "第 2 章：矩阵",
     "unit": "矩阵",
     "topic": "LU 因式分解",
     "name": "LU 因式分解",
@@ -6168,7 +6168,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-orthogonal-matrix": {
     "course": "线性代数导论",
-    "chapter": "第 5 章：正交性",
+    "chapter": "第 5 章：内积空间",
     "unit": "正交性",
     "topic": "正交矩阵",
     "name": "正交矩阵",
@@ -6200,7 +6200,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-matrix-of-transformation": {
     "course": "线性代数导论",
-    "chapter": "第 6 章：特征值与线性变换",
+    "chapter": "第 6 章：线性变换与特征值",
     "unit": "线性变换与特征值",
     "topic": "线性变换的矩阵",
     "name": "变换矩阵",
@@ -6232,7 +6232,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-kernel-range": {
     "course": "线性代数导论",
-    "chapter": "第 6 章：特征值与线性变换",
+    "chapter": "第 6 章：线性变换与特征值",
     "unit": "线性变换与特征值",
     "topic": "内核和范围",
     "name": "内核与范围",
@@ -6264,7 +6264,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-one-to-one-onto": {
     "course": "线性代数导论",
-    "chapter": "第 6 章：特征值与线性变换",
+    "chapter": "第 6 章：线性变换与特征值",
     "unit": "线性变换与特征值",
     "topic": "线性映射的一对一与onto",
     "name": "一对一 vs Onto",
@@ -6296,7 +6296,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
   },
   "la-eigenspace": {
     "course": "线性代数导论",
-    "chapter": "第 6 章：特征值与线性变换",
+    "chapter": "第 6 章：线性变换与特征值",
     "unit": "线性变换与特征值",
     "topic": "特征空间",
     "name": "特征空间",
@@ -9204,6 +9204,166 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "quickExample": {
       "problem": "前两个 CLT 准备动作是什么？",
       "move": "减去平均值并除以标准差。"
+    }
+  },
+  "tangent-velocity-problems": {
+    "course": "单变量微积分 I",
+    "chapter": "第 2 章：极限与导数",
+    "unit": "极限",
+    "topic": "切线与速度问题",
+    "name": "切线与速度问题",
+    "useItWhen": "课程在说明极限和导数为什么会出现",
+    "looksLike": "平均斜率逼近、割线变切线、平均速度变瞬时速度",
+    "doThis": "先写平均变化率，再让间隔趋近于 0",
+    "thinkOfItAs": "不断放大，直到平均变化率变成某一瞬间的精确变化率",
+    "watchOutFor": "太早把平均变化率和瞬时变化率当成一回事",
+    "rememberThis": "导数是把平均变化率的间隔缩到 0 得来的",
+    "typicalProblemShapes": [
+      "割线斜率变成切线斜率",
+      "位置函数配上 [t, t+h] 的平均速度"
+    ],
+    "miniDrill": [
+      {
+        "prompt": "切线构造里，哪一个量会越来越小？",
+        "answer": "两个点之间的水平间隔。"
+      },
+      {
+        "prompt": "速度题里先出现的是哪种速度？",
+        "answer": "平均速度。"
+      }
+    ],
+    "memoryHook": "先平均，间隔缩小后才变瞬时。",
+    "quickExample": {
+      "problem": "怎样从平均速度走到瞬时速度？",
+      "move": "先写平均速度公式，再让时间差趋近于 0。"
+    }
+  },
+  "precise-limit-definition": {
+    "course": "单变量微积分 I",
+    "chapter": "第 2 章：极限与导数",
+    "unit": "极限",
+    "topic": "极限的精确定义",
+    "name": "极限的精确定义",
+    "useItWhen": "课程不再只看图，而是要你写真正的 epsilon-delta 证明",
+    "looksLike": "对任意 epsilon > 0，存在 delta > 0",
+    "doThis": "先从输出要多接近开始，再反推 x 必须多接近",
+    "thinkOfItAs": "epsilon 规定 y 要多近，delta 负责把 x 管住",
+    "watchOutFor": "只把定义写出来，却没有选出真正可行的 delta",
+    "rememberThis": "epsilon 管输出，delta 管输入",
+    "typicalProblemShapes": [
+      "用定义证明 lim f(x)=L",
+      "简单线性或多项式函数的 epsilon-delta 证明"
+    ],
+    "miniDrill": [
+      {
+        "prompt": "哪一个字母控制输出误差？",
+        "answer": "epsilon。"
+      },
+      {
+        "prompt": "delta 应该依赖什么？",
+        "answer": "依赖 epsilon。"
+      }
+    ],
+    "memoryHook": "从 epsilon 反推到 delta。",
+    "quickExample": {
+      "problem": "epsilon-delta 证明真正的第一步是什么？",
+      "move": "从 |f(x)-L| < epsilon 出发，再往回推。"
+    }
+  },
+  "la-system-applications": {
+    "course": "线性代数导论",
+    "chapter": "第 1 章：线性方程组",
+    "unit": "线性方程组",
+    "topic": "线性方程组的应用",
+    "name": "方程组应用",
+    "useItWhen": "一道文字题其实想让你同时写出几个线性方程",
+    "looksLike": "网络流、曲线拟合、混合、配平、未知系数",
+    "doThis": "先定义未知量，再按条件列方程，最后解系统",
+    "thinkOfItAs": "把题目故事翻译成可解的方程盒子",
+    "watchOutFor": "变量和方程还没整理清楚就急着消元",
+    "rememberThis": "先定变量，再上矩阵",
+    "typicalProblemShapes": [
+      "由若干点做多项式拟合",
+      "由守恒条件写出的网络或流量方程"
+    ],
+    "miniDrill": [
+      {
+        "prompt": "文字题里，在增广矩阵之前应该先做什么？",
+        "answer": "把未知量和方程先列清楚。"
+      },
+      {
+        "prompt": "这些应用背后的共同结构是什么？",
+        "answer": "线性方程组。"
+      }
+    ],
+    "memoryHook": "先故事，后系统。",
+    "quickExample": {
+      "problem": "曲线拟合或网络题该怎样起手？",
+      "move": "先选未知量，再按每条条件写一个线性方程。"
+    }
+  },
+  "la-elementary-matrices": {
+    "course": "线性代数导论",
+    "chapter": "第 2 章：矩阵",
+    "unit": "矩阵",
+    "topic": "初等矩阵",
+    "name": "初等矩阵",
+    "useItWhen": "一道行变换想改写成矩阵乘法",
+    "looksLike": "EA，把一次换行或倍加操作写成矩阵",
+    "doThis": "从单位矩阵出发，把它改成对应那一次行操作的样子",
+    "thinkOfItAs": "把一次行操作打包成一个矩阵",
+    "watchOutFor": "忘记左乘改的是行，不是列",
+    "rememberThis": "初等矩阵就是矩阵版的一次行操作",
+    "typicalProblemShapes": [
+      "把行操作写成乘以 E",
+      "把消元步骤和矩阵乘积联系起来"
+    ],
+    "miniDrill": [
+      {
+        "prompt": "构造初等矩阵时先从哪一个矩阵出发？",
+        "answer": "单位矩阵。"
+      },
+      {
+        "prompt": "左乘 E 作用在行还是列？",
+        "answer": "行。"
+      }
+    ],
+    "memoryHook": "单位矩阵加一个行技巧，就是 E。",
+    "quickExample": {
+      "problem": "怎样构造对应某个单独行操作的矩阵？",
+      "move": "把单位矩阵改成那个行操作的样子。"
+    }
+  },
+  "la-markov-chains": {
+    "course": "线性代数导论",
+    "chapter": "第 2 章：矩阵",
+    "unit": "矩阵",
+    "topic": "马尔可夫链",
+    "name": "马尔可夫链",
+    "useItWhen": "一个系统按固定转移比例在不同状态之间移动",
+    "looksLike": "转移矩阵、状态向量、下一状态 = P 乘当前状态",
+    "doThis": "先写转移矩阵，再拿它去乘当前状态向量",
+    "thinkOfItAs": "今天的状态通过一个概率机器喂出明天的状态",
+    "watchOutFor": "把转移矩阵和当前状态向量弄混",
+    "rememberThis": "当前状态在前，转移矩阵管下一步",
+    "typicalProblemShapes": [
+      "人口或市场份额在几个类别之间流动",
+      "求下一状态或长期稳定分布"
+    ],
+    "miniDrill": [
+      {
+        "prompt": "转移矩阵记录的是什么？",
+        "answer": "系统怎样从一个状态走到下一个状态。"
+      },
+      {
+        "prompt": "当前分布由什么保存？",
+        "answer": "状态向量。"
+      }
+    ],
+    "memoryHook": "当前状态进去，下一状态出来。",
+    "quickExample": {
+      "problem": "马尔可夫链题里第一步矩阵操作是什么？",
+      "move": "用转移矩阵去乘当前状态向量。"
     }
   }
 };

@@ -19,7 +19,7 @@ export const calcOneCourse: CourseContent = {
   courseCodes: ["MATH 2A"],
   aliases: ["Calculus I", "Single Variable Calculus 1"],
   shortDescription:
-    "Fast single-variable calculus review for students who need the move first.",
+    "Stewart-style single-variable calculus review for limits, differentiation, graph shape, and first integrals.",
   units: [
     "Limits",
     "Derivatives",
@@ -28,16 +28,16 @@ export const calcOneCourse: CourseContent = {
     "Applications of Integration",
   ],
   chapters: [
-    "Chapter 1: Functions and Limits",
-    "Chapter 2: Derivatives",
-    "Chapter 3: Applications of Differentiation",
-    "Chapter 4: Integrals",
-    "Chapter 5: Applications of Integration",
+    "Chapter 2: Limits and Derivatives",
+    "Chapter 3: Differentiation Rules",
+    "Chapter 4: Applications of Differentiation",
+    "Chapter 5: Integrals",
+    "Chapter 6: Applications of Integration",
   ],
   cards: [
     makeCalcCard({
       id: "intuitive-limit",
-      chapter: "Chapter 1: Functions and Limits",
+      chapter: "Chapter 2: Limits and Derivatives",
       unit: "Limits",
       topic: "Intuitive idea of a limit",
       name: "Intuitive Limit Idea",
@@ -71,8 +71,43 @@ export const calcOneCourse: CourseContent = {
       difficulty: "Starter",
     }),
     makeCalcCard({
+      id: "tangent-velocity-problems",
+      chapter: "Chapter 2: Limits and Derivatives",
+      unit: "Limits",
+      topic: "Tangent and velocity problems",
+      name: "Tangent and Velocity Problems",
+      order: 1.5,
+      useItWhen: "the course is introducing why limits and derivatives showed up in the first place",
+      looksLike: "average slope getting closer, secant line to tangent line, average velocity to instantaneous velocity",
+      doThis: "start with the average rate, then squeeze the time or x-gap toward 0",
+      thinkOfItAs: "zooming in until an average change becomes the exact change at one instant",
+      watchOutFor: "treating average change and instantaneous change like the same thing too early",
+      rememberThis: "derivatives are born from shrinking average rate formulas",
+      quickExample: {
+        problem: "How do you get from average velocity to instantaneous velocity?",
+        move: "Take the average-velocity formula and let the time gap go to 0.",
+      },
+      typicalProblemShapes: [
+        "A secant slope getting turned into a tangent slope",
+        "A position function with average velocity over [t, t+h]",
+      ],
+      miniDrill: [
+        {
+          prompt: "What gets smaller in the tangent-line setup?",
+          answer: "The horizontal gap between the two points.",
+        },
+        {
+          prompt: "What rate comes first in a velocity problem?",
+          answer: "Average velocity.",
+        },
+      ],
+      memoryHook: "Average first, instant after the gap shrinks.",
+      tags: ["calc1", "limits", "tangent", "velocity"],
+      difficulty: "Starter",
+    }),
+    makeCalcCard({
       id: "direct-substitution",
-      chapter: "Chapter 1: Functions and Limits",
+      chapter: "Chapter 2: Limits and Derivatives",
       unit: "Limits",
       topic: "Direct substitution",
       name: "Direct Substitution",
@@ -107,7 +142,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "factoring-0-0",
-      chapter: "Chapter 1: Functions and Limits",
+      chapter: "Chapter 2: Limits and Derivatives",
       unit: "Limits",
       topic: "Factoring to remove 0/0",
       name: "Factoring Out 0/0",
@@ -142,7 +177,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "rationalizing",
-      chapter: "Chapter 1: Functions and Limits",
+      chapter: "Chapter 2: Limits and Derivatives",
       unit: "Limits",
       topic: "Rationalizing",
       name: "Rationalizing a Limit",
@@ -177,7 +212,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "infinite-limits",
-      chapter: "Chapter 1: Functions and Limits",
+      chapter: "Chapter 2: Limits and Derivatives",
       unit: "Limits",
       topic: "Infinite limits",
       name: "Infinite Limits",
@@ -212,7 +247,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "limits-at-infinity",
-      chapter: "Chapter 1: Functions and Limits",
+      chapter: "Chapter 2: Limits and Derivatives",
       unit: "Limits",
       topic: "Limits at infinity",
       name: "Limits at Infinity",
@@ -247,7 +282,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "continuity",
-      chapter: "Chapter 1: Functions and Limits",
+      chapter: "Chapter 2: Limits and Derivatives",
       unit: "Limits",
       topic: "Continuity",
       name: "Continuity",
@@ -281,8 +316,43 @@ export const calcOneCourse: CourseContent = {
       difficulty: "Starter",
     }),
     makeCalcCard({
+      id: "precise-limit-definition",
+      chapter: "Chapter 2: Limits and Derivatives",
+      unit: "Limits",
+      topic: "Precise definition of a limit",
+      name: "Precise Limit Definition",
+      order: 6.5,
+      useItWhen: "the class stops drawing pictures and wants a real epsilon proof",
+      looksLike: "for every epsilon > 0 there exists delta > 0",
+      doThis: "start from how close the output must be, then solve backward for how close x must be",
+      thinkOfItAs: "epsilon asks for output closeness, delta pays for it with input closeness",
+      watchOutFor: "writing the definition without actually choosing a working delta",
+      rememberThis: "epsilon is the y-target, delta is the x-rule",
+      quickExample: {
+        problem: "What is the real first move in an epsilon-delta limit proof?",
+        move: "Start from |f(x)-L| < epsilon and work backward.",
+      },
+      typicalProblemShapes: [
+        "A proof that lim f(x)=L from the definition",
+        "A simple polynomial or linear function where delta can be solved explicitly",
+      ],
+      miniDrill: [
+        {
+          prompt: "Which letter controls the output error?",
+          answer: "Epsilon.",
+        },
+        {
+          prompt: "What should delta depend on?",
+          answer: "Epsilon.",
+        },
+      ],
+      memoryHook: "Solve backward from epsilon to delta.",
+      tags: ["calc1", "limits", "epsilon-delta", "proof"],
+      difficulty: "Stretch",
+    }),
+    makeCalcCard({
       id: "derivative-slope-rate",
-      chapter: "Chapter 2: Derivatives",
+      chapter: "Chapter 3: Differentiation Rules",
       unit: "Derivatives",
       topic: "Derivative as slope and rate of change",
       name: "Derivative = Slope / Rate",
@@ -317,7 +387,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "derivative-definition",
-      chapter: "Chapter 2: Derivatives",
+      chapter: "Chapter 3: Differentiation Rules",
       unit: "Derivatives",
       topic: "Derivative from definition",
       name: "Derivative from Definition",
@@ -352,7 +422,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "power-rule",
-      chapter: "Chapter 2: Derivatives",
+      chapter: "Chapter 3: Differentiation Rules",
       unit: "Derivatives",
       topic: "Power rule",
       name: "Power Rule",
@@ -387,7 +457,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "constant-rule",
-      chapter: "Chapter 2: Derivatives",
+      chapter: "Chapter 3: Differentiation Rules",
       unit: "Derivatives",
       topic: "Constant rule",
       name: "Constant Rule",
@@ -422,7 +492,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "sum-difference-rules",
-      chapter: "Chapter 2: Derivatives",
+      chapter: "Chapter 3: Differentiation Rules",
       unit: "Derivatives",
       topic: "Sum and difference rules",
       name: "Sum and Difference Rules",
@@ -457,7 +527,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "product-rule",
-      chapter: "Chapter 2: Derivatives",
+      chapter: "Chapter 3: Differentiation Rules",
       unit: "Derivatives",
       topic: "Product rule",
       name: "Product Rule",
@@ -492,7 +562,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "quotient-rule",
-      chapter: "Chapter 2: Derivatives",
+      chapter: "Chapter 3: Differentiation Rules",
       unit: "Derivatives",
       topic: "Quotient rule",
       name: "Quotient Rule",
@@ -528,7 +598,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "chain-rule",
-      chapter: "Chapter 2: Derivatives",
+      chapter: "Chapter 3: Differentiation Rules",
       unit: "Derivatives",
       topic: "Chain rule",
       name: "Chain Rule",
@@ -563,7 +633,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "implicit-differentiation",
-      chapter: "Chapter 2: Derivatives",
+      chapter: "Chapter 3: Differentiation Rules",
       unit: "Derivatives",
       topic: "Implicit differentiation",
       name: "Implicit Differentiation",
@@ -598,7 +668,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "logarithmic-differentiation",
-      chapter: "Chapter 2: Derivatives",
+      chapter: "Chapter 3: Differentiation Rules",
       unit: "Derivatives",
       topic: "Logarithmic differentiation",
       name: "Logarithmic Differentiation",
@@ -633,7 +703,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "higher-derivatives",
-      chapter: "Chapter 2: Derivatives",
+      chapter: "Chapter 3: Differentiation Rules",
       unit: "Derivatives",
       topic: "Higher derivatives",
       name: "Higher Derivatives",
@@ -668,7 +738,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "tangent-line",
-      chapter: "Chapter 3: Applications of Differentiation",
+      chapter: "Chapter 4: Applications of Differentiation",
       unit: "Applications",
       topic: "Tangent line",
       name: "Tangent Line",
@@ -703,7 +773,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "normal-line",
-      chapter: "Chapter 3: Applications of Differentiation",
+      chapter: "Chapter 4: Applications of Differentiation",
       unit: "Applications",
       topic: "Normal line",
       name: "Normal Line",
@@ -738,7 +808,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "increasing-decreasing",
-      chapter: "Chapter 3: Applications of Differentiation",
+      chapter: "Chapter 4: Applications of Differentiation",
       unit: "Applications",
       topic: "Increasing and decreasing",
       name: "Increasing / Decreasing",
@@ -773,7 +843,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "local-max-min",
-      chapter: "Chapter 3: Applications of Differentiation",
+      chapter: "Chapter 4: Applications of Differentiation",
       unit: "Applications",
       topic: "Local max and min",
       name: "Local Max / Min",
@@ -808,7 +878,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "concavity",
-      chapter: "Chapter 3: Applications of Differentiation",
+      chapter: "Chapter 4: Applications of Differentiation",
       unit: "Applications",
       topic: "Concavity",
       name: "Concavity",
@@ -843,7 +913,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "inflection-points",
-      chapter: "Chapter 3: Applications of Differentiation",
+      chapter: "Chapter 4: Applications of Differentiation",
       unit: "Applications",
       topic: "Inflection points",
       name: "Inflection Points",
@@ -878,7 +948,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "first-derivative-test",
-      chapter: "Chapter 3: Applications of Differentiation",
+      chapter: "Chapter 4: Applications of Differentiation",
       unit: "Applications",
       topic: "First derivative test",
       name: "First Derivative Test",
@@ -913,7 +983,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "second-derivative-test",
-      chapter: "Chapter 3: Applications of Differentiation",
+      chapter: "Chapter 4: Applications of Differentiation",
       unit: "Applications",
       topic: "Second derivative test",
       name: "Second Derivative Test",
@@ -948,7 +1018,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "optimization",
-      chapter: "Chapter 3: Applications of Differentiation",
+      chapter: "Chapter 4: Applications of Differentiation",
       unit: "Applications",
       topic: "Optimization",
       name: "Optimization",
@@ -983,7 +1053,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "related-rates",
-      chapter: "Chapter 3: Applications of Differentiation",
+      chapter: "Chapter 4: Applications of Differentiation",
       unit: "Applications",
       topic: "Related rates",
       name: "Related Rates",
@@ -1018,7 +1088,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "linear-approximation",
-      chapter: "Chapter 3: Applications of Differentiation",
+      chapter: "Chapter 4: Applications of Differentiation",
       unit: "Applications",
       topic: "Linear approximation",
       name: "Linear Approximation",
@@ -1053,7 +1123,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "antiderivative-idea",
-      chapter: "Chapter 4: Integrals",
+      chapter: "Chapter 5: Integrals",
       unit: "Integrals",
       topic: "Antiderivative idea",
       name: "Antiderivative Idea",
@@ -1088,7 +1158,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "indefinite-integral",
-      chapter: "Chapter 4: Integrals",
+      chapter: "Chapter 5: Integrals",
       unit: "Integrals",
       topic: "Indefinite integral",
       name: "Indefinite Integral",
@@ -1123,7 +1193,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "integral-power-rule",
-      chapter: "Chapter 4: Integrals",
+      chapter: "Chapter 5: Integrals",
       unit: "Integrals",
       topic: "Basic power rule for integrals",
       name: "Integral Power Rule",
@@ -1158,7 +1228,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "definite-integral-area",
-      chapter: "Chapter 4: Integrals",
+      chapter: "Chapter 5: Integrals",
       unit: "Integrals",
       topic: "Definite integral as area idea",
       name: "Definite Integral = Signed Area",
@@ -1193,7 +1263,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "ftc-practical",
-      chapter: "Chapter 4: Integrals",
+      chapter: "Chapter 5: Integrals",
       unit: "Integrals",
       topic: "Fundamental Theorem of Calculus",
       name: "FTC Practical Use",
@@ -1228,7 +1298,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "u-substitution",
-      chapter: "Chapter 4: Integrals",
+      chapter: "Chapter 5: Integrals",
       unit: "Integrals",
       topic: "u-substitution basic intro",
       name: "u-Substitution",
@@ -1263,7 +1333,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "mean-value-theorem",
-      chapter: "Chapter 3: Applications of Differentiation",
+      chapter: "Chapter 4: Applications of Differentiation",
       unit: "Applications",
       topic: "Mean Value Theorem",
       name: "Mean Value Theorem",
@@ -1292,7 +1362,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "curve-sketching",
-      chapter: "Chapter 3: Applications of Differentiation",
+      chapter: "Chapter 4: Applications of Differentiation",
       unit: "Applications",
       topic: "Curve sketching summary",
       name: "Curve Sketching",
@@ -1321,7 +1391,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "newtons-method",
-      chapter: "Chapter 3: Applications of Differentiation",
+      chapter: "Chapter 4: Applications of Differentiation",
       unit: "Applications",
       topic: "Newton's Method",
       name: "Newton's Method",
@@ -1350,7 +1420,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "areas-between-curves",
-      chapter: "Chapter 5: Applications of Integration",
+      chapter: "Chapter 6: Applications of Integration",
       unit: "Applications of Integration",
       topic: "Areas between curves",
       name: "Area Between Curves",
@@ -1379,7 +1449,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "disk-washer-method",
-      chapter: "Chapter 5: Applications of Integration",
+      chapter: "Chapter 6: Applications of Integration",
       unit: "Applications of Integration",
       topic: "Volumes by disks and washers",
       name: "Disk / Washer Method",
@@ -1408,7 +1478,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "shell-method",
-      chapter: "Chapter 5: Applications of Integration",
+      chapter: "Chapter 6: Applications of Integration",
       unit: "Applications of Integration",
       topic: "Volumes by cylindrical shells",
       name: "Shell Method",
@@ -1437,7 +1507,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "work-integrals",
-      chapter: "Chapter 5: Applications of Integration",
+      chapter: "Chapter 6: Applications of Integration",
       unit: "Applications of Integration",
       topic: "Work",
       name: "Work as an Integral",
@@ -1466,7 +1536,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "average-value-function",
-      chapter: "Chapter 5: Applications of Integration",
+      chapter: "Chapter 6: Applications of Integration",
       unit: "Applications of Integration",
       topic: "Average value of a function",
       name: "Average Value of a Function",
@@ -1495,7 +1565,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "limit-laws",
-      chapter: "Chapter 1: Functions and Limits",
+      chapter: "Chapter 2: Limits and Derivatives",
       unit: "Limits",
       topic: "Calculating limits using limit laws",
       name: "Limit Laws",
@@ -1530,7 +1600,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "derivative-as-function",
-      chapter: "Chapter 2: Derivatives",
+      chapter: "Chapter 3: Differentiation Rules",
       unit: "Derivatives",
       topic: "The derivative as a function",
       name: "Derivative Function",
@@ -1565,7 +1635,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "trig-derivatives",
-      chapter: "Chapter 2: Derivatives",
+      chapter: "Chapter 3: Differentiation Rules",
       unit: "Derivatives",
       topic: "Derivatives of trigonometric functions",
       name: "Trig Derivatives",
@@ -1600,7 +1670,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "differentials",
-      chapter: "Chapter 2: Derivatives",
+      chapter: "Chapter 3: Differentiation Rules",
       unit: "Derivatives",
       topic: "Linear approximations and differentials",
       name: "Differentials",
@@ -1635,7 +1705,7 @@ export const calcOneCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "area-distance-problems",
-      chapter: "Chapter 4: Integrals",
+      chapter: "Chapter 5: Integrals",
       unit: "Integrals",
       topic: "Area and distance problems",
       name: "Area and Distance Problems",

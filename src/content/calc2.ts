@@ -19,21 +19,21 @@ export const calcTwoCourse: CourseContent = {
   courseCodes: ["MATH 2B"],
   aliases: ["Calculus II", "Single Variable Calculus 2"],
   shortDescription:
-    "Integration tricks, polar and parametric ideas, and single-variable series recognition.",
+    "Stewart-style second-course calculus with integration techniques, applications, differential equations, parametric and polar curves, and series.",
   units: [
-    "Inverse, Exponential, and Logarithmic Functions",
     "Integration Techniques",
     "Applications & Curves",
     "Differential Equations",
     "Sequences & Series",
+    "Bridge Topics",
   ],
   chapters: [
-    "Chapter 6: Inverse, Exponential, and Logarithmic Functions",
     "Chapter 7: Techniques of Integration",
     "Chapter 8: Further Applications of Integration",
     "Chapter 9: Differential Equations",
     "Chapter 10: Parametric Equations and Polar Coordinates",
     "Chapter 11: Sequences, Series, and Power Series",
+    "Bridge Topics: Transcendentals and l'Hospital",
   ],
   cards: [
     makeCalcCard({
@@ -1053,8 +1053,8 @@ export const calcTwoCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "calc2-inverse-functions",
-      chapter: "Chapter 6: Inverse, Exponential, and Logarithmic Functions",
-      unit: "Inverse, Exponential, and Logarithmic Functions",
+      chapter: "Bridge Topics: Transcendentals and l'Hospital",
+      unit: "Bridge Topics",
       topic: "Inverse functions and their derivatives",
       name: "Inverse Functions",
       order: 36,
@@ -1082,8 +1082,8 @@ export const calcTwoCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "calc2-exponential-derivatives",
-      chapter: "Chapter 6: Inverse, Exponential, and Logarithmic Functions",
-      unit: "Inverse, Exponential, and Logarithmic Functions",
+      chapter: "Bridge Topics: Transcendentals and l'Hospital",
+      unit: "Bridge Topics",
       topic: "Exponential functions and their derivatives",
       name: "Exponential Derivatives",
       order: 37,
@@ -1111,8 +1111,8 @@ export const calcTwoCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "calc2-log-functions",
-      chapter: "Chapter 6: Inverse, Exponential, and Logarithmic Functions",
-      unit: "Inverse, Exponential, and Logarithmic Functions",
+      chapter: "Bridge Topics: Transcendentals and l'Hospital",
+      unit: "Bridge Topics",
       topic: "Logarithmic functions",
       name: "Log Functions",
       order: 38,
@@ -1140,8 +1140,8 @@ export const calcTwoCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "calc2-growth-decay",
-      chapter: "Chapter 6: Inverse, Exponential, and Logarithmic Functions",
-      unit: "Inverse, Exponential, and Logarithmic Functions",
+      chapter: "Bridge Topics: Transcendentals and l'Hospital",
+      unit: "Bridge Topics",
       topic: "Exponential growth and decay",
       name: "Growth and Decay",
       order: 39,
@@ -1169,8 +1169,8 @@ export const calcTwoCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "calc2-inverse-trig",
-      chapter: "Chapter 6: Inverse, Exponential, and Logarithmic Functions",
-      unit: "Inverse, Exponential, and Logarithmic Functions",
+      chapter: "Bridge Topics: Transcendentals and l'Hospital",
+      unit: "Bridge Topics",
       topic: "Inverse trigonometric functions",
       name: "Inverse Trig Functions",
       order: 40,
@@ -1198,8 +1198,8 @@ export const calcTwoCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "calc2-lhopitals-rule",
-      chapter: "Chapter 6: Inverse, Exponential, and Logarithmic Functions",
-      unit: "Inverse, Exponential, and Logarithmic Functions",
+      chapter: "Bridge Topics: Transcendentals and l'Hospital",
+      unit: "Bridge Topics",
       topic: "Indeterminate forms and l'Hospital's Rule",
       name: "l'Hospital's Rule",
       order: 41,
@@ -1430,8 +1430,8 @@ export const calcTwoCourse: CourseContent = {
     }),
     makeCalcCard({
       id: "calc2-hyperbolic-functions",
-      chapter: "Chapter 6: Inverse, Exponential, and Logarithmic Functions",
-      unit: "Inverse, Exponential, and Logarithmic Functions",
+      chapter: "Bridge Topics: Transcendentals and l'Hospital",
+      unit: "Bridge Topics",
       topic: "Hyperbolic functions",
       name: "Hyperbolic Functions",
       order: 49,
