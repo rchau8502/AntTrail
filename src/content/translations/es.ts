@@ -85,15 +85,18 @@ export const esCourseContent: Record<string, LocalizedCourseText> = {
   },
   "multivariable-calculus-2": {
     "title": "Cálculo Multivariable II",
-    "shortDescription": "MATH 2E alineado con Stewart a partir del Capítulo 13 sobre funciones vectoriales y del Capítulo 16 sobre cálculo vectorial.",
+    "shortDescription": "MATH 2E alineado con un flujo Stewart: repaso rapido de 13.1-13.3 y luego las secciones 16.1-16.9.",
     "units": [
-      "Funciones Vectoriales",
-      "Integrales de Línea y Campos Vectoriales",
-      "Integrales de Superficie y Teoremas"
+      "Secciones 13.1-13.3: Repaso de Funciones Vectoriales",
+      "Secciones 16.1-16.4: Campos Vectoriales e Integrales de Línea",
+      "Secciones 16.5-16.7: Rotacional, Divergencia e Integrales de Superficie",
+      "Secciones 16.8-16.9: Grandes Teoremas del Cálculo Vectorial"
     ],
     "chapters": [
-      "Capítulo 13: Funciones Vectoriales",
-      "Capítulo 16: Cálculo Vectorial"
+      "Secciones 13.1-13.3: Repaso de Funciones Vectoriales",
+      "Secciones 16.1-16.4: Campos Vectoriales e Integrales de Línea",
+      "Secciones 16.5-16.7: Rotacional, Divergencia e Integrales de Superficie",
+      "Secciones 16.8-16.9: Teoremas de Stokes y de la Divergencia"
     ]
   },
   "linear-algebra": {

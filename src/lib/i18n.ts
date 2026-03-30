@@ -78,6 +78,10 @@ const messages = {
     searchEverything: "Search everything",
     searchEverythingHelp:
       "Find by technique, topic, course, chapter, unit, memory hook, or problem shape.",
+    searchAndFilters: "Search + filters",
+    syllabusFlow: "Syllabus flow",
+    syllabusFlowHelp:
+      "Browse each course in lecture order so the current path shows up before the later extras.",
     clearAll: "Clear all",
     filters: "Filters",
     searchPlaceholder:
@@ -89,6 +93,10 @@ const messages = {
     cardsReadyToScan: "cards ready to scan",
     topics: "topics",
     noCardsMatch: "No cards match this filter set.",
+    currentSyllabusPath: "Current syllabus path",
+    optionalExtras: "Later / optional extras",
+    optionalExtrasHelp:
+      "Useful for preview or stretch work, but not the first shelf to study.",
     problemCue: "Problem cue",
     techniqueToTry: "Technique to try",
     firstMove: "First move",
@@ -102,6 +110,7 @@ const messages = {
     allUnits: "All units",
     allDifficulty: "All difficulty",
     allChapters: "All chapters",
+    currentSyllabusOnly: "Current syllabus only",
     front: "Front",
     revealBubble: "Reveal the bubble",
     previous: "Previous",
@@ -232,6 +241,10 @@ const messages = {
     searchEverything: "Buscar en todo",
     searchEverythingHelp:
       "Busca por técnica, tema, curso, capítulo, unidad, gancho de memoria o forma del problema.",
+    searchAndFilters: "Búsqueda + filtros",
+    syllabusFlow: "Ruta del curso",
+    syllabusFlowHelp:
+      "Recorre cada curso en orden de clase para que el camino actual aparezca antes que los extras posteriores.",
     clearAll: "Limpiar todo",
     filters: "Filtros",
     searchPlaceholder:
@@ -243,6 +256,10 @@ const messages = {
     cardsReadyToScan: "tarjetas listas para revisar",
     topics: "temas",
     noCardsMatch: "Ninguna tarjeta coincide con estos filtros.",
+    currentSyllabusPath: "Ruta actual del curso",
+    optionalExtras: "Extras posteriores u opcionales",
+    optionalExtrasHelp:
+      "Sirven para adelantar o profundizar, pero no son la primera estantería para estudiar.",
     problemCue: "Pista del problema",
     techniqueToTry: "Técnica a probar",
     firstMove: "Primer movimiento",
@@ -256,6 +273,7 @@ const messages = {
     allUnits: "Todas las unidades",
     allDifficulty: "Toda dificultad",
     allChapters: "Todos los capítulos",
+    currentSyllabusOnly: "Solo la ruta actual del curso",
     front: "Frente",
     revealBubble: "Revelar bubble",
     previous: "Anterior",

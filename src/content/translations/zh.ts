@@ -85,15 +85,18 @@ export const zhCourseContent: Record<string, LocalizedCourseText> = {
   },
   "multivariable-calculus-2": {
     "title": "多元微积分 II",
-    "shortDescription": "按 Stewart 第 13 章向量函数与第 16 章向量分析整理的 MATH 2E。",
+    "shortDescription": "这版 MATH 2E 按 Stewart 流程整理：先快速复习 13.1-13.3，再学 16.1-16.9。",
     "units": [
-      "向量函数",
-      "线积分与向量场",
-      "曲面积分与大定理"
+      "13.1-13.3：向量函数复习",
+      "16.1-16.4：向量场与线积分",
+      "16.5-16.7：旋度、散度与曲面积分",
+      "16.8-16.9：向量分析大定理"
     ],
     "chapters": [
-      "第 13 章：向量函数",
-      "第 16 章：向量分析"
+      "13.1-13.3：向量函数复习",
+      "16.1-16.4：向量场与线积分",
+      "16.5-16.7：旋度、散度与曲面积分",
+      "16.8-16.9：Stokes 与散度定理"
     ]
   },
   "linear-algebra": {

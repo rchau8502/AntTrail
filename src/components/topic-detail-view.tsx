@@ -58,6 +58,9 @@ const teachingCopy = {
     quiz: "Quiz",
     midterm: "Midterm",
     final: "Final",
+    optionalTopic: "Later / optional topic",
+    optionalTopicNote:
+      "This topic is useful for extra review or preview, but it is not part of the current core course path here.",
   },
   es: {
     learnThisTopic: "Aprende este tema",
@@ -71,6 +74,9 @@ const teachingCopy = {
     quiz: "Quiz",
     midterm: "Parcial",
     final: "Final",
+    optionalTopic: "Tema posterior u opcional",
+    optionalTopicNote:
+      "Este tema sirve para repaso extra o adelanto, pero aqui no forma parte del camino central actual del curso.",
   },
   zh: {
     learnThisTopic: "学这个主题",
@@ -84,8 +90,21 @@ const teachingCopy = {
     quiz: "小测",
     midterm: "期中",
     final: "期末",
+    optionalTopic: "后续 / 可选主题",
+    optionalTopicNote:
+      "这个主题适合额外复习或提前预习，但在这里不属于当前课程主线内容。",
   },
 } as const;
+
+function isOptionalCard(card: BubbleCard) {
+  return (
+    card.chapter.includes("Later / Optional") ||
+    card.chapter.includes("Optional:") ||
+    card.chapter.includes("后续 / 可选") ||
+    card.unit.includes("Later / Optional") ||
+    card.unit.includes("后续 / 可选")
+  );
+}
 
 function getPrimerLine(
   locale: keyof typeof teachingCopy,
@@ -124,6 +143,7 @@ export function TopicDetailView({
   const midtermDrill = buildBubblegumDrill(localizedCard, locale, "midterm", 0);
   const finalDrill = buildBubblegumDrill(localizedCard, locale, "final", 0);
   const primerLine = getPrimerLine(locale, localizedCard, localizedTechniqueLabel);
+  const optionalTopic = isOptionalCard(card);
 
   useEffect(() => {
     const sync = () => {
@@ -166,6 +186,16 @@ export function TopicDetailView({
                 <p className="mt-4 max-w-3xl text-lg leading-8 text-[color:var(--muted)]">
                   {localizedCard.memoryHook}
                 </p>
+                {optionalTopic ? (
+                  <div className="mt-5 max-w-3xl rounded-[1.4rem] border border-amber-200 bg-amber-50/90 px-4 py-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">
+                      {teach.optionalTopic}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-800">
+                      {teach.optionalTopicNote}
+                    </p>
+                  </div>
+                ) : null}
               </div>
               <MathConceptVisual card={localizedCard} mode="detail" />
             </div>

@@ -20,6 +20,20 @@ interface BubblegumHubProps {
   cards: BubbleCard[];
 }
 
+function isOptionalCard(card: BubbleCard) {
+  const chapterText = card.chapter.toLowerCase();
+  const unitText = card.unit.toLowerCase();
+
+  return (
+    chapterText.includes("later / optional") ||
+    unitText.includes("later / optional") ||
+    chapterText.includes("optional") ||
+    unitText.includes("optional") ||
+    card.chapter.includes("后续 / 可选") ||
+    card.unit.includes("后续 / 可选")
+  );
+}
+
 const hubCopy = {
   en: {
     weakTopics: "Weak topics",
@@ -43,6 +57,7 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
   const ui = hubCopy[locale] ?? hubCopy.en;
   const [query, setQuery] = useState("");
   const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
+  const [coreOnly, setCoreOnly] = useState(true);
   const [masteredIds, setMasteredIds] = useState<Set<string>>(new Set());
   const [progressMap, setProgressMap] = useState<Record<string, BubblegumTopicProgress>>({});
   const localizedCards = useMemo(() => localizeCards(cards, locale), [cards, locale]);
@@ -65,7 +80,12 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
   }, [cards]);
 
   const normalizedQuery = query.trim().toLowerCase();
-  const filteredCards = localizedCards.filter((card) => {
+  const scopedCards = localizedCards.filter((card) => {
+    const matchesCourse = courseFilter === "All" || card.course === courseFilter;
+    return matchesCourse && (!coreOnly || !isOptionalCard(card));
+  });
+
+  const filteredCards = scopedCards.filter((card) => {
     const matchesCourse = courseFilter === "All" || card.course === courseFilter;
     const matchesQuery =
       normalizedQuery.length === 0
@@ -96,7 +116,7 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
   });
 
   const orderedCards = [...filteredCards].sort((left, right) => left.order - right.order);
-  const weakCards = [...localizedCards]
+  const weakCards = [...scopedCards]
     .map((card) => ({
       card,
       progress: progressMap[card.id] ?? { gotIt: 0, missedIt: 0 },
@@ -138,9 +158,18 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
               <option key={course} value={course}>
                 {getCourseDisplayLabel(course, locale)}
               </option>
-            ))}
+              ))}
           </select>
         </div>
+        <label className="mt-3 inline-flex items-center gap-3 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm text-slate-900">
+          <input
+            type="checkbox"
+            checked={coreOnly}
+            onChange={(event) => setCoreOnly(event.target.checked)}
+            className="h-4 w-4 rounded border-[color:var(--line)] text-rose-600"
+          />
+          <span>{t("currentSyllabusOnly")}</span>
+        </label>
       </section>
 
       {weakCards.length > 0 ? (

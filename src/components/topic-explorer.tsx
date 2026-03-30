@@ -27,12 +27,49 @@ interface TopicExplorerProps {
   cards: BubbleCard[];
 }
 
+type BrowseMode = "search" | "syllabus";
+
 function slugifyCourse(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 }
 
+function isOptionalCard(card: BubbleCard) {
+  const chapterText = card.chapter.toLowerCase();
+  const unitText = card.unit.toLowerCase();
+
+  return (
+    chapterText.includes("later / optional") ||
+    unitText.includes("later / optional") ||
+    chapterText.includes("optional") ||
+    unitText.includes("optional") ||
+    card.chapter.includes("后续 / 可选") ||
+    card.unit.includes("后续 / 可选")
+  );
+}
+
+function groupCardsByChapter(cards: BubbleCard[]) {
+  const groups = new Map<string, BubbleCard[]>();
+
+  for (const card of cards) {
+    const existing = groups.get(card.chapter);
+
+    if (existing) {
+      existing.push(card);
+      continue;
+    }
+
+    groups.set(card.chapter, [card]);
+  }
+
+  return [...groups.entries()].map(([chapter, chapterCards]) => ({
+    chapter,
+    cards: chapterCards,
+  }));
+}
+
 export function TopicExplorer({ cards }: TopicExplorerProps) {
   const { difficultyLabel, locale, t } = useLanguage();
+  const [browseMode, setBrowseMode] = useState<BrowseMode>("search");
   const [query, setQuery] = useState("");
   const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
   const [unitFilter, setUnitFilter] = useState<"All" | Unit>("All");
@@ -98,6 +135,17 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
     course,
     cards: filteredCards.filter((card) => card.course === course),
   }));
+  const syllabusGroups = groupedCards.map(({ course, cards: courseCards }) => {
+    const coreCards = courseCards.filter((card) => !isOptionalCard(card));
+    const optionalCards = courseCards.filter((card) => isOptionalCard(card));
+
+    return {
+      course,
+      coreChapters: groupCardsByChapter(coreCards),
+      optionalChapters: groupCardsByChapter(optionalCards),
+      allCards: courseCards,
+    };
+  });
 
   const hasActiveFilters =
     query.length > 0 ||
@@ -137,10 +185,14 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <p className="text-sm font-semibold text-slate-900">
-                  {t("searchEverything")}
+                  {browseMode === "search"
+                    ? t("searchEverything")
+                    : t("syllabusFlow")}
                 </p>
                 <p className="mt-1 text-sm leading-6 text-[color:var(--muted)]">
-                  {t("searchEverythingHelp")}
+                  {browseMode === "search"
+                    ? t("searchEverythingHelp")
+                    : t("syllabusFlowHelp")}
                 </p>
               </div>
               {hasActiveFilters ? (
@@ -158,6 +210,31 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                   {t("clearAll")}
                 </button>
               ) : null}
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => setBrowseMode("search")}
+                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                  browseMode === "search"
+                    ? "bg-slate-950 text-white"
+                    : "border border-[color:var(--line)] bg-white text-slate-900"
+                }`}
+              >
+                {t("searchAndFilters")}
+              </button>
+              <button
+                type="button"
+                onClick={() => setBrowseMode("syllabus")}
+                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                  browseMode === "syllabus"
+                    ? "bg-slate-950 text-white"
+                    : "border border-[color:var(--line)] bg-white text-slate-900"
+                }`}
+              >
+                {t("syllabusFlow")}
+              </button>
             </div>
 
             <div className="grid gap-3">
@@ -262,7 +339,8 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
         </div>
       </section>
 
-      {groupedCards.map(({ course, cards: courseCards }) => (
+      {browseMode === "search"
+        ? groupedCards.map(({ course, cards: courseCards }) => (
         <section key={course} id={slugifyCourse(course)} className="space-y-4">
           <div className="flex items-end justify-between gap-4">
             <div>
@@ -377,7 +455,119 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
             </div>
           )}
         </section>
-      ))}
+        ))
+        : syllabusGroups.map((group) => (
+        <section key={group.course} id={slugifyCourse(group.course)} className="space-y-4">
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
+                  {getCourseDisplayLabel(group.course, locale, { includeCode: false })}
+                </p>
+                {group.allCards[0]?.courseCode ? (
+                  <span className="rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold text-[color:var(--muted)]">
+                    {group.allCards[0].courseCode}
+                  </span>
+                ) : getPrimaryCourseCode(group.course) ? (
+                  <span className="rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold text-[color:var(--muted)]">
+                    {getPrimaryCourseCode(group.course)}
+                  </span>
+                ) : null}
+              </div>
+              <h2 className="font-display text-3xl text-slate-900">
+                {group.allCards.length} {t("topics")}
+              </h2>
+            </div>
+          </div>
+
+          {group.allCards.length === 0 ? (
+            <div className="rounded-[1.75rem] border border-dashed border-[color:var(--line-strong)] bg-white/60 p-6 text-sm text-[color:var(--muted)]">
+              {t("noCardsMatch")}
+            </div>
+          ) : (
+            <div className="space-y-6">
+              {group.coreChapters.map((chapterGroup) => (
+                <div
+                  key={`${group.course}-${chapterGroup.chapter}`}
+                  className="rounded-[1.75rem] border border-[color:var(--line)] bg-white/80 p-5"
+                >
+                  <div className="mb-4 flex flex-wrap items-center gap-3">
+                    <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+                      {t("currentSyllabusPath")}
+                    </span>
+                    <h3 className="text-lg font-semibold text-slate-900">
+                      {chapterGroup.chapter}
+                    </h3>
+                  </div>
+                  <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+                    {chapterGroup.cards.map((card) => (
+                      <Link
+                        key={card.id}
+                        href={`/topics/${card.id}`}
+                        className="group rounded-[1.35rem] border border-[color:var(--line)] bg-[color:var(--surface)] p-4 transition hover:-translate-y-1 hover:border-sky-200 hover:bg-white"
+                      >
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-700">
+                          {card.unit}
+                        </p>
+                        <h4 className="mt-2 text-lg font-semibold text-slate-900">
+                          {card.name}
+                        </h4>
+                        <p className="mt-3 text-sm leading-6 text-[color:var(--muted)]">
+                          {getTechniqueLabel(card, locale)}
+                        </p>
+                        <p className="mt-3 text-sm font-semibold text-slate-900 transition group-hover:text-sky-700">
+                          {t("openBubble")} →
+                        </p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+
+              {group.optionalChapters.length ? (
+                <div className="rounded-[1.75rem] border border-amber-200 bg-amber-50/80 p-5">
+                  <div className="mb-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">
+                      {t("optionalExtras")}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-amber-900/80">
+                      {t("optionalExtrasHelp")}
+                    </p>
+                  </div>
+                  <div className="space-y-4">
+                    {group.optionalChapters.map((chapterGroup) => (
+                      <div key={`${group.course}-${chapterGroup.chapter}`}>
+                        <h4 className="text-sm font-semibold text-slate-900">
+                          {chapterGroup.chapter}
+                        </h4>
+                        <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+                          {chapterGroup.cards.map((card) => (
+                            <Link
+                              key={card.id}
+                              href={`/topics/${card.id}`}
+                              className="group rounded-[1.25rem] border border-amber-200 bg-white/90 p-4 transition hover:-translate-y-1 hover:border-amber-300"
+                            >
+                              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-700">
+                                {card.unit}
+                              </p>
+                              <h5 className="mt-2 text-base font-semibold text-slate-900">
+                                {card.name}
+                              </h5>
+                              <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
+                                {getTechniqueLabel(card, locale)}
+                              </p>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          )}
+        </section>
+        ))}
     </div>
   );
 }

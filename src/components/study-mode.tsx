@@ -22,10 +22,25 @@ interface StudyModeProps {
   cards: BubbleCard[];
 }
 
+function isOptionalCard(card: BubbleCard) {
+  const chapterText = card.chapter.toLowerCase();
+  const unitText = card.unit.toLowerCase();
+
+  return (
+    chapterText.includes("later / optional") ||
+    unitText.includes("later / optional") ||
+    chapterText.includes("optional") ||
+    unitText.includes("optional") ||
+    card.chapter.includes("后续 / 可选") ||
+    card.unit.includes("后续 / 可选")
+  );
+}
+
 export function StudyMode({ cards }: StudyModeProps) {
   const { difficultyLabel, locale, t } = useLanguage();
   const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
   const [unitFilter, setUnitFilter] = useState<"All" | Unit>("All");
+  const [coreOnly, setCoreOnly] = useState(true);
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const localizedCards = useMemo(() => localizeCards(cards, locale), [cards, locale]);
@@ -39,16 +54,19 @@ export function StudyMode({ cards }: StudyModeProps) {
     unitFilter === "All"
       ? courseScopedCards
       : courseScopedCards.filter((card) => card.unit === unitFilter);
+  const visibleCards = coreOnly
+    ? filteredCards.filter((card) => !isOptionalCard(card))
+    : filteredCards;
   const unitOptions = getUnitOptions(courseScopedCards);
 
-  const currentCard = filteredCards[index] ?? filteredCards[0];
+  const currentCard = visibleCards[index] ?? visibleCards[0];
 
   if (!currentCard) {
     return null;
   }
 
   function move(delta: number) {
-    const nextIndex = (index + delta + filteredCards.length) % filteredCards.length;
+    const nextIndex = (index + delta + visibleCards.length) % visibleCards.length;
     setIndex(nextIndex);
     setRevealed(false);
   }
@@ -103,8 +121,21 @@ export function StudyMode({ cards }: StudyModeProps) {
                 </option>
               ))}
             </select>
+            <label className="flex items-center gap-3 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm text-slate-900 sm:col-span-2 xl:justify-self-start">
+              <input
+                type="checkbox"
+                checked={coreOnly}
+                onChange={(event) => {
+                  setCoreOnly(event.target.checked);
+                  setIndex(0);
+                  setRevealed(false);
+                }}
+                className="h-4 w-4 rounded border-[color:var(--line)] text-sky-700"
+              />
+              <span>{t("currentSyllabusOnly")}</span>
+            </label>
             <div className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm text-[color:var(--muted)] sm:col-span-2 xl:justify-self-start">
-              {index + 1} / {filteredCards.length}
+              {index + 1} / {visibleCards.length}
             </div>
           </div>
         </div>

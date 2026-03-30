@@ -96,27 +96,30 @@ export const courseGuides: Partial<Record<string, CourseGuide>> = {
   },
   "multivariable-calculus-2": {
     overview: {
-      en: "This course is UCI-style MATH 2E: vector-valued motion, line and surface integrals, conservative fields, and the big vector-calculus theorems.",
-      es: "Este curso es MATH 2E al estilo UCI: movimiento vectorial, integrales de linea y de superficie, campos conservativos y los grandes teoremas de calculo vectorial.",
-      zh: "这门课是 UCI 风格的 MATH 2E：向量值运动、线积分、曲面积分、保守场，以及向量分析的大定理。",
+      en: "This MATH 2E flow uses a quick 13.1-13.3 review, then moves through Sections 16.1-16.9: vector fields, line integrals, surface integrals, and the big theorems.",
+      es: "Este flujo de MATH 2E hace un repaso rapido de 13.1-13.3 y luego pasa por las secciones 16.1-16.9: campos vectoriales, integrales de linea, integrales de superficie y los grandes teoremas.",
+      zh: "这版 MATH 2E 先快速复习 13.1-13.3，然后按 16.1-16.9 走：向量场、线积分、曲面积分和几条大定理。",
     },
     survivalAdvice: {
-      en: "Students usually improve fastest when they ask what geometry they are integrating over first: curve, surface, closed surface, or enclosed region.",
-      es: "Los estudiantes suelen mejorar mas rapido cuando primero preguntan sobre que geometria estan integrando: curva, superficie, superficie cerrada o region encerrada.",
-      zh: "学生往往只要先问清楚“积分对象是什么几何体”，进步就会很快：曲线、曲面、闭曲面，还是包围区域。",
+      en: "Students improve fastest when they name the geometry first: curve, closed loop, surface, closed surface, or region. That tells you line integral, Green, surface integral, Stokes, or Gauss.",
+      es: "Los estudiantes mejoran mas rapido cuando primero nombran la geometria: curva, lazo cerrado, superficie, superficie cerrada o region. Eso te dice si toca integral de linea, Green, integral de superficie, Stokes o Gauss.",
+      zh: "学生只要先叫出几何对象，进步就会快很多：曲线、闭合回路、曲面、闭曲面，还是区域。这样就知道该用线积分、Green、曲面积分、Stokes，还是 Gauss。",
     },
     mostTestedIds: [
       "math2e-line-integrals",
       "math2e-conservative-fields",
+      "math2e-ftc-line-integrals",
       "math2e-greens-theorem",
+      "math2e-parametric-surfaces",
       "math2e-surface-integrals",
       "math2e-divergence-curl",
       "math2e-stokes-gauss",
     ],
     starterIds: [
       "math2e-vector-functions",
-      "math2e-arc-length-curvature",
+      "math2e-motion-in-space",
       "math2e-line-integrals",
+      "math2e-divergence-curl",
     ],
   },
   "intro-proof": {

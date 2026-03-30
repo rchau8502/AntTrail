@@ -112,10 +112,25 @@ interface RecognitionQuizProps {
   cards: BubbleCard[];
 }
 
+function isOptionalCard(card: BubbleCard) {
+  const chapterText = card.chapter.toLowerCase();
+  const unitText = card.unit.toLowerCase();
+
+  return (
+    chapterText.includes("later / optional") ||
+    unitText.includes("later / optional") ||
+    chapterText.includes("optional") ||
+    unitText.includes("optional") ||
+    card.chapter.includes("后续 / 可选") ||
+    card.unit.includes("后续 / 可选")
+  );
+}
+
 export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
   const { locale, t } = useLanguage();
   const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
   const [unitFilter, setUnitFilter] = useState<"All" | Unit>("All");
+  const [coreOnly, setCoreOnly] = useState(true);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [score, setScore] = useState(0);
@@ -130,11 +145,14 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
     unitFilter === "All"
       ? courseScopedCards
       : courseScopedCards.filter((card) => card.unit === unitFilter);
+  const visibleCards = coreOnly
+    ? filteredCards.filter((card) => !isOptionalCard(card))
+    : filteredCards;
   const unitOptions = getUnitOptions(courseScopedCards);
-  const quizItems = buildQuizItems(filteredCards, locale);
+  const quizItems = buildQuizItems(visibleCards, locale);
 
   const currentItem = quizItems[index];
-  const currentCard = filteredCards[index];
+  const currentCard = visibleCards[index];
   const finished = index >= quizItems.length;
 
   if (!currentItem && !finished) {
@@ -217,6 +235,18 @@ export function RecognitionQuiz({ cards }: RecognitionQuizProps) {
                 </option>
               ))}
             </select>
+            <label className="flex items-center gap-3 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm text-slate-900 sm:col-span-2 xl:justify-self-start">
+              <input
+                type="checkbox"
+                checked={coreOnly}
+                onChange={(event) => {
+                  setCoreOnly(event.target.checked);
+                  resetSession();
+                }}
+                className="h-4 w-4 rounded border-[color:var(--line)] text-sky-700"
+              />
+              <span>{t("currentSyllabusOnly")}</span>
+            </label>
             <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white/80 px-5 py-4 text-sm text-[color:var(--muted)] sm:col-span-2 xl:justify-self-start">
               {t("score")}:{" "}
               <span className="font-semibold text-slate-900">{score}</span>
