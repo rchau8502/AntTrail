@@ -18,7 +18,8 @@ export const probabilityCourse: CourseContent = {
   institution: "UCI",
   courseCodes: ["MATH 130A"],
   aliases: ["Probability"],
-  shortDescription: "Counting, conditional probability, random variables, and expectation.",
+  shortDescription:
+    "Sample spaces, events, conditional probability, random variables, and expectation.",
   units: [
     "Counting",
     "Probability Basics",
@@ -82,8 +83,12 @@ export const probabilityCourse: CourseContent = {
       name: "Permutations",
       order: 2,
       useItWhen: "order matters",
+      whatItMeans:
+        "A permutation counts ordered outcomes, so rearranging the same objects creates a different result.",
       looksLike: "arrangements, lineups, rankings, passwords",
       doThis: "count ordered selections with factorial-style formulas",
+      whyThisMove:
+        "If the problem distinguishes first, second, and third positions, then changing the order changes the outcome. That is the exact trigger for permutations.",
       thinkOfItAs: "same people, different order, different outcome",
       watchOutFor: "using combinations when order matters",
       rememberThis: "permutations care about order",
@@ -117,8 +122,12 @@ export const probabilityCourse: CourseContent = {
       name: "Combinations",
       order: 3,
       useItWhen: "order does not matter",
+      whatItMeans:
+        "A combination counts unordered groups, so different orderings of the same group collapse into one outcome.",
       looksLike: "choose a committee, pick a hand, select a group",
       doThis: "count unordered selections with n choose k",
+      whyThisMove:
+        "When the problem only cares which objects were chosen, not the order they arrived, you must divide out all the duplicate orderings.",
       thinkOfItAs: "same group, same outcome, no matter the order",
       watchOutFor: "counting the same group multiple times in different orders",
       rememberThis: "combinations ignore order",
@@ -180,6 +189,205 @@ export const probabilityCourse: CourseContent = {
       difficulty: "Standard",
     }),
     makeProbabilityCard({
+      id: "prob-sample-space",
+      chapter: "Chapter 2: Probability: The Basics",
+      unit: "Probability Basics",
+      topic: "Sample spaces",
+      name: "Sample Space",
+      order: 4.2,
+      useItWhen: "you need to say what can happen before you calculate probability",
+      whatItMeans:
+        "A sample space is the full set of outcomes your experiment allows.",
+      looksLike: "roll a die, toss coins, draw a card, choose a person",
+      doThis: "name one experiment, then write the complete outcome set first",
+      whyThisMove:
+        "Probability lives on top of a clearly defined universe. If the universe is vague, every later event and formula becomes shaky.",
+      thinkOfItAs: "the universe for the probability question",
+      watchOutFor: "mixing two different experiments or forgetting possible outcomes",
+      rememberThis: "no sample space, no clean probability",
+      quickExample: {
+        problem: "Roll one fair die. What is the sample space?",
+        move: "Write {1,2,3,4,5,6}.",
+      },
+      typicalProblemShapes: [
+        "Questions that start with 'an experiment consists of...'",
+        "Setups where you first need to list or describe all outcomes",
+      ],
+      miniDrill: [
+        {
+          prompt: "What is the sample space for one coin toss?",
+          answer: "{H, T}.",
+        },
+        {
+          prompt: "Does the sample space describe one event or every allowed outcome?",
+          answer: "Every allowed outcome.",
+        },
+      ],
+      memoryHook: "Sample space = the whole universe.",
+      tags: ["probability", "sample-space", "events", "basics"],
+      aliases: ["outcome space", "omega", "S"],
+      difficulty: "Starter",
+    }),
+    makeProbabilityCard({
+      id: "prob-events",
+      chapter: "Chapter 2: Probability: The Basics",
+      unit: "Probability Basics",
+      topic: "Events",
+      name: "Events",
+      order: 4.4,
+      useItWhen: "you need to say which outcomes count as success",
+      whatItMeans: "An event is a set of outcomes inside the sample space.",
+      looksLike: "A = even outcome, B = at least one head, event E",
+      doThis: "translate the words into a subset of outcomes",
+      whyThisMove:
+        "Once the event is written as a set, the question stops being vague and turns into concrete set logic.",
+      thinkOfItAs: "a highlighted chunk of the sample space",
+      watchOutFor: "describing the event in words but never writing which outcomes are inside it",
+      rememberThis: "event = subset of the sample space",
+      quickExample: {
+        problem: "Roll one die. Let A be 'even'. What is A?",
+        move: "Write A = {2,4,6}.",
+      },
+      typicalProblemShapes: [
+        "Define A, B, C before computing a probability",
+        "Translate a verbal condition into a set of outcomes",
+      ],
+      miniDrill: [
+        {
+          prompt: "If A is 'odd result' on a die roll, what is A?",
+          answer: "{1,3,5}.",
+        },
+        {
+          prompt: "Is an event one outcome only?",
+          answer: "Not always. It can contain many outcomes.",
+        },
+      ],
+      memoryHook: "Event = outcomes you care about.",
+      tags: ["probability", "events", "sets", "basics"],
+      aliases: ["event set", "A event", "B event"],
+      difficulty: "Starter",
+    }),
+    makeProbabilityCard({
+      id: "prob-complement-rule",
+      chapter: "Chapter 2: Probability: The Basics",
+      unit: "Probability Basics",
+      topic: "Complement rule",
+      name: "Complement Rule",
+      order: 4.6,
+      useItWhen: "the opposite event is easier to count or compute",
+      whatItMeans:
+        "The complement is everything in the sample space that is not in the event.",
+      looksLike: "not A, at least one, none, not all, P(A^c)",
+      doThis: "find the opposite event first, then subtract from 1",
+      whyThisMove:
+        "Many probability questions hide an ugly event inside an easy opposite event. The complement rule flips you to the cleaner side.",
+      thinkOfItAs: "count the easier side, then flip back",
+      watchOutFor: "subtracting from 1 when the event was not truly the complement",
+      rememberThis: "hard event? try the opposite",
+      quickExample: {
+        problem: "What is P(at least one head in 3 tosses)?",
+        move: "Compute 1 - P(no heads).",
+      },
+      typicalProblemShapes: [
+        "\"At least one\" questions",
+        "\"None\" or \"not all\" questions",
+      ],
+      miniDrill: [
+        {
+          prompt: "What is P(A^c)?",
+          answer: "1 - P(A).",
+        },
+        {
+          prompt: "What is the complement of 'at least one head'?",
+          answer: "No heads.",
+        },
+      ],
+      memoryHook: "Opposite first, then 1 minus.",
+      tags: ["probability", "complement", "events", "basics"],
+      aliases: ["1 minus rule", "opposite event"],
+      difficulty: "Starter",
+    }),
+    makeProbabilityCard({
+      id: "prob-event-algebra",
+      chapter: "Chapter 2: Probability: The Basics",
+      unit: "Probability Basics",
+      topic: "Event algebra",
+      name: "Union, Intersection, Complement",
+      order: 4.8,
+      useItWhen: "the problem says and, or, not, at least one, both, or neither",
+      whatItMeans:
+        "Union means A or B, intersection means A and B, and complement means not A.",
+      looksLike: "A union B, A intersection B, A^c, both, either, neither",
+      doThis: "translate words into set symbols before touching formulas",
+      whyThisMove:
+        "Most early probability mistakes are language mistakes. If you translate the event correctly first, the formula choice gets much easier.",
+      thinkOfItAs: "grammar for probability events",
+      watchOutFor: "reading 'or' as exclusive when the problem means inclusive or",
+      rememberThis: "or = union, and = intersection, not = complement",
+      quickExample: {
+        problem: "How do you write 'red or ace'?",
+        move: "Use A union B.",
+      },
+      typicalProblemShapes: [
+        "Word problems with both / either / neither",
+        "Set notation before probability formulas",
+      ],
+      miniDrill: [
+        {
+          prompt: "What symbol matches 'and'?",
+          answer: "Intersection.",
+        },
+        {
+          prompt: "What symbol matches 'not A'?",
+          answer: "Complement.",
+        },
+      ],
+      memoryHook: "Words first, symbols second, formula third.",
+      tags: ["probability", "events", "union", "intersection", "complement"],
+      aliases: ["event logic", "set algebra"],
+      difficulty: "Starter",
+    }),
+    makeProbabilityCard({
+      id: "prob-disjoint-events",
+      chapter: "Chapter 2: Probability: The Basics",
+      unit: "Probability Basics",
+      topic: "Disjoint events",
+      name: "Disjoint Events",
+      order: 4.9,
+      useItWhen: "two events cannot happen at the same time",
+      whatItMeans:
+        "Disjoint events have no shared outcomes, so their intersection is empty.",
+      looksLike: "mutually exclusive, cannot both happen, A intersection B = empty",
+      doThis: "check whether the overlap is really empty before you add probabilities",
+      whyThisMove:
+        "Straight addition only works cleanly when the shared middle is empty. The disjoint check tells you whether that shortcut is legal.",
+      thinkOfItAs: "two doors that never open together",
+      watchOutFor: "calling two events disjoint just because they sound different",
+      rememberThis: "disjoint means no shared middle",
+      quickExample: {
+        problem: "Roll one die. Are 'even' and 'odd' disjoint?",
+        move: "Yes. No outcome is both.",
+      },
+      typicalProblemShapes: [
+        "Mutually exclusive cases",
+        "Questions asking whether two events can happen together",
+      ],
+      miniDrill: [
+        {
+          prompt: "If A and B are disjoint, what is A intersection B?",
+          answer: "The empty set.",
+        },
+        {
+          prompt: "Can disjoint events happen together on one trial?",
+          answer: "No.",
+        },
+      ],
+      memoryHook: "Disjoint = no overlap.",
+      tags: ["probability", "disjoint", "events", "basics"],
+      aliases: ["mutually exclusive"],
+      difficulty: "Starter",
+    }),
+    makeProbabilityCard({
       id: "prob-axioms",
       chapter: "Chapter 2: Probability: The Basics",
       unit: "Probability Basics",
@@ -187,8 +395,12 @@ export const probabilityCourse: CourseContent = {
       name: "Probability Axioms",
       order: 5,
       useItWhen: "you need the basic rules probability must obey",
+      whatItMeans:
+        "The axioms are the three rules that every valid probability model has to satisfy.",
       looksLike: "P(A), P(sample space), disjoint events",
       doThis: "use nonnegative, whole space equals 1, and add disjoint events",
+      whyThisMove:
+        "These rules are not just facts to memorize. They are the legal starting point that later formulas like complements and unions are built from.",
       thinkOfItAs: "the ground rules every probability model must follow",
       watchOutFor: "adding probabilities of overlapping events like they are disjoint",
       rememberThis: "whole space is 1",
@@ -222,8 +434,12 @@ export const probabilityCourse: CourseContent = {
       name: "Conditional Probability",
       order: 6,
       useItWhen: "the problem says given that something already happened",
+      whatItMeans:
+        "Conditional probability is the probability of A after the universe has been shrunk to B.",
       looksLike: "P(A given B)",
       doThis: "shrink the sample space to B, then measure A inside it",
+      whyThisMove:
+        "The phrase 'given B' changes the universe. If you keep using the old universe, the answer will usually be wrong even if the arithmetic looks fine.",
       thinkOfItAs: "zooming in after new information arrives",
       watchOutFor: "using the old sample space after a condition changes the setup",
       rememberThis: "conditioning shrinks the universe",
@@ -257,8 +473,12 @@ export const probabilityCourse: CourseContent = {
       name: "Independence",
       order: 7,
       useItWhen: "one event does not change the chance of the other",
+      whatItMeans:
+        "Independence means learning one event gives you no new information about the other.",
       looksLike: "independent events, product rule for events",
       doThis: "check whether P(A and B) equals P(A) times P(B)",
+      whyThisMove:
+        "Independence is about whether conditioning changes the probability. The product rule is the fastest test of that idea.",
       thinkOfItAs: "knowing one tells you nothing new about the other",
       watchOutFor: "confusing disjoint with independent",
       rememberThis: "independent means product rule",
@@ -292,8 +512,12 @@ export const probabilityCourse: CourseContent = {
       name: "Bayes' Formula",
       order: 8,
       useItWhen: "you need to reverse the condition",
+      whatItMeans:
+        "Bayes turns a probability about causes-given-result into something built from result-given-cause plus base rates.",
       looksLike: "P(A given B) but you know P(B given A)",
       doThis: "use prior times likelihood over total evidence",
+      whyThisMove:
+        "You usually know how likely the evidence is under each cause, not the other way around. Bayes is the rule that legally flips that direction.",
       thinkOfItAs: "reversing the arrow after new evidence",
       watchOutFor: "forgetting the denominator that totals all ways B can happen",
       rememberThis: "reverse the condition carefully",
@@ -320,6 +544,46 @@ export const probabilityCourse: CourseContent = {
       difficulty: "Standard",
     }),
     makeProbabilityCard({
+      id: "prob-random-variable",
+      chapter: "Chapter 3: Discrete Random Variables",
+      unit: "Random Variables",
+      topic: "Random variables",
+      name: "Random Variable = Rule on Outcomes",
+      order: 8.8,
+      useItWhen: "an experiment outcome is being turned into a number",
+      whatItMeans:
+        "A random variable is a rule that assigns a number to each outcome in the sample space.",
+      looksLike: "X = number of heads, X = payoff, X = waiting time, X(outcome)",
+      doThis: "say what number each outcome gets before talking about expectation or distributions",
+      whyThisMove:
+        "Expectation, variance, PMFs, and distributions are all about the numbers assigned by X. If you skip that assignment step, the formulas feel disconnected.",
+      thinkOfItAs: "a machine that turns outcomes into numbers",
+      watchOutFor: "thinking the random variable is the event itself instead of a numerical rule",
+      rememberThis: "random variable = number attached to each outcome",
+      quickExample: {
+        problem: "Two coin tosses. If X is number of heads, what is X(HT)?",
+        move: "X(HT) = 1.",
+      },
+      typicalProblemShapes: [
+        "Count something from an experiment",
+        "Turn outcomes into payoff, score, or waiting time",
+      ],
+      miniDrill: [
+        {
+          prompt: "If X counts heads in HHT, what is X(HHT)?",
+          answer: "2.",
+        },
+        {
+          prompt: "Is a random variable always a variable from algebra class?",
+          answer: "No. It is a rule on outcomes.",
+        },
+      ],
+      memoryHook: "Outcome in, number out.",
+      tags: ["probability", "random-variable", "basics"],
+      aliases: ["X on outcomes", "rv meaning"],
+      difficulty: "Starter",
+    }),
+    makeProbabilityCard({
       id: "prob-expected-value",
       chapter: "Chapter 3: Discrete Random Variables",
       unit: "Random Variables",
@@ -327,8 +591,12 @@ export const probabilityCourse: CourseContent = {
       name: "Expected Value",
       order: 9,
       useItWhen: "you need the long-run average payoff",
+      whatItMeans:
+        "Expected value is the weighted average value of the random variable over many repetitions.",
       looksLike: "E(X), average gain, average number, mean",
       doThis: "multiply each value by its probability and add",
+      whyThisMove:
+        "Each possible value matters in proportion to how likely it is. The weighted average is the clean way to combine size and chance.",
       thinkOfItAs: "the weighted average of all possible outcomes",
       watchOutFor: "averaging values without using probabilities",
       rememberThis: "expected value is weighted average",
@@ -362,8 +630,12 @@ export const probabilityCourse: CourseContent = {
       name: "Linearity of Expectation",
       order: 10,
       useItWhen: "a random total is a sum of smaller random pieces",
+      whatItMeans:
+        "Linearity says expectation splits across addition, even when the random pieces are dependent.",
       looksLike: "E(X + Y + ...)",
       doThis: "split expectation across the sum even if the variables are dependent",
+      whyThisMove:
+        "Expected totals are often easier to build from smaller expected pieces. Linearity lets you do that without proving independence first.",
       thinkOfItAs: "expectation distributes over addition",
       watchOutFor: "thinking independence is required here",
       rememberThis: "linearity does not need independence",
@@ -397,8 +669,12 @@ export const probabilityCourse: CourseContent = {
       name: "Variance",
       order: 11,
       useItWhen: "you care about spread, not just average",
+      whatItMeans:
+        "Variance measures the average squared distance from the mean, so it tells you how spread out the random variable is.",
       looksLike: "Var(X), spread around the mean",
       doThis: "measure average squared distance from the mean",
+      whyThisMove:
+        "Expectation only tells center. Variance is the standard way to measure how noisy or spread out the values are around that center.",
       thinkOfItAs: "how noisy the random variable is",
       watchOutFor: "treating variance like standard deviation or like the mean itself",
       rememberThis: "variance measures spread",
@@ -432,8 +708,12 @@ export const probabilityCourse: CourseContent = {
       name: "Common Distributions",
       order: 12,
       useItWhen: "a problem smells like repeated trials, waiting time, or rare counts",
+      whatItMeans:
+        "A distribution is the probability pattern of a random variable, and common named distributions correspond to common story types.",
       looksLike: "Bernoulli, Binomial, Geometric, Poisson, Normal",
       doThis: "match the story to the distribution pattern before using formulas",
+      whyThisMove:
+        "In probability, the story usually tells you the model first. Once the model is right, the formulas become much simpler.",
       thinkOfItAs: "story first, formula second",
       watchOutFor: "using a distribution formula before checking the setup assumptions",
       rememberThis: "recognize the story pattern",
@@ -467,8 +747,12 @@ export const probabilityCourse: CourseContent = {
       name: "Density Functions",
       order: 13,
       useItWhen: "the random variable can take a continuum of values",
+      whatItMeans:
+        "For a continuous random variable, the density describes how probability is spread, and interval probability comes from area.",
       looksLike: "f(x), density curve, integrate for probability",
       doThis: "use area under the density over an interval",
+      whyThisMove:
+        "Continuous models do not assign chunks of probability to exact points. Area over an interval is the right object, not point mass.",
       thinkOfItAs: "continuous probability lives in area, not point masses",
       watchOutFor: "asking for probability at one exact point like it has a chunk of mass",
       rememberThis: "continuous probabilities come from intervals",
@@ -642,8 +926,12 @@ export const probabilityCourse: CourseContent = {
       name: "Inclusion-Exclusion",
       order: 8.2,
       useItWhen: "two events overlap and plain addition double-counts",
+      whatItMeans:
+        "Inclusion-exclusion fixes the double count that happens when the same outcomes lie in both events.",
       looksLike: "P(A union B) with overlap",
       doThis: "add both events, then subtract the overlap once",
+      whyThisMove:
+        "Adding P(A) and P(B) counts the shared middle twice. The subtraction repairs that overcount exactly once.",
       thinkOfItAs: "fixing the double count",
       watchOutFor: "adding overlapping events like they are disjoint",
       rememberThis: "add both, subtract the overlap",
@@ -670,6 +958,45 @@ export const probabilityCourse: CourseContent = {
       difficulty: "Starter",
     }),
     makeProbabilityCard({
+      id: "prob-partitions",
+      chapter: "Chapter 2: Probability: The Basics",
+      unit: "Probability Basics",
+      topic: "Partitions",
+      name: "Partitions",
+      order: 8.1,
+      useItWhen: "you want to split the sample space into clean non-overlapping cases",
+      whatItMeans:
+        "A partition is a collection of disjoint cases that together cover the whole sample space.",
+      looksLike: "B1, B2, B3 split the sample space, case 1 / case 2 / case 3",
+      doThis: "check no overlap and full coverage before using case-by-case formulas",
+      whyThisMove:
+        "Total probability and Bayes need a clean partition. If the cases overlap or leave gaps, the setup breaks.",
+      thinkOfItAs: "cut the universe into puzzle pieces",
+      watchOutFor: "using cases that overlap or forgetting a leftover case",
+      rememberThis: "partition = disjoint and complete",
+      quickExample: {
+        problem: "What two checks define a partition?",
+        move: "No overlap, and together they cover the whole sample space.",
+      },
+      typicalProblemShapes: [
+        "Case-by-case probability setups",
+        "Bayes denominators built from several source groups",
+      ],
+      miniDrill: [
+        {
+          prompt: "Can a partition overlap?",
+          answer: "No.",
+        },
+        {
+          prompt: "Can a partition miss outcomes from the sample space?",
+          answer: "No.",
+        },
+      ],
+      memoryHook: "Partitions cover everything once.",
+      tags: ["probability", "partition", "events", "basics"],
+      difficulty: "Starter",
+    }),
+    makeProbabilityCard({
       id: "prob-total-probability",
       chapter: "Chapter 2: Probability: The Basics",
       unit: "Probability Basics",
@@ -677,8 +1004,12 @@ export const probabilityCourse: CourseContent = {
       name: "Law of Total Probability",
       order: 8.3,
       useItWhen: "one event can happen through several clean cases",
+      whatItMeans:
+        "Total probability builds one event from a partition of simpler, non-overlapping cases.",
       looksLike: "split into cases, partition, conditional pieces",
       doThis: "break the sample space into non-overlapping cases and add the case paths",
+      whyThisMove:
+        "When the event can happen through several doors, the clean way is to open each door separately and add those paths back together.",
       thinkOfItAs: "build the answer door by door",
       watchOutFor: "using cases that overlap",
       rememberThis: "split into cases, then add",
@@ -712,8 +1043,12 @@ export const probabilityCourse: CourseContent = {
       name: "PMF vs CDF",
       order: 12.2,
       useItWhen: "you need exact point probability or built-up probability up to a cutoff",
+      whatItMeans:
+        "The PMF gives probability at one exact value, while the CDF gives accumulated probability up to a cutoff.",
       looksLike: "P(X = x), F(x) = P(X <= x)",
       doThis: "use PMF for one exact value and CDF for everything up to that value",
+      whyThisMove:
+        "Students mix these because both talk about the same random variable. The distinction is exact point versus accumulated total.",
       thinkOfItAs: "PMF is one spot, CDF is the pile-up",
       watchOutFor: "using the CDF like it gives exact point mass automatically",
       rememberThis: "PMF is exact, CDF accumulates",
@@ -747,8 +1082,12 @@ export const probabilityCourse: CourseContent = {
       name: "Binomial Pattern",
       order: 12.3,
       useItWhen: "you count successes in a fixed number of independent yes-no trials",
+      whatItMeans:
+        "A binomial random variable counts how many successes happen in n independent Bernoulli trials with the same success chance.",
       looksLike: "n trials, same p, exactly k successes",
       doThis: "check fixed n, same p, independence, then use the binomial setup",
+      whyThisMove:
+        "Binomial is not just a formula. It is the model for repeated yes-no trials when you count total successes over a fixed number of tries.",
       thinkOfItAs: "repeat the same trial n times and count wins",
       watchOutFor: "using binomial when the number of trials is not fixed",
       rememberThis: "fixed tries, count successes",
@@ -782,8 +1121,12 @@ export const probabilityCourse: CourseContent = {
       name: "Geometric Pattern",
       order: 12.4,
       useItWhen: "you wait for the first success",
+      whatItMeans:
+        "A geometric random variable records how many independent trials it takes to reach the first success.",
       looksLike: "first success on trial k",
       doThis: "spot repeated independent trials and a stop-on-first-success story",
+      whyThisMove:
+        "The key distinction is what is being counted. Geometric counts waiting time, not total successes.",
       thinkOfItAs: "keep trying until one success lands",
       watchOutFor: "using geometric when the story counts total successes",
       rememberThis: "geometric means wait time",
@@ -817,8 +1160,12 @@ export const probabilityCourse: CourseContent = {
       name: "Poisson Pattern",
       order: 12.5,
       useItWhen: "you count rare events in a time or space window",
+      whatItMeans:
+        "A Poisson random variable counts how many events happen in a fixed window when events arrive at an average rate.",
       looksLike: "arrivals, defects, calls, hits in an interval",
       doThis: "check for count-in-a-window with average rate lambda",
+      whyThisMove:
+        "Poisson is the right move when the story is a count over a window, not a wait time and not a fixed number of trials.",
       thinkOfItAs: "rare events dripping into a bucket",
       watchOutFor: "using Poisson on a fixed-trial success story",
       rememberThis: "Poisson counts events in a window",
@@ -852,8 +1199,12 @@ export const probabilityCourse: CourseContent = {
       name: "Normal Pattern",
       order: 13.2,
       useItWhen: "a bell-shaped continuous model shows up",
+      whatItMeans:
+        "The normal distribution is a continuous bell-shaped model centered at a mean with spread controlled by a standard deviation.",
       looksLike: "mean mu, standard deviation sigma, bell curve",
       doThis: "think interval area and standardize when needed",
+      whyThisMove:
+        "In a normal model, probability comes from area under a smooth bell curve, so interval language and standardization matter more than point probabilities.",
       thinkOfItAs: "the classic bell model",
       watchOutFor: "treating normal like a point-mass discrete model",
       rememberThis: "normal means bell curve area",
@@ -1027,8 +1378,12 @@ export const probabilityCourse: CourseContent = {
       name: "Equally Likely Outcomes",
       order: 5.5,
       useItWhen: "every outcome is equally likely",
+      whatItMeans:
+        "An equally likely model gives the same probability weight to each single outcome.",
       looksLike: "fair die, fair card draw, random permutation, uniform sample space",
       doThis: "count favorable outcomes over total outcomes",
+      whyThisMove:
+        "Favorable-over-total is a shortcut, not a universal law. You earn it only after checking equal likelihood.",
       thinkOfItAs: "probability becomes a fraction of the sample space",
       watchOutFor: "using favorable over total when outcomes are not equally likely",
       rememberThis: "counting works only after equal-likelihood check",
@@ -1132,8 +1487,12 @@ export const probabilityCourse: CourseContent = {
       name: "Negative Binomial Pattern",
       order: 12.05,
       useItWhen: "you wait for the r-th success, not just the first one",
+      whatItMeans:
+        "A negative binomial random variable tracks how many trials it takes to reach the r-th success.",
       looksLike: "number of trials until r successes",
       doThis: "recognize repeated geometric waiting bundled to hit a target number of successes",
+      whyThisMove:
+        "This is the natural extension of geometric. Geometric stops at the first success; negative binomial keeps counting trials until success number r arrives.",
       thinkOfItAs: "geometric, but keep going until success number r",
       watchOutFor: "confusing number of successes with number of trials",
       rememberThis: "negative binomial = wait for the r-th success",
@@ -1167,8 +1526,12 @@ export const probabilityCourse: CourseContent = {
       name: "Hypergeometric Pattern",
       order: 12.1,
       useItWhen: "you sample without replacement from a finite population",
+      whatItMeans:
+        "A hypergeometric random variable counts successes in draws from a finite population when the population is not reset after each draw.",
       looksLike: "deck of cards, good items in a population, draws without replacement",
       doThis: "count good draws with combinations and remember probabilities change each draw",
+      whyThisMove:
+        "Without replacement means each draw changes the population, so the trials are no longer independent. That is exactly why binomial stops fitting and hypergeometric takes over.",
       thinkOfItAs: "binomial without replacement",
       watchOutFor: "using independence or binomial when the population is shrinking",
       rememberThis: "no replacement means hypergeometric",
@@ -1202,8 +1565,12 @@ export const probabilityCourse: CourseContent = {
       name: "Continuous Uniform",
       order: 13.05,
       useItWhen: "every point in an interval is equally likely by density",
+      whatItMeans:
+        "A continuous uniform variable spreads probability evenly across an interval.",
       looksLike: "X on [a,b], flat density, random point on an interval",
       doThis: "treat probability as interval length over total length",
+      whyThisMove:
+        "When the density is flat, interval probability is just a geometry problem: part length over total length.",
       thinkOfItAs: "flat chance across a stretch",
       watchOutFor: "trying to give a positive probability to one exact point",
       rememberThis: "uniform on an interval means length ratios",
@@ -1237,8 +1604,12 @@ export const probabilityCourse: CourseContent = {
       name: "Exponential Pattern",
       order: 13.15,
       useItWhen: "you model waiting time until the next arrival",
+      whatItMeans:
+        "An exponential random variable measures waiting time until the next event in a constant-rate arrival process.",
       looksLike: "wait time, rate lambda, memoryless continuous model",
       doThis: "think waiting time, not event count, and use the rate parameter",
+      whyThisMove:
+        "Exponential is the waiting-time partner of Poisson. If the story is 'how long until the next one,' this is the right model family.",
       thinkOfItAs: "the waiting-time partner of Poisson",
       watchOutFor: "mixing up Poisson counts with exponential waits",
       rememberThis: "Poisson counts, exponential waits",
@@ -1272,8 +1643,12 @@ export const probabilityCourse: CourseContent = {
       name: "Normal Approximation",
       order: 13.25,
       useItWhen: "a binomial has large n and you want a quick probability estimate",
+      whatItMeans:
+        "Normal approximation replaces a chunky discrete binomial shape with a smooth bell-curve estimate when the binomial is large enough.",
       looksLike: "Bin(n,p) with big sample size, bell-shape approximation",
       doThis: "match the mean and spread, then approximate with a normal curve",
+      whyThisMove:
+        "Exact binomial computation can get heavy when n is large. If the binomial shape is already bell-like, the normal model gives a fast approximation with the same center and spread.",
       thinkOfItAs: "swap a chunky count curve for a smooth bell",
       watchOutFor: "using it when n is too small or the binomial is too skewed",
       rememberThis: "big binomial can act normal",
@@ -1307,8 +1682,12 @@ export const probabilityCourse: CourseContent = {
       name: "Conditional Distribution",
       order: 14.5,
       useItWhen: "one variable is pinned down and you want the other after that information",
+      whatItMeans:
+        "A conditional distribution is the new distribution of one variable after you freeze some information about the other.",
       looksLike: "X given Y = y, conditional PMF, conditional density",
       doThis: "freeze the given information, then renormalize inside that slice",
+      whyThisMove:
+        "Conditioning changes the universe you are living in. The slice-and-renormalize move rebuilds probability inside that smaller world.",
       thinkOfItAs: "zooming in on one strip of the joint picture",
       watchOutFor: "using the original total probability after conditioning",
       rememberThis: "condition first, then renormalize",
@@ -1342,8 +1721,12 @@ export const probabilityCourse: CourseContent = {
       name: "Conditional Expectation",
       order: 16.1,
       useItWhen: "extra information changes your best average guess",
+      whatItMeans:
+        "Conditional expectation is the average value of X once the extra information has been revealed.",
       looksLike: "E[X given Y], average after information, tower rule",
       doThis: "take the expected value inside the conditioned world first",
+      whyThisMove:
+        "If new information changes which outcomes are possible, it should also change the average. Conditional expectation is the right average inside that updated world.",
       thinkOfItAs: "the average after the new clue arrives",
       watchOutFor: "treating conditional expectation like a single fixed number in every situation",
       rememberThis: "condition first, average second",
@@ -1412,8 +1795,12 @@ export const probabilityCourse: CourseContent = {
       name: "Bernoulli Pattern",
       order: 11.65,
       useItWhen: "one trial has just two outcomes like success or failure",
+      whatItMeans:
+        "A Bernoulli random variable is the one-trial success/failure model, often coded as 1 for success and 0 for failure.",
       looksLike: "0 or 1, yes or no, one shot with probability p",
       doThis: "treat it as the basic building block for binomial and indicator variables",
+      whyThisMove:
+        "Bernoulli is the atom behind many later models. One trial becomes Bernoulli; many repeated Bernoulli trials become binomial or geometric stories.",
       thinkOfItAs: "one tiny success-fail switch",
       watchOutFor: "using Bernoulli when the experiment has many trials",
       rememberThis: "Bernoulli is one trial, not many",
@@ -1762,8 +2149,12 @@ export const probabilityCourse: CourseContent = {
       name: "Poisson Approximation",
       order: 17.05,
       useItWhen: "there are many rare independent events with small success probabilities",
+      whatItMeans:
+        "Poisson approximation replaces a rare-event binomial count with a Poisson model whose parameter is lambda = np.",
       looksLike: "n large, p small, np moderate",
       doThis: "replace the binomial-style count with a Poisson model using lambda = np",
+      whyThisMove:
+        "When the success chance is tiny but there are many opportunities, the exact binomial is often overkill. The Poisson model captures the same rare-event count pattern with one simpler parameter.",
       thinkOfItAs: "rare events add up to a Poisson count",
       watchOutFor: "using it when p is not actually small or the trials are not close to independent",
       rememberThis: "rare and many usually means lambda = np",

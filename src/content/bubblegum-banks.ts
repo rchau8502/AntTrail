@@ -696,6 +696,1604 @@ export const bubblegumBanks: Partial<
       },
     ],
   },
+  "prob-sample-space": {
+    quiz: [
+      {
+        prompt: {
+          en: "A problem says: roll one fair die. Before you do any probability, what should you write first?",
+          es: "El problema dice: lanza un dado justo una vez. Antes de hacer cualquier probabilidad, ¿qué debes escribir primero?",
+          zh: "题目说：掷一次公平骰子。做任何概率计算前，第一步该写什么？",
+        },
+        firstStep: {
+          en: "Write the sample space.",
+          es: "Escribe el espacio muestral.",
+          zh: "先写样本空间。",
+        },
+        setup: {
+          en: "Probability questions start with the universe of allowed outcomes.",
+          es: "Las preguntas de probabilidad empiezan con el universo de resultados permitidos.",
+          zh: "概率题先要说清楚允许出现的全部结果。",
+        },
+        fullPath: [
+          { en: "Name the experiment clearly.", es: "Nombra con claridad el experimento.", zh: "先把实验说清楚。" },
+          { en: "List every allowed outcome.", es: "Lista todos los resultados permitidos.", zh: "列出所有允许结果。" },
+          { en: "Use that set as the universe for later events.", es: "Usa ese conjunto como universo para los eventos posteriores.", zh: "把这个集合当作后面事件的宇宙。" },
+        ],
+        answer: {
+          en: "S = {1,2,3,4,5,6}",
+          es: "S = {1,2,3,4,5,6}",
+          zh: "S = {1,2,3,4,5,6}",
+        },
+        selfCheck: {
+          en: "No sample space, no clean probability setup.",
+          es: "Sin espacio muestral no hay planteamiento limpio.",
+          zh: "没有样本空间，就没有干净的概率设定。",
+        },
+      },
+    ],
+  },
+  "prob-events": {
+    quiz: [
+      {
+        prompt: {
+          en: "Roll one die. Let A be 'even result'. What is the right first move?",
+          es: "Lanza un dado. Sea A = 'resultado par'. ¿Cuál es el primer movimiento correcto?",
+          zh: "掷一次骰子。设 A =“结果为偶数”。正确的第一步是什么？",
+        },
+        firstStep: {
+          en: "Write the event as a set of outcomes.",
+          es: "Escribe el evento como un conjunto de resultados.",
+          zh: "把事件写成结果集合。",
+        },
+        setup: {
+          en: "An event is not just a sentence. It is a subset of the sample space.",
+          es: "Un evento no es solo una frase. Es un subconjunto del espacio muestral.",
+          zh: "事件不只是文字描述，它是样本空间里的一个子集。",
+        },
+        fullPath: [
+          { en: "Start from the sample space.", es: "Empieza con el espacio muestral.", zh: "先看样本空间。" },
+          { en: "Pick the outcomes matching the condition.", es: "挑出满足条件的 resultados.", zh: "挑出满足条件的结果。" },
+          { en: "Write the event set explicitly.", es: "Escribe el conjunto del evento de forma explícita.", zh: "把事件集合明确写出来。" },
+        ],
+        answer: {
+          en: "A = {2,4,6}",
+          es: "A = {2,4,6}",
+          zh: "A = {2,4,6}",
+        },
+        selfCheck: {
+          en: "Event = subset, not just wording.",
+          es: "Evento = subconjunto, no solo palabras.",
+          zh: "事件 = 子集，不只是文字。",
+        },
+      },
+    ],
+  },
+  "prob-event-algebra": {
+    quiz: [
+      {
+        prompt: {
+          en: "A means 'red card' and B means 'face card'. How should you read A ∩ B?",
+          es: "A significa 'carta roja' y B significa 'figura'. ¿Cómo debes leer A ∩ B?",
+          zh: "A 表示“红牌”，B 表示“人头牌”。A ∩ B 该怎么读？",
+        },
+        firstStep: {
+          en: "Read intersection as 'A and B'.",
+          es: "Lee la intersección como 'A y B'.",
+          zh: "把交集读成“A 且 B”。",
+        },
+        setup: {
+          en: "Event algebra is language translation: or = union, and = intersection, not = complement.",
+          es: "El álgebra de eventos es traducción de lenguaje: o = unión, y = intersección, no = complemento.",
+          zh: "事件代数本质上是语言翻译：或 = 并，且 = 交，不 = 补。",
+        },
+        fullPath: [
+          { en: "Translate the words before touching formulas.", es: "Traduce las palabras antes de tocar fórmulas.", zh: "先翻译文字，再碰公式。" },
+          { en: "Match 'and' with intersection.", es: "Empareja 'y' con intersección.", zh: "把“且”对应成交集。" },
+          { en: "Then decide what set of outcomes that means.", es: "Luego decide qué conjunto de resultados significa eso.", zh: "再判断这对应哪些结果。" },
+        ],
+        answer: {
+          en: "Both red and face card.",
+          es: "Roja y figura a la vez.",
+          zh: "同时是红牌又是人头牌。",
+        },
+        selfCheck: {
+          en: "Translate words first: or/and/not.",
+          es: "Primero traduce las palabras: o/y/no.",
+          zh: "先翻译词：或 / 且 / 不。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "A = 'at least one head in two tosses'. Write A^c in words.",
+          es: "A = 'al menos una cara en dos lanzamientos'. Escribe A^c en palabras.",
+          zh: "A =“两次投掷中至少有一个正面”。请用文字写出 A^c。",
+        },
+        firstStep: {
+          en: "Flip the event to the exact opposite outcome set.",
+          es: "Cambia el evento al conjunto opuesto exacto.",
+          zh: "把事件翻成完全相反的结果集合。",
+        },
+        setup: {
+          en: "Complement means every outcome in the sample space that is not in A.",
+          es: "Complemento significa todo resultado del espacio muestral que no está en A.",
+          zh: "补事件就是样本空间里所有“不在 A 中”的结果。",
+        },
+        fullPath: [
+          { en: "Identify what A allows.", es: "Identifica lo que A permite.", zh: "先看 A 包含什么。" },
+          { en: "Take every outcome not in A.", es: "Toma cada resultado que no esté en A.", zh: "把所有不在 A 里的结果拿出来。" },
+          { en: "State that opposite event cleanly in words.", es: "Expresa ese evento opuesto claramente en palabras.", zh: "再用一句清楚的话把这个相反事件说出来。" },
+        ],
+        answer: {
+          en: "No heads in two tosses.",
+          es: "Ninguna cara en dos lanzamientos.",
+          zh: "两次都没有正面。",
+        },
+        selfCheck: {
+          en: "Complement = exact opposite inside the same universe.",
+          es: "Complemento = opuesto exacto dentro del mismo universo.",
+          zh: "补事件 = 在同一个宇宙里的精确相反事件。",
+        },
+      },
+    ],
+  },
+  "prob-complement-rule": {
+    quiz: [
+      {
+        prompt: {
+          en: "What is the fastest setup for P(at least one head in 4 tosses)?",
+          es: "¿Cuál es el planteamiento más rápido para P(al menos una cara en 4 lanzamientos)?",
+          zh: "求 P(四次投掷至少出现一个正面) 时，最快的设法是什么？",
+        },
+        firstStep: {
+          en: "Use the complement.",
+          es: "Usa el complemento.",
+          zh: "先用补事件。",
+        },
+        setup: {
+          en: "\"At least one\" is often easier through the opposite event \"none\".",
+          es: "\"Al menos una\" suele ser más fácil pasando por el evento opuesto \"ninguna\".",
+          zh: "“至少一个”通常先转成相反事件“一个都没有”更容易。",
+        },
+        fullPath: [
+          { en: "Name the opposite event.", es: "Nombra el evento opuesto.", zh: "先写出相反事件。" },
+          { en: "Find its probability.", es: "求它的概率.", zh: "算出它的概率。" },
+          { en: "Subtract from 1.", es: "Resta a 1.", zh: "再用 1 去减。" },
+        ],
+        answer: {
+          en: "1 - P(no heads in 4 tosses)",
+          es: "1 - P(ninguna cara en 4 lanzamientos)",
+          zh: "1 - P(四次都没有正面)",
+        },
+        selfCheck: {
+          en: "At least one -> think none first.",
+          es: "Al menos una -> piensa primero en ninguna.",
+          zh: "至少一个 -> 先想一个都没有。",
+        },
+      },
+    ],
+  },
+  "prob-axioms": {
+    quiz: [
+      {
+        prompt: {
+          en: "Two events A and B are disjoint. What rule should you use for P(A ∪ B)?",
+          es: "Dos eventos A y B son disjuntos. ¿Qué regla debes usar para P(A ∪ B)?",
+          zh: "两个事件 A 和 B 互斥。求 P(A ∪ B) 时该用哪条规则？",
+        },
+        firstStep: {
+          en: "Add them directly.",
+          es: "Súmalos directamente.",
+          zh: "直接相加。",
+        },
+        setup: {
+          en: "One of the axioms says disjoint events add with no overlap correction.",
+          es: "Uno de los axiomas dice que los eventos disjuntos se suman sin corrección por traslape.",
+          zh: "概率公理里有一条：互斥事件相加时不用做重叠修正。",
+        },
+        fullPath: [
+          { en: "Check disjointness.", es: "Verifica que sean disjuntos.", zh: "先确认它们互斥。" },
+          { en: "Use P(A ∪ B) = P(A) + P(B).", es: "Usa P(A ∪ B) = P(A) + P(B).", zh: "用 P(A ∪ B) = P(A) + P(B)。" },
+          { en: "Do not subtract an overlap term.", es: "No restes un término de traslape.", zh: "不要再减重叠项。" },
+        ],
+        answer: {
+          en: "P(A ∪ B) = P(A) + P(B)",
+          es: "P(A ∪ B) = P(A) + P(B)",
+          zh: "P(A ∪ B) = P(A) + P(B)",
+        },
+        selfCheck: {
+          en: "Disjoint means straight addition.",
+          es: "Disjunto significa suma directa.",
+          zh: "互斥就直接相加。",
+        },
+      },
+    ],
+  },
+  "prob-conditional": {
+    quiz: [
+      {
+        prompt: {
+          en: "A card is known to be red. What happens to the sample space before asking whether it is a heart?",
+          es: "Se sabe que una carta es roja. ¿Qué pasa con el espacio muestral antes de preguntar si es corazón?",
+          zh: "已知一张牌是红色的。接着问它是不是红桃前，样本空间先发生了什么变化？",
+        },
+        firstStep: {
+          en: "Shrink the sample space to the red cards.",
+          es: "Reduce el espacio muestral a las cartas rojas.",
+          zh: "先把样本空间缩成所有红牌。",
+        },
+        setup: {
+          en: "Conditional probability means you no longer live in the old universe. You live inside the given event.",
+          es: "La probabilidad condicional significa que ya no vives en el universo viejo. Vives dentro del evento dado.",
+          zh: "条件概率意味着你已经不在原来的宇宙里了，而是活在给定事件内部。",
+        },
+        fullPath: [
+          { en: "Mark the given event B.", es: "Marca el evento dado B.", zh: "先标出已知事件 B。" },
+          { en: "Keep only outcomes inside B.", es: "Conserva solo los resultados dentro de B.", zh: "只保留 B 里面的结果。" },
+          { en: "Measure A within that smaller universe.", es: "Mide A dentro de ese universo más pequeño.", zh: "再在这个更小的宇宙里计算 A。" },
+        ],
+        answer: {
+          en: "The universe shrinks to B.",
+          es: "El universo se reduce a B.",
+          zh: "宇宙会缩成 B。",
+        },
+        selfCheck: {
+          en: "Given B = live inside B.",
+          es: "Dado B = vivir dentro de B.",
+          zh: "已知 B = 活在 B 里面。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "A box has 5 red and 3 blue balls. Two are drawn without replacement. Given that the first ball is red, what is the setup for the probability the second ball is blue?",
+          es: "Una caja tiene 5 bolas rojas y 3 azules. Se sacan 2 sin reemplazo. Dado que la primera es roja, ¿cual es el planteamiento para la probabilidad de que la segunda sea azul?",
+          zh: "一个盒子里有 5 个红球和 3 个蓝球，不放回抽 2 个。已知第一个球是红色，求第二个球是蓝色的设法是什么？",
+        },
+        firstStep: {
+          en: "Shrink the world to outcomes where the first draw is red.",
+          es: "Reduce el mundo a los resultados donde la primera extraccion es roja.",
+          zh: "先把世界缩到“第一球是红色”的情况里。",
+        },
+        setup: {
+          en: "Conditional probability changes the population you are working with before you count the second event.",
+          es: "La probabilidad condicional cambia la poblacion con la que trabajas antes de contar el segundo evento.",
+          zh: "条件概率会先改变你所处的总体，再去计算后面的事件。",
+        },
+        fullPath: [
+          { en: "Condition on first red being already removed.", es: "Condiciona a que ya se quito una roja primero.", zh: "先把“已经拿走一个红球”这个条件固定住。" },
+          { en: "That leaves 4 red and 3 blue among 7 balls.", es: "Eso deja 4 rojas y 3 azules entre 7 bolas.", zh: "这时剩下 4 红 3 蓝，共 7 个球。" },
+          { en: "Now read the chance the second ball is blue in this smaller world.", es: "Ahora lee la probabilidad de azul en este mundo mas pequeño.", zh: "再在这个缩小后的世界里看第二球是蓝色的概率。" },
+        ],
+        answer: {
+          en: "Use the reduced world: 3/7.",
+          es: "Usa el mundo reducido: 3/7.",
+          zh: "在缩小后的世界里算，结果是 3/7。",
+        },
+        selfCheck: {
+          en: "Given information changes the denominator first.",
+          es: "La informacion dada cambia primero el denominador.",
+          zh: "已知条件最先改变的是你分母所在的世界。",
+        },
+      },
+    ],
+  },
+  "prob-independence": {
+    quiz: [
+      {
+        prompt: {
+          en: "What is the fastest equation check for independence?",
+          es: "¿Cuál es la comprobación más rápida de independencia?",
+          zh: "检验独立性的最快公式是什么？",
+        },
+        firstStep: {
+          en: "Check whether P(A ∩ B) = P(A)P(B).",
+          es: "Comprueba si P(A ∩ B) = P(A)P(B).",
+          zh: "先检查 P(A ∩ B) 是否等于 P(A)P(B)。",
+        },
+        setup: {
+          en: "Independence means learning one event does not change the chance of the other.",
+          es: "Independencia significa que conocer un evento no cambia la probabilidad del otro.",
+          zh: "独立的意思是：知道一个事件，不会改变另一个事件的概率。",
+        },
+        fullPath: [
+          { en: "Write the overlap probability.", es: "Escribe la probabilidad del traslape.", zh: "先写重叠事件的概率。" },
+          { en: "Write the product P(A)P(B).", es: "Escribe el producto P(A)P(B).", zh: "再写 P(A)P(B) 这个乘积。" },
+          { en: "Compare the two expressions.", es: "Compara las dos expresiones.", zh: "把两者比较。" },
+        ],
+        answer: {
+          en: "P(A ∩ B) = P(A)P(B)",
+          es: "P(A ∩ B) = P(A)P(B)",
+          zh: "P(A ∩ B) = P(A)P(B)",
+        },
+        selfCheck: {
+          en: "No influence means product rule.",
+          es: "Sin influencia significa regla del producto.",
+          zh: "没有影响，就看乘法公式。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "A fair die is rolled once. Let A be 'even' and B be 'greater than 3'. Are A and B independent?",
+          es: "Se lanza un dado justo una vez. Sea A = 'par' y B = 'mayor que 3'. ¿Son A y B independientes?",
+          zh: "掷一次公平骰子。设 A 表示“偶数”，B 表示“大于 3”。A 和 B 独立吗？",
+        },
+        firstStep: {
+          en: "Compare P(A ∩ B) with P(A)P(B).",
+          es: "Compara P(A ∩ B) con P(A)P(B).",
+          zh: "比较 P(A ∩ B) 和 P(A)P(B)。",
+        },
+        setup: {
+          en: "Independence is a calculation check: same overlap as product means no influence.",
+          es: "La independencia es una comprobacion de calculo: mismo traslape que producto significa que no hay influencia.",
+          zh: "独立性是个计算检验：如果重叠概率等于乘积，就说明彼此没有影响。",
+        },
+        fullPath: [
+          { en: "Find A={2,4,6}, so P(A)=3/6.", es: "Halla A={2,4,6}, asi que P(A)=3/6.", zh: "先找 A={2,4,6}，所以 P(A)=3/6。" },
+          { en: "Find B={4,5,6}, so P(B)=3/6.", es: "Halla B={4,5,6}, asi que P(B)=3/6.", zh: "再找 B={4,5,6}，所以 P(B)=3/6。" },
+          { en: "Their overlap is {4,6}, so P(A ∩ B)=2/6, which is not (3/6)(3/6).", es: "Su traslape es {4,6}, asi que P(A ∩ B)=2/6, que no es (3/6)(3/6).", zh: "它们的交集是 {4,6}，所以 P(A ∩ B)=2/6，不等于 (3/6)(3/6)。" },
+        ],
+        answer: {
+          en: "No, they are not independent.",
+          es: "No, no son independientes.",
+          zh: "不，它们不独立。",
+        },
+        selfCheck: {
+          en: "Independence lives or dies on the overlap check.",
+          es: "La independencia se decide con la comprobacion del traslape.",
+          zh: "独不独立，最终就看交集概率检验。",
+        },
+      },
+    ],
+  },
+  "prob-inclusion-exclusion": {
+    quiz: [
+      {
+        prompt: {
+          en: "A and B overlap. What is the first safe setup for P(A ∪ B)?",
+          es: "A y B se traslapan. ¿Cuál es el primer planteamiento seguro para P(A ∪ B)?",
+          zh: "A 和 B 有重叠。求 P(A ∪ B) 时最稳的第一步是什么？",
+        },
+        firstStep: {
+          en: "Add both probabilities, then subtract the overlap once.",
+          es: "Suma ambas probabilidades y luego resta una vez el traslape.",
+          zh: "先把两个概率加起来，再把重叠部分减掉一次。",
+        },
+        setup: {
+          en: "The overlap is counted twice if you only add P(A) and P(B).",
+          es: "El traslape se cuenta dos veces si solo sumas P(A) y P(B).",
+          zh: "如果只加 P(A) 和 P(B)，重叠部分会被算两次。",
+        },
+        fullPath: [
+          { en: "Start with P(A) + P(B).", es: "Empieza con P(A) + P(B).", zh: "先写 P(A) + P(B)。" },
+          { en: "Identify the overlap A ∩ B.", es: "Identifica el traslape A ∩ B.", zh: "找出重叠部分 A ∩ B。" },
+          { en: "Subtract that overlap once.", es: "Resta ese traslape una sola vez.", zh: "把它减掉一次。" },
+        ],
+        answer: {
+          en: "P(A ∪ B) = P(A) + P(B) - P(A ∩ B)",
+          es: "P(A ∪ B) = P(A) + P(B) - P(A ∩ B)",
+          zh: "P(A ∪ B) = P(A) + P(B) - P(A ∩ B)",
+        },
+        selfCheck: {
+          en: "Union with overlap = add, then subtract the middle.",
+          es: "Unión con traslape = suma y luego resta el medio.",
+          zh: "并集有重叠 = 先加，再减中间。",
+        },
+      },
+    ],
+  },
+  "prob-disjoint-events": {
+    quiz: [
+      {
+        prompt: {
+          en: "Roll one die. Are A = 'even' and B = 'odd' disjoint?",
+          es: "Lanza un dado. ¿Son disjuntos A = 'par' y B = 'impar'?",
+          zh: "掷一次骰子。A =“偶数”，B =“奇数”，它们互斥吗？",
+        },
+        firstStep: {
+          en: "Check whether any outcome can belong to both events.",
+          es: "Comprueba si algún resultado puede pertenecer a ambos eventos.",
+          zh: "先检查有没有结果能同时落进这两个事件。",
+        },
+        setup: {
+          en: "Disjoint means the overlap is empty.",
+          es: "Disjunto significa que el traslape es vacío.",
+          zh: "互斥的意思是重叠部分为空。",
+        },
+        fullPath: [
+          { en: "List what is in A.", es: "Lista lo que está en A.", zh: "先列出 A 里的结果。" },
+          { en: "List what is in B.", es: "Lista lo que está en B.", zh: "再列出 B 里的结果。" },
+          { en: "See whether the two sets share anything.", es: "Mira si los dos conjuntos comparten algo.", zh: "看看这两个集合有没有共同元素。" },
+        ],
+        answer: {
+          en: "Yes. They are disjoint.",
+          es: "Sí. Son disjuntos.",
+          zh: "是，它们互斥。",
+        },
+        selfCheck: {
+          en: "Disjoint = no shared outcomes.",
+          es: "Disjunto = sin resultados compartidos.",
+          zh: "互斥 = 没有共同结果。",
+        },
+      },
+    ],
+  },
+  "prob-equally-likely": {
+    quiz: [
+      {
+        prompt: {
+          en: "A die is fair. What is the correct first setup for P(even result)?",
+          es: "Un dado es justo. ¿Cuál es el primer planteamiento correcto para P(resultado par)?",
+          zh: "一个骰子是公平的。求 P(结果为偶数) 时第一步该怎么设？",
+        },
+        firstStep: {
+          en: "Use favorable outcomes over total outcomes.",
+          es: "Usa resultados favorables sobre resultados totales.",
+          zh: "用“有利结果数 ÷ 全部结果数”。",
+        },
+        setup: {
+          en: "That shortcut works because each single outcome has the same chance.",
+          es: "Ese atajo funciona porque cada resultado simple tiene la misma probabilidad.",
+          zh: "这个捷径成立，是因为每个单个结果概率都一样。",
+        },
+        fullPath: [
+          { en: "Check equal likelihood first.", es: "Primero verifica igualdad de probabilidades.", zh: "先确认各结果等可能。" },
+          { en: "Count favorable outcomes.", es: "Cuenta los resultados favorables.", zh: "数有利结果。" },
+          { en: "Divide by the total number of outcomes.", es: "Divide por el total de resultados.", zh: "除以总结果数。" },
+        ],
+        answer: {
+          en: "3/6 = 1/2",
+          es: "3/6 = 1/2",
+          zh: "3/6 = 1/2",
+        },
+        selfCheck: {
+          en: "Equal chance first, then count.",
+          es: "Primero igualdad de probabilidad, luego conteo.",
+          zh: "先确认等可能，再计数。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "A 5-card hand is drawn uniformly from a standard deck. What setup gives the probability of getting exactly 2 aces?",
+          es: "Se extrae una mano de 5 cartas uniformemente de una baraja estandar. ¿Que planteamiento da la probabilidad de obtener exactamente 2 ases?",
+          zh: "从一副标准扑克牌中等可能地抽出 5 张牌。求恰好 2 张 A 的设法是什么？",
+        },
+        firstStep: {
+          en: "Use favorable combinations over total combinations.",
+          es: "Usa combinaciones favorables sobre combinaciones totales.",
+          zh: "用“有利组合数 ÷ 全部组合数”。",
+        },
+        setup: {
+          en: "Because every 5-card hand is equally likely, probability is favorable outcomes over total outcomes.",
+          es: "Como toda mano de 5 cartas es igualmente probable, la probabilidad es casos favorables sobre casos totales.",
+          zh: "因为每一手 5 张牌都等可能，所以概率就是“有利情况 / 全部情况”。",
+        },
+        fullPath: [
+          { en: "Count ways to choose 2 of the 4 aces.", es: "Cuenta las formas de elegir 2 de los 4 ases.", zh: "先数从 4 张 A 里选 2 张的方法。" },
+          { en: "Count ways to choose the other 3 cards from the 48 non-aces.", es: "Cuenta las formas de elegir las otras 3 cartas entre las 48 no ases.", zh: "再数从其余 48 张非 A 里选 3 张的方法。" },
+          { en: "Divide by the total number of 5-card hands.", es: "Divide por el numero total de manos de 5 cartas.", zh: "最后除以全部 5 张手牌的总数。" },
+        ],
+        answer: {
+          en: "C(4,2)C(48,3) / C(52,5)",
+          es: "C(4,2)C(48,3) / C(52,5)",
+          zh: "C(4,2)C(48,3) / C(52,5)",
+        },
+        selfCheck: {
+          en: "Uniform hand model -> favorable combinations over total combinations.",
+          es: "Modelo uniforme de manos -> combinaciones favorables sobre combinaciones totales.",
+          zh: "等可能手牌模型 -> 有利组合数除以总组合数。",
+        },
+      },
+    ],
+  },
+  "prob-permutations": {
+    quiz: [
+      {
+        prompt: {
+          en: "A race awards gold, silver, and bronze among 10 runners. What counting idea should you use first?",
+          es: "Una carrera reparte oro, plata y bronce entre 10 corredores. ¿Que idea de conteo debes usar primero?",
+          zh: "一场比赛要在 10 名选手中排出金银铜牌。第一反应该用什么计数思路？",
+        },
+        firstStep: {
+          en: "Use permutations because the order of winners matters.",
+          es: "Usa permutaciones porque el orden de los ganadores importa.",
+          zh: "用排列，因为名次顺序会改变结果。",
+        },
+        setup: {
+          en: "Gold-silver-bronze are different roles, so switching order creates a new outcome.",
+          es: "Oro-plata-bronce son papeles distintos, asi que cambiar el orden crea un nuevo resultado.",
+          zh: "金银铜是不同位置，所以顺序一变，结果也变了。",
+        },
+        fullPath: [
+          { en: "Notice first, second, and third are different positions.", es: "Observa que primero, segundo y tercero son posiciones distintas.", zh: "先注意第一、第二、第三名是不同位置。" },
+          { en: "That means the same three runners in a different order count differently.", es: "Eso significa que los mismos tres corredores en otro orden cuentan distinto.", zh: "所以同样三个人换个顺序，会算成不同结果。" },
+          { en: "That is the permutation trigger.", es: "Ese es el disparador de permutaciones.", zh: "这正是排列的触发条件。" },
+        ],
+        answer: {
+          en: "Permutation",
+          es: "Permutacion",
+          zh: "排列",
+        },
+        selfCheck: {
+          en: "If the order changes the outcome, use permutations.",
+          es: "Si el orden cambia el resultado, usa permutaciones.",
+          zh: "只要顺序改变结果，就用排列。",
+        },
+      },
+    ],
+  },
+  "prob-combinations": {
+    quiz: [
+      {
+        prompt: {
+          en: "A club chooses a 4-person committee from 12 students. What counting idea fits first?",
+          es: "Un club elige un comite de 4 personas entre 12 estudiantes. ¿Que idea de conteo encaja primero?",
+          zh: "一个社团要从 12 名学生里选出 4 人委员会。第一反应该用什么计数思路？",
+        },
+        firstStep: {
+          en: "Use combinations because only the group matters.",
+          es: "Usa combinaciones porque solo importa el grupo.",
+          zh: "用组合，因为题目只在乎是哪 4 个人。",
+        },
+        setup: {
+          en: "Committee problems ignore order, so all orderings of the same group collapse into one outcome.",
+          es: "Los problemas de comites ignoran el orden, asi que todos los ordenes del mismo grupo se colapsan en un solo resultado.",
+          zh: "委员会题不看顺序，所以同一组人的不同排列都算同一个结果。",
+        },
+        fullPath: [
+          { en: "No role like first or second is being assigned.", es: "No se asigna un papel como primero o segundo.", zh: "题目没有分第一、第二之类的位置。" },
+          { en: "So the same 4 students in another order are still the same committee.", es: "Asi que los mismos 4 estudiantes en otro orden siguen siendo el mismo comite.", zh: "所以同样 4 个人换个顺序，仍然是同一个委员会。" },
+          { en: "That makes it a combination count.", es: "Eso la convierte en una cuenta de combinaciones.", zh: "因此这里该用组合计数。" },
+        ],
+        answer: {
+          en: "Combination",
+          es: "Combinacion",
+          zh: "组合",
+        },
+        selfCheck: {
+          en: "If only the group matters, use combinations.",
+          es: "Si solo importa el grupo, usa combinaciones.",
+          zh: "只在乎选了谁，不在乎顺序，就用组合。",
+        },
+      },
+    ],
+  },
+  "prob-partitions": {
+    quiz: [
+      {
+        prompt: {
+          en: "A class is split into freshmen, sophomores, juniors, and seniors. What should you check before using these groups as cases?",
+          es: "Una clase se divide en estudiantes de primero, segundo, tercero y cuarto año. ¿Qué debes comprobar antes de usar estos grupos como casos?",
+          zh: "一个班级分成大一、大二、大三、大四。把这些组当作分情况前，要先检查什么？",
+        },
+        firstStep: {
+          en: "Check no overlap and full coverage.",
+          es: "Comprueba que no haya traslape y que cubran todo.",
+          zh: "先检查不重叠，而且全部覆盖。",
+        },
+        setup: {
+          en: "A partition means clean cases: disjoint and complete.",
+          es: "Una partición significa casos limpios: disjuntos y completos.",
+          zh: "划分的意思是：分情况要干净，既互斥又完整。",
+        },
+        fullPath: [
+          { en: "Ask whether one outcome can land in two cases.", es: "Pregunta si un resultado puede caer en dos casos.", zh: "先问一个结果会不会同时落进两个情况。" },
+          { en: "Ask whether every outcome lands somewhere.", es: "Pregunta si todo resultado cae en algún caso.", zh: "再问每个结果是不是都被分到某个情况里。" },
+          { en: "Only then use the case split.", es: "Solo entonces usa la partición por casos.", zh: "确认后再用分情况。" },
+        ],
+        answer: {
+          en: "Check disjoint + complete.",
+          es: "Comprueba disjuntos + completos.",
+          zh: "检查互斥 + 完整。",
+        },
+        selfCheck: {
+          en: "Partition = covers everything once.",
+          es: "Partición = cubre todo una sola vez.",
+          zh: "划分 = 每个结果只归一次，而且全覆盖。",
+        },
+      },
+    ],
+  },
+  "prob-random-variable": {
+    quiz: [
+      {
+        prompt: {
+          en: "Two coin tosses. Let X be the number of heads. What is X(HT)?",
+          es: "Dos lanzamientos de moneda. Sea X el número de caras. ¿Qué es X(HT)?",
+          zh: "掷两次硬币。设 X 表示正面个数。X(HT) 等于多少？",
+        },
+        firstStep: {
+          en: "Apply the rule 'number of heads' to that outcome.",
+          es: "Aplica la regla 'número de caras' a ese resultado.",
+          zh: "把“正面个数”这条规则作用到这个结果上。",
+        },
+        setup: {
+          en: "A random variable is a rule from outcomes to numbers.",
+          es: "Una variable aleatoria es una regla de resultados a números.",
+          zh: "随机变量就是“从结果到数字”的一条规则。",
+        },
+        fullPath: [
+          { en: "Look at the outcome HT.", es: "Mira el resultado HT.", zh: "先看结果 HT。" },
+          { en: "Count how many heads it contains.", es: "Cuenta cuántas caras contiene.", zh: "数一数里面有几个正面。" },
+          { en: "Return that number as X(HT).", es: "Devuelve ese número como X(HT).", zh: "这个数字就是 X(HT)。" },
+        ],
+        answer: {
+          en: "1",
+          es: "1",
+          zh: "1",
+        },
+        selfCheck: {
+          en: "Random variable = outcome in, number out.",
+          es: "Variable aleatoria = entra un resultado, sale un número.",
+          zh: "随机变量 = 结果进去，数字出来。",
+        },
+      },
+    ],
+  },
+  "prob-pmf-cdf": {
+    quiz: [
+      {
+        prompt: {
+          en: "Which one answers P(X = 3) directly: PMF or CDF?",
+          es: "¿Cuál responde directamente a P(X = 3): PMF o CDF?",
+          zh: "直接回答 P(X = 3) 的是 PMF 还是 CDF？",
+        },
+        firstStep: {
+          en: "Use the PMF for an exact value.",
+          es: "Usa la PMF para un valor exacto.",
+          zh: "精确取值先看 PMF。",
+        },
+        setup: {
+          en: "PMF is point probability. CDF is cumulative probability up to a cutoff.",
+          es: "La PMF es probabilidad puntual. La CDF es probabilidad acumulada hasta un corte.",
+          zh: "PMF 是点概率，CDF 是到某个截点为止的累计概率。",
+        },
+        fullPath: [
+          { en: "Ask whether the question wants one exact value or everything up to a value.", es: "Pregunta si la cuestión quiere un valor exacto o todo hasta un valor.", zh: "先问题目要的是一个精确值，还是累计到某个值。" },
+          { en: "Exact value means PMF.", es: "Valor exacto significa PMF.", zh: "精确值对应 PMF。" },
+          { en: "Accumulated total means CDF.", es: "Total acumulado significa CDF.", zh: "累计总量对应 CDF。" },
+        ],
+        answer: {
+          en: "PMF",
+          es: "PMF",
+          zh: "PMF",
+        },
+        selfCheck: {
+          en: "PMF = point. CDF = pile-up.",
+          es: "PMF = punto. CDF = acumulado.",
+          zh: "PMF = 点。CDF = 累计。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "A discrete random variable has P(X=0)=0.2, P(X=1)=0.5, P(X=2)=0.3. What is the setup for F(1)?",
+          es: "Una variable aleatoria discreta tiene P(X=0)=0.2, P(X=1)=0.5, P(X=2)=0.3. ¿Cual es el planteamiento para F(1)?",
+          zh: "一个离散随机变量满足 P(X=0)=0.2, P(X=1)=0.5, P(X=2)=0.3。求 F(1) 的设法是什么？",
+        },
+        firstStep: {
+          en: "Add every probability up to and including 1.",
+          es: "Suma todas las probabilidades hasta e incluyendo 1.",
+          zh: "把所有不超过 1 的概率加起来。",
+        },
+        setup: {
+          en: "CDF means accumulated probability up to the cutoff, not just the exact point.",
+          es: "CDF significa probabilidad acumulada hasta el corte, no solo el punto exacto.",
+          zh: "CDF 表示累计到截点为止的概率，不只是某一个点的概率。",
+        },
+        fullPath: [
+          { en: "Write F(1)=P(X<=1).", es: "Escribe F(1)=P(X<=1).", zh: "先写 F(1)=P(X<=1)。" },
+          { en: "Include X=0 and X=1.", es: "Incluye X=0 y X=1.", zh: "把 X=0 和 X=1 都算进去。" },
+          { en: "Add 0.2 + 0.5.", es: "Suma 0.2 + 0.5.", zh: "把 0.2 + 0.5 加起来。" },
+        ],
+        answer: {
+          en: "F(1)=0.2+0.5=0.7",
+          es: "F(1)=0.2+0.5=0.7",
+          zh: "F(1)=0.2+0.5=0.7",
+        },
+        selfCheck: {
+          en: "CDF asks for pile-up, not one exact bar.",
+          es: "La CDF pide acumulado, no una sola barra exacta.",
+          zh: "CDF 要的是累计，不是单点柱子的高度。",
+        },
+      },
+    ],
+  },
+  "prob-expected-value": {
+    quiz: [
+      {
+        prompt: {
+          en: "A random variable takes values 0 and 10 with probabilities 0.9 and 0.1. What setup gives E[X]?",
+          es: "Una variable aleatoria toma valores 0 y 10 con probabilidades 0.9 y 0.1. ¿Qué planteamiento da E[X]?",
+          zh: "随机变量以概率 0.9 取 0，以概率 0.1 取 10。求 E[X] 的设法是什么？",
+        },
+        firstStep: {
+          en: "Multiply each value by its probability and add.",
+          es: "Multiplica cada valor por su probabilidad y suma.",
+          zh: "每个值乘以它的概率，再加起来。",
+        },
+        setup: {
+          en: "Expected value is a weighted average, not just the most likely value.",
+          es: "El valor esperado es un promedio ponderado, no solo el valor más probable.",
+          zh: "期望是加权平均，不是“最可能出现的那个值”。",
+        },
+        fullPath: [
+          { en: "Write each value-probability pair.", es: "Escribe cada par valor-probabilidad.", zh: "先写出每个“值-概率”对。" },
+          { en: "Multiply value by probability.", es: "Multiplica valor por probabilidad.", zh: "把值乘上概率。" },
+          { en: "Add the weighted pieces.", es: "Suma las piezas ponderadas.", zh: "把这些加权项加起来。" },
+        ],
+        answer: {
+          en: "E[X] = 0(0.9) + 10(0.1)",
+          es: "E[X] = 0(0.9) + 10(0.1)",
+          zh: "E[X] = 0(0.9) + 10(0.1)",
+        },
+        selfCheck: {
+          en: "Expectation = weighted average.",
+          es: "Esperanza = promedio ponderado.",
+          zh: "期望 = 加权平均。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "A game pays 5 dollars with probability 0.3 and loses 2 dollars with probability 0.7. Is the expected value positive or negative?",
+          es: "Un juego paga 5 dólares con probabilidad 0.3 y pierde 2 dólares con probabilidad 0.7. ¿El valor esperado es positivo o negativo?",
+          zh: "一个游戏以概率 0.3 赢 5 美元，以概率 0.7 输 2 美元。它的期望是正还是负？",
+        },
+        firstStep: {
+          en: "Compute the weighted average of payoff values.",
+          es: "Calcula el promedio ponderado de los pagos.",
+          zh: "先算收益值的加权平均。",
+        },
+        setup: {
+          en: "Positive expected value means long-run average gain; negative means long-run average loss.",
+          es: "Esperanza positiva significa ganancia promedio a largo plazo; negativa significa pérdida promedio.",
+          zh: "期望为正表示长期平均赚钱；为负表示长期平均亏钱。",
+        },
+        fullPath: [
+          { en: "Write 5(0.3) + (-2)(0.7).", es: "Escribe 5(0.3) + (-2)(0.7).", zh: "写出 5(0.3) + (-2)(0.7)。" },
+          { en: "Compare the positive and negative weighted pieces.", es: "Compara las piezas ponderadas positiva y negativa.", zh: "比较正负两部分的加权贡献。" },
+          { en: "Read the sign of the total.", es: "Lee el signo del total.", zh: "看总和的符号。" },
+        ],
+        answer: {
+          en: "Positive, since 1.5 - 1.4 = 0.1",
+          es: "Positivo, porque 1.5 - 1.4 = 0.1",
+          zh: "是正的，因为 1.5 - 1.4 = 0.1",
+        },
+        selfCheck: {
+          en: "Expected value reads the long-run average payoff.",
+          es: "La esperanza lee el pago promedio a largo plazo.",
+          zh: "期望读的是长期平均收益。",
+        },
+      },
+    ],
+  },
+  "prob-linearity": {
+    quiz: [
+      {
+        prompt: {
+          en: "Do you need independence to write E[X+Y] = E[X] + E[Y]?",
+          es: "¿Necesitas independencia para escribir E[X+Y] = E[X] + E[Y]?",
+          zh: "写 E[X+Y] = E[X] + E[Y] 需要独立吗？",
+        },
+        firstStep: {
+          en: "No. Split the expectation anyway.",
+          es: "No. Divide la esperanza de todos modos.",
+          zh: "不需要。直接拆开期望。",
+        },
+        setup: {
+          en: "Linearity of expectation does not require independence.",
+          es: "La linealidad de la esperanza no requiere independencia.",
+          zh: "期望的线性不需要独立性。",
+        },
+        fullPath: [
+          { en: "Look for a sum of random pieces.", es: "Busca una suma de piezas aleatorias.", zh: "先认出这是随机量的和。" },
+          { en: "Split expectation across the plus sign.", es: "Separa la esperanza a través del signo más.", zh: "把期望沿着加号拆开。" },
+          { en: "Only ask about independence if variance or distribution needs it.", es: "Solo pregunta por independencia si la varianza o la distribución la necesitan.", zh: "只有在方差或分布问题里才再去问独立性。" },
+        ],
+        answer: {
+          en: "No independence needed.",
+          es: "No hace falta independencia.",
+          zh: "不需要独立。",
+        },
+        selfCheck: {
+          en: "Expectation splits sums for free.",
+          es: "La esperanza separa sumas gratis.",
+          zh: "期望拆和是免费的。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "A class has 12 students. Let Xi be 1 if student i is present and 0 otherwise. What is the clean setup for the expected number present?",
+          es: "Una clase tiene 12 estudiantes. Sea Xi=1 si el estudiante i asiste y 0 si no. ¿Cual es el planteamiento limpio para el numero esperado de asistentes?",
+          zh: "一个班有 12 个学生。设 Xi=1 表示第 i 个学生到课，否则 Xi=0。求到课人数期望的干净设法是什么？",
+        },
+        firstStep: {
+          en: "Write the total as a sum of indicators and split expectation.",
+          es: "Escribe el total como suma de indicadores y separa la esperanza.",
+          zh: "先把总人数写成指标变量之和，再把期望拆开。",
+        },
+        setup: {
+          en: "Linearity turns a messy total into many tiny one-student expectations.",
+          es: "La linealidad convierte un total complicado en muchas esperanzas pequeñas de un estudiante.",
+          zh: "线性性可以把一个复杂总数，拆成很多个单人小期望。",
+        },
+        fullPath: [
+          { en: "Write X = X1 + ... + X12.", es: "Escribe X = X1 + ... + X12.", zh: "先写 X = X1 + ... + X12。" },
+          { en: "Apply E[X] = E[X1] + ... + E[X12].", es: "Aplica E[X] = E[X1] + ... + E[X12].", zh: "再用 E[X] = E[X1] + ... + E[X12]。" },
+          { en: "Replace each E[Xi] by P(student i is present).", es: "Sustituye cada E[Xi] por P(el estudiante i asiste).", zh: "最后把每个 E[Xi] 换成“第 i 个学生到课的概率”。" },
+        ],
+        answer: {
+          en: "Use indicator variables and split the sum.",
+          es: "Usa variables indicadoras y separa la suma.",
+          zh: "用指标变量，把总和拆开。",
+        },
+        selfCheck: {
+          en: "Expected counts often want indicators plus linearity.",
+          es: "Los conteos esperados suelen querer indicadores mas linealidad.",
+          zh: "期望计数题常常就是“指标变量 + 线性性”。",
+        },
+      },
+    ],
+  },
+  "prob-variance": {
+    quiz: [
+      {
+        prompt: {
+          en: "Two random variables have the same expected value, but one is much more spread out. Which quantity captures that difference?",
+          es: "Dos variables aleatorias tienen la misma esperanza, pero una está mucho más dispersa. ¿Qué cantidad capta esa diferencia?",
+          zh: "两个随机变量期望相同，但其中一个分散得多。哪个量能体现这种差别？",
+        },
+        firstStep: {
+          en: "Use variance.",
+          es: "Usa la varianza.",
+          zh: "看方差。",
+        },
+        setup: {
+          en: "Variance measures spread around the mean, not the center itself.",
+          es: "La varianza mide la dispersión alrededor de la media, no el centro en sí.",
+          zh: "方差衡量的是围绕均值的分散程度，不是中心本身。",
+        },
+        fullPath: [
+          { en: "Notice the means are already the same.", es: "Observa que las medias ya son iguales.", zh: "先注意均值已经一样。" },
+          { en: "Ask which variable wanders farther from the mean.", es: "Pregunta cuál se aleja más de la media.", zh: "再问哪个变量离均值更远。" },
+          { en: "That spread is what variance measures.", es: "Esa dispersión es lo que mide la varianza.", zh: "这种分散程度就是方差在衡量的东西。" },
+        ],
+        answer: {
+          en: "Variance",
+          es: "Varianza",
+          zh: "方差",
+        },
+        selfCheck: {
+          en: "Same mean, different spread -> compare variance.",
+          es: "Misma media, distinta dispersión -> compara la varianza.",
+          zh: "均值一样、分散不同 -> 看方差。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "A discrete random variable has P(X=0)=1/2, P(X=1)=1/4, and P(X=3)=1/4. What is the clean setup for Var(X)?",
+          es: "Una variable aleatoria discreta tiene P(X=0)=1/2, P(X=1)=1/4 y P(X=3)=1/4. ¿Cual es el planteamiento limpio para Var(X)?",
+          zh: "一个离散随机变量满足 P(X=0)=1/2, P(X=1)=1/4, P(X=3)=1/4。求 Var(X) 的干净设法是什么？",
+        },
+        firstStep: {
+          en: "Find E[X] and E[X^2], then use Var(X)=E[X^2]-(E[X])^2.",
+          es: "Halla E[X] y E[X^2], y luego usa Var(X)=E[X^2]-(E[X])^2.",
+          zh: "先求 E[X] 和 E[X^2]，再用 Var(X)=E[X^2]-(E[X])^2。",
+        },
+        setup: {
+          en: "For a discrete table, variance is usually fastest through E[X^2] minus the square of the mean.",
+          es: "Para una tabla discreta, la varianza suele salir mas rapido con E[X^2] menos el cuadrado de la media.",
+          zh: "对离散分布表来说，方差通常最快的做法是先算 E[X^2]，再减去均值平方。",
+        },
+        fullPath: [
+          { en: "Compute E[X] from value times probability.", es: "Calcula E[X] con valor por probabilidad.", zh: "先用“值乘概率”算 E[X]。" },
+          { en: "Compute E[X^2] from squared value times probability.", es: "Calcula E[X^2] con valor al cuadrado por probabilidad.", zh: "再用“平方后的值乘概率”算 E[X^2]。" },
+          { en: "Subtract (E[X])^2 from E[X^2].", es: "Resta (E[X])^2 a E[X^2].", zh: "最后用 E[X^2] 减去 (E[X])^2。" },
+        ],
+        answer: {
+          en: "Use Var(X)=E[X^2]-(E[X])^2.",
+          es: "Usa Var(X)=E[X^2]-(E[X])^2.",
+          zh: "用 Var(X)=E[X^2]-(E[X])^2。",
+        },
+        selfCheck: {
+          en: "Variance from a table is often easiest through E[X^2].",
+          es: "La varianza desde una tabla suele salir mejor por E[X^2].",
+          zh: "表格型方差题通常先想 E[X^2] 这条路。",
+        },
+      },
+    ],
+  },
+  "prob-variance-sum": {
+    quiz: [
+      {
+        prompt: {
+          en: "When can you write Var(X+Y)=Var(X)+Var(Y) without extra covariance terms?",
+          es: "¿Cuando puedes escribir Var(X+Y)=Var(X)+Var(Y) sin terminos extra de covarianza?",
+          zh: "什么时候可以直接写 Var(X+Y)=Var(X)+Var(Y)，不用额外的协方差项？",
+        },
+        firstStep: {
+          en: "Check independence first.",
+          es: "Primero revisa la independencia.",
+          zh: "先检查是否独立。",
+        },
+        setup: {
+          en: "Variance only adds cleanly when dependence does not create cross terms.",
+          es: "La varianza solo se suma limpiamente cuando la dependencia no crea terminos cruzados.",
+          zh: "只有在没有相关交叉项时，方差才会干净地相加。",
+        },
+        fullPath: [
+          { en: "Ask whether X and Y are independent.", es: "Pregunta si X y Y son independientes.", zh: "先问 X 和 Y 是否独立。" },
+          { en: "If yes, the covariance term drops out.", es: "Si si, el termino de covarianza desaparece.", zh: "若独立，协方差项就会消失。" },
+          { en: "Then add the two variances.", es: "Entonces suma las dos varianzas.", zh: "这时再把两个方差相加。" },
+        ],
+        answer: {
+          en: "When X and Y are independent.",
+          es: "Cuando X y Y son independientes.",
+          zh: "当 X 和 Y 独立时。",
+        },
+        selfCheck: {
+          en: "Expectation always adds. Variance needs independence or covariance handling.",
+          es: "La esperanza siempre suma. La varianza necesita independencia o manejar covarianza.",
+          zh: "期望总能相加；方差则要独立或处理协方差。",
+        },
+      },
+    ],
+  },
+  "prob-distributions": {
+    quiz: [
+      {
+        prompt: {
+          en: "A problem says: fixed number of independent yes-no trials, same success chance, and asks for exactly k successes. What should you identify before any formula?",
+          es: "Un problema dice: numero fijo de ensayos si-no independientes, misma probabilidad de exito, y pide exactamente k exitos. ¿Que debes identificar antes de cualquier formula?",
+          zh: "题目说：固定次数、彼此独立、每次成功率相同，并要求“恰好 k 次成功”。套公式前先该认出什么？",
+        },
+        firstStep: {
+          en: "Identify the story pattern first.",
+          es: "Primero identifica el patron de la historia.",
+          zh: "先认出题目的故事模型。",
+        },
+        setup: {
+          en: "Most probability formula mistakes come from choosing the wrong model family.",
+          es: "Muchos errores de formulas en probabilidad vienen de elegir la familia de modelo equivocada.",
+          zh: "概率题很多公式错误，其实都不是算错，而是模型认错了。",
+        },
+        fullPath: [
+          { en: "Ask what is being counted: one trial, total successes, wait time, or events in a window.", es: "Pregunta que se esta contando: un ensayo, total de exitos, tiempo de espera o eventos en una ventana.", zh: "先问题目到底在数什么：单次结果、成功总数、等待时间，还是一个区间里的事件个数。" },
+          { en: "Match the story to the named family.", es: "Empareja la historia con la familia nombrada.", zh: "再把故事和分布家族对上。" },
+          { en: "Only then choose the formula.", es: "Solo despues elige la formula.", zh: "最后才选公式。" },
+        ],
+        answer: {
+          en: "Identify the distribution story first.",
+          es: "Identifica primero la historia de la distribucion.",
+          zh: "先认出分布故事。",
+        },
+        selfCheck: {
+          en: "Story first, formula second.",
+          es: "Primero la historia, despues la formula.",
+          zh: "先认故事，再套公式。",
+        },
+      },
+    ],
+  },
+  "prob-continuous-density": {
+    quiz: [
+      {
+        prompt: {
+          en: "A graph of f(x) is labeled as a density. If the question asks for P(1 <= X <= 3), what should you compute?",
+          es: "Una grafica de f(x) esta etiquetada como densidad. Si la pregunta pide P(1 <= X <= 3), ¿que debes calcular?",
+          zh: "一张 f(x) 的图被标成密度函数。若题目要求 P(1 <= X <= 3)，应该计算什么？",
+        },
+        firstStep: {
+          en: "Compute area under the density on that interval.",
+          es: "Calcula el area bajo la densidad en ese intervalo.",
+          zh: "计算该区间下方的面积。",
+        },
+        setup: {
+          en: "For continuous random variables, interval probability comes from area under the density curve.",
+          es: "Para variables aleatorias continuas, la probabilidad en un intervalo viene del area bajo la curva de densidad.",
+          zh: "对连续随机变量来说，区间概率来自密度曲线下的面积。",
+        },
+        fullPath: [
+          { en: "Ignore exact-point probability thinking.", es: "Deja de lado la idea de probabilidad puntual exacta.", zh: "先别用离散那套“某一点的概率”去想。" },
+          { en: "Focus on the interval [1,3].", es: "Enfocate en el intervalo [1,3].", zh: "把注意力放在区间 [1,3] 上。" },
+          { en: "Integrate the density over that interval.", es: "Integra la densidad sobre ese intervalo.", zh: "把密度函数在这个区间上积分。" },
+        ],
+        answer: {
+          en: "Area under f(x) from 1 to 3.",
+          es: "Area bajo f(x) de 1 a 3.",
+          zh: "f(x) 从 1 到 3 下方的面积。",
+        },
+        selfCheck: {
+          en: "Continuous probability lives in interval area.",
+          es: "La probabilidad continua vive en el area de intervalos.",
+          zh: "连续概率看的是区间面积。",
+        },
+      },
+    ],
+  },
+  "prob-bernoulli-pattern": {
+    quiz: [
+      {
+        prompt: {
+          en: "One customer either buys or does not buy. If X=1 for buy and X=0 for no buy, what model is this?",
+          es: "Un cliente compra o no compra. Si X=1 para compra y X=0 para no compra, ¿que modelo es este?",
+          zh: "一个顾客要么购买，要么不购买。若 X=1 表示购买、X=0 表示不购买，这是什么模型？",
+        },
+        firstStep: {
+          en: "Check whether this is just one success-failure trial.",
+          es: "Revisa si esto es solo un ensayo exito-fracaso.",
+          zh: "先看这是不是只有一次成败试验。",
+        },
+        setup: {
+          en: "Bernoulli is the one-trial 0-1 model.",
+          es: "Bernoulli es el modelo 0-1 de un solo ensayo.",
+          zh: "Bernoulli 就是单次 0-1 成败模型。",
+        },
+        fullPath: [
+          { en: "There is only one trial.", es: "Solo hay un ensayo.", zh: "这里只有一次试验。" },
+          { en: "The output is coded as 0 or 1.", es: "La salida se codifica como 0 o 1.", zh: "输出被编码成 0 或 1。" },
+          { en: "That is exactly the Bernoulli pattern.", es: "Eso es exactamente el patron Bernoulli.", zh: "这正是 Bernoulli 的典型形状。" },
+        ],
+        answer: {
+          en: "Bernoulli",
+          es: "Bernoulli",
+          zh: "Bernoulli",
+        },
+        selfCheck: {
+          en: "One trial, two outcomes, 0-1 coding -> Bernoulli.",
+          es: "Un ensayo, dos resultados, codificacion 0-1 -> Bernoulli.",
+          zh: "一次试验、两个结果、0-1 编码 -> Bernoulli。",
+        },
+      },
+    ],
+  },
+  "prob-binomial": {
+    quiz: [
+      {
+        prompt: {
+          en: "A quiz has 8 true-false questions. If a student guesses every time, what model fits the number of correct answers?",
+          es: "Un quiz tiene 8 preguntas de verdadero-falso. Si un estudiante adivina siempre, ¿que modelo encaja con el numero de aciertos?",
+          zh: "一张测验有 8 道判断题。若学生每题都瞎猜，正确题数服从什么模型？",
+        },
+        firstStep: {
+          en: "Check fixed trial count, same p, and success count.",
+          es: "Revisa numero fijo de ensayos, misma p y conteo de exitos.",
+          zh: "先看是不是固定次数、相同成功率、并且在数成功个数。",
+        },
+        setup: {
+          en: "Binomial counts successes across a fixed number of independent Bernoulli trials.",
+          es: "Binomial cuenta exitos a lo largo de un numero fijo de ensayos Bernoulli independientes.",
+          zh: "二项分布是在固定次数的独立 Bernoulli 试验里统计成功个数。",
+        },
+        fullPath: [
+          { en: "There are 8 trials total.", es: "Hay 8 ensayos en total.", zh: "总共有 8 次试验。" },
+          { en: "Each trial has the same success chance 1/2.", es: "Cada ensayo tiene la misma probabilidad de exito 1/2.", zh: "每次成功概率都相同，都是 1/2。" },
+          { en: "The variable counts how many successes occur.", es: "La variable cuenta cuantos exitos ocurren.", zh: "随机变量统计的是成功次数。" },
+        ],
+        answer: {
+          en: "Binomial",
+          es: "Binomial",
+          zh: "二项分布",
+        },
+        selfCheck: {
+          en: "Fixed tries plus count successes -> binomial.",
+          es: "Intentos fijos mas contar exitos -> binomial.",
+          zh: "固定次数 + 数成功个数 -> 二项分布。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "A machine makes 20 parts. Each part is defective with probability 0.03 independently. What setup gives the probability of exactly 2 defectives?",
+          es: "Una maquina fabrica 20 piezas. Cada pieza es defectuosa con probabilidad 0.03 de forma independiente. ¿Que planteamiento da la probabilidad de exactamente 2 defectuosas?",
+          zh: "一台机器生产 20 个零件。每个零件独立地以 0.03 的概率次品。求恰好 2 个次品的设法是什么？",
+        },
+        firstStep: {
+          en: "Write a binomial model with n=20, p=0.03, k=2.",
+          es: "Escribe un modelo binomial con n=20, p=0.03, k=2.",
+          zh: "先写二项模型，n=20, p=0.03, k=2。",
+        },
+        setup: {
+          en: "This is fixed count, independent trials, same defect probability, and exact success count.",
+          es: "Aqui hay numero fijo, ensayos independientes, misma probabilidad de defecto y conteo exacto de exitos.",
+          zh: "这题同时满足固定次数、独立、相同概率、以及“恰好 k 次成功”的四个条件。",
+        },
+        fullPath: [
+          { en: "Let X be the number of defectives in 20 parts.", es: "Sea X el numero de defectuosas en 20 piezas.", zh: "设 X 表示 20 个零件中的次品数。" },
+          { en: "Then X ~ Bin(20, 0.03).", es: "Entonces X ~ Bin(20, 0.03).", zh: "则 X ~ Bin(20, 0.03)。" },
+          { en: "The desired probability is P(X=2).", es: "La probabilidad pedida es P(X=2).", zh: "所求就是 P(X=2)。" },
+        ],
+        answer: {
+          en: "Use X ~ Bin(20,0.03) and compute P(X=2).",
+          es: "Usa X ~ Bin(20,0.03) y calcula P(X=2).",
+          zh: "用 X ~ Bin(20,0.03)，然后求 P(X=2)。",
+        },
+        selfCheck: {
+          en: "If n is fixed and you count successes, binomial is usually first.",
+          es: "Si n es fijo y cuentas exitos, binomial suele ser la primera opcion.",
+          zh: "只要 n 固定，而且在数成功次数，通常先想二项分布。",
+        },
+      },
+    ],
+  },
+  "prob-geometric": {
+    quiz: [
+      {
+        prompt: {
+          en: "A basketball player keeps shooting until the first make. What model fits the trial number of the first make?",
+          es: "Un jugador de baloncesto sigue tirando hasta el primer enceste. ¿Que modelo encaja con el numero de tiro del primer acierto?",
+          zh: "一名球员不断投篮直到第一次投进。第一次命中出现在第几次，服从什么模型？",
+        },
+        firstStep: {
+          en: "Check whether the story is waiting for the first success.",
+          es: "Revisa si la historia espera al primer exito.",
+          zh: "先看这是不是“等到第一次成功”为止。",
+        },
+        setup: {
+          en: "Geometric is the waiting-time model for the first success in repeated independent trials.",
+          es: "Geometrica es el modelo de espera hasta el primer exito en ensayos repetidos e independientes.",
+          zh: "几何分布就是在重复独立试验里等待第一次成功所用的模型。",
+        },
+        fullPath: [
+          { en: "The process does not stop after a fixed n.", es: "El proceso no se detiene despues de un n fijo.", zh: "题目并不是固定做 n 次。" },
+          { en: "It stops as soon as the first success happens.", es: "Se detiene apenas ocurre el primer exito.", zh: "它在第一次成功出现时就停止。" },
+          { en: "That is the geometric story.", es: "Esa es la historia geometrica.", zh: "这就是几何分布的故事。" },
+        ],
+        answer: {
+          en: "Geometric",
+          es: "Geometrica",
+          zh: "几何分布",
+        },
+        selfCheck: {
+          en: "Wait for the first success -> geometric.",
+          es: "Esperar el primer exito -> geometrica.",
+          zh: "等第一次成功 -> 几何分布。",
+        },
+      },
+    ],
+  },
+  "prob-poisson": {
+    quiz: [
+      {
+        prompt: {
+          en: "A website gets an average of 4 support emails per hour. What model fits the number of emails in the next hour?",
+          es: "Un sitio recibe en promedio 4 correos de soporte por hora. ¿Que modelo encaja con el numero de correos en la proxima hora?",
+          zh: "某网站平均每小时收到 4 封客服邮件。下一小时邮件数服从什么模型？",
+        },
+        firstStep: {
+          en: "Check whether this is a count in a time window with an average rate.",
+          es: "Revisa si esto es un conteo en una ventana de tiempo con una tasa promedio.",
+          zh: "先看是不是“固定时间窗口里的事件个数”，并且给了平均速率。",
+        },
+        setup: {
+          en: "Poisson counts arrivals in a fixed window when a rate is given.",
+          es: "Poisson cuenta llegadas en una ventana fija cuando se da una tasa.",
+          zh: "Poisson 分布用来统计固定窗口内按平均速率到来的事件个数。",
+        },
+        fullPath: [
+          { en: "The variable is a count, not a wait time.", es: "La variable es un conteo, no un tiempo de espera.", zh: "随机变量数的是个数，不是等待时间。" },
+          { en: "The count is taken over one fixed hour.", es: "El conteo se toma sobre una hora fija.", zh: "这个个数是在固定的一小时窗口里统计的。" },
+          { en: "That matches the Poisson pattern with rate 4.", es: "Eso coincide con el patron Poisson con tasa 4.", zh: "这正符合参数为 4 的 Poisson 故事。" },
+        ],
+        answer: {
+          en: "Poisson with rate 4",
+          es: "Poisson con tasa 4",
+          zh: "参数为 4 的 Poisson 分布",
+        },
+        selfCheck: {
+          en: "Count in a window -> Poisson.",
+          es: "Conteo en una ventana -> Poisson.",
+          zh: "窗口里数事件 -> Poisson。",
+        },
+      },
+    ],
+  },
+  "prob-uniform-continuous": {
+    quiz: [
+      {
+        prompt: {
+          en: "A random point is chosen uniformly on the interval [2,10]. What geometric idea should drive P(4 <= X <= 7)?",
+          es: "Se elige un punto al azar de manera uniforme en el intervalo [2,10]. ¿Que idea geometrica debe guiar P(4 <= X <= 7)?",
+          zh: "在区间 [2,10] 上均匀随机选一点。求 P(4 <= X <= 7) 时，核心几何想法是什么？",
+        },
+        firstStep: {
+          en: "Use interval length over total length.",
+          es: "Usa longitud del intervalo sobre longitud total.",
+          zh: "用“区间长度 ÷ 总长度”。",
+        },
+        setup: {
+          en: "Continuous uniform probability is flat, so probability becomes a length ratio.",
+          es: "La probabilidad uniforme continua es plana, asi que la probabilidad se vuelve una razon de longitudes.",
+          zh: "连续均匀分布的密度是平的，所以概率就变成长度比。",
+        },
+        fullPath: [
+          { en: "Find the target interval length: 7-4.", es: "Halla la longitud del intervalo objetivo: 7-4.", zh: "先求目标区间长度：7-4。" },
+          { en: "Find the total interval length: 10-2.", es: "Halla la longitud total: 10-2.", zh: "再求总区间长度：10-2。" },
+          { en: "Take target length over total length.", es: "Toma longitud objetivo sobre longitud total.", zh: "最后用目标长度除以总长度。" },
+        ],
+        answer: {
+          en: "Use length ratio: (7-4)/(10-2).",
+          es: "Usa razon de longitudes: (7-4)/(10-2).",
+          zh: "用长度比：(7-4)/(10-2)。",
+        },
+        selfCheck: {
+          en: "Flat interval model -> probability is length over length.",
+          es: "Modelo plano en intervalo -> probabilidad es longitud sobre longitud.",
+          zh: "平坦区间模型 -> 概率就是长度比。",
+        },
+      },
+    ],
+  },
+  "prob-exponential": {
+    quiz: [
+      {
+        prompt: {
+          en: "Customers arrive at a constant average rate. What model fits the waiting time until the next customer?",
+          es: "Los clientes llegan a una tasa promedio constante. ¿Que modelo encaja con el tiempo de espera hasta el siguiente cliente?",
+          zh: "顾客以恒定平均速率到来。等到下一位顾客的等待时间服从什么模型？",
+        },
+        firstStep: {
+          en: "Decide whether the variable is a count or a wait.",
+          es: "Decide si la variable es un conteo o una espera.",
+          zh: "先分清楚随机变量是在数个数，还是在量等待时间。",
+        },
+        setup: {
+          en: "Poisson counts events in a window. Exponential measures time until the next one.",
+          es: "Poisson cuenta eventos en una ventana. Exponencial mide el tiempo hasta el siguiente.",
+          zh: "Poisson 数的是窗口里的事件个数；指数分布量的是到下一个事件的等待时间。",
+        },
+        fullPath: [
+          { en: "The story asks how long until the next arrival.", es: "La historia pregunta cuanto falta hasta la siguiente llegada.", zh: "题目问的是还要等多久才来下一个。" },
+          { en: "That is a waiting-time variable, not a count variable.", es: "Eso es una variable de espera, no de conteo.", zh: "这是等待时间变量，不是计数变量。" },
+          { en: "So exponential is the right family.", es: "Asi que la familia correcta es exponencial.", zh: "所以该用指数分布。" },
+        ],
+        answer: {
+          en: "Exponential",
+          es: "Exponencial",
+          zh: "指数分布",
+        },
+        selfCheck: {
+          en: "Poisson counts, exponential waits.",
+          es: "Poisson cuenta, exponencial espera.",
+          zh: "Poisson 数个数，指数分布等时间。",
+        },
+      },
+    ],
+  },
+  "prob-normal-pattern": {
+    quiz: [
+      {
+        prompt: {
+          en: "A measurement is modeled by a bell curve with mean 70 and standard deviation 8. Are point probabilities or interval areas the main object?",
+          es: "Una medicion se modela con una curva de campana de media 70 y desviacion estandar 8. ¿Lo principal son probabilidades puntuales o areas de intervalos?",
+          zh: "某测量值服从均值 70、标准差 8 的钟形曲线。这里主要看的是点概率，还是区间面积？",
+        },
+        firstStep: {
+          en: "Treat it as a continuous interval-area model.",
+          es: "Tratalo como un modelo continuo de areas por intervalos.",
+          zh: "先把它当成连续模型，概率看区间面积。",
+        },
+        setup: {
+          en: "Normal distribution is continuous, so probability comes from area under the bell curve.",
+          es: "La distribucion normal es continua, asi que la probabilidad viene del area bajo la campana.",
+          zh: "正态分布是连续分布，所以概率来自钟形曲线下的面积。",
+        },
+        fullPath: [
+          { en: "Notice the variable is continuous.", es: "Observa que la variable es continua.", zh: "先认出它是连续变量。" },
+          { en: "Continuous models give 0 probability to one exact point.", es: "Los modelos continuos dan probabilidad 0 a un punto exacto.", zh: "连续模型对单个精确点的概率是 0。" },
+          { en: "So you compute interval areas, often after standardizing.", es: "Entonces calculas areas de intervalos, a menudo tras estandarizar.", zh: "因此真正要算的是区间面积，常常还要先标准化。" },
+        ],
+        answer: {
+          en: "Interval areas under the bell curve.",
+          es: "Areas de intervalos bajo la curva de campana.",
+          zh: "看钟形曲线下的区间面积。",
+        },
+        selfCheck: {
+          en: "Normal model -> bell curve area, not point mass.",
+          es: "Modelo normal -> area bajo la campana, no masa puntual.",
+          zh: "正态模型 -> 看面积，不看点质量。",
+        },
+      },
+    ],
+  },
+  "prob-negative-binomial": {
+    quiz: [
+      {
+        prompt: {
+          en: "A batter keeps taking swings until the 3rd hit. What model fits the total number of swings?",
+          es: "Un bateador sigue haciendo swings hasta el tercer hit. ¿Que modelo encaja con el numero total de swings?",
+          zh: "一名击球手一直挥棒，直到第 3 次击中。总挥棒次数服从什么模型？",
+        },
+        firstStep: {
+          en: "Ask whether you are waiting for the r-th success, not just the first.",
+          es: "Pregunta si estas esperando el exito numero r, no solo el primero.",
+          zh: "先看是不是在等第 r 次成功，而不是第一次成功。",
+        },
+        setup: {
+          en: "Negative binomial counts total trials until success number r arrives.",
+          es: "La binomial negativa cuenta ensayos totales hasta que llega el exito numero r.",
+          zh: "负二项分布统计的是：为了等到第 r 次成功，总共做了多少次试验。",
+        },
+        fullPath: [
+          { en: "This is a waiting story, not a fixed-n counting story.", es: "Es una historia de espera, no de conteo con n fijo.", zh: "这是一道等待题，不是固定 n 次里的计数题。" },
+          { en: "The stop rule is the 3rd success, not the 1st.", es: "La regla de parada es el 3er exito, no el 1ro.", zh: "停止条件是第 3 次成功，不是第 1 次。" },
+          { en: "That makes it negative binomial.", es: "Eso la convierte en binomial negativa.", zh: "所以它属于负二项分布。" },
+        ],
+        answer: {
+          en: "Negative binomial",
+          es: "Binomial negativa",
+          zh: "负二项分布",
+        },
+        selfCheck: {
+          en: "Wait for success number r -> negative binomial.",
+          es: "Esperar el exito numero r -> binomial negativa.",
+          zh: "等第 r 次成功 -> 负二项分布。",
+        },
+      },
+    ],
+  },
+  "prob-hypergeometric": {
+    quiz: [
+      {
+        prompt: {
+          en: "You draw 5 cards from a deck without replacement and count how many are hearts. What model should you think first?",
+          es: "Sacas 5 cartas de una baraja sin reemplazo y cuentas cuantas son corazones. ¿Que modelo debes pensar primero?",
+          zh: "从一副牌里不放回抽 5 张，并统计其中有几张红桃。第一反应该想什么模型？",
+        },
+        firstStep: {
+          en: "Check whether the sample is without replacement.",
+          es: "Revisa si la muestra es sin reemplazo.",
+          zh: "先确认是不是不放回抽样。",
+        },
+        setup: {
+          en: "Hypergeometric is the success-count model for draws without replacement from a finite pool.",
+          es: "La hipergeometrica es el modelo de conteo de exitos para extracciones sin reemplazo de un conjunto finito.",
+          zh: "超几何分布就是有限总体中不放回抽样时的成功计数模型。",
+        },
+        fullPath: [
+          { en: "You are counting successes in a sample.", es: "Estas contando exitos dentro de una muestra.", zh: "这里是在样本中统计成功个数。" },
+          { en: "But the population changes after each draw.", es: "Pero la poblacion cambia despues de cada extraccion.", zh: "但每抽一次，总体都会变化。" },
+          { en: "That breaks independence and points to hypergeometric.", es: "Eso rompe la independencia y apunta a hipergeometrica.", zh: "这破坏了独立性，所以该用超几何分布。" },
+        ],
+        answer: {
+          en: "Hypergeometric",
+          es: "Hipergeometrica",
+          zh: "超几何分布",
+        },
+        selfCheck: {
+          en: "Without replacement -> hypergeometric, not binomial.",
+          es: "Sin reemplazo -> hipergeometrica, no binomial.",
+          zh: "不放回 -> 超几何，不是二项。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "An urn has 7 red and 5 blue balls. Three are drawn without replacement. What setup gives the probability of exactly 2 red balls?",
+          es: "Una urna tiene 7 bolas rojas y 5 azules. Se extraen 3 sin reemplazo. ¿Que planteamiento da la probabilidad de exactamente 2 rojas?",
+          zh: "一个盒子里有 7 个红球和 5 个蓝球，不放回地抽 3 个。求恰好 2 个红球的设法是什么？",
+        },
+        firstStep: {
+          en: "Use hypergeometric counting: choose successes and choose failures.",
+          es: "Usa el conteo hipergeometrico: elige exitos y elige fracasos.",
+          zh: "用超几何计数：先选成功，再选失败。",
+        },
+        setup: {
+          en: "Without replacement means you count favorable samples from a finite population and divide by all samples of that size.",
+          es: "Sin reemplazo significa que cuentas muestras favorables de una poblacion finita y divides entre todas las muestras de ese tamaño.",
+          zh: "不放回意味着要在有限总体里数有利样本，再除以所有同样大小的样本数。",
+        },
+        fullPath: [
+          { en: "Choose 2 red from the 7 red balls.", es: "Elige 2 rojas entre las 7 rojas.", zh: "先从 7 个红球里选 2 个。" },
+          { en: "Choose 1 blue from the 5 blue balls.", es: "Elige 1 azul entre las 5 azules.", zh: "再从 5 个蓝球里选 1 个。" },
+          { en: "Divide by the number of all 3-ball samples from 12 balls.", es: "Divide por el numero de todas las muestras de 3 bolas tomadas de 12.", zh: "最后除以从 12 个球里任取 3 个的总样本数。" },
+        ],
+        answer: {
+          en: "C(7,2)C(5,1) / C(12,3)",
+          es: "C(7,2)C(5,1) / C(12,3)",
+          zh: "C(7,2)C(5,1) / C(12,3)",
+        },
+        selfCheck: {
+          en: "Hypergeometric setup = choose good, choose not-good, divide by all samples.",
+          es: "Planteamiento hipergeometrico = elige favorables, elige no favorables, divide entre todas las muestras.",
+          zh: "超几何设法 = 选成功、选非成功，再除以总样本数。",
+        },
+      },
+    ],
+  },
+  "prob-normal-approximation": {
+    quiz: [
+      {
+        prompt: {
+          en: "A binomial count has large n and is not too skewed. What shortcut model should you test before doing a long exact sum?",
+          es: "Un conteo binomial tiene n grande y no esta muy sesgado. ¿Que modelo atajo debes probar antes de hacer una suma exacta larga?",
+          zh: "某个二项计数里 n 很大，而且不太偏。真正做一长串精确求和前，应该先试哪个近似模型？",
+        },
+        firstStep: {
+          en: "Try a normal approximation.",
+          es: "Prueba una aproximacion normal.",
+          zh: "先试正态近似。",
+        },
+        setup: {
+          en: "Large binomial models often behave like a bell curve, so a normal approximation can replace the exact count model.",
+          es: "Los modelos binomiales grandes suelen comportarse como una campana, asi que una aproximacion normal puede reemplazar el modelo exacto.",
+          zh: "大样本二项分布常会长得像钟形，所以可以先用正态分布来近似。",
+        },
+        fullPath: [
+          { en: "Start from a binomial story.", es: "Empieza con una historia binomial.", zh: "先认出原题是二项故事。" },
+          { en: "Check that n is large enough and the shape is not too skewed.", es: "Verifica que n sea suficientemente grande y que la forma no sea demasiado sesgada.", zh: "再确认 n 够大，而且分布形状没有严重偏斜。" },
+          { en: "Then switch to a normal model with matched center and spread.", es: "Luego cambia a un modelo normal con el mismo centro y dispersion.", zh: "最后换成中心和离散度匹配的正态模型。" },
+        ],
+        answer: {
+          en: "Normal approximation to the binomial",
+          es: "Aproximacion normal a la binomial",
+          zh: "二项分布的正态近似",
+        },
+        selfCheck: {
+          en: "Large, not-too-skewed binomial -> normal approximation.",
+          es: "Binomial grande y no muy sesgada -> aproximacion normal.",
+          zh: "样本大、偏斜不重的二项 -> 正态近似。",
+        },
+      },
+    ],
+  },
+  "prob-conditional-distribution": {
+    quiz: [
+      {
+        prompt: {
+          en: "A joint table is given, and the problem asks for the distribution of X after you are told Y=2. What should you do first?",
+          es: "Se da una tabla conjunta, y el problema pide la distribucion de X despues de saber que Y=2. ¿Que debes hacer primero?",
+          zh: "题目给了一张联合分布表，并问在已知 Y=2 后 X 的分布。第一步该做什么？",
+        },
+        firstStep: {
+          en: "Freeze the row or column for Y=2, then renormalize inside that slice.",
+          es: "Congela la fila o columna de Y=2 y luego renormaliza dentro de ese corte.",
+          zh: "先把 Y=2 那一行或一列固定住，再在那一片里重新归一化。",
+        },
+        setup: {
+          en: "Conditional distribution means the old joint world shrinks to the slice where the condition is true.",
+          es: "Distribucion condicional significa que el viejo mundo conjunto se reduce al corte donde la condicion es cierta.",
+          zh: "条件分布的意思是：原来的联合世界被缩小到满足条件的那一片。",
+        },
+        fullPath: [
+          { en: "Locate the slice where Y=2.", es: "Ubica el corte donde Y=2.", zh: "先找出 Y=2 对应的那一片。" },
+          { en: "Read the X-values only inside that slice.", es: "Lee los valores de X solo dentro de ese corte.", zh: "只看这片里面 X 的概率。" },
+          { en: "Rescale so the conditional probabilities add to 1.", es: "Reescala para que las probabilidades condicionales sumen 1.", zh: "再重新归一化，使这些条件概率加起来等于 1。" },
+        ],
+        answer: {
+          en: "Slice first, then renormalize.",
+          es: "Primero corta, luego renormaliza.",
+          zh: "先切片，再归一化。",
+        },
+        selfCheck: {
+          en: "Conditioning shrinks the world before it changes the numbers.",
+          es: "Condicionar encoge el mundo antes de cambiar los numeros.",
+          zh: "条件化先缩小世界，再改概率数字。",
+        },
+      },
+    ],
+  },
+  "prob-conditional-expectation": {
+    quiz: [
+      {
+        prompt: {
+          en: "If you know Y already, what does E[X|Y] represent in plain language?",
+          es: "Si ya conoces Y, ¿que representa E[X|Y] en lenguaje sencillo?",
+          zh: "如果 Y 已经知道了，E[X|Y] 用大白话是什么意思？",
+        },
+        firstStep: {
+          en: "Read it as the average value of X after the new information arrives.",
+          es: "Leelo como el valor promedio de X despues de que llega la nueva informacion.",
+          zh: "把它读成：在新信息到来后，X 的平均值。",
+        },
+        setup: {
+          en: "Conditional expectation is the best average guess once the condition is known.",
+          es: "La esperanza condicional es la mejor conjetura promedio una vez conocida la condicion.",
+          zh: "条件期望就是在条件已知后，对 X 的最佳平均预测。",
+        },
+        fullPath: [
+          { en: "Start with the extra information Y.", es: "Empieza con la informacion extra Y.", zh: "先把额外信息 Y 放进来。" },
+          { en: "Restrict attention to the world consistent with that information.", es: "Restringe la atencion al mundo consistente con esa informacion.", zh: "把注意力限制在与这条信息一致的世界里。" },
+          { en: "Average X inside that smaller world.", es: "Promedia X dentro de ese mundo mas pequeño.", zh: "再在这个缩小后的世界里取 X 的平均。" },
+        ],
+        answer: {
+          en: "The average of X after learning Y.",
+          es: "El promedio de X despues de conocer Y.",
+          zh: "知道 Y 之后，X 的平均值。",
+        },
+        selfCheck: {
+          en: "Condition first, then average.",
+          es: "Primero condiciona, luego promedia.",
+          zh: "先条件化，再取平均。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "A random payout X equals 10 if a coin is heads and 2 if tails. If Y records whether the coin landed heads, what is E[X|Y=1]?",
+          es: "Un pago aleatorio X vale 10 si una moneda sale cara y 2 si sale cruz. Si Y registra si la moneda salio cara, ¿que es E[X|Y=1]?",
+          zh: "随机收益 X 在硬币为正面时取 10，反面时取 2。若 Y 记录硬币是否为正面，则 E[X|Y=1] 等于多少？",
+        },
+        firstStep: {
+          en: "Freeze the conditioned world Y=1 and average only there.",
+          es: "Congela el mundo condicionado Y=1 y promedia solo ahi.",
+          zh: "先把世界固定在 Y=1，再只在这个世界里取平均。",
+        },
+        setup: {
+          en: "Conditional expectation is just the average inside the world where the condition is true.",
+          es: "La esperanza condicional es simplemente el promedio dentro del mundo donde la condicion es cierta.",
+          zh: "条件期望本质上就是：在条件成立的那个世界里再取平均。",
+        },
+        fullPath: [
+          { en: "Y=1 means the coin landed heads.", es: "Y=1 significa que la moneda salio cara.", zh: "Y=1 表示硬币落在正面。" },
+          { en: "Inside that world, X is not random anymore: it equals 10.", es: "Dentro de ese mundo, X ya no es aleatoria: vale 10.", zh: "在这个世界里，X 已经不再随机，而是固定等于 10。" },
+          { en: "So the conditional average is 10.", es: "Asi que el promedio condicional es 10.", zh: "所以条件平均值就是 10。" },
+        ],
+        answer: {
+          en: "10",
+          es: "10",
+          zh: "10",
+        },
+        selfCheck: {
+          en: "Once the condition pins X down, the conditional expectation is that pinned value.",
+          es: "Una vez que la condicion fija a X, la esperanza condicional es ese valor fijo.",
+          zh: "一旦条件把 X 钉死，条件期望就是那个固定值。",
+        },
+      },
+    ],
+  },
+  "prob-poisson-approximation": {
+    quiz: [
+      {
+        prompt: {
+          en: "A factory makes 5000 chips, each failing independently with probability 0.0008. Which approximation should you try first for the number of failed chips?",
+          es: "Una fabrica produce 5000 chips, cada uno falla independientemente con probabilidad 0.0008. ¿Que aproximacion debes intentar primero para el numero de chips fallados?",
+          zh: "一家工厂生产 5000 个芯片，每个芯片独立地以 0.0008 的概率失效。要求失效芯片数时，应先试哪个近似？",
+        },
+        firstStep: {
+          en: "Try a Poisson approximation with lambda=np.",
+          es: "Prueba una aproximacion Poisson con lambda=np.",
+          zh: "先试 Poisson 近似，参数取 lambda=np。",
+        },
+        setup: {
+          en: "Many trials with tiny p and moderate np is the standard Poisson-approximation trigger.",
+          es: "Muchos ensayos con p pequeña y np moderado es el disparador clasico de la aproximacion Poisson.",
+          zh: "大量试验、极小 p、而 np 仍适中，是 Poisson 近似的经典触发条件。",
+        },
+        fullPath: [
+          { en: "Start from the binomial story: many independent success-failure trials.", es: "Empieza con la historia binomial: muchos ensayos independientes de exito-fracaso.", zh: "先认出它本来是一个二项故事：很多独立成败试验。" },
+          { en: "Notice p is tiny and n is huge.", es: "Observa que p es pequeñisima y n es enorme.", zh: "再注意 p 很小而 n 很大。" },
+          { en: "Replace with Poisson using lambda=np.", es: "Sustituye por Poisson usando lambda=np.", zh: "然后用 lambda=np 换成 Poisson 模型。" },
+        ],
+        answer: {
+          en: "Poisson approximation with lambda = 5000(0.0008) = 4",
+          es: "Aproximacion Poisson con lambda = 5000(0.0008) = 4",
+          zh: "Poisson 近似，lambda = 5000(0.0008) = 4",
+        },
+        selfCheck: {
+          en: "Many and rare -> Poisson with lambda=np.",
+          es: "Muchos y raros -> Poisson con lambda=np.",
+          zh: "多而稀少 -> 用 lambda=np 的 Poisson 近似。",
+        },
+      },
+    ],
+  },
   "prob-bayes": {
     quiz: [
       {
@@ -762,6 +2360,40 @@ export const bubblegumBanks: Partial<
           en: "Rare disease plus moderate false positives means the posterior can stay surprisingly low.",
           es: "Enfermedad rara más falsos positivos moderados suele dejar una probabilidad posterior sorprendentemente baja.",
           zh: "疾病很少见、假阳性又不小，后验概率往往会比直觉低很多。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "Three factories make a product: 50%, 30%, 20% of output. Their defect rates are 1%, 2%, and 5%. A chosen item is defective. What setup finds the chance it came from factory 3?",
+          es: "Tres fabricas producen un articulo: 50%, 30%, 20% de la produccion. Sus tasas de defecto son 1%, 2% y 5%. Un articulo elegido es defectuoso. ¿Que planteamiento halla la probabilidad de que venga de la fabrica 3?",
+          zh: "三家工厂分别生产某产品的 50%、30%、20%。它们的次品率分别是 1%、2%、5%。随机拿到一个次品，求它来自 3 号工厂的设法是什么？",
+        },
+        firstStep: {
+          en: "Write Bayes with factory 3 in the numerator and all defect paths in the denominator.",
+          es: "Escribe Bayes con la fabrica 3 en el numerador y todos los caminos de defecto en el denominador.",
+          zh: "先写贝叶斯：分子放“3 号工厂且次品”，分母放所有导致次品的路径。",
+        },
+        setup: {
+          en: "This is a hidden-source-after-result problem, so Bayes is the right reversal move.",
+          es: "Este es un problema de fuente escondida despues de observar el resultado, asi que Bayes es el movimiento correcto.",
+          zh: "这题是“先看到结果，再反推来源”，所以该用贝叶斯反转条件。",
+        },
+        fullPath: [
+          { en: "Let Fi be the event 'made by factory i' and D be 'defective'.", es: "Sea Fi el evento 'hecho por la fabrica i' y D 'defectuoso'.", zh: "设 Fi 表示“来自第 i 家工厂”，D 表示“次品”。" },
+          { en: "Write P(F3|D)=P(D|F3)P(F3)/P(D).", es: "Escribe P(F3|D)=P(D|F3)P(F3)/P(D).", zh: "写出 P(F3|D)=P(D|F3)P(F3)/P(D)。" },
+          { en: "Expand P(D) by total probability across the three factories.", es: "Expande P(D) por probabilidad total a traves de las tres fabricas.", zh: "再用全概率把 P(D) 按三家工厂展开。" },
+        ],
+        answer: {
+          en: "Use Bayes with denominator from total probability.",
+          es: "Usa Bayes con denominador sacado por probabilidad total.",
+          zh: "用贝叶斯，分母再靠全概率展开。",
+        },
+        selfCheck: {
+          en: "Observed result, hidden source -> Bayes plus total probability.",
+          es: "Resultado observado, fuente escondida -> Bayes mas probabilidad total.",
+          zh: "结果已知、来源未知 -> 贝叶斯 + 全概率。",
         },
       },
     ],
@@ -868,6 +2500,40 @@ export const bubblegumBanks: Partial<
           en: "Several clean routes to one event = total probability.",
           es: "Varias rutas limpias hacia un evento = probabilidad total.",
           zh: "一个结果有好几条干净路径 = 全概率。",
+        },
+      },
+    ],
+    final: [
+      {
+        prompt: {
+          en: "A student can pass a course through homework exemption, quiz recovery, or final exam rescue. The pass event can happen through several disjoint routes. What setup should you write before numbers?",
+          es: "Un estudiante puede aprobar un curso por exencion de tarea, recuperacion de quiz o rescate del final. El evento 'aprobar' puede ocurrir por varias rutas disjuntas. ¿Que planteamiento debes escribir antes de poner numeros?",
+          zh: "一个学生可能通过作业豁免、测验补救或期末翻盘三条互不重叠的路过课。代数字前，应先写什么设法？",
+        },
+        firstStep: {
+          en: "Partition the pass event into the disjoint routes and add those path probabilities.",
+          es: "Parte el evento de aprobar en rutas disjuntas y suma esas probabilidades.",
+          zh: "先把“通过”事件按几条互斥路径拆开，再把各路径概率相加。",
+        },
+        setup: {
+          en: "Total probability is the clean way to rebuild one event from several disjoint causes or routes.",
+          es: "La probabilidad total es la forma limpia de reconstruir un evento desde varias causas o rutas disjuntas.",
+          zh: "全概率的核心，就是把一个事件拆成几条互不重叠的成因或路径，再重新加回去。",
+        },
+        fullPath: [
+          { en: "Choose a partition B1, B2, B3 of the route types.", es: "Elige una particion B1, B2, B3 de los tipos de ruta.", zh: "先选一组互斥且全覆盖的路径划分 B1, B2, B3。" },
+          { en: "Write P(pass)=P(pass|B1)P(B1)+P(pass|B2)P(B2)+P(pass|B3)P(B3).", es: "Escribe P(aprobar)=P(aprobar|B1)P(B1)+P(aprobar|B2)P(B2)+P(aprobar|B3)P(B3).", zh: "写出 P(通过)=P(通过|B1)P(B1)+P(通过|B2)P(B2)+P(通过|B3)P(B3)。" },
+          { en: "Then plug in the route data.", es: "Luego sustituye los datos de cada ruta.", zh: "最后再代入每条路径的数据。" },
+        ],
+        answer: {
+          en: "Write total probability across the disjoint routes.",
+          es: "Escribe probabilidad total sobre las rutas disjuntas.",
+          zh: "先把全概率公式沿着互斥路径写出来。",
+        },
+        selfCheck: {
+          en: "One event, several clean doors -> total probability.",
+          es: "Un evento, varias puertas limpias -> probabilidad total.",
+          zh: "一个结果、好几扇干净的门 -> 全概率。",
         },
       },
     ],
