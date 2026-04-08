@@ -6756,7 +6756,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "需要前面很多步一起帮忙，就用强归纳。",
     "quickExample": {
-      "problem": "什么时候强感应比普通感应更好？",
+      "problem": "什么时候强归纳法比普通归纳法更合适？",
       "move": "当下一个案例取决于几个较早的案例时。"
     }
   },

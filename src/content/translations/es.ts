@@ -581,7 +581,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "memoryHook": "Ambos cambios significan que ambos se cuentan.",
     "quickExample": {
       "problem": "Derivada de x^2 sen x",
-      "move": "2x sen x + x^2 porque x"
+      "move": "2x sen x + x^2 cos x"
     }
   },
   "quotient-rule": {
@@ -623,7 +623,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "topic": "regla de la cadena",
     "name": "Regla de la cadena",
     "useItWhen": "una función está dentro de otra",
-    "looksLike": "(3x^2 + 1)^5, pecado(x^3), e^(2x)",
+    "looksLike": "(3x^2 + 1)^5, sen(x^3), e^(2x)",
     "doThis": "haz el exterior, mantén el interior, luego multiplica por el interior primo",
     "thinkOfItAs": "pelar una cebolla capa por capa",
     "watchOutFor": "olvidando la derivada interna",
@@ -634,7 +634,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "¿Qué regla se ajusta al pecado (x ^ 4)?",
+        "prompt": "¿Qué regla se ajusta a sen(x^4)?",
         "answer": "Regla de la cadena."
       },
       {
@@ -816,10 +816,10 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "Creciente/Decreciente",
     "useItWhen": "necesitas dónde sube o baja el gráfico",
     "looksLike": "encontrar intervalos de aumento y disminución",
-    "doThis": "hacer una tabla de signos f-prime",
+    "doThis": "haz una tabla de signos de f'(x)",
     "thinkOfItAs": "Luz verde para subir, luz roja para bajar.",
-    "watchOutFor": "usando f en lugar de f-prime para el gráfico de signos",
-    "rememberThis": "f-prime positivo significa creciente",
+    "watchOutFor": "usar f en lugar de f'(x) en la tabla de signos",
+    "rememberThis": "si f'(x) es positiva, la función crece",
     "typicalProblemShapes": [
       "Preguntas de intervalo sobre dónde sube o baja la gráfica",
       "Gráficos de signos derivados o tablas de puntos críticos"
@@ -834,7 +834,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "En puntos críticos y lugares donde f' no está definido."
       }
     ],
-    "memoryHook": "Cebado positivo, cebado negativo.",
+    "memoryHook": "f'(x) positiva: sube. f'(x) negativa: baja.",
     "quickExample": {
       "problem": "Si f'(x) es negativo en (1, 4), ¿qué hace f allí?",
       "move": "Es decreciente en (1, 4)."
@@ -880,9 +880,9 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "Concavidad",
     "useItWhen": "necesitas la curvatura del gráfico",
     "looksLike": "preguntas sobre cóncavo hacia arriba, cóncavo hacia abajo o segunda derivada",
-    "doThis": "marque f-double-prime: más está arriba, menos está abajo",
-    "thinkOfItAs": "una sonrisa versus un ceño fruncido",
-    "watchOutFor": "usando f-prime en lugar de f-double-prime",
+    "doThis": "revisa el signo de f''(x): positivo hacia arriba, negativo hacia abajo",
+    "thinkOfItAs": "la gráfica se abre hacia arriba o se curva hacia abajo",
+    "watchOutFor": "usar f'(x) en lugar de f''(x)",
     "rememberThis": "segunda derivada indica la curva",
     "typicalProblemShapes": [
       "Preguntas sobre curvatura o flexión",
@@ -890,15 +890,15 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "Si f''(x) < 0, ¿sonreír o fruncir el ceño?",
-        "answer": "Fruncir el ceño. Cóncavo hacia abajo."
+        "prompt": "Si f''(x) < 0, ¿la gráfica es cóncava hacia arriba o hacia abajo?",
+        "answer": "Cóncava hacia abajo."
       },
       {
         "prompt": "¿Qué derivada controla la concavidad?",
         "answer": "La segunda derivada."
       }
     ],
-    "memoryHook": "Segunda derivada = sonreír o fruncir el ceño.",
+    "memoryHook": "f'' positiva: cóncava hacia arriba. f'' negativa: cóncava hacia abajo.",
     "quickExample": {
       "problem": "Si f''(x) > 0 en un intervalo, ¿qué forma tiene la gráfica?",
       "move": "Cóncavo hacia arriba."
@@ -912,7 +912,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "Puntos de inflexión",
     "useItWhen": "necesitas donde se voltea la curva",
     "looksLike": "encontrar posibles puntos de inflexión",
-    "doThis": "encuentre puntos problemáticos de f-doble prima y luego verifique si hay un cambio de signo",
+    "doThis": "encuentra los puntos donde f''(x) es 0 o no existe y luego revisa si cambia de signo",
     "thinkOfItAs": "el lugar donde la curva se voltea",
     "watchOutFor": "llamando a cada cero un punto de inflexión",
     "rememberThis": "solo cuenta si la curva cambia",
@@ -942,15 +942,15 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "unit": "Aplicaciones",
     "topic": "Prueba de la primera derivada",
     "name": "Primera prueba derivada",
-    "useItWhen": "quieres máximo o mínimo de los signos f-prime",
+    "useItWhen": "quieres decidir máximos o mínimos a partir de los signos de f'(x)",
     "looksLike": "un gráfico de signos alrededor de un número crítico",
-    "doThis": "verifique f-prime a la izquierda y a la derecha del punto",
+    "doThis": "revisa el signo de f'(x) a la izquierda y a la derecha del punto",
     "thinkOfItAs": "observar el tráfico antes y después de una intersección",
     "watchOutFor": "probar solo el punto en sí en lugar de intervalos cercanos",
     "rememberThis": "el interruptor de señal cuenta la historia",
     "typicalProblemShapes": [
       "Números críticos seguidos de pruebas de intervalo",
-      "Una tabla de signos para f-prime"
+      "Una tabla de signos para f'(x)"
     ],
     "miniDrill": [
       {
@@ -976,9 +976,9 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "Prueba de la segunda derivada",
     "useItWhen": "ya tienes un punto crítico y quieres una revisión rápida",
     "looksLike": "encuentre f'(c) = 0, luego verifique f''(c)",
-    "doThis": "conecte c a f-double-prime: más mínimo, menos máximo",
+    "doThis": "evalúa f''(c): si es positiva hay mínimo; si es negativa hay máximo",
     "thinkOfItAs": "dejando que la curva decida el giro",
-    "watchOutFor": "usándolo cuando f-double-prime es 0",
+    "watchOutFor": "usarla cuando f''(c) vale 0",
     "rememberThis": "la segunda derivada decide solo cuando no es cero",
     "typicalProblemShapes": [
       "Un punto crítico ya encontrado a partir de f' = 0",
@@ -1105,7 +1105,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "quieres deshacer una derivada",
     "looksLike": "encontrar una función cuya derivada sea 6x o cos x",
     "doThis": "preguntar qué función se diferenciaría de esta",
-    "thinkOfItAs": "ejecutando la película derivada hacia atrás",
+    "thinkOfItAs": "recorrer la derivada al revés",
     "watchOutFor": "olvidando la familia constante",
     "rememberThis": "antiderivada significa invertir la derivada",
     "typicalProblemShapes": [
@@ -1229,13 +1229,13 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "Capítulo 5: Integrales",
     "unit": "Integrales",
     "topic": "Teorema fundamental del cálculo",
-    "name": "Uso práctico de la FTC",
+    "name": "Uso práctico del TFC",
     "useItWhen": "necesitas una integral definida rápida o una derivada integral",
     "looksLike": "configuración superior-inferior o d/dx de una integral a x",
-    "doThis": "use la parte superior menos la inferior, o desenvuelva el interior",
+    "doThis": "evalúa la antiderivada arriba menos abajo, o deriva la integral usando el integrando",
     "thinkOfItAs": "derivadas e integrales dándose la mano",
     "watchOutFor": "olvidando arriba menos abajo",
-    "rememberThis": "antiderivada para evaluar, función original para desenvolver",
+    "rememberThis": "usa la antiderivada para evaluar; usa el integrando para derivar",
     "typicalProblemShapes": [
       "Evaluar una integral definida usando una antiderivada",
       "Derivar una integral cuyo límite superior es x"
@@ -1247,7 +1247,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "¿Derivada de la integral de 0 a x de cos t dt?",
-        "answer": "porque x"
+        "answer": "cos x"
       }
     ],
     "memoryHook": "Arriba menos abajo, o desenvolver hacia adentro.",
@@ -1366,12 +1366,12 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "rememberThis": "la siguiente x viene de la recta tangente",
     "typicalProblemShapes": [
       "Aproximar un cero de una función.",
-      "Fórmulas de iteración construidas a partir de f y f-prime"
+      "Fórmulas de iteración construidas a partir de f y f'(x)"
     ],
     "miniDrill": [
       {
         "prompt": "¿Qué dos piezas funcionales necesita el método de Newton?",
-        "answer": "f(x) y f-primo(x)."
+        "answer": "f(x) y f'(x)."
       },
       {
         "prompt": "¿El método de Newton encuentra siempre una respuesta exacta?",
@@ -1521,7 +1521,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "necesitas la producción promedio durante un intervalo",
     "looksLike": "1 sobre b-a multiplicado por una integral",
     "doThis": "tomar el total de la integral, luego dividir por la longitud del intervalo",
-    "thinkOfItAs": "área convertida en altura promedio",
+    "thinkOfItAs": "convertir el área total en una altura promedio",
     "watchOutFor": "olvidando el paso de dividir por longitud",
     "rememberThis": "promedio = integral dividida por el ancho del intervalo",
     "typicalProblemShapes": [
@@ -1553,7 +1553,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "El límite se puede dividir en pedazos más pequeños y fáciles.",
     "looksLike": "suma, diferencia, producto, cociente o potencias dentro de un límite",
     "doThis": "dividir el límite y simplificar pieza por pieza",
-    "thinkOfItAs": "romper una caja grande en cajas pequeñas",
+    "thinkOfItAs": "separar un límite grande en partes más manejables",
     "watchOutFor": "usando la ley del cociente cuando el límite inferior es 0",
     "rememberThis": "divide lo que puedas, luego conecta",
     "typicalProblemShapes": [
@@ -1570,10 +1570,10 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Cuando el límite del denominador es 0."
       }
     ],
-    "memoryHook": "Rompe el límite antes de luchar contra él.",
+    "memoryHook": "Primero separa el límite; luego simplifica.",
     "quickExample": {
       "problem": "Límite de (x^2 + 3x) cuando x llega a 2",
-      "move": "Tome el límite de cada término y luego sume."
+      "move": "Toma el límite de cada término y luego súmalos."
     }
   },
   "derivative-as-function": {
@@ -1583,29 +1583,29 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "topic": "La derivada como función.",
     "name": "Función derivada",
     "useItWhen": "quieres la regla para la pendiente, no solo una pendiente",
-    "looksLike": "f-primo de x o dy/dx",
-    "doThis": "diferenciar una vez, luego tratar el resultado como una nueva función",
-    "thinkOfItAs": "una máquina pendiente construida a partir de la función original",
+    "looksLike": "f'(x) o dy/dx",
+    "doThis": "deriva una vez y luego trata el resultado como una función nueva",
+    "thinkOfItAs": "la regla que da la pendiente de la función original en cada punto",
     "watchOutFor": "encontrar la pendiente en un punto cuando el problema quiere la derivada completa",
-    "rememberThis": "f-prime da pendiente en todos los lugares donde existe",
+    "rememberThis": "f'(x) da la pendiente donde la derivada existe",
     "typicalProblemShapes": [
-      "Encuentre f-primo(x), no solo f-primo en un número",
-      "Una pregunta gráfica que pregunta dónde la pendiente es positiva o negativa."
+      "Encuentra f'(x), no solo la derivada en un punto",
+      "Una pregunta gráfica que te pide dónde la pendiente es positiva o negativa."
     ],
     "miniDrill": [
       {
-        "prompt": "¿F-prime es un número o una nueva función?",
+        "prompt": "¿f'(x) es un número o una nueva función?",
         "answer": "Una nueva función."
       },
       {
-        "prompt": "¿Qué te dice f-prime?",
+        "prompt": "¿Qué te dice f'(x)?",
         "answer": "El comportamiento de la pendiente de la función original."
       }
     ],
     "memoryHook": "Diferencia una vez y obtén un mapa de pendientes.",
     "quickExample": {
       "problem": "Si f(x) = x^3, ¿cuál es la función derivada?",
-      "move": "f-primo(x) = 3x^2."
+      "move": "f'(x) = 3x^2."
     }
   },
   "trig-derivatives": {
@@ -1619,7 +1619,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "doThis": "use los patrones de derivada trigonométrica estándar, luego la regla de la cadena si es necesario",
     "thinkOfItAs": "una pequeña lista que memorizas y despliegas rápidamente",
     "watchOutFor": "olvidando el negativo en d/dx de cos x",
-    "rememberThis": "el pecado va a cos, porque va a menos pecado",
+    "rememberThis": "sen va a cos; cos va a -sen",
     "typicalProblemShapes": [
       "Funciones trigonométricas básicas por sí solas",
       "Funciones trigonométricas con una expresión interna como sin(3x)"
@@ -1627,14 +1627,14 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "¿Cuál es d/dx del sen x?",
-        "answer": "porque x."
+        "answer": "cos x."
       },
       {
         "prompt": "¿Cuál es la trampa en d/dx de cos x?",
         "answer": "Falta el signo negativo."
       }
     ],
-    "memoryHook": "Pecado a porque. Porque menos pecado.",
+    "memoryHook": "sen pasa a cos; cos pasa a -sen.",
     "quickExample": {
       "problem": "Derivada de cos x",
       "move": "Es menos sen x."
@@ -1647,11 +1647,11 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "topic": "Aproximaciones lineales y diferenciales.",
     "name": "Diferenciales",
     "useItWhen": "necesita una estimación rápida de pequeños cambios",
-    "looksLike": "dy = f-primo(x) dx",
+    "looksLike": "dy = f'(x) dx",
     "doThis": "tomar la derivada, multiplicarla por el pequeño cambio de entrada y estimar",
     "thinkOfItAs": "matemáticas ampliadas donde las curvas actúan casi rectas",
     "watchOutFor": "usar grandes cambios como si la estimación lineal se mantuviera perfecta",
-    "rememberThis": "Small dx proporciona una estimación útil de dy",
+    "rememberThis": "un dx pequeño da una buena estimación de dy",
     "typicalProblemShapes": [
       "Calcula cuánto cambia y cuando x cambia un poco",
       "Error de estimación o valores cercanos rápidos"
@@ -1659,7 +1659,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "¿Qué dos piezas forman dy?",
-        "answer": "f-primo(x) y dx."
+        "answer": "f'(x) y dx."
       },
       {
         "prompt": "¿Los diferenciales funcionan mejor para cambios pequeños o grandes?",
@@ -1669,7 +1669,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "memoryHook": "Pequeño cambio de entrada, derivada multiplicada por dx.",
     "quickExample": {
       "problem": "¿Cómo se estima un pequeño cambio en la producción?",
-      "move": "Utilice dy = f-prime(x) dx."
+      "move": "Usa dy = f'(x)dx."
     }
   },
   "area-distance-problems": {
@@ -2803,7 +2803,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "doThis": "Memorizar los patrones básicos y conectarlos a nuevos problemas.",
     "thinkOfItAs": "la hoja de fórmulas que quieres en tu cabeza",
     "watchOutFor": "mezclar los signos en seno y coseno",
-    "rememberThis": "conoce la serie base en frio",
+    "rememberThis": "ten bien claras las series base",
     "typicalProblemShapes": [
       "Reescribir una función como una serie conocida",
       "Utilice una serie base para construir una nueva."
@@ -2815,7 +2815,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "¿Qué serie común alterna potencias impares?",
-        "answer": "pecado x."
+        "answer": "sen x."
       }
     ],
     "memoryHook": "Conozca los cuatro grandes y construya a partir de ahí.",
@@ -2830,14 +2830,14 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "unit": "Temas Puente",
     "topic": "Funciones inversas y sus derivadas.",
     "name": "Funciones inversas",
-    "useItWhen": "es necesario deshacer una función",
+    "useItWhen": "necesitas invertir una función",
     "looksLike": "f y f^-1, intercambia x e y",
     "doThis": "invertir x e y, resolver y luego usar reglas de derivada inversa si es necesario",
-    "thinkOfItAs": "ejecutando la función hacia atrás",
+    "thinkOfItAs": "hacer que la función marche al revés",
     "watchOutFor": "olvidar lo inverso significa que las entradas y salidas cambian de trabajo",
     "rememberThis": "inversa deshace la función original",
     "typicalProblemShapes": [
-      "Encuentra la inversa de una función uno a uno",
+      "Encuentra la inversa de una función inyectiva",
       "Diferenciar una función inversa"
     ],
     "miniDrill": [
@@ -2847,7 +2847,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "¿Toda función tiene una función inversa?",
-        "answer": "No. Tiene que ser uno a uno."
+        "answer": "No. Tiene que ser inyectiva."
       }
     ],
     "memoryHook": "Inverso significa deshacer.",
@@ -4475,7 +4475,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "¿Qué factor trigonométrico adicional aparece en el jacobiano?",
-        "answer": "pecado fi."
+        "answer": "sen φ."
       },
       {
         "prompt": "¿Las mejores coordenadas para una esfera?",
@@ -5617,7 +5617,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "una regla toma vectores y los envía de manera que preserve la estructura",
     "looksLike": "T(x), matriz por vector, mapas entre espacios vectoriales",
     "doThis": "comprobar si la regla respeta la suma y la multiplicación escalar",
-    "thinkOfItAs": "una máquina que dobla el espacio sin romper las reglas lineales",
+    "thinkOfItAs": "una regla que transforma vectores sin romper suma ni escala",
     "watchOutFor": "llamando lineal a cada regla vectorial",
     "rememberThis": "lineal significa que suma y escala siguen funcionando",
     "typicalProblemShapes": [
@@ -6029,16 +6029,16 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "Capítulo 1: Sistemas de Ecuaciones Lineales",
     "unit": "Sistemas de Ecuaciones Lineales",
     "topic": "Ecuación matricial Ax = b",
-    "name": "hacha = b",
+    "name": "Ax = b",
     "useItWhen": "un sistema se escribe como una ecuación matricial",
     "looksLike": "Ax = b, matriz de coeficientes multiplicada por vector variable",
     "doThis": "lea A como la acción, x como las incógnitas y b como el objetivo.",
-    "thinkOfItAs": "una máquina intentando alcanzar una salida",
+    "thinkOfItAs": "una matriz actuando sobre un vector para producir el lado derecho",
     "watchOutFor": "mezclando el papel de x y b",
     "rememberThis": "Ax = b es la versión matricial de un sistema lineal",
     "typicalProblemShapes": [
       "Reescribir un sistema como Ax = b",
-      "Pregunte si b se encuentra en el espacio columna de A."
+      "Preguntar si b pertenece al espacio columna de A."
     ],
     "miniDrill": [
       {
@@ -6223,9 +6223,9 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "topic": "Matriz de una transformación lineal",
     "name": "Matriz de una transformación",
     "useItWhen": "una regla geométrica necesita una matriz en coordenadas",
-    "looksLike": "T(v), base estándar, imagen de e_1 y e_2",
-    "doThis": "enviar vectores base a través de T y usar esas salidas como columnas",
-    "thinkOfItAs": "registrar lo que la máquina hace en las direcciones básicas",
+    "looksLike": "T(v), base estándar, imágenes de e_1 y e_2",
+    "doThis": "aplica T a los vectores base y usa esas imágenes como columnas",
+    "thinkOfItAs": "anotar qué les ocurre a los vectores base bajo la transformación",
     "watchOutFor": "olvidar que las columnas de la matriz provienen de vectores base transformados",
     "rememberThis": "las columnas son T de los vectores base",
     "typicalProblemShapes": [
@@ -6235,7 +6235,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "¿Cuál se convierte en la primera columna de la matriz?",
-        "answer": "T del primer vector base."
+        "answer": "La imagen del primer vector base."
       },
       {
         "prompt": "¿Las filas o columnas almacenan los vectores base transformados?",
@@ -6245,7 +6245,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "memoryHook": "Transforma la base, luego apila las columnas.",
     "quickExample": {
       "problem": "¿Cómo se construye rápidamente la matriz para T?",
-      "move": "Encuentre T en los vectores base y apile las salidas como columnas."
+      "move": "Calcula T en los vectores base y coloca esas imágenes como columnas."
     }
   },
   "la-kernel-range": {
@@ -6256,13 +6256,13 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "Núcleo vs rango",
     "useItWhen": "es necesario separar qué asignaciones a cero de qué salidas son alcanzables",
     "looksLike": "ker(T), rango(T), espacio nulo, imagen",
-    "doThis": "Trate el núcleo como entradas perdidas y el rango como posibles salidas.",
-    "thinkOfItAs": "Lo que desaparece versus lo que se puede producir.",
+    "doThis": "piensa en el núcleo como las entradas que van a 0 y en el rango como las salidas posibles",
+    "thinkOfItAs": "lo que cae en 0 frente a lo que realmente puedes obtener",
     "watchOutFor": "mezclando dónde vive el núcleo y dónde vive el rango",
     "rememberThis": "El kernel vive en el espacio de entrada, el rango vive en el espacio de salida.",
     "typicalProblemShapes": [
       "Encuentre ker(T) o rango(T)",
-      "Uno a uno y en cheques"
+      "Pruebas de inyectividad y sobreyectividad"
     ],
     "miniDrill": [
       {
@@ -6271,45 +6271,45 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "¿Qué recoge la gama?",
-        "answer": "Todas las salidas que T puede realizar."
+        "answer": "Todas las salidas que T puede producir."
       }
     ],
     "memoryHook": "Kernel = entradas perdidas. Rango = salidas alcanzables.",
     "quickExample": {
       "problem": "¿Dónde vive el núcleo de T?",
-      "move": "En el dominio."
+      "move": "En el dominio de T."
     }
   },
   "la-one-to-one-onto": {
     "course": "Álgebra Lineal",
     "chapter": "Capítulo 6: Transformaciones Lineales y Valores Propios",
     "unit": "Transformaciones y Eigen",
-    "topic": "Uno a uno versus uno para mapas lineales",
-    "name": "Uno a uno frente a uno",
+    "topic": "Inyectividad y sobreyectividad en mapas lineales",
+    "name": "Inyectiva vs sobreyectiva",
     "useItWhen": "un mapa lineal se prueba para determinar el comportamiento inyectivo o sobreyectivo",
-    "looksLike": "uno a uno, sobre, núcleo trivial, rango completo",
-    "doThis": "use kernel para uno a uno y rango para on",
-    "thinkOfItAs": "inyectivo significa que no hay colisiones, hacia significa que no se pierden objetivos",
+    "looksLike": "inyectiva, sobreyectiva, núcleo trivial, rango completo",
+    "doThis": "usa el núcleo para estudiar inyectividad y el rango para estudiar sobreyectividad",
+    "thinkOfItAs": "inyectiva significa que no hay colisiones; sobreyectiva, que no faltan salidas",
     "watchOutFor": "comprobando el espacio equivocado para la propiedad equivocada",
-    "rememberThis": "conversaciones uno a uno con el núcleo, en conversaciones con el rango",
+    "rememberThis": "inyectiva va con el núcleo; sobreyectiva va con el rango",
     "typicalProblemShapes": [
-      "Decidir inyectivo o sobreyectivo",
-      "Comprobaciones de equivalencia de matrices cuadradas"
+      "Decidir si un mapa es inyectivo o sobreyectivo",
+      "Equivalencias típicas para matrices cuadradas"
     ],
     "miniDrill": [
       {
-        "prompt": "Si ker(T) tiene más que cero, ¿es T uno a uno?",
+        "prompt": "Si ker(T) contiene algo más que 0, ¿es T inyectiva?",
         "answer": "No."
       },
       {
-        "prompt": "Si el rango (T) omite salidas, ¿está T activado?",
+        "prompt": "Si rango(T) no cubre todas las salidas, ¿es T sobreyectiva?",
         "answer": "No."
       }
     ],
     "memoryHook": "Núcleo para inyectiva, rango para sobre.",
     "quickExample": {
-      "problem": "¿Cuál es la prueba rápida uno a uno para un mapa lineal?",
-      "move": "Compruebe si el kernel es solo cero."
+      "problem": "¿Cuál es la prueba rápida de inyectividad para un mapa lineal?",
+      "move": "Comprueba si el núcleo es solo {0}."
     }
   },
   "la-eigenspace": {
@@ -6609,17 +6609,17 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "una prueba pregunta si una función es inyectiva, sobreyectiva o biyectiva",
     "looksLike": "mostrar f es inyectiva, sobreyectiva o biyectiva",
     "doThis": "para inyectiva, empieza con salidas iguales; para sobreyectiva, empieza con una salida objetivo",
-    "thinkOfItAs": "inyectivo significa que no hay colisión, sobreyectivo significa que no hay fallos",
+    "thinkOfItAs": "inyectiva significa que no se pegan dos entradas; sobreyectiva, que todo objetivo se alcanza",
     "watchOutFor": "usar el punto de partida incorrecto para la propiedad incorrecta",
     "rememberThis": "inyectiva empieza con salidas iguales; sobreyectiva empieza con el objetivo",
     "typicalProblemShapes": [
-      "Funciones entre conjuntos o sistemas numéricos",
-      "Pruebas que solicitan biyección o lógica de función inversa"
+      "Funciones entre conjuntos o entre sistemas numéricos",
+      "Pruebas que piden biyecciones o el uso de funciones inversas"
     ],
     "miniDrill": [
       {
         "prompt": "¿Cuál es el primer paso en una prueba sobreyectiva?",
-        "answer": "Tome un objetivo arbitrario y en el codominio."
+        "answer": "Toma un y arbitrario del codominio."
       },
       {
         "prompt": "¿Qué significa biyectiva?",
@@ -6959,9 +6959,9 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "topic": "Composición de funciones y funciones inversas.",
     "name": "Composición e inversa",
     "useItWhen": "Las funciones están apiladas o es necesario deshacer una.",
-    "looksLike": "f compuesta con g, f inversa, uno a uno y sobre",
+    "looksLike": "f compuesta con g, f inversa, inyectiva y sobreyectiva",
     "doThis": "Rastree la entrada cuidadosamente y verifique el pedido.",
-    "thinkOfItAs": "máquinas en cadena y la máquina de deshacer",
+    "thinkOfItAs": "aplicar una función después de otra, o recorrerla al revés",
     "watchOutFor": "invertir el orden de composición por accidente",
     "rememberThis": "el orden de composición importa",
     "typicalProblemShapes": [
@@ -6975,7 +6975,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "¿Qué propiedad necesita una función para que exista bien una inversa?",
-        "answer": "Tiene que ser biyectivo."
+        "answer": "Tiene que ser biyectiva."
       }
     ],
     "memoryHook": "La función interna va primero.",
@@ -7148,16 +7148,16 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "course": "Introducción a las Matemáticas Abstractas",
     "chapter": "Capítulo 8: Cardinalidades de Conjuntos Infinitos",
     "unit": "Relaciones y Cardinalidad",
-    "topic": "Biyecciones y contabilidad",
-    "name": "Biyecciones para la contabilización",
+    "topic": "Biyecciones y cardinalidad numerable",
+    "name": "Biyecciones y numerabilidad",
     "useItWhen": "quieres demostrar que dos conjuntos infinitos tienen el mismo tamaño",
     "looksLike": "encontrar una biyección, enumerar el conjunto, emparejar el conjunto con naturales",
-    "doThis": "construir una coincidencia uno a uno o una lista explícita",
-    "thinkOfItAs": "El mismo tamaño significa el mismo poder de emparejamiento.",
+    "doThis": "construye una biyección o da una lista explícita",
+    "thinkOfItAs": "tener el mismo tamaño significa poder emparejar los elementos uno a uno",
     "watchOutFor": "mostrando solo inyectivo o solo sobreyectivo cuando necesitas una coincidencia completa",
     "rememberThis": "contable significa comparable con naturales",
     "typicalProblemShapes": [
-      "Comparaciones de números enteros, pares, racionales u otras comparaciones de contabilización",
+      "Comparaciones entre enteros, pares, racionales u otros conjuntos numerables",
       "Preguntas que solicitan una lista explícita"
     ],
     "miniDrill": [
@@ -9411,7 +9411,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "un sistema cambia de estado con porcentajes de transición fijos",
     "looksLike": "matriz de transición, vector de estado, estado siguiente = P por estado actual",
     "doThis": "arma la matriz de transición y multiplícala por el vector de estado actual",
-    "thinkOfItAs": "el estado de hoy alimentando al de mañana por una máquina de probabilidades",
+    "thinkOfItAs": "el estado de hoy se convierte en el de mañana según reglas fijas de transición",
     "watchOutFor": "confundir la matriz de transición con el vector de estado actual",
     "rememberThis": "estado ahora, transición después",
     "typicalProblemShapes": [
