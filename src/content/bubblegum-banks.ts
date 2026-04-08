@@ -341,6 +341,40 @@ export const bubblegumBanks: Partial<
         },
       },
     ],
+    midterm: [
+      {
+        prompt: {
+          en: "If Cov(X,Y) is positive, what should you say in plain English before doing any algebra?",
+          es: "Si Cov(X,Y) es positiva, ¿que debes decir en palabras antes de hacer algebra?",
+          zh: "如果 Cov(X,Y) 是正的，在算式之前你该先用白话怎么解释？",
+        },
+        firstStep: {
+          en: "Translate the sign before you touch formulas.",
+          es: "Traduce el signo antes de tocar formulas.",
+          zh: "先把符号翻成现象，再去碰公式。",
+        },
+        setup: {
+          en: "Positive covariance means the centered pieces of X and Y tend to have the same sign.",
+          es: "Una covarianza positiva significa que las partes centradas de X e Y suelen tener el mismo signo.",
+          zh: "正协方差表示 X 和 Y 偏离各自平均值时，往往同号。",
+        },
+        fullPath: [
+          { en: "Centering compares each variable to its own mean.", es: "Centrar compara cada variable con su propia media.", zh: "中心化是在拿每个变量和自己的均值比较。" },
+          { en: "Positive covariance says those centered deviations tend to move together.", es: "Covarianza positiva dice que esas desviaciones centradas suelen moverse juntas.", zh: "正协方差说明这些中心化后的偏差常常同向变化。" },
+          { en: "So high X tends to come with high Y, and low with low, at least on average.", es: "Asi que X alto suele venir con Y alto, y X bajo con Y bajo, al menos en promedio.", zh: "所以平均来看，X 偏高时 Y 也常偏高，X 偏低时 Y 也常偏低。" },
+        ],
+        answer: {
+          en: "They tend to move in the same direction relative to their means.",
+          es: "Tienden a moverse en la misma direccion respecto de sus medias.",
+          zh: "它们相对各自均值，倾向于同方向变化。",
+        },
+        selfCheck: {
+          en: "Covariance sign is about direction, not exact strength or independence.",
+          es: "El signo de la covarianza habla de direccion, no de fuerza exacta ni de independencia.",
+          zh: "协方差的符号说的是方向，不是精确强度，更不是独立性。",
+        },
+      },
+    ],
   },
   "prob-clt": {
     quiz: [
@@ -374,6 +408,184 @@ export const bubblegumBanks: Partial<
           en: "Large sample mean? Think CLT and standardize.",
           es: "¿Media muestral grande? Piensa CLT y estandariza.",
           zh: "大样本均值？先想 CLT，再标准化。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "X1,...,X100 are iid with mean 5 and variance 4. What normal approximation setup should you write for P(X̄ > 5.3)?",
+          es: "X1,...,X100 son iid con media 5 y varianza 4. ¿Que montaje de aproximacion normal escribes para P(X̄ > 5.3)?",
+          zh: "X1,...,X100 独立同分布，均值 5、方差 4。要求 P(X̄ > 5.3) 时，正态近似该怎么搭？",
+        },
+        firstStep: {
+          en: "Use the sample-mean CLT scale sigma/sqrt(n).",
+          es: "Usa la escala de media muestral sigma/sqrt(n).",
+          zh: "先用样本均值的标准差 sigma/sqrt(n)。",
+        },
+        setup: {
+          en: "For a sample mean, CLT says X̄ is approximately Normal(mu, sigma^2/n).",
+          es: "Para una media muestral, la CLT dice que X̄ es aproximadamente Normal(mu, sigma^2/n).",
+          zh: "对样本均值，CLT 说 X̄ 近似服从 Normal(mu, sigma^2/n)。",
+        },
+        fullPath: [
+          { en: "Here mu = 5 and sigma = 2.", es: "Aqui mu = 5 y sigma = 2.", zh: "这里 mu = 5，sigma = 2。" },
+          { en: "So the standard deviation of X̄ is 2/sqrt(100) = 0.2.", es: "Entonces la desviacion estandar de X̄ es 2/sqrt(100) = 0.2.", zh: "所以 X̄ 的标准差是 2/sqrt(100) = 0.2。" },
+          { en: "Standardize: Z = (X̄ - 5)/0.2, so P(X̄ > 5.3) becomes P(Z > 1.5).", es: "Estandariza: Z = (X̄ - 5)/0.2, y P(X̄ > 5.3) pasa a P(Z > 1.5).", zh: "标准化：Z = (X̄ - 5)/0.2，所以 P(X̄ > 5.3) 变成 P(Z > 1.5)。" },
+        ],
+        answer: {
+          en: "Write Z = (X̄ - 5)/0.2 and convert to P(Z > 1.5).",
+          es: "Escribe Z = (X̄ - 5)/0.2 y convierte a P(Z > 1.5).",
+          zh: "写成 Z = (X̄ - 5)/0.2，再转成 P(Z > 1.5)。",
+        },
+        selfCheck: {
+          en: "CLT for a mean uses sigma/sqrt(n), not sigma.",
+          es: "La CLT para una media usa sigma/sqrt(n), no sigma.",
+          zh: "样本均值的 CLT 要用 sigma/sqrt(n)，不是 sigma。",
+        },
+      },
+    ],
+  },
+  "prob-indicator": {
+    quiz: [
+      {
+        prompt: {
+          en: "A deck is shuffled. Let X be the number of aces that land in the first 10 cards. What rewrite should you try before finding E[X]?",
+          es: "Se baraja una baraja. Sea X el numero de ases que caen en las primeras 10 cartas. ¿Que reescritura pruebas antes de hallar E[X]?",
+          zh: "一副牌洗匀。设 X 是前 10 张里出现的 A 的个数。求 E[X] 前，先该怎么改写？",
+        },
+        firstStep: {
+          en: "Write X as a sum of indicator variables.",
+          es: "Escribe X como suma de variables indicadoras.",
+          zh: "先把 X 写成若干指示变量之和。",
+        },
+        setup: {
+          en: "Each ace contributes a 1 if it appears in the first 10 cards and 0 otherwise.",
+          es: "Cada as aporta 1 si aparece en las primeras 10 cartas y 0 si no.",
+          zh: "每张 A 若落在前 10 张里就贡献 1，否则贡献 0。",
+        },
+        fullPath: [
+          { en: "Define Ii = 1 if ace i is in the first 10 cards, else 0.", es: "Define Ii = 1 si el as i esta entre las primeras 10 cartas, y 0 si no.", zh: "设 Ii = 1 表示第 i 张 A 在前 10 张里，否则为 0。" },
+          { en: "Then X = I1 + I2 + I3 + I4.", es: "Entonces X = I1 + I2 + I3 + I4.", zh: "则 X = I1 + I2 + I3 + I4。" },
+          { en: "Now E[X] = E[I1] + ... + E[I4] by linearity.", es: "Ahora E[X] = E[I1] + ... + E[I4] por linealidad.", zh: "再由线性性得到 E[X] = E[I1] + ... + E[I4]。" },
+        ],
+        answer: {
+          en: "Rewrite the count as a sum of 0-1 indicators.",
+          es: "Reescribe el conteo como suma de indicadores 0-1.",
+          zh: "把这个计数改写成若干 0-1 指示变量之和。",
+        },
+        selfCheck: {
+          en: "Expected count problems often become indicator-sum problems first.",
+          es: "Los conteos esperados suelen convertirse primero en sumas de indicadores.",
+          zh: "“期望个数”题，第一反应常常就是“指示变量求和”。",
+        },
+      },
+    ],
+  },
+  "prob-lln": {
+    quiz: [
+      {
+        prompt: {
+          en: "You flip a fair coin 10,000 times. Which theorem explains why the sample proportion of heads should sit near 0.5?",
+          es: "Lanzas una moneda justa 10,000 veces. ¿Que teorema explica que la proporcion muestral de caras debe quedar cerca de 0.5?",
+          zh: "把一枚公平硬币掷 10,000 次。哪个定理解释了样本正面比例会靠近 0.5？",
+        },
+        firstStep: {
+          en: "Think long-run average, not bell-curve shape.",
+          es: "Piensa en promedio a largo plazo, no en forma de campana.",
+          zh: "先想长期平均，不是先想钟形曲线。",
+        },
+        setup: {
+          en: "The sample proportion is just the sample mean of 0-1 trial outcomes.",
+          es: "La proporcion muestral no es mas que la media muestral de resultados 0-1.",
+          zh: "样本比例其实就是一串 0-1 试验结果的样本均值。",
+        },
+        fullPath: [
+          { en: "Repeated trials create a sample average.", es: "Las repeticiones forman un promedio muestral.", zh: "重复试验形成一个样本平均。" },
+          { en: "LLN says that average drifts toward the true mean.", es: "La LLN dice que ese promedio se acerca a la media verdadera.", zh: "大数定律说这个平均值会靠近真实均值。" },
+          { en: "For a fair coin, that true mean is 0.5.", es: "Para una moneda justa, esa media verdadera es 0.5.", zh: "对公平硬币，这个真实均值就是 0.5。" },
+        ],
+        answer: {
+          en: "The Law of Large Numbers.",
+          es: "La Ley de los Grandes Numeros.",
+          zh: "大数定律。",
+        },
+        selfCheck: {
+          en: "LLN is about where averages settle, not about normal-shape approximation.",
+          es: "La LLN trata de donde se estabilizan los promedios, no de aproximacion normal.",
+          zh: "大数定律管的是平均值会靠哪里，不是管曲线会不会像正态。",
+        },
+      },
+    ],
+  },
+  "prob-gamma-pattern": {
+    quiz: [
+      {
+        prompt: {
+          en: "Customers arrive like a Poisson process. What distribution should you try for the waiting time until the 4th arrival?",
+          es: "Los clientes llegan como un proceso de Poisson. ¿Que distribucion pruebas para el tiempo de espera hasta la cuarta llegada?",
+          zh: "顾客到达服从 Poisson 过程。等到第 4 次到达的等待时间该先想什么分布？",
+        },
+        firstStep: {
+          en: "Notice this is waiting time, not event count.",
+          es: "Fijate en que esto es tiempo de espera, no conteo de eventos.",
+          zh: "先看清这是“等待时间”，不是“事件个数”。",
+        },
+        setup: {
+          en: "Exponential is for waiting for one arrival; gamma is for waiting for the r-th arrival.",
+          es: "La exponencial espera una llegada; la gamma espera la llegada numero r.",
+          zh: "指数分布等一次到达；Gamma 分布等到第 r 次到达。",
+        },
+        fullPath: [
+          { en: "The story is continuous time, so do not use a discrete count model.", es: "La historia vive en tiempo continuo, asi que no uses un modelo discreto de conteo.", zh: "题目发生在连续时间里，所以别拿离散计数模型来套。" },
+          { en: "You are waiting for the 4th arrival, not the 1st arrival.", es: "Estas esperando la cuarta llegada, no la primera.", zh: "这里等的是第 4 次到达，不是第 1 次。" },
+          { en: "That points to a gamma waiting-time model.", es: "Eso apunta a un modelo gamma de tiempo de espera.", zh: "这就指向 Gamma 型等待时间模型。" },
+        ],
+        answer: {
+          en: "Gamma.",
+          es: "Gamma.",
+          zh: "Gamma 分布。",
+        },
+        selfCheck: {
+          en: "Exponential waits for one arrival; gamma waits for many.",
+          es: "La exponencial espera una llegada; la gamma espera varias.",
+          zh: "指数等一次，Gamma 等多次。",
+        },
+      },
+    ],
+  },
+  "prob-memoryless": {
+    quiz: [
+      {
+        prompt: {
+          en: "A bus wait time is said to be exponential. After already waiting 8 minutes, what is the key memoryless conclusion?",
+          es: "Se dice que el tiempo de espera del bus es exponencial. Despues de esperar ya 8 minutos, ¿cual es la conclusion memoryless clave?",
+          zh: "若等公交的时间服从指数分布，已经等了 8 分钟后，memoryless 的关键结论是什么？",
+        },
+        firstStep: {
+          en: "Translate 'memoryless' into 'the clock resets.'",
+          es: "Traduce 'memoryless' como 'el reloj se reinicia'.",
+          zh: "先把 memoryless 翻成“时钟重置”。",
+        },
+        setup: {
+          en: "Exponential waiting means the remaining wait after survival has the same law as a fresh wait from time 0.",
+          es: "Espera exponencial significa que la espera restante, dado que sobreviviste hasta ahora, tiene la misma ley que una espera nueva desde 0.",
+          zh: "指数等待意味着：已经等到现在以后，剩余等待时间的分布和从头开始等是一样的。",
+        },
+        fullPath: [
+          { en: "Condition on having already waited 8 minutes.", es: "Condiciona en haber esperado ya 8 minutos.", zh: "先条件化：你已经等了 8 分钟。" },
+          { en: "Memoryless says the future tail does not remember that past wait.", es: "Memoryless dice que la cola futura no recuerda esa espera pasada.", zh: "无记忆性说明未来的尾部分布不记得这段过去等待。" },
+          { en: "So the remaining wait behaves like a brand-new exponential wait.", es: "Asi que la espera restante se comporta como una espera exponencial completamente nueva.", zh: "因此剩余等待时间就像一段全新的指数等待。" },
+        ],
+        answer: {
+          en: "The remaining wait has the same distribution as a fresh exponential wait.",
+          es: "La espera restante tiene la misma distribucion que una espera exponencial nueva.",
+          zh: "剩余等待时间与一段新的指数等待同分布。",
+        },
+        selfCheck: {
+          en: "Memoryless means past waiting does not age the future law.",
+          es: "Memoryless significa que la espera pasada no envejece la ley futura.",
+          zh: "无记忆性表示过去已经等过，不会改变未来的分布规律。",
         },
       },
     ],
@@ -1048,6 +1260,38 @@ export const bubblegumBanks: Partial<
           zh: "独不独立，最终就看交集概率检验。",
         },
       },
+      {
+        prompt: {
+          en: "A box has 3 red and 2 blue balls. Two are drawn without replacement. Let A be 'first is red' and B be 'second is red'. Are A and B independent?",
+          es: "Una caja tiene 3 bolas rojas y 2 azules. Se extraen 2 sin reemplazo. Sea A = 'la primera es roja' y B = 'la segunda es roja'. ¿Son A y B independientes?",
+          zh: "一个盒子里有 3 个红球和 2 个蓝球，不放回抽 2 个。设 A 表示“第一球是红色”，B 表示“第二球是红色”。A 和 B 独立吗？",
+        },
+        firstStep: {
+          en: "Compare P(B) with P(B|A).",
+          es: "Compara P(B) con P(B|A).",
+          zh: "先比较 P(B) 和 P(B|A)。",
+        },
+        setup: {
+          en: "Without replacement often creates dependence because the first draw changes the second world.",
+          es: "Sin reemplazo suele crear dependencia porque la primera extraccion cambia el mundo de la segunda.",
+          zh: "不放回常常会造成依赖，因为第一次抽取会改变第二次所在的世界。",
+        },
+        fullPath: [
+          { en: "Before conditioning, the chance the second draw is red is 3/5 by symmetry.", es: "Antes de condicionar, por simetria la probabilidad de que la segunda extraccion sea roja es 3/5.", zh: "在未条件化前，由对称性可知第二次抽到红球的概率是 3/5。" },
+          { en: "Given A, one red is already gone, so P(B|A)=2/4=1/2.", es: "Dado A, ya se fue una roja, asi que P(B|A)=2/4=1/2.", zh: "若已知 A，则已经少了一个红球，所以 P(B|A)=2/4=1/2。" },
+          { en: "Since P(B|A) ≠ P(B), the events are not independent.", es: "Como P(B|A) ≠ P(B), los eventos no son independientes.", zh: "因为 P(B|A) ≠ P(B)，所以这两个事件不独立。" },
+        ],
+        answer: {
+          en: "No, they are dependent.",
+          es: "No, son dependientes.",
+          zh: "不，它们不独立。",
+        },
+        selfCheck: {
+          en: "Without replacement is one of the fastest warning signs against independence.",
+          es: "Sin reemplazo es una de las señales mas rapidas contra independencia.",
+          zh: "不放回，是判断“不独立”的最快警报之一。",
+        },
+      },
     ],
   },
   "prob-inclusion-exclusion": {
@@ -1404,6 +1648,38 @@ export const bubblegumBanks: Partial<
           zh: "CDF 要的是累计，不是单点柱子的高度。",
         },
       },
+      {
+        prompt: {
+          en: "A discrete variable has F(2)=0.8 and F(1)=0.55. What setup gives P(X=2)?",
+          es: "Una variable discreta tiene F(2)=0.8 y F(1)=0.55. ¿Que planteamiento da P(X=2)?",
+          zh: "一个离散随机变量满足 F(2)=0.8, F(1)=0.55。求 P(X=2) 时该怎么设？",
+        },
+        firstStep: {
+          en: "Convert the point probability into a CDF jump.",
+          es: "Convierte la probabilidad puntual en un salto de la CDF.",
+          zh: "先把单点概率改写成 CDF 的跳跃量。",
+        },
+        setup: {
+          en: "For a discrete variable, the mass at one point is the increase in the CDF at that point.",
+          es: "Para una variable discreta, la masa en un punto es el aumento de la CDF en ese punto.",
+          zh: "对离散变量来说，某一点的概率质量，就是 CDF 在该点的跳跃大小。",
+        },
+        fullPath: [
+          { en: "Write F(2)=P(X<=2) and F(1)=P(X<=1).", es: "Escribe F(2)=P(X<=2) y F(1)=P(X<=1).", zh: "先写 F(2)=P(X<=2)，F(1)=P(X<=1)。" },
+          { en: "Subtract to isolate the probability sitting exactly at 2.", es: "Resta para aislar la probabilidad que cae exactamente en 2.", zh: "再相减，把恰好等于 2 的概率单独抠出来。" },
+          { en: "So P(X=2)=F(2)-F(1).", es: "Entonces P(X=2)=F(2)-F(1).", zh: "因此 P(X=2)=F(2)-F(1)。" },
+        ],
+        answer: {
+          en: "P(X=2)=0.8-0.55=0.25",
+          es: "P(X=2)=0.8-0.55=0.25",
+          zh: "P(X=2)=0.8-0.55=0.25",
+        },
+        selfCheck: {
+          en: "Discrete point mass = CDF jump.",
+          es: "Masa puntual discreta = salto de la CDF.",
+          zh: "离散单点概率 = CDF 的跳跃量。",
+        },
+      },
     ],
   },
   "prob-expected-value": {
@@ -1472,6 +1748,38 @@ export const bubblegumBanks: Partial<
           en: "Expected value reads the long-run average payoff.",
           es: "La esperanza lee el pago promedio a largo plazo.",
           zh: "期望读的是长期平均收益。",
+        },
+      },
+      {
+        prompt: {
+          en: "A random variable has pmf p(0)=0.1, p(1)=0.4, p(3)=0.5. What setup gives E[X]?",
+          es: "Una variable aleatoria tiene pmf p(0)=0.1, p(1)=0.4, p(3)=0.5. ¿Que planteamiento da E[X]?",
+          zh: "某随机变量的 pmf 为 p(0)=0.1, p(1)=0.4, p(3)=0.5。求 E[X] 时该怎么设？",
+        },
+        firstStep: {
+          en: "List each value and weight it by its probability.",
+          es: "Lista cada valor y ponderalo por su probabilidad.",
+          zh: "先把每个取值列出来，再乘上各自概率。",
+        },
+        setup: {
+          en: "Expectation from a pmf is a weighted average over every possible value of X.",
+          es: "La esperanza desde una pmf es un promedio ponderado sobre todos los valores posibles de X.",
+          zh: "从 pmf 求期望，本质上就是对 X 的所有可能取值做加权平均。",
+        },
+        fullPath: [
+          { en: "Write E[X]=Σ x p(x).", es: "Escribe E[X]=Σ x p(x).", zh: "先写 E[X]=Σ x p(x)。" },
+          { en: "Substitute the three support values 0, 1, and 3.", es: "Sustituye los tres valores del soporte: 0, 1 y 3.", zh: "再代入三个支撑点 0、1、3。" },
+          { en: "Add the weighted contributions 0(0.1)+1(0.4)+3(0.5).", es: "Suma las contribuciones ponderadas 0(0.1)+1(0.4)+3(0.5).", zh: "最后把加权项 0(0.1)+1(0.4)+3(0.5) 相加。" },
+        ],
+        answer: {
+          en: "E[X]=0(0.1)+1(0.4)+3(0.5)=1.9",
+          es: "E[X]=0(0.1)+1(0.4)+3(0.5)=1.9",
+          zh: "E[X]=0(0.1)+1(0.4)+3(0.5)=1.9",
+        },
+        selfCheck: {
+          en: "A pmf table turns directly into a weighted-average sum.",
+          es: "Una tabla pmf se convierte directamente en una suma ponderada.",
+          zh: "pmf 表格题，直接翻译成加权平均求和。",
         },
       },
     ],
@@ -1648,6 +1956,40 @@ export const bubblegumBanks: Partial<
           en: "Expectation always adds. Variance needs independence or covariance handling.",
           es: "La esperanza siempre suma. La varianza necesita independencia o manejar covarianza.",
           zh: "期望总能相加；方差则要独立或处理协方差。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "X and Y are independent with Var(X)=4 and Var(Y)=9. What setup gives Var(X+Y)?",
+          es: "X e Y son independientes con Var(X)=4 y Var(Y)=9. ¿Que planteamiento da Var(X+Y)?",
+          zh: "X 与 Y 独立，且 Var(X)=4, Var(Y)=9。求 Var(X+Y) 时该怎么设？",
+        },
+        firstStep: {
+          en: "Check independence, then drop the covariance term.",
+          es: "Primero verifica independencia y luego elimina el termino de covarianza.",
+          zh: "先确认独立，再把协方差项去掉。",
+        },
+        setup: {
+          en: "The full rule is Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y). Independence kills the covariance term.",
+          es: "La regla completa es Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y). La independencia mata el termino de covarianza.",
+          zh: "完整公式是 Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y)。独立时协方差项会消失。",
+        },
+        fullPath: [
+          { en: "Start from the full variance-of-a-sum formula.", es: "Empieza con la formula completa de varianza de una suma.", zh: "先从“和的方差”完整公式出发。" },
+          { en: "Use independence to set Cov(X,Y)=0.", es: "Usa independencia para poner Cov(X,Y)=0.", zh: "由独立性可知 Cov(X,Y)=0。" },
+          { en: "Then add the two variances: 4+9.", es: "Entonces suma las dos varianzas: 4+9.", zh: "再把两个方差相加：4+9。" },
+        ],
+        answer: {
+          en: "Var(X+Y)=4+9=13",
+          es: "Var(X+Y)=4+9=13",
+          zh: "Var(X+Y)=4+9=13",
+        },
+        selfCheck: {
+          en: "Variance of a sum is 'add + covariance'; independence removes the cross term.",
+          es: "La varianza de una suma es 'suma + covarianza'; la independencia quita el termino cruzado.",
+          zh: "和的方差 = 两个方差 + 协方差项；独立会删掉交叉项。",
         },
       },
     ],
@@ -2329,6 +2671,40 @@ export const bubblegumBanks: Partial<
         },
       },
     ],
+    midterm: [
+      {
+        prompt: {
+          en: "Three factories make 20%, 30%, and 50% of all chips. Their defect rates are 1%, 2%, and 4%. A chip is defective. What setup gives the probability it came from factory 3?",
+          es: "Tres fabricas producen el 20%, 30% y 50% de todos los chips. Sus tasas de defecto son 1%, 2% y 4%. Un chip sale defectuoso. ¿Que planteamiento da la probabilidad de que venga de la fabrica 3?",
+          zh: "三家工厂分别生产全部芯片的 20%、30%、50%，次品率分别是 1%、2%、4%。现知某芯片是次品。求它来自第 3 家工厂的设法是什么？",
+        },
+        firstStep: {
+          en: "Write Bayes with factory 3 in the numerator and total defect probability in the denominator.",
+          es: "Escribe Bayes con la fabrica 3 en el numerador y la probabilidad total de defecto en el denominador.",
+          zh: "先写贝叶斯：分子放“工厂 3 且次品”，分母放总次品概率。",
+        },
+        setup: {
+          en: "This is hidden-source after observed-result, so Bayes is the main move and total probability builds the denominator.",
+          es: "Esto es fuente escondida despues de resultado observado, asi que Bayes es el movimiento principal y probabilidad total arma el denominador.",
+          zh: "这是“结果已知、来源未知”的题型，所以主招是贝叶斯，分母再靠全概率展开。",
+        },
+        fullPath: [
+          { en: "Let Fi be 'made by factory i' and D be 'defective'.", es: "Sea Fi = 'hecho por la fabrica i' y D = 'defectuoso'.", zh: "设 Fi 表示“来自第 i 家工厂”，D 表示“次品”。" },
+          { en: "Write P(F3|D)=P(D|F3)P(F3)/P(D).", es: "Escribe P(F3|D)=P(D|F3)P(F3)/P(D).", zh: "写出 P(F3|D)=P(D|F3)P(F3)/P(D)。" },
+          { en: "Expand P(D)=P(D|F1)P(F1)+P(D|F2)P(F2)+P(D|F3)P(F3).", es: "Expande P(D)=P(D|F1)P(F1)+P(D|F2)P(F2)+P(D|F3)P(F3).", zh: "再展开 P(D)=P(D|F1)P(F1)+P(D|F2)P(F2)+P(D|F3)P(F3)。" },
+        ],
+        answer: {
+          en: "Use Bayes with denominator from total probability.",
+          es: "Usa Bayes con denominador sacado por probabilidad total.",
+          zh: "用贝叶斯，分母再用全概率展开。",
+        },
+        selfCheck: {
+          en: "Known outcome, unknown source -> Bayes. Multiple sources -> total probability in the denominator.",
+          es: "Resultado conocido, fuente desconocida -> Bayes. Multiples fuentes -> probabilidad total en el denominador.",
+          zh: "结果已知、来源未知 -> 贝叶斯。来源不止一个 -> 分母用全概率。",
+        },
+      },
+    ],
     final: [
       {
         prompt: {
@@ -2500,6 +2876,40 @@ export const bubblegumBanks: Partial<
           en: "Several clean routes to one event = total probability.",
           es: "Varias rutas limpias hacia un evento = probabilidad total.",
           zh: "一个结果有好几条干净路径 = 全概率。",
+        },
+      },
+    ],
+    midterm: [
+      {
+        prompt: {
+          en: "40% of students study early, 35% study late, and 25% cram. Their pass rates are 90%, 70%, and 50%. What setup gives the overall pass probability?",
+          es: "El 40% de los estudiantes estudia temprano, el 35% estudia tarde y el 25% memoriza al final. Sus tasas de aprobacion son 90%, 70% y 50%. ¿Que planteamiento da la probabilidad total de aprobar?",
+          zh: "40% 的学生提前学，35% 晚一点学，25% 临时抱佛脚。他们的通过率分别是 90%、70%、50%。求总体通过概率时，该怎么设？",
+        },
+        firstStep: {
+          en: "Treat the study styles as a partition and weight each pass rate by its group size.",
+          es: "Trata los estilos de estudio como una particion y pondera cada tasa de aprobacion por el tamaño del grupo.",
+          zh: "先把学习方式看成一个划分，再按各组比例给通过率加权。",
+        },
+        setup: {
+          en: "Total probability rebuilds one final event from several disjoint cases that cover the whole population.",
+          es: "La probabilidad total reconstruye un evento final a partir de varios casos disjuntos que cubren toda la poblacion.",
+          zh: "全概率就是把一个最终事件，拆成若干互斥且覆盖全部情况的分支，再加总回来。",
+        },
+        fullPath: [
+          { en: "Let E, L, and C be early, late, and cram.", es: "Sea E, L y C = temprano, tarde y cram.", zh: "设 E、L、C 分别表示提前学、晚点学、临时抱佛脚。" },
+          { en: "Write P(pass)=P(pass|E)P(E)+P(pass|L)P(L)+P(pass|C)P(C).", es: "Escribe P(pasar)=P(pasar|E)P(E)+P(pasar|L)P(L)+P(pasar|C)P(C).", zh: "写出 P(通过)=P(通过|E)P(E)+P(通过|L)P(L)+P(通过|C)P(C)。" },
+          { en: "Then plug in the three weighted paths.", es: "Luego sustituye las tres rutas ponderadas.", zh: "最后把三条加权路径代进去。" },
+        ],
+        answer: {
+          en: "Write a weighted sum across the partition.",
+          es: "Escribe una suma ponderada sobre la particion.",
+          zh: "把这个划分上的加权和写出来。",
+        },
+        selfCheck: {
+          en: "Total probability is a weighted average across clean cases.",
+          es: "La probabilidad total es un promedio ponderado sobre casos limpios.",
+          zh: "全概率，本质上就是对干净分情况做加权平均。",
         },
       },
     ],

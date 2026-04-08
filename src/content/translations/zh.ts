@@ -315,7 +315,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "当 x 从左边接近 2 时，x - 2 是正数还是负数？",
-        "answer": "消极的。"
+        "answer": "负的。"
       },
       {
         "prompt": "如果分母是很小的负数，那么 1 除以该数会发生什么？",
@@ -526,27 +526,27 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "导数",
     "topic": "和与差规则",
     "name": "和与差规则",
-    "useItWhen": "添加或减少项",
+    "useItWhen": "表达式是几项相加或相减",
     "looksLike": "x^3 + 4x - 7 或 2x^5 - sqrt(x)",
-    "doThis": "区分每个术语并保留符号",
-    "thinkOfItAs": "分别对每个术语评分，然后将分数相加",
+    "doThis": "逐项求导，并把原来的正负号保留住",
+    "thinkOfItAs": "每一项各做各的，最后再拼回去",
     "watchOutFor": "去掉负号",
-    "rememberThis": "逐项作品",
+    "rememberThis": "逐项求导",
     "typicalProblemShapes": [
       "多项式多项式",
       "各部分通过加号或减号连接的混合表达式"
     ],
     "miniDrill": [
       {
-        "prompt": "您需要 x^2 + x^5 的乘积规则吗？",
+        "prompt": "你需要 x^2 + x^5 的乘积规则吗？",
         "answer": "不。逐个区分。"
       },
       {
         "prompt": "-3x^2 的导数应该保留什么符号？",
-        "answer": "消极的。"
+        "answer": "负号。"
       }
     ],
-    "memoryHook": "分割术语，而不是符号。",
+    "memoryHook": "拆项，不拆符号。",
     "quickExample": {
       "problem": "x^3 + 4x - 7 的导数",
       "move": "3x^2 + 4"
@@ -560,10 +560,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "name": "产品规则",
     "useItWhen": "两个变化的部分相乘",
     "looksLike": "(x^2 + 1)(x^3 - 4) 或 x sin x",
-    "doThis": "第一素数第二加上第一第二素数",
-    "thinkOfItAs": "两个棋子都在移动，所以两个棋子都会轮流",
+    "doThis": "前导后，加上前后导",
+    "thinkOfItAs": "两个因子都在变，所以两边都要照顾到",
     "watchOutFor": "将导数相乘",
-    "rememberThis": "第一个素数第二个加上第一个第二素数",
+    "rememberThis": "前导后，加前后导",
     "typicalProblemShapes": [
       "两个相邻的可见因素",
       "代数部分乘以三角或指数部分"
@@ -578,7 +578,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "两个术语。"
       }
     ],
-    "memoryHook": "两者的改变都意味着两者都会被计算在内。",
+    "memoryHook": "两边都在变，就两项都要算。",
     "quickExample": {
       "problem": "x^2 sin x 的导数",
       "move": "2x sin x + x^2 cos x"
@@ -590,10 +590,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "导数",
     "topic": "商规则",
     "name": "商规则",
-    "useItWhen": "一件正在改变的事情压倒了另一件事",
+    "useItWhen": "一个变化的量除以另一个变化的量",
     "looksLike": "(x^2 + 1)/(x - 3)",
     "doThis": "低 d-高减去高 d-低，总低的平方",
-    "thinkOfItAs": "顶部和底部交易触及，底部保持平方",
+    "thinkOfItAs": "上面下面都在动，但下面最后要平方",
     "watchOutFor": "翻转顺序并更改符号",
     "rememberThis": "低 d-高减去高 d-低除以低的平方",
     "typicalProblemShapes": [
@@ -613,7 +613,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "memoryHook": "低 d-高、高 d-低、低平方。",
     "quickExample": {
       "problem": "(x^2 + 1)/(x - 3) 的导数",
-      "move": "使用低 d-high 减去高 d-low，然后除以 (x - 3)^2。"
+      "move": "用低导高减高导低，最后除以 (x - 3)^2。"
     }
   },
   "chain-rule": {
@@ -656,8 +656,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "name": "隐式微分",
     "useItWhen": "x 和 y 混合且 y 不单独",
     "looksLike": "x^2 + y^2 = 25 或 xy + y^3 = 7",
-    "doThis": "两边微分，将 y 素数附加到 y 项上，求解 y 素数",
-    "thinkOfItAs": "将 y-prime 从人群中拉出来",
+    "doThis": "两边都对 x 求导，含 y 的项记得乘上 y'，最后把 y' 解出来",
+    "thinkOfItAs": "先全都微分，再把 y' 从式子里拎出来",
     "watchOutFor": "忘记 y 项上的 y 素数",
     "rememberThis": "两边微分并求解 y 素数",
     "typicalProblemShapes": [
@@ -667,14 +667,14 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "y^3 关于 x 的导数？",
-        "answer": "3年^2年'"
+        "answer": "3y^2 y'"
       },
       {
         "prompt": "隐式微分后，最后的代数步骤通常会出现什么？",
-        "answer": "解决你。"
+        "answer": "把 y' 解出来。"
       }
     ],
-    "memoryHook": "区分一切，拯救 y-prime。",
+    "memoryHook": "全都微分，最后救出 y'。",
     "quickExample": {
       "problem": "微分 x^2 + y^2 = 25",
       "move": "2x + 2y y' = 0，然后求解 y'。"
@@ -731,14 +731,14 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "如果 s(t) 是位置，那么 s''(t) 是什么？",
-        "answer": "加速。"
+        "answer": "加速度。"
       },
       {
-        "prompt": "您是否重用原始函数或一阶导数来找到 f''？",
+        "prompt": "你是否重用原始函数或一阶导数来找到 f''？",
         "answer": "使用一阶导数。"
       }
     ],
-    "memoryHook": "对导数进行微分。",
+    "memoryHook": "导完一次还不够，就继续导。",
     "quickExample": {
       "problem": "如果 f(x) = x^4，那么 f''(x) 是多少？",
       "move": "一阶导数为 4x^3，二阶导数为 12x^2。"
@@ -926,8 +926,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "不，凹度必须改变。"
       },
       {
-        "prompt": "您围绕候选点测试什么？",
-        "answer": "每边都有 f'' 符号。"
+        "prompt": "你围绕候选点测试什么？",
+        "answer": "看左右两边的 f'' 符号有没有变。"
       }
     ],
     "memoryHook": "零是一个可能。符号变化就是证据。",
@@ -1008,22 +1008,22 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "name": "优化",
     "useItWhen": "问题表示最大、最小、最便宜或最好",
     "looksLike": "最大化面积、最小化成本、优化体积",
-    "doThis": "编写一变量目标，区分，测试获胜者",
-    "thinkOfItAs": "将混乱的文字变成一座干净的山丘或山谷",
+    "doThis": "先把目标写成单变量函数，再求导并检查谁最优",
+    "thinkOfItAs": "把文字题压成一座山或一个谷，再找顶点",
     "watchOutFor": "在得到一个变量之前进行微分",
-    "rememberThis": "首先一个变量，第二个优化",
+    "rememberThis": "先变成一个变量，再谈最优",
     "typicalProblemShapes": [
       "最大化、最小化、最多、最小、最短、最大等单词",
       "有约束的几何或商业应用题"
     ],
     "miniDrill": [
       {
-        "prompt": "在进行微分之前，您的目标函数应该有多少个变量？",
+        "prompt": "在进行微分之前，你的目标函数应该有多少个变量？",
         "answer": "一。"
       },
       {
         "prompt": "找到临界点之后，你就完成了吗？",
-        "answer": "不。您仍然需要确认它提供最佳价值。"
+        "answer": "不。你仍然需要确认它提供最佳价值。"
       }
     ],
     "memoryHook": "写入一个变量，然后寻找峰值或谷值。",
@@ -1036,21 +1036,21 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "单变量微积分 I",
     "chapter": "第 4 章：导数的应用",
     "unit": "应用",
-    "topic": "相关价格",
-    "name": "相关价格",
+    "topic": "相关变化率",
+    "name": "相关变化率",
     "useItWhen": "一些变化的事物与时间联系在一起",
     "looksLike": "半径随着体积变化而增大，或者梯子随着高度变化而滑动",
     "doThis": "写出方程，对时间求微分，然后代入",
     "thinkOfItAs": "所有变量在一个时钟上一起移动",
     "watchOutFor": "过早插入数字",
-    "rememberThis": "先求微分，然后代入矩",
+    "rememberThis": "先对时间求导，最后再代数字",
     "typicalProblemShapes": [
       "给定 dx/dt 或 dV/dt 等速率",
       "值随时间变化的几何公式"
     ],
     "miniDrill": [
       {
-        "prompt": "您通常是在相关比率的隐式微分之前还是之后插入数字？",
+        "prompt": "你通常是在相关比率的隐式微分之前还是之后插入数字？",
         "answer": "后。"
       },
       {
@@ -1060,7 +1060,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "区分时间，然后定格那一刻。",
     "quickExample": {
-      "problem": "气球半径随着时间和体积的变化而变化。您应该对什么变量进行微分？",
+      "problem": "气球半径随着时间和体积的变化而变化。你应该对什么变量进行微分？",
       "move": "时间。"
     }
   },
@@ -1070,7 +1070,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "应用",
     "topic": "线性近似",
     "name": "线性近似",
-    "useItWhen": "您需要在一个不错的点附近进行快速估计",
+    "useItWhen": "你想在一个好算的点附近做快速估计",
     "looksLike": "近似 sqrt(4.1) 或估计 x = a 附近的函数",
     "doThis": "使用切线公式",
     "thinkOfItAs": "使用曲线的局部直线版本",
@@ -1083,7 +1083,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "为了估计 sqrt(4.1)，a 应该是 1、4 还是 9？",
-        "answer": "4、因为亲近，容易。"
+        "answer": "4，因为离 4.1 最近，而且好算。"
       },
       {
         "prompt": "x = a 时线性近似需要哪两个成分？",
@@ -1100,14 +1100,14 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "单变量微积分 I",
     "chapter": "第 5 章：积分",
     "unit": "积分",
-    "topic": "反派生思想",
-    "name": "反派生思想",
+    "topic": "原函数的直觉",
+    "name": "原函数直觉",
     "useItWhen": "你想要撤消导数",
     "looksLike": "求一个导数为 6x 或 cos x 的函数",
-    "doThis": "询问什么功能可以区分这个",
-    "thinkOfItAs": "向后运行衍生电影",
-    "watchOutFor": "忘记了不变的家人",
-    "rememberThis": "反导数意味着反转导数",
+    "doThis": "反过来问：什么函数求导后会变成它",
+    "thinkOfItAs": "把求导这部电影倒着放",
+    "watchOutFor": "忘记常数族",
+    "rememberThis": "原函数就是把求导倒回去",
     "typicalProblemShapes": [
       "提示询问导数已知的函数",
       "正式符号出现之前的早期积分问题"
@@ -1122,7 +1122,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "一个家庭。"
       }
     ],
-    "memoryHook": "整体思维从逆向模式开始。",
+    "memoryHook": "想原函数，就是倒着想求导。",
     "quickExample": {
       "problem": "什么函数有 6x 的导数？",
       "move": "x^2 类型的函数有效；基本的反导数是 3x^2 加上一个常数。"
@@ -1137,9 +1137,9 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "你想要整个反导数家族",
     "looksLike": "f(x) dx 的积分",
     "doThis": "求反导数并加上 C",
-    "thinkOfItAs": "答案有垂直移动的空间",
+    "thinkOfItAs": "答案是一整族上下平移的函数",
     "watchOutFor": "忘记加C",
-    "rememberThis": "使用 plus C 进行不定积分旅行",
+    "rememberThis": "不定积分别忘了 +C",
     "typicalProblemShapes": [
       "无上限或下限的积分表示法",
       "提示要求一般反导数"
@@ -1166,12 +1166,12 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "积分",
     "topic": "积分的基本幂法则",
     "name": "积分幂法则",
-    "useItWhen": "您正在对 x 进行积分，但不是 x^-1",
+    "useItWhen": "你正在对 x 进行积分，但不是 x^-1",
     "looksLike": "x^n dx 的积分",
     "doThis": "加 1，除以新的幂，加 C",
     "thinkOfItAs": "倒推导数幂法则",
     "watchOutFor": "在 x^-1 上使用它",
-    "rememberThis": "加一，除以新的一",
+    "rememberThis": "加一，再除以新的指数",
     "typicalProblemShapes": [
       "不定积分中 x 的普通幂",
       "多项式逐项积分"
@@ -1182,11 +1182,11 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "x^3 / 3 + C"
       },
       {
-        "prompt": "您不应该将哪些特殊指数输入到基本幂规则中？",
+        "prompt": "你不应该将哪些特殊指数输入到基本幂规则中？",
         "answer": "-1"
       }
     ],
-    "memoryHook": "加一，除以 C。",
+    "memoryHook": "加一，除新幂，再补 C。",
     "quickExample": {
       "problem": "x^4 dx 的积分",
       "move": "x^5 / 5 + C"
@@ -1198,9 +1198,9 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "积分",
     "topic": "定积分作为面积概念",
     "name": "定积分 = 有符号面积",
-    "useItWhen": "您需要一段时间内的总变化",
+    "useItWhen": "你需要一段时间内的总变化",
     "looksLike": "f(x) dx 从 a 到 b 的积分",
-    "doThis": "将其读取为从左边界到右边界的签名区域",
+    "doThis": "把它读成从左端到右端的有符号面积",
     "thinkOfItAs": "将许多小矩形加起来",
     "watchOutFor": "忘记 x 轴下方算负数",
     "rememberThis": "定积分在区间内添加变化",
@@ -1211,14 +1211,14 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "在原始定积分中，x 轴以下的面积算正数还是负数？",
-        "answer": "消极的。"
+        "answer": "负的。"
       },
       {
         "prompt": "区间[a,b]控制什么？",
         "answer": "积累开始和停止的地方。"
       }
     ],
-    "memoryHook": "界限是指一段时间内的总数。",
+    "memoryHook": "有上下限，就在一段区间里累计。",
     "quickExample": {
       "problem": "f(x) dx 从 0 到 2 的积分衡量什么？",
       "move": "从 x = 0 到 x = 2 的净累积面积。"
@@ -1229,13 +1229,13 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "第 5 章：积分",
     "unit": "积分",
     "topic": "微积分基本定理",
-    "name": "联邦贸易委员会实际使用",
+    "name": "微积分基本定理的实战用法",
     "useItWhen": "你需要快速定积分或积分导数",
     "looksLike": "x 积分的顶减底设置或 d/dx",
-    "doThis": "使用顶部减底部，或打开内部",
-    "thinkOfItAs": "导数和积分握手",
+    "doThis": "要么用原函数上减下，要么把积分里那个 x 直接放出来",
+    "thinkOfItAs": "导数和积分在这里握手了",
     "watchOutFor": "忘记顶部减去底部",
-    "rememberThis": "反导数求值，原始函数解包",
+    "rememberThis": "原函数上减下；若上限是 x，就直接放出来",
     "typicalProblemShapes": [
       "使用反导数计算定积分",
       "对上限为 x 的积分进行微分"
@@ -1294,7 +1294,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "应用",
     "topic": "中值定理",
     "name": "中值定理",
-    "useItWhen": "您需要一个有保证的平均坡度与即时坡度点",
+    "useItWhen": "你需要一个有保证的平均坡度与即时坡度点",
     "looksLike": "在 [a,b] 上连续，在 (a,b) 上可微",
     "doThis": "检查条件，然后将割线斜率与切线斜率匹配",
     "thinkOfItAs": "某处车速表与行程平均值相符",
@@ -1306,7 +1306,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "您必须首先检查哪两个条件？",
+        "prompt": "你必须首先检查哪两个条件？",
         "answer": "在闭区间上连续，在开区间上可微。"
       },
       {
@@ -1316,7 +1316,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "平均坡度显示在内部某处。",
     "quickExample": {
-      "problem": "您在 MVT 中比较什么斜率？",
+      "problem": "你在 MVT 中比较什么斜率？",
       "move": "跨区间的正割斜率。"
     }
   },
@@ -1338,7 +1338,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "您想要这里的导数符号图吗？",
+        "prompt": "你想要这里的导数符号图吗？",
         "answer": "是的。"
       },
       {
@@ -1518,7 +1518,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "积分应用",
     "topic": "函数的平均值",
     "name": "函数的平均值",
-    "useItWhen": "您需要一段时间间隔内的平均输出",
+    "useItWhen": "你需要一段时间间隔内的平均输出",
     "looksLike": "1 超过 b-a 乘以积分",
     "doThis": "从积分中取出总和，然后除以间隔长度",
     "thinkOfItAs": "面积转化为平均高度",
@@ -1582,7 +1582,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "导数",
     "topic": "作为函数的导数",
     "name": "导数函数",
-    "useItWhen": "您需要坡度规则，而不仅仅是一个坡度",
+    "useItWhen": "你需要坡度规则，而不仅仅是一个坡度",
     "looksLike": "x 或 dy/dx 的 f 素数",
     "doThis": "微分一次，然后将结果视为新函数",
     "thinkOfItAs": "根据原始功能构建的斜坡机",
@@ -1617,9 +1617,9 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "正弦、余弦、正切或朋友出现",
     "looksLike": "sin x、cos x、tan x、sec x",
     "doThis": "使用标准三角导数模式，然后根据需要使用链式法则",
-    "thinkOfItAs": "您可以记住并快速部署的一个小列表",
+    "thinkOfItAs": "你可以记住并快速部署的一个小列表",
     "watchOutFor": "忘记 cos x 的 d/dx 的负数",
-    "rememberThis": "sin 转为 cos，cos 转为负 sin",
+    "rememberThis": "sin 变 cos，cos 变负 sin",
     "typicalProblemShapes": [
       "基本三角函数本身",
       "具有内部表达式（如 sin(3x)）的三角函数"
@@ -1627,14 +1627,14 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "sin x 的 d/dx 是多少？",
-        "answer": "因 x。"
+        "answer": "cos x。"
       },
       {
         "prompt": "cos x 的 d/dx 上的陷阱是什么？",
         "answer": "缺少负号。"
       }
     ],
-    "memoryHook": "罪恶到余弦。因数减去罪数。",
+    "memoryHook": "sin 到 cos，cos 到负 sin。",
     "quickExample": {
       "problem": "cos x 的导数",
       "move": "它是负sin x。"
@@ -1645,11 +1645,11 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "第 3 章：求导法则",
     "unit": "导数",
     "topic": "线性近似和微分",
-    "name": "差速器",
-    "useItWhen": "您需要快速的小额变更估算",
+    "name": "微分",
+    "useItWhen": "你想快速估计一个很小的变化",
     "looksLike": "dy = f-素数(x) dx",
-    "doThis": "求导数，乘以微小的输入变化，然后估计",
-    "thinkOfItAs": "放大的数学，曲线几乎是直线",
+    "doThis": "先求导，再乘上一个很小的输入变化来估计输出变化",
+    "thinkOfItAs": "在很小范围里，把曲线当成直线",
     "watchOutFor": "使用大的变化，就好像线性估计保持完美一样",
     "rememberThis": "小 dx 给出了方便的 dy 估计",
     "typicalProblemShapes": [
@@ -1666,9 +1666,9 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "小变化。"
       }
     ],
-    "memoryHook": "微小的输入变化，微分时间 dx。",
+    "memoryHook": "小的 dx，对应可估的 dy。",
     "quickExample": {
-      "problem": "您如何估计微小的输出变化？",
+      "problem": "你如何估计微小的输出变化？",
       "move": "使用 dy = f-prime(x) dx。"
     }
   },
@@ -1934,7 +1934,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "应用与曲线",
     "topic": "回转表面积",
     "name": "旋转表面积",
-    "useItWhen": "曲线绕轴旋转，您需要皮肤区域",
+    "useItWhen": "曲线绕轴旋转，你要求旋转后的表面积",
     "looksLike": "绕 x 轴或 y 轴的表面积",
     "doThis": "半径乘以弧长段，然后积分",
     "thinkOfItAs": "将纸包裹在旋转的曲线上",
@@ -1942,7 +1942,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "rememberThis": "表面积是旋转半径乘以长度",
     "typicalProblemShapes": [
       "绕轴旋转曲线",
-      "问题是要求外部皮肤，而不是体积"
+      "题目要的是外表面积，不是体积"
     ],
     "miniDrill": [
       {
@@ -2030,7 +2030,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "应用与曲线",
     "topic": "参数曲线的弧长",
     "name": "参数化弧长",
-    "useItWhen": "您需要参数路径的长度",
+    "useItWhen": "你需要参数路径的长度",
     "looksLike": "x = f(t), y = g(t)，求从 t = a 到 b 的长度",
     "doThis": "使用 (dx/dt)^2 + (dy/dt)^2 的根",
     "thinkOfItAs": "积分内的毕达哥拉斯速度",
@@ -2142,7 +2142,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "x(θ) 和 y(θ)。"
       },
       {
-        "prompt": "之后，您使用哪个斜率公式？",
+        "prompt": "之后，你使用哪个斜率公式？",
         "answer": "dy/dt 优于 dx/dt 风格。"
       }
     ],
@@ -2394,7 +2394,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "您应该首先检查哪三个条件？",
+        "prompt": "你应该首先检查哪三个条件？",
         "answer": "正、递减、连续。"
       },
       {
@@ -2447,8 +2447,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "对比测试",
     "name": "对比测试",
     "useItWhen": "你的系列很乱，但你可以将它的大小与熟悉的系列进行比较",
-    "looksLike": "您可以将积极的术语置于另一个系列之上或之下",
-    "doThis": "与您已经知道的更简单的事情进行比较",
+    "looksLike": "你可以将积极的术语置于另一个系列之上或之下",
+    "doThis": "与你已经知道的更简单的事情进行比较",
     "thinkOfItAs": "系列关联罪",
     "watchOutFor": "使用错误的比较方向",
     "rememberThis": "小于收敛或大于发散",
@@ -2466,7 +2466,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "较小的发散基准。"
       }
     ],
-    "memoryHook": "与您已经信任的系列进行比较。",
+    "memoryHook": "与你已经信任的系列进行比较。",
     "quickExample": {
       "problem": "将 1/(n^2 + 1) 与 1/n^2 进行比较。",
       "move": "使用更简单的 p 系列作为基准。"
@@ -2490,7 +2490,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "您想要什么样的比例限制？",
+        "prompt": "你想要什么样的比例限制？",
         "answer": "积极且有限。"
       },
       {
@@ -2542,7 +2542,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "数列与级数",
     "topic": "绝对收敛和条件收敛",
     "name": "绝对与条件",
-    "useItWhen": "交替序列收敛，您需要更强的标签",
+    "useItWhen": "交替序列收敛，你需要更强的标签",
     "looksLike": "测试该系列，然后测试绝对值版本",
     "doThis": "放下标志并再次测试",
     "thinkOfItAs": "脱掉标志服装，看看还剩下什么",
@@ -2939,11 +2939,11 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "k 的什么符号表示增长？",
-        "answer": "积极的。"
+        "answer": "正的。"
       },
       {
         "prompt": "k 的什么符号表示衰变？",
-        "answer": "消极的。"
+        "answer": "负的。"
       }
     ],
     "memoryHook": "k 讲述这个故事。",
@@ -3022,7 +3022,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "应用与曲线",
     "topic": "质心",
     "name": "质量中心",
-    "useItWhen": "您需要区域或线路的平衡点",
+    "useItWhen": "你需要区域或线路的平衡点",
     "looksLike": "质量密度和加权平均值",
     "doThis": "找到总质量，然后将力矩除以质量",
     "thinkOfItAs": "平衡点",
@@ -3088,7 +3088,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "name": "概率密度",
     "useItWhen": "概率由密度函数给出，而不是由单独的情况给出",
     "looksLike": "f(x) 总面积为 1",
-    "doThis": "在您关心的时间间隔内积分",
+    "doThis": "在你关心的时间间隔内积分",
     "thinkOfItAs": "再次作为面积的概率",
     "watchOutFor": "忘记总面积必须为 1",
     "rememberThis": "密度的概率是面积",
@@ -3382,7 +3382,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "rememberThis": "对变化进行建模，然后求解模型",
     "typicalProblemShapes": [
       "有关生长、冷却、混合或运动的应用题",
-      "提示要求您形成 DE，而不仅仅是求解 DE"
+      "题目要你先建立微分方程，而不只是把它解出来"
     ],
     "miniDrill": [
       {
@@ -3450,7 +3450,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "您是否在标准形式之前或之后确定圆锥曲线？",
+        "prompt": "你是在化到标准形式之前，还是之后再判断圆锥曲线？",
         "answer": "后。"
       },
       {
@@ -3502,7 +3502,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "数列与级数",
     "topic": "测试策略系列",
     "name": "系列测试策略",
-    "useItWhen": "出现一系列，您需要进行第一个测试来尝试",
+    "useItWhen": "出现一系列，你需要进行第一个测试来尝试",
     "looksLike": "西格玛无穷大且没有明显标签",
     "doThis": "检查术语限制，然后将模式与几何、p 级数、比较、比率、根或交替匹配",
     "thinkOfItAs": "测试步骤之前的排序步骤",
@@ -3534,7 +3534,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "数列与级数",
     "topic": "泰勒多项式的应用",
     "name": "泰勒多项式应用",
-    "useItWhen": "您需要使用多项式而不是完整函数进行附近的估计",
+    "useItWhen": "你需要使用多项式而不是完整函数进行附近的估计",
     "looksLike": "在中心 a 附近近似 f(x)",
     "doThis": "在中心附近使用短泰勒多项式并保持 x 靠近该中心",
     "thinkOfItAs": "更难的函数的本地替代品",
@@ -4014,7 +4014,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "偏导数",
     "topic": "多个变量的极限和连续性",
     "name": "多变量极限",
-    "useItWhen": "您需要表面上某个点附近的行为",
+    "useItWhen": "你想判断函数在某点附近到底趋向什么",
     "looksLike": "当 (x, y) 变为 (a, b) 时的极限",
     "doThis": "测试不同的路径是否给出相同的答案",
     "thinkOfItAs": "路径检查而不是左右检查",
@@ -4046,7 +4046,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "偏导数",
     "topic": "偏导数",
     "name": "偏导数",
-    "useItWhen": "您更改一个变量并冻结其他变量",
+    "useItWhen": "你只让一个变量变化，其他变量先当常数",
     "looksLike": "f_x、f_y、f_z",
     "doThis": "一次对一个变量进行微分",
     "thinkOfItAs": "一个旋钮移动，而其他旋钮保持静止",
@@ -4078,7 +4078,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "偏导数",
     "topic": "切平面和线性化",
     "name": "切面",
-    "useItWhen": "您需要表面的平坦局部近似",
+    "useItWhen": "你想用一个平面近似曲面在某点附近的样子",
     "looksLike": "求一点的切平面",
     "doThis": "使用点、f_x 和 f_y",
     "thinkOfItAs": "表面的局部平坦斑块",
@@ -4142,7 +4142,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "偏导数",
     "topic": "定向导数",
     "name": "方向导数",
-    "useItWhen": "您需要选定方向的变化率",
+    "useItWhen": "你想知道沿某个指定方向走时函数变得有多快",
     "looksLike": "D_u f",
     "doThis": "使用梯度点单位方向向量",
     "thinkOfItAs": "如果你走这条路有多陡",
@@ -4270,7 +4270,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "重积分",
     "topic": "二重积分",
     "name": "二重积分",
-    "useItWhen": "您在一个区域上添加值",
+    "useItWhen": "你要把一个区域上的贡献全部加起来",
     "looksLike": "区域 R 上的二重积分",
     "doThis": "设置边界并积分两次",
     "thinkOfItAs": "在一个区域上添加小瓷砖",
@@ -4398,7 +4398,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "重积分",
     "topic": "三重积分",
     "name": "三重积分",
-    "useItWhen": "您可以在 3D 实体上添加值",
+    "useItWhen": "你要把一个立体区域里的贡献全部加起来",
     "looksLike": "固体 E 上的三重积分",
     "doThis": "设置实体边界并积分三次",
     "thinkOfItAs": "将小盒子堆放在一个卷中",
@@ -4589,30 +4589,30 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "第 16 章：向量分析",
     "unit": "向量分析",
     "topic": "保守向量场",
-    "name": "保守领域",
-    "useItWhen": "您想要路径独立性或简单的线积分",
+    "name": "保守场",
+    "useItWhen": "你怀疑线积分与路径无关，想找势函数来简化",
     "looksLike": "F = 梯度 f",
     "doThis": "如果场是保守的，求一个势函数",
-    "thinkOfItAs": "来自一个隐藏标量函数的字段",
-    "watchOutFor": "假设每个领域都是保守的",
+    "thinkOfItAs": "背后藏着一个势函数的向量场",
+    "watchOutFor": "别假设每个向量场都是保守场",
     "rememberThis": "保守意味着梯度场",
     "typicalProblemShapes": [
-      "潜在的功能问题",
-      "路径独立问题"
+      "势函数问题",
+      "路径无关问题"
     ],
     "miniDrill": [
       {
-        "prompt": "您在寻找什么隐藏功能？",
-        "answer": "一个潜在的函数。"
+        "prompt": "这里在找的“隐藏函数”是什么？",
+        "answer": "势函数。"
       },
       {
-        "prompt": "路径独立性通常意味着什么？",
-        "answer": "保守领域。"
+        "prompt": "路径无关通常意味着这个场是什么？",
+        "answer": "保守场。"
       }
     ],
-    "memoryHook": "发现潜力，简化工作路径。",
+    "memoryHook": "先找势函数，线积分往往就会简单很多。",
     "quickExample": {
-      "problem": "为什么保守领域很好？",
+      "problem": "为什么保守场很好用？",
       "move": "线积分变得更加容易。"
     }
   },
@@ -4622,12 +4622,12 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "向量分析",
     "topic": "线积分基本定理",
     "name": "FTC 线积分",
-    "useItWhen": "该领域是保守的",
+    "useItWhen": "这个向量场是保守场",
     "looksLike": "梯度 f 点 dr 的积分",
-    "doThis": "使用终点处的电势减去起点处的电势",
+    "doThis": "用终点的势函数值减去起点的势函数值",
     "thinkOfItAs": "路径的顶部减去底部",
-    "watchOutFor": "在不保守的领域使用它",
-    "rememberThis": "结束时的电位减去开始时的电位",
+    "watchOutFor": "别在非保守场里硬套这个定理",
+    "rememberThis": "终点的势函数值减去起点的势函数值",
     "typicalProblemShapes": [
       "给定势函数 f",
       "有起点和终点的保守场"
@@ -4635,7 +4635,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "路径在这个定理中重要吗？",
-        "answer": "不，一旦这个领域变得保守，就不会了。"
+        "answer": "一旦它是保守场，路径就不重要了。"
       },
       {
         "prompt": "哪两点重要？",
@@ -4645,7 +4645,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "memoryHook": "起点胜过完整路径。",
     "quickExample": {
       "problem": "如何快速评估保守场线积分？",
-      "move": "最终点的电势减去初始点的电势。"
+      "move": "终点的势函数值减去起点的势函数值。"
     }
   },
   "calc3-greens-theorem": {
@@ -4686,7 +4686,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "向量分析",
     "topic": "表面积分",
     "name": "表面积分",
-    "useItWhen": "您可以在表面上添加值",
+    "useItWhen": "你要把一个曲面上的贡献全部加起来",
     "looksLike": "曲面 S 上的二重积分",
     "doThis": "参数化曲面或使用图形公式",
     "thinkOfItAs": "双积分提升到曲面片材上",
@@ -4702,13 +4702,13 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "不。"
       },
       {
-        "prompt": "您经常对表面进行参数化吗？",
+        "prompt": "你经常对表面进行参数化吗？",
         "answer": "是的。"
       }
     ],
     "memoryHook": "与二重积分的想法相同，但在一张纸上。",
     "quickExample": {
-      "problem": "您在这里集成了什么样的对象？",
+      "problem": "你在这里集成了什么样的对象？",
       "move": "一个表面。"
     }
   },
@@ -4846,7 +4846,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "向量函数",
     "topic": "向量函数的导数和积分",
     "name": "向量导数/积分",
-    "useItWhen": "空间曲线被写成向量并且您需要运动数据",
+    "useItWhen": "题目把空间曲线写成向量函数，你要找速度、加速度或位移",
     "looksLike": "r-prime(t)，r(t) 的积分",
     "doThis": "逐个组件区分或集成",
     "thinkOfItAs": "同样的规则，三车道",
@@ -4880,8 +4880,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "name": "空间运动",
     "useItWhen": "粒子在空间曲线上运动",
     "looksLike": "位置、速度、加速度矢量",
-    "doThis": "区分速度的位置和加速度",
-    "thinkOfItAs": "使用 3D 箭头计算 1 运动",
+    "doThis": "对位置向量求导得到速度，再对速度求导得到加速度",
+    "thinkOfItAs": "用三维向量一路追踪位置、速度和加速度",
     "watchOutFor": "混合速度与速度",
     "rememberThis": "速度是矢量，速度是它的长度",
     "typicalProblemShapes": [
@@ -4910,7 +4910,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "重积分",
     "topic": "二重积分的应用",
     "name": "二重积分应用",
-    "useItWhen": "您需要整个区域的质量、平均值或总计",
+    "useItWhen": "你要求整个区域的质量、平均值或总量",
     "looksLike": "二维区域的密度",
     "doThis": "在该地区整合适当的数量",
     "thinkOfItAs": "具有额外意义的面积总计",
@@ -4922,7 +4922,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "您为质量整合了什么？",
+        "prompt": "你为质量整合了什么？",
         "answer": "密度。"
       },
       {
@@ -5267,7 +5267,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "doThis": "将其识别为 1 的矩阵版本",
     "thinkOfItAs": "中性设置",
     "watchOutFor": "使用错误大小的单位矩阵",
-    "rememberThis": "身份让事情变得孤立无援",
+    "rememberThis": "单位矩阵乘上去不会改变结果",
     "typicalProblemShapes": [
       "对角线和其他地方为零",
       "IA = A 且 AI = A"
@@ -5282,9 +5282,9 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "不。"
       }
     ],
-    "memoryHook": "恒等式 = 矩阵一。",
+    "memoryHook": "单位矩阵就是矩阵里的 1。",
     "quickExample": {
-      "problem": "如果 A 是身份，Axe 会发生什么？",
+      "problem": "如果 A 是单位矩阵，Ax 会发生什么？",
       "move": "没有任何改变。"
     }
   },
@@ -5294,7 +5294,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "矩阵",
     "topic": "逆矩阵",
     "name": "逆矩阵",
-    "useItWhen": "您想要撤消矩阵操作",
+    "useItWhen": "你想要撤消矩阵操作",
     "looksLike": "A 的逆元，AA 的逆元 = I",
     "doThis": "检查矩阵是否可逆，然后使用逆矩阵来反转操作",
     "thinkOfItAs": "矩阵撤消按钮",
@@ -5314,7 +5314,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "不。"
       }
     ],
-    "memoryHook": "逆向表示撤消。",
+    "memoryHook": "逆矩阵就是撤销按钮。",
     "quickExample": {
       "problem": "当 A 可逆时如何撤销 Ax = b？",
       "move": "乘以 A 的倒数。"
@@ -5326,7 +5326,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "行列式",
     "topic": "行列式",
     "name": "行列式",
-    "useItWhen": "您需要快速可逆信号或面积体积缩放线索",
+    "useItWhen": "你需要快速可逆信号或面积体积缩放线索",
     "looksLike": "det A 或方阵周围的条",
     "doThis": "计算行列式并检查它是否为零",
     "thinkOfItAs": "矩阵健康检查",
@@ -5359,18 +5359,18 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "秩",
     "name": "秩",
     "useItWhen": "你想要独立枢轴方向的数量",
-    "looksLike": "等级 A，主元计数，梯形形式的非零行",
+    "looksLike": "rank(A)、主元个数、梯形形式里的非零行",
     "doThis": "先做行化简，再数主元个数",
     "thinkOfItAs": "矩阵保留了多少真实信息",
     "watchOutFor": "计算每一行而不是枢轴行",
-    "rememberThis": "排名是枢轴数",
+    "rememberThis": "秩就是主元个数",
     "typicalProblemShapes": [
       "行化简后去数主元个数",
       "关于满级或不足级的问题"
     ],
     "miniDrill": [
       {
-        "prompt": "快速短语中的排名是什么？",
+        "prompt": "秩最常见的快速读法是什么？",
         "answer": "枢轴的数量。"
       },
       {
@@ -5378,7 +5378,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "不。"
       }
     ],
-    "memoryHook": "排名 = 幸存的枢轴。",
+    "memoryHook": "秩 = 留下来的主元个数。",
     "quickExample": {
       "problem": "如何从 RREF 中读取排名？",
       "move": "计算枢轴。"
@@ -5393,7 +5393,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "该集合应该支持向量加法和标量缩放",
     "looksLike": "向量、多项式、矩阵或函数的集合",
     "doThis": "询问集合在加法和标量乘法下是否保持闭集",
-    "thinkOfItAs": "矢量移动的合法游乐场",
+    "thinkOfItAs": "向量可以放心相加、缩放的空间",
     "watchOutFor": "假设每组向量都是向量空间",
     "rememberThis": "在添加和缩放下关闭",
     "typicalProblemShapes": [
@@ -5425,7 +5425,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "该问题询问向量空间内的集合本身是否是向量空间",
     "looksLike": "证明 W 是 V 的子空间",
     "doThis": "检查零，在加法下关闭，在标量乘法下关闭",
-    "thinkOfItAs": "一个三步快检",
+    "thinkOfItAs": "一个三步快速检查",
     "watchOutFor": "忘记检查零向量",
     "rememberThis": "归零、相加、缩放",
     "typicalProblemShapes": [
@@ -5488,18 +5488,18 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "name": "线性无关性",
     "useItWhen": "你需要知道一个向量是否是由其他向量秘密构建的",
     "looksLike": "独立集或从属集",
-    "doThis": "把线性组合设成 0，再看是否只能得到平凡解",
+    "doThis": "把线性组合设成 0，再看是不是只能得到零解",
     "thinkOfItAs": "每个向量都有自己的重量",
-    "watchOutFor": "当一个向量冗余时调用一组独立",
-    "rememberThis": "只有零系数解才意味着独立",
+    "watchOutFor": "明明有向量是多余的，却还把整组说成线性无关",
+    "rememberThis": "只有零系数那一种解，才说明线性无关",
     "typicalProblemShapes": [
       "测试冗余的向量列表",
       "首先询问向量是否独立的基本问题"
     ],
     "miniDrill": [
       {
-        "prompt": "独立的坏兆头是什么？",
-        "answer": "出现非平凡解。"
+        "prompt": "线性无关最坏的信号是什么？",
+        "answer": "出现非零系数解。"
       },
       {
         "prompt": "如果一个向量是其他向量的组合，是独立的还是相关的？",
@@ -5740,10 +5740,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "线性代数导论",
     "chapter": "第 1 章：线性方程组",
     "unit": "线性方程组",
-    "topic": "均质系统",
-    "name": "均质系统",
+    "topic": "齐次系统",
+    "name": "齐次系统",
     "useItWhen": "右边全是零",
-    "looksLike": "斧头 = 0",
+    "looksLike": "Ax = 0",
     "doThis": "记住零解总是存在，然后检查自由变量",
     "thinkOfItAs": "没有外部推动的系统",
     "watchOutFor": "忘了平凡解永远都在",
@@ -5762,7 +5762,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "不。"
       }
     ],
-    "memoryHook": "同质意味着零总是有效的。",
+    "memoryHook": "齐次系统一定先有零解。",
     "quickExample": {
       "problem": "每个齐次系统一定先有什么解？",
       "move": "先有平凡解 x = 0。"
@@ -5839,14 +5839,14 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "列空间和零空间",
     "name": "列空间与零空间",
     "useItWhen": "你需要知道矩阵可以产生什么输出或者它会杀死什么输入",
-    "looksLike": "列 A，无 A，Ax = b，Ax = 0",
-    "doThis": "考虑列空间的输出和空空间的零产生输入",
-    "thinkOfItAs": "矩阵可以创造什么与它消除什么",
+    "looksLike": "col(A)、null(A)、Ax = b、Ax = 0",
+    "doThis": "把列空间看成所有可能输出，把零空间看成会被送到 0 的输入",
+    "thinkOfItAs": "矩阵能产生什么输出，以及它会把哪些输入压成 0",
     "watchOutFor": "将域中的向量与共域中的向量混合",
-    "rememberThis": "列空间是输出，空空间是零输入",
+    "rememberThis": "列空间看输出，零空间看哪些输入会被打成 0",
     "typicalProblemShapes": [
       "求解 Ax = 0 来描述零空间",
-      "用于描述列空间的透视列"
+      "用主元列描述列空间"
     ],
     "miniDrill": [
       {
@@ -5855,29 +5855,29 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "哪个空间描述了可达到的输出？",
-        "answer": "柱空间。"
+        "answer": "列空间。"
       }
     ],
-    "memoryHook": "列产生输出。空则为零。",
+    "memoryHook": "列空间管输出，零空间管谁被送到 0。",
     "quickExample": {
       "problem": "零空间收集什么？",
-      "move": "所有向量均发送至零。"
+      "move": "所有被 A 送到 0 的向量。"
     }
   },
   "la-coordinates-change-basis": {
     "course": "线性代数导论",
     "chapter": "第 4 章：向量空间",
     "unit": "向量空间",
-    "topic": "坐标和基础变化",
-    "name": "坐标和基础的变化",
+    "topic": "坐标与基变换",
+    "name": "坐标与基变换",
     "useItWhen": "相同的向量以非标准的方式描述",
     "looksLike": "相对于 B 的坐标向量，变化基矩阵",
-    "doThis": "将基础视为语言并将向量转换为该语言",
-    "thinkOfItAs": "同一点，不同的坐标重音",
-    "watchOutFor": "忘记坐标属于哪个基础",
-    "rememberThis": "坐标取决于基础",
+    "doThis": "把基底当成一套坐标语言，再把向量翻译到那套语言里",
+    "thinkOfItAs": "同一个向量，换了基底就会有不同坐标",
+    "watchOutFor": "忘了这些坐标是相对于哪组基底写的",
+    "rememberThis": "向量本身不变，变的是坐标表示",
     "typicalProblemShapes": [
-      "查找相对于基准的坐标",
+      "查找相对于某组基底的坐标",
       "标准坐标和非标准坐标之间的转换"
     ],
     "miniDrill": [
@@ -5886,13 +5886,13 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "不。"
       },
       {
-        "prompt": "新的基础有什么变化？",
+        "prompt": "换了基底以后，什么会变？",
         "answer": "它的坐标。"
       }
     ],
     "memoryHook": "相同的向量，新的语言。",
     "quickExample": {
-      "problem": "当基础改变时坐标会改变吗？",
+      "problem": "换了基底以后，坐标会改变吗？",
       "move": "是的。向量保持不变，但描述发生了变化。"
     }
   },
@@ -5901,13 +5901,13 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "第 5 章：内积空间",
     "unit": "正交性",
     "topic": "正交集和 Gram-Schmidt",
-    "name": "正交和格拉姆-施密特",
-    "useItWhen": "你想要来自凌乱基础的垂直单位向量",
+    "name": "正交与 Gram-Schmidt",
+    "useItWhen": "你想把一组凌乱的基底整理成互相垂直的单位向量",
     "looksLike": "正交基，Gram-Schmidt 过程",
-    "doThis": "去掉投影，然后标准化",
+    "doThis": "先减去投影让向量彼此正交，再把它们单位化",
     "thinkOfItAs": "拉直向量，然后调整它们的大小",
-    "watchOutFor": "在移除旧方向件之前进行正火处理",
-    "rememberThis": "减去投影，然后标准化",
+    "watchOutFor": "还没减掉旧方向分量就急着单位化",
+    "rememberThis": "先减投影，再单位化",
     "typicalProblemShapes": [
       "建立正交基",
       "投影密集的正交性问题"
@@ -5919,7 +5919,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "去除投影后会发生什么？",
-        "answer": "正常化。"
+        "answer": "再把它单位化。"
       }
     ],
     "memoryHook": "拉直，然后收缩到 1。",
@@ -5934,10 +5934,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "正交性",
     "topic": "最小二乘法",
     "name": "最小二乘法",
-    "useItWhen": "Ax = b 没有精确解，您需要最接近的拟合",
+    "useItWhen": "Ax = b 没有精确解，你需要最接近的拟合",
     "looksLike": "超定系统，最佳拟合线，A 转置 A x = A 转置 b",
     "doThis": "投影到列空间并求解正规方程",
-    "thinkOfItAs": "最好的可能错过",
+    "thinkOfItAs": "虽然碰不到精确解，但尽量贴得最近",
     "watchOutFor": "对待无解系统就像它仍然有一个确切的答案一样",
     "rememberThis": "最小二乘找到最接近的拟合，而不是完美的命中",
     "typicalProblemShapes": [
@@ -5954,10 +5954,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "通常不会。"
       }
     ],
-    "memoryHook": "没有精确的配合吗？采取最接近的配合。",
+    "memoryHook": "没有精确解，就找最近的那个。",
     "quickExample": {
       "problem": "正规方程什么时候出现？",
-      "move": "当您想要最小二乘解时。"
+      "move": "当你想要最小二乘解时。"
     }
   },
   "la-characteristic-polynomial": {
@@ -5998,7 +5998,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "线性方程组",
     "topic": "梯形形式与简化梯形形式",
     "name": "REF 与 RREF",
-    "useItWhen": "矩阵几乎已清理完毕，您需要命名该形式",
+    "useItWhen": "矩阵几乎已清理完毕，你需要命名该形式",
     "looksLike": "阶梯枢轴，枢轴下方有零，上方也可能有零",
     "doThis": "首先检查枢轴形状，然后询问每个枢轴是否是单独的 1",
     "thinkOfItAs": "REF已清洁，RREF已完全抛光",
@@ -6020,7 +6020,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "memoryHook": "RREF 是 REF 加上更清洁的枢轴。",
     "quickExample": {
-      "problem": "RREF 具有哪些 REF 可能没有的额外功能？",
+      "problem": "RREF 比 REF 多出来的要求是什么？",
       "move": "每个枢轴上方也有零。"
     }
   },
@@ -6029,11 +6029,11 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "第 1 章：线性方程组",
     "unit": "线性方程组",
     "topic": "矩阵方程 Ax = b",
-    "name": "轴=b",
+    "name": "Ax = b",
     "useItWhen": "系统被写成一个矩阵方程",
     "looksLike": "Ax = b，系数矩阵乘以变量向量",
     "doThis": "将 A 视为动作，x 视为未知数，b 视为目标",
-    "thinkOfItAs": "一台机器试图达到一个输出",
+    "thinkOfItAs": "矩阵 A 像一台机器，把输入 x 送成目标输出 b",
     "watchOutFor": "混合x和b的作用",
     "rememberThis": "Ax = b 是线性系统的矩阵版本",
     "typicalProblemShapes": [
@@ -6050,7 +6050,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "b."
       }
     ],
-    "memoryHook": "A 起作用，x 未知，b 是目标。",
+    "memoryHook": "A 负责作用，x 是未知输入，b 是目标输出。",
     "quickExample": {
       "problem": "Ax = b 中的 b 代表什么？",
       "move": "目标输出向量。"
@@ -6094,7 +6094,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "矩阵",
     "topic": "LU 因式分解",
     "name": "LU 因式分解",
-    "useItWhen": "您可以使用相同的矩阵 A 求解多个系统",
+    "useItWhen": "你可以使用相同的矩阵 A 求解多个系统",
     "looksLike": "A = LU，下限乘以上限",
     "doThis": "因式分解一次，然后求解 Ly = b 和 Ux = y",
     "thinkOfItAs": "先拆成两个更容易解的小步骤",
@@ -6124,9 +6124,9 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "线性代数导论",
     "chapter": "第 3 章：行列式",
     "unit": "行列式",
-    "topic": "det = 0 告诉您什么",
+    "topic": "det = 0 告诉你什么",
     "name": "det = 0 测试",
-    "useItWhen": "您需要快速的单数与可逆检查",
+    "useItWhen": "你想快速判断矩阵是不是奇异、是不是可逆",
     "looksLike": "det(A) = 0 或 det(A) 不等于 0",
     "doThis": "将零行列式视为崩溃和失去可逆性的危险信号",
     "thinkOfItAs": "矩阵变平了",
@@ -6156,26 +6156,26 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "线性代数导论",
     "chapter": "第 4 章：向量空间",
     "unit": "向量空间",
-    "topic": "秩无效定理",
-    "name": "等级无效",
-    "useItWhen": "你需要输出和隐藏自由之间的维度平衡",
-    "looksLike": "排名加上无效性等于列数",
+    "topic": "秩-零化度定理",
+    "name": "秩-零化度定理",
+    "useItWhen": "你想把主元方向和自由变量的数量对应起来",
+    "looksLike": "rank + nullity = 列数",
     "doThis": "将枢轴方向和自由方向一起计数",
     "thinkOfItAs": "已用尺寸加上剩余自由度",
     "watchOutFor": "将公式中的行数与列数混合",
-    "rememberThis": "排名 + 无效性 = 列数",
+    "rememberThis": "秩 + 零化度 = 列数",
     "typicalProblemShapes": [
       "维度计数问题",
-      "内核和图像大小比较"
+      "零空间和像空间的维数比较"
     ],
     "miniDrill": [
       {
         "prompt": "无效性算什么？",
-        "answer": "内核中的自由指令。"
+        "answer": "零空间里的自由变量个数。"
       },
       {
         "prompt": "排名无效是否使用列数或行数？",
-        "answer": "专栏。"
+        "answer": "列数。"
       }
     ],
     "memoryHook": "使用的方向加上自由方向等于总列数。",
@@ -6239,10 +6239,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "行或列存储变换后的基向量吗？",
-        "answer": "专栏。"
+        "answer": "列。"
       }
     ],
-    "memoryHook": "变换基础，然后堆叠列。",
+    "memoryHook": "先算基向量怎么变，再把结果按列排起来。",
     "quickExample": {
       "problem": "如何快速构建 T 的矩阵？",
       "move": "在基向量上求 T 并将输出堆叠为列。"
@@ -6252,46 +6252,46 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "线性代数导论",
     "chapter": "第 6 章：线性变换与特征值",
     "unit": "线性变换与特征值",
-    "topic": "内核和范围",
-    "name": "内核与范围",
-    "useItWhen": "您需要将映射为零的内容与可到达的输出分开",
-    "looksLike": "ker(T)、范围(T)、零空间、图像",
-    "doThis": "将内核视为丢失的输入，将范围视为可能的输出",
-    "thinkOfItAs": "消失的东西与可以产生的东西",
-    "watchOutFor": "混淆内核所在位置和范围所在位置",
-    "rememberThis": "内核位于输入空间，范围位于输出空间",
+    "topic": "核与像",
+    "name": "核与像",
+    "useItWhen": "你想分清哪些输入会被送到 0，哪些输出真的能被产生出来",
+    "looksLike": "ker(T)、range(T)、零空间、像空间",
+    "doThis": "把核看成被送到 0 的输入，把像看成所有能达到的输出",
+    "thinkOfItAs": "什么会消失，什么真的能出现",
+    "watchOutFor": "把核所在的输入空间和像所在的输出空间混在一起",
+    "rememberThis": "核在输入端，像在输出端",
     "typicalProblemShapes": [
       "求 ker(T) 或 range(T)",
       "一对一检查"
     ],
     "miniDrill": [
       {
-        "prompt": "什么输出定义了内核？",
+        "prompt": "什么输出定义了核？",
         "answer": "零。"
       },
       {
-        "prompt": "该范围收集什么？",
-        "answer": "T 可以做出的所有输出。"
+        "prompt": "像空间收集什么？",
+        "answer": "T 真正能产生出来的所有输出。"
       }
     ],
-    "memoryHook": "内核=丢失输入。范围 = 可达到的输出。",
+    "memoryHook": "核管被送到 0 的输入，像管能达到的输出。",
     "quickExample": {
-      "problem": "T 的内核位于哪里？",
-      "move": "在域中。"
+      "problem": "T 的核位于哪里？",
+      "move": "在定义域里。"
     }
   },
   "la-one-to-one-onto": {
     "course": "线性代数导论",
     "chapter": "第 6 章：线性变换与特征值",
     "unit": "线性变换与特征值",
-    "topic": "线性映射的一对一与onto",
-    "name": "一对一 vs Onto",
+    "topic": "线性映射的单射与满射",
+    "name": "单射 vs 满射",
     "useItWhen": "测试线性映射的单射或满射行为",
-    "looksLike": "一对一、onto、琐碎内核、全方位",
-    "doThis": "使用 kernel 进行一对一，使用 range 进行 onon",
-    "thinkOfItAs": "单射意味着没有碰撞，上意味着没有错过目标",
+    "looksLike": "单射、满射、平凡核、整个值域都被覆盖",
+    "doThis": "用核判断单射，用像判断满射",
+    "thinkOfItAs": "单射表示不会撞车，满射表示没有漏掉目标",
     "watchOutFor": "检查错误空间中的错误属性",
-    "rememberThis": "与内核一对一对话，与范围对话",
+    "rememberThis": "单射看核，满射看像",
     "typicalProblemShapes": [
       "决定单射或满射",
       "方阵等价检查"
@@ -6302,11 +6302,11 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "不。"
       },
       {
-        "prompt": "如果 range(T) 错过输出，T 是否正常？",
+        "prompt": "如果像空间没有覆盖整个目标空间，T 还是满射吗？",
         "answer": "不。"
       }
     ],
-    "memoryHook": "内核用于单射，范围用于上。",
+    "memoryHook": "单射看核，满射看像。",
     "quickExample": {
       "problem": "什么是线性映射的快速一对一测试？",
       "move": "检查内核是否只有零。"
@@ -6318,7 +6318,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "线性变换与特征值",
     "topic": "特征空间",
     "name": "特征空间",
-    "useItWhen": "特征值已知，您需要其匹配向量",
+    "useItWhen": "特征值已知，你需要其匹配向量",
     "looksLike": "(A - λ I)x = 0",
     "doThis": "代入特征值并求解齐次系统",
     "thinkOfItAs": "所有向量在相同的特殊方向上拉伸",
@@ -6370,7 +6370,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "让结论从已知事实里被一步步逼出来。"
       }
     ],
-    "memoryHook": "例子只带路，证明才锁死。",
+    "memoryHook": "例子带路，证明收尾。",
     "quickExample": {
       "problem": "为什么检查 n = 1, 2, 3 还不够？",
       "move": "因为题目说的是所有情况，不是只看几个例子。"
@@ -6385,7 +6385,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "你要先分清楚：这里该拆定义，还是该证明一个结论",
     "looksLike": "偶数、单射、定理、猜想",
     "doThis": "如果是定义，就先把定义拆开；如果是定理，就证明它或直接调用它",
-    "thinkOfItAs": "定义是游戏规则，定理是游戏中的胜利",
+    "thinkOfItAs": "定义给规则，定理给结论",
     "watchOutFor": "试图证明一个定义而不是使用它",
     "rememberThis": "定义要拆开，定理要证明或调用",
     "typicalProblemShapes": [
@@ -6449,7 +6449,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "结论比直接证明更容易否定",
     "looksLike": "如果 P 那么 Q，但不是 Q 那么不是 P 看起来更干净",
     "doThis": "翻转并否定该陈述，然后证明该版本",
-    "thinkOfItAs": "因为前面的路被堵住了，所以走后面的路",
+    "thinkOfItAs": "正面不好推，就从反面绕过去",
     "watchOutFor": "把逆命题和逆否命题搞混",
     "rememberThis": "翻转并否定两个部分",
     "typicalProblemShapes": [
@@ -6466,7 +6466,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "是的。"
       }
     ],
-    "memoryHook": "翻转它，否定它，证明这一点。",
+    "memoryHook": "先翻转，再否定，再去证明。",
     "quickExample": {
       "problem": "如果n的平方是偶数，则证明n是偶数。",
       "move": "用逆否命题：如果 n 是奇数，那么 n 的平方也是奇数。"
@@ -6481,7 +6481,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "假设相反会产生不可能的结果",
     "looksLike": "假设不...，然后发生冲突",
     "doThis": "假设该声明是错误的并推动直到出现问题",
-    "thinkOfItAs": "走一条糟糕的路直到崩溃",
+    "thinkOfItAs": "先假装结论是错的，看它会不会把逻辑撞坏",
     "watchOutFor": "以令人惊讶但实际上并非不可能的事情结束",
     "rememberThis": "假设相反，强迫矛盾",
     "typicalProblemShapes": [
@@ -6491,14 +6491,14 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "在矛盾证明中你首先假设什么？",
-        "answer": "假设您想要的声明是错误的。"
+        "answer": "假设你想要的声明是错误的。"
       },
       {
         "prompt": "什么算矛盾？",
         "answer": "真正的不可能，例如 0 = 1 或既是 P 又不是 P。"
       }
     ],
-    "memoryHook": "假设相反。破坏逻辑。",
+    "memoryHook": "先假设相反，再逼出矛盾。",
     "quickExample": {
       "problem": "诸多非理性证明如何开始？",
       "move": "先假设这个数是有理数，再推出矛盾。"
@@ -6542,15 +6542,15 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "逻辑与量词",
     "topic": "否定量化陈述",
     "name": "否定量词",
-    "useItWhen": "您需要与 all 或存在语句相反的语句",
-    "looksLike": "不适合所有...，不存在...",
+    "useItWhen": "你需要与 all 或存在语句相反的语句",
+    "looksLike": "并非对所有…都成立、不存在…",
     "doThis": "交换所有存在并否定内部声明",
     "thinkOfItAs": "翻转量词，翻转语句",
     "watchOutFor": "仅否定内部并忘记交换量词",
     "rememberThis": "并非所有都成为存在不",
     "typicalProblemShapes": [
-      "证明首先需要明确否定的陈述",
-      "使用 every 和exists 设置或函数声明"
+      "证明一开始就得先写清楚否定命题",
+      "带有“所有”或“存在”的函数与集合命题"
     ],
     "miniDrill": [
       {
@@ -6587,7 +6587,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "如何证明A等于B？",
-        "answer": "显示 B 的 A 子集和 A 的 B 子集。"
+        "answer": "证明 A 是 B 的子集，同时证明 B 是 A 的子集。"
       },
       {
         "prompt": "子集证明的标准第一步是什么？",
@@ -6641,9 +6641,9 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "显示整数、余数或 mod 语言",
     "looksLike": "a 除 b，a 与 b mod n 全等",
     "doThis": "将整除性重写为倍数，将同余重写为相同的余数类",
-    "thinkOfItAs": "mod 表示数字落在同一个桶中",
-    "watchOutFor": "在任何情况下都将一致性视为普通平等",
-    "rememberThis": "除意味着多重； mod表示余数相同",
+    "thinkOfItAs": "mod 表示这些数落在同一个余数类里",
+    "watchOutFor": "别把同余直接当成普通相等",
+    "rememberThis": "整除就是倍数关系；同余就是余数类相同",
     "typicalProblemShapes": [
       "偶数/奇数或余数参数",
       "减少模 n 表达式的证明"
@@ -6655,10 +6655,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "mod 说两个数字共享什么？",
-        "answer": "其余班级相同。"
+        "answer": "它们属于同一个余数类。"
       }
     ],
-    "memoryHook": "Mod = 划分后的同一个桶。",
+    "memoryHook": "mod 就是“余数在同一类”。",
     "quickExample": {
       "problem": "a 同余 b mod n 是什么意思？",
       "move": "n 除 a 减 b。"
@@ -6670,10 +6670,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "数论基础",
     "topic": "最大公约数和欧几里得算法",
     "name": "欧几里得算法",
-    "useItWhen": "你很快就需要一个gcd",
-    "looksLike": "gcd(a, b) 重复除法",
+    "useItWhen": "你需要很快求出 gcd",
+    "looksLike": "gcd(a, b)、重复除法",
     "doThis": "继续用除数和余数替换该对，直到余数为 0",
-    "thinkOfItAs": "在不改变 gcd 的情况下缩小问题",
+    "thinkOfItAs": "在不改变 gcd 的前提下一步步把问题缩小",
     "watchOutFor": "在余数为 0 之前停止得太早",
     "rememberThis": "最后一个非零余数是 gcd",
     "typicalProblemShapes": [
@@ -6690,9 +6690,9 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "当余数变为0时。"
       }
     ],
-    "memoryHook": "保持剩余链继续运行。",
+    "memoryHook": "一直继续做除法，直到余数变成 0。",
     "quickExample": {
-      "problem": "欧几里得算法最后的gcd是多少？",
+      "problem": "欧几里得算法最后读出来的 gcd 是什么？",
       "move": "最后一个非零余数。"
     }
   },
@@ -6732,13 +6732,13 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "抽象数学导论",
     "chapter": "第 5 章：数学归纳法与良序原理",
     "unit": "数学归纳法",
-    "topic": "感应力强",
-    "name": "强感应",
+    "topic": "强归纳法",
+    "name": "强归纳法",
     "useItWhen": "下一步需要的不仅仅是前面的案例",
     "looksLike": "假设所有情况达到 k，证明情况 k 加 1",
     "doThis": "假设 k 加 1 之前的整个块，而不仅仅是单个 k 的情况",
     "thinkOfItAs": "使用你下面的整个梯子，而不是一个梯级",
-    "watchOutFor": "使用许多早期的案例，同时假装您只假设了一个",
+    "watchOutFor": "使用许多早期的案例，同时假装你只假设了一个",
     "rememberThis": "强归纳假设所有早期案例",
     "typicalProblemShapes": [
       "具有多个先前术语的递归定义",
@@ -6746,15 +6746,15 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "强感应最大的区别是什么？",
-        "answer": "您假设所有较早的情况直至 k。"
+        "prompt": "强归纳法和普通归纳法最大的区别是什么？",
+        "answer": "你假设所有较早的情况直至 k。"
       },
       {
         "prompt": "强归纳法和普通归纳法能证明同一种普遍结果吗？",
         "answer": "是的。"
       }
     ],
-    "memoryHook": "需要更多历史吗？使用强感应。",
+    "memoryHook": "需要前面很多步一起帮忙，就用强归纳。",
     "quickExample": {
       "problem": "什么时候强感应比普通感应更好？",
       "move": "当下一个案例取决于几个较早的案例时。"
@@ -6958,10 +6958,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "集合与函数",
     "topic": "复合函数和反函数",
     "name": "复合和逆",
-    "useItWhen": "函数已堆叠或者您需要撤消其中一个",
+    "useItWhen": "函数已堆叠或者你需要撤消其中一个",
     "looksLike": "f 与 g 的复合、f 的逆函数、单射与满射",
     "doThis": "仔细跟踪输入并检查顺序",
-    "thinkOfItAs": "链式机器和撤消机器",
+    "thinkOfItAs": "先接上一台机器，再看能不能把它倒回来",
     "watchOutFor": "不小心颠倒了构图顺序",
     "rememberThis": "构图顺序很重要",
     "typicalProblemShapes": [
@@ -7026,11 +7026,11 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "looksLike": "gcd(a, b) = ax + by",
     "doThis": "向后运行欧几里得算法来构建组合",
     "thinkOfItAs": "展开剩余链",
-    "watchOutFor": "找到 gcd 但从未将其写为 ax plus by",
-    "rememberThis": "gcd 可以由 a 和 b 构建",
+    "watchOutFor": "找到了 gcd，却没有继续把它写成 ax + by",
+    "rememberThis": "gcd 可以写成 a 和 b 的整数线性组合",
     "typicalProblemShapes": [
-      "证明gcd(a, b)是一个线性组合",
-      "使用 gcd 结构解决数论问题"
+      "证明 gcd(a, b) 是一个线性组合",
+      "用 gcd 结构处理数论题"
     ],
     "miniDrill": [
       {
@@ -7038,11 +7038,11 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "贝佐特的身份。"
       },
       {
-        "prompt": "找到gcd后你往什么方向工作？",
-        "answer": "向后通过步骤。"
+        "prompt": "找到 gcd 以后下一步通常怎么做？",
+        "answer": "沿着欧几里得算法的步骤往回代。"
       }
     ],
-    "memoryHook": "找到 gcd，然后放松。",
+    "memoryHook": "先找到 gcd，再一路回代。",
     "quickExample": {
       "problem": "如何从欧几里得算法中得到 ax + by ？",
       "move": "通过剩余步骤进行回代。"
@@ -7053,7 +7053,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "第 5 章：数学归纳法与良序原理",
     "unit": "数学归纳法",
     "topic": "良序原则",
-    "name": "秩序井然",
+    "name": "良序原理",
     "useItWhen": "证明需要最小的坏例子",
     "looksLike": "假设一组非空反例并选择至少一个",
     "doThis": "取最小的反例，强行矛盾",
@@ -7154,7 +7154,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "looksLike": "找到双射，列出集合，将集合与自然数配对",
     "doThis": "建立一对一的匹配或显式列表",
     "thinkOfItAs": "相同的尺寸意味着相同的配对功率",
-    "watchOutFor": "当您需要完整匹配时仅显示单射或仅显示满射",
+    "watchOutFor": "当你需要完整匹配时仅显示单射或仅显示满射",
     "rememberThis": "可数意味着与自然数相匹配",
     "typicalProblemShapes": [
       "整数、偶数、有理数或其他可数比较",
@@ -7365,7 +7365,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "memoryHook": "关系名称位于清单之后。",
     "quickExample": {
       "problem": "测试关系的最快方法是什么？",
-      "move": "使用您面前的定义逐个属性。"
+      "move": "使用你面前的定义逐个属性。"
     }
   },
   "proof-partial-orders": {
@@ -7470,7 +7470,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "证明基础",
     "topic": "规划并撰写证明",
     "name": "首先计划证明",
-    "useItWhen": "您知道该主张但不知道如何开始",
+    "useItWhen": "你知道该主张但不知道如何开始",
     "looksLike": "证明...，空白页，一次有太多想法",
     "doThis": "先把命题改写清楚，拆开定义，试几个小例子，再动手正式写",
     "thinkOfItAs": "首先是草稿，其次是干净的校样",
@@ -7610,7 +7610,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "如果您只知道 a_n = a_(n-1) + 2，那么缺少什么？",
+        "prompt": "如果你只知道 a_n = a_(n-1) + 2，那么缺少什么？",
         "answer": "一个起始值。"
       },
       {
@@ -7662,7 +7662,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "关系与基数",
     "topic": "定义良好的函数与运算",
     "name": "定义良好",
-    "useItWhen": "一个对象有很多代表，您需要输出不依赖于选择",
+    "useItWhen": "一个对象有很多代表，你需要输出不依赖于选择",
     "looksLike": "[a] 映到…、分数、等价类、模类",
     "doThis": "选两个等价代表，证明它们给出的结果一样",
     "thinkOfItAs": "不同的名称，相同的结果",
@@ -7774,11 +7774,11 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "乘。"
       },
       {
-        "prompt": "如果案例是单独的选择，您会加还是乘？",
+        "prompt": "如果案例是单独的选择，你会加还是乘？",
         "answer": "添加。"
       }
     ],
-    "memoryHook": "并繁殖。或者添加。",
+    "memoryHook": "分步完成就乘，互斥选择就加。",
     "quickExample": {
       "problem": "3 种衬衫选择和 4 种裤子选择。几套衣服？",
       "move": "乘法：3 乘以 4。"
@@ -8015,8 +8015,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "随机变量和期望",
     "name": "期望值",
     "useItWhen": "你需要长期平均回报",
+    "whatItMeans": "期望值就是把每个可能结果按它出现的概率加权后得到的长期平均。",
     "looksLike": "E(X)、平均增益、平均数量、平均值",
-    "doThis": "将每个值乘以其概率并添加",
+    "doThis": "把每个取值乘上它的概率，再加起来",
+    "whyThisMove": "每个结果既要看它有多大，也要看它有多可能。期望就是把“大小”和“概率”一起揉进加权平均。",
     "thinkOfItAs": "所有可能结果的加权平均值",
     "watchOutFor": "不使用概率求平均值",
     "rememberThis": "期望值是加权平均值",
@@ -8048,27 +8050,27 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "name": "期望的线性度",
     "useItWhen": "随机总数是较小随机部分的总和",
     "looksLike": "E(X + Y + ...)",
-    "doThis": "即使变量是相关的，也将期望拆分为总和",
-    "thinkOfItAs": "期望分布于加法",
-    "watchOutFor": "这里需要独立思考",
+    "doThis": "即使变量相关，也可以把期望沿着加号拆开",
+    "thinkOfItAs": "期望会顺着加法拆开",
+    "watchOutFor": "误以为这里也需要独立性",
     "rememberThis": "线性不需要独立性",
     "typicalProblemShapes": [
-      "预期成功、匹配或冲突的数量",
-      "指示变量计数参数"
+      "成功次数、匹配数或碰撞数的期望",
+      "指示变量计数题"
     ],
     "miniDrill": [
       {
-        "prompt": "预期金额的快速变动是多少？",
-        "answer": "分摊总金额。"
+        "prompt": "求和的期望最先该怎么做？",
+        "answer": "沿着加号拆开。"
       },
       {
         "prompt": "依赖性是否会破坏期望的线性？",
         "answer": "不。"
       }
     ],
-    "memoryHook": "期望可以免费分割金额。",
+    "memoryHook": "期望拆和，不用先证独立。",
     "quickExample": {
-      "problem": "您需要 E(X + Y) = E(X) + E(Y) 的独立性吗？",
+      "problem": "你需要 E(X + Y) = E(X) + E(Y) 的独立性吗？",
       "move": "不。"
     }
   },
@@ -8095,10 +8097,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "方差衡量的是中心还是散布？",
-        "answer": "传播。"
+        "answer": "散布。"
       }
     ],
-    "memoryHook": "平均值是中心。方差被扩散。",
+    "memoryHook": "均值看中心，方差看散布。",
     "quickExample": {
       "problem": "方差告诉你什么而期望却没有告诉你什么？",
       "move": "结果的分散程度如何。"
@@ -8108,7 +8110,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "概率论",
     "chapter": "第 3 章：离散随机变量",
     "unit": "随机变量",
-    "topic": "特别发行版",
+    "topic": "常见分布",
     "name": "常见分布",
     "useItWhen": "问题听起来像是重复试验、等待时间或罕见计数",
     "looksLike": "伯努利、二项式、几何、泊松、正态",
@@ -8207,8 +8209,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "协方差和相关性",
     "name": "协方差和相关性",
     "useItWhen": "你需要知道两个变量是否一起移动",
+    "whatItMeans": "协方差看的是两个变量相对各自均值时，是否倾向同向变化。相关系数是去掉单位后的缩放版。",
     "looksLike": "Cov(X,Y)，Corr(X,Y)",
     "doThis": "先用协方差看同向还是反向，再用相关系数看强弱",
+    "whyThisMove": "协方差来自“偏离均值后的乘积”。这个乘积正好能看出它们是同涨同跌，还是一个高时另一个低。",
     "thinkOfItAs": "它们是一起上升、相反还是几乎没有联系",
     "watchOutFor": "将零相关性视为保证独立性",
     "rememberThis": "相关性是缩放协方差",
@@ -8238,9 +8242,11 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "集中与极限定理",
     "topic": "马尔可夫和切比雪夫不等式",
     "name": "马尔可夫和切比雪夫",
-    "useItWhen": "您需要快速的上限，而无需完整的分布详细信息",
-    "looksLike": "限制随机变量变大的机会",
+    "useItWhen": "你只知道均值或方差，但还想快速给尾概率一个上界",
+    "whatItMeans": "这两条是不求精确值的保险界：只靠少量信息，也能给出一个不会错的上界。",
+    "looksLike": "给 P(X 很大) 或 P(|X-均值| 很大) 做上界",
     "doThis": "对于非负变量使用马尔可夫，当方差可用时使用切比雪夫",
+    "whyThisMove": "题目不给完整分布时，别硬算精确概率。Markov 和 Chebyshev 就是把“只有均值/方差”的信息变成可用上界。",
     "thinkOfItAs": "粗糙但可靠的护栏",
     "watchOutFor": "期望这些界限是尖锐的",
     "rememberThis": "马尔可夫使用均值，切比雪夫使用方差",
@@ -8258,7 +8264,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "给出概率界限。"
       }
     ],
-    "memoryHook": "马尔可夫用于粗略平均边界，切比雪夫用于扩展边界。",
+    "memoryHook": "Markov 用均值，Chebyshev 用方差。",
     "quickExample": {
       "problem": "哪个界限明确使用方差？",
       "move": "切比雪夫。"
@@ -8271,8 +8277,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "中心极限定理",
     "name": "中心极限定理",
     "useItWhen": "题目在问很多随机量的总和或样本均值",
+    "whatItMeans": "中心极限定理说：很多独立随机量加在一起，经过中心化和标准化后，往往会长得像正态。",
     "looksLike": "大 n、样本均值、标准化总和",
     "doThis": "先把总和或均值标准化，再用正态近似",
+    "whyThisMove": "原来的总和活在自己的尺度里，不方便比较。减去均值再除以标准差，才会落到正态近似能工作的钟形尺度上。",
     "thinkOfItAs": "很多小随机扰动混在一起，最后磨成钟形曲线",
     "watchOutFor": "在样本量很小或依赖性很强的情况下使用 CLT，而不检查假设",
     "rememberThis": "很多小随机量加起来，常常会看起来像正态",
@@ -8346,7 +8354,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "您需要什么样的案例拆分？",
+        "prompt": "你需要什么样的案例拆分？",
         "answer": "一个分区。"
       },
       {
@@ -8366,12 +8374,12 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "随机变量",
     "topic": "PMF 和 CDF",
     "name": "PMF 与 CDF",
-    "useItWhen": "您需要精确的点概率或累积概率直至截止",
+    "useItWhen": "你需要精确点概率，或要算累计到某个位置为止的概率",
     "looksLike": "P(X = x), F(x) = P(X <= x)",
-    "doThis": "对一个精确值使用 PMF，对达到该值的所有内容使用 CDF",
-    "thinkOfItAs": "PMF 是一个点，CDF 是堆积",
-    "watchOutFor": "使用 CDF，就像它自动给出精确的点质量一样",
-    "rememberThis": "PMF精确，CDF累积",
+    "doThis": "精确取值看 PMF；算累计到某个位置看 CDF",
+    "thinkOfItAs": "PMF 看一个点，CDF 看累计到哪儿",
+    "watchOutFor": "把 CDF 当成会自动给出单点概率",
+    "rememberThis": "PMF 看单点，CDF 看累计",
     "typicalProblemShapes": [
       "离散随机变量值表",
       "精确概率和累积概率之间的转换"
@@ -8386,7 +8394,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "CDF。"
       }
     ],
-    "memoryHook": "PMF 选择一个点。 CDF 堆积起来。",
+    "memoryHook": "PMF 看一点，CDF 看累积。",
     "quickExample": {
       "problem": "CDF 收集什么？",
       "move": "所有概率都达到一个截止值。"
@@ -8398,10 +8406,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "随机变量",
     "topic": "二项分布",
     "name": "二项式模式",
-    "useItWhen": "您通过固定数量的独立是-否试验来计算成功",
+    "useItWhen": "你在固定次数的独立成败试验里数成功次数",
     "looksLike": "n 次试验，相同的 p，正好 k 次成功",
-    "doThis": "检查固定 n、相同 p、独立性，然后使用二项式设置",
-    "thinkOfItAs": "重复相同的尝试 n 次并计算胜利",
+    "doThis": "先检查 n 固定、p 相同、试验独立，再用二项模型",
+    "thinkOfItAs": "同样的试验做 n 次，再数成功几次",
     "watchOutFor": "当试验次数不固定时使用二项式",
     "rememberThis": "固定尝试，计算成功次数",
     "typicalProblemShapes": [
@@ -8418,7 +8426,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "成功的次数。"
       }
     ],
-    "memoryHook": "固定尝试，计算胜利。",
+    "memoryHook": "次数固定，数成功。",
     "quickExample": {
       "problem": "主要的二项式线索是什么？",
       "move": "固定数量的独立试验具有相同的成功机会。"
@@ -8432,10 +8440,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "name": "几何图案",
     "useItWhen": "你等待第一个成功",
     "looksLike": "试验 k 首次成功",
-    "doThis": "发现重复的独立试验和一次成功的故事",
+    "doThis": "认出重复独立试验，而且题目在等第一次成功",
     "thinkOfItAs": "不断尝试，直到成功",
-    "watchOutFor": "当故事计算总体成功时使用几何",
-    "rememberThis": "几何平均等待时间",
+    "watchOutFor": "如果题目在数总成功次数，就别用几何分布",
+    "rememberThis": "几何分布看等待时间",
     "typicalProblemShapes": [
       "试验 k 首次成功",
       "无固定停止计数的重复独立试验"
@@ -8462,9 +8470,9 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "随机变量",
     "topic": "泊松分布",
     "name": "泊松模式",
-    "useItWhen": "您计算时间或空间窗口中的罕见事件",
+    "useItWhen": "你在一个时间窗或空间窗里数稀有事件",
     "looksLike": "某个时间间隔内的到达、缺陷、呼叫、点击",
-    "doThis": "检查平均速率 lambda 的窗口计数",
+    "doThis": "认出这是“窗口里的计数”，并且给了平均速率 lambda",
     "thinkOfItAs": "罕见事件滴入桶中",
     "watchOutFor": "在固定试验的成功案例中使用泊松",
     "rememberThis": "泊松对窗口中的事件进行计数",
@@ -8479,7 +8487,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "泊松计算窗口时间或等待时间吗？",
-        "answer": "一个窗口计数。"
+        "answer": "窗口里的事件个数。"
       }
     ],
     "memoryHook": "泊松 = 每个窗口的事件。",
@@ -8493,13 +8501,13 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "第 4 章：连续随机变量",
     "unit": "随机变量",
     "topic": "正态分布",
-    "name": "正常模式",
+    "name": "正态模式",
     "useItWhen": "钟形连续模型出现",
     "looksLike": "平均 mu、标准差 sigma、钟形曲线",
     "doThis": "考虑区间面积并在需要时标准化",
     "thinkOfItAs": "经典的钟模型",
-    "watchOutFor": "将法线视为点质量离散模型",
-    "rememberThis": "正常表示钟形曲线面积",
+    "watchOutFor": "把正态分布当成离散点质量模型",
+    "rememberThis": "正态分布看的是钟形曲线下面积",
     "typicalProblemShapes": [
       "钟形测量模型",
       "Z 分数和标准化问题"
@@ -8514,9 +8522,9 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "不，间隔很重要。"
       }
     ],
-    "memoryHook": "正常 = 钟形曲线间隔。",
+    "memoryHook": "正态 = 看钟形曲线下的面积。",
     "quickExample": {
-      "problem": "您通常在正态曲线下计算什么？",
+      "problem": "你通常在正态曲线下计算什么？",
       "move": "一段区间内的面积。"
     }
   },
@@ -8527,11 +8535,13 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "总和的方差",
     "name": "总和的方差",
     "useItWhen": "正在添加几个随机片段",
+    "whatItMeans": "和的方差不一定只是“把方差相加”；变量之间如果会一起波动，还会多出协方差项。",
     "looksLike": "Var(X + Y)、独立和、协方差项",
     "doThis": "在添加方差之前先检查独立性",
-    "thinkOfItAs": "传播结合，但并不总是免费的",
+    "whyThisMove": "完整公式里有交叉项。独立时它会消失；不独立时，如果你把它忘了，答案通常就会错。",
+    "thinkOfItAs": "离散程度也会合并，但不是总能直接相加",
     "watchOutFor": "不检查依赖性而盲目添加方差",
-    "rememberThis": "方差只有在独立的情况下才会干净地增加",
+    "rememberThis": "方差只会在独立时干净地相加",
     "typicalProblemShapes": [
       "随机变量的总和",
       "期望规则和方差规则之间的比较"
@@ -8546,7 +8556,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "独立。"
       }
     ],
-    "memoryHook": "期望总是会增加。方差需要帮助。",
+    "memoryHook": "期望总能相加；方差要先看协方差。",
     "quickExample": {
       "problem": "什么时候 Var(X + Y) 等于 Var(X) + Var(Y)？",
       "move": "当 X 和 Y 独立时。"
@@ -8558,10 +8568,12 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "期望与方差",
     "topic": "指示变量",
     "name": "指示变量",
-    "useItWhen": "您想要使用 0-1 标志对随机事件进行计数",
+    "useItWhen": "你想把“发生几次”这类问题改写成 0-1 计数",
+    "whatItMeans": "指示变量就是一个 0-1 开关：事件发生记 1，不发生记 0。把很多开关加起来，就得到总个数。",
     "looksLike": "I_A，事件发生与否，预期计数",
     "doThis": "将每个事件转化为 0-1 开关，然后对开关求和",
-    "thinkOfItAs": "小型开关柜台",
+    "whyThisMove": "很多难数的总数，一旦写成 I1 + I2 + ...，就能立刻接上线性期望，把难题拆小。",
+    "thinkOfItAs": "一排会亮或不亮的小开关",
     "watchOutFor": "忘记指标也是随机变量",
     "rememberThis": "用0-1开关计数",
     "typicalProblemShapes": [
@@ -8578,7 +8590,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "预期计数。"
       }
     ],
-    "memoryHook": "如果可以算的话，尝试0-1切换。",
+    "memoryHook": "能数的东西，先试着写成 0-1 开关。",
     "quickExample": {
       "problem": "为什么使用指示变量？",
       "move": "他们将计数问题转化为期望问题。"
@@ -8590,9 +8602,11 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "集中与极限定理",
     "topic": "大数定律",
     "name": "大数定律",
-    "useItWhen": "样本平均值不断增长，您关心长期中心",
+    "useItWhen": "样本平均值越来越多，而你关心它最后会靠近哪里",
+    "whatItMeans": "大数定律说，重复很多次以后，样本平均值会贴近真实期望值。",
     "looksLike": "多次试验的平均值、长期频率、样本平均值",
     "doThis": "将平均值的走向与分布的形状分开",
+    "whyThisMove": "LLN 讲的是“平均值会往哪儿去”，不是“图形会不会像正态”。这里重点是落点，不是形状。",
     "thinkOfItAs": "长期运行稳定在真实均值附近",
     "watchOutFor": "LLN 与 CLT 混淆",
     "rememberThis": "LLN 表示平均值的走向； CLT 说明它们的外观",
@@ -8610,7 +8624,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "中心极限定理。"
       }
     ],
-    "memoryHook": "LLN 求平均值。 CLT 找到形状。",
+    "memoryHook": "LLN 看落点，CLT 看形状。",
     "quickExample": {
       "problem": "大数定律用简单的英语怎么说？",
       "move": "长期平均值逐渐接近真实平均值。"
@@ -8690,7 +8704,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "looksLike": "面试顺序，迄今为止最好的规则，现在就停下来选择",
     "doThis": "跳过早期样本，然后采用第一个选项，击败迄今为止看到的所有选项",
     "thinkOfItAs": "先采样，然后扑向第一个杰出的",
-    "watchOutFor": "尝试与您未见过的未来候选人进行比较",
+    "watchOutFor": "尝试与你未见过的未来候选人进行比较",
     "rememberThis": "跳过一些，然后采取下一个迄今为止最好的",
     "typicalProblemShapes": [
       "最优停止问题",
@@ -8750,10 +8764,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "随机变量",
     "topic": "负二项式模式",
     "name": "负二项式模式",
-    "useItWhen": "你等待第r次成功，而不仅仅是第一个",
-    "looksLike": "r 成功之前的试验次数",
-    "doThis": "识别重复的几何等待捆绑以达到成功的目标数量",
-    "thinkOfItAs": "几何，但继续前进，直到成功数字 r",
+    "useItWhen": "你在等第 r 次成功，而不只是第一次成功",
+    "looksLike": "直到第 r 次成功所需的试验次数",
+    "doThis": "把它看成重复的几何等待，一直等到成功次数达到目标",
+    "thinkOfItAs": "几何分布的升级版：不是等一次，而是等到第 r 次",
     "watchOutFor": "混淆成功次数与试验次数",
     "rememberThis": "负二项式=等待第r次成功",
     "typicalProblemShapes": [
@@ -8767,27 +8781,27 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "负二项式是否计算成功次数或总试验次数？",
-        "answer": "通常进行总尝试直到第r次成功。"
+        "answer": "通常数的是到第 r 次成功为止的总试验次数。"
       }
     ],
-    "memoryHook": "几何等一。负二项式等待 r。",
+    "memoryHook": "几何等一次；负二项等第 r 次。",
     "quickExample": {
       "problem": "从几何到负二项式有什么变化？",
-      "move": "您等待第 r 次成功，而不是第一个。"
+      "move": "你等的是第 r 次成功，不是第一次成功。"
     }
   },
   "prob-hypergeometric": {
     "course": "概率论",
     "chapter": "第 3 章：离散随机变量",
     "unit": "随机变量",
-    "topic": "超几何图案",
-    "name": "超几何图案",
-    "useItWhen": "您从有限总体中进行无放回抽样",
-    "looksLike": "一副牌，群体中的好物品，无需更换的抽奖",
-    "doThis": "通过组合计算好的抽奖并记住每次抽奖的概率变化",
-    "thinkOfItAs": "二项式无放回",
-    "watchOutFor": "当人口减少时使用独立或二项式",
-    "rememberThis": "没有替代意味着超几何",
+    "topic": "超几何模式",
+    "name": "超几何模式",
+    "useItWhen": "你在有限总体里做不放回抽样",
+    "looksLike": "抽牌、抽球、总体里有成功项，而且不放回",
+    "doThis": "用组合数去数成功样本，并记住每抽一次总体都会变",
+    "thinkOfItAs": "不放回版本的二项分布",
+    "watchOutFor": "总体会变的时候，还硬把它当成独立二项试验",
+    "rememberThis": "不放回，就先想超几何",
     "typicalProblemShapes": [
       "卡片、弹珠和缺陷样品无需更换",
       "计算在固定抽签大小中出现的成功次数"
@@ -8799,10 +8813,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "超几何类似于什么常见分布？",
-        "answer": "二项式，但没有替换。"
+        "answer": "像二项分布，但它是不放回的。"
       }
     ],
-    "memoryHook": "如果不进行替换，就会破坏独立性。",
+    "memoryHook": "不放回，就别再假装独立。",
     "quickExample": {
       "problem": "超几何的快速识别线索是什么？",
       "move": "从固定池中取样，无需更换。"
@@ -8814,7 +8828,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "随机变量",
     "topic": "连续均匀分布",
     "name": "连续均匀",
-    "useItWhen": "根据密度，区间中的每个点的可能性均等",
+    "useItWhen": "区间里每个位置按密度来看都一样可能",
     "looksLike": "[a,b] 上的 X，平坦密度，区间上的随机点",
     "doThis": "将概率视为间隔长度除以总长度",
     "thinkOfItAs": "跨越一段平坦的机会",
@@ -8834,7 +8848,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "长度。"
       }
     ],
-    "memoryHook": "平间隔意味着长度除以长度。",
+    "memoryHook": "平的区间模型，就看长度比。",
     "quickExample": {
       "problem": "如何找到 [a,b] 上均匀分布的 P(c <= X <= d)？",
       "move": "使用间隔长度除以总长度。"
@@ -8846,9 +8860,9 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "随机变量",
     "topic": "指数分布",
     "name": "指数模式",
-    "useItWhen": "您可以模拟下次到达之前的等待时间",
+    "useItWhen": "你在建模“等到下一次到达还要多久”",
     "looksLike": "等待时间、速率 lambda、无记忆连续模型",
-    "doThis": "考虑等待时间，而不是事件计数，并使用速率参数",
+    "doThis": "先认出它是在算等待时间，不是在数事件个数，再用速率参数",
     "thinkOfItAs": "泊松的等待时间伙伴",
     "watchOutFor": "将泊松计数与指数等待混合",
     "rememberThis": "泊松计数、指数等待",
@@ -8866,7 +8880,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "泊松。"
       }
     ],
-    "memoryHook": "指数等待下一个事件。",
+    "memoryHook": "指数分布 = 等下一个事件。",
     "quickExample": {
       "problem": "什么故事最适合指数？",
       "move": "距离下一个活动还有时间。"
@@ -8878,12 +8892,12 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "随机变量",
     "topic": "二项式的正态近似",
     "name": "正态近似",
-    "useItWhen": "二项式的 n 很大，并且您需要快速的概率估计",
+    "useItWhen": "二项分布里 n 很大，而且你想快速估计概率",
     "looksLike": "Bin(n,p)，样本量大，钟形近似",
     "doThis": "匹配平均值和散布，然后用正态曲线近似",
     "thinkOfItAs": "将粗壮的计数曲线换成平滑的钟形",
     "watchOutFor": "当 n 太小或二项式太倾斜时使用它",
-    "rememberThis": "大二项式可以表现正常",
+    "rememberThis": "大的二项分布常能用正态近似",
     "typicalProblemShapes": [
       "快速近似二项式概率",
       "大样本成功很重要"
@@ -8898,7 +8912,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "二项式。"
       }
     ],
-    "memoryHook": "大二项式、平滑钟形估计。",
+    "memoryHook": "大二项式，常能换成平滑钟形估计。",
     "quickExample": {
       "problem": "二项式什么时候应该开始让你思考正态近似？",
       "move": "当 n 足够大时，钟形估计才有意义。"
@@ -8909,12 +8923,12 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "第 5 章：联合分布与独立性",
     "unit": "联合分布",
     "topic": "条件分布",
-    "name": "条件分配",
-    "useItWhen": "一个变量已确定，您需要在该信息之后再添加另一个变量",
+    "name": "条件分布",
+    "useItWhen": "一个变量被固定后，你想看另一个变量在这个条件下的分布",
     "looksLike": "X 给定 Y = y，条件 PMF，条件密度",
-    "doThis": "冻结给定的信息，然后在该切片内重新规范化",
-    "thinkOfItAs": "放大联合图片的一条",
-    "watchOutFor": "使用条件化后的原始总概率",
+    "doThis": "先把给定信息固定住，再在那个切片里重新归一化",
+    "thinkOfItAs": "把联合分布切一刀，再只看那一片",
+    "watchOutFor": "条件化以后还继续用原来的总概率",
     "rememberThis": "先条件化，然后再归一化",
     "typicalProblemShapes": [
       "给定 Y = y 求 X",
@@ -8922,18 +8936,18 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "调节通常会缩小你工作的宇宙吗？",
+        "prompt": "条件化通常会把你工作的世界缩小吗？",
         "answer": "是的。"
       },
       {
         "prompt": "条件概率还必须添加什么？",
-        "answer": "1 在条件切片内。"
+        "answer": "在那个条件切片里仍然要加到 1。"
       }
     ],
-    "memoryHook": "先切片，然后重新缩放。",
+    "memoryHook": "先切片，再归一化。",
     "quickExample": {
-      "problem": "当您以 Y = y 为条件时，联合分布会发生什么？",
-      "move": "您将其切片并在该切片内重新缩放。"
+      "problem": "当你以 Y = y 为条件时，联合分布会发生什么？",
+      "move": "先切出那一片，再在那一片里重新归一化。"
     }
   },
   "prob-conditional-expectation": {
@@ -8943,14 +8957,14 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "条件期望",
     "name": "条件期望",
     "useItWhen": "额外的信息会改变你的最佳平均猜测",
-    "looksLike": "E[X给定Y]，信息后的平均值，塔规则",
-    "doThis": "首先取条件世界内的期望值",
-    "thinkOfItAs": "新线索到达后的平均值",
-    "watchOutFor": "在每种情况下将条件期望视为单个固定数字",
-    "rememberThis": "条件第一，平均第二",
+    "looksLike": "E[X|Y]，已知信息后的平均值，塔式法则",
+    "doThis": "先在条件成立的那个世界里取平均",
+    "thinkOfItAs": "知道新线索之后的平均值",
+    "watchOutFor": "把条件期望误当成处处一样的固定数字",
+    "rememberThis": "先条件化，再取平均",
     "typicalProblemShapes": [
       "部分信息的期望值",
-      "塔楼法则和总期望定律问题"
+      "塔式法则和全期望定律问题"
     ],
     "miniDrill": [
       {
@@ -8962,10 +8976,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "条件，然后平均。"
       }
     ],
-    "memoryHook": "新线索，新平均。",
+    "memoryHook": "新信息，新平均。",
     "quickExample": {
-      "problem": "E[X给定Y]用简单的英语意味着什么？",
-      "move": "一旦 Y 已知，X 的平均值。"
+      "problem": "用大白话说，E[X|Y] 是什么意思？",
+      "move": "Y 已知以后，X 的平均值。"
     }
   },
   "prob-chernoff": {
@@ -9023,7 +9037,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "伯努利变量是否适合一次试验或多次试验？",
-        "answer": "一审。"
+        "answer": "一次试验。"
       }
     ],
     "memoryHook": "一个开关，两种结果。",
@@ -9036,14 +9050,16 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "course": "概率论",
     "chapter": "第 4 章：连续随机变量",
     "unit": "随机变量",
-    "topic": "伽马分布图",
+    "topic": "Gamma 模式",
     "name": "伽玛模式",
     "useItWhen": "你在连续的时间内等待几个泊松式的到达",
+    "whatItMeans": "Gamma 分布描述的是“等到第 r 次到达”为止的连续等待时间。它是指数分布的多次到达版本。",
     "looksLike": "直到第 r 个事件的时间、形状参数、连续等待模型",
-    "doThis": "将其视为指数的多次到达版本",
-    "thinkOfItAs": "呈指数增长，但请继续等待更多事件",
+    "doThis": "把它认成“指数等待的一般化”：不是等第一次，而是等第 r 次",
+    "whyThisMove": "这里还是等待时间故事，不是计数故事。题目一旦说“等到第三次、第四次或第 r 次到达”，就该从指数升级到 Gamma。",
+    "thinkOfItAs": "指数分布在等一次，Gamma 在等很多次",
     "watchOutFor": "将其与离散负二项式计数故事混合起来",
-    "rememberThis": "gamma 等待第 r 个及时到达",
+    "rememberThis": "Gamma = 等到第 r 次到达的时间",
     "typicalProblemShapes": [
       "等待第三次或第五次到达的时间",
       "等待时间不断累积"
@@ -9064,6 +9080,40 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
       "move": "伽玛。"
     }
   },
+  "prob-memoryless": {
+    "course": "概率论",
+    "chapter": "第 4 章：连续随机变量",
+    "unit": "随机变量",
+    "topic": "无记忆模式",
+    "name": "无记忆模式",
+    "useItWhen": "题目在问：已经等了这么久，未来的等待会不会因此改变",
+    "whatItMeans": "无记忆性表示：即使你已经等了一段时间，剩余等待时间的分布仍和刚开始等待时一样。",
+    "looksLike": "P(X > s + t | X > s)、几何分布、指数分布",
+    "doThis": "检查条件化后的尾部，看看它是否仍保持原来的形状",
+    "whyThisMove": "无记忆的定义就是比较“已经等过以后”的未来尾部，和“从头开始等”的尾部是否同型。如果同型，就说明时钟重置了。",
+    "thinkOfItAs": "虽然已经等过了，但时钟像重新开始一样",
+    "watchOutFor": "以为所有等待时间模型都有无记忆性",
+    "rememberThis": "经典家族里，只有几何和指数是无记忆的",
+    "typicalProblemShapes": [
+      "已经等了一段时间后，还要再等多久",
+      "条件尾概率看起来像重启"
+    ],
+    "miniDrill": [
+      {
+        "prompt": "经典离散分布里，哪一个是无记忆的？",
+        "answer": "几何分布。"
+      },
+      {
+        "prompt": "经典连续分布里，哪一个是无记忆的？",
+        "answer": "指数分布。"
+      }
+    ],
+    "memoryHook": "无记忆 = 时钟重置。",
+    "quickExample": {
+      "problem": "如果已经等了很久，哪两类经典模型看起来还是像重新开始？",
+      "move": "几何分布和指数分布。"
+    }
+  },
   "prob-independent-rvs": {
     "course": "概率论",
     "chapter": "第 5 章：联合分布与独立性",
@@ -9071,11 +9121,11 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "独立随机变量",
     "name": "独立随机变量",
     "useItWhen": "联合行为应该分成单独的部分",
-    "looksLike": "联合 pmf 因子、联合密度因子，一个变量无法告诉您其他变量的任何信息",
+    "looksLike": "联合 pmf 可分解、联合密度可分解、知道一个变量也不会改变另一个变量",
     "doThis": "检查联合是否等于边际的乘积",
     "thinkOfItAs": "两个互不干扰的随机故事",
-    "watchOutFor": "仅仅因为变量看起来不相关就假设独立",
-    "rememberThis": "独立意味着联合等于产品",
+    "watchOutFor": "仅仅因为变量看起来没关系，就直接假设独立",
+    "rememberThis": "独立 = 联合分布能拆成乘积",
     "typicalProblemShapes": [
       "联合 pmf 或密度分解",
       "检查两个随机变量是否独立"
@@ -9090,7 +9140,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "不。"
       }
     ],
-    "memoryHook": "关节分裂成两部分。",
+    "memoryHook": "独立时，联合会干净地拆成两块。",
     "quickExample": {
       "problem": "什么是联合表的快速独立性测试？",
       "move": "将联合条目与边际产品进行比较。"
@@ -9101,28 +9151,28 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "第 5 章：联合分布与独立性",
     "unit": "联合分布",
     "topic": "独立随机变量的总和",
-    "name": "自变量之和",
+    "name": "独立随机变量之和",
     "useItWhen": "一个新的随机变量被构建为 X + Y",
     "looksLike": "两个变量的总和，组合分布，卷积感觉",
-    "doThis": "总结这些碎片可以添加到目标的所有方式",
+    "doThis": "把所有能凑出目标总和的配对都收集起来",
     "thinkOfItAs": "收集总数相同的每条路径",
     "watchOutFor": "添加不可能对的概率或忘记所有有效对",
-    "rememberThis": "总和分配是指收集所有加起来达到目标​​的情况",
+    "rememberThis": "求和分布 = 把所有凑出该总数的配对加起来",
     "typicalProblemShapes": [
       "X + Y 的分布",
       "骰子和式问题"
     ],
     "miniDrill": [
       {
-        "prompt": "您检查总数中的一对还是每对？",
+        "prompt": "你要检查一对，还是所有能凑出这个总数的配对？",
         "answer": "每对。"
       },
       {
         "prompt": "为什么独立在这里有帮助？",
-        "answer": "它让关节碎片干净地繁殖。"
+        "answer": "它让联合概率可以干净地拆成乘积。"
       }
     ],
-    "memoryHook": "通过收集所有匹配对来添加总数。",
+    "memoryHook": "和的分布，就是把所有配对路径都收进来。",
     "quickExample": {
       "problem": "如何找到离散自变量的 P(X + Y = 5)？",
       "move": "将两个值总计为 5 的所有联合案例相加。"
@@ -9168,7 +9218,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "name": "尾部绑定策略",
     "useItWhen": "问题需要快速限制远离均值",
     "looksLike": "P(X 大)，偏差界限，非精确概率",
-    "doThis": "选择适合您实际拥有的信息的最粗略的界限",
+    "doThis": "选择适合你实际拥有的信息的最粗略的界限",
     "thinkOfItAs": "选择正确的锤子：仅均值、方差或强独立性",
     "watchOutFor": "当问题只需要一个界限时，追求精确的分布",
     "rememberThis": "马尔可夫使用均值，切比雪夫使用方差，切尔诺夫使用独立性",
@@ -9210,7 +9260,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "您在使用普通表格想法之前还是之后进行标准化？",
+        "prompt": "你在使用普通表格想法之前还是之后进行标准化？",
         "answer": "前。"
       },
       {

@@ -8015,8 +8015,10 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "topic": "Variables aleatorias y expectativas.",
     "name": "Valor esperado",
     "useItWhen": "necesitas el pago promedio a largo plazo",
+    "whatItMeans": "El valor esperado es el promedio ponderado de la variable aleatoria cuando repites el experimento muchas veces.",
     "looksLike": "E(X), ganancia promedio, número promedio, media",
     "doThis": "multiplica cada valor por su probabilidad y suma",
+    "whyThisMove": "Cada valor importa según dos cosas: cuánto vale y qué tan probable es. La esperanza junta ambas con un promedio ponderado.",
     "thinkOfItAs": "el promedio ponderado de todos los resultados posibles",
     "watchOutFor": "promediar valores sin usar probabilidades",
     "rememberThis": "el valor esperado es el promedio ponderado",
@@ -8207,8 +8209,10 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "topic": "Covarianza y correlación",
     "name": "Covarianza y correlación",
     "useItWhen": "necesitas saber si dos variables se mueven juntas",
+    "whatItMeans": "La covarianza mide si dos variables tienden a subir y bajar juntas respecto a sus medias. La correlación es esa misma idea, pero sin unidades.",
     "looksLike": "Cov(X,Y), Corr(X,Y)",
     "doThis": "usa la covarianza para la dirección y la correlación para la fuerza sin unidades",
+    "whyThisMove": "La covarianza nace del producto de las desviaciones respecto a la media. Ese producto es justo lo que detecta si las dos variables se mueven en la misma dirección o en direcciones opuestas.",
     "thinkOfItAs": "¿Se elevan juntos, caen opuestos o apenas se conectan?",
     "watchOutFor": "Tratar la correlación cero como independencia garantizada.",
     "rememberThis": "la correlación es covarianza escalada",
@@ -8239,8 +8243,10 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "topic": "Desigualdades de Markov y Chebyshev",
     "name": "Markov y Chebyshev",
     "useItWhen": "necesita un límite superior rápido sin detalles completos de distribución",
-    "looksLike": "Limitada la posibilidad de que una variable aleatoria crezca.",
+    "whatItMeans": "Son cotas de emergencia: no dan la probabilidad exacta, pero sí un techo seguro usando solo información parcial.",
+    "looksLike": "cota para la probabilidad de una cola grande",
     "doThis": "use Markov para variables no negativas y Chebyshev cuando la varianza esté disponible",
+    "whyThisMove": "Cuando el problema solo te da media o varianza, estas desigualdades convierten esa información pobre en una cota útil sin conocer toda la distribución.",
     "thinkOfItAs": "barandillas rugosas pero confiables",
     "watchOutFor": "esperando que estos límites sean nítidos",
     "rememberThis": "Markov usa la media; Chebyshev usa la varianza",
@@ -8258,7 +8264,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Dar límites de probabilidad."
       }
     ],
-    "memoryHook": "Markov para límites aproximados y medios, Chebyshev para límites extendidos.",
+    "memoryHook": "Markov usa media; Chebyshev usa varianza.",
     "quickExample": {
       "problem": "¿Qué límite utiliza la varianza explícitamente?",
       "move": "Chebyshev."
@@ -8271,8 +8277,10 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "topic": "Teorema del límite central",
     "name": "Teorema del límite central",
     "useItWhen": "aparece una suma o promedio de muchas piezas aleatorias",
+    "whatItMeans": "El TCL dice que, después de centrar y escalar, muchas piezas aleatorias independientes empiezan a parecer normales aunque la variable original no lo sea.",
     "looksLike": "n grande, media muestral, suma estandarizada",
     "doThis": "estandariza la suma o la media y luego usa la aproximación normal",
+    "whyThisMove": "La suma en bruto vive en su propia escala. Restar la media y dividir por la desviación correcta la pone en la escala campana donde sí puedes aproximar con normal.",
     "thinkOfItAs": "muchos bultos aleatorios que se mezclan en una curva de campana",
     "watchOutFor": "usar CLT con tamaños de muestra pequeños o una fuerte dependencia sin verificar los supuestos",
     "rememberThis": "muchas piezas pequeñas al azar a menudo parecen normales",
@@ -8368,9 +8376,9 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "PMF frente a CDF",
     "useItWhen": "necesita probabilidad puntual exacta o probabilidad acumulada hasta un límite",
     "looksLike": "P(X = x), F(x) = P(X <= x)",
-    "doThis": "use PMF para un valor exacto y CDF para todo hasta ese valor",
-    "thinkOfItAs": "PMF es un lugar, CDF es el choque",
-    "watchOutFor": "usando el CDF como si diera la masa puntual exacta automáticamente",
+    "doThis": "usa la PMF para un valor exacto y la CDF para todo lo acumulado hasta ese valor",
+    "thinkOfItAs": "la PMF es un punto; la CDF es lo acumulado",
+    "watchOutFor": "usar la CDF como si diera automáticamente la masa puntual exacta",
     "rememberThis": "PMF es exacto, CDF se acumula",
     "typicalProblemShapes": [
       "Tablas de valores de variables aleatorias discretas.",
@@ -8383,10 +8391,10 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "¿Cuál sigue construyendo a medida que x se mueve hacia la derecha?",
-        "answer": "La FCD."
+        "answer": "La CDF."
       }
     ],
-    "memoryHook": "PMF elige un punto. El CDF se acumula.",
+    "memoryHook": "PMF da un punto. CDF acumula.",
     "quickExample": {
       "problem": "¿Qué recauda un CDF?",
       "move": "Toda probabilidad hasta un límite."
@@ -8400,10 +8408,10 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "Patrón binomial",
     "useItWhen": "cuentas los éxitos en un número fijo de pruebas independientes de sí o no",
     "looksLike": "n ensayos, mismos p, exactamente k éxitos",
-    "doThis": "verifique n fija, misma p, independencia, luego use la configuración binomial",
-    "thinkOfItAs": "Repita la misma prueba n veces y cuente las victorias.",
-    "watchOutFor": "Usar binomial cuando el número de intentos no es fijo.",
-    "rememberThis": "intentos arreglados, contar éxitos",
+    "doThis": "revisa n fijo, misma p e independencia; luego usa el modelo binomial",
+    "thinkOfItAs": "repite el mismo ensayo n veces y cuenta cuántos éxitos salen",
+    "watchOutFor": "usar binomial cuando el número de intentos no es fijo",
+    "rememberThis": "n fijo, cuenta éxitos",
     "typicalProblemShapes": [
       "Exactamente k éxitos en n intentos",
       "Experimentos independientes repetidos de éxito-fracaso."
@@ -8432,9 +8440,9 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "Patrón geométrico",
     "useItWhen": "esperas el primer éxito",
     "looksLike": "primer éxito en la prueba k",
-    "doThis": "Detectar ensayos independientes repetidos y una historia de parada ante el primer éxito.",
-    "thinkOfItAs": "Sigue intentándolo hasta que consigas un éxito.",
-    "watchOutFor": "Usar formas geométricas cuando la historia cuenta los éxitos totales.",
+    "doThis": "detecta ensayos independientes repetidos y una historia que se detiene en el primer éxito",
+    "thinkOfItAs": "seguir intentando hasta que salga el primer éxito",
+    "watchOutFor": "usar geométrica cuando la historia cuenta éxitos totales",
     "rememberThis": "geométrico significa tiempo de espera",
     "typicalProblemShapes": [
       "Primer éxito en la prueba k",
@@ -8461,11 +8469,11 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "Capítulo 3: Variables Aleatorias Discretas",
     "unit": "Variables Aleatorias",
     "topic": "distribución de Poisson",
-    "name": "Patrón de veneno",
+    "name": "Patrón de Poisson",
     "useItWhen": "cuentas eventos raros en una ventana de tiempo o espacio",
     "looksLike": "llegadas, defectos, llamadas, visitas en un intervalo",
     "doThis": "comprobar el conteo en una ventana con tasa promedio lambda",
-    "thinkOfItAs": "Eventos raros que gotean en un cubo.",
+    "thinkOfItAs": "eventos raros cayendo en una ventana",
     "watchOutFor": "utilizando Poisson en una historia de éxito de prueba fija",
     "rememberThis": "Poisson cuenta eventos en una ventana",
     "typicalProblemShapes": [
@@ -8479,7 +8487,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "¿Poisson cuenta una ventana o tiempo de espera?",
-        "answer": "Un recuento de ventanas."
+        "answer": "Un conteo en una ventana."
       }
     ],
     "memoryHook": "Poisson = eventos por ventana.",
@@ -8494,11 +8502,11 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "unit": "Variables Aleatorias",
     "topic": "Distribución normal",
     "name": "Patrón normal",
-    "useItWhen": "Aparece un modelo continuo en forma de campana.",
+    "useItWhen": "aparece un modelo continuo con forma de campana",
     "looksLike": "media mu, desviación estándar sigma, curva de campana",
     "doThis": "pensar en el área de intervalo y estandarizar cuando sea necesario",
     "thinkOfItAs": "el modelo de campana clásico",
-    "watchOutFor": "Tratar lo normal como un modelo discreto de masa puntual.",
+    "watchOutFor": "tratar la normal como si fuera un modelo discreto de masa puntual",
     "rememberThis": "normal significa área de curva de campana",
     "typicalProblemShapes": [
       "Modelos de medición en forma de campana.",
@@ -8514,24 +8522,26 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "No. Los intervalos importan."
       }
     ],
-    "memoryHook": "Normal = intervalos de curva de campana.",
+    "memoryHook": "Normal = áreas bajo la campana.",
     "quickExample": {
       "problem": "¿Qué se suele calcular bajo una curva normal?",
       "move": "Área en un intervalo."
     }
   },
   "prob-variance-sum": {
-    "course": "Probabilidad I",
+    "course": "Probabilidad",
     "chapter": "Capítulo 7: Covarianza y Varianza de Sumas de Variables Aleatorias",
     "unit": "Esperanza y Varianza",
     "topic": "Varianza de una suma",
     "name": "Varianza de una suma",
     "useItWhen": "se están agregando varias piezas aleatorias",
+    "whatItMeans": "La varianza de una suma no siempre es solo 'sumar varianzas'; también puede aparecer interacción entre las variables mediante covarianza.",
     "looksLike": "Var(X + Y), sumas independientes, términos de covarianza",
     "doThis": "primero revisa si hay independencia antes de sumar varianzas",
+    "whyThisMove": "La fórmula completa trae un término cruzado. Si hay independencia, ese término desaparece; si no, ignorarlo te rompe la cuenta.",
     "thinkOfItAs": "la dispersión también se suma, pero no siempre gratis",
     "watchOutFor": "sumar varianzas sin revisar dependencia",
-    "rememberThis": "la varianza se suma limpio solo con independencia",
+    "rememberThis": "la varianza se suma limpia solo con independencia",
     "typicalProblemShapes": [
       "Sumas de variables aleatorias",
       "Comparaciones entre reglas de expectativa y varianza"
@@ -8553,14 +8563,16 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "prob-indicator": {
-    "course": "Probabilidad I",
+    "course": "Probabilidad",
     "chapter": "Capítulo 6: Propiedades de la Esperanza",
     "unit": "Esperanza y Varianza",
     "topic": "Variables indicadoras",
     "name": "Variables indicadoras",
     "useItWhen": "quieres contar eventos aleatorios con banderas 0-1",
+    "whatItMeans": "Una variable indicadora vale 1 cuando un evento ocurre y 0 cuando no. Eso convierte un conteo en una suma de interruptores sencillos.",
     "looksLike": "I_A, evento ocurrió o no, conteo esperado",
     "doThis": "convierte cada evento en un interruptor 0-1 y luego suma los interruptores",
+    "whyThisMove": "Muchos conteos difíciles se vuelven fáciles cuando los escribes como I1 + I2 + ... y luego aplicas linealidad de la esperanza.",
     "thinkOfItAs": "interruptores pequeños para contar",
     "watchOutFor": "olvidar que los indicadores también son variables aleatorias",
     "rememberThis": "contar con interruptores 0-1",
@@ -8585,14 +8597,16 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "prob-lln": {
-    "course": "Probabilidad I",
+    "course": "Probabilidad",
     "chapter": "Capítulo 9: Teorema Central del Límite",
     "unit": "Concentración y Límites",
     "topic": "Ley de los grandes números",
     "name": "Ley de los grandes números",
     "useItWhen": "los promedios muestrales crecen y te importa a qué valor se estabilizan",
+    "whatItMeans": "La ley de los grandes números dice que, a largo plazo, los promedios muestrales se pegan al valor esperado real.",
     "looksLike": "promedio de muchos ensayos, frecuencia a largo plazo, media muestral",
     "doThis": "separar hacia dónde va el promedio y qué forma tiene la distribución",
+    "whyThisMove": "La LLN habla del destino del promedio, no de la forma de su distribución. La pregunta correcta aquí es '¿a qué valor se acerca?'",
     "thinkOfItAs": "a la larga, el promedio se pega a la media real",
     "watchOutFor": "confundiendo LLN con CLT",
     "rememberThis": "LLN dice adónde van los promedios; CLT dice cómo se ven",
@@ -8658,7 +8672,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "looksLike": "dado justo, sorteo de cartas justo, permutación aleatoria, espacio muestral uniforme",
     "doThis": "primero confirma que todo sea equiprobable, luego cuenta favorables sobre totales",
     "thinkOfItAs": "la probabilidad se convierte en una fracción del espacio muestral",
-    "watchOutFor": "Usar favorable sobre el total cuando los resultados no son igualmente probables.",
+    "watchOutFor": "usar favorables sobre total cuando los resultados no son realmente equiprobables",
     "rememberThis": "el conteo funciona solo después de una verificación de igualdad de probabilidades",
     "typicalProblemShapes": [
       "Cartas, dados, lanzamientos de monedas y permutaciones aleatorias.",
@@ -8752,9 +8766,9 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "Patrón binomial negativo",
     "useItWhen": "esperas el éxito r-ésimo, no solo el primero",
     "looksLike": "número de intentos hasta r éxitos",
-    "doThis": "Reconocer esperas geométricas repetidas agrupadas para alcanzar un número objetivo de éxitos.",
+    "doThis": "reconoce una espera geométrica repetida hasta alcanzar el éxito número r",
     "thinkOfItAs": "geométrico, pero continúa hasta el éxito número r",
-    "watchOutFor": "Confundir el número de éxitos con el número de intentos.",
+    "watchOutFor": "confundir el número de éxitos con el número total de intentos",
     "rememberThis": "binomio negativo = esperar el éxito r-ésimo",
     "typicalProblemShapes": [
       "Pruebas hasta el 3º o 5º éxito.",
@@ -8767,7 +8781,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "¿El binomio negativo cuenta los éxitos o el total de ensayos?",
-        "answer": "Por lo general, pruebas totales hasta el r-ésimo éxito."
+        "answer": "Normalmente cuenta intentos totales hasta el éxito número r."
       }
     ],
     "memoryHook": "Geométrico espera uno. El binomio negativo espera r.",
@@ -8780,11 +8794,11 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "course": "Probabilidad I",
     "chapter": "Capítulo 3: Variables Aleatorias Discretas",
     "unit": "Variables Aleatorias",
-    "topic": "patrón hipergeométrico",
+    "topic": "Patrón hipergeométrico",
     "name": "Patrón hipergeométrico",
     "useItWhen": "tomas muestras sin reemplazo de una población finita",
     "looksLike": "baraja de cartas, buenos artículos en una población, sorteos sin reemplazo",
-    "doThis": "cuenta buenos sorteos con combinaciones y recuerda que las probabilidades cambian en cada sorteo",
+    "doThis": "cuenta éxitos con combinaciones y recuerda que las probabilidades cambian en cada extracción",
     "thinkOfItAs": "binomio sin reemplazo",
     "watchOutFor": "usar la independencia o el binomio cuando la población se está reduciendo",
     "rememberThis": "sin reemplazo significa hipergeométrico",
@@ -8799,7 +8813,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
       },
       {
         "prompt": "¿A qué distribución común se parece la hipergeométrica?",
-        "answer": "Binomial, pero sin reemplazo."
+        "answer": "A la binomial, pero sin reemplazo."
       }
     ],
     "memoryHook": "Sin reemplazo se rompe la independencia.",
@@ -8816,7 +8830,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "Uniforme continuo",
     "useItWhen": "cada punto en un intervalo es igualmente probable por densidad",
     "looksLike": "X en [a,b], densidad plana, punto aleatorio en un intervalo",
-    "doThis": "Trate la probabilidad como la longitud del intervalo sobre la longitud total.",
+    "doThis": "trata la probabilidad como longitud del intervalo entre longitud total",
     "thinkOfItAs": "probabilidad plana en un tramo",
     "watchOutFor": "tratando de dar una probabilidad positiva a un punto exacto",
     "rememberThis": "uniforme en un intervalo significa relaciones de longitud",
@@ -8848,7 +8862,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "Patrón exponencial",
     "useItWhen": "modelas el tiempo de espera hasta la próxima llegada",
     "looksLike": "tiempo de espera, tasa lambda, modelo continuo sin memoria",
-    "doThis": "Piense en el tiempo de espera, no en el recuento de eventos, y utilice el parámetro de tasa.",
+    "doThis": "piensa en tiempo de espera, no en conteo de eventos, y usa la tasa",
     "thinkOfItAs": "el compañero de espera de Poisson",
     "watchOutFor": "mezclar los recuentos de Poisson con esperas exponenciales",
     "rememberThis": "Poisson cuenta, esperas exponenciales",
@@ -8866,7 +8880,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Poisson."
       }
     ],
-    "memoryHook": "Espera exponencial para el próximo evento.",
+    "memoryHook": "Exponencial = esperar al siguiente evento.",
     "quickExample": {
       "problem": "¿Qué historia encaja mejor exponencialmente?",
       "move": "Tiempo hasta el próximo evento."
@@ -8883,7 +8897,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "doThis": "igualar la media y la dispersión, luego aproximar con una curva normal",
     "thinkOfItAs": "cambie una curva de conteo gruesa por una campana suave",
     "watchOutFor": "usarlo cuando n es demasiado pequeño o el binomio está demasiado sesgado",
-    "rememberThis": "El gran binomio puede actuar normal.",
+    "rememberThis": "binomial grande puede parecer normal",
     "typicalProblemShapes": [
       "Aproximar una probabilidad binomial rápidamente",
       "Grandes recuentos de éxito de muestras"
@@ -8918,7 +8932,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "rememberThis": "condición primero, luego renormalizar",
     "typicalProblemShapes": [
       "Encuentra X dado Y = y",
-      "Trabajar desde una tabla conjunta o densidad hasta una ley condicional."
+      "Pasar de una tabla o densidad conjunta a una ley condicional."
     ],
     "miniDrill": [
       {
@@ -8944,13 +8958,13 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "name": "Expectativa condicional",
     "useItWhen": "la información adicional cambia su mejor estimación promedio",
     "looksLike": "E[X | Y], promedio después de saber algo, regla de la torre",
-    "doThis": "tomar primero el valor esperado dentro del mundo condicionado",
-    "thinkOfItAs": "el promedio después de que llega la nueva pista",
-    "watchOutFor": "Tratar la expectativa condicional como un único número fijo en cada situación.",
+    "doThis": "toma primero el valor esperado dentro del mundo condicionado",
+    "thinkOfItAs": "el promedio después de que llega la nueva información",
+    "watchOutFor": "tratar la esperanza condicional como un único número fijo en toda situación",
     "rememberThis": "condición primero, promedio segundo",
     "typicalProblemShapes": [
       "Valor esperado con información parcial.",
-      "Problemas de la regla de la torre y la ley de la expectativa total"
+      "Problemas de regla de la torre y ley de la esperanza total"
     ],
     "miniDrill": [
       {
@@ -8962,7 +8976,7 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
         "answer": "Condición, luego promedio."
       }
     ],
-    "memoryHook": "Nueva pista, nuevo promedio.",
+    "memoryHook": "Nueva información, nuevo promedio.",
     "quickExample": {
       "problem": "¿Qué significa E[X dado Y] en palabras simples?",
       "move": "El valor promedio de X una vez conocido Y."
@@ -9004,13 +9018,13 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "course": "Probabilidad I",
     "chapter": "Capítulo 3: Variables Aleatorias Discretas",
     "unit": "Variables Aleatorias",
-    "topic": "patrón de bernoulli",
+    "topic": "Patrón de Bernoulli",
     "name": "Patrón de Bernoulli",
-    "useItWhen": "Un ensayo tiene solo dos resultados, como éxito o fracaso.",
+    "useItWhen": "un ensayo tiene solo dos resultados, como éxito o fracaso",
     "looksLike": "0 o 1, sí o no, un disparo con probabilidad p",
-    "doThis": "Trátelo como el componente básico de las variables binomiales e indicadoras.",
+    "doThis": "trátalo como el bloque básico de las variables binarias, binomiales e indicadoras",
     "thinkOfItAs": "un pequeño interruptor de éxito-fracaso",
-    "watchOutFor": "Usar Bernoulli cuando el experimento tiene muchas pruebas.",
+    "watchOutFor": "usar Bernoulli cuando el experimento tiene muchas pruebas",
     "rememberThis": "Bernoulli es una prueba, no muchas",
     "typicalProblemShapes": [
       "Prueba única de éxito-fracaso",
@@ -9033,17 +9047,19 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     }
   },
   "prob-gamma-pattern": {
-    "course": "Probabilidad I",
+    "course": "Probabilidad",
     "chapter": "Capítulo 4: Variables Aleatorias Continuas",
     "unit": "Variables Aleatorias",
-    "topic": "Patrón de distribución gamma",
+    "topic": "Patrón gamma",
     "name": "Patrón gamma",
     "useItWhen": "esperas varias llegadas estilo Poisson en tiempo continuo",
+    "whatItMeans": "Gamma modela el tiempo de espera hasta la llegada número r. Es la versión de 'muchas llegadas' del caso exponencial.",
     "looksLike": "tiempo hasta el r-ésimo evento, parámetro de forma, modelo de espera continua",
     "doThis": "reconocerlo como la versión de llegadas múltiples de la exponencial",
-    "thinkOfItAs": "exponencial, pero sigue esperando por más eventos.",
+    "whyThisMove": "Aquí sigues en una historia de tiempo de espera, no de conteo. Cuando la pregunta dice 'hasta la tercera, cuarta o r-ésima llegada', la exponencial sube a gamma.",
+    "thinkOfItAs": "exponencial, pero esperando varias llegadas",
     "watchOutFor": "mezclarlo con una historia discreta de recuento binomial negativo",
-    "rememberThis": "gamma espera la r-ésima llegada en el tiempo",
+    "rememberThis": "gamma = tiempo hasta la llegada número r",
     "typicalProblemShapes": [
       "Tiempo de espera hasta la 3ª o 5ª llegada.",
       "Acumulación continua de tiempos de espera"
@@ -9062,6 +9078,40 @@ export const esCardContent: Record<string, LocalizedCardContent> = {
     "quickExample": {
       "problem": "¿Qué distribución continua generaliza la espera exponencial?",
       "move": "Gamma."
+    }
+  },
+  "prob-memoryless": {
+    "course": "Probabilidad",
+    "chapter": "Capítulo 4: Variables Aleatorias Continuas",
+    "unit": "Variables Aleatorias",
+    "topic": "Patrón sin memoria",
+    "name": "Patrón sin memoria",
+    "useItWhen": "el problema pregunta si el futuro ignora cuánto tiempo ya has esperado",
+    "whatItMeans": "Sin memoria significa que la espera restante tiene la misma ley que una espera nueva: el pasado no envejece la distribución futura.",
+    "looksLike": "P(X > s + t | X > s), geométrica, exponencial",
+    "doThis": "comprueba si la cola conserva la misma forma después de condicionar por haber sobrevivido hasta ahora",
+    "whyThisMove": "La prueba clave compara la cola futura después de haber esperado con la cola original desde tiempo 0. Si coinciden en forma, el reloj se resetea.",
+    "thinkOfItAs": "esperaste, pero el reloj se reinicia",
+    "watchOutFor": "pensar que cualquier distribución de espera es sin memoria",
+    "rememberThis": "en las familias clásicas, solo geométrica y exponencial son sin memoria",
+    "typicalProblemShapes": [
+      "problemas de espera donde ya pasó parte del tiempo",
+      "colas condicionales que se comportan como un reinicio"
+    ],
+    "miniDrill": [
+      {
+        "prompt": "¿Qué distribución discreta clásica es sin memoria?",
+        "answer": "Geométrica."
+      },
+      {
+        "prompt": "¿Qué distribución continua clásica es sin memoria?",
+        "answer": "Exponencial."
+      }
+    ],
+    "memoryHook": "Sin memoria = el reloj se reinicia.",
+    "quickExample": {
+      "problem": "Si ya esperaste y nada pasó, ¿qué distribuciones clásicas siguen viéndose iguales?",
+      "move": "Geométrica y exponencial."
     }
   },
   "prob-independent-rvs": {

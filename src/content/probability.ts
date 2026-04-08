@@ -821,8 +821,12 @@ export const probabilityCourse: CourseContent = {
       name: "Covariance and Correlation",
       order: 15,
       useItWhen: "you need to know whether two variables move together",
+      whatItMeans:
+        "Covariance measures whether two random variables lean in the same direction after you compare both to their own averages. Correlation is the unit-free rescaled version.",
       looksLike: "Cov(X,Y), Corr(X,Y)",
       doThis: "use covariance for direction of relationship and correlation for scaled strength",
+      whyThisMove:
+        "Covariance is built from the product of the centered pieces (X - E[X]) and (Y - E[Y]). That centered product is exactly what records same-direction versus opposite-direction movement.",
       thinkOfItAs: "do they rise together, fall opposite, or barely connect",
       watchOutFor: "treating zero correlation like guaranteed independence",
       rememberThis: "correlation is scaled covariance",
@@ -856,8 +860,12 @@ export const probabilityCourse: CourseContent = {
       name: "Markov and Chebyshev",
       order: 16,
       useItWhen: "you need a quick upper bound without full distribution details",
+      whatItMeans:
+        "These inequalities are emergency bounds. They do not tell you the exact tail probability; they tell you how big that tail can be using only rough summary information.",
       looksLike: "bound the chance a random variable gets large",
       doThis: "use Markov for nonnegative variables and Chebyshev when variance is available",
+      whyThisMove:
+        "The whole point is to survive with partial information. If the problem gives only a mean or only a variance, these inequalities convert that weak data into a safe upper bound.",
       thinkOfItAs: "rough but reliable guardrails",
       watchOutFor: "expecting these bounds to be sharp",
       rememberThis: "Markov uses mean, Chebyshev uses variance",
@@ -891,8 +899,12 @@ export const probabilityCourse: CourseContent = {
       name: "Central Limit Theorem",
       order: 17,
       useItWhen: "a sum or average of many random pieces shows up",
+      whatItMeans:
+        "The Central Limit Theorem says that many independent random pieces, once centered and scaled, start behaving like a normal variable even if the original pieces were not normal.",
       looksLike: "large n, sample mean, standardized sum",
       doThis: "normalize the sum or average and approximate with a normal shape",
+      whyThisMove:
+        "Raw sums keep their original scale, so they are hard to compare. Centering removes the mean and scaling by the standard deviation puts the random quantity onto the normal bell-curve scale.",
       thinkOfItAs: "many random bumps blending into a bell curve",
       watchOutFor: "using CLT with tiny sample sizes or strong dependence without checking assumptions",
       rememberThis: "many small random pieces often look normal",
@@ -1273,8 +1285,12 @@ export const probabilityCourse: CourseContent = {
       name: "Indicator Variables",
       order: 15.3,
       useItWhen: "you want to count random events with 0-1 flags",
+      whatItMeans:
+        "An indicator variable is a random yes-no switch: it equals 1 when an event happens and 0 when it does not. Sums of indicators turn counts into random variables you can average.",
       looksLike: "I_A, event happened or not, expected count",
       doThis: "turn each event into a 0-1 switch, then sum the switches",
+      whyThisMove:
+        "Counts are usually hard directly, but a count often equals I_1 + I_2 + ... . Once you rewrite it that way, linearity of expectation does the heavy lifting.",
       thinkOfItAs: "tiny on-off counters",
       watchOutFor: "forgetting indicators are random variables too",
       rememberThis: "count with 0-1 switches",
@@ -1308,8 +1324,12 @@ export const probabilityCourse: CourseContent = {
       name: "Law of Large Numbers",
       order: 17.2,
       useItWhen: "sample averages keep growing and you care about the long-run center",
+      whatItMeans:
+        "The Law of Large Numbers says that repeated averaging washes out random noise, so the sample average settles near the true expected value in the long run.",
       looksLike: "average of many trials, long-run frequency, sample mean",
       doThis: "separate where the average goes from what shape the distribution has",
+      whyThisMove:
+        "LLN is about destination, not appearance. The right question is 'what value does the average settle near?' rather than 'what bell shape does it resemble?'",
       thinkOfItAs: "long runs settle near the true mean",
       watchOutFor: "confusing LLN with CLT",
       rememberThis: "LLN says where averages go; CLT says how they look",
@@ -1834,8 +1854,12 @@ export const probabilityCourse: CourseContent = {
       name: "Gamma Pattern",
       order: 13.35,
       useItWhen: "you wait for several Poisson-style arrivals in continuous time",
+      whatItMeans:
+        "Gamma describes continuous waiting time until the r-th arrival when events keep landing at a Poisson-like rate. It is the many-arrival cousin of the exponential distribution.",
       looksLike: "time until the r-th event, shape parameter, continuous wait model",
       doThis: "recognize it as the multi-arrival version of the exponential",
+      whyThisMove:
+        "The story is still about waiting time, not counting. Once the problem says 'time until the 3rd, 4th, or r-th arrival,' the exponential single-arrival picture upgrades to gamma.",
       thinkOfItAs: "exponential, but keep waiting for more events",
       watchOutFor: "mixing it up with a discrete negative binomial count story",
       rememberThis: "gamma waits for the r-th arrival in time",
@@ -2114,8 +2138,12 @@ export const probabilityCourse: CourseContent = {
       name: "Memoryless Pattern",
       order: 12.6,
       useItWhen: "the problem asks whether the future ignores the past waiting time",
+      whatItMeans:
+        "Memoryless means the remaining wait does not care how long you have already waited. After conditioning on survival so far, the future law looks the same as at time zero.",
       looksLike: "P(X > s + t | X > s), geometric, exponential",
       doThis: "check whether the tail keeps the same form after conditioning on survival",
+      whyThisMove:
+        "The defining test compares a conditional tail after waiting with the original tail from the start. If those match in form, the process has no memory of the past wait.",
       thinkOfItAs: "the clock resets after you have already waited",
       watchOutFor: "assuming every waiting-time distribution is memoryless",
       rememberThis: "only geometric and exponential are memoryless in the standard families",
