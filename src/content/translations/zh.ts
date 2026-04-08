@@ -1346,10 +1346,10 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "是的。"
       }
     ],
-    "memoryHook": "通过清单而不是共鸣来绘制图表。",
+    "memoryHook": "先列检查清单，再动手画图。",
     "quickExample": {
       "problem": "在绘制最终形状之前会发生什么？",
-      "move": "功能清单。"
+      "move": "先把要检查的项目一项项列出来。"
     }
   },
   "newtons-method": {
@@ -1370,8 +1370,8 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     ],
     "miniDrill": [
       {
-        "prompt": "牛顿法需要哪两个功能块？",
-        "answer": "f(x) 和 f-素数(x)。"
+        "prompt": "牛顿法最核心需要哪两个量？",
+        "answer": "f(x) 和 f'(x)。"
       },
       {
         "prompt": "牛顿法每次都能找到准确答案吗？",
@@ -1403,7 +1403,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "哪个函数在被积函数中先出现？",
-        "answer": "顶级功能。"
+        "answer": "上面的函数。"
       },
       {
         "prompt": "如果左-右更容易，你可以对 y 进行积分吗？",
@@ -1585,7 +1585,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "你需要坡度规则，而不仅仅是一个坡度",
     "looksLike": "x 或 dy/dx 的 f 素数",
     "doThis": "微分一次，然后将结果视为新函数",
-    "thinkOfItAs": "根据原始功能构建的斜坡机",
+    "thinkOfItAs": "原函数每个点的斜率规则",
     "watchOutFor": "当问题需要全导数时求某一点的斜率",
     "rememberThis": "f-prime 在任何存在的地方都给出斜率",
     "typicalProblemShapes": [
@@ -1595,7 +1595,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "f-prime 是一个数还是一个新函数？",
-        "answer": "一个新功能。"
+        "answer": "一个新的函数。"
       },
       {
         "prompt": "f-prime 告诉你什么？",
@@ -2830,7 +2830,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "衔接主题",
     "topic": "反函数及其导数",
     "name": "反函数",
-    "useItWhen": "需要撤消某个功能",
+    "useItWhen": "你需要把一个函数反过来",
     "looksLike": "f 和 f^-1，交换 x 和 y",
     "doThis": "翻转 x 和 y，求解，然后根据需要使用逆导数规则",
     "thinkOfItAs": "向后运行函数",
@@ -2850,7 +2850,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "不，它必须是一对一的。"
       }
     ],
-    "memoryHook": "逆向表示撤消。",
+    "memoryHook": "反函数就是把原来的函数倒回来。",
     "quickExample": {
       "problem": "你如何开始寻找逆元？",
       "move": "交换 x 和 y。"
@@ -2893,7 +2893,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "chapter": "衔接主题：超越函数与 l'Hospital 法则",
     "unit": "衔接主题",
     "topic": "对数函数",
-    "name": "日志功能",
+    "name": "对数函数",
     "useItWhen": "你需要撤销指数或简化乘积和幂",
     "looksLike": "ln x, log_a x",
     "doThis": "使用对数规则将乘法转为加法，将幂转为前系数",
@@ -5794,7 +5794,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "不。"
       }
     ],
-    "memoryHook": "转置翻转。对称搭配翻盖。",
+    "memoryHook": "转置是翻过去；对称是翻过去还一样。",
     "quickExample": {
       "problem": "是什么使矩阵对称？",
       "move": "A 等于 A 转置。"
@@ -7086,15 +7086,15 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "unit": "关系与基数",
     "topic": "等价类",
     "name": "等价类",
-    "useItWhen": "等价关系将对象分组到相同类型的桶中",
-    "looksLike": "[a]，同余类，相同关系桶",
+    "useItWhen": "等价关系把对象分成一类一类",
+    "looksLike": "[a]、同余类、等价类",
     "doThis": "修复一个元素并收集与其等效的所有元素",
-    "thinkOfItAs": "一桶东西算一样",
-    "watchOutFor": "将类视为单个元素而不是整个集合",
-    "rememberThis": "类是围绕一个元素的桶",
+    "thinkOfItAs": "凡是和 a 等价的对象会被归到同一类",
+    "watchOutFor": "别把一个等价类当成单个元素",
+    "rememberThis": "等价类是一个集合，不是一个点",
     "typicalProblemShapes": [
       "n类同余模",
-      "将集合分成桶的关系"
+      "把集合分成若干等价类的关系"
     ],
     "miniDrill": [
       {
@@ -7106,7 +7106,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "一个选定的元素和关系。"
       }
     ],
-    "memoryHook": "选择一个元素，获取它的桶。",
+    "memoryHook": "先定一个元素，再收集所有和它等价的对象。",
     "quickExample": {
       "problem": "等价关系下的[a]是什么？",
       "move": "一切等价于 a 的集合。"
@@ -7313,7 +7313,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "函数作用于集合，而不仅仅是单个输入",
     "looksLike": "f(S)、T 的 f 逆、图像、原像",
     "doThis": "跟踪该集合从函数的哪一侧开始",
-    "thinkOfItAs": "图像向前，原像向后拉",
+    "thinkOfItAs": "像是往前送，原像是往回找",
     "watchOutFor": "当不存在原像时，将原像视为反函数",
     "rememberThis": "前像、后像",
     "typicalProblemShapes": [
@@ -7330,7 +7330,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
         "answer": "从输入到输出。"
       }
     ],
-    "memoryHook": "图像推送。原像向后拉。",
+    "memoryHook": "像往前看，原像往回找。",
     "quickExample": {
       "problem": "集合 T 的原像是什么？",
       "move": "输出落在 T 中的所有输入。"
@@ -7855,11 +7855,11 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "topic": "多项式系数",
     "name": "多项式系数",
     "useItWhen": "一个集合被分成几个标记组",
-    "looksLike": "将n个对象分成大小为a、b、c的桶",
+    "looksLike": "把 n 个对象分成大小为 a、b、c 的几组",
     "doThis": "计算有多少种方法可以分成小组大小",
-    "thinkOfItAs": "两个以上桶的组合",
+    "thinkOfItAs": "不止两组的分组计数",
     "watchOutFor": "将多组分裂视为一个简单的选择",
-    "rememberThis": "许多桶意味着多项式",
+    "rememberThis": "多组分配通常就会想到多项式系数",
     "typicalProblemShapes": [
       "将对象分配到标记类别中",
       "计算多个类别总数固定的结果"
@@ -7867,7 +7867,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "miniDrill": [
       {
         "prompt": "一个短语中的多项式概念是什么？",
-        "answer": "分成几个桶。"
+        "answer": "分成几组。"
       },
       {
         "prompt": "当有3个或更多标记组时，它只是一步选择吗？",
@@ -8473,7 +8473,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "你在一个时间窗或空间窗里数稀有事件",
     "looksLike": "某个时间间隔内的到达、缺陷、呼叫、点击",
     "doThis": "认出这是“窗口里的计数”，并且给了平均速率 lambda",
-    "thinkOfItAs": "罕见事件滴入桶中",
+    "thinkOfItAs": "稀有事件在一个时间窗里慢慢出现",
     "watchOutFor": "在固定试验的成功案例中使用泊松",
     "rememberThis": "泊松对窗口中的事件进行计数",
     "typicalProblemShapes": [
@@ -9411,7 +9411,7 @@ export const zhCardContent: Record<string, LocalizedCardContent> = {
     "useItWhen": "一个系统按固定转移比例在不同状态之间移动",
     "looksLike": "转移矩阵、状态向量、下一状态 = P 乘当前状态",
     "doThis": "先写转移矩阵，再拿它去乘当前状态向量",
-    "thinkOfItAs": "今天的状态通过一个概率机器喂出明天的状态",
+    "thinkOfItAs": "今天的状态按固定转移规则变成明天的状态",
     "watchOutFor": "把转移矩阵和当前状态向量弄混",
     "rememberThis": "当前状态在前，转移矩阵管下一步",
     "typicalProblemShapes": [
