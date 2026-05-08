@@ -38,7 +38,7 @@ export const zhMessages = {
   "useItWhen": "适用时机",
   "doThis": "这样做",
   "rememberThis": "记住这句",
-  "recognitionItemOne": "确定问题是链式法则、乘积法则还是商法则情况。",
+  "recognitionItemOne": "先判断题目要的是数列证明、概率设定、线性代数检验，还是向量分析定理。",
   "recognitionItemTwo": "认出一道证明题更适合用反证法、逆否证明还是归纳法。",
   "recognitionItemThree": "快速阅读概率设置：计数、条件或使用期望。",
   "recognitionItemFour": "在计算变复杂之前，先认出标准第一步。",
@@ -53,7 +53,7 @@ export const zhMessages = {
   "syllabusFlowHelp": "按实际上课顺序浏览每门课，让当前路径先出现，后续扩展放后面。",
   "clearAll": "清除全部",
   "filters": "筛选",
-  "searchPlaceholder": "搜索直接代入、洛必达、分部积分、逆否证明...",
+  "searchPlaceholder": "搜索贝叶斯、数列极限、子空间检验、格林公式……",
   "course": "课程",
   "unit": "单元",
   "difficulty": "难度",
@@ -141,17 +141,9 @@ export const zhMessages = {
 } as const;
 
 export const zhCourseLabels: Record<string, string> = {
-  "Single-Variable Calculus I": "单变量微积分 I",
-  "Single-Variable Calculus II": "单变量微积分 II",
-  "Multivariable Calculus I": "多元微积分 I",
-  "Introduction to Abstract Mathematics": "抽象数学导论",
-  "Introduction to Linear Algebra": "线性代数导论",
   "Probability I": "概率论 I",
-  "Multivariable Calculus II": "多元微积分 II",
-  "Elementary Differential Equations": "常微分方程",
-  "Introduction to Abstract Algebra: Groups": "抽象代数导论：群",
   "Linear Algebra I": "线性代数 I",
-  "Probability II": "概率论 II",
+  "Multivariable Calculus II": "多元微积分 II",
   "Elementary Analysis I": "初等分析 I"
 };
 

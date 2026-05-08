@@ -63,7 +63,7 @@ const messages = {
     doThis: "Do this",
     rememberThis: "Remember this",
     recognitionItemOne:
-      "Spot whether the problem is a chain rule, product rule, or quotient rule situation.",
+      "Spot whether the problem wants a sequence proof, a probability setup, a linear algebra test, or a vector calculus theorem.",
     recognitionItemTwo:
       "Recognize when a proof wants contradiction, contrapositive, or induction.",
     recognitionItemThree:
@@ -85,7 +85,7 @@ const messages = {
     clearAll: "Clear all",
     filters: "Filters",
     searchPlaceholder:
-      "Search plug in directly, L'Hospital, integration by parts, contrapositive...",
+      "Search Bayes, sequence limit, subspace test, Green's theorem...",
     course: "Course",
     unit: "Unit",
     difficulty: "Difficulty",
@@ -354,19 +354,9 @@ export function translate(locale: Locale, key: TranslationKey) {
 const courseLabels: Record<Locale, Record<string, string>> = {
   en: {},
   es: {
-    "Single-Variable Calculus I": "Cálculo de una Variable I",
-    "Single-Variable Calculus II": "Cálculo de una Variable II",
-    "Multivariable Calculus I": "Cálculo Multivariable I",
-    "Introduction to Abstract Mathematics":
-      "Introducción a las Matemáticas Abstractas",
-    "Introduction to Linear Algebra": "Introducción al Álgebra Lineal",
     "Probability I": "Probabilidad I",
-    "Multivariable Calculus II": "Cálculo Multivariable II",
-    "Elementary Differential Equations": "Ecuaciones Diferenciales Elementales",
-    "Introduction to Abstract Algebra: Groups":
-      "Introducción al Álgebra Abstracta: Grupos",
     "Linear Algebra I": "Álgebra Lineal I",
-    "Probability II": "Probabilidad II",
+    "Multivariable Calculus II": "Cálculo Multivariable II",
     "Elementary Analysis I": "Análisis Elemental I",
   },
   zh: zhCourseLabels,

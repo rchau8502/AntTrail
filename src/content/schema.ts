@@ -52,3 +52,26 @@ export interface CourseContent {
   chapters: string[];
   cards: BubbleCard[];
 }
+
+export type LocalizedCardContent = Pick<
+  BubbleCard,
+  | "course"
+  | "chapter"
+  | "unit"
+  | "topic"
+  | "name"
+  | "useItWhen"
+  | "whatItMeans"
+  | "looksLike"
+  | "doThis"
+  | "whyThisMove"
+  | "thinkOfItAs"
+  | "watchOutFor"
+  | "rememberThis"
+  | "quickExample"
+  | "typicalProblemShapes"
+  | "miniDrill"
+  | "memoryHook"
+>;
+
+export type LocalizedCourseText = Pick<CourseContent, "title" | "shortDescription" | "units" | "chapters">;

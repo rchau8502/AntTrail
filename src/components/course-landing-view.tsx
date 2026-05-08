@@ -6,14 +6,14 @@ import { useEffect, useMemo, useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 import { localizeCard, localizeCourse } from "@/content/localization";
 import type { CourseContent } from "@/content/schema";
-import { getCourseDisplayLabel } from "@/lib/course-catalog";
 import { buildBubblegumDrill } from "@/lib/bubblegum";
-import { getGuideCards, type CourseGuide } from "@/lib/course-guides";
+import { getCourseDisplayLabel } from "@/lib/course-catalog";
 import {
   BUBBLE_PROGRESS_EVENT,
   getBubblegumTopicProgressMap,
   type BubblegumTopicProgress,
 } from "@/lib/progress";
+import { getGuideCards, type CourseGuide } from "@/lib/course-guides";
 
 interface CourseLandingViewProps {
   course: CourseContent;
@@ -22,67 +22,107 @@ interface CourseLandingViewProps {
 
 const copy = {
   en: {
+    examFrame: "Exam frame",
+    firstMove: "First move",
+    startToday: "Start here today",
+    startTodayHelp:
+      "If you have not started this course review yet, do these cards first in order.",
     mostTested: "Most tested patterns",
-    starterShelf: "Starter shelf",
-    corePath: "Current syllabus path",
-    optionalExtras: "Later / optional extras",
-    sectionChecklist: "Section checklist",
-    sectionChecklistHelp: "Use this to see what Bubble covers in order. It is a strong companion, not a guarantee of full mastery by itself.",
-    whatBubbleTeaches: "What Bubble teaches well",
-    whatBubbleNeeds: "What still needs class and homework",
-    teachesHelp: "Recognition, first moves, common traps, and the fastest exam patterns.",
-    needsHelp: "Long proofs, full derivations, algebra endurance, and the weird edge cases your professor may still test.",
-    coreHelp: "Start here if you want the class path before extra review.",
-    optionalHelp: "Useful for preview or stretch work, but not the first shelf to study.",
-    weakTopics: "Your weak topics here",
-    weakHelp: "Local-only tracking from Bubblegum misses on this device.",
-    drillNow: "Open Bubblegum",
-    studyCard: "Open Bubble",
+    mostTestedHelp:
+      "These are the patterns most worth being able to recognize cold.",
+    weakTopics: "Your weak topics",
+    weakTopicsHelp:
+      "These come from Bubblegum misses on this device. Use them as your recovery list.",
+    noWeakTopics:
+      "No weak topics recorded here yet. Misses from Bubblegum will show up here automatically.",
+    recoveryLoop: "Recovery loop",
+    recoveryBody:
+      "When you freeze: read the cue, do the first line on paper, then drill until the hesitation disappears.",
+    courseMap: "Course map",
+    courseMapHelp:
+      "Use the core route first. Use the later cards only after the core path starts to feel stable.",
+    coreRoute: "Core route",
+    laterRoute: "Later / optional",
+    openTopic: "Open topic",
+    openDrill: "Open drill",
+    openQuiz: "Open quiz",
+    openStudy: "Open study mode",
+    openMemory: "Open memory hooks",
+    playbook: "How to use this page",
+    playbookSteps: [
+      "1. Read the exam frame and identify the kind of problem you are holding.",
+      "2. Use the first move exactly as written before you try to improvise.",
+      "3. Work the starter cards, then the most-tested cards, then your weak topics.",
+    ],
     missedCount: "misses",
     gotCount: "got it",
-    noWeakTopics: "No weak topics recorded here yet. Start Bubblegum on this course and misses will show up here.",
   },
   es: {
+    examFrame: "Marco de examen",
+    firstMove: "Primer movimiento",
+    startToday: "Empieza aqui hoy",
+    startTodayHelp:
+      "Si aun no has empezado a repasar este curso, haz primero estas tarjetas en orden.",
     mostTested: "Patrones mas examinados",
-    starterShelf: "Estantes para empezar",
-    corePath: "Ruta actual del curso",
-    optionalExtras: "Extras posteriores u opcionales",
-    sectionChecklist: "Checklist de secciones",
-    sectionChecklistHelp: "Usa esto para ver que cubre Bubble y en que orden. Es un gran acompanante, pero no garantiza dominio total por si solo.",
-    whatBubbleTeaches: "Lo que Bubble ensena bien",
-    whatBubbleNeeds: "Lo que todavia necesita clase y tarea",
-    teachesHelp: "Reconocimiento, primer movimiento, trampas comunes y los patrones de examen mas frecuentes.",
-    needsHelp: "Pruebas largas, derivaciones completas, aguante algebraico y los casos raros que tu profesor aun puede evaluar.",
-    coreHelp: "Empieza aqui si quieres seguir el camino real de la clase antes del repaso extra.",
-    optionalHelp: "Sirve para adelantar o profundizar, pero no es la primera estanteria para estudiar.",
-    weakTopics: "Tus temas flojos aqui",
-    weakHelp: "Seguimiento local solo en este dispositivo segun tus fallos en Bubblegum.",
-    drillNow: "Abrir Bubblegum",
-    studyCard: "Abrir Bubble",
+    mostTestedHelp:
+      "Estos son los patrones que mas conviene reconocer sin pensar demasiado.",
+    weakTopics: "Tus temas flojos",
+    weakTopicsHelp:
+      "Esto sale de tus fallos en Bubblegum en este dispositivo. Usalo como lista de recuperacion.",
+    noWeakTopics:
+      "Todavia no hay temas flojos guardados aqui. Los fallos de Bubblegum apareceran aqui solos.",
+    recoveryLoop: "Bucle de recuperacion",
+    recoveryBody:
+      "Cuando te bloquees: lee la pista, escribe la primera linea en papel y luego repite hasta que desaparezca la duda.",
+    courseMap: "Mapa del curso",
+    courseMapHelp:
+      "Haz primero la ruta central. Deja las tarjetas posteriores para despues de estabilizar la base.",
+    coreRoute: "Ruta central",
+    laterRoute: "Posterior / opcional",
+    openTopic: "Abrir tema",
+    openDrill: "Abrir practica",
+    openQuiz: "Abrir quiz",
+    openStudy: "Abrir modo estudio",
+    openMemory: "Abrir ganchos",
+    playbook: "Como usar esta pagina",
+    playbookSteps: [
+      "1. Lee el marco de examen e identifica que tipo de problema tienes delante.",
+      "2. Usa el primer movimiento exactamente como esta escrito antes de improvisar.",
+      "3. Haz las tarjetas iniciales, luego las mas examinadas y despues tus temas flojos.",
+    ],
     missedCount: "fallos",
     gotCount: "aciertos",
-    noWeakTopics: "Todavia no hay temas flojos guardados aqui. Empieza Bubblegum en este curso y los fallos apareceran aqui.",
   },
   zh: {
+    examFrame: "考试框架",
+    firstMove: "第一步",
+    startToday: "今天先做这里",
+    startTodayHelp: "如果你还没开始复习这门课，就先按顺序做这些卡片。",
     mostTested: "最常考的模式",
-    starterShelf: "起步书架",
-    corePath: "当前课表主线",
-    optionalExtras: "后续 / 可选扩展",
-    sectionChecklist: "章节清单",
-    sectionChecklistHelp: "用这个看 Bubble 按什么顺序覆盖了哪些内容。它是很强的学习搭档，但单靠它并不能保证完全掌握。",
-    whatBubbleTeaches: "Bubble 最擅长教什么",
-    whatBubbleNeeds: "哪些仍然需要上课和作业",
-    teachesHelp: "题型识别、第一步、常见陷阱，以及最常考的模式。",
-    needsHelp: "长证明、完整推导、硬算耐力，以及老师可能还是会考的边角情况。",
-    coreHelp: "如果你想先按真实课程顺序学，就从这里开始。",
-    optionalHelp: "这些适合提前预习或额外拉伸，但不该先学。",
-    weakTopics: "你这里最弱的主题",
-    weakHelp: "这里只记录这台设备上的 Bubblegum 失误。",
-    drillNow: "打开 Bubblegum",
-    studyCard: "打开 Bubble",
+    mostTestedHelp: "这些模式最值得练到一眼就能认出来。",
+    weakTopics: "你的薄弱主题",
+    weakTopicsHelp: "这里来自这台设备上的 Bubblegum 错题记录，可直接当补救清单。",
+    noWeakTopics: "这里还没有记录薄弱主题。Bubblegum 的错题会自动出现在这里。",
+    recoveryLoop: "补救循环",
+    recoveryBody:
+      "一旦卡住：先读题目线索，先写第一行，再反复练到不再犹豫。",
+    courseMap: "课程路线",
+    courseMapHelp: "先走核心路线。等核心稳定以后，再去做后面的扩展卡片。",
+    coreRoute: "核心路线",
+    laterRoute: "后续 / 可选",
+    openTopic: "打开主题",
+    openDrill: "打开练习",
+    openQuiz: "打开测验",
+    openStudy: "打开学习模式",
+    openMemory: "打开记忆钩子",
+    playbook: "怎么用这页",
+    playbookSteps: [
+      "1. 先读考试框架，判断你手里的题属于哪一类。",
+      "2. 先按写好的第一步去做，再考虑自己发挥。",
+      "3. 先做起步卡，再做常考卡，最后回到你的薄弱主题。",
+    ],
     missedCount: "错题次数",
     gotCount: "做对次数",
-    noWeakTopics: "这里还没有记录到薄弱主题。先做这门课的 Bubblegum，错题就会出现在这里。",
   },
 } as const;
 
@@ -92,7 +132,6 @@ function isOptionalCard(chapter: string, unit: string) {
 
   return (
     chapterText.includes("later / optional") ||
-    chapterText.includes("later / optional".replaceAll(" ", "")) ||
     chapterText.includes("optional") ||
     unitText.includes("later / optional") ||
     unitText.includes("optional") ||
@@ -126,47 +165,28 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
   }, []);
 
   const localizedCourse = useMemo(() => localizeCourse(course, locale), [course, locale]);
+  const starterCards = useMemo(
+    () =>
+      guide
+        ? getGuideCards(guide.starterIds).map((card) => localizeCard(card, locale))
+        : localizedCourse.cards.slice(0, 4),
+    [guide, locale, localizedCourse.cards],
+  );
+  const mostTested = useMemo(
+    () =>
+      guide
+        ? getGuideCards(guide.mostTestedIds).map((card) => localizeCard(card, locale))
+        : localizedCourse.cards.slice(0, 6),
+    [guide, locale, localizedCourse.cards],
+  );
   const coreCards = useMemo(
     () => localizedCourse.cards.filter((card) => !isOptionalCard(card.chapter, card.unit)),
     [localizedCourse.cards],
   );
-  const optionalCards = useMemo(
+  const laterCards = useMemo(
     () => localizedCourse.cards.filter((card) => isOptionalCard(card.chapter, card.unit)),
     [localizedCourse.cards],
   );
-  const mostTested = useMemo(
-    () => (guide ? getGuideCards(guide.mostTestedIds).map((card) => localizeCard(card, locale)) : []),
-    [guide, locale],
-  );
-  const starterShelf = useMemo(
-    () => (guide ? getGuideCards(guide.starterIds).map((card) => localizeCard(card, locale)) : coreCards.slice(0, 4)),
-    [guide, coreCards, locale],
-  );
-  const corePath = useMemo(() => coreCards.slice(0, 8), [coreCards]);
-  const optionalShelf = useMemo(() => optionalCards.slice(0, 6), [optionalCards]);
-  const sectionChecklist = useMemo(() => {
-    const groups = new Map<
-      string,
-      { chapter: string; count: number; optional: boolean }
-    >();
-
-    for (const card of localizedCourse.cards) {
-      const existing = groups.get(card.chapter);
-
-      if (existing) {
-        existing.count += 1;
-        continue;
-      }
-
-      groups.set(card.chapter, {
-        chapter: card.chapter,
-        count: 1,
-        optional: isOptionalCard(card.chapter, card.unit),
-      });
-    }
-
-    return [...groups.values()];
-  }, [localizedCourse.cards]);
   const weakTopics = useMemo(
     () =>
       localizedCourse.cards
@@ -180,241 +200,327 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
             right.progress.missedIt - left.progress.missedIt ||
             left.progress.gotIt - right.progress.gotIt,
         )
-        .slice(0, 5),
+        .slice(0, 4),
     [localizedCourse.cards, progressMap],
   );
 
+  const drillSeed = starterCards[0] ? buildBubblegumDrill(starterCards[0], locale, "warmup", 0) : null;
+
   return (
     <div className="space-y-8">
-      <section className="bubble-shadow rounded-[2.2rem] border border-[color:var(--line)] bg-[linear-gradient(140deg,rgba(255,255,255,0.98),rgba(235,247,255,0.86)_55%,rgba(255,240,244,0.95))] p-5 sm:p-10">
-        <div className="space-y-5">
-          <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
-            {course.courseCodes?.map((code) => (
-              <span
-                key={code}
-                className="rounded-full border border-white/80 bg-white/80 px-3 py-1"
+      <section className="paper-panel bubble-shadow rounded-[2rem] border border-[color:var(--line)] p-6 sm:p-8">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,22rem)]">
+          <div className="space-y-5">
+            <div className="flex flex-wrap items-center gap-2">
+              {course.courseCodes?.map((code) => (
+                <span
+                  key={code}
+                  className="rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#8b3725]"
+                >
+                  {code}
+                </span>
+              ))}
+            </div>
+
+            <div className="space-y-3">
+              <h1 className="ink-title font-display text-4xl leading-tight text-slate-900 sm:text-5xl">
+                {getCourseDisplayLabel(course.title, locale)}
+              </h1>
+              <p className="max-w-3xl text-base leading-7 text-[color:var(--muted)]">
+                {localizedCourse.shortDescription}
+              </p>
+            </div>
+
+            {guide ? (
+              <div className="grid gap-4 lg:grid-cols-2">
+                <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-white/92 p-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#8b3725]">
+                    {ui.examFrame}
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-slate-800">
+                    {guide.overview[locale] ?? guide.overview.en}
+                  </p>
+                </div>
+                <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-[#fffdfa] p-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#8b3725]">
+                    {ui.firstMove}
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-slate-800">
+                    {guide.survivalAdvice[locale] ?? guide.survivalAdvice.en}
+                  </p>
+                </div>
+              </div>
+            ) : null}
+
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/study"
+                className="rounded-full bg-[#2a2d33] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1f2227]"
               >
-                {code}
-              </span>
-            ))}
+                {ui.openStudy}
+              </Link>
+              <Link
+                href="/quiz"
+                className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-[#c77964]"
+              >
+                {ui.openQuiz}
+              </Link>
+              <Link
+                href="/memory-hooks"
+                className="rounded-full border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-[#c77964]"
+              >
+                {ui.openMemory}
+              </Link>
+            </div>
           </div>
-          <div className="space-y-3">
-            <h1 className="font-display text-4xl leading-tight text-slate-900 sm:text-5xl">
-              {getCourseDisplayLabel(course.title, locale)}
-            </h1>
-            <p className="max-w-3xl text-base leading-7 text-[color:var(--muted)]">
-              {localizedCourse.shortDescription}
+
+          <aside className="space-y-4 rounded-[1.75rem] border border-[color:var(--line)] bg-[rgba(255,252,248,0.92)] p-5">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#8b3725]">
+              {ui.playbook}
             </p>
-          </div>
-          {guide ? (
-            <div className="grid gap-4 lg:grid-cols-2">
-              <div className="rounded-[1.6rem] border border-[color:var(--line)] bg-white/80 p-4 sm:p-5">
-                <p className="text-sm font-semibold text-sky-700">
-                  {guide.overview[locale] ?? guide.overview.en}
+            <div className="grid gap-3">
+              {ui.playbookSteps.map((step) => (
+                <div
+                  key={step}
+                  className="rounded-[1.2rem] border border-[color:var(--line)] bg-white px-4 py-3 text-sm leading-6 text-slate-800"
+                >
+                  {step}
+                </div>
+              ))}
+            </div>
+            <div className="rounded-[1.2rem] border border-[color:var(--line)] bg-[#fff7f2] px-4 py-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#8b3725]">
+                {ui.recoveryLoop}
+              </p>
+              <p className="mt-2 text-sm leading-6 text-slate-800">
+                {ui.recoveryBody}
+              </p>
+            </div>
+            {drillSeed ? (
+              <Link
+                href={`/bubblegum/${starterCards[0].id}`}
+                className="block rounded-[1.2rem] border border-[#d7b6ad] bg-white px-4 py-4 transition hover:border-[#c77964]"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#8b3725]">
+                  First drill
                 </p>
-              </div>
-              <div className="rounded-[1.6rem] border border-[color:var(--line)] bg-white/80 p-4 text-sm leading-6 text-slate-700 sm:p-5">
-                {guide.survivalAdvice[locale] ?? guide.survivalAdvice.en}
-              </div>
-            </div>
-          ) : null}
-          <div className="grid gap-4 lg:grid-cols-2">
-            <div className="rounded-[1.6rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.76),rgba(255,255,255,0.96))] p-4 sm:p-5">
-              <p className="text-sm font-semibold text-emerald-700">
-                {ui.whatBubbleTeaches}
-              </p>
-              <p className="mt-2 text-sm leading-6 text-slate-700">
-                {ui.teachesHelp}
-              </p>
-            </div>
-            <div className="rounded-[1.6rem] border border-amber-200 bg-amber-50/80 p-4 sm:p-5">
-              <p className="text-sm font-semibold text-amber-700">
-                {ui.whatBubbleNeeds}
-              </p>
-              <p className="mt-2 text-sm leading-6 text-slate-700">
-                {ui.needsHelp}
-              </p>
-            </div>
-          </div>
+                <p className="mt-2 font-semibold text-slate-900">{starterCards[0].name}</p>
+                <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
+                  {drillSeed.prompt}
+                </p>
+              </Link>
+            ) : null}
+          </aside>
         </div>
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-        <div className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-5 sm:p-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
-            {ui.mostTested}
-          </p>
-          <div className="mt-5 grid gap-4">
-            {mostTested.map((card) => {
-              const preview = buildBubblegumDrill(card, locale, "warmup", 0);
+      <section className="grid gap-6 xl:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)]">
+        <div className="space-y-6">
+          <section className="bubble-shadow rounded-[1.85rem] border border-[color:var(--line)] bg-white/92 p-6">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#8b3725]">
+                  {ui.startToday}
+                </p>
+                <h2 className="mt-2 text-3xl font-semibold text-slate-900">
+                  {starterCards.length} cards to get traction fast
+                </h2>
+              </div>
+              <p className="max-w-xl text-sm leading-6 text-[color:var(--muted)]">
+                {ui.startTodayHelp}
+              </p>
+            </div>
 
-              return (
-                <div
-                  key={card.id}
-                  className="rounded-[1.75rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-5"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
-                    {card.unit}
-                  </p>
-                  <h2 className="mt-3 text-xl font-semibold text-slate-900">{card.name}</h2>
-                  <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
-                    {preview.whyFits}
-                  </p>
-                  <p className="mt-3 rounded-2xl bg-white px-4 py-3 text-sm leading-6 text-slate-900">
-                    {preview.prompt}
-                  </p>
-                  <div className="mt-4 grid gap-3 sm:flex sm:flex-wrap">
-                    <Link
-                      href={`/topics/${card.id}`}
-                      className="inline-flex items-center justify-center rounded-full border border-[color:var(--line)] bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-sky-200"
-                    >
-                      {ui.studyCard}
-                    </Link>
-                    <Link
-                      href={`/bubblegum/${card.id}`}
-                      className="inline-flex items-center justify-center rounded-full bg-rose-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-rose-700"
-                    >
-                      {ui.drillNow}
-                    </Link>
+            <div className="mt-5 grid gap-4">
+              {starterCards.map((card, index) => {
+                const preview = buildBubblegumDrill(card, locale, "warmup", 0);
+
+                return (
+                  <div
+                    key={card.id}
+                    className="paper-panel rounded-[1.5rem] border border-[color:var(--line)] p-5"
+                  >
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#8b3725]">
+                        Step {index + 1}
+                      </span>
+                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color:var(--muted)]">
+                        {card.chapter}
+                      </span>
+                    </div>
+                    <h3 className="mt-4 text-2xl font-semibold text-slate-900">
+                      {card.name}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-[color:var(--muted)]">
+                      {preview.prompt}
+                    </p>
+                    <div className="mt-4 rounded-[1.15rem] border border-[color:var(--line)] bg-white px-4 py-3">
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8b3725]">
+                        {ui.firstMove}
+                      </p>
+                      <p className="mt-2 text-sm leading-6 text-slate-900">
+                        {preview.firstStep}
+                      </p>
+                    </div>
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      <Link
+                        href={`/topics/${card.id}`}
+                        className="rounded-full border border-[color:var(--line)] bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-[#c77964]"
+                      >
+                        {ui.openTopic}
+                      </Link>
+                      <Link
+                        href={`/bubblegum/${card.id}`}
+                        className="rounded-full bg-[#8b3725] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#702b1c]"
+                      >
+                        {ui.openDrill}
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          </section>
+
+          <section className="bubble-shadow rounded-[1.85rem] border border-[color:var(--line)] bg-white/92 p-6">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#8b3725]">
+                  {ui.mostTested}
+                </p>
+                <h2 className="mt-2 text-3xl font-semibold text-slate-900">
+                  Patterns worth recognizing cold
+                </h2>
+              </div>
+              <p className="max-w-xl text-sm leading-6 text-[color:var(--muted)]">
+                {ui.mostTestedHelp}
+              </p>
+            </div>
+
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              {mostTested.map((card) => {
+                const preview = buildBubblegumDrill(card, locale, "warmup", 0);
+
+                return (
+                  <div
+                    key={card.id}
+                    className="rounded-[1.4rem] border border-[color:var(--line)] bg-[rgba(255,252,248,0.92)] p-5"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8b3725]">
+                      {preview.technique}
+                    </p>
+                    <h3 className="mt-3 text-xl font-semibold text-slate-900">
+                      {card.name}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-[color:var(--muted)]">
+                      {preview.whyFits}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      <Link
+                        href={`/topics/${card.id}`}
+                        className="rounded-full border border-[color:var(--line)] bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-[#c77964]"
+                      >
+                        {ui.openTopic}
+                      </Link>
+                      <Link
+                        href={`/bubblegum/${card.id}`}
+                        className="rounded-full border border-[#d7b6ad] bg-[#fff7f2] px-4 py-2 text-sm font-semibold text-[#8b3725] transition hover:border-[#c77964]"
+                      >
+                        {ui.openDrill}
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
         </div>
 
         <div className="space-y-6">
-          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-5 sm:p-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
-              {ui.sectionChecklist}
+          <section className="bubble-shadow rounded-[1.85rem] border border-[color:var(--line)] bg-white/92 p-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#8b3725]">
+              {ui.weakTopics}
             </p>
             <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
-              {ui.sectionChecklistHelp}
+              {ui.weakTopicsHelp}
             </p>
-            <div className="mt-4 grid gap-3">
-              {sectionChecklist.map((item) => (
-                <div
-                  key={item.chapter}
-                  className={`rounded-[1.5rem] border px-4 py-4 ${
-                    item.optional
-                      ? "border-amber-200 bg-amber-50/80"
-                      : "border-[color:var(--line)] bg-[color:var(--surface-strong)]"
-                  }`}
-                >
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <p className="text-sm font-semibold text-slate-900">
-                      {item.chapter}
-                    </p>
-                    <span className="rounded-full border border-white/80 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--muted)]">
-                      {item.count}
-                    </span>
-                  </div>
+            <div className="mt-5 grid gap-3">
+              {weakTopics.length === 0 ? (
+                <div className="rounded-[1.35rem] border border-[color:var(--line)] bg-[rgba(255,252,248,0.92)] px-4 py-4 text-sm leading-6 text-[color:var(--muted)]">
+                  {ui.noWeakTopics}
                 </div>
-              ))}
+              ) : (
+                weakTopics.map(({ card, progress }) => {
+                  const preview = buildBubblegumDrill(card, locale, "warmup", 0);
+
+                  return (
+                    <Link
+                      key={card.id}
+                      href={`/bubblegum/${card.id}`}
+                      className="rounded-[1.35rem] border border-[color:var(--line)] bg-[rgba(255,247,242,0.92)] px-4 py-4 transition hover:border-[#c77964]"
+                    >
+                      <p className="font-semibold text-slate-900">{card.name}</p>
+                      <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
+                        {preview.firstStep}
+                      </p>
+                      <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#8b3725]">
+                        <span>{progress.missedIt} {ui.missedCount}</span>
+                        <span>•</span>
+                        <span>{progress.gotIt} {ui.gotCount}</span>
+                      </div>
+                    </Link>
+                  );
+                })
+              )}
             </div>
           </section>
 
-          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-5 sm:p-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
-              {ui.starterShelf}
+          <section className="bubble-shadow rounded-[1.85rem] border border-[color:var(--line)] bg-white/92 p-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#8b3725]">
+              {ui.courseMap}
             </p>
-            <div className="mt-4 grid gap-3">
-              {starterShelf.map((card) => (
-                <Link
-                  key={card.id}
-                  href={`/topics/${card.id}`}
-                  className="rounded-[1.5rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] px-4 py-4 transition hover:border-sky-200"
-                >
-                  <p className="font-semibold text-slate-900">{card.name}</p>
-                  <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
-                    {card.memoryHook}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          </section>
-
-          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-5 sm:p-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
-              {ui.corePath}
+            <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
+              {ui.courseMapHelp}
             </p>
-            <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">{ui.coreHelp}</p>
-            <div className="mt-4 grid gap-3">
-              {corePath.map((card) => (
-                <Link
-                  key={card.id}
-                  href={`/topics/${card.id}`}
-                  className="rounded-[1.5rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] px-4 py-4 transition hover:border-sky-200"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-sky-700">
-                    {card.chapter}
-                  </p>
-                  <p className="mt-2 font-semibold text-slate-900">{card.name}</p>
-                  <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
-                    {buildBubblegumDrill(card, locale, "warmup", 0).technique}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          </section>
 
-          {optionalShelf.length ? (
-            <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-5 sm:p-6">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-amber-700">
-                {ui.optionalExtras}
-              </p>
-              <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">{ui.optionalHelp}</p>
-              <div className="mt-4 grid gap-3">
-                {optionalShelf.map((card) => (
+            <div className="mt-5 grid gap-5">
+              <div className="space-y-3">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8b3725]">
+                  {ui.coreRoute}
+                </p>
+                {coreCards.slice(0, 7).map((card) => (
                   <Link
                     key={card.id}
                     href={`/topics/${card.id}`}
-                    className="rounded-[1.5rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] px-4 py-4 transition hover:border-amber-200"
+                    className="block rounded-[1.2rem] border border-[color:var(--line)] bg-[rgba(255,252,248,0.92)] px-4 py-3 transition hover:border-[#c77964]"
                   >
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-amber-700">
+                    <p className="font-semibold text-slate-900">{card.name}</p>
+                    <p className="mt-1 text-sm leading-6 text-[color:var(--muted)]">
                       {card.chapter}
-                    </p>
-                    <p className="mt-2 font-semibold text-slate-900">{card.name}</p>
-                    <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
-                      {card.memoryHook}
                     </p>
                   </Link>
                 ))}
               </div>
-            </section>
-          ) : null}
 
-          <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/90 p-5 sm:p-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-rose-600">
-              {ui.weakTopics}
-            </p>
-            <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
-              {ui.weakHelp}
-            </p>
-            <div className="mt-4 grid gap-3">
-              {weakTopics.length === 0 ? (
-                <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] px-4 py-4 text-sm leading-6 text-[color:var(--muted)]">
-                  {ui.noWeakTopics}
+              {laterCards.length ? (
+                <div className="space-y-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-700">
+                    {ui.laterRoute}
+                  </p>
+                  {laterCards.slice(0, 4).map((card) => (
+                    <Link
+                      key={card.id}
+                      href={`/topics/${card.id}`}
+                      className="block rounded-[1.2rem] border border-amber-200 bg-amber-50/70 px-4 py-3 transition hover:border-amber-300"
+                    >
+                      <p className="font-semibold text-slate-900">{card.name}</p>
+                      <p className="mt-1 text-sm leading-6 text-[color:var(--muted)]">
+                        {card.chapter}
+                      </p>
+                    </Link>
+                  ))}
                 </div>
-              ) : (
-                weakTopics.map(({ card, progress }) => (
-                  <Link
-                    key={card.id}
-                    href={`/bubblegum/${card.id}`}
-                    className="rounded-[1.5rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] px-4 py-4 transition hover:border-rose-200"
-                  >
-                    <p className="font-semibold text-slate-900">{card.name}</p>
-                    <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
-                      {buildBubblegumDrill(card, locale, "warmup", 0).technique}
-                    </p>
-                    <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-rose-700">
-                      <span>{progress.missedIt} {ui.missedCount}</span>
-                      <span>•</span>
-                      <span>{progress.gotIt} {ui.gotCount}</span>
-                    </div>
-                  </Link>
-                ))
-              )}
+              ) : null}
             </div>
           </section>
         </div>

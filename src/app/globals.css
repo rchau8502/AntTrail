@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #eff7ff;
-  --background-strong: #dbeefe;
-  --surface: rgba(255, 255, 255, 0.8);
-  --surface-strong: rgba(255, 255, 255, 0.95);
-  --foreground: #16324f;
-  --muted: #5f7490;
-  --line: rgba(86, 130, 176, 0.16);
-  --line-strong: rgba(86, 130, 176, 0.3);
-  --bubble: #78c8ff;
-  --bubble-soft: #b9e5ff;
-  --bubble-warm: #ffe3c8;
-  --bubble-mint: #d6ffe8;
-  --shadow: 0 24px 60px rgba(78, 135, 181, 0.14);
-  --font-plus-jakarta: "Avenir Next", "Avenir", "Gill Sans", "Segoe UI", sans-serif;
-  --font-fraunces: "Baskerville", "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Georgia", serif;
+  --background: #f4efe6;
+  --background-strong: #ece4d8;
+  --surface: rgba(255, 251, 245, 0.84);
+  --surface-strong: rgba(255, 252, 248, 0.96);
+  --foreground: #1f2530;
+  --muted: #685f57;
+  --line: rgba(62, 52, 43, 0.12);
+  --line-strong: rgba(62, 52, 43, 0.24);
+  --bubble: #d1543f;
+  --bubble-soft: #f4c6ba;
+  --bubble-warm: #f7deaa;
+  --bubble-mint: #d9efe2;
+  --shadow: 0 22px 60px rgba(56, 40, 22, 0.1);
+  --font-plus-jakarta: "Avenir Next", "Avenir", "Trebuchet MS", "Segoe UI", sans-serif;
+  --font-fraunces: "Iowan Old Style", "Baskerville", "Book Antiqua", "Palatino Linotype", "Georgia", serif;
   --font-caveat: "Bradley Hand", "Segoe Print", "Marker Felt", cursive;
 }
 
@@ -40,13 +40,13 @@ body {
   font-family: var(--font-plus-jakarta), sans-serif;
   min-height: 100vh;
   background-image:
-    radial-gradient(circle at top left, rgba(120, 200, 255, 0.45), transparent 28%),
-    radial-gradient(circle at top right, rgba(255, 227, 200, 0.5), transparent 22%),
-    linear-gradient(180deg, #f8fcff 0%, #edf7ff 40%, #f5fbff 100%);
+    radial-gradient(circle at top left, rgba(209, 84, 63, 0.12), transparent 24%),
+    radial-gradient(circle at top right, rgba(247, 222, 170, 0.42), transparent 22%),
+    linear-gradient(180deg, #faf6ef 0%, #f4eee4 48%, #f8f4ed 100%);
 }
 
 ::selection {
-  background: rgba(120, 200, 255, 0.35);
+  background: rgba(209, 84, 63, 0.18);
 }
 
 .bubble-shadow {
@@ -58,9 +58,31 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.22) 1px, transparent 1px);
-  background-size: 28px 28px;
-  opacity: 0.35;
+    linear-gradient(rgba(62, 52, 43, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(62, 52, 43, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.4;
   pointer-events: none;
+}
+
+.paper-panel {
+  background:
+    linear-gradient(180deg, rgba(255, 252, 248, 0.98), rgba(250, 246, 239, 0.96)),
+    repeating-linear-gradient(
+      180deg,
+      rgba(117, 97, 74, 0.02) 0,
+      rgba(117, 97, 74, 0.02) 1px,
+      transparent 1px,
+      transparent 34px
+    );
+}
+
+.ink-title {
+  letter-spacing: -0.03em;
+}
+
+.accent-ring {
+  box-shadow:
+    0 0 0 1px rgba(209, 84, 63, 0.14),
+    0 18px 44px rgba(113, 60, 39, 0.12);
 }

@@ -557,7 +557,7 @@ export const probabilityCourse: CourseContent = {
       doThis: "say what number each outcome gets before talking about expectation or distributions",
       whyThisMove:
         "Expectation, variance, PMFs, and distributions are all about the numbers assigned by X. If you skip that assignment step, the formulas feel disconnected.",
-      thinkOfItAs: "a machine that turns outcomes into numbers",
+      thinkOfItAs: "a rule that assigns a number to each outcome",
       watchOutFor: "thinking the random variable is the event itself instead of a numerical rule",
       rememberThis: "random variable = number attached to each outcome",
       quickExample: {
@@ -824,7 +824,7 @@ export const probabilityCourse: CourseContent = {
       whatItMeans:
         "Covariance measures whether two random variables lean in the same direction after you compare both to their own averages. Correlation is the unit-free rescaled version.",
       looksLike: "Cov(X,Y), Corr(X,Y)",
-      doThis: "use covariance for direction of relationship and correlation for scaled strength",
+      doThis: "center both variables first, then inspect the sign of (X - E[X])(Y - E[Y])",
       whyThisMove:
         "Covariance is built from the product of the centered pieces (X - E[X]) and (Y - E[Y]). That centered product is exactly what records same-direction versus opposite-direction movement.",
       thinkOfItAs: "do they rise together, fall opposite, or barely connect",
@@ -832,7 +832,7 @@ export const probabilityCourse: CourseContent = {
       rememberThis: "correlation is scaled covariance",
       quickExample: {
         problem: "What does positive covariance suggest?",
-        move: "The variables tend to move in the same direction.",
+        move: "The centered deviations usually have the same sign.",
       },
       typicalProblemShapes: [
         "Scatterplot-style dependence questions",

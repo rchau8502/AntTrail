@@ -235,8 +235,8 @@ export const multivariableCalculusTwoCourse: CourseContent = {
           answer: "The start and end points.",
         },
         {
-          prompt: "What function do you need to use the theorem fast?",
-          answer: "A potential function.",
+          prompt: "If the field is conservative, what function should you write first?",
+          answer: "A potential function with F = grad f.",
         },
       ],
       memoryHook: "Gradient field -> endpoint subtraction.",

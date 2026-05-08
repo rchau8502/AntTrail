@@ -1,33 +1,17 @@
-import { calcOneCourse } from "@/content/calc1";
-import { calcThreeCourse } from "@/content/calc3";
-import { calcTwoCourse } from "@/content/calc2";
-import { differentialEquationsCourse } from "@/content/differential-equations";
-import { multivariableCalculusTwoCourse } from "@/content/multivariable-calculus-2";
-import { linearAlgebraCourse } from "@/content/linear-algebra";
 import { analysisOneCourse } from "@/content/analysis-1";
-import { abstractAlgebraOneCourse } from "@/content/abstract-algebra-1";
 import { linearAlgebraOneCourse } from "@/content/linear-algebra-1";
-import { probabilityTwoCourse } from "@/content/probability-2";
+import { multivariableCalculusTwoCourse } from "@/content/multivariable-calculus-2";
 import { probabilityCourse } from "@/content/probability";
-import { proofCourse } from "@/content/proof";
 import type { BubbleCard, Difficulty, Unit } from "@/content/schema";
 import { difficulties } from "@/content/schema";
 import type { Locale } from "@/lib/i18n";
 import { translateCourseTitle } from "@/lib/i18n";
 
 export const courses = [
-  calcOneCourse,
-  calcTwoCourse,
-  calcThreeCourse,
-  multivariableCalculusTwoCourse,
-  linearAlgebraCourse,
-  proofCourse,
   probabilityCourse,
-  differentialEquationsCourse,
-  abstractAlgebraOneCourse,
-  linearAlgebraOneCourse,
-  probabilityTwoCourse,
   analysisOneCourse,
+  linearAlgebraOneCourse,
+  multivariableCalculusTwoCourse,
 ];
 export const allCards = courses.flatMap((course, courseIndex) =>
   [...course.cards]

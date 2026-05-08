@@ -1,34 +1,7 @@
-import type { BubbleCard, CourseContent, MiniDrillItem, QuickExample } from "@/content/schema";
+import type { BubbleCard, CourseContent, LocalizedCardContent, LocalizedCourseText } from "@/content/schema";
 import { esCardContent, esCourseContent } from "@/content/translations/es";
 import { zhCardContent, zhCourseContent } from "@/content/translations/zh";
 import { defaultLocale, type Locale } from "@/lib/i18n";
-
-interface LocalizedCardContent {
-  course: string;
-  chapter: string;
-  unit: string;
-  topic: string;
-  name: string;
-  useItWhen: string;
-  whatItMeans?: string;
-  looksLike: string;
-  doThis: string;
-  whyThisMove?: string;
-  thinkOfItAs: string;
-  watchOutFor: string;
-  rememberThis: string;
-  quickExample?: QuickExample;
-  typicalProblemShapes: string[];
-  miniDrill: MiniDrillItem[];
-  memoryHook: string;
-}
-
-interface LocalizedCourseText {
-  title: string;
-  shortDescription: string;
-  units: string[];
-  chapters: string[];
-}
 
 const localizedContent: Partial<
   Record<
