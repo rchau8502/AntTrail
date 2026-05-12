@@ -1,43 +1,62 @@
 import Link from "next/link";
 
+import { HomeStudyToday } from "@/components/home-study-today";
 import { SiteHeader } from "@/components/site-header";
 import { courseCatalog, getPrimaryCourseCode } from "@/lib/course-catalog";
-import { getDashboardStats } from "@/lib/bubble";
+import { allCards, getDashboardStats } from "@/lib/bubble";
 import { getCourseGuide } from "@/lib/course-guides";
 
 const launchModes = [
   {
     href: "/study",
-    eyebrow: "Learn the move",
-    title: "Study mode",
-    body: "Use this when you know the topic but need the right first move and common trap.",
+    eyebrow: "Main workspace",
+    title: "Study",
+    body: "Start here when you need a focused review block with the topic signal, the review move, and a starter drill.",
   },
   {
     href: "/bubblegum",
-    eyebrow: "Repair weak spots",
-    title: "Bubblegum drills",
-    body: "Use this when you keep freezing, hesitating, or missing the same pattern.",
+    eyebrow: "Repair lab",
+    title: "Bubblegum",
+    body: "Go here after mistakes. Bubblegum is for weak-topic repair, not broad review.",
   },
   {
-    href: "/quiz",
-    eyebrow: "Check recall",
-    title: "Quiz mode",
-    body: "Use this when you want short recognition reps before homework, quiz, or exam review.",
+    href: "/topics",
+    eyebrow: "Reference layer",
+    title: "Topics",
+    body: "Use this when you already know what you need and want the exact topic page fast.",
   },
 ] as const;
 
 const problemRoutes = [
   {
     title: "I have a problem in front of me",
-    body: "Pick the course, match the pattern, then do the first line on paper.",
+    body: "Open Topics if you need the exact page fast, or Study if you need guided review before solving.",
   },
   {
     title: "I keep missing one topic",
-    body: "Go straight to Bubblegum and let the misses turn into a target list.",
+    body: "Go straight to Bubblegum. That is the repair loop.",
   },
   {
     title: "I need a review plan tonight",
-    body: "Open your course page and work the starter cards, most-tested patterns, then weak topics.",
+    body: "Open your course page, then use Study for the main review block and Bubblegum for weak spots.",
+  },
+] as const;
+
+const sessionPresets = [
+  {
+    href: "/study",
+    title: "15-minute review",
+    body: "Use Study to run one focused review block and clear one or two topics properly.",
+  },
+  {
+    href: "/quiz",
+    title: "Pre-quiz recall",
+    body: "Use Quiz for short recognition reps when you need fast recall before class or a quiz.",
+  },
+  {
+    href: "/bubblegum",
+    title: "Weak-topic repair",
+    body: "Use Bubblegum after mistakes to repair the exact topic that keeps costing you points.",
   },
 ] as const;
 
@@ -53,16 +72,16 @@ export default function Home() {
           <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_22rem]">
             <div className="space-y-6">
               <div className="inline-flex rounded-full border border-[color:var(--line)] bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#8b3725]">
-                Built for actual studying
+                Focused study app
               </div>
               <div className="space-y-4">
                 <h1 className="ink-title max-w-[11ch] font-display text-[clamp(3.2rem,8vw,6.1rem)] leading-[0.98] text-slate-900">
-                  Stop browsing. Start solving.
+                  Study with less noise and more traction.
                 </h1>
                 <p className="max-w-3xl text-lg leading-8 text-[color:var(--muted)]">
-                  Bubble is now a learning website first. It is built to answer
-                  the question students actually have: what should I do the
-                  moment I see this problem?
+                  Bubble is a focused study app for your four math courses. It
+                  should help you review faster, practice the right patterns,
+                  and keep weak topics visible before they cost you points.
                 </p>
               </div>
 
@@ -93,13 +112,13 @@ export default function Home() {
               </p>
               <div className="grid gap-3 text-sm leading-6 text-slate-700">
                 <div className="rounded-[1.25rem] border border-[color:var(--line)] bg-white px-4 py-3">
-                  Faster recognition before algebra starts.
+                  Faster study sessions with clearer priorities.
                 </div>
                 <div className="rounded-[1.25rem] border border-[color:var(--line)] bg-white px-4 py-3">
-                  Shorter path from confusion to action.
+                  Shorter path from confusion to useful review.
                 </div>
                 <div className="rounded-[1.25rem] border border-[color:var(--line)] bg-white px-4 py-3">
-                  One clear route for each of your four classes.
+                  One focused workspace for each of your four classes.
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-3 pt-2">
@@ -165,6 +184,40 @@ export default function Home() {
           ))}
         </section>
 
+        <HomeStudyToday cards={allCards} />
+
+        <section className="paper-panel bubble-shadow rounded-[2rem] border border-[color:var(--line)] p-6 sm:p-8">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#8b3725]">
+                Session presets
+              </p>
+              <h2 className="ink-title mt-2 font-display text-4xl text-slate-900">
+                Start a study block without deciding from scratch.
+              </h2>
+            </div>
+            <p className="max-w-2xl text-sm leading-6 text-[color:var(--muted)]">
+              These are the three study sessions Bubble should support best: guided review, short recall, and exact repair.
+            </p>
+          </div>
+          <div className="mt-6 grid gap-4 lg:grid-cols-3">
+            {sessionPresets.map((preset) => (
+              <Link
+                key={preset.href}
+                href={preset.href}
+                className="rounded-[1.6rem] border border-[color:var(--line)] bg-white/92 p-5 transition hover:-translate-y-1 hover:border-[#c77964]"
+              >
+                <h3 className="text-2xl font-semibold text-slate-900">
+                  {preset.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-[color:var(--muted)]">
+                  {preset.body}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         <section id="courses" className="grid gap-5">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
             <div>
@@ -172,12 +225,12 @@ export default function Home() {
                 Courses
               </p>
               <h2 className="ink-title mt-2 font-display text-4xl text-slate-900">
-                Open the exact class. Start with the exact move.
+                Open the exact class. Study the exact material.
               </h2>
             </div>
             <p className="max-w-2xl text-sm leading-6 text-[color:var(--muted)]">
-              Every course card below tells you what to do first when that
-              class puts a problem in front of you.
+              Every course card below tells you what that class demands, what
+              to review first, and where to go when you start slipping.
             </p>
           </div>
 
@@ -223,7 +276,7 @@ export default function Home() {
                       </div>
                       <div className="rounded-[1.3rem] border border-[color:var(--line)] bg-[#fffdfa] px-4 py-4">
                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#8b3725]">
-                          First move
+                          Study focus
                         </p>
                         <p className="mt-2 text-sm leading-6 text-slate-800">
                           {guide.survivalAdvice.en}
@@ -251,14 +304,14 @@ export default function Home() {
                 Study system
               </p>
               <h2 className="ink-title mt-2 font-display text-4xl text-slate-900">
-                A better flow than random clicking.
+                A better study flow than random clicking.
               </h2>
             </div>
             <div className="grid gap-3">
               {[
                 "1. Pick the course you are actually taking.",
-                "2. Read the exam trigger until you can name the pattern fast.",
-                "3. Use Study Mode for the first move, Bubblegum for repair, Quiz for recall.",
+                "2. Use Topics when you need the exact page, Study when you need guided review, Bubblegum when you need repair.",
+                "3. Work the course dashboard, then tighten weak spots before the next quiz or exam.",
                 "4. Keep weak topics local and come back to them before the next quiz or exam.",
               ].map((step) => (
                 <div

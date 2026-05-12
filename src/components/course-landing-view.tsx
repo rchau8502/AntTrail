@@ -10,6 +10,8 @@ import { buildBubblegumDrill } from "@/lib/bubblegum";
 import { getCourseDisplayLabel } from "@/lib/course-catalog";
 import {
   BUBBLE_PROGRESS_EVENT,
+  getBubblegumPrimaryMissType,
+  getBubblegumStudyState,
   getBubblegumTopicProgressMap,
   type BubblegumTopicProgress,
 } from "@/lib/progress";
@@ -23,7 +25,7 @@ interface CourseLandingViewProps {
 const copy = {
   en: {
     examFrame: "Exam frame",
-    firstMove: "First move",
+    firstMove: "Study focus",
     startToday: "Start here today",
     startTodayHelp:
       "If you have not started this course review yet, do these cards first in order.",
@@ -37,7 +39,7 @@ const copy = {
       "No weak topics recorded here yet. Misses from Bubblegum will show up here automatically.",
     recoveryLoop: "Recovery loop",
     recoveryBody:
-      "When you freeze: read the cue, do the first line on paper, then drill until the hesitation disappears.",
+      "When you freeze: read the cue, review the core pattern, then drill until the hesitation disappears.",
     courseMap: "Course map",
     courseMapHelp:
       "Use the core route first. Use the later cards only after the core path starts to feel stable.",
@@ -48,18 +50,32 @@ const copy = {
     openQuiz: "Open quiz",
     openStudy: "Open study mode",
     openMemory: "Open memory hooks",
-    playbook: "How to use this page",
+    playbook: "Course plan",
     playbookSteps: [
-      "1. Read the exam frame and identify the kind of problem you are holding.",
-      "2. Use the first move exactly as written before you try to improvise.",
-      "3. Work the starter cards, then the most-tested cards, then your weak topics.",
+      "1. Read the exam frame so you know what this class is testing.",
+      "2. Use the study focus to decide what to review before you start solving.",
+      "3. Work the starter cards, then the most-tested cards, then the weak-topic repair loop.",
     ],
     missedCount: "misses",
     gotCount: "got it",
+    starterDrill: "Starter drill",
+    reviewPlan: "Review plan",
+    reviewPlanBody:
+      "This page should tell you what to study first, what to recognize fast, and what to repair before your next exam.",
+    courseWorkspace: "Course workspace",
+    repair: "repair",
+    review: "review",
+    stable: "stable",
+    fresh: "new",
+    missReason: "weak because",
+    recognition: "recognition",
+    setup: "setup",
+    execution: "execution",
+    proof: "proof",
   },
   es: {
     examFrame: "Marco de examen",
-    firstMove: "Primer movimiento",
+    firstMove: "Enfoque de estudio",
     startToday: "Empieza aqui hoy",
     startTodayHelp:
       "Si aun no has empezado a repasar este curso, haz primero estas tarjetas en orden.",
@@ -73,7 +89,7 @@ const copy = {
       "Todavia no hay temas flojos guardados aqui. Los fallos de Bubblegum apareceran aqui solos.",
     recoveryLoop: "Bucle de recuperacion",
     recoveryBody:
-      "Cuando te bloquees: lee la pista, escribe la primera linea en papel y luego repite hasta que desaparezca la duda.",
+      "Cuando te bloquees: lee la pista, repasa el patron central y luego repite hasta que desaparezca la duda.",
     courseMap: "Mapa del curso",
     courseMapHelp:
       "Haz primero la ruta central. Deja las tarjetas posteriores para despues de estabilizar la base.",
@@ -84,18 +100,32 @@ const copy = {
     openQuiz: "Abrir quiz",
     openStudy: "Abrir modo estudio",
     openMemory: "Abrir ganchos",
-    playbook: "Como usar esta pagina",
+    playbook: "Plan del curso",
     playbookSteps: [
-      "1. Lee el marco de examen e identifica que tipo de problema tienes delante.",
-      "2. Usa el primer movimiento exactamente como esta escrito antes de improvisar.",
-      "3. Haz las tarjetas iniciales, luego las mas examinadas y despues tus temas flojos.",
+      "1. Lee el marco de examen para saber que pone a prueba esta clase.",
+      "2. Usa el enfoque de estudio para decidir que repasar antes de empezar a resolver.",
+      "3. Haz las tarjetas iniciales, luego las mas examinadas y despues el bucle de reparacion.",
     ],
     missedCount: "fallos",
     gotCount: "aciertos",
+    starterDrill: "Practica inicial",
+    reviewPlan: "Plan de repaso",
+    reviewPlanBody:
+      "Esta pagina debe decirte que estudiar primero, que reconocer rapido y que reparar antes del proximo examen.",
+    courseWorkspace: "Espacio del curso",
+    repair: "reparar",
+    review: "repasar",
+    stable: "estable",
+    fresh: "nuevo",
+    missReason: "flojo por",
+    recognition: "reconocimiento",
+    setup: "planteamiento",
+    execution: "ejecucion",
+    proof: "prueba",
   },
   zh: {
     examFrame: "考试框架",
-    firstMove: "第一步",
+    firstMove: "学习重点",
     startToday: "今天先做这里",
     startTodayHelp: "如果你还没开始复习这门课，就先按顺序做这些卡片。",
     mostTested: "最常考的模式",
@@ -105,7 +135,7 @@ const copy = {
     noWeakTopics: "这里还没有记录薄弱主题。Bubblegum 的错题会自动出现在这里。",
     recoveryLoop: "补救循环",
     recoveryBody:
-      "一旦卡住：先读题目线索，先写第一行，再反复练到不再犹豫。",
+      "一旦卡住：先读题目线索，先回到核心模式，再反复练到不再犹豫。",
     courseMap: "课程路线",
     courseMapHelp: "先走核心路线。等核心稳定以后，再去做后面的扩展卡片。",
     coreRoute: "核心路线",
@@ -115,14 +145,28 @@ const copy = {
     openQuiz: "打开测验",
     openStudy: "打开学习模式",
     openMemory: "打开记忆钩子",
-    playbook: "怎么用这页",
+    playbook: "课程计划",
     playbookSteps: [
-      "1. 先读考试框架，判断你手里的题属于哪一类。",
-      "2. 先按写好的第一步去做，再考虑自己发挥。",
-      "3. 先做起步卡，再做常考卡，最后回到你的薄弱主题。",
+      "1. 先读考试框架，知道这门课到底在考什么。",
+      "2. 先按学习重点决定复习什么，再开始自己做题。",
+      "3. 先做起步卡，再做常考卡，最后进入补弱循环。",
     ],
     missedCount: "错题次数",
     gotCount: "做对次数",
+    starterDrill: "起步练习",
+    reviewPlan: "复习计划",
+    reviewPlanBody:
+      "这页应该直接告诉你先学什么、要快速识别什么、以及下次考试前要补什么。",
+    courseWorkspace: "课程工作区",
+    repair: "补弱",
+    review: "复习",
+    stable: "稳定",
+    fresh: "新主题",
+    missReason: "薄弱原因",
+    recognition: "识别",
+    setup: "起手设定",
+    execution: "执行",
+    proof: "证明结构",
   },
 } as const;
 
@@ -206,6 +250,30 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
 
   const drillSeed = starterCards[0] ? buildBubblegumDrill(starterCards[0], locale, "warmup", 0) : null;
 
+  function stateLabel(cardId: string) {
+    const state = getBubblegumStudyState(
+      progressMap[cardId] ?? { gotIt: 0, missedIt: 0 },
+    );
+
+    if (state === "repair") return ui.repair;
+    if (state === "review") return ui.review;
+    if (state === "stable") return ui.stable;
+    return ui.fresh;
+  }
+
+  function missTypeLabel(progress: BubblegumTopicProgress) {
+    const type = getBubblegumPrimaryMissType(progress);
+
+    if (!type) {
+      return null;
+    }
+
+    if (type === "recognition") return ui.recognition;
+    if (type === "setup") return ui.setup;
+    if (type === "execution") return ui.execution;
+    return ui.proof;
+  }
+
   return (
     <div className="space-y-8">
       <section className="paper-panel bubble-shadow rounded-[2rem] border border-[color:var(--line)] p-6 sm:p-8">
@@ -223,6 +291,9 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
             </div>
 
             <div className="space-y-3">
+              <p className="inline-flex rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-[#8b3725]">
+                {ui.courseWorkspace}
+              </p>
               <h1 className="ink-title font-display text-4xl leading-tight text-slate-900 sm:text-5xl">
                 {getCourseDisplayLabel(course.title, locale)}
               </h1>
@@ -276,7 +347,10 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
 
           <aside className="space-y-4 rounded-[1.75rem] border border-[color:var(--line)] bg-[rgba(255,252,248,0.92)] p-5">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#8b3725]">
-              {ui.playbook}
+              {ui.reviewPlan}
+            </p>
+            <p className="text-sm leading-6 text-[color:var(--muted)]">
+              {ui.reviewPlanBody}
             </p>
             <div className="grid gap-3">
               {ui.playbookSteps.map((step) => (
@@ -302,7 +376,7 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
                 className="block rounded-[1.2rem] border border-[#d7b6ad] bg-white px-4 py-4 transition hover:border-[#c77964]"
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#8b3725]">
-                  First drill
+                  {ui.starterDrill}
                 </p>
                 <p className="mt-2 font-semibold text-slate-900">{starterCards[0].name}</p>
                 <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
@@ -362,6 +436,9 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
                         {preview.firstStep}
                       </p>
                     </div>
+                    <div className="mt-3 inline-flex rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--muted)]">
+                      {stateLabel(card.id)}
+                    </div>
                     <div className="mt-4 flex flex-wrap gap-3">
                       <Link
                         href={`/topics/${card.id}`}
@@ -415,6 +492,9 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
                     <p className="mt-3 text-sm leading-6 text-[color:var(--muted)]">
                       {preview.whyFits}
                     </p>
+                    <div className="mt-3 inline-flex rounded-full border border-[color:var(--line)] bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--muted)]">
+                      {stateLabel(card.id)}
+                    </div>
                     <div className="mt-4 flex flex-wrap gap-3">
                       <Link
                         href={`/topics/${card.id}`}
@@ -452,6 +532,7 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
               ) : (
                 weakTopics.map(({ card, progress }) => {
                   const preview = buildBubblegumDrill(card, locale, "warmup", 0);
+                  const missType = missTypeLabel(progress);
 
                   return (
                     <Link
@@ -463,6 +544,11 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
                       <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
                         {preview.firstStep}
                       </p>
+                      {missType ? (
+                        <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#8b3725]">
+                          {ui.missReason}: {missType}
+                        </p>
+                      ) : null}
                       <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#8b3725]">
                         <span>{progress.missedIt} {ui.missedCount}</span>
                         <span>•</span>

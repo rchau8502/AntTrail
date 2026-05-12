@@ -11,9 +11,12 @@ import { getCourseDisplayLabel } from "@/lib/course-catalog";
 import { buildBubblegumDrill, type BubblegumLevel } from "@/lib/bubblegum";
 import {
   BUBBLE_PROGRESS_EVENT,
+  getBubblegumPrimaryMissType,
+  getBubblegumTopicProgress,
   recordBubblegumAttempt,
   isBubblegumTopicMastered,
   setBubblegumTopicMastered,
+  type BubblegumMissType,
 } from "@/lib/progress";
 
 interface BubblegumModeProps {
@@ -47,7 +50,19 @@ const bubblegumCopy = {
     commonMiss: "Common miss",
     selfCheck: "Self-check",
     missedBecause: "Why you likely missed it",
+    missTypePrompt: "What kind of miss was it?",
+    recognition: "I did not recognize it",
+    setupMiss: "I knew the topic but not the setup",
+    execution: "I set it up but lost the execution",
+    proof: "I knew the idea but not the proof structure",
     nextLookFor: "Next time look for this",
+    recoveryPlan: "Recovery plan",
+    recoveryDrill: "Micro-drill",
+    recoveryChecklist: "Do this next",
+    recognitionPlan: "Recognition reset",
+    setupPlan: "Setup reset",
+    executionPlan: "Execution reset",
+    proofPlan: "Proof reset",
     gotIt: "I got it",
     missedIt: "I missed it",
     chewAnother: "Chew another problem",
@@ -74,7 +89,19 @@ const bubblegumCopy = {
     commonMiss: "Error tipico",
     selfCheck: "Autochequeo",
     missedBecause: "Por que probablemente fallaste",
+    missTypePrompt: "Que tipo de fallo fue?",
+    recognition: "No reconoci el patron",
+    setupMiss: "Reconoci el tema pero no el planteamiento",
+    execution: "Plantee bien pero falle la ejecucion",
+    proof: "Sabia la idea pero no la estructura de la prueba",
     nextLookFor: "La proxima vez busca esto",
+    recoveryPlan: "Plan de recuperacion",
+    recoveryDrill: "Micropractica",
+    recoveryChecklist: "Haz esto ahora",
+    recognitionPlan: "Reinicio de reconocimiento",
+    setupPlan: "Reinicio de planteamiento",
+    executionPlan: "Reinicio de ejecucion",
+    proofPlan: "Reinicio de prueba",
     gotIt: "Lo saque",
     missedIt: "Lo falle",
     chewAnother: "Masticar otro problema",
@@ -101,7 +128,19 @@ const bubblegumCopy = {
     commonMiss: "常见失误",
     selfCheck: "自查",
     missedBecause: "这次为什么容易错",
+    missTypePrompt: "这次错在什么地方？",
+    recognition: "我没有先认出题型",
+    setupMiss: "我知道主题，但不会起手设定",
+    execution: "我会列式，但中间算崩了",
+    proof: "我懂想法，但不会组织证明",
     nextLookFor: "下次先看这个",
+    recoveryPlan: "补救计划",
+    recoveryDrill: "微型练习",
+    recoveryChecklist: "接下来这样做",
+    recognitionPlan: "识别重置",
+    setupPlan: "起手重置",
+    executionPlan: "执行重置",
+    proofPlan: "证明重置",
     gotIt: "我做出来了",
     missedIt: "我没做出来",
     chewAnother: "再嚼一题",
@@ -127,10 +166,14 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
   const [showSetup, setShowSetup] = useState(false);
   const [showPath, setShowPath] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
+  const [pendingMiss, setPendingMiss] = useState(false);
+  const [missType, setMissType] = useState<BubblegumMissType | null>(null);
 
   useEffect(() => {
     const sync = () => {
       setMastered(isBubblegumTopicMastered(card.id));
+      const progress = getBubblegumTopicProgress(card.id);
+      setMissType(progress.lastMissType ?? getBubblegumPrimaryMissType(progress) ?? null);
     };
 
     sync();
@@ -157,6 +200,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
     setShowSetup(false);
     setShowPath(false);
     setShowAnswer(false);
+    setPendingMiss(false);
   }
 
   function changeLevel(nextLevel: BubblegumLevel) {
@@ -170,7 +214,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
     resetRevealState();
   }
 
-  function record(nextOutcome: Outcome) {
+  function finishRecord(nextOutcome: Outcome, selectedMissType?: BubblegumMissType) {
     if (outcome) {
       return;
     }
@@ -182,7 +226,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
     setShowSetup(true);
     setShowPath(true);
     setShowAnswer(true);
-    recordBubblegumAttempt(card.id, nextOutcome);
+    recordBubblegumAttempt(card.id, nextOutcome, selectedMissType);
 
     if (nextOutcome === "gotIt") {
       setStreak((value) => value + 1);
@@ -192,10 +236,120 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
     setStreak(0);
   }
 
+  function record(nextOutcome: Outcome) {
+    if (nextOutcome === "missedIt") {
+      setPendingMiss(true);
+      setOutcome("missedIt");
+      setShowTechnique(true);
+      setShowStep(true);
+      setShowSetup(true);
+      setShowPath(true);
+      setShowAnswer(true);
+      return;
+    }
+
+    finishRecord(nextOutcome);
+  }
+
+  function recordMissType(selectedMissType: BubblegumMissType) {
+    if (!pendingMiss) {
+      return;
+    }
+
+    setMissType(selectedMissType);
+    setPendingMiss(false);
+    setChews((value) => value + 1);
+    setStreak(0);
+    recordBubblegumAttempt(card.id, "missedIt", selectedMissType);
+  }
+
+  function getMissAdvice(type: BubblegumMissType | null) {
+    if (type === "recognition") {
+      return drill.nextLookFor;
+    }
+
+    if (type === "setup") {
+      return drill.firstStep;
+    }
+
+    if (type === "execution") {
+      return drill.setup;
+    }
+
+    if (type === "proof") {
+      return drill.fullPath[0] ?? drill.firstStep;
+    }
+
+    return drill.nextLookFor;
+  }
+
+  function getRecoveryPlan(type: BubblegumMissType | null) {
+    if (type === "recognition") {
+      return {
+        title: ui.recognitionPlan,
+        body: drill.nextLookFor,
+        drill: localizedCard.looksLike,
+        checklist: [
+          localizedCard.looksLike,
+          drill.technique,
+          drill.firstStep,
+        ],
+      };
+    }
+
+    if (type === "setup") {
+      return {
+        title: ui.setupPlan,
+        body: drill.firstStep,
+        drill: drill.setup,
+        checklist: [
+          drill.technique,
+          drill.firstStep,
+          drill.setup,
+        ],
+      };
+    }
+
+    if (type === "execution") {
+      return {
+        title: ui.executionPlan,
+        body: drill.setup,
+        drill: drill.fullPath[0] ?? drill.firstStep,
+        checklist: [
+          drill.setup,
+          drill.fullPath[0] ?? drill.firstStep,
+          drill.selfCheck,
+        ],
+      };
+    }
+
+    if (type === "proof") {
+      return {
+        title: ui.proofPlan,
+        body: drill.fullPath[0] ?? drill.firstStep,
+        drill: localizedCard.useItWhen,
+        checklist: [
+          localizedCard.useItWhen,
+          drill.fullPath[0] ?? drill.firstStep,
+          drill.fullPath[1] ?? drill.selfCheck,
+        ],
+      };
+    }
+
+    return {
+      title: ui.recoveryPlan,
+      body: drill.nextLookFor,
+      drill: drill.firstStep,
+      checklist: [drill.firstStep, drill.setup, drill.selfCheck],
+    };
+  }
+
   function spitItOut() {
     setBubblegumTopicMastered(card.id, true);
     setMastered(true);
   }
+
+  const recoveryPlan = getRecoveryPlan(missType);
 
   return (
     <div className="space-y-8">
@@ -415,15 +569,49 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
             ) : null}
 
             {outcome === "missedIt" ? (
-              <div className="rounded-[1.75rem] border border-amber-200 bg-amber-50/80 p-5">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-amber-700">
-                  {ui.missedBecause}
-                </p>
-                <p className="mt-3 text-sm leading-6 text-slate-800">{drill.missedBecause}</p>
-                <p className="mt-4 text-sm leading-6 text-slate-800">
-                  <span className="font-semibold text-slate-900">{ui.nextLookFor}:</span>{" "}
-                  {drill.nextLookFor}
-                </p>
+              <div className="grid gap-4 lg:grid-cols-2">
+                <div className="rounded-[1.75rem] border border-amber-200 bg-amber-50/80 p-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-amber-700">
+                    {ui.missedBecause}
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-slate-800">{drill.missedBecause}</p>
+                  <p className="mt-4 text-sm leading-6 text-slate-800">
+                    <span className="font-semibold text-slate-900">{ui.nextLookFor}:</span>{" "}
+                    {getMissAdvice(missType)}
+                  </p>
+                </div>
+
+                <div className="rounded-[1.75rem] border border-sky-200 bg-sky-50/80 p-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
+                    {recoveryPlan.title}
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-slate-800">
+                    {recoveryPlan.body}
+                  </p>
+                  <div className="mt-4 rounded-[1.2rem] border border-sky-100 bg-white px-4 py-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+                      {ui.recoveryDrill}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-900">
+                      {recoveryPlan.drill}
+                    </p>
+                  </div>
+                  <div className="mt-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+                      {ui.recoveryChecklist}
+                    </p>
+                    <div className="mt-3 grid gap-2">
+                      {recoveryPlan.checklist.map((item, index) => (
+                        <div
+                          key={`${item}-${index}`}
+                          className="rounded-xl border border-sky-100 bg-white px-3 py-2 text-sm leading-6 text-slate-800"
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             ) : null}
 
@@ -457,6 +645,42 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
               {ui.missedIt}
             </button>
           </div>
+
+          {pendingMiss ? (
+            <div className="mt-4 rounded-[1.4rem] border border-amber-200 bg-amber-50/80 p-4">
+              <p className="text-sm font-semibold text-amber-800">{ui.missTypePrompt}</p>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                <button
+                  type="button"
+                  onClick={() => recordMissType("recognition")}
+                  className="rounded-[1rem] border border-[color:var(--line)] bg-white px-4 py-3 text-left text-sm font-semibold text-slate-900 transition hover:border-amber-300"
+                >
+                  {ui.recognition}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => recordMissType("setup")}
+                  className="rounded-[1rem] border border-[color:var(--line)] bg-white px-4 py-3 text-left text-sm font-semibold text-slate-900 transition hover:border-amber-300"
+                >
+                  {ui.setupMiss}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => recordMissType("execution")}
+                  className="rounded-[1rem] border border-[color:var(--line)] bg-white px-4 py-3 text-left text-sm font-semibold text-slate-900 transition hover:border-amber-300"
+                >
+                  {ui.execution}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => recordMissType("proof")}
+                  className="rounded-[1rem] border border-[color:var(--line)] bg-white px-4 py-3 text-left text-sm font-semibold text-slate-900 transition hover:border-amber-300"
+                >
+                  {ui.proof}
+                </button>
+              </div>
+            </div>
+          ) : null}
 
           {outcome ? (
             <p className="mt-4 text-sm leading-6 text-[color:var(--muted)]">

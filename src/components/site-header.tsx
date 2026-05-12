@@ -28,14 +28,14 @@ export function SiteHeader() {
                 Bubble
               </p>
               <p className="mt-1 line-clamp-2 text-sm text-[color:var(--muted)]">
-                Learning system for MATH 130A, 140A, 121A, and 2E
+                Focused study app for MATH 130A, 140A, 121A, and 2E
               </p>
             </div>
           </Link>
 
           <div className="flex shrink-0 items-center gap-3">
             <div className="hidden rounded-full border border-[color:var(--line)] bg-white/70 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#7a2e1d] md:inline-flex">
-              First move first
+              Study with focus
             </div>
             <div className="sm:hidden">
               <LanguageSwitcher compact />
