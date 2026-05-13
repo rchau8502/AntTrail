@@ -276,7 +276,7 @@ export default function Home() {
                       </div>
                       <div className="rounded-[1.3rem] border border-[color:var(--line)] bg-[#fffdfa] px-4 py-4">
                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#8b3725]">
-                          Study focus
+                          Solve focus
                         </p>
                         <p className="mt-2 text-sm leading-6 text-slate-800">
                           {guide.survivalAdvice.en}

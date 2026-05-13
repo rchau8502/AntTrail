@@ -82,7 +82,7 @@ export const multivariableCalculusTwoCourse: CourseContent = {
       watchOutFor: "forgetting arc length uses the magnitude of velocity, not the vector itself",
       rememberThis: "arc length starts with speed",
       quickExample: {
-        problem: "What is the first move for arc length of a space curve?",
+        problem: "What setup starts arc length for a space curve?",
         move: "Find |r'(t)|.",
       },
       typicalProblemShapes: [
@@ -161,7 +161,7 @@ export const multivariableCalculusTwoCourse: CourseContent = {
       ],
       miniDrill: [
         {
-          prompt: "What is the universal first move for a line integral?",
+          prompt: "What setup always starts a line integral?",
           answer: "Parameterize the curve.",
         },
         {
@@ -292,7 +292,7 @@ export const multivariableCalculusTwoCourse: CourseContent = {
       watchOutFor: "forgetting the normal vector or the surface-area factor",
       rememberThis: "surface integrals start with the surface description",
       quickExample: {
-        problem: "What is the first move for a flux integral across S?",
+        problem: "What setup starts a flux integral across S?",
         move: "Get the surface into a usable parameterization or graph form.",
       },
       typicalProblemShapes: [

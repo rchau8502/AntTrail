@@ -289,7 +289,7 @@ export const analysisOneCourse: CourseContent = {
           answer: "The denominator limit is not zero.",
         },
         {
-          prompt: "What is the first move on a messy algebraic sequence?",
+          prompt: "What solve structure helps on a messy algebraic sequence?",
           answer: "Break it into simpler convergent pieces.",
         },
       ],
@@ -392,7 +392,7 @@ export const analysisOneCourse: CourseContent = {
       watchOutFor: "trying to prove Cauchy by already assuming the limit exists",
       rememberThis: "Cauchy means compare two late terms directly",
       quickExample: {
-        problem: "What is the first move in a Cauchy proof?",
+        problem: "What solve structure starts a Cauchy proof?",
         move: "Start with |a_n - a_m| and force it below epsilon.",
       },
       typicalProblemShapes: [
@@ -539,14 +539,14 @@ export const analysisOneCourse: CourseContent = {
       topic: "Series as partial sums",
       name: "Series First Move",
       order: 14,
-      useItWhen: "you see an infinite sum and need the first move",
+      useItWhen: "you see an infinite sum and need the base solve structure",
       looksLike: "sum a_n, partial sums s_n, geometric series, p-series",
       doThis: "define the partial sums s_n immediately and check whether s_n converges",
       thinkOfItAs: "a series is a sequence of running totals",
       watchOutFor: "treating sum a_n like one algebraic object instead of a limit of partial sums",
       rememberThis: "series = partial sums first",
       quickExample: {
-        problem: "What is the first move on an infinite series?",
+        problem: "What solve structure starts an infinite series problem?",
         move: "Think about the sequence of partial sums.",
       },
       typicalProblemShapes: [
@@ -585,7 +585,7 @@ export const analysisOneCourse: CourseContent = {
       watchOutFor: "jumping to a fancy test before checking the basic pattern",
       rememberThis: "shape first, test second",
       quickExample: {
-        problem: "What is the first move on a positive-term series?",
+        problem: "What solve structure starts a positive-term series?",
         move: "Ask whether comparison, ratio, root, or integral fits the shape.",
       },
       typicalProblemShapes: [
