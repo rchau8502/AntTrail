@@ -137,7 +137,7 @@ const quizCopy = {
     currentCheck: "Current check",
     answerReview: "Answer review",
     whyThisAnswer: "Why this answer fits",
-    nextStep: "If you miss it",
+    nextStep: "Solve support",
     results: "Session result",
     restart: "Run another recall pass",
   },
@@ -149,7 +149,7 @@ const quizCopy = {
     currentCheck: "Chequeo actual",
     answerReview: "Revision de respuesta",
     whyThisAnswer: "Por que encaja esta respuesta",
-    nextStep: "Si fallas",
+    nextStep: "Apoyo para resolver",
     results: "Resultado de sesion",
     restart: "Haz otra pasada de recuerdo",
   },
@@ -161,7 +161,7 @@ const quizCopy = {
     currentCheck: "当前检查",
     answerReview: "答案复盘",
     whyThisAnswer: "为什么这个答案对",
-    nextStep: "如果做错了",
+    nextStep: "解题支持",
     results: "本轮结果",
     restart: "再做一轮回忆",
   },
@@ -422,7 +422,9 @@ export function RecognitionQuiz({ cards, initialCardId }: RecognitionQuizProps) 
                       {ui.nextStep}
                     </p>
                     <p className="mt-2 text-sm leading-6 text-slate-700">
-                      {selected === currentItem.answer ? currentCard?.rememberThis : currentCard?.doThis}
+                      {selected === currentItem.answer
+                        ? currentCard?.rememberThis
+                        : quizDrill?.firstStep ?? currentCard?.doThis}
                     </p>
                   </div>
                 </div>
@@ -456,7 +458,7 @@ export function RecognitionQuiz({ cards, initialCardId }: RecognitionQuizProps) 
                   <WorkedExamplePhoto
                     card={currentCard}
                     problem={quizDrill.prompt}
-                    firstMove={quizDrill.firstStep}
+                    solveEntry={quizDrill.firstStep}
                     setup={quizDrill.setup}
                     steps={quizDrill.fullPath}
                     answer={quizDrill.answer}

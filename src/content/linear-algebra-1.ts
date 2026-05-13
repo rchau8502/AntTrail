@@ -251,7 +251,7 @@ export const linearAlgebraOneCourse: CourseContent = {
       watchOutFor: "mixing up domain-side objects with codomain-side objects",
       rememberThis: "kernel lives in the input space, image lives in the output space",
       quickExample: {
-        problem: "What is the first move to find ker T?",
+        problem: "What solve setup finds ker T?",
         move: "Set T(v) = 0 and solve.",
       },
       typicalProblemShapes: [
@@ -391,7 +391,7 @@ export const linearAlgebraOneCourse: CourseContent = {
       watchOutFor: "reversing the direction of the basis change matrix",
       rememberThis: "change of basis changes coordinates, not the vector itself",
       quickExample: {
-        problem: "What is the first move to build a change-of-basis matrix from B to C?",
+        problem: "What setup builds a change-of-basis matrix from B to C?",
         move: "Rewrite the B basis vectors in C-coordinates.",
       },
       typicalProblemShapes: [

@@ -289,7 +289,7 @@ export function TopicExplorer({ cards }: TopicExplorerProps) {
                   {ui.reviewNow}
                 </p>
                 <p className="mt-2 text-sm font-semibold leading-6 text-slate-900">
-                  {card.doThis}
+                  {buildBubblegumDrill(card, locale, "warmup", 0).firstStep}
                 </p>
               </div>
 

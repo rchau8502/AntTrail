@@ -41,7 +41,7 @@ const bubblegumCopy = {
     whyFits: "Why this fits",
     notationHelp: "Notation help",
     revealTechnique: "Reveal technique",
-    revealFirstStep: "Reveal first step",
+    revealSolveEntry: "Reveal solve entry",
     revealSetup: "Reveal setup",
     revealPath: "Reveal full path",
     revealAnswer: "Reveal answer",
@@ -80,7 +80,7 @@ const bubblegumCopy = {
     whyFits: "Por que va aqui",
     notationHelp: "Ayuda de notacion",
     revealTechnique: "Mostrar tecnica",
-    revealFirstStep: "Mostrar primer paso",
+    revealSolveEntry: "Mostrar entrada de resolucion",
     revealSetup: "Mostrar planteamiento",
     revealPath: "Mostrar camino completo",
     revealAnswer: "Mostrar respuesta",
@@ -119,7 +119,7 @@ const bubblegumCopy = {
     whyFits: "为什么是这类题",
     notationHelp: "符号提示",
     revealTechnique: "显示方法",
-    revealFirstStep: "显示第一步",
+    revealSolveEntry: "显示解题入口",
     revealSetup: "显示列式",
     revealPath: "显示完整思路",
     revealAnswer: "显示答案",
@@ -477,7 +477,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
             onClick={() => setShowStep(true)}
             className="inline-flex items-center justify-center rounded-full border border-[color:var(--line)] bg-white px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-rose-200"
           >
-            {ui.revealFirstStep}
+            {ui.revealSolveEntry}
           </button>
           <button
             type="button"
@@ -515,7 +515,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
           {showStep ? (
             <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-emerald-50/70 p-5">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">
-                {t("firstMove")}
+                {t("solveEntry")}
               </p>
               <p className="mt-3 text-base leading-7 text-slate-900">{drill.firstStep}</p>
             </div>
@@ -618,7 +618,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
             <WorkedExamplePhoto
               card={localizedCard}
               problem={drill.prompt}
-              firstMove={drill.firstStep}
+              solveEntry={drill.firstStep}
               setup={drill.setup}
               steps={drill.fullPath}
               answer={drill.answer}

@@ -15,9 +15,11 @@ import {
 } from "@/lib/course-catalog";
 import {
   BUBBLE_PROGRESS_EVENT,
+  getBubblegumPrimaryMissType,
   getBubblegumPriorityScore,
   getBubblegumStudyState,
   getBubblegumTopicProgressMap,
+  type BubblegumMissType,
   type BubblegumTopicProgress,
 } from "@/lib/progress";
 import {
@@ -64,6 +66,11 @@ const studyCopy = {
     progress: "Session progress",
     primaryTag: "Main review move",
     referenceCard: "Reference card",
+    solveSupport: "Solve support",
+    recognitionSupport: "Recognition support",
+    setupSupport: "Setup support",
+    executionSupport: "Execution support",
+    proofSupport: "Proof support",
     repair: "Repair",
     review: "Review",
     stable: "Stable",
@@ -87,6 +94,11 @@ const studyCopy = {
     progress: "Progreso de sesion",
     primaryTag: "Movimiento principal",
     referenceCard: "Ficha de referencia",
+    solveSupport: "Apoyo para resolver",
+    recognitionSupport: "Apoyo de reconocimiento",
+    setupSupport: "Apoyo de planteamiento",
+    executionSupport: "Apoyo de ejecucion",
+    proofSupport: "Apoyo de prueba",
     repair: "Reparar",
     review: "Repasar",
     stable: "Estable",
@@ -109,6 +121,11 @@ const studyCopy = {
     progress: "本轮进度",
     primaryTag: "核心复习动作",
     referenceCard: "参考卡片",
+    solveSupport: "解题支持",
+    recognitionSupport: "识别支持",
+    setupSupport: "起手支持",
+    executionSupport: "执行支持",
+    proofSupport: "证明支持",
     repair: "补弱",
     review: "复习",
     stable: "稳定",
@@ -204,6 +221,9 @@ export function StudyMode({ cards, initialCardId }: StudyModeProps) {
 
   const studyDrill = buildBubblegumDrill(currentCard, locale, "warmup", 0);
   const nearbyCards = visibleCards.slice(Math.max(0, index - 2), index + 5);
+  const currentMissType = getBubblegumPrimaryMissType(
+    progressMap[currentCard.id] ?? { gotIt: 0, missedIt: 0 },
+  );
 
   function stateLabel(cardId: string) {
     const state = getBubblegumStudyState(
@@ -220,6 +240,43 @@ export function StudyMode({ cards, initialCardId }: StudyModeProps) {
     const nextIndex = (index + delta + visibleCards.length) % visibleCards.length;
     setIndex(nextIndex);
   }
+
+  function getSolveSupport(type: BubblegumMissType | undefined) {
+    if (type === "recognition") {
+      return {
+        title: ui.recognitionSupport,
+        body: currentCard.looksLike,
+      };
+    }
+
+    if (type === "setup") {
+      return {
+        title: ui.setupSupport,
+        body: studyDrill.setup,
+      };
+    }
+
+    if (type === "execution") {
+      return {
+        title: ui.executionSupport,
+        body: studyDrill.fullPath[0] ?? studyDrill.firstStep,
+      };
+    }
+
+    if (type === "proof") {
+      return {
+        title: ui.proofSupport,
+        body: `${currentCard.useItWhen}. ${currentCard.thinkOfItAs}`,
+      };
+    }
+
+    return {
+      title: ui.solveSupport,
+      body: `${studyDrill.firstStep}. ${studyDrill.setup}`,
+    };
+  }
+
+  const solveSupport = getSolveSupport(currentMissType);
 
   return (
     <div className="space-y-8">
@@ -374,7 +431,7 @@ export function StudyMode({ cards, initialCardId }: StudyModeProps) {
               <div className="grid gap-4 lg:grid-cols-2">
                 <div className="rounded-[1.5rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.76),rgba(255,255,255,0.96))] p-4">
                   <p className="text-sm font-semibold text-emerald-800">{ui.reviewNow}</p>
-                  <p className="mt-2 text-sm leading-6 text-slate-800">{currentCard.doThis}</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-800">{studyDrill.firstStep}</p>
                 </div>
                 <div className="rounded-[1.5rem] border border-rose-100 bg-rose-50/70 p-4">
                   <p className="text-sm font-semibold text-rose-600">{ui.mistakeToAvoid}</p>
@@ -390,6 +447,11 @@ export function StudyMode({ cards, initialCardId }: StudyModeProps) {
                 </div>
               </div>
 
+              <div className="rounded-[1.5rem] border border-sky-100 bg-sky-50/80 p-4">
+                <p className="text-sm font-semibold text-sky-700">{solveSupport.title}</p>
+                <p className="mt-2 text-sm leading-6 text-slate-800">{solveSupport.body}</p>
+              </div>
+
               <details className="rounded-[1.5rem] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-4" open>
                 <summary className="cursor-pointer list-none text-sm font-semibold uppercase tracking-[0.18em] text-sky-700 [&::-webkit-details-marker]:hidden">
                   {ui.workedSupport}
@@ -398,7 +460,7 @@ export function StudyMode({ cards, initialCardId }: StudyModeProps) {
                   <WorkedExamplePhoto
                     card={currentCard}
                     problem={studyDrill.prompt}
-                    firstMove={studyDrill.firstStep}
+                    solveEntry={studyDrill.firstStep}
                     setup={studyDrill.setup}
                     steps={studyDrill.fullPath}
                     answer={studyDrill.answer}

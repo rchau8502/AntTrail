@@ -25,7 +25,7 @@ interface CourseLandingViewProps {
 const copy = {
   en: {
     examFrame: "Exam frame",
-    firstMove: "Study focus",
+    solveFocus: "Solve focus",
     startToday: "Start here today",
     startTodayHelp:
       "If you have not started this course review yet, do these cards first in order.",
@@ -53,7 +53,7 @@ const copy = {
     playbook: "Course plan",
     playbookSteps: [
       "1. Read the exam frame so you know what this class is testing.",
-      "2. Use the study focus to decide what to review before you start solving.",
+      "2. Use the solve focus to decide what structure to review before you start solving.",
       "3. Work the starter cards, then the most-tested cards, then the weak-topic repair loop.",
     ],
     missedCount: "misses",
@@ -75,7 +75,7 @@ const copy = {
   },
   es: {
     examFrame: "Marco de examen",
-    firstMove: "Enfoque de estudio",
+    solveFocus: "Enfoque de resolucion",
     startToday: "Empieza aqui hoy",
     startTodayHelp:
       "Si aun no has empezado a repasar este curso, haz primero estas tarjetas en orden.",
@@ -103,7 +103,7 @@ const copy = {
     playbook: "Plan del curso",
     playbookSteps: [
       "1. Lee el marco de examen para saber que pone a prueba esta clase.",
-      "2. Usa el enfoque de estudio para decidir que repasar antes de empezar a resolver.",
+      "2. Usa el enfoque de resolucion para decidir que estructura repasar antes de empezar a resolver.",
       "3. Haz las tarjetas iniciales, luego las mas examinadas y despues el bucle de reparacion.",
     ],
     missedCount: "fallos",
@@ -125,7 +125,7 @@ const copy = {
   },
   zh: {
     examFrame: "考试框架",
-    firstMove: "学习重点",
+    solveFocus: "解题重点",
     startToday: "今天先做这里",
     startTodayHelp: "如果你还没开始复习这门课，就先按顺序做这些卡片。",
     mostTested: "最常考的模式",
@@ -148,7 +148,7 @@ const copy = {
     playbook: "课程计划",
     playbookSteps: [
       "1. 先读考试框架，知道这门课到底在考什么。",
-      "2. 先按学习重点决定复习什么，再开始自己做题。",
+      "2. 先按解题重点决定先复习哪种结构，再开始自己做题。",
       "3. 先做起步卡，再做常考卡，最后进入补弱循环。",
     ],
     missedCount: "错题次数",
@@ -314,7 +314,7 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
                 </div>
                 <div className="rounded-[1.5rem] border border-[color:var(--line)] bg-[#fffdfa] p-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#8b3725]">
-                    {ui.firstMove}
+                    {ui.solveFocus}
                   </p>
                   <p className="mt-3 text-sm leading-6 text-slate-800">
                     {guide.survivalAdvice[locale] ?? guide.survivalAdvice.en}
@@ -430,7 +430,7 @@ export function CourseLandingView({ course, guide }: CourseLandingViewProps) {
                     </p>
                     <div className="mt-4 rounded-[1.15rem] border border-[color:var(--line)] bg-white px-4 py-3">
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8b3725]">
-                        {ui.firstMove}
+                        {ui.solveFocus}
                       </p>
                       <p className="mt-2 text-sm leading-6 text-slate-900">
                         {preview.firstStep}

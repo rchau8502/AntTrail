@@ -271,7 +271,7 @@ export function BubblegumHub({ cards }: BubblegumHubProps) {
                 <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
                   {getTechniqueLabel(card, locale)}
                 </p>
-                <p className="mt-3 text-sm leading-6 text-slate-800">{card.doThis}</p>
+                <p className="mt-3 text-sm leading-6 text-slate-800">{buildBubblegumDrill(card, locale, "warmup", 0).firstStep}</p>
               </Link>
             ))}
           </div>

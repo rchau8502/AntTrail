@@ -9,6 +9,7 @@ import { MathConceptVisual } from "@/components/math-concept-visual";
 import type { BubbleCard } from "@/content/schema";
 import { localizeCard } from "@/content/localization";
 import { getCourseDisplayLabel } from "@/lib/course-catalog";
+import { buildBubblegumDrill } from "@/lib/bubblegum";
 
 interface HomeViewProps {
   sampleCards: BubbleCard[];
@@ -28,7 +29,7 @@ export function HomeView({ sampleCards, stats }: HomeViewProps) {
     t("name"),
     t("useItWhen"),
     t("looksLike"),
-    t("doThis"),
+    t("solveEntry"),
     t("thinkOfItAs"),
     t("watchOutFor"),
     t("rememberThis"),
@@ -229,9 +230,9 @@ export function HomeView({ sampleCards, stats }: HomeViewProps) {
                 </p>
                 <p>
                   <span className="font-semibold text-slate-900">
-                    {t("doThis")}:
+                    {t("solveEntry")}:
                   </span>{" "}
-                  {card.doThis}
+                  {buildBubblegumDrill(card, locale, "warmup", 0).firstStep}
                 </p>
                 <p>
                   <span className="font-semibold text-slate-900">
