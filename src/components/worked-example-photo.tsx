@@ -10,7 +10,7 @@ import { getPatternTokens, getTechniqueLabel } from "@/lib/recognition";
 interface WorkedExamplePhotoProps {
   card: BubbleCard;
   problem?: string;
-  firstMove?: string;
+  solveEntry?: string;
   setup?: string;
   steps?: string[];
   answer?: string;
@@ -82,7 +82,7 @@ function trimLine(text: string | undefined, fallback: string) {
   return cleaned && cleaned.length > 0 ? cleaned : fallback;
 }
 
-function getTemplate(card: BubbleCard, firstMove: string): ExampleLayout {
+function getTemplate(card: BubbleCard, solveEntry: string): ExampleLayout {
   const fingerprint = [card.id, card.unit, card.topic, card.name, ...card.tags]
     .join(" ")
     .toLowerCase();
@@ -153,7 +153,7 @@ function getTemplate(card: BubbleCard, firstMove: string): ExampleLayout {
   return {
     setup: trimLine(card.looksLike, "spot the shape first"),
     steps: [
-      trimLine(firstMove, "start with the standard move"),
+      trimLine(solveEntry, "write the solve structure first"),
       trimLine(card.quickExample?.move, "push the setup into a cleaner form"),
       trimLine(card.rememberThis, "check the takeaway before moving on"),
     ],
@@ -165,7 +165,7 @@ function getTemplate(card: BubbleCard, firstMove: string): ExampleLayout {
 export function WorkedExamplePhoto({
   card,
   problem: problemOverride,
-  firstMove: firstMoveOverride,
+  solveEntry: solveEntryOverride,
   setup,
   steps,
   answer,
@@ -174,8 +174,8 @@ export function WorkedExamplePhoto({
   const { locale, t } = useLanguage();
   const ui = photoCopy[locale] ?? photoCopy.en;
   const problem = problemOverride ?? card.quickExample?.problem ?? card.looksLike;
-  const firstMove = firstMoveOverride ?? card.quickExample?.move ?? card.doThis;
-  const template = getTemplate(card, firstMove);
+  const solveEntry = solveEntryOverride ?? card.quickExample?.move ?? card.doThis;
+  const template = getTemplate(card, solveEntry);
   const workedSetup = trimLine(setup, template.setup);
   const workedSteps = (steps?.length ? steps : template.steps)
     .map((step) => trimLine(step, ""))

@@ -119,14 +119,38 @@ function getPrimerLine(
   technique: string,
 ) {
   if (locale === "es") {
-    return `${card.name} aparece cuando ${card.useItWhen}. La jugada base es ${technique}.`;
+    return `${card.name} aparece cuando ${card.useItWhen}. La estructura base de solucion usa ${technique}.`;
   }
 
   if (locale === "zh") {
-    return `${card.name} 会在 ${card.useItWhen} 时出现。基础做法先用 ${technique}。`;
+    return `${card.name} 会在 ${card.useItWhen} 时出现。基础解题结构先用 ${technique}。`;
   }
 
-  return `${card.name} shows up when ${card.useItWhen}. The base move is ${technique}.`;
+  return `${card.name} shows up when ${card.useItWhen}. The base solve structure uses ${technique}.`;
+}
+
+function solveEntryLabel(locale: keyof typeof teachingCopy) {
+  if (locale === "es") {
+    return "Entrada de solucion";
+  }
+
+  if (locale === "zh") {
+    return "解题入口";
+  }
+
+  return "Solve entry";
+}
+
+function solveStructureLabel(locale: keyof typeof teachingCopy) {
+  if (locale === "es") {
+    return "Estructura de solucion";
+  }
+
+  if (locale === "zh") {
+    return "解题结构";
+  }
+
+  return "Solve structure";
 }
 
 export function TopicDetailView({
@@ -152,6 +176,8 @@ export function TopicDetailView({
   const primerLine = getPrimerLine(locale, localizedCard, localizedTechniqueLabel);
   const teachingScaffold = getTeachingScaffold(localizedCard, locale);
   const optionalTopic = isOptionalCard(card);
+  const solveEntry = solveEntryLabel(locale);
+  const solveStructure = solveStructureLabel(locale);
 
   useEffect(() => {
     const sync = () => {
@@ -234,10 +260,10 @@ export function TopicDetailView({
 
                   <div className="rounded-[1.35rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.7),rgba(255,255,255,0.96))] p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
-                      {t("firstMove")}
+                      {solveEntry}
                     </p>
                     <p className="mt-2 text-sm leading-6 text-slate-800">
-                      {localizedCard.doThis}
+                      {topicDrill.firstStep}
                     </p>
                   </div>
 
@@ -317,7 +343,7 @@ export function TopicDetailView({
                       {warmupDrill.prompt}
                     </p>
                     <p className="mt-4 text-sm leading-6 text-slate-700">
-                      <span className="font-semibold text-slate-900">{t("firstMove")}:</span>{" "}
+                      <span className="font-semibold text-slate-900">{solveStructure}:</span>{" "}
                       {warmupDrill.firstStep}
                     </p>
                   </div>
@@ -375,10 +401,10 @@ export function TopicDetailView({
 
                   <div className="rounded-[1.55rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(214,255,232,0.7),rgba(255,255,255,0.94))] p-4 sm:p-5">
                     <p className="text-sm font-semibold text-sky-700">
-                      {t("firstMove")}
+                      {solveEntry}
                     </p>
                     <p className="mt-3 text-base leading-7 text-slate-800">
-                      {localizedCard.doThis}
+                      {topicDrill.firstStep}
                     </p>
                   </div>
 

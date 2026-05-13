@@ -28,14 +28,14 @@ function buildWhy(card: BubbleCard, locale: Locale) {
   }
 
   if (locale === "es") {
-    return `Este movimiento encaja porque estos problemas tienen esa forma. Empezar con "${card.doThis}" te pone en la estructura correcta y evita el error comun de ${card.watchOutFor}.`;
+    return `Este enfoque encaja porque estos problemas tienen esa forma. Usar "${card.doThis}" te pone en la estructura correcta y evita el error comun de ${card.watchOutFor}.`;
   }
 
   if (locale === "zh") {
-    return `这样做是因为这类题本来就是这个结构。先做“${card.doThis}”能把题目带到正确轨道上，也能避开常见错误：${card.watchOutFor}。`;
+    return `这样解是因为这类题本来就是这个结构。用“${card.doThis}”能把题目带到正确轨道上，也能避开常见错误：${card.watchOutFor}。`;
   }
 
-  return `This move fits because these problems have that shape. Starting with "${card.doThis}" puts you on the right structure and helps you avoid the common mistake of ${card.watchOutFor}.`;
+  return `This approach fits because these problems have that shape. Using "${card.doThis}" puts you on the right structure and helps you avoid the common mistake of ${card.watchOutFor}.`;
 }
 
 export function getTeachingScaffold(

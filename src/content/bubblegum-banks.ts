@@ -532,9 +532,9 @@ export const bubblegumBanks: Partial<
     quiz: [
       {
         prompt: {
-          en: "Roll one die. Let A be 'even result'. What is the right first move?",
-          es: "Lanza un dado. Sea A = 'resultado par'. ¿Cuál es el primer movimiento correcto?",
-          zh: "掷一次骰子。设 A =“结果为偶数”。正确的第一步是什么？",
+          en: "Roll one die. Let A be 'even result'. What setup should you write?",
+          es: "Lanza un dado. Sea A = 'resultado par'. ¿Qué planteamiento debes escribir?",
+          zh: "掷一次骰子。设 A =“结果为偶数”。该写什么设定？",
         },
         firstStep: {
           en: "Write the event as a set of outcomes.",
@@ -2760,9 +2760,9 @@ export const bubblegumBanks: Partial<
     quiz: [
       {
         prompt: {
-          en: "When is contradiction the cleanest first move in analysis?",
-          es: "¿Cuándo es contradicción la primera jugada más limpia en análisis?",
-          zh: "在分析里，什么时候第一招最适合用反证法？",
+          en: "When is contradiction the cleanest solve structure in analysis?",
+          es: "¿Cuándo es contradicción la estructura de resolución más limpia en análisis?",
+          zh: "在分析里，什么时候反证法是最干净的解题结构？",
         },
         firstStep: {
           en: "Use contradiction when the direct route is messy but the opposite statement quickly forces something impossible.",
@@ -3162,9 +3162,9 @@ export const bubblegumBanks: Partial<
     quiz: [
       {
         prompt: {
-          en: "What is the universal first move for a line integral over a curve C?",
-          es: "¿Cual es el primer movimiento universal para una integral de linea sobre una curva C?",
-          zh: "对曲线 C 上的线积分，通用的第一步是什么？",
+          en: "What setup always starts a line integral over a curve C?",
+          es: "¿Qué planteamiento siempre inicia una integral de línea sobre una curva C?",
+          zh: "对曲线 C 上的线积分，先要写出什么设定？",
         },
         firstStep: {
           en: "Parameterize the curve.",
