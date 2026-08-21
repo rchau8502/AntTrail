@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Bubble | MATH 130A, 140A, 121A, 2E",
   description:
-    "Bubble is a focused study app for MATH 130A, 140A, 121A, and 2E.",
+    "Bubble is a retrieval-first study system for MATH 130A, 140A, 121A, and 2E.",
   icons: {
     icon: "/icon.svg",
   },
