@@ -5,37 +5,36 @@ import Link from "next/link";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useLanguage } from "@/components/language-provider";
 
+const navGroups = [
+  { href: "/study", label: "Study" },
+  { href: "/bubblegum", label: "Repair" },
+  { href: "/quiz", label: "Recall" },
+  { href: "/topics", label: "Library" },
+  { href: "/memory-hooks", label: "Hooks" },
+] as const;
+
 export function SiteHeader() {
   const { t } = useLanguage();
-  const links = [
-    { href: "/study", label: t("navStudy") },
-    { href: "/bubblegum", label: t("navBubblegum") },
-    { href: "/quiz", label: t("navQuiz") },
-    { href: "/memory-hooks", label: t("navMemoryHooks") },
-    { href: "/topics", label: t("navTopics") },
-  ];
 
   return (
-    <header className="sticky top-0 z-30 border-b border-[color:var(--line)] bg-[rgba(250,246,239,0.82)] backdrop-blur-xl">
-      <div className="mx-auto grid max-w-7xl gap-4 px-4 py-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 border-b border-[color:var(--line)] bg-[rgba(248,245,240,0.86)] backdrop-blur-xl">
+      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex items-start justify-between gap-4">
           <Link href="/" className="flex min-w-0 items-start gap-4">
-            <div className="accent-ring flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/70 bg-[linear-gradient(145deg,#fff8f2,#f2d1c5)] text-xl font-semibold text-[#7a2e1d]">
-              Σ
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/80 bg-[linear-gradient(145deg,#fffdf8,#dbe8ff)] text-lg font-semibold text-slate-900 shadow-[0_14px_30px_rgba(23,33,53,0.14)]">
+              ∑
             </div>
             <div className="min-w-0">
-              <p className="truncate font-display text-2xl leading-none text-slate-900">
-                Bubble
-              </p>
-              <p className="mt-1 line-clamp-2 text-sm text-[color:var(--muted)]">
-                Focused study app for MATH 130A, 140A, 121A, and 2E
+              <p className="font-display text-2xl leading-none text-slate-950">Bubble</p>
+              <p className="mt-1 text-sm text-[color:var(--muted)]">
+                Retrieval-first study system for MATH 130A, 140A, 121A, and 2E
               </p>
             </div>
           </Link>
 
-          <div className="flex shrink-0 items-center gap-3">
-            <div className="hidden rounded-full border border-[color:var(--line)] bg-white/70 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#7a2e1d] md:inline-flex">
-              Study with focus
+          <div className="flex items-center gap-3">
+            <div className="hidden rounded-full border border-[color:var(--line)] bg-white/75 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-700 md:inline-flex">
+              Attempt → Diagnose → Retry
             </div>
             <div className="sm:hidden">
               <LanguageSwitcher compact />
@@ -46,20 +45,30 @@ export function SiteHeader() {
           </div>
         </div>
 
-        <nav className="-mx-1 flex items-center gap-2 overflow-x-auto px-1 pb-1 text-sm font-medium text-[color:var(--muted)]">
+        <nav className="-mx-1 flex items-center gap-2 overflow-x-auto px-1 pb-1">
           <Link
             href="/"
-            className="shrink-0 rounded-full border border-[color:var(--line-strong)] bg-[#2a2d33] px-4 py-2 text-white transition hover:bg-[#1f2227]"
+            className="shrink-0 rounded-full bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
           >
             Home
           </Link>
-          {links.map((link) => (
+          {navGroups.map((item) => (
             <Link
-              key={link.href}
-              href={link.href}
-              className="shrink-0 rounded-full border border-[color:var(--line)] bg-white/70 px-4 py-2 transition hover:border-[#c77964] hover:bg-white"
+              key={item.href}
+              href={item.href}
+              className="shrink-0 rounded-full border border-[color:var(--line)] bg-white/75 px-4 py-2 text-sm font-medium text-slate-800 transition hover:border-[#8da2ff] hover:bg-white"
             >
-              {link.label}
+              {item.label === "Study"
+                ? t("navStudy")
+                : item.label === "Recall"
+                  ? t("navQuiz")
+                  : item.label === "Repair"
+                    ? t("navBubblegum")
+                    : item.label === "Hooks"
+                      ? t("navMemoryHooks")
+                      : item.label === "Library"
+                        ? t("navTopics")
+                        : item.label}
             </Link>
           ))}
         </nav>
