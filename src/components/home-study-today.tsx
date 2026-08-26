@@ -13,7 +13,6 @@ import {
   getBubblegumPriorityScore,
   getBubblegumStudyState,
   getBubblegumTopicProgressMap,
-  type BubblegumMissType,
   type BubblegumTopicProgress,
 } from "@/lib/progress";
 import { getTechniqueLabel } from "@/lib/recognition";

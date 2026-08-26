@@ -78,6 +78,12 @@ The app also adds:
 - Local structured content in TypeScript files
 - Content kept separate from UI with a reusable typed schema
 
+## Development checks
+
+Run `npm test` for practice-session and progress-tracking regression tests, then
+`npm run lint` and `npm run build` for the application checks. The tests use Node's
+built-in TypeScript stripping and module hooks; use Node.js 24 or newer.
+
 ## AI default
 
 Future AI features in Bubble and Bubblegum should use `gpt-5-mini` by default for the best price-to-performance balance.

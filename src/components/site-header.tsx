@@ -6,11 +6,11 @@ import { LanguageSwitcher } from "@/components/language-switcher";
 import { useLanguage } from "@/components/language-provider";
 
 const navGroups = [
-  { href: "/study", label: "Study" },
-  { href: "/bubblegum", label: "Repair" },
-  { href: "/quiz", label: "Recall" },
-  { href: "/topics", label: "Library" },
-  { href: "/memory-hooks", label: "Hooks" },
+  { href: "/study", labelKey: "navStudy" },
+  { href: "/bubblegum", labelKey: "navBubblegum" },
+  { href: "/quiz", labelKey: "navQuiz" },
+  { href: "/topics", labelKey: "navTopics" },
+  { href: "/memory-hooks", labelKey: "navMemoryHooks" },
 ] as const;
 
 export function SiteHeader() {
@@ -58,17 +58,7 @@ export function SiteHeader() {
               href={item.href}
               className="shrink-0 rounded-full border border-[color:var(--line)] bg-white/75 px-4 py-2 text-sm font-medium text-slate-800 transition hover:border-[#8da2ff] hover:bg-white"
             >
-              {item.label === "Study"
-                ? t("navStudy")
-                : item.label === "Recall"
-                  ? t("navQuiz")
-                  : item.label === "Repair"
-                    ? t("navBubblegum")
-                    : item.label === "Hooks"
-                      ? t("navMemoryHooks")
-                      : item.label === "Library"
-                        ? t("navTopics")
-                        : item.label}
+              {t(item.labelKey)}
             </Link>
           ))}
         </nav>

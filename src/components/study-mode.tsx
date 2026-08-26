@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { MathConceptVisual } from "@/components/math-concept-visual";
 import { WorkedExamplePhoto } from "@/components/worked-example-photo";
 import { useLanguage } from "@/components/language-provider";
-import { localizeCards } from "@/content/localization";
+import { localizeCard, localizeCards } from "@/content/localization";
 import type { BubbleCard, Unit } from "@/content/schema";
 import { buildBubblegumDrill } from "@/lib/bubblegum";
 import {
@@ -14,6 +14,7 @@ import {
   getCourseOptions,
   getUnitOptions,
 } from "@/lib/course-catalog";
+import { getPracticeSessionCards, isOptionalCard } from "@/lib/practice-session";
 import {
   BUBBLE_PROGRESS_EVENT,
   getBubblegumPrimaryMissType,
@@ -29,20 +30,6 @@ import { getPatternTokens, getRecognitionPrompt, getTechniqueLabel } from "@/lib
 interface StudyModeProps {
   cards: BubbleCard[];
   initialCardId?: string;
-}
-
-function isOptionalCard(card: BubbleCard) {
-  const chapterText = card.chapter.toLowerCase();
-  const unitText = card.unit.toLowerCase();
-
-  return (
-    chapterText.includes("later / optional") ||
-    chapterText.includes("optional") ||
-    unitText.includes("later / optional") ||
-    unitText.includes("optional") ||
-    card.chapter.includes("后续 / 可选") ||
-    card.unit.includes("后续 / 可选")
-  );
 }
 
 const copy = {
@@ -157,15 +144,18 @@ export function StudyMode({ cards, initialCardId }: StudyModeProps) {
   const ui = copy[locale] ?? copy.en;
   const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
   const [unitFilter, setUnitFilter] = useState<"All" | Unit>("All");
-  const [coreOnly, setCoreOnly] = useState(true);
+  const [coreOnly, setCoreOnly] = useState(() => {
+    const focusedCard = cards.find((card) => card.id === initialCardId);
+    return !focusedCard || !isOptionalCard(focusedCard);
+  });
   const [selectedId, setSelectedId] = useState<string | null>(initialCardId ?? null);
+  const [previousCardId, setPreviousCardId] = useState<string | null>(initialCardId ?? null);
   const [progressMap, setProgressMap] = useState<Record<string, BubblegumTopicProgress>>({});
   const [showSetup, setShowSetup] = useState(false);
   const [showPath, setShowPath] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
   const [showWhy, setShowWhy] = useState(false);
   const [statusNote, setStatusNote] = useState<string | null>(null);
-  const localizedCards = useMemo(() => localizeCards(cards, locale), [cards, locale]);
 
   useEffect(() => {
     const sync = () => {
@@ -182,57 +172,50 @@ export function StudyMode({ cards, initialCardId }: StudyModeProps) {
     };
   }, []);
 
-  const courseOptions = getCourseOptions(localizedCards);
+  const courseOptions = getCourseOptions(cards);
   const courseScoped =
     courseFilter === "All"
-      ? localizedCards
-      : localizedCards.filter((card) => card.course === courseFilter);
+      ? cards
+      : cards.filter((card) => card.course === courseFilter);
   const unitOptions = getUnitOptions(courseScoped);
-  const unitScoped =
-    unitFilter === "All" ? courseScoped : courseScoped.filter((card) => card.unit === unitFilter);
-  const visibleCards = [...(coreOnly ? unitScoped.filter((card) => !isOptionalCard(card)) : unitScoped)].sort(
-    (left, right) => {
+  const unitLabels = new Map(
+    courseScoped.map((card) => [card.unit, localizeCard(card, locale).unit]),
+  );
+  const visibleCards = useMemo(() => {
+    const scopedCards = getPracticeSessionCards(cards, { courseFilter, unitFilter, coreOnly });
+
+    scopedCards.sort((left, right) => {
       const leftProgress = progressMap[left.id] ?? { gotIt: 0, missedIt: 0 };
       const rightProgress = progressMap[right.id] ?? { gotIt: 0, missedIt: 0 };
       const priorityDiff =
         getBubblegumPriorityScore(rightProgress) - getBubblegumPriorityScore(leftProgress);
 
       return priorityDiff || left.order - right.order;
-    },
-  );
+    });
 
-  useEffect(() => {
-    if (!selectedId && visibleCards[0]) {
-      setSelectedId(visibleCards[0].id);
-      return;
-    }
-
-    if (selectedId && !visibleCards.some((card) => card.id === selectedId)) {
-      setSelectedId(visibleCards[0]?.id ?? null);
-    }
-  }, [selectedId, visibleCards]);
+    return localizeCards(scopedCards, locale);
+  }, [cards, courseFilter, unitFilter, coreOnly, progressMap, locale]);
 
   const currentCard = visibleCards.find((card) => card.id === selectedId) ?? visibleCards[0];
+  const currentCardId = currentCard?.id ?? null;
 
-  useEffect(() => {
+  if (selectedId !== currentCardId) {
+    setSelectedId(currentCardId);
+  }
+
+  // Reset before displaying another card, including fallback selections after filtering.
+  if (previousCardId !== currentCardId) {
+    setPreviousCardId(currentCardId);
     setShowSetup(false);
     setShowPath(false);
     setShowAnswer(false);
     setShowWhy(false);
     setStatusNote(null);
-  }, [currentCard?.id]);
-
-  if (!currentCard) {
-    return (
-      <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/92 p-8 text-center text-[color:var(--muted)]">
-        {ui.noCards}
-      </section>
-    );
   }
 
-  const drill = buildBubblegumDrill(currentCard, locale, "warmup", 0);
-  const progress = progressMap[currentCard.id] ?? { gotIt: 0, missedIt: 0 };
-  const missType = getBubblegumPrimaryMissType(progress);
+  const drill = currentCard ? buildBubblegumDrill(currentCard, locale, "warmup", 0) : null;
+  const progress = (currentCard && progressMap[currentCard.id]) ?? { gotIt: 0, missedIt: 0 };
+  const missType = getBubblegumPrimaryMissType(progress) ?? null;
 
   function stateLabel(cardId: string) {
     const state = getBubblegumStudyState(progressMap[cardId] ?? { gotIt: 0, missedIt: 0 });
@@ -252,11 +235,13 @@ export function StudyMode({ cards, initialCardId }: StudyModeProps) {
   }
 
   function markSolved() {
+    if (!currentCard) return;
     recordBubblegumAttempt(currentCard.id, "gotIt");
     setStatusNote(ui.solvedNote);
   }
 
   function markRepair() {
+    if (!currentCard) return;
     recordBubblegumAttempt(currentCard.id, "missedIt", missType ?? "setup");
     setStatusNote(ui.repairNote);
   }
@@ -280,7 +265,10 @@ export function StudyMode({ cards, initialCardId }: StudyModeProps) {
           <div className="grid gap-3 sm:grid-cols-2">
             <select
               value={courseFilter}
-              onChange={(event) => setCourseFilter(event.target.value)}
+              onChange={(event) => {
+                setCourseFilter(event.target.value);
+                setUnitFilter("All");
+              }}
               className="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
             >
               <option value="All">All courses</option>
@@ -298,7 +286,7 @@ export function StudyMode({ cards, initialCardId }: StudyModeProps) {
               <option value="All">All units</option>
               {unitOptions.map((unit) => (
                 <option key={unit} value={unit}>
-                  {unit}
+                  {unitLabels.get(unit) ?? unit}
                 </option>
               ))}
             </select>
@@ -315,6 +303,11 @@ export function StudyMode({ cards, initialCardId }: StudyModeProps) {
         </div>
       </section>
 
+      {!currentCard || !drill ? (
+        <section className="bubble-shadow rounded-[2rem] border border-[color:var(--line)] bg-white/92 p-8 text-center text-[color:var(--muted)]">
+          {ui.noCards}
+        </section>
+      ) : (
       <section className="grid gap-6 xl:grid-cols-[19rem_minmax(0,1fr)]">
         <aside className="bubble-shadow rounded-[1.9rem] border border-[color:var(--line)] bg-white/92 p-5">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#4156d8]">
@@ -568,6 +561,7 @@ export function StudyMode({ cards, initialCardId }: StudyModeProps) {
           </div>
         </article>
       </section>
+      )}
     </div>
   );
 }

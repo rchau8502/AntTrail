@@ -263,7 +263,7 @@ export function TopicDetailView({
                       {solveEntry}
                     </p>
                     <p className="mt-2 text-sm leading-6 text-slate-800">
-                      {topicDrill.firstStep}
+                      {warmupDrill.firstStep}
                     </p>
                   </div>
 
@@ -404,7 +404,7 @@ export function TopicDetailView({
                       {solveEntry}
                     </p>
                     <p className="mt-3 text-base leading-7 text-slate-800">
-                      {topicDrill.firstStep}
+                      {warmupDrill.firstStep}
                     </p>
                   </div>
 
