@@ -11,6 +11,7 @@ import { getCourseDisplayLabel } from "@/lib/course-catalog";
 import { buildBubblegumDrill, type BubblegumLevel } from "@/lib/bubblegum";
 import {
   BUBBLE_PROGRESS_EVENT,
+  attachBubblegumMissType,
   getBubblegumPrimaryMissType,
   getBubblegumTopicProgress,
   recordBubblegumAttempt,
@@ -166,7 +167,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
   const [showSetup, setShowSetup] = useState(false);
   const [showPath, setShowPath] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
-  const [pendingMiss, setPendingMiss] = useState(false);
+  const [pendingMissAt, setPendingMissAt] = useState<number | null>(null);
   const [missType, setMissType] = useState<BubblegumMissType | null>(null);
 
   useEffect(() => {
@@ -200,7 +201,7 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
     setShowSetup(false);
     setShowPath(false);
     setShowAnswer(false);
-    setPendingMiss(false);
+    setPendingMissAt(null);
   }
 
   function changeLevel(nextLevel: BubblegumLevel) {
@@ -214,11 +215,12 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
     resetRevealState();
   }
 
-  function finishRecord(nextOutcome: Outcome, selectedMissType?: BubblegumMissType) {
+  function record(nextOutcome: Outcome) {
     if (outcome) {
       return;
     }
 
+    const attemptedAt = recordBubblegumAttempt(card.id, nextOutcome);
     setOutcome(nextOutcome);
     setChews((value) => value + 1);
     setShowTechnique(true);
@@ -226,7 +228,6 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
     setShowSetup(true);
     setShowPath(true);
     setShowAnswer(true);
-    recordBubblegumAttempt(card.id, nextOutcome, selectedMissType);
 
     if (nextOutcome === "gotIt") {
       setStreak((value) => value + 1);
@@ -234,33 +235,19 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
     }
 
     setStreak(0);
-  }
-
-  function record(nextOutcome: Outcome) {
-    if (nextOutcome === "missedIt") {
-      setPendingMiss(true);
-      setOutcome("missedIt");
-      setShowTechnique(true);
-      setShowStep(true);
-      setShowSetup(true);
-      setShowPath(true);
-      setShowAnswer(true);
-      return;
-    }
-
-    finishRecord(nextOutcome);
+    setMissType(null);
+    setPendingMissAt(attemptedAt);
   }
 
   function recordMissType(selectedMissType: BubblegumMissType) {
-    if (!pendingMiss) {
+    if (pendingMissAt === null) {
       return;
     }
 
-    setMissType(selectedMissType);
-    setPendingMiss(false);
-    setChews((value) => value + 1);
-    setStreak(0);
-    recordBubblegumAttempt(card.id, "missedIt", selectedMissType);
+    if (attachBubblegumMissType(card.id, pendingMissAt, selectedMissType)) {
+      setMissType(selectedMissType);
+    }
+    setPendingMissAt(null);
   }
 
   function getMissAdvice(type: BubblegumMissType | null) {
@@ -633,20 +620,22 @@ export function BubblegumMode({ card }: BubblegumModeProps) {
             <button
               type="button"
               onClick={() => record("gotIt")}
-              className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700"
+              disabled={outcome !== null}
+              className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {ui.gotIt}
             </button>
             <button
               type="button"
               onClick={() => record("missedIt")}
-              className="inline-flex items-center justify-center rounded-full bg-rose-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-rose-700"
+              disabled={outcome !== null}
+              className="inline-flex items-center justify-center rounded-full bg-rose-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-rose-700 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {ui.missedIt}
             </button>
           </div>
 
-          {pendingMiss ? (
+          {pendingMissAt !== null ? (
             <div className="mt-4 rounded-[1.4rem] border border-amber-200 bg-amber-50/80 p-4">
               <p className="text-sm font-semibold text-amber-800">{ui.missTypePrompt}</p>
               <div className="mt-3 grid gap-3 sm:grid-cols-2">

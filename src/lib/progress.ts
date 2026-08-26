@@ -102,12 +102,13 @@ export function recordBubblegumAttempt(
   const attempts = readMap<BubblegumTopicProgress>(BUBBLEGUM_ATTEMPTS_KEY);
   const current = attempts[id] ?? { gotIt: 0, missedIt: 0 };
   const currentMissCounts = current.missTypeCounts ?? {};
+  const attemptedAt = Math.max(Date.now(), (current.lastAttemptedAt ?? 0) + 1);
 
   attempts[id] = {
     gotIt: current.gotIt + (outcome === "gotIt" ? 1 : 0),
     missedIt: current.missedIt + (outcome === "missedIt" ? 1 : 0),
     lastOutcome: outcome,
-    lastAttemptedAt: Date.now(),
+    lastAttemptedAt: attemptedAt,
     lastMissType: outcome === "missedIt" ? missType : current.lastMissType,
     missTypeCounts:
       outcome === "missedIt" && missType
@@ -119,6 +120,35 @@ export function recordBubblegumAttempt(
   };
 
   writeMap(BUBBLEGUM_ATTEMPTS_KEY, attempts);
+  return attemptedAt;
+}
+
+export function attachBubblegumMissType(
+  id: string,
+  attemptedAt: number,
+  missType: BubblegumMissType,
+) {
+  const attempts = readMap<BubblegumTopicProgress>(BUBBLEGUM_ATTEMPTS_KEY);
+  const current = attempts[id];
+
+  if (
+    !current ||
+    current.lastOutcome !== "missedIt" ||
+    current.lastAttemptedAt !== attemptedAt ||
+    current.lastMissType
+  ) {
+    return false;
+  }
+
+  const counts = current.missTypeCounts ?? {};
+  attempts[id] = {
+    ...current,
+    lastMissType: missType,
+    missTypeCounts: { ...counts, [missType]: (counts[missType] ?? 0) + 1 },
+  };
+
+  writeMap(BUBBLEGUM_ATTEMPTS_KEY, attempts);
+  return true;
 }
 
 export function getBubblegumTopicProgress(id: string): BubblegumTopicProgress {

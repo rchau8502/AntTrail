@@ -8,6 +8,7 @@ import { useLanguage } from "@/components/language-provider";
 import { localizeCards } from "@/content/localization";
 import type { BubbleCard, Difficulty, Unit } from "@/content/schema";
 import { difficulties } from "@/content/schema";
+import { buildBubblegumDrill } from "@/lib/bubblegum";
 import {
   getChapterOptions,
   getCourseAliases,

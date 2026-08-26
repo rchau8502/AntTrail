@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 import { WorkedExamplePhoto } from "@/components/worked-example-photo";
 import { useLanguage } from "@/components/language-provider";
-import { localizeCards } from "@/content/localization";
+import { localizeCard, localizeCards } from "@/content/localization";
 import type { BubbleCard, Unit } from "@/content/schema";
 import { buildBubblegumDrill } from "@/lib/bubblegum";
 import {
@@ -13,6 +13,10 @@ import {
   getUnitOptions,
 } from "@/lib/course-catalog";
 import type { Locale } from "@/lib/i18n";
+import {
+  getInitialPracticeFilters,
+  getPracticeSessionCards,
+} from "@/lib/practice-session";
 import { getRecognitionPrompt, getTechniqueLabel } from "@/lib/recognition";
 
 interface QuizItem {
@@ -114,20 +118,6 @@ interface RecognitionQuizProps {
   initialCardId?: string;
 }
 
-function isOptionalCard(card: BubbleCard) {
-  const chapterText = card.chapter.toLowerCase();
-  const unitText = card.unit.toLowerCase();
-
-  return (
-    chapterText.includes("later / optional") ||
-    unitText.includes("later / optional") ||
-    chapterText.includes("optional") ||
-    unitText.includes("optional") ||
-    card.chapter.includes("后续 / 可选") ||
-    card.unit.includes("后续 / 可选")
-  );
-}
-
 const quizCopy = {
   en: {
     eyebrow: "Recall lane",
@@ -167,31 +157,36 @@ const quizCopy = {
   },
 } as const;
 
-export function RecognitionQuiz({ cards, initialCardId }: RecognitionQuizProps) {
+export function RecognitionQuiz(props: RecognitionQuizProps) {
+  return <RecognitionQuizSession key={props.initialCardId ?? ""} {...props} />;
+}
+
+function RecognitionQuizSession({ cards, initialCardId }: RecognitionQuizProps) {
   const { locale, t } = useLanguage();
   const ui = quizCopy[locale] ?? quizCopy.en;
-  const [courseFilter, setCourseFilter] = useState<"All" | string>("All");
-  const [unitFilter, setUnitFilter] = useState<"All" | Unit>("All");
-  const [coreOnly, setCoreOnly] = useState(true);
+  const [filters, setFilters] = useState(() =>
+    getInitialPracticeFilters(cards, initialCardId),
+  );
+  const { courseFilter, unitFilter, coreOnly } = filters;
   const [index, setIndex] = useState(0);
   const [focusId, setFocusId] = useState<string | null>(initialCardId ?? null);
   const [selected, setSelected] = useState<string | null>(null);
   const [score, setScore] = useState(0);
-  const localizedCards = useMemo(() => localizeCards(cards, locale), [cards, locale]);
-  const courseOptions = getCourseOptions(localizedCards);
+  const [sessionLocale, setSessionLocale] = useState(locale);
+  const courseOptions = getCourseOptions(cards);
 
   const courseScopedCards =
     courseFilter === "All"
-      ? localizedCards
-      : localizedCards.filter((card) => card.course === courseFilter);
-  const filteredCards =
-    unitFilter === "All"
-      ? courseScopedCards
-      : courseScopedCards.filter((card) => card.unit === unitFilter);
-  const visibleCards = coreOnly
-    ? filteredCards.filter((card) => !isOptionalCard(card))
-    : filteredCards;
+      ? cards
+      : cards.filter((card) => card.course === courseFilter);
   const unitOptions = getUnitOptions(courseScopedCards);
+  const unitLabels = new Map(
+    courseScopedCards.map((card) => [card.unit, localizeCard(card, locale).unit]),
+  );
+  const visibleCards = useMemo(
+    () => localizeCards(getPracticeSessionCards(cards, filters, focusId), locale),
+    [cards, filters, focusId, locale],
+  );
   const quizItems = buildQuizItems(visibleCards, locale);
 
   const currentItem = quizItems[index];
@@ -200,38 +195,14 @@ export function RecognitionQuiz({ cards, initialCardId }: RecognitionQuizProps) 
   const quizDrill =
     currentCard ? buildBubblegumDrill(currentCard, locale, "quiz", 0) : undefined;
 
-  useEffect(() => {
-    if (!focusId) {
-      return;
-    }
-
-    const focusCard = localizedCards.find((card) => card.id === focusId);
-
-    if (!focusCard) {
-      setFocusId(null);
-      return;
-    }
-
-    if (courseFilter !== focusCard.course) {
-      setCourseFilter(focusCard.course);
-      setUnitFilter(focusCard.unit as Unit);
-      resetSession();
-      return;
-    }
-
-    if (unitFilter !== focusCard.unit) {
-      setUnitFilter(focusCard.unit as Unit);
-      resetSession();
-      return;
-    }
-
-    const focusedIndex = visibleCards.findIndex((card) => card.id === focusId);
-
-    if (focusedIndex >= 0) {
-      setIndex(focusedIndex);
-      setFocusId(null);
-    }
-  }, [courseFilter, focusId, localizedCards, unitFilter, visibleCards]);
+  // Answer labels can change with the language; start a fresh pass while keeping
+  // the canonical filters and chosen queue, rather than grading stale labels.
+  if (sessionLocale !== locale) {
+    setSessionLocale(locale);
+    setIndex(0);
+    setSelected(null);
+    setScore(0);
+  }
 
   if (!currentItem && !finished) {
     return null;
@@ -261,6 +232,7 @@ export function RecognitionQuiz({ cards, initialCardId }: RecognitionQuizProps) 
   }
 
   function resetSession() {
+    setFocusId(null);
     setIndex(0);
     setSelected(null);
     setScore(0);
@@ -285,8 +257,11 @@ export function RecognitionQuiz({ cards, initialCardId }: RecognitionQuizProps) 
             <select
               value={courseFilter}
               onChange={(event) => {
-                setCourseFilter(event.target.value);
-                setUnitFilter("All");
+                setFilters({
+                  ...filters,
+                  courseFilter: event.target.value,
+                  unitFilter: "All",
+                });
                 resetSession();
               }}
               className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
@@ -301,7 +276,7 @@ export function RecognitionQuiz({ cards, initialCardId }: RecognitionQuizProps) 
             <select
               value={unitFilter}
               onChange={(event) => {
-                setUnitFilter(event.target.value as "All" | Unit);
+                setFilters({ ...filters, unitFilter: event.target.value as Unit });
                 resetSession();
               }}
               className="w-full min-w-0 rounded-2xl border border-[color:var(--line)] bg-white px-4 py-3 text-sm outline-none"
@@ -309,7 +284,7 @@ export function RecognitionQuiz({ cards, initialCardId }: RecognitionQuizProps) 
               <option value="All">{t("allUnits")}</option>
               {unitOptions.map((unit) => (
                 <option key={unit} value={unit}>
-                  {unit}
+                  {unitLabels.get(unit) ?? unit}
                 </option>
               ))}
             </select>
@@ -318,7 +293,7 @@ export function RecognitionQuiz({ cards, initialCardId }: RecognitionQuizProps) 
                 type="checkbox"
                 checked={coreOnly}
                 onChange={(event) => {
-                  setCoreOnly(event.target.checked);
+                  setFilters({ ...filters, coreOnly: event.target.checked });
                   resetSession();
                 }}
                 className="h-4 w-4 rounded border-[color:var(--line)] text-sky-700"
@@ -351,7 +326,7 @@ export function RecognitionQuiz({ cards, initialCardId }: RecognitionQuizProps) 
             {score} / {quizItems.length}
           </h2>
           <p className="mt-4 text-base leading-7 text-[color:var(--muted)]">
-            {score === quizItems.length ? t("sessionComplete") : t("studyThenRetry")}
+            {score === quizItems.length ? t("sessionComplete") : t("missesHelp")}
           </p>
           <button
             type="button"
