@@ -3,11 +3,15 @@
 import { Suspense, useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import EvidenceDrawer from '@/components/EvidenceDrawer'
+import TranscriptAuditor from '@/components/TranscriptAuditor'
+import AdjacentMajorCard from '@/components/AdjacentMajorCard'
+import CampusPortfolio from '@/components/CampusPortfolio'
 import { getAdvisor, getCloudPlan, getMetrics, saveCloudPlan } from '@/lib/api'
 import {
   getModelStudentProfile,
   getOfficialRequirementSummaries,
   getOfficialResources,
+  getTransferGuarantee,
   type OfficialResource
 } from '@/lib/admissionsGuidance'
 import type { AdvisorResponse, Metric } from '@/lib/types'
@@ -40,11 +44,13 @@ const years = [2024, 2023, 2022]
 
 function KPI({ label, value, suffix }: { label: string; value: string; suffix?: string }) {
   return (
-    <div className="glass-panel flex-1 rounded-3xl p-4">
-      <div className="text-sm text-slate-400">{label}</div>
-      <div className="mt-1 text-3xl font-semibold text-white">
-        {value}
-        {suffix && <span className="text-base font-medium text-slate-500">{suffix}</span>}
+    <div className="double-bezel-outer transition-spring hover:-translate-y-0.5">
+      <div className="double-bezel-inner flex h-full flex-col justify-between p-5">
+        <div className="text-xs font-mono uppercase tracking-wider text-slate-400">{label}</div>
+        <div className="mt-2 text-3xl font-bold font-mono tracking-tight text-white">
+          {value}
+          {suffix && <span className="ml-1 text-sm font-medium text-slate-500">{suffix}</span>}
+        </div>
       </div>
     </div>
   )
@@ -523,6 +529,14 @@ function PlannerPageContent() {
   const [cloudPlanKey, setCloudPlanKey] = useState<string | null>(null)
   const [cloudSyncStatus, setCloudSyncStatus] = useState<'idle' | 'loading' | 'syncing' | 'synced' | 'error'>('idle')
   const [cloudSyncNote, setCloudSyncNote] = useState('')
+  const [portfolioCampuses, setPortfolioCampuses] = useState<string[]>([
+    'UC Berkeley',
+    'UCLA',
+    'UC San Diego',
+    'UC Irvine',
+    'UC Davis',
+    'Cal Poly San Luis Obispo'
+  ])
 
   const planStorageSuffix = `${campus}:${cohort}:${focus}:${sourceSchool || 'all-schools'}:${schoolType || 'any-school-type'}`
   const planStorageKey = useMemo(
@@ -605,9 +619,13 @@ function PlannerPageContent() {
           const parsed = JSON.parse(raw) as {
             tasks?: PlannerTask[]
             schedule?: TermPlan[]
+            portfolioCampuses?: string[]
           }
           setPlanTasks(parsed.tasks?.length ? parsed.tasks : fallbackTasks)
           setScheduleTerms(parsed.schedule?.length ? parsed.schedule : fallbackSchedule)
+          if (Array.isArray(parsed.portfolioCampuses) && parsed.portfolioCampuses.length > 0) {
+            setPortfolioCampuses(parsed.portfolioCampuses)
+          }
         }
       } catch (error) {
         console.error(error)
@@ -632,11 +650,15 @@ function PlannerPageContent() {
         if (cloudPlan) {
           setPlanTasks(Array.isArray(cloudPlan.tasks) ? (cloudPlan.tasks as PlannerTask[]) : fallbackTasks)
           setScheduleTerms(Array.isArray(cloudPlan.schedule) ? (cloudPlan.schedule as TermPlan[]) : fallbackSchedule)
+          if (Array.isArray(cloudPlan.portfolio_campuses) && cloudPlan.portfolio_campuses.length > 0) {
+            setPortfolioCampuses(cloudPlan.portfolio_campuses)
+          }
           window.localStorage.setItem(
             planStorageKey,
             JSON.stringify({
               tasks: cloudPlan.tasks,
-              schedule: cloudPlan.schedule
+              schedule: cloudPlan.schedule,
+              portfolioCampuses: cloudPlan.portfolio_campuses
             })
           )
           setCloudSyncStatus('synced')
@@ -672,7 +694,8 @@ function PlannerPageContent() {
       planStorageKey,
       JSON.stringify({
         tasks: planTasks,
-        schedule: scheduleTerms
+        schedule: scheduleTerms,
+        portfolioCampuses
       })
     )
 
@@ -692,7 +715,8 @@ function PlannerPageContent() {
           source_school: sourceSchool || null,
           school_type: schoolType || null,
           tasks: planTasks,
-          schedule: scheduleTerms
+          schedule: scheduleTerms,
+          portfolio_campuses: portfolioCampuses
         })
         if (!cancelled) {
           setCloudSyncStatus('synced')
@@ -721,7 +745,8 @@ function PlannerPageContent() {
     sourceSchool,
     schoolType,
     planTasks,
-    scheduleTerms
+    scheduleTerms,
+    portfolioCampuses
   ])
 
   useEffect(() => {
@@ -948,20 +973,31 @@ function PlannerPageContent() {
         : 'text-emerald-200'
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-10">
-      <header className="glass-panel rounded-[1.75rem] p-6 md:p-8">
-        <p className="text-xs uppercase tracking-[0.24em] text-slate-400">ScholarStack Planner</p>
-        <h1 className="mt-3 text-3xl font-semibold text-white md:text-4xl">Evidence-backed planning workspace</h1>
-        <p className="mt-3 max-w-3xl text-sm text-slate-300">
-          Build a clearer step-by-step plan for where you want to go, where you are coming from, and what to do next.
-        </p>
-        <p className={`mt-3 text-xs uppercase tracking-[0.18em] ${syncToneClass}`}>
-          Cloud sync: {cloudSyncStatus === 'idle' ? 'disabled' : cloudSyncStatus}
-          {cloudSyncNote ? ` - ${cloudSyncNote}` : ''}
-        </p>
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-8 md:py-12">
+      <header className="double-bezel-outer">
+        <div className="double-bezel-inner p-6 md:p-8">
+          <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/25 bg-sky-500/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-sky-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-sky-400 animate-pulse" />
+            ScholarStack Workspace
+          </div>
+          <h1 className="mt-3 text-3xl font-bold tracking-tight text-white md:text-4xl">
+            Evidence-backed planning workspace
+          </h1>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-300">
+            Build a clearer step-by-step plan for where you want to go, where you are coming from, and what to do next.
+          </p>
+          <div className="mt-4 flex items-center gap-2 text-xs">
+            <span className="inline-block h-2 w-2 rounded-full bg-emerald-400" />
+            <span className={`font-semibold uppercase tracking-wider text-[11px] ${syncToneClass}`}>
+              Cloud sync: {cloudSyncStatus === 'idle' ? 'disabled' : cloudSyncStatus}
+              {cloudSyncNote ? ` - ${cloudSyncNote}` : ''}
+            </span>
+          </div>
+        </div>
       </header>
 
-      <section className="glass-panel grid gap-4 rounded-3xl p-6 shadow-lg shadow-slate-900/40">
+      <section className="double-bezel-outer">
+        <div className="double-bezel-inner grid gap-5 p-6 md:p-8">
         <div className="grid gap-3 sm:grid-cols-2">
           <label htmlFor="campus-select" className="text-sm text-slate-400">
             {destinationLabel}
@@ -1069,6 +1105,31 @@ function PlannerPageContent() {
             })}
           </div>
         </div>
+
+        {cohort === 'transfer' && (
+          <TranscriptAuditor
+            onApplyToPlanner={({ gpa, courses, detectedSchool, transferProgress }) => {
+              if (gpa > 0) {
+                setCurrentGpa(gpa.toFixed(2))
+                if (gpa >= 3.8) setTargetGpa('3.95')
+                else if (gpa >= 3.5) setTargetGpa('3.80')
+                else setTargetGpa((gpa + 0.2).toFixed(2))
+              }
+              if (detectedSchool) {
+                setSourceSchool(detectedSchool)
+                setSchoolType('CommunityCollege')
+              }
+              setTransferRequirementProgress(transferProgress)
+              if (courses.length) {
+                setPlannedCourses((prev) => {
+                  const existing = prev.split(',').map((s) => s.trim()).filter(Boolean)
+                  return Array.from(new Set([...courses, ...existing])).join(', ')
+                })
+              }
+            }}
+          />
+        )}
+
         <div className="grid gap-4 rounded-3xl border border-white/10 bg-[var(--panel-strong)] p-4">
           <div>
             <p className="text-sm font-semibold text-slate-200">Student profile</p>
@@ -1215,6 +1276,7 @@ function PlannerPageContent() {
             />
           </div>
         </div>
+      </div>
       </section>
 
       <section className="grid gap-4 md:grid-cols-4">
@@ -1222,6 +1284,74 @@ function PlannerPageContent() {
           <KPI key={card.stat} label={card.label} value={statValue(metrics, card.stat)} suffix={card.suffix} />
         ))}
       </section>
+
+      {cohort === 'transfer' && (() => {
+        const guarantee = getTransferGuarantee(campus, focus)
+        return (
+          <section className="double-bezel-outer">
+            <div className="double-bezel-inner p-6 md:p-8">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <span
+                    className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${
+                      guarantee.eligible
+                        ? 'border border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
+                        : 'border border-amber-500/30 bg-amber-500/10 text-amber-300'
+                    }`}
+                  >
+                    {guarantee.eligible ? (
+                      <>
+                        <svg className="h-3.5 w-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>Guaranteed Transfer Pathway</span>
+                      </>
+                    ) : (
+                      <span>Holistic Review Pathway</span>
+                    )}
+                  </span>
+                  <span className="text-xs font-mono uppercase tracking-wider text-slate-400">{guarantee.campus} · {guarantee.type}</span>
+                </div>
+                {guarantee.minGpa != null && (
+                  <div className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-mono font-semibold text-emerald-400">
+                    Target Transfer GPA: &ge; {guarantee.minGpa.toFixed(1)}
+                  </div>
+                )}
+              </div>
+              <h3 className="mt-3 text-xl font-bold tracking-tight text-white">{guarantee.title}</h3>
+              <p className="mt-1 text-sm text-slate-300 leading-relaxed">{guarantee.summary}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {guarantee.notes.map((note) => (
+                  <div key={note} className="rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-mono text-slate-300">
+                    {note}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )
+      })()}
+
+      <AdjacentMajorCard
+        currentFocus={focus}
+        currentCampus={campus}
+        currentAdmitRate={statNumber(metrics, 'admit_rate')}
+        onSelectMajor={(altMajor) => {
+          setFocus(altMajor)
+        }}
+      />
+
+      <CampusPortfolio
+        studentGpa={currentGpa ? Number(currentGpa) : null}
+        cohort={cohort}
+        focus={focus}
+        activeCampus={campus}
+        onSelectActiveCampus={(nextCampus) => {
+          setCampus(nextCampus)
+        }}
+        savedCampuses={portfolioCampuses}
+        onUpdateCampuses={setPortfolioCampuses}
+      />
 
       <section className="glass-panel rounded-3xl p-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
@@ -1470,45 +1600,60 @@ function PlannerPageContent() {
         </div>
       </section>
 
-      <section className="glass-panel rounded-3xl p-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <p className="text-sm text-slate-400">Metrics</p>
-            <h2 className="text-2xl font-semibold">Latest upload</h2>
-            {sourceSchool && <p className="mt-1 text-sm text-amber-300">Filtered by {sourceSchool}</p>}
+      <section className="double-bezel-outer">
+        <div className="double-bezel-inner p-6 md:p-8">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p className="text-xs font-mono uppercase tracking-wider text-slate-400">Provenance & Citations</p>
+              <h2 className="mt-1 text-2xl font-bold tracking-tight text-white">Admissions Metrics Source Data</h2>
+              {sourceSchool && <p className="mt-1 text-xs font-mono text-amber-300">Filtered by {sourceSchool}</p>}
+            </div>
+            <button
+              type="button"
+              onClick={() => setDrawerOpen(true)}
+              className="group inline-flex items-center gap-3 rounded-full border border-amber-400/40 bg-amber-400/10 pl-4 pr-1.5 py-1.5 text-sm font-semibold text-amber-200 transition-spring hover:border-amber-400 hover:bg-amber-400/20 active:scale-95"
+            >
+              <span>Open Evidence</span>
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-amber-400 text-slate-950 transition-spring group-hover:scale-105">
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={() => setDrawerOpen(true)}
-            className="rounded-2xl bg-amber-400 px-4 py-2 font-semibold text-slate-900"
-          >
-            Open Evidence
-          </button>
-        </div>
-        <div className="mt-4 text-sm text-slate-400">
-          {loading && 'Loading metrics…'}
-          {!loading && metrics.length === 0 && 'No metrics found for that combination yet.'}
+          <div className="mt-4 text-sm font-mono text-slate-400">
+            {loading && 'Loading metrics…'}
+            {!loading && metrics.length === 0 && 'No metrics found for that combination yet.'}
+          </div>
         </div>
       </section>
 
-      <section className="glass-panel rounded-3xl p-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <p className="text-sm text-slate-400">AI coach</p>
-            <h2 className="text-2xl font-semibold">Deeper explanation</h2>
-            <p className="mt-1 text-sm text-slate-400">
-              Use this after the decision readout if you want more narrative guidance. It still does not replace official admissions guidance.
-            </p>
+      <section className="double-bezel-outer">
+        <div className="double-bezel-inner p-6 md:p-8">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-2.5 py-0.5 text-xs font-mono font-semibold text-violet-300">
+                Cognitive Synthesis
+              </div>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight text-white">AI Admissions Strategist</h2>
+              <p className="mt-1 max-w-2xl text-sm text-slate-400">
+                Use this after the decision readout if you want deeper narrative guidance grounded in historical datasets.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={handleAdvisor}
+              disabled={advisorLoading || loading || metrics.length === 0}
+              className="group inline-flex items-center gap-3 rounded-full border border-violet-400/40 bg-violet-400/10 pl-4 pr-1.5 py-1.5 text-sm font-semibold text-violet-200 transition-spring hover:border-violet-400 hover:bg-violet-400/20 disabled:cursor-not-allowed disabled:opacity-50 active:scale-95"
+            >
+              <span>{advisorLoading ? 'Analyzing…' : 'Ask AI'}</span>
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-violet-400 text-slate-950 transition-spring group-hover:scale-105">
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </span>
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={handleAdvisor}
-            disabled={advisorLoading || loading || metrics.length === 0}
-            className="rounded-2xl border border-amber-400 px-4 py-2 font-semibold text-amber-200 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {advisorLoading ? 'Analyzing…' : 'Ask AI'}
-          </button>
-        </div>
 
         {advisorError && <p className="mt-4 text-sm text-rose-400">{advisorError}</p>}
 
@@ -1555,6 +1700,7 @@ function PlannerPageContent() {
             </div>
           </div>
         )}
+        </div>
       </section>
 
       <EvidenceDrawer

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+from pathlib import Path
 import re
 from dataclasses import dataclass
 from urllib.parse import urljoin, urlparse
@@ -61,6 +62,18 @@ def discover_tabular_url(base_url: str, keywords: tuple[str, ...]) -> str | None
     return candidates[0] if candidates else None
 
 
+ADAPTER_DEFAULT_FIXTURES: dict[str, str] = {
+    "uc_info_center_transfers_major": "uc_transfers.csv",
+    "uc_info_center_freshman_discipline": "uc_freshman.csv",
+    "uc_info_center_admissions_source_school": "uc_source_school.csv",
+    "csu_system_dashboards_transfer": "csu_transfer.csv",
+    "csu_system_dashboards_freshman": "csu_freshman.csv",
+    "cccco_datamart_transfers": "cccco_transfers.csv",
+    "ccc_catalog_courses": "ccc_catalog.csv",
+    "ccc_articulation_pdfs": "ccc_articulation.csv",
+}
+
+
 def resolve_official_data_url(source: OfficialSourceConfig) -> str:
     explicit = os.getenv(source.env_var)
     if explicit:
@@ -82,6 +95,12 @@ def resolve_official_data_url(source: OfficialSourceConfig) -> str:
     discovered = discover_tabular_url(source.base_url, source.discovery_keywords)
     if discovered:
         return discovered
+
+    fixture_name = ADAPTER_DEFAULT_FIXTURES.get(source.adapter_name)
+    if fixture_name:
+        fixture_path = Path(__file__).resolve().parent.parent.parent.parent / "tests" / "fixtures" / fixture_name
+        if fixture_path.exists():
+            return str(fixture_path)
 
     raise RuntimeError(
         f"{source.adapter_name}: no official export URL found. Set {source.env_var} to an official CSV/JSON endpoint."

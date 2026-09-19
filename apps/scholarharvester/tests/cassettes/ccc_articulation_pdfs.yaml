@@ -1,4 +1,4 @@
-http_interactions:
+interactions:
 - request:
     method: GET
     uri: https://www.cccco.edu/robots.txt

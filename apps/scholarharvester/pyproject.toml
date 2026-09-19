@@ -11,19 +11,19 @@ packages = [{include = "scholarharvester", from = "src"}]
 python = "^3.11"
 httpx = "^0.26"
 pandas = "^2.1"
-pyarrow = "^15.0"
+pyarrow = ">=15.0"
 pdfplumber = "^0.10"
 sqlalchemy = "^2.0"
 alembic = "^1.12"
 typer = "^0.9"
 redis = "^5.3"
 python-dotenv = "^1.0"
-vcrpy = "^4.0"
+vcrpy = ">=7.0"
 awscrt = {version = "^0.16", optional = true}
 rq = "^1.0"
 pyyaml = "^6.0"
 psycopg = {version = "^3.1", extras = ["binary"]}
-asyncpg = "^0.29"
+asyncpg = "^0.30"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.1"
@@ -38,3 +38,8 @@ scholarharvester-seed = "scholarharvester.scripts.seed_demo:main"
 [build-system]
 requires = ["poetry-core>=1.5.1"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff.lint.per-file-ignores]
+"harvest.py" = ["E402"]
+"supa_writer.py" = ["F401"]
+

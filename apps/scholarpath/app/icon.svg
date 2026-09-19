@@ -1,0 +1,47 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="64" y1="56" x2="448" y2="456" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A1328"/>
+      <stop offset="1" stop-color="#050A16"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(394 110) rotate(126.573) scale(214.586 226.667)">
+      <stop stop-color="#F7B733" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#F7B733" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mark" x1="164" y1="124" x2="338" y2="388" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD56A"/>
+      <stop offset="1" stop-color="#F7B733"/>
+    </linearGradient>
+    <clipPath id="clip">
+      <rect x="36" y="36" width="440" height="440" rx="108"/>
+    </clipPath>
+  </defs>
+
+  <rect x="36" y="36" width="440" height="440" rx="108" fill="url(#bg)"/>
+  <rect x="36.75" y="36.75" width="438.5" height="438.5" rx="107.25" stroke="white" stroke-opacity="0.1" stroke-width="1.5"/>
+  <rect x="36" y="36" width="440" height="440" rx="108" fill="url(#glow)"/>
+
+  <g clip-path="url(#clip)" opacity="0.18">
+    <path d="M36 120H476" stroke="white" stroke-width="1"/>
+    <path d="M36 204H476" stroke="white" stroke-width="1"/>
+    <path d="M36 288H476" stroke="white" stroke-width="1"/>
+    <path d="M36 372H476" stroke="white" stroke-width="1"/>
+    <path d="M120 36V476" stroke="white" stroke-width="1"/>
+    <path d="M204 36V476" stroke="white" stroke-width="1"/>
+    <path d="M288 36V476" stroke="white" stroke-width="1"/>
+    <path d="M372 36V476" stroke="white" stroke-width="1"/>
+  </g>
+
+  <path
+    d="M330 140H228C194 140 166 168 166 202C166 236 194 264 228 264H284C318 264 346 292 346 326C346 360 318 388 284 388H178"
+    stroke="url(#mark)"
+    stroke-width="48"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <circle cx="346" cy="140" r="18" fill="#6AC6FF"/>
+  <circle cx="164" cy="388" r="14" fill="#6AC6FF" fill-opacity="0.92"/>
+  <circle cx="346" cy="140" r="32" fill="#6AC6FF" fill-opacity="0.16"/>
+  <circle cx="164" cy="388" r="26" fill="#6AC6FF" fill-opacity="0.12"/>
+</svg>

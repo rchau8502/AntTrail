@@ -162,25 +162,36 @@ export default function CollegesPage() {
           <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">Source: College Scorecard</span>
           {status && (
             <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-              Directory rows: {status.institution_count}
+              {status.is_fallback ? 'Curated CA Directory' : `Directory rows: ${status.institution_count}`}
+            </span>
+          )}
+          {status?.is_fallback && (
+            <span className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-emerald-300">
+              Zero-config mode active
             </span>
           )}
         </div>
       </section>
 
-      {status && !status.configured && (
+      {status?.is_fallback && (
+        <section className="glass-panel rounded-3xl border border-sky-400/20 bg-[var(--cyan-soft)] p-4 text-xs text-slate-200">
+          <span className="font-semibold text-white">Curated Zero-Config Mode:</span> Showing {status.institution_count} top California universities and feeder community colleges. To search all 6,000+ national institutions, connect Supabase credentials and sync the College Scorecard dataset.
+        </section>
+      )}
+
+      {status && !status.configured && !status.is_fallback && (
         <section className="glass-panel rounded-3xl border border-amber-400/20 bg-[var(--accent-soft)] p-6 text-sm text-slate-100">
           Local college-directory reads are not configured. Missing env: {status.missing_env.join(', ')}.
         </section>
       )}
 
-      {status?.configured && status.missing_table && (
+      {status?.configured && status.missing_table && !status.is_fallback && (
         <section className="glass-panel rounded-3xl border border-amber-400/20 bg-[var(--accent-soft)] p-6 text-sm text-slate-100">
           The `institution` table is not available yet. Run the institution migration before using the college explorer.
         </section>
       )}
 
-      {status?.configured && !status.missing_table && status.institution_count === 0 && (
+      {status?.configured && !status.missing_table && !status.is_fallback && status.institution_count === 0 && (
         <section className="glass-panel rounded-3xl border border-sky-400/20 bg-[var(--cyan-soft)] p-6 text-sm text-slate-100">
           The directory is configured but empty. Run the College Scorecard sync to populate national college records.
         </section>
@@ -194,60 +205,72 @@ export default function CollegesPage() {
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {results.map((institution) => (
-          <article key={institution.external_id} className="glass-panel rounded-3xl p-5">
-            <div className="flex items-start justify-between gap-3">
+          <article key={institution.external_id} className="double-bezel-outer transition-spring hover:-translate-y-1">
+            <div className="double-bezel-inner flex h-full flex-col justify-between p-6">
               <div>
-                <p className="text-lg font-semibold text-white">{institution.name}</p>
-                <p className="text-sm text-slate-400">
-                  {institution.city}, {institution.state}
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className="text-lg font-bold tracking-tight text-white">{institution.name}</h3>
+                    <p className="mt-0.5 text-xs font-mono text-slate-400">
+                      {institution.city}, {institution.state}
+                    </p>
+                  </div>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-xs font-mono text-slate-300">
+                    {institution.control ?? 'Unknown'}
+                  </span>
+                </div>
+
+                <div className="mt-5 grid grid-cols-2 gap-2.5 text-sm text-slate-300">
+                  <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-3">
+                    <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500">Students</div>
+                    <div className="mt-1 font-mono text-base font-bold text-white">{formatInteger(institution.student_size)}</div>
+                  </div>
+                  <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-3">
+                    <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500">Admit rate</div>
+                    <div className="mt-1 font-mono text-base font-bold text-emerald-400">{formatPercent(institution.admission_rate)}</div>
+                  </div>
+                  <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-3">
+                    <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500">Net price</div>
+                    <div className="mt-1 font-mono text-base font-bold text-amber-300">{formatCurrency(institution.avg_net_price)}</div>
+                  </div>
+                  <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-3">
+                    <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500">Completion</div>
+                    <div className="mt-1 font-mono text-base font-bold text-sky-300">{formatPercent(institution.completion_rate)}</div>
+                  </div>
+                </div>
+
+                <p className="mt-4 text-xs text-slate-400 leading-relaxed">
+                  {institution.highest_degree ?? 'Degree profile unavailable'}{institution.locale ? ` • ${institution.locale}` : ''}
+                  {institution.carnegie_basic ? ` • ${institution.carnegie_basic}` : ''}
                 </p>
               </div>
-              <span className="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-xs text-slate-300">
-                {institution.control ?? 'Unknown'}
-              </span>
-            </div>
 
-            <div className="mt-4 grid grid-cols-2 gap-3 text-sm text-slate-300">
-              <div className="rounded-2xl border border-white/10 bg-[var(--panel-strong)] p-3">
-                <div className="text-xs uppercase tracking-[0.18em] text-slate-500">Students</div>
-                <div className="mt-2 text-base font-semibold text-white">{formatInteger(institution.student_size)}</div>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-[var(--panel-strong)] p-3">
-                <div className="text-xs uppercase tracking-[0.18em] text-slate-500">Admit rate</div>
-                <div className="mt-2 text-base font-semibold text-white">{formatPercent(institution.admission_rate)}</div>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-[var(--panel-strong)] p-3">
-                <div className="text-xs uppercase tracking-[0.18em] text-slate-500">Net price</div>
-                <div className="mt-2 text-base font-semibold text-white">{formatCurrency(institution.avg_net_price)}</div>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-[var(--panel-strong)] p-3">
-                <div className="text-xs uppercase tracking-[0.18em] text-slate-500">Completion</div>
-                <div className="mt-2 text-base font-semibold text-white">{formatPercent(institution.completion_rate)}</div>
-              </div>
-            </div>
-
-            <p className="mt-4 text-sm leading-7 text-slate-300">
-              {institution.highest_degree ?? 'Degree profile unavailable'}{institution.locale ? ` • ${institution.locale}` : ''}
-              {institution.carnegie_basic ? ` • ${institution.carnegie_basic}` : ''}
-            </p>
-
-            <div className="mt-5 flex flex-wrap gap-2">
-              <Link
-                href={`/colleges/${encodeURIComponent(institution.external_id)}`}
-                className="rounded-2xl bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-slate-950"
-              >
-                View profile
-              </Link>
-              {institution.website && (
-                <a
-                  href={institution.website}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-2xl border border-white/10 px-4 py-2 text-sm text-slate-200 hover:text-white"
+              <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-4">
+                <Link
+                  href={`/colleges/${encodeURIComponent(institution.external_id)}`}
+                  className="group inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 pl-3.5 pr-1.5 py-1 text-xs font-semibold text-amber-200 transition-spring hover:border-amber-400 hover:bg-amber-400/20 active:scale-95"
                 >
-                  Official site
-                </a>
-              )}
+                  <span>View profile</span>
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-400 text-slate-950 transition-spring group-hover:scale-105">
+                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
+                </Link>
+                {institution.website && (
+                  <a
+                    href={institution.website}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-mono text-slate-400 transition-spring hover:text-white"
+                  >
+                    <span>Official site</span>
+                    <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                )}
+              </div>
             </div>
           </article>
         ))}

@@ -316,3 +316,202 @@ export function getModelStudentProfile(input: {
 
   return [selectivityLine, gpaLine, cohortLine, focusLine, sourceSchoolLine]
 }
+
+export interface AdjacentMajor {
+  name: string
+  reason: string
+  admitRateNote: string
+  overlappingPrereqs: string[]
+}
+
+const ADJACENT_MAJOR_PLAYBOOK: Record<string, AdjacentMajor[]> = {
+  'Computer Science': [
+    {
+      name: 'Cognitive Science (with Computing)',
+      reason: 'Focuses on AI, human-computer interaction, and computational modeling with significant programming overlap.',
+      admitRateNote: 'Typically 3x to 5x higher admit rate than pure CS at top UCs',
+      overlappingPrereqs: ['Calculus I & II', 'Data Structures', 'Intro Programming', 'Linear Algebra']
+    },
+    {
+      name: 'Linguistics & Computer Science',
+      reason: 'Direct pathway for natural language processing, LLMs, and language tech within the College of Letters & Science.',
+      admitRateNote: 'Acceptance rate often exceeds 30% even at premier UC campuses',
+      overlappingPrereqs: ['Calculus I & II', 'Data Structures', 'Discrete Math', 'Python / C++']
+    },
+    {
+      name: 'Applied Mathematics / Data Theory',
+      reason: 'Mathematical foundation of machine learning, algorithms, and quant finance without the engineering school cap.',
+      admitRateNote: 'Significantly less impacted with a median GPA band 0.2-0.3 lower than CS',
+      overlappingPrereqs: ['Calculus I, II, III', 'Linear Algebra', 'Differential Equations', 'Object-Oriented Programming']
+    },
+    {
+      name: 'Informatics / Data Science',
+      reason: 'Applied software development, data analytics, and user experience design.',
+      admitRateNote: 'Balanced selectivity with comprehensive industry recruiting',
+      overlappingPrereqs: ['Statistics', 'Calculus I & II', 'Intro Programming', 'Data Structures']
+    }
+  ],
+  Engineering: [
+    {
+      name: 'Materials Science and Engineering',
+      reason: 'Core physics and chemistry applied to advanced hardware, semiconductors, and nanotechnology.',
+      admitRateNote: 'Higher admit rate than Mechanical or Electrical with nearly identical lower-division requirements',
+      overlappingPrereqs: ['Calculus I, II, III', 'Physics Mechanics & E/M', 'General Chemistry']
+    },
+    {
+      name: 'Applied Physics',
+      reason: 'Experimental and computational physics track that recruits directly into engineering roles.',
+      admitRateNote: 'Letters & Science major, avoiding engineering school impaction cutoffs',
+      overlappingPrereqs: ['Calculus sequence', 'Physics with calculus', 'Linear Algebra']
+    }
+  ],
+  Biology: [
+    {
+      name: 'Human Biology and Society',
+      reason: 'Combines full pre-med biological sequence with genetics, bioethics, and public health policy.',
+      admitRateNote: 'Distinctive applicant profile that stands out compared to crowded General Biology',
+      overlappingPrereqs: ['General Biology', 'General Chemistry', 'Organic Chemistry', 'Statistics']
+    },
+    {
+      name: 'Psychobiology / Cognitive Neuroscience',
+      reason: 'Brain science, behavioral genetics, and physiology satisfying standard medical school prerequisites.',
+      admitRateNote: 'High admit yield with strong faculty research lab placement',
+      overlappingPrereqs: ['General Biology', 'General Chemistry', 'Statistics', 'Psychology']
+    }
+  ],
+  'Business Administration': [
+    {
+      name: 'Economics / Business Economics',
+      reason: 'Analytical economics, financial markets, and business strategy with robust Wall Street and consulting recruiting.',
+      admitRateNote: 'Available at campuses like UCLA, Berkeley, and UCSD where undergrad Business is extremely limited or non-existent',
+      overlappingPrereqs: ['Microeconomics', 'Macroeconomics', 'Calculus I & II', 'Statistics']
+    },
+    {
+      name: 'Managerial Economics',
+      reason: 'Applied corporate finance, marketing analytics, and agribusiness management.',
+      admitRateNote: 'High transfer acceptance rate at UC Davis with direct corporate recruiting',
+      overlappingPrereqs: ['Microeconomics', 'Macroeconomics', 'Financial Accounting', 'Statistics']
+    }
+  ]
+}
+
+export function getAdjacentMajors(focus: string): AdjacentMajor[] {
+  return ADJACENT_MAJOR_PLAYBOOK[focus] ?? [
+    {
+      name: `${focus} (Interdisciplinary / Letters & Science)`,
+      reason: 'Consider applying through the College of Letters and Science rather than specialized professional schools to benefit from broader admission pools.',
+      admitRateNote: 'Generally lower GPA impaction thresholds',
+      overlappingPrereqs: ['Core lower-division foundation courses', 'General education breadth']
+    }
+  ]
+}
+
+export interface TransferGuaranteeInfo {
+  campus: string
+  segment: 'UC' | 'CSU' | 'Other'
+  type: 'TAG' | 'ADT' | 'None'
+  eligible: boolean
+  minGpa: number | null
+  title: string
+  summary: string
+  notes: string[]
+}
+
+export function getTransferGuarantee(campus: string, focus: string): TransferGuaranteeInfo {
+  const segment = getCampusSegment(campus)
+
+  if (segment === 'UC') {
+    const isTagExcludedCampus = ['UCLA', 'UC Berkeley', 'UC San Diego'].includes(campus)
+    if (isTagExcludedCampus) {
+      return {
+        campus,
+        segment: 'UC',
+        type: 'None',
+        eligible: false,
+        minGpa: null,
+        title: 'Comprehensive Review (No TAG)',
+        summary: `${campus} does not participate in the UC Transfer Admission Guarantee (TAG) program. All applicants are evaluated through holistic comprehensive review.`,
+        notes: [
+          'Aim for the middle 50% GPA band shown in the metrics above.',
+          'Complete 100% of major prerequisites by end of spring prior to transfer.',
+          'Strong academic performance in major prep is heavily weighted.'
+        ]
+      }
+    }
+
+    // Campuses with TAG
+    const tagRules: Record<string, { minGpa: number; excludedMajors: string[] }> = {
+      'UC Davis': { minGpa: 3.2, excludedMajors: ['Computer Science', 'Data Science'] },
+      'UC Irvine': { minGpa: 3.4, excludedMajors: ['Computer Science', 'Business Administration', 'Nursing', 'Data Science', 'Software Engineering'] },
+      'UC Santa Barbara': { minGpa: 3.4, excludedMajors: ['Computer Science', 'Mechanical Engineering', 'Electrical Engineering', 'Chemical Engineering'] },
+      'UC Santa Cruz': { minGpa: 3.0, excludedMajors: ['Computer Science'] },
+      'UC Riverside': { minGpa: 2.8, excludedMajors: [] },
+      'UC Merced': { minGpa: 2.8, excludedMajors: [] }
+    }
+
+    const rule = tagRules[campus] ?? { minGpa: 3.2, excludedMajors: [] }
+    const isMajorExcluded = rule.excludedMajors.some((m) => focus.toLowerCase().includes(m.toLowerCase()))
+
+    if (isMajorExcluded) {
+      return {
+        campus,
+        segment: 'UC',
+        type: 'TAG',
+        eligible: false,
+        minGpa: rule.minGpa,
+        title: `${campus} TAG Excluded for ${focus}`,
+        summary: `While ${campus} participates in TAG, ${focus} is an impacted major excluded from guaranteed transfer admission. You must apply via general review or select an adjacent non-excluded major.`,
+        notes: [
+          `TAG minimum GPA for eligible majors is ${rule.minGpa.toFixed(1)}.`,
+          'Consider an adjacent major (e.g. Cognitive Science, Applied Math) that accepts TAG.',
+          'You can still submit a regular application for this major.'
+        ]
+      }
+    }
+
+    return {
+      campus,
+      segment: 'UC',
+      type: 'TAG',
+      eligible: true,
+      minGpa: rule.minGpa,
+      title: `UC TAG Eligible (${rule.minGpa.toFixed(1)}+ GPA Guaranteed)`,
+      summary: `${campus} offers guaranteed admission for ${focus} to California community college students who maintain a ${rule.minGpa.toFixed(1)} GPA and meet prerequisite deadlines.`,
+      notes: [
+        `Maintain at least a ${rule.minGpa.toFixed(1)} transferable GPA through end of spring.`,
+        'Complete 30 transferable semester units by end of summer prior to applying.',
+        'Submit the UC TAG application in September (Sept 1-30).',
+        'Complete 60 transferable semester units by end of spring prior to fall enrollment.'
+      ]
+    }
+  }
+
+  if (segment === 'CSU') {
+    return {
+      campus,
+      segment: 'CSU',
+      type: 'ADT',
+      eligible: true,
+      minGpa: 2.0,
+      title: 'CSU Associate Degree for Transfer (ADT) Pathway',
+      summary: `Completing an Associate Degree for Transfer (AA-T or AS-T) at a CCC guarantees junior standing at a CSU in a similar major with a 0.1-0.2 GPA bump for impacted campuses.`,
+      notes: [
+        'Complete 60 transferable semester units including the CSU Golden Four.',
+        'Earn an AA-T or AS-T degree from your California Community College.',
+        'Impacted campuses like Cal Poly SLO, SDSU, and Long Beach provide an admission score advantage for local ADT applicants.'
+      ]
+    }
+  }
+
+  return {
+    campus,
+    segment: 'Other',
+    type: 'None',
+    eligible: false,
+    minGpa: null,
+    title: 'Standard Institutional Review',
+    summary: `${campus} follows standard application and evaluation procedures.`,
+    notes: ['Check campus deadlines and specific transfer guidelines.']
+  }
+}
+

@@ -1,5 +1,6 @@
 import type { Citation, DatasetEntry, Metric, ScholarDataBundle, SourceSchool } from '@/lib/types'
 import { getSupabaseReadClient } from '@/lib/server/supabaseServer'
+import { LOCAL_SCHOLAR_DATA } from '@/lib/server/localData'
 
 function isCitation(value: unknown): value is Citation {
   if (!value || typeof value !== 'object') return false
@@ -216,15 +217,23 @@ async function fetchLiveBundleFromSupabase(): Promise<ScholarDataBundle> {
 export async function getScholarData(): Promise<ScholarDataBundle> {
   const remoteUrl = process.env.SCHOLARSTACK_DATA_URL ?? process.env.SCHOLARPATH_DATA_URL
   if (remoteUrl) {
-    const response = await fetch(remoteUrl, {
-      headers: { Accept: 'application/json' },
-      cache: 'no-store'
-    })
-    if (!response.ok) {
-      throw new Error(`Unable to load configured data source (${response.status})`)
+    try {
+      const response = await fetch(remoteUrl, {
+        headers: { Accept: 'application/json' },
+        cache: 'no-store'
+      })
+      if (response.ok) {
+        return normalizeBundle(await response.json())
+      }
+    } catch {
+      // Fall through to live Supabase or local data fallback
     }
-    return normalizeBundle(await response.json())
   }
 
-  return fetchLiveBundleFromSupabase()
+  try {
+    return await fetchLiveBundleFromSupabase()
+  } catch {
+    // If Supabase is unconfigured or unavailable, fall back to bundled dataset
+    return LOCAL_SCHOLAR_DATA
+  }
 }
