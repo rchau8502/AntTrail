@@ -16,7 +16,7 @@ USER_AGENT = config.user_agent
 
 @pytest.mark.parametrize("source", load_sources())
 def test_robots_txt_checked(source: dict) -> None:
-    vcr_obj = vcr.VCR(cassette_library_dir=CASSETTE_DIR, record_mode="once", filter_headers=[("authorization", "***")])
+    vcr_obj = vcr.VCR(cassette_library_dir=str(CASSETTE_DIR), record_mode="once", filter_headers=[("authorization", "***")])
     cassette_name = f"{source['adapter']}.yaml"
     with vcr_obj.use_cassette(cassette_name):
         resp = httpx.get(

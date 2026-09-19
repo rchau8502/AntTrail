@@ -44,6 +44,7 @@ create table if not exists metric(
   notes text
 );
 create index if not exists metric_idx on metric (campus, major, discipline, cohort, year, stat_name);
+create index if not exists metric_composite_lookup_idx on metric (campus, cohort, stat_name, year);
 create unique index if not exists metric_dedupe_idx on metric(dataset_id, campus, major, discipline, stat_name, year, term);
 
 create table if not exists citation(
@@ -106,6 +107,7 @@ create table if not exists institution(
 create index if not exists institution_name_idx on institution using gin ((to_tsvector('english', coalesce(name,''))));
 create index if not exists institution_state_idx on institution(state);
 create index if not exists institution_control_idx on institution(control);
+create index if not exists institution_filter_idx on institution(state, control, admission_rate);
 
 -- RLS: public read-only, service role writes
 alter table metric enable row level security;

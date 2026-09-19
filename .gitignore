@@ -11,5 +11,18 @@ apps/scholarpath/.next/
 apps/scholarpath/node_modules/
 apps/scholarpath/.turbo/
 apps/scholarpath/playwright-report/
+apps/scholarpath/test-results/
+test-results/
 apps/scholarharvester/SOURCE_REGISTRY.robots.json
 .DS_Store
+
+# Swift / Xcode / SPM
+.build/
+DerivedData/
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+*.xcworkspace/*
+!*.xcworkspace/contents.xcworkspacedata
+xcuserdata/
+.swiftpm/

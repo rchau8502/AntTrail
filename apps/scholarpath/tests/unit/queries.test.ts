@@ -91,13 +91,13 @@ describe('server queries', () => {
   })
 
   test('searches source schools without a database', () => {
-    const schools = querySourceSchools(TEST_DATA, {
+    const result = querySourceSchools(TEST_DATA, {
       search: 'college',
       type: 'CommunityCollege'
     })
 
-    expect(schools.length).toBeGreaterThan(0)
-    expect(schools.every((school) => school.school_type === 'CommunityCollege')).toBe(true)
+    expect(result.items.length).toBeGreaterThan(0)
+    expect(result.items.every((school) => school.school_type === 'CommunityCollege')).toBe(true)
   })
 
   test('ships a broader target campus and major catalog', () => {

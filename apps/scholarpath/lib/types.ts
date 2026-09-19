@@ -123,6 +123,7 @@ export interface InstitutionDirectoryStatus {
   missing_table: boolean
   institution_count: number
   missing_env: string[]
+  is_fallback?: boolean
 }
 
 export interface ScholarDataBundle {
@@ -177,6 +178,7 @@ export interface CloudPlanRecord {
   school_type: string | null
   tasks: unknown[]
   schedule: unknown[]
+  portfolio_campuses?: string[]
   updated_at?: string
 }
 

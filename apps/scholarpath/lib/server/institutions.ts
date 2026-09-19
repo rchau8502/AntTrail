@@ -1,5 +1,6 @@
 import type { Institution, InstitutionDirectoryStatus, InstitutionSearchResponse } from '@/lib/types'
 import { getSupabaseReadClient } from '@/lib/server/supabaseServer'
+import { FALLBACK_INSTITUTIONS } from '@/lib/server/fallbackInstitutions'
 
 type InstitutionRow = {
   external_id: string
@@ -81,14 +82,86 @@ function getMissingInstitutionEnv() {
   return missing
 }
 
+const ACRONYM_MAP: Record<string, string> = {
+  ucla: 'university of california, los angeles',
+  ucb: 'university of california, berkeley',
+  cal: 'university of california, berkeley',
+  uci: 'university of california, irvine',
+  ucsd: 'university of california, san diego',
+  ucd: 'university of california, davis',
+  ucsb: 'university of california, santa barbara',
+  ucsc: 'university of california, santa cruz',
+  ucr: 'university of california, riverside',
+  ucm: 'university of california, merced',
+  calpoly: 'california polytechnic',
+  'cal poly': 'california polytechnic',
+  sdsu: 'san diego state university',
+  sjsu: 'san jose state university',
+  csulb: 'california state university-long beach',
+  cpp: 'california state polytechnic university-pomona',
+  usc: 'university of southern california',
+  caltech: 'california institute of technology',
+  smc: 'santa monica college',
+  ivc: 'irvine valley college',
+  dvc: 'diablo valley college',
+  pcc: 'pasadena city college',
+  sbcc: 'santa barbara city college'
+}
+
+function searchFallbackInstitutions(params: {
+  search?: string | null
+  state?: string | null
+  control?: string | null
+  page?: number | null
+  perPage?: number | null
+}): InstitutionSearchResponse {
+  let items = [...FALLBACK_INSTITUTIONS]
+
+  if (params.search?.trim()) {
+    const rawQ = params.search.trim().toLowerCase()
+    const mapped = ACRONYM_MAP[rawQ]
+    items = items.filter(
+      (inst) =>
+        inst.name.toLowerCase().includes(rawQ) ||
+        (inst.city && inst.city.toLowerCase().includes(rawQ)) ||
+        (mapped && inst.name.toLowerCase().includes(mapped))
+    )
+  }
+
+  if (params.state?.trim()) {
+    const s = params.state.trim().toUpperCase()
+    items = items.filter((inst) => inst.state?.toUpperCase() === s)
+  }
+
+  if (params.control?.trim()) {
+    const c = params.control.trim().toLowerCase()
+    items = items.filter((inst) => inst.control?.toLowerCase() === c)
+  }
+
+  items.sort((a, b) => a.name.localeCompare(b.name))
+
+  const page = Math.max(1, params.page ?? 1)
+  const perPage = Math.min(50, Math.max(1, params.perPage ?? 24))
+  const from = (page - 1) * perPage
+  const to = from + perPage
+
+  return {
+    items: items.slice(from, to),
+    total: items.length,
+    page,
+    per_page: perPage
+  }
+}
+
 export async function getInstitutionDirectoryStatus(): Promise<InstitutionDirectoryStatus> {
   const missingEnv = getMissingInstitutionEnv()
   if (missingEnv.length) {
     return {
-      configured: false,
+      configured: true,
       missing_table: false,
-      institution_count: 0,
-      missing_env: missingEnv
+      institution_count: FALLBACK_INSTITUTIONS.length,
+      missing_env: [],
+      is_fallback: true
     }
   }
 
@@ -96,37 +169,31 @@ export async function getInstitutionDirectoryStatus(): Promise<InstitutionDirect
     const supabase = getSupabaseReadClient()
     const { count, error } = await supabase.from('institution').select('id', { count: 'exact', head: true })
 
-    if (error) {
-      if (isMissingInstitutionTable(error.message)) {
-        return {
-          configured: true,
-          missing_table: true,
-          institution_count: 0,
-          missing_env: []
-        }
+    if (error || !count || count === 0) {
+      return {
+        configured: true,
+        missing_table: false,
+        institution_count: FALLBACK_INSTITUTIONS.length,
+        missing_env: [],
+        is_fallback: true
       }
-      throw new Error(`Failed loading institution status: ${error.message}`)
     }
 
     return {
       configured: true,
       missing_table: false,
-      institution_count: count ?? 0,
-      missing_env: []
+      institution_count: count,
+      missing_env: [],
+      is_fallback: false
     }
-  } catch (error) {
-    if (error instanceof Error) {
-      const missing = getMissingInstitutionEnv()
-      if (missing.length) {
-        return {
-          configured: false,
-          missing_table: false,
-          institution_count: 0,
-          missing_env: missing
-        }
-      }
+  } catch {
+    return {
+      configured: true,
+      missing_table: false,
+      institution_count: FALLBACK_INSTITUTIONS.length,
+      missing_env: [],
+      is_fallback: true
     }
-    throw error
   }
 }
 
@@ -137,50 +204,61 @@ export async function searchInstitutionsInSupabase(params: {
   page?: number | null
   perPage?: number | null
 }): Promise<InstitutionSearchResponse> {
-  const supabase = getSupabaseReadClient()
-  const page = Math.max(1, params.page ?? 1)
-  const perPage = Math.min(50, Math.max(1, params.perPage ?? 24))
-  const from = (page - 1) * perPage
-  const to = from + perPage - 1
-
-  let query = supabase.from('institution').select(INSTITUTION_SELECT, { count: 'exact' }).order('name', { ascending: true }).range(from, to)
-
-  if (params.search?.trim()) {
-    query = query.ilike('name', `%${params.search.trim()}%`)
-  }
-  if (params.state?.trim()) {
-    query = query.eq('state', params.state.trim().toUpperCase())
-  }
-  if (params.control?.trim()) {
-    query = query.eq('control', params.control.trim())
+  const missingEnv = getMissingInstitutionEnv()
+  if (missingEnv.length) {
+    return searchFallbackInstitutions(params)
   }
 
-  const { data, error, count } = await query
-  if (error) {
-    if (isMissingInstitutionTable(error.message)) {
-      return { items: [], total: 0, page, per_page: perPage }
+  try {
+    const supabase = getSupabaseReadClient()
+    const page = Math.max(1, params.page ?? 1)
+    const perPage = Math.min(50, Math.max(1, params.perPage ?? 24))
+    const from = (page - 1) * perPage
+    const to = from + perPage - 1
+
+    let query = supabase.from('institution').select(INSTITUTION_SELECT, { count: 'exact' }).order('name', { ascending: true }).range(from, to)
+
+    if (params.search?.trim()) {
+      query = query.ilike('name', `%${params.search.trim()}%`)
     }
-    throw new Error(`Failed loading institutions: ${error.message}`)
-  }
+    if (params.state?.trim()) {
+      query = query.eq('state', params.state.trim().toUpperCase())
+    }
+    if (params.control?.trim()) {
+      query = query.eq('control', params.control.trim())
+    }
 
-  return {
-    items: ((data ?? []) as InstitutionRow[]).map(mapInstitution),
-    total: count ?? 0,
-    page,
-    per_page: perPage
+    const { data, error, count } = await query
+    if (error || !count || count === 0) {
+      return searchFallbackInstitutions(params)
+    }
+
+    return {
+      items: ((data ?? []) as InstitutionRow[]).map(mapInstitution),
+      total: count ?? 0,
+      page,
+      per_page: perPage
+    }
+  } catch {
+    return searchFallbackInstitutions(params)
   }
 }
 
 export async function getInstitutionFromSupabase(externalId: string): Promise<Institution | null> {
-  const supabase = getSupabaseReadClient()
-  const { data, error } = await supabase.from('institution').select(INSTITUTION_SELECT).eq('external_id', externalId).maybeSingle()
+  const missingEnv = getMissingInstitutionEnv()
+  if (!missingEnv.length) {
+    try {
+      const supabase = getSupabaseReadClient()
+      const { data, error } = await supabase.from('institution').select(INSTITUTION_SELECT).eq('external_id', externalId).maybeSingle()
 
-  if (error) {
-    if (isMissingInstitutionTable(error.message)) {
-      return null
+      if (!error && data) {
+        return mapInstitution(data as InstitutionRow)
+      }
+    } catch {
+      // Fall through to fallback
     }
-    throw new Error(`Failed loading institution ${externalId}: ${error.message}`)
   }
 
-  return data ? mapInstitution(data as InstitutionRow) : null
+  return FALLBACK_INSTITUTIONS.find((inst) => inst.external_id === externalId) ?? null
 }
+
