@@ -139,3 +139,5 @@ export function evaluateCatalogEligibility(
 ): EligibilityResult[] {
   return courses.map((course) => evaluateCourseEligibility(course, profile, equivalencies))
 }
+
+export const evaluateAllCourses = evaluateCatalogEligibility

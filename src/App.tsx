@@ -1,266 +1,339 @@
-import { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { Navbar } from './components/Navbar'
-import { StudentTranscriptManager } from './components/StudentTranscriptManager'
-import { FilterBar } from './components/FilterBar'
+import { PersonaSelector } from './components/PersonaSelector'
+import { CourseFilters, FilterStatus } from './components/CourseFilters'
 import { CourseCard } from './components/CourseCard'
+import { StudentCourseDrawer } from './components/StudentCourseDrawer'
 import { UCI_CS_MATH_COURSES } from './data/uci/courses'
 import { OFFICIAL_TRANSFER_EQUIVALENCIES } from './data/uci/equivalencies'
-import { STUDENT_PERSONAS } from './data/mock/mockStudentData'
-import { evaluateCourseEligibility } from './academic-engine/eligibility'
-import { StudentProfile, StudentCourseRecord } from './academic-engine/types'
-import { Shield, BookOpen, AlertCircle, Compass } from 'lucide-react'
+import { STUDENT_PERSONAS, StudentPersona } from './data/mock/mockStudentData'
+import { evaluateAllCourses } from './academic-engine/eligibility'
+import {
+  StudentProfile,
+  StudentCourseRecord,
+  GradeLetter,
+  EligibilityResult,
+  TermOffering
+} from './academic-engine/types'
+import {
+  Sparkles,
+  BookOpen,
+  CheckCircle2,
+  AlertCircle,
+  Shield,
+  Layers,
+  ChevronRight
+} from 'lucide-react'
 
-export function App() {
-  const [selectedPersonaId, setSelectedPersonaId] = useState<string>('sophomore_cs')
+const STORAGE_KEY = 'anttrail_active_profile_v1'
+
+export const App: React.FC = () => {
+  // --- Persona & Profile State ---
+  const [selectedPersonaId, setSelectedPersonaId] = useState<string>('freshman')
   const [profile, setProfile] = useState<StudentProfile>(() => {
-    return STUDENT_PERSONAS.find((p) => p.id === 'sophomore_cs')?.profile ?? STUDENT_PERSONAS[0].profile
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY)
+      if (saved) return JSON.parse(saved)
+    } catch {
+      // Fallback
+    }
+    return STUDENT_PERSONAS[0].profile
   })
 
+  // Persist locally
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(profile))
+    } catch {
+      // ignore
+    }
+  }, [profile])
+
+  // --- Filter & Drawer State ---
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedDept, setSelectedDept] = useState('ALL')
-  const [statusFilter, setStatusFilter] = useState('ALL')
+  const [selectedDepartment, setSelectedDepartment] = useState('ALL')
+  const [filterStatus, setFilterStatus] = useState<FilterStatus>('ALL')
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
-  // Select persona preset
-  const handleSelectPersona = (personaId: string) => {
-    setSelectedPersonaId(personaId)
-    const persona = STUDENT_PERSONAS.find((p) => p.id === personaId)
-    if (persona) {
-      setProfile(JSON.parse(JSON.stringify(persona.profile)))
+  // --- Deterministic Rules Engine Evaluation ---
+  const evaluationResults = useMemo(() => {
+    return evaluateAllCourses(UCI_CS_MATH_COURSES, profile, OFFICIAL_TRANSFER_EQUIVALENCIES)
+  }, [profile])
+
+  // Map of completed course codes for O(1) lookup
+  const completedMap = useMemo(() => {
+    const map = new Map<string, { grade: GradeLetter; id: string }>()
+    for (const rec of profile.courseHistory) {
+      if (rec.status === 'COMPLETED') {
+        map.set(rec.courseCode.toUpperCase(), { grade: rec.grade, id: rec.id })
+      }
     }
+    return map
+  }, [profile.courseHistory])
+
+  // Calculate Standing from completed units
+  const calculateStanding = (units: number): 'Freshman' | 'Sophomore' | 'Junior' | 'Senior' => {
+    if (units >= 135) return 'Senior'
+    if (units >= 90) return 'Junior'
+    if (units >= 45) return 'Sophomore'
+    return 'Freshman'
   }
 
-  // Toggle course in completed history
-  const handleToggleCompleted = (courseCode: string) => {
-    const existingIndex = profile.courseHistory.findIndex(
-      (c) => c.courseCode.toUpperCase() === courseCode.toUpperCase()
-    )
-    let newHistory: StudentCourseRecord[] = []
-
-    if (existingIndex >= 0) {
-      newHistory = profile.courseHistory.filter((_, idx) => idx !== existingIndex)
-    } else {
-      const courseDef = UCI_CS_MATH_COURSES.find((c) => c.code.toUpperCase() === courseCode.toUpperCase())
-      newHistory = [
-        ...profile.courseHistory,
-        {
-          id: `manual-${Date.now()}-${courseCode}`,
-          courseCode: courseCode,
-          institution: 'UCI',
-          term: 'Fall 2025',
-          units: courseDef?.units ?? 4,
-          grade: 'A',
-          status: 'COMPLETED'
-        }
-      ]
-    }
-
-    const newUnits = newHistory.reduce((acc, c) => acc + c.units, 0)
-    let newStanding = profile.classStanding
-    if (newUnits >= 135) newStanding = 'Senior'
-    else if (newUnits >= 90) newStanding = 'Junior'
-    else if (newUnits >= 45) newStanding = 'Sophomore'
-    else newStanding = 'Freshman'
-
-    setProfile({
-      ...profile,
-      completedUnits: newUnits,
-      classStanding: newStanding,
-      courseHistory: newHistory
-    })
+  // --- Handlers ---
+  const handleSelectPersona = (persona: StudentPersona) => {
+    setSelectedPersonaId(persona.id)
+    setProfile(persona.profile)
   }
 
-  // Reset profile
   const handleResetProfile = () => {
-    handleSelectPersona('freshman')
+    const fresh = STUDENT_PERSONAS[0].profile
+    setSelectedPersonaId('freshman')
+    setProfile(fresh)
   }
 
-  // Export profile JSON
-  const handleExportProfile = () => {
+  const handleExportJSON = () => {
     const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(profile, null, 2))
     const downloadAnchor = document.createElement('a')
     downloadAnchor.setAttribute('href', dataStr)
-    downloadAnchor.setAttribute('download', `anttrail-profile-${profile.studentId || 'export'}.json`)
+    downloadAnchor.setAttribute('download', `anttrail-profile-${profile.major.replace(/\s+/g, '_')}.json`)
     document.body.appendChild(downloadAnchor)
     downloadAnchor.click()
     downloadAnchor.remove()
   }
 
-  // Compute eligibility for all courses
-  const evaluatedCourses = useMemo(() => {
-    return UCI_CS_MATH_COURSES.map((course) => {
-      const res = evaluateCourseEligibility(course, profile, OFFICIAL_TRANSFER_EQUIVALENCIES)
-      const isTaken = profile.courseHistory.some(
-        (c) => c.courseCode.toUpperCase() === course.code.toUpperCase() && c.status === 'COMPLETED'
-      )
-      const takenRecord = profile.courseHistory.find(
-        (c) => c.courseCode.toUpperCase() === course.code.toUpperCase()
-      )
-      return {
-        ...res,
-        isCompleted: isTaken,
-        completedGrade: takenRecord?.grade
-      }
-    })
-  }, [profile])
+  // Fast toggle completed status directly on CourseCard
+  const handleToggleCourseCompleted = (courseCode: string) => {
+    const normalized = courseCode.trim().toUpperCase()
+    const existing = completedMap.get(normalized)
 
-  // Filter courses
-  const filteredCourses = useMemo(() => {
-    return evaluatedCourses.filter((item) => {
-      // Dept filter
-      if (selectedDept !== 'ALL') {
-        if (selectedDept === 'ICS' && item.course.department !== 'ICS' && item.course.department !== 'COMPSCI') {
-          return false
-        }
-        if (selectedDept === 'MATH' && item.course.department !== 'MATH') {
-          return false
-        }
-        if (selectedDept === 'STATS' && item.course.department !== 'STATS') {
-          return false
-        }
+    if (existing) {
+      // Remove it
+      handleRemoveCourse(existing.id)
+    } else {
+      // Find course to get units
+      const targetCourse = UCI_CS_MATH_COURSES.find((c) => c.code.toUpperCase() === normalized)
+      const unitsToAdd = targetCourse ? targetCourse.units : 4
+
+      handleAddCourse({
+        courseCode: normalized,
+        institution: 'UCI',
+        term: 'Completed Prior',
+        units: unitsToAdd,
+        grade: 'A',
+        status: 'COMPLETED'
+      })
+    }
+  }
+
+  const handleAddCourse = (course: Omit<StudentCourseRecord, 'id'>) => {
+    const newCourse: StudentCourseRecord = {
+      ...course,
+      id: 'rec_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7)
+    }
+    const updatedHistory = [...profile.courseHistory, newCourse]
+    const updatedUnits = updatedHistory
+      .filter((c) => c.status === 'COMPLETED')
+      .reduce((acc, curr) => acc + curr.units, 0)
+
+    setProfile({
+      ...profile,
+      courseHistory: updatedHistory,
+      completedUnits: updatedUnits,
+      classStanding: calculateStanding(updatedUnits)
+    })
+  }
+
+  const handleRemoveCourse = (courseId: string) => {
+    const updatedHistory = profile.courseHistory.filter((c) => c.id !== courseId)
+    const updatedUnits = updatedHistory
+      .filter((c) => c.status === 'COMPLETED')
+      .reduce((acc, curr) => acc + curr.units, 0)
+
+    setProfile({
+      ...profile,
+      courseHistory: updatedHistory,
+      completedUnits: updatedUnits,
+      classStanding: calculateStanding(updatedUnits)
+    })
+  }
+
+  // --- Filtering Logic ---
+  const filteredResults = useMemo(() => {
+    return evaluationResults.filter((result: EligibilityResult) => {
+      const { course, isEligible, status } = result
+
+      // Department filter
+      if (selectedDepartment !== 'ALL' && course.department !== selectedDepartment) {
+        return false
       }
 
       // Status filter
-      if (statusFilter === 'ELIGIBLE' && !item.isEligible) {
-        return false
-      }
-      if (statusFilter === 'TRANSFER' && item.status !== 'TRANSFER_EQUIVALENCY_USED') {
-        return false
-      }
-      if (statusFilter === 'MISSING' && item.isEligible) {
-        return false
-      }
+      if (filterStatus === 'ELIGIBLE_ONLY' && !isEligible) return false
+      if (filterStatus === 'MISSING_ONLY' && isEligible) return false
+      if (filterStatus === 'TRANSFER_ONLY' && status !== 'TRANSFER_EQUIVALENCY_USED') return false
 
-      // Search query
+      // Text search
       if (searchQuery.trim()) {
-        const q = searchQuery.toLowerCase()
-        const matchesCode = item.course.code.toLowerCase().includes(q)
-        const matchesTitle = item.course.title.toLowerCase().includes(q)
-        const matchesDesc = item.course.description.toLowerCase().includes(q)
-        const matchesPrereq = item.course.prerequisiteText?.toLowerCase().includes(q)
-        return matchesCode || matchesTitle || matchesDesc || matchesPrereq
+        const q = searchQuery.toLowerCase().trim()
+        const matchCode = course.code.toLowerCase().includes(q)
+        const matchTitle = course.title.toLowerCase().includes(q)
+        const matchDesc = course.description.toLowerCase().includes(q)
+        const matchInstructor = course.offerings?.some((off: TermOffering) =>
+          off.instructors?.some((inst: string) => inst.toLowerCase().includes(q))
+        )
+        return matchCode || matchTitle || matchDesc || matchInstructor
       }
 
       return true
     })
-  }, [evaluatedCourses, selectedDept, statusFilter, searchQuery])
+  }, [evaluationResults, selectedDepartment, filterStatus, searchQuery])
 
-  // Aggregate stats
-  const eligibleCount = evaluatedCourses.filter((c) => c.isEligible).length
-  const transferCount = evaluatedCourses.filter((c) => c.status === 'TRANSFER_EQUIVALENCY_USED').length
-  const missingCount = evaluatedCourses.filter((c) => !c.isEligible).length
+  // Count summaries
+  const eligibleCount = evaluationResults.filter((r: EligibilityResult) => r.isEligible).length
+  const missingCount = evaluationResults.filter((r: EligibilityResult) => !r.isEligible).length
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100">
-      <Navbar onReset={handleResetProfile} onExport={handleExportProfile} />
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+      <Navbar onReset={handleResetProfile} onExport={handleExportJSON} />
 
-      <main className="flex-1 mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 space-y-6">
-        {/* Hero banner */}
-        <div className="relative rounded-3xl border border-slate-800 bg-gradient-to-r from-slate-900 via-slate-900/90 to-anteater-blue/20 p-6 sm:p-8 overflow-hidden shadow-2xl">
-          <div className="absolute right-0 top-0 -mt-12 -mr-12 h-64 w-64 rounded-full bg-anteater-gold/5 blur-3xl pointer-events-none" />
-          <div className="relative z-10 max-w-3xl space-y-2">
-            <div className="inline-flex items-center gap-2 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold text-sky-300 ring-1 ring-blue-500/20">
-              <Compass className="h-3.5 w-3.5" />
-              <span>Phase 1 Prototype: Prerequisite Engine & Eligibility Auditor</span>
+      {/* Main Container */}
+      <main className="flex-1 mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8 space-y-6">
+        {/* Hero Banner & Purpose */}
+        <section className="relative overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-r from-slate-900 via-slate-900 to-blue-950/40 p-6 sm:p-8 shadow-xl">
+          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="max-w-2xl space-y-2">
+              <div className="inline-flex items-center gap-2 rounded-full bg-anteater-gold/15 px-3 py-1 text-xs font-bold text-anteater-gold ring-1 ring-anteater-gold/30">
+                <Sparkles className="h-3.5 w-3.5" />
+                <span>Phase 1 — Prerequisite Boolean Engine</span>
+              </div>
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                What UCI courses can you take next?
+              </h1>
+              <p className="text-sm text-slate-300 leading-relaxed">
+                AntTrail deterministically evaluates actual UCI catalog prerequisites, letter grade rules,
+                and approved California Community College transfer equivalencies to show your exact course eligibility.
+              </p>
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
-              What courses can you actually take at <span className="text-anteater-gold">UC Irvine</span>?
-            </h1>
-            <p className="text-sm text-slate-300 leading-relaxed">
-              AntTrail evaluates full Boolean prerequisite trees, minimum grade thresholds, and California
-              Community College transfer articulations deterministically with zero server retention.
-            </p>
-          </div>
-        </div>
 
-        {/* Interactive Student Transcript & Persona Manager */}
-        <StudentTranscriptManager
-          profile={profile}
-          onUpdateProfile={setProfile}
+            {/* Quick Stats Badges */}
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="rounded-2xl border border-emerald-500/30 bg-emerald-950/40 p-3.5 min-w-[120px]">
+                <div className="flex items-center gap-1.5 text-xs text-emerald-300 font-semibold mb-1">
+                  <CheckCircle2 className="h-3.5 w-3.5" />
+                  Eligible Now
+                </div>
+                <div className="text-2xl font-black text-white font-mono">{eligibleCount}</div>
+                <div className="text-[10px] text-emerald-400/80">ready for enrollment</div>
+              </div>
+
+              <div className="rounded-2xl border border-rose-500/30 bg-rose-950/40 p-3.5 min-w-[120px]">
+                <div className="flex items-center gap-1.5 text-xs text-rose-300 font-semibold mb-1">
+                  <AlertCircle className="h-3.5 w-3.5" />
+                  Prereqs Missing
+                </div>
+                <div className="text-2xl font-black text-white font-mono">{missingCount}</div>
+                <div className="text-[10px] text-rose-400/80">locked by chains</div>
+              </div>
+
+              <button
+                onClick={() => setIsDrawerOpen(true)}
+                className="flex flex-col justify-center rounded-2xl border border-blue-500/40 bg-blue-600/30 p-3.5 hover:bg-blue-600/50 hover:border-blue-400 transition-all text-left min-w-[140px]"
+              >
+                <div className="flex items-center gap-1.5 text-xs text-blue-300 font-semibold mb-1">
+                  <BookOpen className="h-3.5 w-3.5" />
+                  Course Record
+                </div>
+                <div className="text-2xl font-black text-white font-mono">
+                  {profile.courseHistory.length}
+                </div>
+                <div className="text-[10px] text-blue-300 flex items-center gap-0.5">
+                  Manage record <ChevronRight className="h-3 w-3" />
+                </div>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Persona Selector */}
+        <PersonaSelector
           selectedPersonaId={selectedPersonaId}
           onSelectPersona={handleSelectPersona}
+          activeProfile={profile}
         />
 
-        {/* Filter and Search Bar */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-base font-bold text-white flex items-center gap-2">
-              <BookOpen className="h-4 w-4 text-anteater-gold" />
-              <span>Course Catalog & Real-Time Eligibility</span>
-            </h2>
-            <span className="text-xs text-slate-400">
-              Showing {filteredCourses.length} of {evaluatedCourses.length} courses
-            </span>
-          </div>
-
-          <FilterBar
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-            selectedDept={selectedDept}
-            onDeptChange={setSelectedDept}
-            statusFilter={statusFilter}
-            onStatusFilterChange={setStatusFilter}
-            totalCount={evaluatedCourses.length}
-            eligibleCount={eligibleCount}
-            transferCount={transferCount}
-            missingCount={missingCount}
-          />
-        </div>
+        {/* Search & Filters */}
+        <CourseFilters
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          selectedDepartment={selectedDepartment}
+          onSelectDepartment={setSelectedDepartment}
+          filterStatus={filterStatus}
+          onSelectFilterStatus={setFilterStatus}
+          totalCount={filteredResults.length}
+          eligibleCount={eligibleCount}
+          missingCount={missingCount}
+        />
 
         {/* Course Cards Grid */}
-        {filteredCourses.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-slate-800 bg-slate-900/30 p-12 text-center space-y-2">
-            <AlertCircle className="mx-auto h-8 w-8 text-slate-500" />
-            <h3 className="text-sm font-semibold text-slate-300">No matching courses found</h3>
-            <p className="text-xs text-slate-500">
-              Try adjusting your search query or relaxing your status and department filters.
+        <section className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+              <Layers className="h-4 w-4 text-blue-400" />
+              <span>Catalog & Eligibility Matrix ({filteredResults.length})</span>
+            </h2>
+            <p className="text-xs text-slate-400 hidden sm:block">
+              Click the checkmark on any card to toggle completion and see real-time prerequisite updates.
             </p>
           </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {filteredCourses.map((item) => (
-              <CourseCard
-                key={item.course.id}
-                result={item}
-                isCompleted={item.isCompleted}
-                completedGrade={item.completedGrade}
-                onToggleCompleted={handleToggleCompleted}
-              />
-            ))}
-          </div>
-        )}
 
-        {/* Architecture & Privacy Callout */}
-        <div className="rounded-2xl border border-slate-800/80 bg-slate-900/40 p-5 space-y-3">
-          <div className="flex items-center gap-2">
-            <Shield className="h-4 w-4 text-emerald-400" />
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300">
-              Deterministic Academic Engine Guarantees
-            </h3>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-slate-400">
-            <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
-              <span className="font-semibold text-slate-200 block mb-1">No AI In Academic Rules</span>
-              Eligibility, transfer articulations, and prerequisite checks are 100% deterministic code.
+          {filteredResults.length === 0 ? (
+            <div className="rounded-2xl border border-dashed border-slate-800 p-12 text-center text-slate-400">
+              <AlertCircle className="mx-auto h-8 w-8 text-slate-500 mb-2" />
+              <p className="text-sm font-semibold">No courses match the current search or filters.</p>
+              <p className="text-xs text-slate-500 mt-1">Try resetting the department or status filter.</p>
             </div>
-            <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
-              <span className="font-semibold text-slate-200 block mb-1">Zero Server Retention</span>
-              Student transcripts and course records are never sent to or stored on our servers.
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredResults.map((result: EligibilityResult) => {
+                const comp = completedMap.get(result.course.code.toUpperCase())
+                return (
+                  <CourseCard
+                    key={result.course.id}
+                    result={result}
+                    isCompleted={Boolean(comp)}
+                    completedGrade={comp?.grade}
+                    onToggleCompleted={handleToggleCourseCompleted}
+                  />
+                )
+              })}
             </div>
-            <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
-              <span className="font-semibold text-slate-200 block mb-1">Full Boolean AST</span>
-              Handles nested logic: <code className="text-sky-300">A AND (B OR C)</code>, minimum grades, and transfer credits.
-            </div>
-          </div>
-        </div>
+          )}
+        </section>
       </main>
 
+      {/* Student Course Drawer */}
+      <StudentCourseDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        profile={profile}
+        onAddCourse={handleAddCourse}
+        onRemoveCourse={handleRemoveCourse}
+      />
+
       {/* Footer */}
-      <footer className="border-t border-slate-800 bg-slate-950 px-4 py-4 sm:px-6 text-center text-xs text-slate-500">
-        <p>
-          AntTrail • Built for UC Irvine Anteaters • Inspired by AntAlmanac & ZotCourse • Phase 1 Release
-        </p>
+      <footer className="mt-auto border-t border-slate-800 bg-slate-950/80 py-8 px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5 text-slate-400">
+              <Shield className="h-4 w-4 text-emerald-400" />
+              <span>Privacy Invariant: 100% Client-Side. No student academic records persist on our servers.</span>
+            </div>
+          </div>
+          <div className="text-center md:text-right">
+            AntTrail is an independent student academic resource and is not affiliated with or endorsed by UC Irvine.
+          </div>
+        </div>
       </footer>
     </div>
   )
 }
-export default App
