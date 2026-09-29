@@ -161,3 +161,99 @@ export interface EligibilityResult {
   }>
   warnings: string[]
 }
+
+// ==========================================
+// --- Phase 2: Degree Requirements & Planner Types ---
+// ==========================================
+
+export type RequirementType =
+  | 'ALL_OF'              // Must complete every course in list
+  | 'CHOOSE_N_COURSES'    // Complete at least N courses from list
+  | 'CHOOSE_N_UNITS'      // Complete at least N units from list
+  | 'MIN_TOTAL_UNITS'     // e.g. 180 units for graduation
+  | 'MIN_UPPER_DIV_UNITS' // e.g. 60 units of upper-division coursework (numbered 100-199)
+
+export interface DegreeRequirement {
+  id: string
+  name: string
+  description?: string
+  type: RequirementType
+  targetCount?: number       // e.g. 3 courses, or 12 units, or 180 total units
+  courses?: string[]         // Target UCI course codes (e.g. ['ICS 31', 'ICS 32'])
+  subRequirements?: DegreeRequirement[]
+}
+
+export type RequirementCategory =
+  | 'LOWER_DIVISION'
+  | 'UPPER_DIVISION'
+  | 'MAJOR_ELECTIVES'
+  | 'GENERAL_EDUCATION'
+  | 'UNIVERSITY'
+
+export interface DegreeSection {
+  id: string
+  category: RequirementCategory
+  name: string
+  requirements: DegreeRequirement[]
+}
+
+export interface DegreeProgram {
+  id: string
+  name: string                 // e.g. "Computer Science B.S."
+  catalogYear: string          // "2026-27"
+  school: string               // "Donald Bren School of Information and Computer Sciences"
+  totalUnitsRequired: number   // 180
+  minUpperDivisionUnits: number // 60
+  sections: DegreeSection[]
+}
+
+export interface PlannedCourse {
+  courseCode: string
+  units: number
+  customTitle?: string
+}
+
+export interface PlannedQuarter {
+  id: string                   // e.g. "fall-2026"
+  term: 'Fall' | 'Winter' | 'Spring' | 'Summer'
+  year: number                 // 2026
+  courses: PlannedCourse[]
+}
+
+export interface SequenceValidationError {
+  courseCode: string
+  quarterId: string
+  quarterLabel: string
+  missingPrerequisite: string
+  prerequisiteQuarterLabel?: string
+  reason: 'NOT_SCHEDULED' | 'SCHEDULED_LATER' | 'SCHEDULED_CONCURRENTLY_ILLEGAL'
+  message: string
+}
+
+export interface EvaluatedRequirement {
+  requirement: DegreeRequirement
+  isComplete: boolean
+  isPlannedComplete: boolean // Complete when counting planned courses
+  completedCourses: string[]
+  plannedCourses: string[]
+  missingCourses: string[]
+  unitsCompleted: number
+  unitsPlanned: number
+  eligibleToSatisfy: string[] // Currently eligible courses that can satisfy this requirement
+}
+
+export interface DegreeAuditResult {
+  program: DegreeProgram
+  overallProgressPercent: number
+  plannedProgressPercent: number
+  totalUnitsEarned: number
+  totalUnitsPlanned: number
+  upperDivisionUnitsEarned: number
+  upperDivisionUnitsPlanned: number
+  sections: Array<{
+    section: DegreeSection
+    requirements: EvaluatedRequirement[]
+    isComplete: boolean
+    isPlannedComplete: boolean
+  }>
+}

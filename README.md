@@ -84,8 +84,8 @@ AntTrail is built with a clean separation of concerns:
 | Milestone | Scope | Status |
 | :--- | :--- | :---: |
 | **Phase 1** | **Prerequisite Boolean Engine & Interactive Eligibility Prototype** | ✅ **Complete** |
-| Phase 2 | Basic UCI Degree Requirement Engine & Manual Planner UI | 🔜 Next Milestone |
-| Phase 3 | Quarterly WebSOC Offerings & Auto Plan Constraint Solver | 📋 Planned |
+| **Phase 2** | **Basic UCI Degree Requirement Engine & Manual Planner UI** | ✅ **Complete** |
+| Phase 3 | Quarterly WebSOC Offerings & Auto Plan Constraint Solver | 🔜 Next Milestone |
 | Phase 4 | DegreeWorks & Unofficial Transcript Deterministic Parser | 📋 Planned |
 | Phase 5 | Google Authentication & Private Google Drive Storage | 📋 Planned |
 | Phase 6 | GPA Projections, Mobile Polish, & WCAG Accessibility | 📋 Planned |
@@ -94,7 +94,7 @@ AntTrail is built with a clean separation of concerns:
 
 ## 🧪 Verification & Testing
 
-AntTrail includes a unit test suite built with **Vitest**:
+AntTrail includes 20 unit tests across 3 suites built with **Vitest**:
 
 ```bash
 # Run unit test suite
@@ -108,10 +108,13 @@ npm run build
 - ✔ Grade and standing checks: Letter grades vs minimum thresholds (`C`, `C-`, `B`).
 - ✔ UCI Pass (`P`) policy compliance.
 - ✔ Class standing hierarchy (`Junior` satisfies `Sophomore` requirement).
-- ✔ Pure `AND` and `OR` boolean nodes.
+- ✔ Pure `AND` and `OR` boolean nodes in AST.
 - ✔ Complex nested logic: `ICS 46` requiring `ICS 45C` AND `(ICS 33 OR EECS 40)`.
 - ✔ Multi-tier upper division sequences: `MATH 140A` (Real Analysis) requiring `MATH 13` AND `MATH 3A` AND `MATH 2D`.
 - ✔ Community college transfer articulation: Mt. SAC `MATH 260` → `MATH 3A`, Mt. SAC `CSCI 220` → `ICS 45C`.
+- ✔ Degree Requirement Audit: Computer Science B.S. and Mathematics B.S. core/elective/unit evaluations.
+- ✔ Multi-Quarter Prerequisite Sequence Validator: detects backwards scheduling and illegal concurrent enrollments.
+- ✔ Quarter Unit Load Monitoring: detects underload ($<12$ units) and overload ($>20$ units).
 - ✔ Human-readable prerequisite string formatting.
 
 ---
