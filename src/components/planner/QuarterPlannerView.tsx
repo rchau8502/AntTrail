@@ -11,7 +11,8 @@ import {
   AlertTriangle,
   Plus,
   RotateCcw,
-  Trash2
+  Trash2,
+  Zap
 } from 'lucide-react'
 
 interface QuarterPlannerViewProps {
@@ -23,6 +24,7 @@ interface QuarterPlannerViewProps {
   onRemoveQuarter: (quarterId: string) => void
   onResetRoadmap: () => void
   onClearSchedule: () => void
+  onOpenAutoPlan: () => void
   eligibleCourses: string[]
   catalogCourses: Course[]
 }
@@ -36,6 +38,7 @@ export const QuarterPlannerView: React.FC<QuarterPlannerViewProps> = ({
   onRemoveQuarter,
   onResetRoadmap,
   onClearSchedule,
+  onOpenAutoPlan,
   eligibleCourses,
   catalogCourses
 }) => {
@@ -119,6 +122,14 @@ export const QuarterPlannerView: React.FC<QuarterPlannerViewProps> = ({
         {/* Action Buttons Toolbar */}
         <div className="mt-6 pt-6 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
+            <button
+              onClick={onOpenAutoPlan}
+              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 px-4 py-2 text-xs font-black text-slate-950 transition-all shadow-lg shadow-amber-950/40"
+            >
+              <Zap className="h-4 w-4 fill-slate-950" />
+              <span>⚡ Auto Plan Degree</span>
+            </button>
+
             <button
               onClick={onAddQuarter}
               className="flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-xs font-bold text-white hover:bg-blue-500 transition-colors shadow-md shadow-blue-900/30"

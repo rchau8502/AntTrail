@@ -257,3 +257,39 @@ export interface DegreeAuditResult {
     isPlannedComplete: boolean
   }>
 }
+
+// ==========================================
+// --- Phase 3: Auto Plan & Offerings Types ---
+// ==========================================
+
+export type AutoPlanStrategy = 'BALANCED' | 'ACCELERATED' | 'LIGHT'
+
+export interface AutoPlanPreferences {
+  maxUnitsPerQuarter: number        // e.g. 16 or 20
+  minUnitsPerQuarter: number        // e.g. 12
+  includeSummer: boolean            // true | false
+  targetGraduationYear?: number
+  userSelectedCourseCodes?: string[] // Optional specific courses student wants prioritized
+}
+
+export interface GeneratedPlan {
+  id: string
+  name: string                      // e.g. "Balanced Standard Pace", "Accelerated Fast Track"
+  strategy: AutoPlanStrategy
+  description: string
+  quarters: PlannedQuarter[]
+  totalUnits: number
+  totalQuarters: number
+  graduationTerm: string            // e.g. "Spring 2028"
+  averageUnitsPerQuarter: number
+  isValid: boolean
+  warningMessages?: string[]
+}
+
+export interface AutoPlanResult {
+  plans: GeneratedPlan[]
+  unfulfillableCourses: Array<{
+    courseCode: string
+    reason: string
+  }>
+}

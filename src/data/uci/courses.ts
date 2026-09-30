@@ -15,7 +15,8 @@ export const UCI_CS_MATH_COURSES: Course[] = [
     offerings: [
       { term: 'Fall', year: 2026, confidence: 'CONFIRMED', instructors: ['Alfarooque, A.', 'Hermans, F.'] },
       { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
-      { term: 'Spring', year: 2027, confidence: 'LIKELY' }
+      { term: 'Spring', year: 2027, confidence: 'LIKELY' },
+      { term: 'Summer', year: 2027, confidence: 'EXPECTED' }
     ]
   },
   {
@@ -36,7 +37,8 @@ export const UCI_CS_MATH_COURSES: Course[] = [
     offerings: [
       { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
       { term: 'Winter', year: 2027, confidence: 'CONFIRMED', instructors: ['Thornton, A.'] },
-      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Summer', year: 2027, confidence: 'EXPECTED' }
     ]
   },
   {
@@ -57,7 +59,8 @@ export const UCI_CS_MATH_COURSES: Course[] = [
     offerings: [
       { term: 'Fall', year: 2026, confidence: 'CONFIRMED', instructors: ['Pattis, R.'] },
       { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
-      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Summer', year: 2027, confidence: 'EXPECTED' }
     ]
   },
   {
@@ -78,7 +81,8 @@ export const UCI_CS_MATH_COURSES: Course[] = [
     offerings: [
       { term: 'Fall', year: 2026, confidence: 'CONFIRMED', instructors: ['Thornton, A.'] },
       { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
-      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Summer', year: 2027, confidence: 'EXPECTED' }
     ]
   },
   {
@@ -175,7 +179,8 @@ export const UCI_CS_MATH_COURSES: Course[] = [
     offerings: [
       { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
       { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
-      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Summer', year: 2027, confidence: 'EXPECTED' }
     ]
   },
   {
@@ -196,7 +201,8 @@ export const UCI_CS_MATH_COURSES: Course[] = [
     offerings: [
       { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
       { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
-      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Summer', year: 2027, confidence: 'EXPECTED' }
     ]
   },
   {
@@ -238,7 +244,8 @@ export const UCI_CS_MATH_COURSES: Course[] = [
     offerings: [
       { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
       { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
-      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Summer', year: 2027, confidence: 'EXPECTED' }
     ]
   },
   {
@@ -338,7 +345,8 @@ export const UCI_CS_MATH_COURSES: Course[] = [
     offerings: [
       { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
       { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
-      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Summer', year: 2027, confidence: 'EXPECTED' }
     ]
   }
 ]

@@ -22,27 +22,42 @@ AntTrail is built with a clean separation of concerns:
 /Volumes/Crucial X9/AI/AntTrail
 ├── src/
 │   ├── academic-engine/            # Pure TypeScript deterministic rules engine (zero UI dependencies)
-│   │   ├── types.ts                # Strict AST schemas (Course, PrereqNode, StudentProfile, etc.)
+│   │   ├── types.ts                # Strict AST schemas (Course, PrereqNode, StudentProfile, AutoPlan, etc.)
 │   │   ├── prerequisites.ts        # Recursive AST evaluator, grade comparator, human formatter
-│   │   └── eligibility.ts          # Batch course eligibility evaluator & explanation builder
+│   │   ├── eligibility.ts          # Batch course eligibility evaluator & explanation builder
+│   │   ├── degree.ts               # Degree audit engine (CS B.S., Math B.S. core/electives/unit quotas)
+│   │   ├── planner.ts              # Multi-quarter prerequisite sequence validator & schedule evaluator
+│   │   └── autoplan.ts             # Deterministic topological bottleneck scheduler & multi-plan generator
 │   ├── data/
 │   │   ├── uci/
-│   │   │   ├── courses.ts          # Mocked official UCI catalog (ICS & MATH series)
-│   │   │   └── equivalencies.ts    # Official California Community College articulation rules (ASSIST.org)
+│   │   │   ├── courses.ts          # Mocked official UCI catalog with quarterly offering schedules
+│   │   │   ├── equivalencies.ts    # Official California Community College articulation rules (ASSIST.org)
+│   │   │   ├── programs.ts         # Official UCI Degree Programs (Computer Science B.S., Mathematics B.S.)
+│   │   │   └── offerings.ts        # UCI quarterly offering schedule lookup and confidence badge helpers
 │   │   └── mock/
 │   │       └── mockStudentData.ts  # Pre-configured student personas (Freshman, Transfer, etc.)
 │   ├── components/                 # Reactive, accessible React UI
-│   │   ├── Navbar.tsx              # Top bar, stats counter, privacy indicator
+│   │   ├── Navbar.tsx              # Top bar, stats counter, tab navigation
 │   │   ├── PersonaSelector.tsx     # Student persona presets with instant switching
 │   │   ├── CourseFilters.tsx       # Search by text, department chips, and eligibility status
 │   │   ├── CourseCard.tsx          # Card displaying live eligibility status, badges, offerings
 │   │   ├── PrerequisiteTreeVisualizer.tsx # Visual AST prerequisite drill-down tree
-│   │   └── StudentCourseDrawer.tsx # Course record manager, manual entry, & transfer credit viewer
+│   │   ├── StudentCourseDrawer.tsx # Course record manager, manual entry, & transfer credit viewer
+│   │   ├── planner/                # Multi-quarter interactive planning board
+│   │   │   ├── QuarterPlannerView.tsx # Main planner view with live sequencing validation
+│   │   │   ├── QuarterColumn.tsx   # Per-quarter draggable card list and unit meter
+│   │   │   ├── AddCourseModal.tsx  # Searchable eligible course picker & custom course input
+│   │   │   └── AutoPlanModal.tsx   # Automated degree plan generator with 3 distinct strategies
+│   │   └── degree/                 # Degree progress & audit view
+│   │       └── DegreeAuditView.tsx # Degree requirement breakdown, progress bars, section drill-down
 │   ├── App.tsx                     # Main dashboard coordinating engine, state, filters & drawer
 │   ├── main.tsx                    # React DOM entrypoint
 │   └── index.css                   # Tailwind CSS styling and theme tokens
 ├── tests/
-│   └── academic-engine.test.ts     # Vitest comprehensive unit test suite
+│   ├── academic-engine.test.ts     # Vitest prerequisite AST and eligibility test suite
+│   ├── degree-engine.test.ts       # Vitest degree requirement evaluation suite
+│   ├── planner-engine.test.ts      # Vitest multi-quarter sequence validation suite
+│   └── autoplan-engine.test.ts     # Vitest deterministic auto-plan constraint solver suite
 ├── docs/superpowers/
 │   ├── specs/                      # Architecture and technical design specifications
 │   └── plans/                      # Detailed implementation plans
@@ -85,7 +100,7 @@ AntTrail is built with a clean separation of concerns:
 | :--- | :--- | :---: |
 | **Phase 1** | **Prerequisite Boolean Engine & Interactive Eligibility Prototype** | ✅ **Complete** |
 | **Phase 2** | **Basic UCI Degree Requirement Engine & Manual Planner UI** | ✅ **Complete** |
-| Phase 3 | Quarterly WebSOC Offerings & Auto Plan Constraint Solver | 🔜 Next Milestone |
+| **Phase 3** | **Quarterly WebSOC Offerings & Auto Plan Constraint Solver** | ✅ **Complete** |
 | Phase 4 | DegreeWorks & Unofficial Transcript Deterministic Parser | 📋 Planned |
 | Phase 5 | Google Authentication & Private Google Drive Storage | 📋 Planned |
 | Phase 6 | GPA Projections, Mobile Polish, & WCAG Accessibility | 📋 Planned |
@@ -94,7 +109,7 @@ AntTrail is built with a clean separation of concerns:
 
 ## 🧪 Verification & Testing
 
-AntTrail includes 20 unit tests across 3 suites built with **Vitest**:
+AntTrail includes 25 unit tests across 4 suites built with **Vitest**:
 
 ```bash
 # Run unit test suite
@@ -115,6 +130,10 @@ npm run build
 - ✔ Degree Requirement Audit: Computer Science B.S. and Mathematics B.S. core/elective/unit evaluations.
 - ✔ Multi-Quarter Prerequisite Sequence Validator: detects backwards scheduling and illegal concurrent enrollments.
 - ✔ Quarter Unit Load Monitoring: detects underload ($<12$ units) and overload ($>20$ units).
+- ✔ Auto Plan Constraint Solver: generates 3 valid plans (Balanced, Accelerated, Light) with 0 sequencing errors.
+- ✔ Prerequisite Bottleneck Ordering: topological critical path preserves chains like `ICS 31 → 32 → 33 → 45C → 46 → CS 161`.
+- ✔ Transfer Articulation Deduplication: auto planner never reschedules courses already cleared via transfer.
+- ✔ Summer Session Sensitivity: respects `includeSummer` toggle and schedules summer terms for fast-track plans.
 - ✔ Human-readable prerequisite string formatting.
 
 ---

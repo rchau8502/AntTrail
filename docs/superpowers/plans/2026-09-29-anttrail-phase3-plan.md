@@ -35,11 +35,11 @@
 
 ## Tasks
 
-- [ ] **Task 1: Extend Types & Define UCI Offerings Helper**
+- [x] **Task 1: Extend Types & Define UCI Offerings Helper**
   - Add `AutoPlanPreferences`, `GeneratedPlan`, and `AutoPlanResult` to `src/academic-engine/types.ts`.
   - Create `src/data/uci/offerings.ts` with term lookup helpers (`isCourseOfferedInTerm`, `getOfferingConfidenceBadge`, `getAvailableTermsForCourse`).
 
-- [ ] **Task 2: Implement Auto Plan Constraint Engine (`src/academic-engine/autoplan.ts`)**
+- [x] **Task 2: Implement Auto Plan Constraint Engine (`src/academic-engine/autoplan.ts`)**
   - Calculate bottleneck prerequisite depths via recursive AST inspection.
   - Formulate quarter-by-quarter candidate slots matching prerequisite satisfaction and term availability.
   - Generate 3 distinct strategies:
@@ -48,28 +48,28 @@
     - **Light Workload**: 12–14 units/term, extended terms.
   - Automatically validate each plan with `validatePlannedSchedule()`.
 
-- [ ] **Task 3: Build Unit Tests for Auto Plan Engine (`tests/autoplan-engine.test.ts`)**
+- [x] **Task 3: Build Unit Tests for Auto Plan Engine (`tests/autoplan-engine.test.ts`)**
   - Test Auto Plan on Freshman CS persona: generates valid prerequisite progression from ICS 31 to CS 161.
   - Test Auto Plan on Mt. SAC Transfer persona: builds schedule utilizing transfer credits without repeating completed courses.
   - Verify that no course is placed in an off-quarter (e.g. spring for fall-only courses).
   - Verify that all generated plans pass `validatePlannedSchedule` with 0 sequencing errors.
 
-- [ ] **Task 4: Build Auto Plan UI Component (`AutoPlanModal.tsx`)**
+- [x] **Task 4: Build Auto Plan UI Component (`AutoPlanModal.tsx`)**
   - Create `src/components/planner/AutoPlanModal.tsx` with:
     - Preference controls: Max units per term slider, summer session toggle, desired courses input.
     - Side-by-side plan comparison cards: Plan A (Balanced), Plan B (Accelerated), Plan C (Light).
     - Details preview per quarter with course count and unit totals.
     - "Apply This Plan" button.
 
-- [ ] **Task 5: Wire Auto Plan Modal into QuarterPlannerView & App**
+- [x] **Task 5: Wire Auto Plan Modal into QuarterPlannerView & App**
   - Add prominent **"⚡ Auto Plan"** button to `QuarterPlannerView.tsx`.
   - Connect "Apply This Plan" callback to replace `plannedQuarters` in `App.tsx` with state persistence.
 
-- [ ] **Task 6: Run Comprehensive Test Suite & Preflight Build**
+- [x] **Task 6: Run Comprehensive Test Suite & Preflight Build**
   - Run all Vitest suites (`npm test`).
   - Run production build (`tsc && vite build`).
   - Verify 0 TypeScript errors and optimized build.
 
-- [ ] **Task 7: Update Documentation & Commit to Git**
+- [x] **Task 7: Update Documentation & Commit to Git**
   - Update `README.md` marking Phase 3 complete.
   - Commit all changes with clean conventional commit message.

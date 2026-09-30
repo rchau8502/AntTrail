@@ -5,6 +5,7 @@ import { CourseFilters, FilterStatus } from './components/CourseFilters'
 import { CourseCard } from './components/CourseCard'
 import { StudentCourseDrawer } from './components/StudentCourseDrawer'
 import { QuarterPlannerView } from './components/planner/QuarterPlannerView'
+import { AutoPlanModal } from './components/planner/AutoPlanModal'
 import { DegreeAuditView } from './components/degree/DegreeAuditView'
 import { UCI_CS_MATH_COURSES } from './data/uci/courses'
 import { OFFICIAL_TRANSFER_EQUIVALENCIES } from './data/uci/equivalencies'
@@ -123,6 +124,7 @@ export const App: React.FC = () => {
   const [selectedDepartment, setSelectedDepartment] = useState('ALL')
   const [filterStatus, setFilterStatus] = useState<FilterStatus>('ALL')
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const [isAutoPlanOpen, setIsAutoPlanOpen] = useState(false)
 
   // --- Deterministic Rules Engine Evaluation ---
   const evaluationResults = useMemo(() => {
@@ -627,6 +629,7 @@ export const App: React.FC = () => {
             onRemoveQuarter={handleRemoveQuarter}
             onResetRoadmap={handleResetSampleRoadmap}
             onClearSchedule={handleClearSchedule}
+            onOpenAutoPlan={() => setIsAutoPlanOpen(true)}
             eligibleCourses={eligibleCourseCodes}
             catalogCourses={UCI_CS_MATH_COURSES}
           />
@@ -650,6 +653,17 @@ export const App: React.FC = () => {
         profile={profile}
         onAddCourse={handleAddCourse}
         onRemoveCourse={handleRemoveCourse}
+      />
+
+      {/* Automated Degree Plan Modal */}
+      <AutoPlanModal
+        isOpen={isAutoPlanOpen}
+        onClose={() => setIsAutoPlanOpen(false)}
+        onApplyPlan={(newQuarters) => setPlannedQuarters(newQuarters)}
+        program={activeProgram}
+        profile={profile}
+        catalogCourses={UCI_CS_MATH_COURSES}
+        transferEquivalencies={OFFICIAL_TRANSFER_EQUIVALENCIES}
       />
 
       {/* Footer */}
