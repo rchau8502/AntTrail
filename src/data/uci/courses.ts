@@ -348,5 +348,281 @@ export const UCI_CS_MATH_COURSES: Course[] = [
       { term: 'Spring', year: 2027, confidence: 'CONFIRMED' },
       { term: 'Summer', year: 2027, confidence: 'EXPECTED' }
     ]
+  },
+  {
+    id: 'IN4MATX_43',
+    code: 'IN4MATX 43',
+    title: 'Introduction to Software Engineering',
+    department: 'INFORMATICS',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Concepts, methods, and current practice of software engineering. Large-scale software architectures, version control, agile methodologies, requirements elicitation, design patterns, and automated testing.',
+    prerequisiteExpression: {
+      type: 'course',
+      courseId: 'ICS 32',
+      minGrade: 'C'
+    },
+    prerequisiteText: 'ICS 32 with a grade of C or better',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED', instructors: ['Ziv, H.'] },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'ICS_6B',
+    code: 'I&C SCI 6B',
+    title: 'Boolean Algebra and Logic',
+    department: 'ICS',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Relations, sets, functions, propositional logic, predicate calculus, digital circuit design, Boolean algebras, induction, and recurrence relations.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED', instructors: ['Gassko, I.'] },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Summer', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ICS_6D',
+    code: 'I&C SCI 6D',
+    title: 'Discrete Mathematics for Computer Science',
+    department: 'ICS',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Combinatorics, probability, graph theory, trees, Eulerian and Hamiltonian paths, finite-state machines, regular expressions, and formal grammars.',
+    prerequisiteExpression: {
+      type: 'course',
+      courseId: 'I&C SCI 6B',
+      minGrade: 'C'
+    },
+    prerequisiteText: 'I&C SCI 6B with a grade of C or better',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED', instructors: ['Jarecki, S.'] },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Summer', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ICS_51',
+    code: 'I&C SCI 51',
+    title: 'Introductory Computer Organization',
+    department: 'ICS',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Machine instruction sets, assembly programming, processors, arithmetic logic units, pipelining, memory hierarchy, cache organization, and I/O devices.',
+    prerequisiteExpression: {
+      type: 'and',
+      children: [
+        { type: 'course', courseId: 'ICS 32', minGrade: 'C' },
+        { type: 'course', courseId: 'I&C SCI 6B', minGrade: 'C' }
+      ]
+    },
+    prerequisiteText: 'ICS 32 AND I&C SCI 6B with grades of C or better',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED', instructors: ['Nicolau, A.'] },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Summer', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COMPSCI_121',
+    code: 'COMPSCI 121',
+    title: 'Information Retrieval',
+    department: 'COMPSCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Design of text search engines, web crawlers, inverted index construction, vector space ranking, PageRank, link analysis, and evaluation benchmarks.',
+    prerequisiteExpression: {
+      type: 'course',
+      courseId: 'ICS 46',
+      minGrade: 'C'
+    },
+    prerequisiteText: 'ICS 46 with a grade of C or better',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'EXPECTED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED', instructors: ['Lopes, C.'] },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COMPSCI_141',
+    code: 'COMPSCI 141',
+    title: 'Concepts in Programming Languages',
+    department: 'COMPSCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Underlying principles of programming language design and paradigms: syntax, scoping, type systems, memory management, closures, concurrency, and formal semantics.',
+    prerequisiteExpression: {
+      type: 'course',
+      courseId: 'ICS 46',
+      minGrade: 'C'
+    },
+    prerequisiteText: 'ICS 46 with a grade of C or better',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED', instructors: ['Klefstad, R.'] },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'COMPSCI_143A',
+    code: 'COMPSCI 143A',
+    title: 'Principles of Operating Systems',
+    department: 'COMPSCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Fundamental mechanisms of modern operating systems: processes, threads, synchronization primitives, deadlocks, virtual memory, paging, file systems, and device management.',
+    prerequisiteExpression: {
+      type: 'course',
+      courseId: 'ICS 46',
+      minGrade: 'C'
+    },
+    prerequisiteText: 'ICS 46 with a grade of C or better',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED', instructors: ['Bic, L.'] },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'COMPSCI_152',
+    code: 'COMPSCI 152',
+    title: 'Computer Systems Architecture',
+    department: 'COMPSCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'High-performance processor design, superscalar execution, branch prediction, hardware cache hierarchies, multi-core memory consistency, and vector processing.',
+    prerequisiteExpression: {
+      type: 'course',
+      courseId: 'ICS 46',
+      minGrade: 'C'
+    },
+    prerequisiteText: 'ICS 46 with a grade of C or better',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'EXPECTED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED', instructors: ['Veidenbaum, A.'] },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COMPSCI_171',
+    code: 'COMPSCI 171',
+    title: 'Introduction to Artificial Intelligence',
+    department: 'COMPSCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Fundamental principles of artificial intelligence: heuristic search (A*), adversarial games, constraint satisfaction, probabilistic reasoning, Bayes networks, and reinforcement learning.',
+    prerequisiteExpression: {
+      type: 'and',
+      children: [
+        { type: 'course', courseId: 'ICS 46', minGrade: 'C' },
+        { type: 'course', courseId: 'STATS 67', minGrade: 'C' }
+      ]
+    },
+    prerequisiteText: 'ICS 46 AND STATS 67 with grades of C or better',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED', instructors: ['Lathrop, R.'] },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'COMPSCI_178',
+    code: 'COMPSCI 178',
+    title: 'Machine Learning and Data-Mining',
+    department: 'COMPSCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Mathematical foundations of machine learning: linear and logistic regression, neural networks, support vector machines, decision trees, kernel methods, overfitting, regularization, and clustering.',
+    prerequisiteExpression: {
+      type: 'and',
+      children: [
+        { type: 'course', courseId: 'ICS 46', minGrade: 'C' },
+        { type: 'course', courseId: 'MATH 3A', minGrade: 'C' },
+        { type: 'course', courseId: 'STATS 67', minGrade: 'C' }
+      ]
+    },
+    prerequisiteText: 'ICS 46 AND MATH 3A AND STATS 67 with grades of C or better',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'EXPECTED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED', instructors: ['Ihler, A.'] },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'ICS_139W',
+    code: 'I&C SCI 139W',
+    title: 'Critical Writing on Information Technology',
+    department: 'ICS',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Principles of professional and technical written communication in computing. Writing technical proposals, design specifications, and research reports. Satisfies the Upper-Division Writing Requirement.',
+    prerequisiteExpression: {
+      type: 'and',
+      children: [
+        { type: 'course', courseId: 'ICS 45C', minGrade: 'C' },
+        { type: 'class_standing', minStanding: 'Junior' }
+      ]
+    },
+    prerequisiteText: 'ICS 45C with a grade of C or better, and Junior or Senior standing',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED', instructors: ['Kay, D.'] },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Summer', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'WRITING_39B',
+    code: 'WRITING 39B',
+    title: 'Critical Reading and Rhetoric',
+    department: 'WRITING',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Rhetorical analysis, academic argumentation, textual synthesis, and revision. Satisfies the first course of the lower-division writing requirement.',
+    prerequisiteText: 'Entry Level Writing Requirement satisfied.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'WRITING_39C',
+    code: 'WRITING 39C',
+    title: 'Argument and Research',
+    department: 'WRITING',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'In-depth research methodologies, finding and evaluating scholarly sources, and composing long-form researched arguments. Satisfies the second course of the lower-division writing requirement.',
+    prerequisiteExpression: {
+      type: 'course',
+      courseId: 'WRITING 39B',
+      minGrade: 'C'
+    },
+    prerequisiteText: 'WRITING 39B with a grade of C or better',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+    ]
   }
 ]
