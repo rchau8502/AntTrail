@@ -42,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="flex items-center gap-2">
               <span className="text-lg font-bold tracking-tight text-white">AntTrail</span>
               <span className="rounded-full bg-anteater-blue/20 px-2 py-0.5 text-xs font-semibold text-sky-300 ring-1 ring-sky-500/30">
-                Phase 4
+                Phase 6
               </span>
             </div>
             <p className="text-xs text-slate-400">
@@ -90,12 +90,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           <button
-            title="Coming in Phase 6"
-            className="hidden lg:flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:text-slate-400 transition-colors"
+            onClick={() => onSelectTab('GPA')}
+            className={`flex items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-all ${
+              activeTab === 'GPA'
+                ? 'bg-blue-600 text-white shadow-sm'
+                : 'text-slate-400 hover:text-slate-200'
+            }`}
           >
             <Calculator className="h-3.5 w-3.5" />
-            <span>GPA</span>
-            <span className="rounded bg-slate-800 px-1 py-0.2 text-[9px] text-slate-500">Ph. 6</span>
+            <span>GPA Calculator</span>
           </button>
         </nav>
 

@@ -9,6 +9,7 @@ import { AutoPlanModal } from './components/planner/AutoPlanModal'
 import { ImportTranscriptModal } from './components/parser/ImportTranscriptModal'
 import { CloudSyncModal } from './components/auth/CloudSyncModal'
 import { DegreeAuditView } from './components/degree/DegreeAuditView'
+import { GpaCalculatorView } from './components/gpa/GpaCalculatorView'
 import { GoogleUser, SyncStatus } from './services/drive/types'
 import {
   createSyncPayload,
@@ -415,10 +416,12 @@ export const App: React.FC = () => {
     setIsSyncing(true)
     setSyncStatus('SYNCING')
     try {
+      const payload = createSyncPayload(profile, plannedQuarters)
       if (accessToken !== 'demo_drive_token') {
-        const payload = createSyncPayload(profile, plannedQuarters)
         const res = await pushToGoogleDrive(accessToken, payload, cachedDriveFileId)
         setCachedDriveFileId(res.fileId)
+      } else {
+        sessionStorage.setItem('anttrail_demo_drive_backup', JSON.stringify(payload))
       }
       setLastSyncedTime(Date.now())
       setSyncStatus('SYNCED')
@@ -442,6 +445,14 @@ export const App: React.FC = () => {
           setCachedDriveFileId(result.fileId)
           setLastSyncedTime(result.payload.lastModified)
         }
+      } else {
+        const raw = sessionStorage.getItem('anttrail_demo_drive_backup')
+        if (raw) {
+          const payload = JSON.parse(raw)
+          setProfile(payload.profile)
+          setPlannedQuarters(payload.plannedQuarters)
+          setLastSyncedTime(payload.lastModified)
+        }
       }
       setSyncStatus('SYNCED')
     } catch {
@@ -453,13 +464,17 @@ export const App: React.FC = () => {
 
   // Debounced auto-save to Google Drive when authenticated and state changes
   useEffect(() => {
-    if (!accessToken || accessToken === 'demo_drive_token') return
+    if (!accessToken) return
     const timer = setTimeout(async () => {
       try {
         setSyncStatus('SYNCING')
         const payload = createSyncPayload(profile, plannedQuarters)
-        const res = await pushToGoogleDrive(accessToken, payload, cachedDriveFileId)
-        setCachedDriveFileId(res.fileId)
+        if (accessToken !== 'demo_drive_token') {
+          const res = await pushToGoogleDrive(accessToken, payload, cachedDriveFileId)
+          setCachedDriveFileId(res.fileId)
+        } else {
+          sessionStorage.setItem('anttrail_demo_drive_backup', JSON.stringify(payload))
+        }
         setLastSyncedTime(Date.now())
         setSyncStatus('SYNCED')
       } catch {
@@ -852,6 +867,16 @@ export const App: React.FC = () => {
           <DegreeAuditView
             audit={degreeAudit}
             onPlanCourse={handlePlanCourseFromDegree}
+          />
+        )}
+
+        {/* ============================================================== */}
+        {/* TAB 4: GPA CALCULATOR                                           */}
+        {/* ============================================================== */}
+        {activeTab === 'GPA' && (
+          <GpaCalculatorView
+            profile={profile}
+            plannedQuarters={plannedQuarters}
           />
         )}
       </main>

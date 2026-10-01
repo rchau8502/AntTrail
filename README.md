@@ -115,13 +115,13 @@ AntTrail is built with a clean separation of concerns:
 | **Phase 3** | **Quarterly WebSOC Offerings & Auto Plan Constraint Solver** | ✅ **Complete** |
 | **Phase 4** | **DegreeWorks & Unofficial Transcript Deterministic Parser** | ✅ **Complete** |
 | **Phase 5** | **Google Authentication & Private Google Drive Storage** | ✅ **Complete** |
-| Phase 6 | GPA Projections, Mobile Polish, & WCAG Accessibility | 📋 Planned |
+| **Phase 6** | **GPA Projections, What-If Simulator, Mobile Polish & Accessibility** | ✅ **Complete** |
 
 ---
 
 ## 🧪 Verification & Testing
 
-AntTrail includes 55 unit tests across 7 suites built with **Vitest**:
+AntTrail includes 67 unit tests across 8 suites built with **Vitest**:
 
 ```bash
 # Run unit test suite
@@ -154,6 +154,12 @@ npm run build
 - ✔ Cross-Device Conflict Detection: detects remote vs local modification timestamps and triggers side-by-side reconciliation.
 - ✔ Deterministic FNV-1a Checksums: detects academic plan modifications regardless of clock skew.
 - ✔ Full In-Memory Mock Provider: instant offline and demo testing without Google Cloud credentials.
+- ✔ Official UCI Cumulative GPA: computes grade points exclusively from UC coursework per Academic Senate Regulation A340.
+- ✔ Transfer Credit GPA Exclusion: awards degree credit while strictly omitting non-UC courses from GPA numerator and denominator.
+- ✔ UCI 16-Unit Repeat Policy (Regulation A345): replaces original substandard grade (`C-` or lower) with new grade for the first 16 units.
+- ✔ Dean's Honor List Qualification: detects terms meeting $\ge 3.50$ GPA in $\ge 12$ graded units with no `F`/`NP`.
+- ✔ Target GPA Requirement Solver: deterministically computes exact average grade needed to reach target cumulative GPA.
+- ✔ What-If Trajectory Projection: models future quarterly GPA curve based on hypothetical course grades.
 - ✔ Human-readable prerequisite string formatting.
 
 ---
