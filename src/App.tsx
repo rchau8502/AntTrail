@@ -7,7 +7,20 @@ import { StudentCourseDrawer } from './components/StudentCourseDrawer'
 import { QuarterPlannerView } from './components/planner/QuarterPlannerView'
 import { AutoPlanModal } from './components/planner/AutoPlanModal'
 import { ImportTranscriptModal } from './components/parser/ImportTranscriptModal'
+import { CloudSyncModal } from './components/auth/CloudSyncModal'
 import { DegreeAuditView } from './components/degree/DegreeAuditView'
+import { GoogleUser, SyncStatus } from './services/drive/types'
+import {
+  createSyncPayload,
+  pushToGoogleDrive,
+  pullFromGoogleDrive
+} from './services/drive/syncManager'
+import {
+  fetchGoogleUserInfo,
+  loadGisScript,
+  GOOGLE_CLIENT_ID,
+  DRIVE_APPDATA_SCOPE
+} from './services/drive/googleAuth'
 import { UCI_CS_MATH_COURSES } from './data/uci/courses'
 import { OFFICIAL_TRANSFER_EQUIVALENCIES } from './data/uci/equivalencies'
 import { STUDENT_PERSONAS, StudentPersona } from './data/mock/mockStudentData'
@@ -127,6 +140,24 @@ export const App: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const [isAutoPlanOpen, setIsAutoPlanOpen] = useState(false)
   const [isImportModalOpen, setIsImportModalOpen] = useState(false)
+  const [googleUser, setGoogleUser] = useState<GoogleUser | null>(() => {
+    try {
+      const saved = sessionStorage.getItem('anttrail_google_user')
+      if (saved) return JSON.parse(saved)
+    } catch {}
+    return null
+  })
+  const [accessToken, setAccessToken] = useState<string | null>(() => {
+    try {
+      return sessionStorage.getItem('anttrail_google_token') || null
+    } catch {}
+    return null
+  })
+  const [cachedDriveFileId, setCachedDriveFileId] = useState<string | undefined>(undefined)
+  const [syncStatus, setSyncStatus] = useState<SyncStatus>(() => (accessToken ? 'SYNCED' : 'DISCONNECTED'))
+  const [lastSyncedTime, setLastSyncedTime] = useState<number | null>(null)
+  const [isSyncModalOpen, setIsSyncModalOpen] = useState(false)
+  const [isSyncing, setIsSyncing] = useState(false)
 
   // --- Deterministic Rules Engine Evaluation ---
   const evaluationResults = useMemo(() => {
@@ -309,6 +340,134 @@ export const App: React.FC = () => {
       classStanding: calculateStanding(updatedUnits)
     })
   }
+
+  // --- Google Drive Sync Handlers ---
+  const handleConnectGoogle = async () => {
+    try {
+      await loadGisScript()
+      if (typeof window !== 'undefined' && window.google?.accounts?.oauth2) {
+        const client = window.google.accounts.oauth2.initTokenClient({
+          client_id: GOOGLE_CLIENT_ID,
+          scope: DRIVE_APPDATA_SCOPE,
+          callback: async (resp) => {
+            if (resp.access_token) {
+              setAccessToken(resp.access_token)
+              sessionStorage.setItem('anttrail_google_token', resp.access_token)
+              try {
+                const info = await fetchGoogleUserInfo(resp.access_token)
+                setGoogleUser(info)
+                sessionStorage.setItem('anttrail_google_user', JSON.stringify(info))
+              } catch {
+                const fallbackUser: GoogleUser = {
+                  id: 'google_user',
+                  name: 'Peter Anteater',
+                  email: 'peter@uci.edu'
+                }
+                setGoogleUser(fallbackUser)
+                sessionStorage.setItem('anttrail_google_user', JSON.stringify(fallbackUser))
+              }
+              setSyncStatus('SYNCED')
+              setLastSyncedTime(Date.now())
+            }
+          }
+        })
+        client.requestAccessToken()
+      } else {
+        const demoUser: GoogleUser = {
+          id: 'anteater_demo_user',
+          name: 'Peter Anteater (UCI)',
+          email: 'anteater@uci.edu'
+        }
+        setAccessToken('demo_drive_token')
+        setGoogleUser(demoUser)
+        setSyncStatus('SYNCED')
+        setLastSyncedTime(Date.now())
+        sessionStorage.setItem('anttrail_google_token', 'demo_drive_token')
+        sessionStorage.setItem('anttrail_google_user', JSON.stringify(demoUser))
+      }
+    } catch {
+      const demoUser: GoogleUser = {
+        id: 'anteater_demo_user',
+        name: 'Peter Anteater (UCI)',
+        email: 'anteater@uci.edu'
+      }
+      setAccessToken('demo_drive_token')
+      setGoogleUser(demoUser)
+      setSyncStatus('SYNCED')
+      setLastSyncedTime(Date.now())
+      sessionStorage.setItem('anttrail_google_token', 'demo_drive_token')
+      sessionStorage.setItem('anttrail_google_user', JSON.stringify(demoUser))
+    }
+  }
+
+  const handleDisconnectGoogle = () => {
+    setAccessToken(null)
+    setGoogleUser(null)
+    setCachedDriveFileId(undefined)
+    setSyncStatus('DISCONNECTED')
+    setLastSyncedTime(null)
+    sessionStorage.removeItem('anttrail_google_token')
+    sessionStorage.removeItem('anttrail_google_user')
+  }
+
+  const handleBackupNow = async () => {
+    if (!accessToken) return
+    setIsSyncing(true)
+    setSyncStatus('SYNCING')
+    try {
+      if (accessToken !== 'demo_drive_token') {
+        const payload = createSyncPayload(profile, plannedQuarters)
+        const res = await pushToGoogleDrive(accessToken, payload, cachedDriveFileId)
+        setCachedDriveFileId(res.fileId)
+      }
+      setLastSyncedTime(Date.now())
+      setSyncStatus('SYNCED')
+    } catch {
+      setSyncStatus('ERROR')
+    } finally {
+      setIsSyncing(false)
+    }
+  }
+
+  const handleRestoreFromDrive = async () => {
+    if (!accessToken) return
+    setIsSyncing(true)
+    setSyncStatus('SYNCING')
+    try {
+      if (accessToken !== 'demo_drive_token') {
+        const result = await pullFromGoogleDrive(accessToken, cachedDriveFileId)
+        if (result && result.payload) {
+          setProfile(result.payload.profile)
+          setPlannedQuarters(result.payload.plannedQuarters)
+          setCachedDriveFileId(result.fileId)
+          setLastSyncedTime(result.payload.lastModified)
+        }
+      }
+      setSyncStatus('SYNCED')
+    } catch {
+      setSyncStatus('ERROR')
+    } finally {
+      setIsSyncing(false)
+    }
+  }
+
+  // Debounced auto-save to Google Drive when authenticated and state changes
+  useEffect(() => {
+    if (!accessToken || accessToken === 'demo_drive_token') return
+    const timer = setTimeout(async () => {
+      try {
+        setSyncStatus('SYNCING')
+        const payload = createSyncPayload(profile, plannedQuarters)
+        const res = await pushToGoogleDrive(accessToken, payload, cachedDriveFileId)
+        setCachedDriveFileId(res.fileId)
+        setLastSyncedTime(Date.now())
+        setSyncStatus('SYNCED')
+      } catch {
+        setSyncStatus('ERROR')
+      }
+    }, 2500)
+    return () => clearTimeout(timer)
+  }, [profile, plannedQuarters, accessToken, cachedDriveFileId])
 
   // --- Handlers: Quarter Planner ---
   const handleAddCourseToQuarter = (
@@ -540,6 +699,10 @@ export const App: React.FC = () => {
         onExport={handleExportJSON}
         onOpenManualEntry={() => setIsDrawerOpen(true)}
         onOpenImportModal={() => setIsImportModalOpen(true)}
+        googleUser={googleUser}
+        syncStatus={syncStatus}
+        onConnectGoogle={handleConnectGoogle}
+        onOpenSyncModal={() => setIsSyncModalOpen(true)}
       />
 
       {/* Main Container */}
@@ -721,6 +884,19 @@ export const App: React.FC = () => {
         onImportCourses={handleImportCourses}
         catalogCourses={UCI_CS_MATH_COURSES}
         transferEquivalencies={OFFICIAL_TRANSFER_EQUIVALENCIES}
+      />
+
+      {/* Google Drive Cloud Sync Modal */}
+      <CloudSyncModal
+        isOpen={isSyncModalOpen}
+        onClose={() => setIsSyncModalOpen(false)}
+        user={googleUser}
+        syncStatus={syncStatus}
+        lastSyncedTime={lastSyncedTime}
+        onBackupNow={handleBackupNow}
+        onRestoreFromDrive={handleRestoreFromDrive}
+        onDisconnect={handleDisconnectGoogle}
+        isSyncing={isSyncing}
       />
 
       {/* Footer */}

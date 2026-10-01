@@ -1,5 +1,7 @@
 import React from 'react'
 import { ShieldCheck, BookOpen, Calendar, Award, Calculator, Download, RefreshCw, PlusCircle, FileText } from 'lucide-react'
+import { GoogleAuthButton } from './auth/GoogleAuthButton'
+import { GoogleUser, SyncStatus } from '../services/drive/types'
 
 export type NavigationTab = 'ELIGIBILITY' | 'PLANNER' | 'DEGREE' | 'GPA'
 
@@ -10,6 +12,10 @@ interface NavbarProps {
   onExport: () => void
   onOpenManualEntry: () => void
   onOpenImportModal: () => void
+  googleUser: GoogleUser | null
+  syncStatus: SyncStatus
+  onConnectGoogle: () => void
+  onOpenSyncModal: () => void
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -18,7 +24,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   onReset,
   onExport,
   onOpenManualEntry,
-  onOpenImportModal
+  onOpenImportModal,
+  googleUser,
+  syncStatus,
+  onConnectGoogle,
+  onOpenSyncModal
 }) => {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
@@ -95,6 +105,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
             <span>Zero Server Retention</span>
           </div>
+
+          <GoogleAuthButton
+            user={googleUser}
+            syncStatus={syncStatus}
+            onConnect={onConnectGoogle}
+            onOpenSyncModal={onOpenSyncModal}
+          />
 
           <button
             onClick={onOpenImportModal}

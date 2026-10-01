@@ -114,14 +114,14 @@ AntTrail is built with a clean separation of concerns:
 | **Phase 2** | **Basic UCI Degree Requirement Engine & Manual Planner UI** | ✅ **Complete** |
 | **Phase 3** | **Quarterly WebSOC Offerings & Auto Plan Constraint Solver** | ✅ **Complete** |
 | **Phase 4** | **DegreeWorks & Unofficial Transcript Deterministic Parser** | ✅ **Complete** |
-| Phase 5 | Google Authentication & Private Google Drive Storage | 📋 Planned |
+| **Phase 5** | **Google Authentication & Private Google Drive Storage** | ✅ **Complete** |
 | Phase 6 | GPA Projections, Mobile Polish, & WCAG Accessibility | 📋 Planned |
 
 ---
 
 ## 🧪 Verification & Testing
 
-AntTrail includes 33 unit tests across 5 suites built with **Vitest**:
+AntTrail includes 55 unit tests across 7 suites built with **Vitest**:
 
 ```bash
 # Run unit test suite
@@ -150,6 +150,10 @@ npm run build
 - ✔ UCI StudentAccess Parsing: extracts quarterly courses, units, letter grades, and transfer credit blocks.
 - ✔ DegreeWorks Audit Parsing: extracts applied courses and distinguishes from unfulfilled requirements.
 - ✔ Client-Side PII Redaction: automatically strips Student ID numbers and personal names from input buffers.
+- ✔ Google Drive `appDataFolder` Private Sync: zero-server retention direct REST sync into student's hidden cloud container.
+- ✔ Cross-Device Conflict Detection: detects remote vs local modification timestamps and triggers side-by-side reconciliation.
+- ✔ Deterministic FNV-1a Checksums: detects academic plan modifications regardless of clock skew.
+- ✔ Full In-Memory Mock Provider: instant offline and demo testing without Google Cloud credentials.
 - ✔ Human-readable prerequisite string formatting.
 
 ---
