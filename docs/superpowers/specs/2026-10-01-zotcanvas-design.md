@@ -14,8 +14,9 @@
 Unlike official institutional tools like **UCI Spark**, ZotCanvas:
 1. **Never tracks or reports student activity** to university administration.
 2. **Focuses on micro-level homework execution** (milestones, rubric checklists, Pomodoro blocks) rather than generic advising advice.
-3. **Minimizes AI dependency**, powering its core scheduling and task breakdown with fast, deterministic, 100% free rule-based algorithms.
-4. **Supports an optional, zero-cost Google Gemini Free API Key** for students who want AI-assisted homework concept explanations.
+3. **100% Fully Operational Without Any AI**: All scheduling, urgency scoring, rubric parsing, homework checklists, and UCI resource recommendations run entirely on deterministic, fast, client-side algorithms at $0 cost.
+4. **Zero Host-Provided AI Infrastructure**: The platform does NOT provide, host, or pay for any server-side AI models or API accounts.
+5. **Optional Bring-Your-Own Free Gemini Key**: Students may optionally paste their own free Google AI Studio key directly in their browser for bonus AI concept explanations, but no feature requires it.
 
 ---
 
