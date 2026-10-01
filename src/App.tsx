@@ -10,6 +10,8 @@ import { ImportTranscriptModal } from './components/parser/ImportTranscriptModal
 import { CloudSyncModal } from './components/auth/CloudSyncModal'
 import { DegreeAuditView } from './components/degree/DegreeAuditView'
 import { GpaCalculatorView } from './components/gpa/GpaCalculatorView'
+import { ExportPlanModal } from './components/export/ExportPlanModal'
+import { calculateUciGpaReport } from './academic-engine/gpa'
 import { GoogleUser, SyncStatus } from './services/drive/types'
 import {
   createSyncPayload,
@@ -141,6 +143,7 @@ export const App: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const [isAutoPlanOpen, setIsAutoPlanOpen] = useState(false)
   const [isImportModalOpen, setIsImportModalOpen] = useState(false)
+  const [isExportModalOpen, setIsExportModalOpen] = useState(false)
   const [googleUser, setGoogleUser] = useState<GoogleUser | null>(() => {
     try {
       const saved = sessionStorage.getItem('anttrail_google_user')
@@ -193,6 +196,10 @@ export const App: React.FC = () => {
     )
   }, [activeProgram, profile, plannedQuarters])
 
+  const gpaReport = useMemo(() => {
+    return calculateUciGpaReport(profile)
+  }, [profile])
+
   // Map of completed course codes for O(1) lookup
   const completedMap = useMemo(() => {
     const map = new Map<string, { grade: GradeLetter; id: string }>()
@@ -223,25 +230,6 @@ export const App: React.FC = () => {
     setSelectedPersonaId('freshman')
     setProfile(fresh)
     setPlannedQuarters(DEFAULT_INITIAL_QUARTERS)
-  }
-
-  const handleExportJSON = () => {
-    const exportData = {
-      profile,
-      plannedQuarters,
-      degreeAuditSummary: {
-        program: activeProgram.name,
-        overallProgress: degreeAudit.overallProgressPercent,
-        plannedProgress: degreeAudit.plannedProgressPercent
-      }
-    }
-    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportData, null, 2))
-    const downloadAnchor = document.createElement('a')
-    downloadAnchor.setAttribute('href', dataStr)
-    downloadAnchor.setAttribute('download', `anttrail-plan-${profile.major.replace(/\s+/g, '_')}.json`)
-    document.body.appendChild(downloadAnchor)
-    downloadAnchor.click()
-    downloadAnchor.remove()
   }
 
   // Fast toggle completed status directly on CourseCard
@@ -711,7 +699,7 @@ export const App: React.FC = () => {
         activeTab={activeTab}
         onSelectTab={setActiveTab}
         onReset={handleResetProfile}
-        onExport={handleExportJSON}
+        onExport={() => setIsExportModalOpen(true)}
         onOpenManualEntry={() => setIsDrawerOpen(true)}
         onOpenImportModal={() => setIsImportModalOpen(true)}
         googleUser={googleUser}
@@ -922,6 +910,18 @@ export const App: React.FC = () => {
         onRestoreFromDrive={handleRestoreFromDrive}
         onDisconnect={handleDisconnectGoogle}
         isSyncing={isSyncing}
+      />
+
+      {/* Academic Roadmap Export & Share Modal */}
+      <ExportPlanModal
+        isOpen={isExportModalOpen}
+        onClose={() => setIsExportModalOpen(false)}
+        profile={profile}
+        plannedQuarters={plannedQuarters}
+        programName={activeProgram.name}
+        overallProgress={degreeAudit.overallProgressPercent}
+        plannedProgress={degreeAudit.plannedProgressPercent}
+        gpaReport={gpaReport}
       />
 
       {/* Footer */}
