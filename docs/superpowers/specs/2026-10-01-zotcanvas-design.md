@@ -27,6 +27,11 @@ Unlike official institutional tools like **UCI Spark**, ZotCanvas:
 * **Invariant 2 (Token Isolation)**: The student's Canvas API Token and optional Gemini API Key are stored exclusively in the browser's `localStorage`.
 * **Invariant 3 (Stateless CORS Relay)**: Because UCI Canvas (`canvas.eee.uci.edu`) blocks direct browser origin requests via CORS, requests are relayed through a stateless Next.js API route (`/api/canvas/*`). This proxy forwards the incoming `Authorization: Bearer <token>` directly to Canvas and returns the payload without caching, logging, or inspecting the token.
 * **Invariant 4 (One-Click Data Purge)**: A prominent "Purge Data & Logout" action deletes all local keys, cached course data, and history instantly from the client.
+* **Invariant 5 (Academic Integrity & Student Responsibility)**: ZotCanvas is designed as an organizational, scheduling, and study-planning companion. It is strictly NOT an automated assignment solver or cheating tool. All students are explicitly notified via an unmissable onboarding disclaimer that their academic conduct is 100% their own responsibility and they must uphold the UCI Academic Honesty Policy. The authors and host disclaim all liability for any misuse or academic dishonesty.
+
+### 2.3 Academic Integrity & Disclaimer Notice
+Every user is presented with the following explicit terms during token setup:
+> *"ZotCanvas is a student-built study organization and workload planning utility. It provides milestone checklists, time management, and campus support matching. Any academic dishonesty, unauthorized collaboration, or violation of the UCI Academic Honesty Policy is solely the user's responsibility."*
 
 ### 2.2 Local Storage Schema
 ```typescript
