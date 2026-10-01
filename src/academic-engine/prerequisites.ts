@@ -54,6 +54,7 @@ export function isStandingSufficient(
  * Normalizes course codes for robust comparison (e.g. "math  2a" -> "MATH 2A")
  */
 export function normalizeCourseCode(code: string): string {
+  if (!code) return ''
   return code.trim().toUpperCase().replace(/\s+/g, ' ')
 }
 

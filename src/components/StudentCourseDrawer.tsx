@@ -9,7 +9,8 @@ import {
   ArrowRightLeft,
   CheckCircle,
   Clock,
-  AlertCircle
+  AlertCircle,
+  FileText
 } from 'lucide-react'
 
 interface StudentCourseDrawerProps {
@@ -18,6 +19,7 @@ interface StudentCourseDrawerProps {
   profile: StudentProfile
   onAddCourse: (course: Omit<StudentCourseRecord, 'id'>) => void
   onRemoveCourse: (courseId: string) => void
+  onOpenImportTranscript?: () => void
 }
 
 const AVAILABLE_GRADES: GradeLetter[] = [
@@ -33,7 +35,8 @@ export const StudentCourseDrawer: React.FC<StudentCourseDrawerProps> = ({
   onClose,
   profile,
   onAddCourse,
-  onRemoveCourse
+  onRemoveCourse,
+  onOpenImportTranscript
 }) => {
   const [courseCode, setCourseCode] = useState('')
   const [institution, setInstitution] = useState('UCI')
@@ -100,6 +103,29 @@ export const StudentCourseDrawer: React.FC<StudentCourseDrawerProps> = ({
 
         {/* Content Body */}
         <div className="flex-1 overflow-y-auto px-6 py-5 space-y-6">
+          {/* Quick Import Action Banner */}
+          {onOpenImportTranscript && (
+            <div className="rounded-xl border border-emerald-500/30 bg-emerald-950/20 p-3.5 flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <FileText className="h-4 w-4 text-emerald-400 shrink-0" />
+                <div>
+                  <div className="text-xs font-bold text-emerald-300">Have an unofficial transcript?</div>
+                  <div className="text-[11px] text-slate-400">Import StudentAccess or DegreeWorks text</div>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  onClose()
+                  onOpenImportTranscript()
+                }}
+                className="rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3 py-1.5 transition-colors shrink-0"
+              >
+                Import
+              </button>
+            </div>
+          )}
+
           {/* Quick Add Form */}
           <div className="rounded-xl border border-slate-800/90 bg-slate-950/60 p-4">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3 flex items-center gap-1.5">

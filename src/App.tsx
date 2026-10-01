@@ -6,6 +6,7 @@ import { CourseCard } from './components/CourseCard'
 import { StudentCourseDrawer } from './components/StudentCourseDrawer'
 import { QuarterPlannerView } from './components/planner/QuarterPlannerView'
 import { AutoPlanModal } from './components/planner/AutoPlanModal'
+import { ImportTranscriptModal } from './components/parser/ImportTranscriptModal'
 import { DegreeAuditView } from './components/degree/DegreeAuditView'
 import { UCI_CS_MATH_COURSES } from './data/uci/courses'
 import { OFFICIAL_TRANSFER_EQUIVALENCIES } from './data/uci/equivalencies'
@@ -125,6 +126,7 @@ export const App: React.FC = () => {
   const [filterStatus, setFilterStatus] = useState<FilterStatus>('ALL')
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const [isAutoPlanOpen, setIsAutoPlanOpen] = useState(false)
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false)
 
   // --- Deterministic Rules Engine Evaluation ---
   const evaluationResults = useMemo(() => {
@@ -252,6 +254,50 @@ export const App: React.FC = () => {
 
   const handleRemoveCourse = (courseId: string) => {
     const updatedHistory = profile.courseHistory.filter((c) => c.id !== courseId)
+    const updatedUnits = updatedHistory
+      .filter((c) => c.status === 'COMPLETED')
+      .reduce((acc, curr) => acc + curr.units, 0)
+
+    setProfile({
+      ...profile,
+      courseHistory: updatedHistory,
+      completedUnits: updatedUnits,
+      classStanding: calculateStanding(updatedUnits)
+    })
+  }
+
+  const handleImportCourses = (
+    importedCourses: Array<{
+      courseCode: string
+      units: number
+      grade: GradeLetter
+      term: string
+      institution: string
+      status: 'COMPLETED' | 'IN_PROGRESS' | 'TRANSFER'
+    }>,
+    replaceExisting: boolean
+  ) => {
+    const baseHistory = replaceExisting ? [] : [...profile.courseHistory]
+    const existingSet = new Set(baseHistory.map((c) => c.courseCode.toUpperCase()))
+
+    const newRecords: StudentCourseRecord[] = []
+    for (const item of importedCourses) {
+      const norm = item.courseCode.trim().toUpperCase()
+      if (replaceExisting || !existingSet.has(norm)) {
+        newRecords.push({
+          id: 'rec_imp_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7),
+          courseCode: norm,
+          institution: item.institution,
+          term: item.term,
+          units: item.units,
+          grade: item.grade,
+          status: item.status === 'IN_PROGRESS' ? 'IN_PROGRESS' : 'COMPLETED'
+        })
+        existingSet.add(norm)
+      }
+    }
+
+    const updatedHistory = [...baseHistory, ...newRecords]
     const updatedUnits = updatedHistory
       .filter((c) => c.status === 'COMPLETED')
       .reduce((acc, curr) => acc + curr.units, 0)
@@ -493,6 +539,7 @@ export const App: React.FC = () => {
         onReset={handleResetProfile}
         onExport={handleExportJSON}
         onOpenManualEntry={() => setIsDrawerOpen(true)}
+        onOpenImportModal={() => setIsImportModalOpen(true)}
       />
 
       {/* Main Container */}
@@ -653,6 +700,7 @@ export const App: React.FC = () => {
         profile={profile}
         onAddCourse={handleAddCourse}
         onRemoveCourse={handleRemoveCourse}
+        onOpenImportTranscript={() => setIsImportModalOpen(true)}
       />
 
       {/* Automated Degree Plan Modal */}
@@ -662,6 +710,15 @@ export const App: React.FC = () => {
         onApplyPlan={(newQuarters) => setPlannedQuarters(newQuarters)}
         program={activeProgram}
         profile={profile}
+        catalogCourses={UCI_CS_MATH_COURSES}
+        transferEquivalencies={OFFICIAL_TRANSFER_EQUIVALENCIES}
+      />
+
+      {/* Transcript / DegreeWorks Import Modal */}
+      <ImportTranscriptModal
+        isOpen={isImportModalOpen}
+        onClose={() => setIsImportModalOpen(false)}
+        onImportCourses={handleImportCourses}
         catalogCourses={UCI_CS_MATH_COURSES}
         transferEquivalencies={OFFICIAL_TRANSFER_EQUIVALENCIES}
       />

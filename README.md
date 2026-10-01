@@ -27,7 +27,13 @@ AntTrail is built with a clean separation of concerns:
 │   │   ├── eligibility.ts          # Batch course eligibility evaluator & explanation builder
 │   │   ├── degree.ts               # Degree audit engine (CS B.S., Math B.S. core/electives/unit quotas)
 │   │   ├── planner.ts              # Multi-quarter prerequisite sequence validator & schedule evaluator
-│   │   └── autoplan.ts             # Deterministic topological bottleneck scheduler & multi-plan generator
+│   │   ├── autoplan.ts             # Deterministic topological bottleneck scheduler & multi-plan generator
+│   │   └── parser/                 # Client-side deterministic academic record parsers
+│   │       ├── types.ts            # ParsedCourseCandidate, ParseResult, ParserFormat
+│   │       ├── transcriptParser.ts # Deterministic UCI StudentAccess text state machine
+│   │       ├── degreeWorksParser.ts # Deterministic DegreeWorks audit line parser
+│   │       ├── genericListParser.ts # Casual shorthand course list parser
+│   │       └── parser.ts           # Unified auto-detect dispatcher, PII sanitizer & catalog matcher
 │   ├── data/
 │   │   ├── uci/
 │   │   │   ├── courses.ts          # Mocked official UCI catalog with quarterly offering schedules
@@ -35,14 +41,17 @@ AntTrail is built with a clean separation of concerns:
 │   │   │   ├── programs.ts         # Official UCI Degree Programs (Computer Science B.S., Mathematics B.S.)
 │   │   │   └── offerings.ts        # UCI quarterly offering schedule lookup and confidence badge helpers
 │   │   └── mock/
-│   │       └── mockStudentData.ts  # Pre-configured student personas (Freshman, Transfer, etc.)
+│   │       ├── mockStudentData.ts  # Pre-configured student personas (Freshman, Transfer, etc.)
+│   │       └── sampleTranscripts.ts # Realistic sample transcripts and DegreeWorks audit texts
 │   ├── components/                 # Reactive, accessible React UI
-│   │   ├── Navbar.tsx              # Top bar, stats counter, tab navigation
+│   │   ├── Navbar.tsx              # Top bar, stats counter, tab navigation, transcript importer trigger
 │   │   ├── PersonaSelector.tsx     # Student persona presets with instant switching
 │   │   ├── CourseFilters.tsx       # Search by text, department chips, and eligibility status
 │   │   ├── CourseCard.tsx          # Card displaying live eligibility status, badges, offerings
 │   │   ├── PrerequisiteTreeVisualizer.tsx # Visual AST prerequisite drill-down tree
 │   │   ├── StudentCourseDrawer.tsx # Course record manager, manual entry, & transfer credit viewer
+│   │   ├── parser/                 # Transcript & audit import UI
+│   │   │   └── ImportTranscriptModal.tsx # Interactive paste, preview, row-edit, and import modal
 │   │   ├── planner/                # Multi-quarter interactive planning board
 │   │   │   ├── QuarterPlannerView.tsx # Main planner view with live sequencing validation
 │   │   │   ├── QuarterColumn.tsx   # Per-quarter draggable card list and unit meter
@@ -57,7 +66,8 @@ AntTrail is built with a clean separation of concerns:
 │   ├── academic-engine.test.ts     # Vitest prerequisite AST and eligibility test suite
 │   ├── degree-engine.test.ts       # Vitest degree requirement evaluation suite
 │   ├── planner-engine.test.ts      # Vitest multi-quarter sequence validation suite
-│   └── autoplan-engine.test.ts     # Vitest deterministic auto-plan constraint solver suite
+│   ├── autoplan-engine.test.ts     # Vitest deterministic auto-plan constraint solver suite
+│   └── parser-engine.test.ts       # Vitest deterministic transcript and DegreeWorks parser suite
 ├── docs/superpowers/
 │   ├── specs/                      # Architecture and technical design specifications
 │   └── plans/                      # Detailed implementation plans
@@ -74,6 +84,8 @@ AntTrail is built with a clean separation of concerns:
    Prerequisites, class standing, minimum grade thresholds, and course availability are computed using pure mathematical code. We do **NOT** use Large Language Models for academic decisions.
 3. **Transparent Articulation:**  
    Transfer courses are only marked equivalent when an official articulation mapping exists (e.g. ASSIST.org). If articulation is unconfirmed, AntTrail marks it as requiring administrative review rather than guessing.
+4. **Client-Side PII Sanitization:**  
+   Imported academic records (StudentAccess transcripts or DegreeWorks audits) are parsed exclusively in local browser memory. Sensitive identifiers such as Student ID numbers, names, and contact details are automatically redacted before records enter the state.
 
 ---
 
@@ -101,7 +113,7 @@ AntTrail is built with a clean separation of concerns:
 | **Phase 1** | **Prerequisite Boolean Engine & Interactive Eligibility Prototype** | ✅ **Complete** |
 | **Phase 2** | **Basic UCI Degree Requirement Engine & Manual Planner UI** | ✅ **Complete** |
 | **Phase 3** | **Quarterly WebSOC Offerings & Auto Plan Constraint Solver** | ✅ **Complete** |
-| Phase 4 | DegreeWorks & Unofficial Transcript Deterministic Parser | 📋 Planned |
+| **Phase 4** | **DegreeWorks & Unofficial Transcript Deterministic Parser** | ✅ **Complete** |
 | Phase 5 | Google Authentication & Private Google Drive Storage | 📋 Planned |
 | Phase 6 | GPA Projections, Mobile Polish, & WCAG Accessibility | 📋 Planned |
 
@@ -109,7 +121,7 @@ AntTrail is built with a clean separation of concerns:
 
 ## 🧪 Verification & Testing
 
-AntTrail includes 25 unit tests across 4 suites built with **Vitest**:
+AntTrail includes 33 unit tests across 5 suites built with **Vitest**:
 
 ```bash
 # Run unit test suite
@@ -134,6 +146,10 @@ npm run build
 - ✔ Prerequisite Bottleneck Ordering: topological critical path preserves chains like `ICS 31 → 32 → 33 → 45C → 46 → CS 161`.
 - ✔ Transfer Articulation Deduplication: auto planner never reschedules courses already cleared via transfer.
 - ✔ Summer Session Sensitivity: respects `includeSummer` toggle and schedules summer terms for fast-track plans.
+- ✔ Deterministic Format Auto-Detection: distinguishes UCI StudentAccess transcripts, DegreeWorks exports, and generic lists.
+- ✔ UCI StudentAccess Parsing: extracts quarterly courses, units, letter grades, and transfer credit blocks.
+- ✔ DegreeWorks Audit Parsing: extracts applied courses and distinguishes from unfulfilled requirements.
+- ✔ Client-Side PII Redaction: automatically strips Student ID numbers and personal names from input buffers.
 - ✔ Human-readable prerequisite string formatting.
 
 ---

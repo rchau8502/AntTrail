@@ -6,7 +6,8 @@ import { OFFICIAL_TRANSFER_EQUIVALENCIES } from '../data/uci/equivalencies'
 import {
   User,
   Plus,
-  Trash2
+  Trash2,
+  FileText
 } from 'lucide-react'
 
 interface StudentTranscriptManagerProps {
@@ -14,13 +15,15 @@ interface StudentTranscriptManagerProps {
   onUpdateProfile: (updated: StudentProfile) => void
   selectedPersonaId: string
   onSelectPersona: (personaId: string) => void
+  onOpenImportModal?: () => void
 }
 
 export const StudentTranscriptManager: React.FC<StudentTranscriptManagerProps> = ({
   profile,
   onUpdateProfile,
   selectedPersonaId,
-  onSelectPersona
+  onSelectPersona,
+  onOpenImportModal
 }) => {
   const [showAddTransferModal, setShowAddTransferModal] = useState(false)
   const [selectedTransferEqId, setSelectedTransferEqId] = useState(
@@ -219,13 +222,25 @@ export const StudentTranscriptManager: React.FC<StudentTranscriptManagerProps> =
           <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
             Current Course History ({profile.courseHistory.length} courses)
           </label>
-          <button
-            onClick={() => setShowAddTransferModal(true)}
-            className="flex items-center gap-1 text-xs font-semibold text-sky-400 hover:text-sky-300 transition-colors"
-          >
-            <Plus className="h-3.5 w-3.5" />
-            <span>Add Transfer Course</span>
-          </button>
+          <div className="flex items-center gap-3">
+            {onOpenImportModal && (
+              <button
+                onClick={onOpenImportModal}
+                className="flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
+                title="Paste or upload unofficial transcript"
+              >
+                <FileText className="h-3.5 w-3.5" />
+                <span>Import Transcript</span>
+              </button>
+            )}
+            <button
+              onClick={() => setShowAddTransferModal(true)}
+              className="flex items-center gap-1 text-xs font-semibold text-sky-400 hover:text-sky-300 transition-colors"
+            >
+              <Plus className="h-3.5 w-3.5" />
+              <span>Add Transfer Course</span>
+            </button>
+          </div>
         </div>
 
         {profile.courseHistory.length === 0 ? (
