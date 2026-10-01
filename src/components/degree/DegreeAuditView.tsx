@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import {
   DegreeAuditResult,
-  EvaluatedRequirement
+  EvaluatedRequirement,
+  DegreeProgram
 } from '../../academic-engine/types'
 import {
   Award,
@@ -19,21 +20,22 @@ import {
 interface DegreeAuditViewProps {
   audit: DegreeAuditResult
   onPlanCourse?: (courseCode: string) => void
+  onSelectProgram?: (programName: string) => void
+  availablePrograms?: DegreeProgram[]
 }
 
-export const DegreeAuditView: React.FC<DegreeAuditViewProps> = ({ audit, onPlanCourse }) => {
-  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
-    cs_lower_div: true,
-    cs_upper_div: true,
-    cs_electives: true,
-    math_lower_div: true,
-    math_upper_div: true
-  })
+export const DegreeAuditView: React.FC<DegreeAuditViewProps> = ({
+  audit,
+  onPlanCourse,
+  onSelectProgram,
+  availablePrograms
+}) => {
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({})
 
   const toggleSection = (sectionId: string) => {
     setExpandedSections((prev) => ({
       ...prev,
-      [sectionId]: !prev[sectionId]
+      [sectionId]: prev[sectionId] === false ? true : false
     }))
   }
 
@@ -44,17 +46,39 @@ export const DegreeAuditView: React.FC<DegreeAuditViewProps> = ({ audit, onPlanC
       {/* Overview Stats Card */}
       <div className="rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-900 to-blue-950/30 p-6 sm:p-8 shadow-xl">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
+          <div className="space-y-3">
+            <div className="flex flex-wrap items-center gap-2">
               <span className="rounded-full bg-anteater-gold/15 px-3 py-1 text-xs font-bold text-anteater-gold border border-anteater-gold/30">
                 {program.school}
               </span>
               <span className="text-xs text-slate-400 font-mono">Catalog {program.catalogYear}</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center gap-3">
-              <Award className="h-7 w-7 text-anteater-gold shrink-0" />
-              <span>{program.name}</span>
-            </h1>
+
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center gap-3">
+                <Award className="h-7 w-7 text-anteater-gold shrink-0" />
+                <span>{program.name}</span>
+              </h1>
+
+              {availablePrograms && availablePrograms.length > 0 && onSelectProgram && (
+                <div className="flex items-center gap-2">
+                  <label htmlFor="major-switcher" className="sr-only">Switch Degree Program</label>
+                  <select
+                    id="major-switcher"
+                    value={program.name}
+                    onChange={(e) => onSelectProgram(e.target.value)}
+                    className="rounded-xl border border-slate-700 bg-slate-900/90 px-3 py-1.5 text-xs font-bold text-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-500 hover:border-slate-600 transition-colors cursor-pointer"
+                  >
+                    {availablePrograms.map((p) => (
+                      <option key={p.id} value={p.name}>
+                        {p.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+            </div>
+
             <p className="text-sm text-slate-400 max-w-xl">
               Deterministic progress evaluation based on completed transcripts, verified transfer articulation, and future planned quarters.
             </p>

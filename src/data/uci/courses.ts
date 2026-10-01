@@ -624,5 +624,269 @@ export const UCI_CS_MATH_COURSES: Course[] = [
       { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
       { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
     ]
+  },
+  // --- Discrete Math & Foundations (ICS) ---
+  {
+    id: 'ICS_6B',
+    code: 'ICS 6B',
+    title: 'Boolean Logic and Discrete Structures',
+    department: 'ICS',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Relations, functions, propositional and predicate logic, Boolean algebra and digital circuits, sets, and counting principles.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED', instructors: ['Gassko, I.'] },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'ICS_6D',
+    code: 'ICS 6D',
+    title: 'Discrete Mathematics for Computer Science',
+    department: 'ICS',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Mathematical induction, recurrences, finite automata and regular expressions, graphs and trees, elementary probability, and algorithmic analysis.',
+    prerequisiteExpression: {
+      type: 'course',
+      courseId: 'ICS 6B',
+      minGrade: 'C'
+    },
+    prerequisiteText: 'ICS 6B with a grade of C or better',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED', instructors: ['Jarecki, S.'] },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  // --- Software Engineering Core (IN4MATX) ---
+  {
+    id: 'IN4MATX_113',
+    code: 'IN4MATX 113',
+    title: 'Requirements Analysis and Engineering',
+    department: 'IN4MATX',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Elicitation, modeling, specification, and validation of software system requirements. User stories, use cases, domain analysis, and requirements traceability.',
+    prerequisiteExpression: {
+      type: 'course',
+      courseId: 'IN4MATX 43',
+      minGrade: 'C'
+    },
+    prerequisiteText: 'IN4MATX 43 with a grade of C or better',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED', instructors: ['van der Hoek, A.'] },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'IN4MATX_115',
+    code: 'IN4MATX 115',
+    title: 'Software Testing, Analysis, and Quality Assurance',
+    department: 'IN4MATX',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Verification and validation techniques: unit testing, integration testing, system testing, code coverage, test automation frameworks, and static code analysis.',
+    prerequisiteExpression: {
+      type: 'course',
+      courseId: 'IN4MATX 43',
+      minGrade: 'C'
+    },
+    prerequisiteText: 'IN4MATX 43 with a grade of C or better',
+    offerings: [
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'IN4MATX_121',
+    code: 'IN4MATX 121',
+    title: 'Software Design: Applications',
+    department: 'IN4MATX',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Architecture patterns, microservices, component composition, MVC, API design, and user-centered interactive application design.',
+    prerequisiteExpression: {
+      type: 'and',
+      children: [
+        { type: 'course', courseId: 'IN4MATX 43', minGrade: 'C' },
+        { type: 'course', courseId: 'ICS 33', minGrade: 'C' }
+      ]
+    },
+    prerequisiteText: 'IN4MATX 43 AND ICS 33 with grades of C or better',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED', instructors: ['Ziv, H.'] },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'IN4MATX_122',
+    code: 'IN4MATX 122',
+    title: 'Software Design: Structure and Implementation',
+    department: 'IN4MATX',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Detailed object-oriented software design, Gang of Four design patterns, SOLID principles, refactoring legacy codebases, and maintainability metrics.',
+    prerequisiteExpression: {
+      type: 'and',
+      children: [
+        { type: 'course', courseId: 'IN4MATX 43', minGrade: 'C' },
+        { type: 'course', courseId: 'ICS 45C', minGrade: 'C' }
+      ]
+    },
+    prerequisiteText: 'IN4MATX 43 AND ICS 45C with grades of C or better',
+    offerings: [
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'IN4MATX_191A',
+    code: 'IN4MATX 191A',
+    title: 'Senior Design Project I',
+    department: 'IN4MATX',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Capstone software development project for external industry sponsors: project scoping, client interaction, architectural specification, and sprint milestones.',
+    prerequisiteExpression: {
+      type: 'and',
+      children: [
+        { type: 'course', courseId: 'IN4MATX 113', minGrade: 'C' },
+        { type: 'course', courseId: 'IN4MATX 121', minGrade: 'C' },
+        { type: 'course', courseId: 'I&C SCI 139W', minGrade: 'C' }
+      ]
+    },
+    prerequisiteText: 'IN4MATX 113, IN4MATX 121, and I&C SCI 139W with grades of C or better',
+    offerings: [
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED', instructors: ['Hermans, F.'] }
+    ]
+  },
+  {
+    id: 'IN4MATX_191B',
+    code: 'IN4MATX 191B',
+    title: 'Senior Design Project II',
+    department: 'IN4MATX',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Second quarter of capstone: completion, deployment, testing, performance tuning, and final client presentation of the working software product.',
+    prerequisiteExpression: {
+      type: 'course',
+      courseId: 'IN4MATX 191A',
+      minGrade: 'C'
+    },
+    prerequisiteText: 'IN4MATX 191A with a grade of C or better',
+    offerings: [
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED', instructors: ['Hermans, F.'] }
+    ]
+  },
+  // --- Advanced Statistics Core (STATS) ---
+  {
+    id: 'STATS_120A',
+    code: 'STATS 120A',
+    title: 'Introduction to Probability and Statistics I',
+    department: 'STATS',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Probability spaces, random variables, discrete and continuous distributions, joint distributions, expectations, variance, and transformations.',
+    prerequisiteExpression: {
+      type: 'and',
+      children: [
+        { type: 'course', courseId: 'MATH 2A', minGrade: 'C' },
+        { type: 'course', courseId: 'MATH 2B', minGrade: 'C' }
+      ]
+    },
+    prerequisiteText: 'MATH 2A AND MATH 2B with grades of C or better',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'STATS_120B',
+    code: 'STATS 120B',
+    title: 'Introduction to Probability and Statistics II',
+    department: 'STATS',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Point and interval estimation, maximum likelihood, properties of estimators, hypothesis testing, likelihood ratio tests, and confidence intervals.',
+    prerequisiteExpression: {
+      type: 'and',
+      children: [
+        { type: 'course', courseId: 'STATS 120A', minGrade: 'C' },
+        { type: 'course', courseId: 'MATH 3A', minGrade: 'C' }
+      ]
+    },
+    prerequisiteText: 'STATS 120A AND MATH 3A with grades of C or better',
+    offerings: [
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'STATS_120C',
+    code: 'STATS 120C',
+    title: 'Introduction to Probability and Statistics III',
+    department: 'STATS',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Linear regression, analysis of variance (ANOVA), model diagnostics, nonparametric methods, and categorical data analysis.',
+    prerequisiteExpression: {
+      type: 'course',
+      courseId: 'STATS 120B',
+      minGrade: 'C'
+    },
+    prerequisiteText: 'STATS 120B with a grade of C or better',
+    offerings: [
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  // --- Computer Engineering & Hardware Core (EECS) ---
+  {
+    id: 'EECS_31',
+    code: 'EECS 31',
+    title: 'Introduction to Digital Systems',
+    department: 'EECS',
+    units: 4,
+    catalogYear: '2026-27',
+    description:
+      'Digital devices, Boolean algebra, logic gates, combinational circuit synthesis, flip-flops, registers, counters, sequential circuit design, and finite state machines.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'EECS_31L',
+    code: 'EECS 31L',
+    title: 'Introduction to Digital Logic Laboratory',
+    department: 'EECS',
+    units: 3,
+    catalogYear: '2026-27',
+    description:
+      'Laboratory experiments in digital logic design using VHDL/Verilog and FPGA prototyping hardware boards.',
+    prerequisiteExpression: {
+      type: 'course',
+      courseId: 'EECS 31',
+      minGrade: 'C'
+    },
+    prerequisiteText: 'EECS 31 (may be taken concurrently)',
+    offerings: [
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' },
+      { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
+    ]
   }
 ]

@@ -21,7 +21,7 @@ import {
 import {
   fetchGoogleUserInfo,
   loadGisScript,
-  GOOGLE_CLIENT_ID,
+  getEffectiveGoogleClientId,
   DRIVE_APPDATA_SCOPE
 } from './services/drive/googleAuth'
 import { UCI_CS_MATH_COURSES } from './data/uci/courses'
@@ -331,12 +331,13 @@ export const App: React.FC = () => {
   }
 
   // --- Google Drive Sync Handlers ---
-  const handleConnectGoogle = async () => {
+  const handleConnectLive = async () => {
     try {
       await loadGisScript()
+      const effectiveClientId = getEffectiveGoogleClientId()
       if (typeof window !== 'undefined' && window.google?.accounts?.oauth2) {
         const client = window.google.accounts.oauth2.initTokenClient({
-          client_id: GOOGLE_CLIENT_ID,
+          client_id: effectiveClientId,
           scope: DRIVE_APPDATA_SCOPE,
           callback: async (resp) => {
             if (resp.access_token) {
@@ -362,31 +363,29 @@ export const App: React.FC = () => {
         })
         client.requestAccessToken()
       } else {
-        const demoUser: GoogleUser = {
-          id: 'anteater_demo_user',
-          name: 'Peter Anteater (UCI)',
-          email: 'anteater@uci.edu'
-        }
-        setAccessToken('demo_drive_token')
-        setGoogleUser(demoUser)
-        setSyncStatus('SYNCED')
-        setLastSyncedTime(Date.now())
-        sessionStorage.setItem('anttrail_google_token', 'demo_drive_token')
-        sessionStorage.setItem('anttrail_google_user', JSON.stringify(demoUser))
+        handleConnectDemo()
       }
     } catch {
-      const demoUser: GoogleUser = {
-        id: 'anteater_demo_user',
-        name: 'Peter Anteater (UCI)',
-        email: 'anteater@uci.edu'
-      }
-      setAccessToken('demo_drive_token')
-      setGoogleUser(demoUser)
-      setSyncStatus('SYNCED')
-      setLastSyncedTime(Date.now())
-      sessionStorage.setItem('anttrail_google_token', 'demo_drive_token')
-      sessionStorage.setItem('anttrail_google_user', JSON.stringify(demoUser))
+      handleConnectDemo()
     }
+  }
+
+  const handleConnectDemo = () => {
+    const demoUser: GoogleUser = {
+      id: 'anteater_demo_user',
+      name: 'Peter Anteater (UCI)',
+      email: 'anteater@uci.edu'
+    }
+    setAccessToken('demo_drive_token')
+    setGoogleUser(demoUser)
+    setSyncStatus('SYNCED')
+    setLastSyncedTime(Date.now())
+    sessionStorage.setItem('anttrail_google_token', 'demo_drive_token')
+    sessionStorage.setItem('anttrail_google_user', JSON.stringify(demoUser))
+  }
+
+  const handleConnectGoogle = () => {
+    setIsSyncModalOpen(true)
   }
 
   const handleDisconnectGoogle = () => {
@@ -855,6 +854,13 @@ export const App: React.FC = () => {
           <DegreeAuditView
             audit={degreeAudit}
             onPlanCourse={handlePlanCourseFromDegree}
+            onSelectProgram={(programName) =>
+              setProfile((prev) => ({
+                ...prev,
+                major: programName
+              }))
+            }
+            availablePrograms={UCI_DEGREE_PROGRAMS}
           />
         )}
 
@@ -909,6 +915,8 @@ export const App: React.FC = () => {
         onBackupNow={handleBackupNow}
         onRestoreFromDrive={handleRestoreFromDrive}
         onDisconnect={handleDisconnectGoogle}
+        onConnectLive={handleConnectLive}
+        onConnectDemo={handleConnectDemo}
         isSyncing={isSyncing}
       />
 

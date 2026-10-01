@@ -121,4 +121,85 @@ describe('UCI Degree Requirement Engine', () => {
     const realAnalysis = upperDiv.requirements.find((r) => r.requirement.id === 'math_real_analysis')!
     expect(realAnalysis.eligibleToSatisfy).toContain('MATH 140A')
   })
+
+  it('correctly evaluates Software Engineering B.S. for SE junior persona', () => {
+    const seProgram = getDegreeProgramById('SE_BS_2026')!
+    expect(seProgram).toBeDefined()
+    expect(seProgram.name).toBe('Software Engineering B.S.')
+
+    const seJunior = STUDENT_PERSONAS.find((p) => p.id === 'se_junior')!
+    expect(seJunior).toBeDefined()
+
+    const audit = evaluateDegreeAudit(seProgram, seJunior.profile, [], OFFICIAL_TRANSFER_EQUIVALENCIES)
+    expect(audit.program.id).toBe('SE_BS_2026')
+
+    const lowerDiv = audit.sections.find((s) => s.section.id === 'se_lower_div')!
+    expect(lowerDiv).toBeDefined()
+
+    // Intro SE (IN4MATX 43) is complete
+    const introSe = lowerDiv.requirements.find((r) => r.requirement.id === 'se_intro_se')!
+    expect(introSe.isComplete).toBe(true)
+    expect(introSe.completedCourses).toContain('IN4MATX 43')
+
+    // Discrete Math (ICS 6B, 6D) is complete
+    const discrete = lowerDiv.requirements.find((r) => r.requirement.id === 'se_discrete_math')!
+    expect(discrete.isComplete).toBe(true)
+    expect(discrete.completedCourses).toEqual(expect.arrayContaining(['ICS 6B', 'ICS 6D']))
+
+    // Upper div core requires IN4MATX 113, 115, 121, 122
+    const upperDiv = audit.sections.find((s) => s.section.id === 'se_upper_div')!
+    const coreSwe = upperDiv.requirements.find((r) => r.requirement.id === 'se_core_swe')!
+    expect(coreSwe.isComplete).toBe(false)
+    expect(coreSwe.missingCourses).toEqual(
+      expect.arrayContaining(['IN4MATX 113', 'IN4MATX 115', 'IN4MATX 121', 'IN4MATX 122'])
+    )
+  })
+
+  it('correctly evaluates Data Science B.S. for DS sophomore persona', () => {
+    const dsProgram = getDegreeProgramById('DS_BS_2026')!
+    expect(dsProgram).toBeDefined()
+    expect(dsProgram.name).toBe('Data Science B.S.')
+
+    const dsSophomore = STUDENT_PERSONAS.find((p) => p.id === 'ds_sophomore')!
+    expect(dsSophomore).toBeDefined()
+
+    const audit = evaluateDegreeAudit(dsProgram, dsSophomore.profile, [], OFFICIAL_TRANSFER_EQUIVALENCIES)
+    expect(audit.program.id).toBe('DS_BS_2026')
+
+    const lowerDiv = audit.sections.find((s) => s.section.id === 'ds_lower_div')!
+    expect(lowerDiv).toBeDefined()
+
+    // Intro programming is complete
+    const introProg = lowerDiv.requirements.find((r) => r.requirement.id === 'ds_intro_prog')!
+    expect(introProg.isComplete).toBe(true)
+
+    // Stats intro is complete
+    const statsIntro = lowerDiv.requirements.find((r) => r.requirement.id === 'ds_stats_intro')!
+    expect(statsIntro.isComplete).toBe(true)
+    expect(statsIntro.completedCourses).toContain('STATS 67')
+
+    // Upper div requires STATS 120 sequence
+    const upperDiv = audit.sections.find((s) => s.section.id === 'ds_upper_div')!
+    const probStats = upperDiv.requirements.find((r) => r.requirement.id === 'ds_prob_stats_seq')!
+    expect(probStats.isComplete).toBe(false)
+    expect(probStats.missingCourses).toEqual(
+      expect.arrayContaining(['STATS 120A', 'STATS 120B', 'STATS 120C'])
+    )
+  })
+
+  it('correctly verifies Computer Engineering B.S. requirement graph', () => {
+    const cpeProgram = getDegreeProgramById('CPE_BS_2026')!
+    expect(cpeProgram).toBeDefined()
+    expect(cpeProgram.name).toBe('Computer Engineering B.S.')
+
+    const freshman = STUDENT_PERSONAS.find((p) => p.id === 'freshman')!
+    const audit = evaluateDegreeAudit(cpeProgram, freshman.profile, [], OFFICIAL_TRANSFER_EQUIVALENCIES)
+
+    const lowerDiv = audit.sections.find((s) => s.section.id === 'cpe_lower_div')!
+    expect(lowerDiv).toBeDefined()
+
+    const digital = lowerDiv.requirements.find((r) => r.requirement.id === 'cpe_digital_logic')!
+    expect(digital.isComplete).toBe(false)
+    expect(digital.missingCourses).toEqual(expect.arrayContaining(['EECS 31', 'EECS 31L']))
+  })
 })

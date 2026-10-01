@@ -80,5 +80,51 @@ export const STUDENT_PERSONAS: StudentPersona[] = [
         { id: 'm6', courseCode: 'ICS 31', institution: 'UCI', term: 'Spring 2026', units: 4, grade: 'B+', status: 'COMPLETED' }
       ]
     }
+  },
+  {
+    id: 'se_junior',
+    name: 'Software Engineering Junior',
+    tagline: 'Completed Intro SE (IN4MATX 43), Discrete Math, and C++ Data Structures. Starting SWE Core and Capstone.',
+    profile: {
+      studentId: 'UCI-SE-JR-05',
+      major: 'Software Engineering B.S.',
+      catalogYear: '2026-27',
+      classStanding: 'Junior',
+      completedUnits: 96,
+      courseHistory: [
+        { id: 'se1', courseCode: 'ICS 31', institution: 'UCI', term: 'Fall 2024', units: 4, grade: 'A', status: 'COMPLETED' },
+        { id: 'se2', courseCode: 'MATH 2A', institution: 'UCI', term: 'Fall 2024', units: 4, grade: 'A', status: 'COMPLETED' },
+        { id: 'se3', courseCode: 'ICS 32', institution: 'UCI', term: 'Winter 2025', units: 4, grade: 'A', status: 'COMPLETED' },
+        { id: 'se4', courseCode: 'MATH 2B', institution: 'UCI', term: 'Winter 2025', units: 4, grade: 'A-', status: 'COMPLETED' },
+        { id: 'se5', courseCode: 'ICS 33', institution: 'UCI', term: 'Spring 2025', units: 4, grade: 'A', status: 'COMPLETED' },
+        { id: 'se6', courseCode: 'ICS 6B', institution: 'UCI', term: 'Spring 2025', units: 4, grade: 'B+', status: 'COMPLETED' },
+        { id: 'se7', courseCode: 'IN4MATX 43', institution: 'UCI', term: 'Fall 2025', units: 4, grade: 'A', status: 'COMPLETED' },
+        { id: 'se8', courseCode: 'ICS 45C', institution: 'UCI', term: 'Fall 2025', units: 4, grade: 'A', status: 'COMPLETED' },
+        { id: 'se9', courseCode: 'ICS 6D', institution: 'UCI', term: 'Fall 2025', units: 4, grade: 'B', status: 'COMPLETED' },
+        { id: 'se10', courseCode: 'ICS 46', institution: 'UCI', term: 'Winter 2026', units: 4, grade: 'A', status: 'COMPLETED' },
+        { id: 'se11', courseCode: 'STATS 67', institution: 'UCI', term: 'Winter 2026', units: 4, grade: 'B+', status: 'COMPLETED' }
+      ]
+    }
+  },
+  {
+    id: 'ds_sophomore',
+    name: 'Data Science Sophomore',
+    tagline: 'Completed Python series and Multivariable Calculus. Preparing for STATS 120A-C sequence and Machine Learning.',
+    profile: {
+      studentId: 'UCI-DS-SOPH-06',
+      major: 'Data Science B.S.',
+      catalogYear: '2026-27',
+      classStanding: 'Sophomore',
+      completedUnits: 52,
+      courseHistory: [
+        { id: 'ds1', courseCode: 'ICS 31', institution: 'UCI', term: 'Fall 2025', units: 4, grade: 'A', status: 'COMPLETED' },
+        { id: 'ds2', courseCode: 'MATH 2A', institution: 'UCI', term: 'Fall 2025', units: 4, grade: 'A', status: 'COMPLETED' },
+        { id: 'ds3', courseCode: 'ICS 32', institution: 'UCI', term: 'Winter 2026', units: 4, grade: 'A-', status: 'COMPLETED' },
+        { id: 'ds4', courseCode: 'MATH 2B', institution: 'UCI', term: 'Winter 2026', units: 4, grade: 'A', status: 'COMPLETED' },
+        { id: 'ds5', courseCode: 'ICS 33', institution: 'UCI', term: 'Spring 2026', units: 4, grade: 'A', status: 'COMPLETED' },
+        { id: 'ds6', courseCode: 'MATH 2D', institution: 'UCI', term: 'Spring 2026', units: 4, grade: 'B+', status: 'COMPLETED' },
+        { id: 'ds7', courseCode: 'STATS 67', institution: 'UCI', term: 'Spring 2026', units: 4, grade: 'A', status: 'COMPLETED' }
+      ]
+    }
   }
 ]

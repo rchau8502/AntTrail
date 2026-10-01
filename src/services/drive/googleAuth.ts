@@ -1,9 +1,35 @@
 import { GoogleUser } from './types'
 
-// Default client ID placeholder for AntTrail (can be configured via Vite env VITE_GOOGLE_CLIENT_ID)
-export const GOOGLE_CLIENT_ID =
-  (import.meta as any).env?.VITE_GOOGLE_CLIENT_ID ||
-  '628172948291-anttrail-uci-placeholder.apps.googleusercontent.com'
+export const CUSTOM_CLIENT_ID_KEY = 'anttrail_custom_google_client_id'
+
+export function getEffectiveGoogleClientId(): string {
+  if (typeof window !== 'undefined') {
+    const custom = localStorage.getItem(CUSTOM_CLIENT_ID_KEY)
+    if (custom && custom.trim().length > 0) return custom.trim()
+  }
+  return (
+    (import.meta as any).env?.VITE_GOOGLE_CLIENT_ID ||
+    '628172948291-anttrail-uci-placeholder.apps.googleusercontent.com'
+  )
+}
+
+export function setCustomGoogleClientId(clientId: string | null): void {
+  if (typeof window === 'undefined') return
+  if (!clientId || clientId.trim() === '') {
+    localStorage.removeItem(CUSTOM_CLIENT_ID_KEY)
+  } else {
+    localStorage.setItem(CUSTOM_CLIENT_ID_KEY, clientId.trim())
+  }
+}
+
+export function isCustomClientIdConfigured(): boolean {
+  if (typeof window === 'undefined') return false
+  const custom = localStorage.getItem(CUSTOM_CLIENT_ID_KEY)
+  const envVar = (import.meta as any).env?.VITE_GOOGLE_CLIENT_ID
+  return Boolean((custom && custom.trim().length > 0) || (envVar && !envVar.includes('placeholder')))
+}
+
+export const GOOGLE_CLIENT_ID = getEffectiveGoogleClientId()
 
 export const DRIVE_APPDATA_SCOPE = 'https://www.googleapis.com/auth/drive.appdata'
 const USERINFO_ENDPOINT = 'https://www.googleapis.com/oauth2/v3/userinfo'
