@@ -108,7 +108,7 @@ export function WhatIfModal({
               <span className="text-2xl font-black font-mono text-slate-900">
                 {summary.percentage}%
               </span>
-              <span className="text-xs font-black font-mono text-uci-blue bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+              <span className="text-xs font-black font-mono text-slate-900 bg-slate-100 px-2.5 py-0.5 rounded-lg border border-slate-200">
                 {summary.letterGrade}
               </span>
             </div>
@@ -133,7 +133,7 @@ export function WhatIfModal({
               return (
                 <div
                   key={a.id}
-                  className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-2 hover:border-slate-300 transition-colors"
+                  className="p-3.5 rounded-xl bg-white border border-slate-200/80 space-y-2 hover:border-slate-300 transition-colors shadow-2xs"
                 >
                   <div className="flex justify-between items-center text-xs">
                     <span
@@ -142,7 +142,7 @@ export function WhatIfModal({
                     >
                       {a.name}
                     </span>
-                    <span className="font-mono text-[11px] font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                    <span className="font-mono text-[11px] font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200/80">
                       {currentScore} / {a.points_possible} pts ({scorePct}%)
                     </span>
                   </div>
@@ -156,7 +156,7 @@ export function WhatIfModal({
                       onChange={(e) =>
                         setWhatIfScore(a.id, Number(e.target.value))
                       }
-                      className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-uci-blue"
+                      className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-slate-900"
                     />
                   </div>
                 </div>

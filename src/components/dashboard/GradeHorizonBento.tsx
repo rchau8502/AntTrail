@@ -35,8 +35,8 @@ export function GradeHorizonBento({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
-          <div className="w-2 h-2 rounded-full bg-uci-blue" />
-          <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400">
+          <div className="w-2 h-2 rounded-full bg-slate-400" />
+          <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 font-mono">
             Grade Horizon
           </span>
         </div>
@@ -64,7 +64,7 @@ export function GradeHorizonBento({
             <span className="text-3xl sm:text-4xl font-mono font-black tracking-tight text-slate-900">
               {summary.percentage}%
             </span>
-            <span className="text-xs font-black text-uci-blue bg-blue-50 border border-blue-200/70 px-2 py-0.5 rounded-md font-mono">
+            <span className="text-xs font-black text-slate-900 bg-slate-100 border border-slate-200/80 px-2 py-0.5 rounded-md font-mono">
               {summary.letterGrade}
             </span>
           </div>

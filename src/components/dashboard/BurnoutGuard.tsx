@@ -50,12 +50,12 @@ export function BurnoutGuard({ workloads }: { workloads: DailyWorkload[] }) {
                   <div
                     className={`w-full rounded-xs transition-all duration-300 ${
                       isHigh
-                        ? "bg-rose-500"
+                        ? "bg-rose-600"
                         : isMed
-                        ? "bg-amber-400"
+                        ? "bg-slate-800"
                         : isZero
                         ? "bg-transparent"
-                        : "bg-uci-blue/70"
+                        : "bg-slate-700"
                     }`}
                     style={{ height: `${Math.max(heightPct, isZero ? 0 : 20)}%` }}
                   />
@@ -64,7 +64,7 @@ export function BurnoutGuard({ workloads }: { workloads: DailyWorkload[] }) {
                   <span className="font-mono text-[9px] font-bold text-slate-700 block">
                     {day.estimatedHours}h
                   </span>
-                  <span className="text-[8px] text-slate-400 font-medium block truncate max-w-[32px]">
+                  <span className="text-[8px] text-slate-400 font-mono block truncate max-w-[32px]">
                     {day.dayLabel.split(" ")[0]}
                   </span>
                 </div>
@@ -78,14 +78,14 @@ export function BurnoutGuard({ workloads }: { workloads: DailyWorkload[] }) {
       <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
         {burnoutDays.length > 0 ? (
           <div className="flex items-center space-x-1.5 text-rose-700 text-[11px] font-bold">
-            <ShieldAlert className="w-3.5 h-3.5 text-rose-600 flex-shrink-0" />
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
             <span className="truncate max-w-[210px]">
               Spike: {burnoutDays.map((d) => d.dayLabel.split(" ")[0]).join(", ")} &gt; 6h
             </span>
           </div>
         ) : (
-          <div className="flex items-center space-x-1.5 text-emerald-700 text-[11px] font-medium">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+          <div className="flex items-center space-x-1.5 text-slate-600 text-[11px] font-medium">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             <span>Optimal pace · &lt; 6h ceiling</span>
           </div>
         )}

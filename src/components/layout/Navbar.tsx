@@ -42,18 +42,18 @@ export function Navbar({
               className="flex items-center space-x-2.5 pl-1.5 cursor-pointer group"
               onClick={() => setActiveTab("dashboard")}
             >
-              <div className="w-8 h-8 rounded-xl bg-slate-900 text-uci-gold flex items-center justify-center font-black text-sm tracking-tight shadow-xs group-hover:bg-uci-darkblue transition-colors">
+              <div className="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center font-black text-sm tracking-tight shadow-xs group-hover:bg-slate-800 transition-colors">
                 Z
               </div>
               <div className="flex items-center space-x-1.5">
-                <span className="font-extrabold text-sm tracking-tight text-slate-900 group-hover:text-uci-blue transition-colors">
+                <span className="font-extrabold text-sm tracking-tight text-slate-900 group-hover:text-slate-700 transition-colors">
                   ZotCanvas
                 </span>
-                <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200/80">
                   UCI
                 </span>
                 {is_demo_mode && (
-                  <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200">
+                  <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200/80">
                     Demo Mode
                   </span>
                 )}
@@ -71,11 +71,11 @@ export function Navbar({
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 ${
                       isActive
-                        ? "bg-white text-slate-900 shadow-2xs font-bold"
+                        ? "bg-white text-slate-950 shadow-2xs font-bold"
                         : "text-slate-500 hover:text-slate-900 hover:bg-white/50"
                     }`}
                   >
-                    <Icon className={`w-3.5 h-3.5 ${isActive ? "text-uci-blue" : "text-slate-400"}`} />
+                    <Icon className={`w-3.5 h-3.5 ${isActive ? "text-slate-900" : "text-slate-400"}`} />
                     <span>{tab.label}</span>
                   </button>
                 );
@@ -88,22 +88,22 @@ export function Navbar({
                 onClick={() => refreshCanvasData()}
                 disabled={isLoading}
                 title="Sync with Canvas API"
-                className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-500 hover:text-uci-blue hover:bg-slate-100 transition-colors disabled:opacity-50"
+                className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors disabled:opacity-50"
               >
-                <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? "animate-spin text-uci-blue" : ""}`} />
+                <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? "animate-spin text-slate-900" : ""}`} />
               </button>
 
               <button
                 onClick={() => setIsTokenModalOpen(true)}
-                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+                className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
                   canvas_token
-                    ? "bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100"
-                    : "bg-uci-blue text-white border-uci-blue hover:bg-uci-darkblue shadow-xs"
+                    ? "bg-emerald-50 text-emerald-800 border-emerald-200/90 hover:bg-emerald-100/80"
+                    : "bg-slate-900 text-white border-slate-900 hover:bg-slate-800 shadow-xs"
                 }`}
               >
                 {canvas_token ? (
                   <>
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
                     <span>Connected</span>
                   </>
                 ) : (

@@ -45,23 +45,23 @@ export function PomodoroTimer({ activeAssignmentName }: { activeAssignmentName?:
   const progressPct = ((totalDuration - secondsLeft) / totalDuration) * 100;
 
   return (
-    <div className="rounded-2xl bg-slate-950 text-white p-5 border border-slate-800 shadow-sm relative overflow-hidden flex flex-col justify-between h-full space-y-4">
-      {/* Background ambient lighting */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-uci-blue/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-24 h-24 bg-uci-gold/15 rounded-full blur-2xl pointer-events-none" />
-
-      <div className="relative z-10 flex flex-col justify-between h-full space-y-3.5">
+    <div className="rounded-2xl bg-white text-slate-900 p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between h-full space-y-4">
+      <div className="flex flex-col justify-between h-full space-y-3.5">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <span className="w-2 h-2 rounded-full bg-uci-gold animate-pulse" />
-            <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400">
+            <span
+              className={`w-2 h-2 rounded-full transition-all ${
+                isRunning ? "bg-emerald-500 animate-pulse ring-4 ring-emerald-50" : "bg-slate-300"
+              }`}
+            />
+            <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 font-mono">
               Focus Chronometer
             </span>
           </div>
 
           {/* Mode Switcher */}
-          <div className="flex items-center bg-slate-900 rounded-lg p-0.5 border border-slate-800 text-[11px]">
+          <div className="flex items-center bg-slate-100/90 rounded-lg p-0.5 border border-slate-200/80 text-[11px]">
             <button
               onClick={() => {
                 setMode("work");
@@ -69,7 +69,7 @@ export function PomodoroTimer({ activeAssignmentName }: { activeAssignmentName?:
                 setIsRunning(false);
               }}
               className={`px-2.5 py-1 rounded-md font-bold transition-all ${
-                mode === "work" ? "bg-slate-800 text-white shadow-xs" : "text-slate-400 hover:text-slate-200"
+                mode === "work" ? "bg-white text-slate-900 shadow-2xs font-bold" : "text-slate-500 hover:text-slate-900"
               }`}
             >
               25m Work
@@ -81,7 +81,7 @@ export function PomodoroTimer({ activeAssignmentName }: { activeAssignmentName?:
                 setIsRunning(false);
               }}
               className={`px-2.5 py-1 rounded-md font-bold transition-all ${
-                mode === "break" ? "bg-emerald-900/80 text-emerald-200 shadow-xs" : "text-slate-400 hover:text-slate-200"
+                mode === "break" ? "bg-white text-emerald-800 shadow-2xs font-bold" : "text-slate-500 hover:text-slate-900"
               }`}
             >
               5m Break
@@ -92,10 +92,10 @@ export function PomodoroTimer({ activeAssignmentName }: { activeAssignmentName?:
         {/* Big Digit Readout & Task Target */}
         <div className="flex items-baseline justify-between pt-1">
           <div>
-            <div className="text-4xl sm:text-5xl font-mono font-black tracking-tight text-white">
+            <div className="text-3xl sm:text-4xl font-mono font-black tracking-tight text-slate-900">
               {formattedTime}
             </div>
-            <p className="text-xs text-slate-400 truncate max-w-[190px] mt-1">
+            <p className="text-xs text-slate-500 truncate max-w-[190px] mt-1 font-medium">
               {activeAssignmentName || "Autonomous Sprint"}
             </p>
           </div>
@@ -104,7 +104,7 @@ export function PomodoroTimer({ activeAssignmentName }: { activeAssignmentName?:
           <div className="flex items-center space-x-2">
             <button
               onClick={toggle}
-              className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-uci-gold hover:bg-yellow-400 text-slate-950 font-bold text-xs transition-all active:scale-95 shadow-xs"
+              className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-all active:scale-95 shadow-2xs"
             >
               {isRunning ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 ml-0.5" />}
               <span>{isRunning ? "Pause" : "Start"}</span>
@@ -113,7 +113,7 @@ export function PomodoroTimer({ activeAssignmentName }: { activeAssignmentName?:
             <button
               onClick={reset}
               title="Reset Timer"
-              className="w-8 h-8 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-all border border-slate-800"
+              className="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-900 flex items-center justify-center transition-all border border-slate-200/80"
             >
               <RotateCcw className="w-3.5 h-3.5" />
             </button>
@@ -121,19 +121,19 @@ export function PomodoroTimer({ activeAssignmentName }: { activeAssignmentName?:
         </div>
 
         {/* Progress Line */}
-        <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden border border-slate-800/80">
+        <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden border border-slate-200/60">
           <div
             className={`h-full rounded-full transition-all duration-300 ${
-              mode === "work" ? "bg-gradient-to-r from-uci-blue to-uci-gold" : "bg-emerald-500"
+              mode === "work" ? "bg-slate-900" : "bg-emerald-600"
             }`}
             style={{ width: `${progressPct}%` }}
           />
         </div>
 
         {/* Footer Metrics */}
-        <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium pt-0.5">
+        <div className="flex items-center justify-between text-[11px] text-slate-400 font-medium pt-0.5">
           <span>Logged: {totalCompletedMinutes}m this week</span>
-          <span className="text-uci-lightgold font-bold">
+          <span className="font-mono text-[10px] font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200/60">
             {Math.floor(totalCompletedMinutes / 25)} sprints
           </span>
         </div>

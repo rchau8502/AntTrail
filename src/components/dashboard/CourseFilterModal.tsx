@@ -57,9 +57,9 @@ export function CourseFilterModal({
           {(hidden_course_ids?.length || 0) > 0 && (
             <button
               onClick={() => unhideAllCourses()}
-              className="text-uci-blue hover:text-uci-darkblue font-semibold flex items-center space-x-1"
+              className="text-slate-800 hover:text-slate-950 font-bold flex items-center space-x-1 text-xs transition-colors"
             >
-              <RotateCcw className="w-3 h-3" />
+              <RotateCcw className="w-3 h-3 text-slate-500" />
               <span>Unhide All</span>
             </button>
           )}

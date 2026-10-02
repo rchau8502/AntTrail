@@ -117,7 +117,7 @@ export function AssignmentDetailModal({
             onClick={() => onStartFocus(assignment)}
             className="w-full sm:flex-1 py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-all flex items-center justify-center space-x-2 shadow-xs active:scale-[0.98]"
           >
-            <Clock className="w-4 h-4 text-uci-gold" />
+            <Clock className="w-4 h-4 text-white/80" />
             <span>Launch 25-Min Sprint</span>
           </button>
 
@@ -125,9 +125,9 @@ export function AssignmentDetailModal({
             <button
               onClick={handleAskGemini}
               disabled={isAiLoading}
-              className="w-full sm:w-auto py-2.5 px-4 rounded-xl border border-purple-200 bg-purple-50 hover:bg-purple-100 text-purple-950 text-xs font-bold flex items-center justify-center space-x-1.5 transition-all disabled:opacity-50"
+              className="w-full sm:w-auto py-2.5 px-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-800 text-xs font-bold flex items-center justify-center space-x-1.5 transition-all disabled:opacity-50"
             >
-              <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+              <Sparkles className="w-3.5 h-3.5 text-slate-600" />
               <span>{isAiLoading ? "Analyzing..." : "Concept Advice"}</span>
             </button>
           )}
@@ -141,9 +141,9 @@ export function AssignmentDetailModal({
 
         {/* AI Guidance Box if active */}
         {aiGuidance && (
-          <div className="p-4 rounded-xl bg-purple-50/70 border border-purple-200 text-xs text-purple-950 space-y-2 animate-in fade-in">
-            <div className="font-bold flex items-center space-x-1.5 text-purple-900">
-              <Sparkles className="w-4 h-4 text-purple-600" />
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 space-y-2 animate-in fade-in">
+            <div className="font-bold flex items-center space-x-1.5 text-slate-900">
+              <Sparkles className="w-4 h-4 text-slate-600" />
               <span>Gemini Peer Tutor Analysis</span>
             </div>
             <p className="italic leading-relaxed">{aiGuidance.plainSummary}</p>
