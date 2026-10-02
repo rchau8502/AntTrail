@@ -45,12 +45,12 @@ export function PomodoroTimer({ activeAssignmentName }: { activeAssignmentName?:
   const progressPct = ((totalDuration - secondsLeft) / totalDuration) * 100;
 
   return (
-    <div className="rounded-2xl bg-slate-950 text-white p-5 border border-slate-800 shadow-md relative overflow-hidden space-y-4">
+    <div className="rounded-2xl bg-slate-950 text-white p-5 border border-slate-800 shadow-sm relative overflow-hidden flex flex-col justify-between h-full space-y-4">
       {/* Background ambient lighting */}
       <div className="absolute top-0 right-0 w-32 h-32 bg-uci-blue/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-24 h-24 bg-uci-gold/15 rounded-full blur-2xl pointer-events-none" />
 
-      <div className="relative z-10 space-y-3.5">
+      <div className="relative z-10 flex flex-col justify-between h-full space-y-3.5">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
