@@ -4,6 +4,7 @@ import {
   estimateAssignmentHours,
   categorizeAssignment,
   calculateDailyWorkload,
+  prioritizeAssignments,
 } from "@/lib/priority-engine";
 import { CanvasAssignment } from "@/types/canvas";
 
@@ -32,6 +33,24 @@ describe("Priority & Workload Engine", () => {
   it("categorizes urgent assignment into do_first quadrant", () => {
     const quad = categorizeAssignment(85, 18, false);
     expect(quad).toBe("do_first");
+  });
+
+  it("does not categorize ancient overdue assignments (-4000h) into do_first", () => {
+    const hoursLeft = -4269; // From user screenshot
+    const score = calculatePriorityScore(sampleAssignment, hoursLeft);
+    const quad = categorizeAssignment(score, hoursLeft, true);
+    expect(quad).not.toBe("do_first");
+    expect(quad).toBe("backlog");
+  });
+
+  it("filters out completed assignments from prioritizeAssignments", () => {
+    const list = prioritizeAssignments([sampleAssignment], { 1: "CS 161" }, [101]);
+    expect(list.length).toBe(0);
+  });
+
+  it("filters out hidden courses from prioritizeAssignments", () => {
+    const list = prioritizeAssignments([sampleAssignment], { 1: "CS 161" }, [], [1]);
+    expect(list.length).toBe(0);
   });
 
   it("flags burnout risk when daily work exceeds 6 hours", () => {

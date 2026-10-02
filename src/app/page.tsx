@@ -7,6 +7,7 @@ import { DisclaimerModal } from "@/components/layout/DisclaimerModal";
 import { BurnoutGuard } from "@/components/dashboard/BurnoutGuard";
 import { PomodoroTimer } from "@/components/dashboard/PomodoroTimer";
 import { EisenhowerMatrix } from "@/components/dashboard/EisenhowerMatrix";
+import { CourseFilterModal } from "@/components/dashboard/CourseFilterModal";
 import { AssignmentDetailModal } from "@/components/assignments/AssignmentDetailModal";
 import { WhatIfGradeSimulator } from "@/components/assignments/WhatIfGradeSimulator";
 import { WorkloadHeatmap } from "@/components/calendar/WorkloadHeatmap";
@@ -15,27 +16,71 @@ import { prioritizeAssignments, calculateDailyWorkload } from "@/lib/priority-en
 import { calculateQuarterWeek } from "@/lib/grade-simulator";
 import { CanvasAssignment } from "@/types/canvas";
 import { PrioritizedAssignment } from "@/types/study";
-import { Sparkles, ArrowRight, ShieldCheck, BookOpen, Clock, AlertCircle } from "lucide-react";
+import {
+  Sparkles,
+  ArrowRight,
+  ShieldCheck,
+  BookOpen,
+  Clock,
+  AlertCircle,
+  Filter,
+  Eye,
+  EyeOff,
+  Check,
+} from "lucide-react";
 
 export default function Home() {
-  const { cached_courses, cached_assignments, canvas_token, is_demo_mode, enableDemoMode } = useStorage();
+  const {
+    cached_courses,
+    cached_assignments,
+    canvas_token,
+    is_demo_mode,
+    enableDemoMode,
+    completed_assignment_ids,
+    hidden_course_ids,
+    toggleAssignmentCompleted,
+    toggleCourseHidden,
+  } = useStorage();
+
   const [activeTab, setActiveTab] = useState("dashboard");
   const [selectedAssignment, setSelectedAssignment] = useState<CanvasAssignment | null>(null);
   const [activeFocusName, setActiveFocusName] = useState<string | undefined>(undefined);
   const [selectedSimulatorCourseId, setSelectedSimulatorCourseId] = useState<number | null>(null);
+  const [isCourseFilterOpen, setIsCourseFilterOpen] = useState(false);
 
   const courseMap = cached_courses.reduce<Record<number, string>>((acc, c) => {
     acc[c.id] = c.name;
     return acc;
   }, {});
 
-  const prioritized = prioritizeAssignments(cached_assignments, courseMap);
-  const workloads = calculateDailyWorkload(cached_assignments);
+  // Visible courses (excluding hidden / past quarter)
+  const visibleCourses = cached_courses.filter((c) => !hidden_course_ids?.includes(c.id));
+  const visibleAssignments = cached_assignments.filter((a) => !hidden_course_ids?.includes(a.course_id));
+
+  // Prioritize active, non-completed assignments from visible courses
+  const prioritized = prioritizeAssignments(
+    cached_assignments,
+    courseMap,
+    completed_assignment_ids,
+    hidden_course_ids
+  );
+
+  const workloads = calculateDailyWorkload(
+    cached_assignments,
+    completed_assignment_ids,
+    hidden_course_ids
+  );
+
+  const completedAssignments = cached_assignments.filter((a) =>
+    completed_assignment_ids?.includes(a.id)
+  );
+
   const quarterWeek = calculateQuarterWeek();
 
-  // Active course for What-If Simulator
+  // Active course for What-If Simulator (prefer visible course)
   const activeSimCourse =
-    cached_courses.find((c) => c.id === selectedSimulatorCourseId) ||
+    visibleCourses.find((c) => c.id === selectedSimulatorCourseId) ||
+    visibleCourses[0] ||
     cached_courses[0];
 
   const handleSelectPrioritized = (item: PrioritizedAssignment) => {
@@ -70,13 +115,25 @@ export default function Home() {
                   </span>
                 </div>
                 <p className="text-xs text-slate-500 font-medium mt-0.5">
-                  {cached_courses.length} Active Courses • {cached_assignments.length} Total Assignments In Flight
+                  {visibleCourses.length} Active Courses
+                  {hidden_course_ids?.length > 0 && ` (${hidden_course_ids.length} hidden)`} •{" "}
+                  {visibleAssignments.length} Assignments In Flight
                 </p>
               </div>
             </div>
 
-            {!canvas_token && !is_demo_mode ? (
-              <div className="flex items-center space-x-2">
+            <div className="flex items-center flex-wrap gap-2">
+              {cached_courses.length > 0 && (
+                <button
+                  onClick={() => setIsCourseFilterOpen(true)}
+                  className="px-3.5 py-1.5 rounded-full border border-slate-200 bg-slate-50 hover:bg-white text-slate-700 text-xs font-semibold flex items-center space-x-1.5 transition-all shadow-2xs hover:border-uci-blue"
+                >
+                  <Filter className="w-3.5 h-3.5 text-uci-blue" />
+                  <span>Filter Courses ({visibleCourses.length}/{cached_courses.length})</span>
+                </button>
+              )}
+
+              {!canvas_token && !is_demo_mode ? (
                 <button
                   onClick={() => enableDemoMode()}
                   className="px-4 py-2 rounded-full bg-uci-gold hover:bg-yellow-400 text-slate-950 font-bold text-xs shadow-gold-glow transition-all flex items-center space-x-1.5"
@@ -84,15 +141,46 @@ export default function Home() {
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>Launch UCI Demo Data</span>
                 </button>
-              </div>
-            ) : (
-              <div className="flex items-center space-x-2 text-xs font-semibold text-emerald-800 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span>100% Client-Side Privacy Active</span>
-              </div>
-            )}
+              ) : (
+                <div className="flex items-center space-x-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-200">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                  <span>Client-Side Privacy</span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
+
+        {/* Quick Course Visibility Chips Bar */}
+        {cached_courses.length > 0 && (
+          <div className="flex items-center space-x-2 overflow-x-auto pb-1 px-1">
+            <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider flex-shrink-0">
+              Courses:
+            </span>
+            {cached_courses.map((course) => {
+              const isHidden = hidden_course_ids?.includes(course.id);
+              return (
+                <button
+                  key={course.id}
+                  onClick={() => toggleCourseHidden(course.id)}
+                  title={isHidden ? `Click to show ${course.name}` : `Click to hide ${course.name}`}
+                  className={`px-3 py-1 rounded-full text-[11px] font-bold tracking-tight whitespace-nowrap transition-all flex items-center space-x-1.5 border ${
+                    isHidden
+                      ? "bg-slate-100/90 text-slate-400 border-slate-200 line-through hover:text-slate-600"
+                      : "bg-white text-slate-800 border-slate-200 shadow-2xs hover:border-uci-blue hover:text-uci-blue"
+                  }`}
+                >
+                  <span>{course.course_code || course.name}</span>
+                  {isHidden ? (
+                    <EyeOff className="w-3 h-3 text-slate-400" />
+                  ) : (
+                    <Eye className="w-3 h-3 text-uci-blue" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        )}
 
         {/* View 1: Main Dashboard (Asymmetrical Bento Grid) */}
         {activeTab === "dashboard" && (
@@ -101,19 +189,24 @@ export default function Home() {
               {/* Left Column (Span 2): Burnout Guard & Eisenhower Grid */}
               <div className="lg:col-span-2 space-y-6">
                 <BurnoutGuard workloads={workloads} />
-                <EisenhowerMatrix priorities={prioritized} onSelectAssignment={handleSelectPrioritized} />
+                <EisenhowerMatrix
+                  priorities={prioritized}
+                  completedAssignments={completedAssignments}
+                  onSelectAssignment={handleSelectPrioritized}
+                  onToggleComplete={toggleAssignmentCompleted}
+                />
               </div>
 
               {/* Right Column (Span 1): Pomodoro Chronometer & What-If Grade Simulator */}
               <div className="space-y-6">
                 <PomodoroTimer activeAssignmentName={activeFocusName} />
 
-                {cached_courses.length > 0 && activeSimCourse && (
+                {visibleCourses.length > 0 && activeSimCourse && (
                   <div className="space-y-3">
                     {/* Simulator Course Picker if > 1 course */}
-                    {cached_courses.length > 1 && (
+                    {visibleCourses.length > 1 && (
                       <div className="flex items-center space-x-1.5 overflow-x-auto pb-1">
-                        {cached_courses.map((c) => (
+                        {visibleCourses.map((c) => (
                           <button
                             key={c.id}
                             onClick={() => setSelectedSimulatorCourseId(c.id)}
@@ -148,53 +241,91 @@ export default function Home() {
                   Assignments & Milestone Blueprints
                 </h2>
                 <p className="text-xs text-slate-500 font-medium">
-                  Select any assignment to inspect rubric thresholds, check off milestones, and access study support.
+                  Select any assignment to inspect rubric thresholds, check off milestones, and mark tasks complete.
                 </p>
               </div>
-              <span className="text-xs font-bold text-slate-700 bg-white border border-slate-200 px-3 py-1 rounded-full w-max">
-                {cached_assignments.length} Tracked Tasks
-              </span>
+              <div className="flex items-center space-x-2">
+                <span className="text-xs font-bold text-slate-700 bg-white border border-slate-200 px-3 py-1 rounded-full w-max">
+                  {visibleAssignments.length} Tracked Tasks
+                </span>
+                {completedAssignments.length > 0 && (
+                  <span className="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full w-max">
+                    {completedAssignments.length} Completed
+                  </span>
+                )}
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {cached_assignments.map((a) => (
-                <div
-                  key={a.id}
-                  onClick={() => setSelectedAssignment(a)}
-                  className="p-1.5 rounded-[2rem] bg-slate-900/5 border border-slate-200/80 shadow-bezel hover:shadow-bezel-hover transition-all cursor-pointer group flex flex-col justify-between"
-                >
-                  <div className="rounded-[calc(2rem-0.375rem)] bg-white p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)] flex flex-col justify-between h-full space-y-4">
-                    <div>
-                      <div className="flex items-start justify-between">
-                        <span className="text-[10px] font-extrabold uppercase tracking-wide text-uci-blue bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
-                          {courseMap[a.course_id] || `Course ${a.course_id}`}
-                        </span>
-                        {a.due_at && (
-                          <span className="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">
-                            {new Date(a.due_at).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+              {visibleAssignments.map((a) => {
+                const isDone = completed_assignment_ids?.includes(a.id);
+                return (
+                  <div
+                    key={a.id}
+                    onClick={() => setSelectedAssignment(a)}
+                    className={`p-1.5 rounded-[2rem] border shadow-bezel hover:shadow-bezel-hover transition-all cursor-pointer group flex flex-col justify-between ${
+                      isDone
+                        ? "bg-emerald-500/5 border-emerald-200/60 opacity-80"
+                        : "bg-slate-900/5 border-slate-200/80"
+                    }`}
+                  >
+                    <div className="rounded-[calc(2rem-0.375rem)] bg-white p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)] flex flex-col justify-between h-full space-y-4">
+                      <div>
+                        <div className="flex items-start justify-between">
+                          <span className="text-[10px] font-extrabold uppercase tracking-wide text-uci-blue bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
+                            {courseMap[a.course_id] || `Course ${a.course_id}`}
                           </span>
-                        )}
+                          {a.due_at && (
+                            <span className="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">
+                              {new Date(a.due_at).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                            </span>
+                          )}
+                        </div>
+
+                        <h3
+                          className={`font-extrabold text-sm mt-2 line-clamp-2 leading-snug transition-colors ${
+                            isDone ? "line-through text-slate-400" : "text-slate-900 group-hover:text-uci-blue"
+                          }`}
+                        >
+                          {a.name}
+                        </h3>
+
+                        <p className="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">
+                          {a.description.replace(/<[^>]*>?/gm, "") || "No assignment details specified."}
+                        </p>
                       </div>
 
-                      <h3 className="font-extrabold text-sm text-slate-900 mt-2 line-clamp-2 leading-snug group-hover:text-uci-blue transition-colors">
-                        {a.name}
-                      </h3>
+                      <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600">
+                        <span className="font-bold text-slate-800">{a.points_possible} pts</span>
 
-                      <p className="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">
-                        {a.description.replace(/<[^>]*>?/gm, "") || "No assignment details specified."}
-                      </p>
-                    </div>
+                        <div className="flex items-center space-x-2">
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleAssignmentCompleted(a.id);
+                            }}
+                            className={`px-2.5 py-1 rounded-full text-[10px] font-bold flex items-center space-x-1 border transition-all active:scale-95 ${
+                              isDone
+                                ? "bg-emerald-600 text-white border-emerald-600 shadow-2xs"
+                                : "bg-white hover:bg-emerald-50 text-slate-600 hover:text-emerald-700 border-slate-200 hover:border-emerald-300"
+                            }`}
+                            title={isDone ? "Mark as incomplete" : "Mark as done"}
+                          >
+                            <Check className={`w-3 h-3 ${isDone ? "text-white" : "text-slate-400"}`} />
+                            <span>{isDone ? "Done ✓" : "Mark Done"}</span>
+                          </button>
 
-                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600">
-                      <span className="font-bold text-slate-800">{a.points_possible} pts</span>
-                      <span className="text-uci-blue font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform">
-                        <span>Milestones</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </span>
+                          <span className="text-uci-blue font-bold flex items-center space-x-0.5 group-hover:translate-x-1 transition-transform">
+                            <span>Plan</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -214,6 +345,12 @@ export default function Home() {
           </div>
         )}
       </main>
+
+      {/* Course Filter Modal */}
+      <CourseFilterModal
+        isOpen={isCourseFilterOpen}
+        onClose={() => setIsCourseFilterOpen(false)}
+      />
 
       {/* Assignment Detail Modal */}
       <AssignmentDetailModal

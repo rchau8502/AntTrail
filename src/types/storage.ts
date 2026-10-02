@@ -20,4 +20,6 @@ export interface ZotCanvasStorage {
   assignment_milestones: Record<number, AssignmentMilestone[]>; // assignmentId -> milestones
   focus_sessions: FocusSessionLog[];
   what_if_grades: Record<number, number>; // assignmentId -> simulated score
+  completed_assignment_ids: number[]; // student marked completed assignments
+  hidden_course_ids: number[]; // student hidden (e.g. past quarter) courses
 }

@@ -6,6 +6,9 @@ export interface CanvasCourse {
   term_name?: string;
   current_score?: number;
   current_grade?: string;
+  concluded?: boolean;
+  start_at?: string | null;
+  end_at?: string | null;
 }
 
 export interface CanvasRubricRating {
@@ -31,4 +34,5 @@ export interface CanvasAssignment {
   submission_types: string[];
   rubric?: CanvasRubricCriterion[];
   has_submitted_submissions?: boolean;
+  workflow_state?: string;
 }

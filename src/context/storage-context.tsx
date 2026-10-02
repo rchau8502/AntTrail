@@ -17,6 +17,9 @@ interface StorageContextType extends ZotCanvasStorage {
   setMilestones: (assignmentId: number, milestones: AssignmentMilestone[]) => void;
   addFocusSession: (session: Omit<FocusSessionLog, "id" | "timestamp">) => void;
   setWhatIfScore: (assignmentId: number, score: number) => void;
+  toggleAssignmentCompleted: (assignmentId: number) => void;
+  toggleCourseHidden: (courseId: number) => void;
+  unhideAllCourses: () => void;
   refreshCanvasData: () => Promise<void>;
   isLoading: boolean;
   error: string | null;
@@ -35,6 +38,8 @@ const defaultState: ZotCanvasStorage = {
   assignment_milestones: {},
   focus_sessions: [],
   what_if_grades: {},
+  completed_assignment_ids: [],
+  hidden_course_ids: [],
 };
 
 const StorageContext = createContext<StorageContextType | undefined>(undefined);
@@ -50,7 +55,13 @@ export function StorageProvider({ children }: { children: React.ReactNode }) {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
-        setState((prev) => ({ ...prev, ...JSON.parse(saved) }));
+        const parsed = JSON.parse(saved);
+        setState((prev) => ({
+          ...prev,
+          ...parsed,
+          completed_assignment_ids: parsed.completed_assignment_ids || [],
+          hidden_course_ids: parsed.hidden_course_ids || [],
+        }));
       }
     } catch (e) {
       console.error("Failed to read from localStorage:", e);
@@ -152,6 +163,39 @@ export function StorageProvider({ children }: { children: React.ReactNode }) {
     }));
   };
 
+  const toggleAssignmentCompleted = (assignmentId: number) => {
+    setState((prev) => {
+      const currentList = prev.completed_assignment_ids || [];
+      const exists = currentList.includes(assignmentId);
+      return {
+        ...prev,
+        completed_assignment_ids: exists
+          ? currentList.filter((id) => id !== assignmentId)
+          : [...currentList, assignmentId],
+      };
+    });
+  };
+
+  const toggleCourseHidden = (courseId: number) => {
+    setState((prev) => {
+      const currentList = prev.hidden_course_ids || [];
+      const exists = currentList.includes(courseId);
+      return {
+        ...prev,
+        hidden_course_ids: exists
+          ? currentList.filter((id) => id !== courseId)
+          : [...currentList, courseId],
+      };
+    });
+  };
+
+  const unhideAllCourses = () => {
+    setState((prev) => ({
+      ...prev,
+      hidden_course_ids: [],
+    }));
+  };
+
   const refreshCanvasData = async () => {
     if (state.is_demo_mode) {
       setState((prev) => ({
@@ -204,6 +248,9 @@ export function StorageProvider({ children }: { children: React.ReactNode }) {
         setMilestones,
         addFocusSession,
         setWhatIfScore,
+        toggleAssignmentCompleted,
+        toggleCourseHidden,
+        unhideAllCourses,
         refreshCanvasData,
         isLoading,
         error,

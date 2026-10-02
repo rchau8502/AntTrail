@@ -30,7 +30,16 @@ export function calculatePriorityScore(
   hoursUntilDue: number | null
 ): number {
   if (hoursUntilDue === null) return 10; // No due date = low priority
-  if (hoursUntilDue < 0) return 99; // Overdue = max panic
+
+  // If ancient overdue (> 72 hours in the past), it is past quarter / archived; do NOT panic
+  if (hoursUntilDue < -72) {
+    return 5;
+  }
+
+  // If recently overdue (0 to -72 hours), keep high catch-up priority
+  if (hoursUntilDue < 0) {
+    return 85;
+  }
 
   // Weight point factor (up to 40 pts)
   const pointsFactor = Math.min(assignment.points_possible / 100, 1.0) * 40;
@@ -47,51 +56,79 @@ export function categorizeAssignment(
   hoursUntilDue: number | null,
   isOverdue: boolean
 ): UrgencyQuadrant {
-  if (isOverdue || (hoursUntilDue !== null && hoursUntilDue <= 36) || priorityScore >= 75) {
+  // If ancient overdue (more than 72 hours ago), assign to backlog
+  if (hoursUntilDue !== null && hoursUntilDue < -72) {
+    return "backlog";
+  }
+
+  // Do Today: due within 36 hours OR recently overdue (0 to -72 hours) or very high score
+  if (
+    (hoursUntilDue !== null && hoursUntilDue >= -72 && hoursUntilDue <= 36) ||
+    priorityScore >= 75
+  ) {
     return "do_first";
   }
-  if (hoursUntilDue !== null && hoursUntilDue <= 120) {
+
+  if (hoursUntilDue !== null && hoursUntilDue <= 120 && hoursUntilDue > 36) {
     return "schedule";
   }
+
   if (priorityScore < 30) {
     return "delegate_or_quick";
   }
+
   return "backlog";
 }
 
 export function prioritizeAssignments(
   assignments: CanvasAssignment[],
-  courseMap: Record<number, string> = {}
+  courseMap: Record<number, string> = {},
+  completedIds: number[] = [],
+  hiddenCourseIds: number[] = []
 ): PrioritizedAssignment[] {
   const now = Date.now();
 
-  return assignments.map((assignment) => {
-    let hoursUntilDue: number | null = null;
-    let isOverdue = false;
+  // Filter out assignments from hidden courses, submitted assignments, or marked completed
+  const activeAssignments = assignments.filter((a) => {
+    if (hiddenCourseIds.includes(a.course_id)) return false;
+    if (completedIds.includes(a.id)) return false;
+    if (a.has_submitted_submissions) return false;
+    return true;
+  });
 
-    if (assignment.due_at) {
-      const diffMs = new Date(assignment.due_at).getTime() - now;
-      hoursUntilDue = Math.round(diffMs / (1000 * 60 * 60));
-      isOverdue = diffMs < 0;
-    }
+  return activeAssignments
+    .map((assignment) => {
+      let hoursUntilDue: number | null = null;
+      let isOverdue = false;
 
-    const priorityScore = calculatePriorityScore(assignment, hoursUntilDue);
-    const estimatedHours = estimateAssignmentHours(assignment);
-    const quadrant = categorizeAssignment(priorityScore, hoursUntilDue, isOverdue);
+      if (assignment.due_at) {
+        const diffMs = new Date(assignment.due_at).getTime() - now;
+        hoursUntilDue = Math.round(diffMs / (1000 * 60 * 60));
+        isOverdue = diffMs < 0;
+      }
 
-    return {
-      assignment,
-      courseName: courseMap[assignment.course_id] || `Course ${assignment.course_id}`,
-      priorityScore,
-      estimatedHours,
-      hoursUntilDue,
-      quadrant,
-      isOverdue,
-    };
-  }).sort((a, b) => b.priorityScore - a.priorityScore);
+      const priorityScore = calculatePriorityScore(assignment, hoursUntilDue);
+      const estimatedHours = estimateAssignmentHours(assignment);
+      const quadrant = categorizeAssignment(priorityScore, hoursUntilDue, isOverdue);
+
+      return {
+        assignment,
+        courseName: courseMap[assignment.course_id] || `Course ${assignment.course_id}`,
+        priorityScore,
+        estimatedHours,
+        hoursUntilDue,
+        quadrant,
+        isOverdue,
+      };
+    })
+    .sort((a, b) => b.priorityScore - a.priorityScore);
 }
 
-export function calculateDailyWorkload(assignments: CanvasAssignment[]): DailyWorkload[] {
+export function calculateDailyWorkload(
+  assignments: CanvasAssignment[],
+  completedIds: number[] = [],
+  hiddenCourseIds: number[] = []
+): DailyWorkload[] {
   const dayBuckets: Record<string, { hours: number; count: number; date: Date }> = {};
   const today = new Date();
 
@@ -103,7 +140,15 @@ export function calculateDailyWorkload(assignments: CanvasAssignment[]): DailyWo
     dayBuckets[key] = { hours: 0, count: 0, date: d };
   }
 
-  for (const a of assignments) {
+  // Only consider active, non-completed, non-hidden assignments
+  const activeAssignments = assignments.filter((a) => {
+    if (hiddenCourseIds.includes(a.course_id)) return false;
+    if (completedIds.includes(a.id)) return false;
+    if (a.has_submitted_submissions) return false;
+    return true;
+  });
+
+  for (const a of activeAssignments) {
     if (!a.due_at) continue;
     const dueKey = a.due_at.split("T")[0];
     if (dayBuckets[dueKey]) {
@@ -113,7 +158,11 @@ export function calculateDailyWorkload(assignments: CanvasAssignment[]): DailyWo
   }
 
   return Object.entries(dayBuckets).map(([dateString, info]) => {
-    const dayLabel = info.date.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+    const dayLabel = info.date.toLocaleDateString("en-US", {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+    });
     return {
       dateString,
       dayLabel,
