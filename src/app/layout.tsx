@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { StorageProvider } from "@/context/storage-context";
 import "./globals.css";
 
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
 export const metadata: Metadata = {
-  title: "ZotCanvas | Anteater Study & Workload Command Center",
-  description: "Privacy-first study organization and workload companion for UC Irvine students.",
+  title: "ZotCanvas | Anteater Academic Command Center",
+  description: "Privacy-first, zero-storage study organizer & tactical workload engine for UC Irvine students.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -13,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen bg-slate-50 antialiased">
+    <html lang="en" className={plusJakartaSans.variable}>
+      <body className="min-h-screen font-sans bg-[#f8fafc] text-slate-900 antialiased selection:bg-uci-blue/10 selection:text-uci-blue">
         <StorageProvider>
           {children}
         </StorageProvider>
