@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { UCI_CAMPUS_RESOURCES } from "@/lib/uci-resources";
-import { ExternalLink, Search, MapPin, Clock, Compass, Sparkles } from "lucide-react";
+import { ExternalLink, Search, MapPin, Clock, Compass } from "lucide-react";
 
 export function UciResourceHub() {
   const [search, setSearch] = useState("");
@@ -19,37 +19,35 @@ export function UciResourceHub() {
 
   return (
     <div className="space-y-6">
-      {/* Banner Card with Double-Bezel */}
-      <div className="p-1.5 rounded-[2.5rem] bg-gradient-to-r from-uci-midnight via-uci-darkblue to-uci-blue border border-uci-blue/40 shadow-bezel">
-        <div className="rounded-[calc(2.5rem-0.375rem)] bg-gradient-to-br from-uci-midnight/90 to-uci-darkblue p-6 sm:p-8 text-white relative overflow-hidden">
-          <div className="absolute -top-10 -right-10 w-48 h-48 bg-uci-gold/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="relative z-10 max-w-2xl space-y-2">
-            <div className="flex items-center space-x-2 text-uci-gold">
-              <Compass className="w-5 h-5" />
-              <span className="text-[10px] uppercase font-extrabold tracking-widest text-uci-lightgold">
-                Official Campus Compass
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
-              UCI Academic Tutoring & Wellness Hub
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-200 leading-relaxed pt-1">
-              Direct access to free UC Irvine tutoring centers, drop-in engineering labs, writing consultations, and confidential student wellness support.
-            </p>
+      {/* Sleek Banner Card */}
+      <div className="rounded-2xl bg-slate-900 text-white p-6 sm:p-7 border border-slate-800 shadow-md relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-uci-blue/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative z-10 max-w-2xl space-y-2">
+          <div className="flex items-center space-x-2 text-uci-gold">
+            <Compass className="w-4 h-4" />
+            <span className="text-[10px] uppercase font-bold tracking-widest text-uci-lightgold">
+              UCI Campus Compass
+            </span>
           </div>
+          <h2 className="text-xl sm:text-2xl font-black tracking-tight">
+            Academic Tutoring & Wellness Directory
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Free UC Irvine peer tutoring (LARC), drop-in ICS engineering labs, writing consultations, and confidential student wellness support.
+          </p>
         </div>
       </div>
 
       {/* Search & Filter Controls */}
       <div className="flex flex-col sm:flex-row items-center gap-3">
         <div className="relative flex-1 w-full">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search LARC, CEWC, DBH labs, counseling, study rooms..."
-            className="w-full pl-10 pr-4 py-2.5 text-xs border border-slate-300 rounded-full focus:outline-none focus:ring-2 focus:ring-uci-blue bg-white shadow-xs"
+            placeholder="Search LARC, CEWC, DBH labs, counseling, library study rooms..."
+            className="w-full pl-10 pr-4 py-2.5 text-xs border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-uci-blue bg-white shadow-2xs placeholder:text-slate-400"
           />
         </div>
 
@@ -58,9 +56,9 @@ export function UciResourceHub() {
             <button
               key={type}
               onClick={() => setFilterType(type)}
-              className={`px-3.5 py-2 rounded-full text-xs font-bold capitalize whitespace-nowrap transition-all ${
+              className={`px-3 py-2 rounded-xl text-xs font-semibold capitalize whitespace-nowrap transition-all ${
                 filterType === type
-                  ? "bg-uci-blue text-white shadow-sm"
+                  ? "bg-slate-900 text-white shadow-xs font-bold"
                   : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50"
               }`}
             >
@@ -71,47 +69,45 @@ export function UciResourceHub() {
       </div>
 
       {/* Directory Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {filtered.map((res) => (
           <div
             key={res.id}
-            className="p-1.5 rounded-[2rem] bg-slate-900/5 border border-slate-200/80 shadow-bezel hover:shadow-bezel-hover transition-all"
+            className="rounded-2xl bg-white border border-slate-200/80 p-5 shadow-xs hover:border-slate-300 hover:shadow-sm transition-all flex flex-col justify-between space-y-3"
           >
-            <div className="rounded-[calc(2rem-0.375rem)] bg-white p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)] flex flex-col justify-between h-full space-y-4">
-              <div>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-uci-blue bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
-                      {res.type}
-                    </span>
-                    <h3 className="font-extrabold text-slate-900 text-base mt-2 tracking-tight">
-                      {res.name}
-                    </h3>
-                  </div>
-                  <a
-                    href={res.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="w-8 h-8 rounded-full bg-slate-100 hover:bg-uci-blue hover:text-white text-slate-500 flex items-center justify-center transition-colors"
-                    title="Open official UCI portal"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
+            <div>
+              <div className="flex items-start justify-between">
+                <div>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md">
+                    {res.type}
+                  </span>
+                  <h3 className="font-extrabold text-slate-900 text-sm mt-2 tracking-tight">
+                    {res.name}
+                  </h3>
                 </div>
-                <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                  {res.description}
-                </p>
+                <a
+                  href={res.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-500 flex items-center justify-center transition-colors"
+                  title="Open official portal"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
               </div>
+              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                {res.description}
+              </p>
+            </div>
 
-              <div className="pt-3 border-t border-slate-100 space-y-1.5 text-[11px] text-slate-500 font-medium">
-                <div className="flex items-center space-x-2">
-                  <MapPin className="w-3.5 h-3.5 text-slate-400" />
-                  <span>{res.location}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Clock className="w-3.5 h-3.5 text-slate-400" />
-                  <span>{res.hours}</span>
-                </div>
+            <div className="pt-3 border-t border-slate-100 space-y-1 text-[11px] text-slate-500 font-medium">
+              <div className="flex items-center space-x-2">
+                <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                <span>{res.location}</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Clock className="w-3.5 h-3.5 text-slate-400" />
+                <span>{res.hours}</span>
               </div>
             </div>
           </div>

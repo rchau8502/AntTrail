@@ -45,104 +45,97 @@ export function PomodoroTimer({ activeAssignmentName }: { activeAssignmentName?:
   const progressPct = ((totalDuration - secondsLeft) / totalDuration) * 100;
 
   return (
-    <div className="p-1.5 rounded-[2rem] bg-gradient-to-b from-uci-blue/20 to-uci-darkblue/40 border border-uci-blue/30 shadow-bezel">
-      <div className="rounded-[calc(2rem-0.375rem)] bg-gradient-to-br from-uci-midnight via-uci-darkblue to-slate-950 p-6 text-white shadow-2xl relative overflow-hidden">
-        {/* Subtle background ambient mesh */}
-        <div className="absolute -top-12 -right-12 w-40 h-40 bg-uci-blue/30 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-uci-gold/20 rounded-full blur-2xl pointer-events-none" />
+    <div className="rounded-2xl bg-slate-950 text-white p-5 border border-slate-800 shadow-md relative overflow-hidden space-y-4">
+      {/* Background ambient lighting */}
+      <div className="absolute top-0 right-0 w-32 h-32 bg-uci-blue/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-24 h-24 bg-uci-gold/15 rounded-full blur-2xl pointer-events-none" />
 
-        <div className="relative z-10 space-y-4">
-          {/* Header */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="w-6 h-6 rounded-full bg-uci-gold/20 flex items-center justify-center text-uci-gold border border-uci-gold/30">
-                <Target className="w-3.5 h-3.5" />
-              </div>
-              <span className="text-[10px] uppercase font-bold tracking-widest text-uci-lightgold">
-                Anteater Deep Work
-              </span>
-            </div>
-
-            {/* Mode Toggle Pills */}
-            <div className="flex items-center bg-black/40 backdrop-blur-md p-1 rounded-full border border-white/10 text-[11px]">
-              <button
-                onClick={() => {
-                  setMode("work");
-                  setSecondsLeft(25 * 60);
-                  setIsRunning(false);
-                }}
-                className={`px-3 py-1 rounded-full font-semibold transition-all ${
-                  mode === "work" ? "bg-uci-blue text-white shadow-sm" : "text-slate-400 hover:text-white"
-                }`}
-              >
-                25m Focus
-              </button>
-              <button
-                onClick={() => {
-                  setMode("break");
-                  setSecondsLeft(5 * 60);
-                  setIsRunning(false);
-                }}
-                className={`px-3 py-1 rounded-full font-semibold transition-all ${
-                  mode === "break" ? "bg-emerald-600 text-white shadow-sm" : "text-slate-400 hover:text-white"
-                }`}
-              >
-                5m Break
-              </button>
-            </div>
-          </div>
-
-          {/* Time Readout & Attached Task */}
-          <div className="flex items-baseline justify-between pt-1">
-            <div>
-              <div className="text-4xl sm:text-5xl font-mono font-black tracking-tight text-white drop-shadow-sm">
-                {formattedTime}
-              </div>
-              <p className="text-xs text-slate-300 font-medium truncate max-w-[220px] mt-1 flex items-center space-x-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-uci-gold animate-pulse inline-block" />
-                <span>{activeAssignmentName || "Autonomous Study Session"}</span>
-              </p>
-            </div>
-
-            {/* Interactive Control Pill (Button-in-Button architecture) */}
-            <div className="flex items-center space-x-2">
-              <button
-                onClick={toggle}
-                className="group flex items-center space-x-2 pl-4 pr-2 py-2 rounded-full bg-uci-gold hover:bg-yellow-400 text-slate-950 font-bold text-xs shadow-gold-glow transition-all active:scale-[0.98]"
-              >
-                <span>{isRunning ? "Pause" : "Start"}</span>
-                <div className="w-7 h-7 rounded-full bg-slate-950/15 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  {isRunning ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 ml-0.5" />}
-                </div>
-              </button>
-
-              <button
-                onClick={reset}
-                title="Reset Clock"
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition-all border border-white/10"
-              >
-                <RotateCcw className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-
-          {/* Progress Micro Track */}
-          <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-            <div
-              className={`h-full rounded-full transition-all duration-300 ${
-                mode === "work" ? "bg-gradient-to-r from-uci-blue to-uci-gold" : "bg-emerald-400"
-              }`}
-              style={{ width: `${progressPct}%` }}
-            />
-          </div>
-
-          <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium pt-0.5">
-            <span>Total logged this week: {totalCompletedMinutes} mins</span>
-            <span className="text-uci-lightgold font-semibold flex items-center space-x-1">
-              <Sparkles className="w-3 h-3 text-uci-gold" />
-              <span>{Math.floor(totalCompletedMinutes / 25)} sprints finished</span>
+      <div className="relative z-10 space-y-3.5">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <span className="w-2 h-2 rounded-full bg-uci-gold animate-pulse" />
+            <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400">
+              Focus Chronometer
             </span>
           </div>
+
+          {/* Mode Switcher */}
+          <div className="flex items-center bg-slate-900 rounded-lg p-0.5 border border-slate-800 text-[11px]">
+            <button
+              onClick={() => {
+                setMode("work");
+                setSecondsLeft(25 * 60);
+                setIsRunning(false);
+              }}
+              className={`px-2.5 py-1 rounded-md font-bold transition-all ${
+                mode === "work" ? "bg-slate-800 text-white shadow-xs" : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              25m Work
+            </button>
+            <button
+              onClick={() => {
+                setMode("break");
+                setSecondsLeft(5 * 60);
+                setIsRunning(false);
+              }}
+              className={`px-2.5 py-1 rounded-md font-bold transition-all ${
+                mode === "break" ? "bg-emerald-900/80 text-emerald-200 shadow-xs" : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              5m Break
+            </button>
+          </div>
+        </div>
+
+        {/* Big Digit Readout & Task Target */}
+        <div className="flex items-baseline justify-between pt-1">
+          <div>
+            <div className="text-4xl sm:text-5xl font-mono font-black tracking-tight text-white">
+              {formattedTime}
+            </div>
+            <p className="text-xs text-slate-400 truncate max-w-[190px] mt-1">
+              {activeAssignmentName || "Autonomous Sprint"}
+            </p>
+          </div>
+
+          {/* Play/Pause Button */}
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={toggle}
+              className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-uci-gold hover:bg-yellow-400 text-slate-950 font-bold text-xs transition-all active:scale-95 shadow-xs"
+            >
+              {isRunning ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 ml-0.5" />}
+              <span>{isRunning ? "Pause" : "Start"}</span>
+            </button>
+
+            <button
+              onClick={reset}
+              title="Reset Timer"
+              className="w-8 h-8 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-all border border-slate-800"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+
+        {/* Progress Line */}
+        <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden border border-slate-800/80">
+          <div
+            className={`h-full rounded-full transition-all duration-300 ${
+              mode === "work" ? "bg-gradient-to-r from-uci-blue to-uci-gold" : "bg-emerald-500"
+            }`}
+            style={{ width: `${progressPct}%` }}
+          />
+        </div>
+
+        {/* Footer Metrics */}
+        <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium pt-0.5">
+          <span>Logged: {totalCompletedMinutes}m this week</span>
+          <span className="text-uci-lightgold font-bold">
+            {Math.floor(totalCompletedMinutes / 25)} sprints
+          </span>
         </div>
       </div>
     </div>

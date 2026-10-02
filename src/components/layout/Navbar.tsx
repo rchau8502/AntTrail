@@ -7,11 +7,11 @@ import {
   RefreshCw,
   Trash2,
   KeyRound,
-  Sparkles,
   LayoutDashboard,
   CheckSquare,
   CalendarDays,
   Compass,
+  ShieldCheck,
 } from "lucide-react";
 
 export function Navbar({
@@ -25,7 +25,7 @@ export function Navbar({
   const [isTokenModalOpen, setIsTokenModalOpen] = useState(false);
 
   const navItems = [
-    { id: "dashboard", label: "Overview", icon: LayoutDashboard },
+    { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
     { id: "assignments", label: "Milestones", icon: CheckSquare },
     { id: "workload", label: "Workload", icon: CalendarDays },
     { id: "resources", label: "Campus Hub", icon: Compass },
@@ -33,38 +33,35 @@ export function Navbar({
 
   return (
     <>
-      <header className="sticky top-4 z-40 px-4 sm:px-6 mb-6">
+      <header className="sticky top-3 z-40 px-4 sm:px-6 mb-6">
         <div className="max-w-6xl mx-auto">
-          {/* Double-bezel outer shell */}
-          <div className="p-1.5 rounded-full bg-slate-900/5 backdrop-blur-2xl border border-slate-200/80 shadow-bezel flex items-center justify-between">
-            {/* Brand Logo & Anteater pill */}
+          {/* Refined floating glass navbar */}
+          <div className="px-3 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.04),0_1px_2px_rgba(0,0,0,0.02)] flex items-center justify-between transition-all">
+            {/* Brand Logo & UCI Mark */}
             <div
-              className="flex items-center space-x-3 pl-3 pr-2 py-1 cursor-pointer group"
+              className="flex items-center space-x-2.5 pl-1.5 cursor-pointer group"
               onClick={() => setActiveTab("dashboard")}
             >
-              <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-uci-midnight via-uci-darkblue to-uci-blue flex items-center justify-center text-uci-gold font-extrabold text-lg shadow-sm border border-uci-gold/40 group-hover:scale-105 transition-transform">
+              <div className="w-8 h-8 rounded-xl bg-slate-900 text-uci-gold flex items-center justify-center font-black text-sm tracking-tight shadow-xs group-hover:bg-uci-darkblue transition-colors">
                 Z
               </div>
-              <div className="hidden sm:block">
-                <div className="flex items-center space-x-1.5">
-                  <span className="font-extrabold text-sm tracking-tight text-slate-900">
-                    ZotCanvas
+              <div className="flex items-center space-x-1.5">
+                <span className="font-extrabold text-sm tracking-tight text-slate-900 group-hover:text-uci-blue transition-colors">
+                  ZotCanvas
+                </span>
+                <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80">
+                  UCI
+                </span>
+                {is_demo_mode && (
+                  <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200">
+                    Demo Mode
                   </span>
-                  <span className="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded-full bg-uci-lightgold text-uci-darkblue border border-amber-300/80">
-                    UCI
-                  </span>
-                  {is_demo_mode && (
-                    <span className="text-[9px] font-semibold px-1.5 py-0.2 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
-                      Demo
-                    </span>
-                  )}
-                </div>
-                <p className="text-[10px] text-slate-500 font-medium">Anteater Command</p>
+                )}
               </div>
             </div>
 
-            {/* Navigation Tabs (Centered Capsule) */}
-            <nav className="flex items-center bg-slate-100/90 rounded-full p-1 border border-slate-200/50">
+            {/* Segmented Navigation Capsule */}
+            <nav className="hidden sm:flex items-center bg-slate-100/80 rounded-xl p-1 border border-slate-200/60">
               {navItems.map((tab) => {
                 const Icon = tab.icon;
                 const isActive = activeTab === tab.id;
@@ -72,63 +69,84 @@ export function Navbar({
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 ${
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 ${
                       isActive
-                        ? "bg-white text-uci-blue shadow-sm font-bold scale-[1.02]"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-white/50"
+                        ? "bg-white text-slate-900 shadow-2xs font-bold"
+                        : "text-slate-500 hover:text-slate-900 hover:bg-white/50"
                     }`}
                   >
                     <Icon className={`w-3.5 h-3.5 ${isActive ? "text-uci-blue" : "text-slate-400"}`} />
-                    <span className="hidden md:inline">{tab.label}</span>
+                    <span>{tab.label}</span>
                   </button>
                 );
               })}
             </nav>
 
-            {/* Actions: Sync, Token Drawer, Purge */}
-            <div className="flex items-center space-x-1.5 pr-2">
+            {/* Actions: Sync, Connect Token, Purge */}
+            <div className="flex items-center space-x-1.5">
               <button
                 onClick={() => refreshCanvasData()}
                 disabled={isLoading}
-                title="Sync with Canvas"
-                className="w-8 h-8 rounded-full flex items-center justify-center text-slate-600 hover:text-uci-blue hover:bg-slate-100 transition-colors disabled:opacity-50"
+                title="Sync with Canvas API"
+                className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-500 hover:text-uci-blue hover:bg-slate-100 transition-colors disabled:opacity-50"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? "animate-spin text-uci-blue" : ""}`} />
               </button>
 
               <button
                 onClick={() => setIsTokenModalOpen(true)}
-                className={`group flex items-center space-x-2 pl-3 pr-2 py-1.5 rounded-full text-xs font-medium border transition-all ${
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
                   canvas_token
-                    ? "bg-uci-blue text-white border-uci-blue hover:bg-uci-darkblue shadow-sm"
-                    : "bg-white text-slate-700 border-slate-200 hover:border-uci-blue hover:text-uci-blue shadow-sm"
+                    ? "bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100"
+                    : "bg-uci-blue text-white border-uci-blue hover:bg-uci-darkblue shadow-xs"
                 }`}
               >
-                <span className="text-[11px] font-semibold">
-                  {canvas_token ? "Token Active" : "Connect Canvas"}
-                </span>
-                <div
-                  className={`w-5 h-5 rounded-full flex items-center justify-center ${
-                    canvas_token ? "bg-white/20 text-uci-gold" : "bg-slate-100 text-slate-500"
-                  }`}
-                >
-                  <KeyRound className="w-3 h-3" />
-                </div>
+                {canvas_token ? (
+                  <>
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Connected</span>
+                  </>
+                ) : (
+                  <>
+                    <KeyRound className="w-3.5 h-3.5 text-white/80" />
+                    <span>Connect Canvas</span>
+                  </>
+                )}
               </button>
 
               <button
                 onClick={() => {
-                  if (confirm("Purge all locally stored tokens, course caches, and focus stats?")) {
+                  if (confirm("Reset local storage and clear all tokens?")) {
                     purgeAllData();
                   }
                 }}
-                title="Purge Local Token & Reset"
-                className="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors"
+                title="Reset Local Cache"
+                className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors"
               >
                 <Trash2 className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
+
+          {/* Mobile Tab Bar */}
+          <nav className="sm:hidden flex items-center justify-around bg-white rounded-xl p-1 mt-2 border border-slate-200/80 shadow-xs">
+            {navItems.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all ${
+                    isActive ? "bg-slate-900 text-white font-bold" : "text-slate-600 hover:text-slate-900"
+                  }`}
+                >
+                  <Icon className="w-3 h-3" />
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
+          </nav>
         </div>
       </header>
 
