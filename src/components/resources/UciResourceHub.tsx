@@ -20,16 +20,17 @@ export function UciResourceHub() {
   return (
     <div className="space-y-6">
       {/* Sleek Banner Card */}
-      <div className="rounded-2xl bg-slate-900 text-white p-6 sm:p-7 border border-slate-800 shadow-md relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-uci-blue/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="rounded-2xl bg-slate-900 text-white p-6 sm:p-7 border border-slate-800 shadow-sm relative overflow-hidden">
         <div className="relative z-10 max-w-2xl space-y-2">
-          <div className="flex items-center space-x-2 text-uci-gold">
-            <Compass className="w-4 h-4" />
-            <span className="text-[10px] uppercase font-bold tracking-widest text-uci-lightgold">
+          <div className="flex items-center space-x-2 text-slate-400">
+            <div className="w-6 h-6 rounded-md bg-white/10 flex items-center justify-center text-slate-300">
+              <Compass className="w-3.5 h-3.5" />
+            </div>
+            <span className="text-[10px] uppercase font-mono font-bold tracking-widest text-slate-400">
               UCI Campus Compass
             </span>
           </div>
-          <h2 className="text-xl sm:text-2xl font-black tracking-tight">
+          <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white">
             Academic Tutoring & Wellness Directory
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
@@ -47,7 +48,7 @@ export function UciResourceHub() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search LARC, CEWC, DBH labs, counseling, library study rooms..."
-            className="w-full pl-10 pr-4 py-2.5 text-xs border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-uci-blue bg-white shadow-2xs placeholder:text-slate-400"
+            className="w-full pl-10 pr-4 py-2.5 text-xs border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-900 bg-white shadow-2xs placeholder:text-slate-400 font-medium"
           />
         </div>
 

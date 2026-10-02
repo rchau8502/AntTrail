@@ -38,7 +38,7 @@ export function WhatIfGradeSimulator({
           <span className="text-lg font-black text-slate-900 font-mono tracking-tight">
             {summary.percentage}%
           </span>
-          <span className="text-xs font-black text-uci-blue bg-white px-2 py-0.5 rounded-md border border-slate-200 shadow-2xs">
+          <span className="text-xs font-black text-slate-900 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200 shadow-2xs">
             {summary.letterGrade}
           </span>
         </div>
@@ -76,7 +76,7 @@ export function WhatIfGradeSimulator({
                     max={Math.max(a.points_possible, 1)}
                     value={currentScore}
                     onChange={(e) => setWhatIfScore(a.id, Number(e.target.value))}
-                    className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-uci-blue"
+                    className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-slate-900"
                   />
                 </div>
               </div>
@@ -88,7 +88,7 @@ export function WhatIfGradeSimulator({
       {/* Footer Metrics */}
       <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1 border-t border-slate-100">
         <span className="flex items-center space-x-1 text-slate-500 font-medium">
-          <TrendingUp className="w-3.5 h-3.5 text-uci-blue" />
+          <TrendingUp className="w-3.5 h-3.5 text-slate-700" />
           <span>Interactive weights</span>
         </span>
         <span className="font-mono text-slate-600 font-semibold">

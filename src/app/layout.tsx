@@ -25,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={plusJakartaSans.variable}>
-      <body className="min-h-screen font-sans bg-[#f8fafc] text-slate-900 antialiased selection:bg-uci-blue/10 selection:text-uci-blue">
+      <body className="min-h-screen font-sans bg-[#f8fafc] text-slate-900 antialiased selection:bg-slate-900 selection:text-white">
         <StorageProvider>
           {children}
         </StorageProvider>

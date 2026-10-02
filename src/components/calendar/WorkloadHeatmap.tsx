@@ -30,36 +30,34 @@ export function WorkloadHeatmap({ workloads }: { workloads: DailyWorkload[] }) {
       {/* 7-Day Matrix */}
       <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2.5">
         {workloads.map((day) => {
-          let containerBg = "bg-slate-50/70 border-slate-200/80 text-slate-700";
-          let tagBg = "bg-slate-200/60 text-slate-600";
+          let badgeClass = "bg-slate-100 text-slate-600 border-slate-200";
 
           if (day.estimatedHours >= 6) {
-            containerBg = "bg-rose-50/80 border-rose-300 text-rose-950";
-            tagBg = "bg-rose-100 text-rose-700 font-bold";
+            badgeClass = "bg-rose-50 text-rose-700 border-rose-200/80 font-bold";
           } else if (day.estimatedHours >= 3) {
-            containerBg = "bg-amber-50/80 border-amber-300 text-amber-950";
-            tagBg = "bg-amber-100 text-amber-800 font-semibold";
+            badgeClass = "bg-amber-50 text-amber-800 border-amber-200/80 font-semibold";
           } else if (day.estimatedHours > 0) {
-            containerBg = "bg-emerald-50/80 border-emerald-300 text-emerald-950";
-            tagBg = "bg-emerald-100 text-emerald-800 font-semibold";
+            badgeClass = "bg-slate-100 text-slate-700 border-slate-200 font-medium";
+          } else {
+            badgeClass = "bg-slate-50 text-slate-400 border-slate-100 font-normal";
           }
 
           return (
             <div
               key={day.dateString}
-              className={`p-3.5 rounded-xl border ${containerBg} flex flex-col justify-between text-center space-y-2 hover:-translate-y-0.5 transition-transform`}
+              className="p-3.5 rounded-xl bg-white border border-slate-200/80 hover:border-slate-300 flex flex-col justify-between text-center space-y-2.5 shadow-2xs hover:shadow-xs transition-all"
             >
               <div>
-                <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+                <span className="block text-[10px] font-mono font-semibold uppercase tracking-wider text-slate-400">
                   {day.dayLabel}
                 </span>
-                <div className="text-2xl font-black font-mono tracking-tight mt-1">
+                <div className="text-xl font-bold font-mono tracking-tight text-slate-900 mt-1">
                   {day.estimatedHours}h
                 </div>
               </div>
 
-              <div className="pt-2 border-t border-black/5">
-                <span className={`inline-block text-[10px] px-2 py-0.5 rounded-md font-semibold ${tagBg}`}>
+              <div className="pt-2 border-t border-slate-100">
+                <span className={`inline-block text-[10px] px-2 py-0.5 rounded-md border ${badgeClass}`}>
                   {day.assignmentCount} {day.assignmentCount === 1 ? "task" : "tasks"}
                 </span>
               </div>

@@ -226,7 +226,7 @@ export function AssignmentDetailModal({
                   className="p-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-slate-50/50 hover:bg-white flex items-center justify-between text-xs group transition-all"
                 >
                   <div>
-                    <span className="font-bold text-slate-800 group-hover:text-uci-blue block">
+                    <span className="font-bold text-slate-800 group-hover:text-slate-950 block">
                       {res.name}
                     </span>
                     <p className="text-[10px] text-slate-400 flex items-center space-x-1 mt-0.5">
@@ -234,7 +234,7 @@ export function AssignmentDetailModal({
                       <span>{res.location}</span>
                     </p>
                   </div>
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-uci-blue flex-shrink-0 ml-2" />
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-900 flex-shrink-0 ml-2" />
                 </a>
               ))}
             </div>

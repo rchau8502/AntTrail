@@ -256,7 +256,7 @@ export default function Home() {
 
                       <h3
                         className={`font-bold text-sm mt-2.5 line-clamp-2 leading-snug transition-colors ${
-                          isDone ? "line-through text-slate-400" : "text-slate-900 group-hover:text-uci-blue"
+                          isDone ? "line-through text-slate-400" : "text-slate-900 group-hover:text-slate-950"
                         }`}
                       >
                         {a.name}
@@ -288,7 +288,7 @@ export default function Home() {
                           <span>{isDone ? "Done ✓" : "Done"}</span>
                         </button>
 
-                        <span className="text-slate-500 font-semibold flex items-center space-x-0.5 group-hover:text-uci-blue group-hover:translate-x-0.5 transition-all">
+                        <span className="text-slate-500 font-semibold flex items-center space-x-0.5 group-hover:text-slate-950 group-hover:translate-x-0.5 transition-all">
                           <span>Milestones</span>
                           <ArrowRight className="w-3.5 h-3.5" />
                         </span>
