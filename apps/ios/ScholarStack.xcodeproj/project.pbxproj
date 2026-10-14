@@ -1,0 +1,408 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AF40A53AF77A42D796C5EC11 /* PlannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C3113F5FAF430FA25C50D6 /* ViewModels/PlannerViewModel.swift */; };
+		CBED44E4E0FF43B894B27AC6 /* PortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13344795163649F782240A6A /* ViewModels/PortfolioViewModel.swift */; };
+		6668C227A9A24EBC8927364D /* TranscriptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F23A76F49BA431DBA86A829 /* ViewModels/TranscriptViewModel.swift */; };
+		F1C1997480E34A92AAFEDF3C /* DirectoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6410111ABE48718F85A6C5 /* ViewModels/DirectoryViewModel.swift */; };
+		8D6EEB6A56654E7FAEE2B8F5 /* ScholarStackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A52F50F8E4DB4B016DEF0 /* App/ScholarStackApp.swift */; };
+		BCB91E32B78C47BB853B6282 /* Citation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57E2EC5AC8B49D28E327972 /* Models/Citation.swift */; };
+		09F9758727CF47EAABE44E4B /* PortfolioModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9B97E1A934DDFB22C2A7E /* Models/PortfolioModels.swift */; };
+		F3EAD95C55634580B2C35C72 /* Institution.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6112DE0E8704BBAA3D776FF /* Models/Institution.swift */; };
+		BF8019B15A894E6A95148940 /* CampusAdmissionProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC18069610944967B94A084D /* Models/CampusAdmissionProfile.swift */; };
+		740430478B3743F6A4646244 /* ApplicationDeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8BFAB5DBD74B1981A12905 /* Models/ApplicationDeadline.swift */; };
+		087A4C7D7EF44F52854FE754 /* TranscriptModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E74FD1DD2548C0AD91B9D4 /* Models/TranscriptModels.swift */; };
+		E305300F0B714F52A73D6EEA /* AdmissionsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573B569BE36F43D1AA75F9D0 /* Views/Planner/AdmissionsChartView.swift */; };
+		CF99744C070C4AD08D7CAC66 /* EvidenceSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7A6C2EA7B144418ED94645 /* Views/Planner/EvidenceSheetView.swift */; };
+		14A0DF4594A045389AAAD11F /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A606C4EDFD34568BFE5DAA0 /* Views/Planner/PlannerView.swift */; };
+		0F79B8D4B9ED41289D5273B9 /* KPICardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2068918A9BAA45DEAE33BAF8 /* Views/Planner/KPICardView.swift */; };
+		BD7812A2CDE844F5A5DB0494 /* CourseRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DE334D2E8C4DCB8BDE6892 /* Views/Transcript/CourseRowView.swift */; };
+		714A82EAE4DD457EB729843F /* ScannerSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E544F6FE89D047D098A887A0 /* Views/Transcript/ScannerSheetView.swift */; };
+		2966DE4461814284A1ADF315 /* TranscriptAuditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4F34B790B4307A31E206B /* Views/Transcript/TranscriptAuditorView.swift */; };
+		0357320712064D9BA74B47A4 /* RequirementBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99060FFD07A749C58951D0B1 /* Views/Transcript/RequirementBadgeView.swift */; };
+		7993AC17C9CB45E7AE0660BD /* CollegeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A32ACD3AB4181B01A7B9B /* Views/Directory/CollegeDetailView.swift */; };
+		CC7D3CB46E974FD099882788 /* CollegeDirectoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25F04B53E1A442DA464C78B /* Views/Directory/CollegeDirectoryView.swift */; };
+		CB2FE89A4D3742E29EAF0396 /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B28775318D41DD820B2B6C /* Views/Components/GlassCard.swift */; };
+		A90C5C9B8DB2477BAEEE0138 /* TierBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D393EB07FA1420EACF738BC /* Views/Components/TierBadge.swift */; };
+		0938250324794A20BBABC493 /* PlatformAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0FC43734E4258909739B4 /* Views/Components/PlatformAdapters.swift */; };
+		3127D83816EE42FC8A434C23 /* StatBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40A73BCA2484FDCB6227051 /* Views/Components/StatBadge.swift */; };
+		2F0695FBC5464C3B8C0EB8CE /* CampusEvaluationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02977CB2D373408BBAA910A6 /* Views/Portfolio/CampusEvaluationRow.swift */; };
+		8722716F7A5D4212A819B9DF /* HealthScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419C5C4D92E44F60AE5E6A74 /* Views/Portfolio/HealthScoreCardView.swift */; };
+		15857E388BC44E88AC470663 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63155D2AECB247BB8112D2CA /* Views/Portfolio/PortfolioView.swift */; };
+		099B7C3B9EB0413D98F2A06F /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119D60240D834AE3B33A88DE /* Views/Main/MainTabView.swift */; };
+		86A2054CAA0D44BA9AE8B9F6 /* AdmissionsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354465C004634171AF3FEFE2 /* Services/AdmissionsDataService.swift */; };
+		B0458494F55C4BCBBC2EC3A0 /* DocumentScannerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B985064F0048859BB906F8 /* Services/DocumentScannerService.swift */; };
+		7F94D5E3081E44F1A0485FD0 /* AdmissionsDataServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58877C8286C944179D5C4D79 /* Services/AdmissionsDataServiceProtocol.swift */; };
+		7EE108C7DDBE4AF7AE554539 /* PortfolioAdvisorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAC30E691594D928BE3E446 /* Services/PortfolioAdvisorService.swift */; };
+		99B320718C1441B881B91257 /* TranscriptAuditorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140EEF38A3144652A5A93309 /* Services/TranscriptAuditorService.swift */; };
+		55AC2E988720404992C0E34F /* institutions.json in Resources */ = {isa = PBXBuildFile; fileRef = E38B476899144A37A8C474D3 /* Resources/Data/institutions.json */; };
+		D79228CC94DC447F8D0D6ACF /* admission_profiles.json in Resources */ = {isa = PBXBuildFile; fileRef = F23B299C6C964DFFB33ADBFF /* Resources/Data/admission_profiles.json */; };
+		E3F786B896F648E58B754D86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AC6536213444FE59DEE633F /* Resources/Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		95C3113F5FAF430FA25C50D6 /* ViewModels/PlannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModels/PlannerViewModel.swift"; sourceTree = "<group>"; };
+		13344795163649F782240A6A /* ViewModels/PortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModels/PortfolioViewModel.swift"; sourceTree = "<group>"; };
+		2F23A76F49BA431DBA86A829 /* ViewModels/TranscriptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModels/TranscriptViewModel.swift"; sourceTree = "<group>"; };
+		3A6410111ABE48718F85A6C5 /* ViewModels/DirectoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModels/DirectoryViewModel.swift"; sourceTree = "<group>"; };
+		2B9A52F50F8E4DB4B016DEF0 /* App/ScholarStackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App/ScholarStackApp.swift"; sourceTree = "<group>"; };
+		A57E2EC5AC8B49D28E327972 /* Models/Citation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models/Citation.swift"; sourceTree = "<group>"; };
+		9CF9B97E1A934DDFB22C2A7E /* Models/PortfolioModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models/PortfolioModels.swift"; sourceTree = "<group>"; };
+		A6112DE0E8704BBAA3D776FF /* Models/Institution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models/Institution.swift"; sourceTree = "<group>"; };
+		CC18069610944967B94A084D /* Models/CampusAdmissionProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models/CampusAdmissionProfile.swift"; sourceTree = "<group>"; };
+		5C8BFAB5DBD74B1981A12905 /* Models/ApplicationDeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models/ApplicationDeadline.swift"; sourceTree = "<group>"; };
+		F3E74FD1DD2548C0AD91B9D4 /* Models/TranscriptModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models/TranscriptModels.swift"; sourceTree = "<group>"; };
+		573B569BE36F43D1AA75F9D0 /* Views/Planner/AdmissionsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Planner/AdmissionsChartView.swift"; sourceTree = "<group>"; };
+		AD7A6C2EA7B144418ED94645 /* Views/Planner/EvidenceSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Planner/EvidenceSheetView.swift"; sourceTree = "<group>"; };
+		5A606C4EDFD34568BFE5DAA0 /* Views/Planner/PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Planner/PlannerView.swift"; sourceTree = "<group>"; };
+		2068918A9BAA45DEAE33BAF8 /* Views/Planner/KPICardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Planner/KPICardView.swift"; sourceTree = "<group>"; };
+		A3DE334D2E8C4DCB8BDE6892 /* Views/Transcript/CourseRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Transcript/CourseRowView.swift"; sourceTree = "<group>"; };
+		E544F6FE89D047D098A887A0 /* Views/Transcript/ScannerSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Transcript/ScannerSheetView.swift"; sourceTree = "<group>"; };
+		D7B4F34B790B4307A31E206B /* Views/Transcript/TranscriptAuditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Transcript/TranscriptAuditorView.swift"; sourceTree = "<group>"; };
+		99060FFD07A749C58951D0B1 /* Views/Transcript/RequirementBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Transcript/RequirementBadgeView.swift"; sourceTree = "<group>"; };
+		C38A32ACD3AB4181B01A7B9B /* Views/Directory/CollegeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Directory/CollegeDetailView.swift"; sourceTree = "<group>"; };
+		D25F04B53E1A442DA464C78B /* Views/Directory/CollegeDirectoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Directory/CollegeDirectoryView.swift"; sourceTree = "<group>"; };
+		B0B28775318D41DD820B2B6C /* Views/Components/GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Components/GlassCard.swift"; sourceTree = "<group>"; };
+		6D393EB07FA1420EACF738BC /* Views/Components/TierBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Components/TierBadge.swift"; sourceTree = "<group>"; };
+		FBF0FC43734E4258909739B4 /* Views/Components/PlatformAdapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Components/PlatformAdapters.swift"; sourceTree = "<group>"; };
+		D40A73BCA2484FDCB6227051 /* Views/Components/StatBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Components/StatBadge.swift"; sourceTree = "<group>"; };
+		02977CB2D373408BBAA910A6 /* Views/Portfolio/CampusEvaluationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Portfolio/CampusEvaluationRow.swift"; sourceTree = "<group>"; };
+		419C5C4D92E44F60AE5E6A74 /* Views/Portfolio/HealthScoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Portfolio/HealthScoreCardView.swift"; sourceTree = "<group>"; };
+		63155D2AECB247BB8112D2CA /* Views/Portfolio/PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Portfolio/PortfolioView.swift"; sourceTree = "<group>"; };
+		119D60240D834AE3B33A88DE /* Views/Main/MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Main/MainTabView.swift"; sourceTree = "<group>"; };
+		354465C004634171AF3FEFE2 /* Services/AdmissionsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Services/AdmissionsDataService.swift"; sourceTree = "<group>"; };
+		B0B985064F0048859BB906F8 /* Services/DocumentScannerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Services/DocumentScannerService.swift"; sourceTree = "<group>"; };
+		58877C8286C944179D5C4D79 /* Services/AdmissionsDataServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Services/AdmissionsDataServiceProtocol.swift"; sourceTree = "<group>"; };
+		ACAC30E691594D928BE3E446 /* Services/PortfolioAdvisorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Services/PortfolioAdvisorService.swift"; sourceTree = "<group>"; };
+		140EEF38A3144652A5A93309 /* Services/TranscriptAuditorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Services/TranscriptAuditorService.swift"; sourceTree = "<group>"; };
+		E38B476899144A37A8C474D3 /* Resources/Data/institutions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Resources/Data/institutions.json"; sourceTree = "<group>"; };
+		F23B299C6C964DFFB33ADBFF /* Resources/Data/admission_profiles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Resources/Data/admission_profiles.json"; sourceTree = "<group>"; };
+		2AC6536213444FE59DEE633F /* Resources/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Resources/Assets.xcassets"; sourceTree = "<group>"; };
+		3CC626454476421B87F87B46 /* ScholarStack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScholarStack.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4D890E15BF884D889630C7B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2835D24D30C54ED0A0E236B6 = {
+			isa = PBXGroup;
+			children = (
+				F78F685DD3864139ADC826D6 /* ScholarStack */,
+				4DB755F610B54BA6A5CBED42 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4DB755F610B54BA6A5CBED42 = {
+			isa = PBXGroup;
+			children = (
+				3CC626454476421B87F87B46 /* ScholarStack.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F78F685DD3864139ADC826D6 = {
+			isa = PBXGroup;
+			children = (
+				95C3113F5FAF430FA25C50D6 /* ViewModels/PlannerViewModel.swift */,
+				13344795163649F782240A6A /* ViewModels/PortfolioViewModel.swift */,
+				2F23A76F49BA431DBA86A829 /* ViewModels/TranscriptViewModel.swift */,
+				3A6410111ABE48718F85A6C5 /* ViewModels/DirectoryViewModel.swift */,
+				2B9A52F50F8E4DB4B016DEF0 /* App/ScholarStackApp.swift */,
+				A57E2EC5AC8B49D28E327972 /* Models/Citation.swift */,
+				9CF9B97E1A934DDFB22C2A7E /* Models/PortfolioModels.swift */,
+				A6112DE0E8704BBAA3D776FF /* Models/Institution.swift */,
+				CC18069610944967B94A084D /* Models/CampusAdmissionProfile.swift */,
+				5C8BFAB5DBD74B1981A12905 /* Models/ApplicationDeadline.swift */,
+				F3E74FD1DD2548C0AD91B9D4 /* Models/TranscriptModels.swift */,
+				573B569BE36F43D1AA75F9D0 /* Views/Planner/AdmissionsChartView.swift */,
+				AD7A6C2EA7B144418ED94645 /* Views/Planner/EvidenceSheetView.swift */,
+				5A606C4EDFD34568BFE5DAA0 /* Views/Planner/PlannerView.swift */,
+				2068918A9BAA45DEAE33BAF8 /* Views/Planner/KPICardView.swift */,
+				A3DE334D2E8C4DCB8BDE6892 /* Views/Transcript/CourseRowView.swift */,
+				E544F6FE89D047D098A887A0 /* Views/Transcript/ScannerSheetView.swift */,
+				D7B4F34B790B4307A31E206B /* Views/Transcript/TranscriptAuditorView.swift */,
+				99060FFD07A749C58951D0B1 /* Views/Transcript/RequirementBadgeView.swift */,
+				C38A32ACD3AB4181B01A7B9B /* Views/Directory/CollegeDetailView.swift */,
+				D25F04B53E1A442DA464C78B /* Views/Directory/CollegeDirectoryView.swift */,
+				B0B28775318D41DD820B2B6C /* Views/Components/GlassCard.swift */,
+				6D393EB07FA1420EACF738BC /* Views/Components/TierBadge.swift */,
+				FBF0FC43734E4258909739B4 /* Views/Components/PlatformAdapters.swift */,
+				D40A73BCA2484FDCB6227051 /* Views/Components/StatBadge.swift */,
+				02977CB2D373408BBAA910A6 /* Views/Portfolio/CampusEvaluationRow.swift */,
+				419C5C4D92E44F60AE5E6A74 /* Views/Portfolio/HealthScoreCardView.swift */,
+				63155D2AECB247BB8112D2CA /* Views/Portfolio/PortfolioView.swift */,
+				119D60240D834AE3B33A88DE /* Views/Main/MainTabView.swift */,
+				354465C004634171AF3FEFE2 /* Services/AdmissionsDataService.swift */,
+				B0B985064F0048859BB906F8 /* Services/DocumentScannerService.swift */,
+				58877C8286C944179D5C4D79 /* Services/AdmissionsDataServiceProtocol.swift */,
+				ACAC30E691594D928BE3E446 /* Services/PortfolioAdvisorService.swift */,
+				140EEF38A3144652A5A93309 /* Services/TranscriptAuditorService.swift */,
+				E38B476899144A37A8C474D3 /* Resources/Data/institutions.json */,
+				F23B299C6C964DFFB33ADBFF /* Resources/Data/admission_profiles.json */,
+				2AC6536213444FE59DEE633F /* Resources/Assets.xcassets */,
+			);
+			path = ScholarStack;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		38FD5BA78F7B4B2A9D7DF167 /* ScholarStack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BD3A879CEA044639A636B20 /* Build configuration list for PBXNativeTarget "ScholarStack" */;
+			buildPhases = (
+				17B20ECE164542F3BBB74C07 /* Sources */,
+				4D890E15BF884D889630C7B8 /* Frameworks */,
+				B4E8A617296445D29221FF5D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScholarStack;
+			productName = ScholarStack;
+			productReference = 3CC626454476421B87F87B46 /* ScholarStack.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8F4BD8D98B2C4137BA8CAE29 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					38FD5BA78F7B4B2A9D7DF167 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = D090258570A84E6EAC0921D0 /* Build configuration list for PBXProject "ScholarStack" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2835D24D30C54ED0A0E236B6;
+			productRefGroup = 4DB755F610B54BA6A5CBED42 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				38FD5BA78F7B4B2A9D7DF167 /* ScholarStack */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B4E8A617296445D29221FF5D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55AC2E988720404992C0E34F /* institutions.json in Resources */,
+				D79228CC94DC447F8D0D6ACF /* admission_profiles.json in Resources */,
+				E3F786B896F648E58B754D86 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		17B20ECE164542F3BBB74C07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF40A53AF77A42D796C5EC11 /* PlannerViewModel.swift in Sources */,
+				CBED44E4E0FF43B894B27AC6 /* PortfolioViewModel.swift in Sources */,
+				6668C227A9A24EBC8927364D /* TranscriptViewModel.swift in Sources */,
+				F1C1997480E34A92AAFEDF3C /* DirectoryViewModel.swift in Sources */,
+				8D6EEB6A56654E7FAEE2B8F5 /* ScholarStackApp.swift in Sources */,
+				BCB91E32B78C47BB853B6282 /* Citation.swift in Sources */,
+				09F9758727CF47EAABE44E4B /* PortfolioModels.swift in Sources */,
+				F3EAD95C55634580B2C35C72 /* Institution.swift in Sources */,
+				BF8019B15A894E6A95148940 /* CampusAdmissionProfile.swift in Sources */,
+				740430478B3743F6A4646244 /* ApplicationDeadline.swift in Sources */,
+				087A4C7D7EF44F52854FE754 /* TranscriptModels.swift in Sources */,
+				E305300F0B714F52A73D6EEA /* AdmissionsChartView.swift in Sources */,
+				CF99744C070C4AD08D7CAC66 /* EvidenceSheetView.swift in Sources */,
+				14A0DF4594A045389AAAD11F /* PlannerView.swift in Sources */,
+				0F79B8D4B9ED41289D5273B9 /* KPICardView.swift in Sources */,
+				BD7812A2CDE844F5A5DB0494 /* CourseRowView.swift in Sources */,
+				714A82EAE4DD457EB729843F /* ScannerSheetView.swift in Sources */,
+				2966DE4461814284A1ADF315 /* TranscriptAuditorView.swift in Sources */,
+				0357320712064D9BA74B47A4 /* RequirementBadgeView.swift in Sources */,
+				7993AC17C9CB45E7AE0660BD /* CollegeDetailView.swift in Sources */,
+				CC7D3CB46E974FD099882788 /* CollegeDirectoryView.swift in Sources */,
+				CB2FE89A4D3742E29EAF0396 /* GlassCard.swift in Sources */,
+				A90C5C9B8DB2477BAEEE0138 /* TierBadge.swift in Sources */,
+				0938250324794A20BBABC493 /* PlatformAdapters.swift in Sources */,
+				3127D83816EE42FC8A434C23 /* StatBadge.swift in Sources */,
+				2F0695FBC5464C3B8C0EB8CE /* CampusEvaluationRow.swift in Sources */,
+				8722716F7A5D4212A819B9DF /* HealthScoreCardView.swift in Sources */,
+				15857E388BC44E88AC470663 /* PortfolioView.swift in Sources */,
+				099B7C3B9EB0413D98F2A06F /* MainTabView.swift in Sources */,
+				86A2054CAA0D44BA9AE8B9F6 /* AdmissionsDataService.swift in Sources */,
+				B0458494F55C4BCBBC2EC3A0 /* DocumentScannerService.swift in Sources */,
+				7F94D5E3081E44F1A0485FD0 /* AdmissionsDataServiceProtocol.swift in Sources */,
+				7EE108C7DDBE4AF7AE554539 /* PortfolioAdvisorService.swift in Sources */,
+				99B320718C1441B881B91257 /* TranscriptAuditorService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9608111998644EBA927BFA45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_PREVIEWS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		BA107AB3DC4A41018DC7196F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 6.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		10AA63E6770B4DF89E4121EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ScholarStack/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ScholarStack;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.scholarstack.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0F4F5D9A385849FAB7266B7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ScholarStack/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ScholarStack;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.scholarstack.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D090258570A84E6EAC0921D0 /* Build configuration list for PBXProject "ScholarStack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9608111998644EBA927BFA45 /* Debug */,
+				BA107AB3DC4A41018DC7196F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6BD3A879CEA044639A636B20 /* Build configuration list for PBXNativeTarget "ScholarStack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10AA63E6770B4DF89E4121EE /* Debug */,
+				0F4F5D9A385849FAB7266B7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 8F4BD8D98B2C4137BA8CAE29 /* Project object */;
+}
