@@ -1,0 +1,23 @@
+{
+  "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/ScholarStack/Views/Directory/CollegeDetailView.swift" : {
+    "const-values" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CollegeDetailView.swiftconstvalues",
+    "dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CollegeDetailView.d",
+    "diagnostics" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CollegeDetailView.dia",
+    "object" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CollegeDetailView.o",
+    "swift-dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CollegeDetailView.swiftdeps"
+  },
+  "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/ScholarStack/Views/Directory/CollegeDirectoryView.swift" : {
+    "const-values" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CollegeDirectoryView.swiftconstvalues",
+    "dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CollegeDirectoryView.d",
+    "diagnostics" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CollegeDirectoryView.dia",
+    "object" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CollegeDirectoryView.o",
+    "swift-dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CollegeDirectoryView.swiftdeps"
+  },
+  "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/ScholarStack/Views/Main/MainTabView.swift" : {
+    "const-values" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/MainTabView.swiftconstvalues",
+    "dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/MainTabView.d",
+    "diagnostics" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/MainTabView.dia",
+    "object" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/MainTabView.o",
+    "swift-dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/MainTabView.swiftdeps"
+  }
+}

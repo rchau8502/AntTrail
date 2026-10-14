@@ -1,0 +1,23 @@
+{
+  "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/ScholarStack/Views/Planner/PlannerView.swift" : {
+    "const-values" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/PlannerView.swiftconstvalues",
+    "dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/PlannerView.d",
+    "diagnostics" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/PlannerView.dia",
+    "object" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/PlannerView.o",
+    "swift-dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/PlannerView.swiftdeps"
+  },
+  "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/ScholarStack/Views/Portfolio/CampusEvaluationRow.swift" : {
+    "const-values" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CampusEvaluationRow.swiftconstvalues",
+    "dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CampusEvaluationRow.d",
+    "diagnostics" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CampusEvaluationRow.dia",
+    "object" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CampusEvaluationRow.o",
+    "swift-dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CampusEvaluationRow.swiftdeps"
+  },
+  "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/ScholarStack/Views/Portfolio/HealthScoreCardView.swift" : {
+    "const-values" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/HealthScoreCardView.swiftconstvalues",
+    "dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/HealthScoreCardView.d",
+    "diagnostics" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/HealthScoreCardView.dia",
+    "object" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/HealthScoreCardView.o",
+    "swift-dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/HealthScoreCardView.swiftdeps"
+  }
+}

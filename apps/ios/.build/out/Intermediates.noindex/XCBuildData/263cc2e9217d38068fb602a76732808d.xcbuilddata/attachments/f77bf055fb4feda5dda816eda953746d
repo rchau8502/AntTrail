@@ -1,0 +1,49 @@
+{
+  "" : {
+    "diagnostics" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/ScholarStackTests-primary.dia",
+    "emit-module-dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/ScholarStackTests-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/ScholarStackTests-primary-emit-module.dia",
+    "pch" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/ScholarStackTests-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/ScholarStackTests-primary.swiftdeps"
+  },
+  "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/DerivedSources/test_entry_point.swift" : {
+    "const-values" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/test_entry_point.swiftconstvalues",
+    "dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/test_entry_point.d",
+    "diagnostics" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/test_entry_point.dia",
+    "index-unit-output-path" : "/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/test_entry_point.o",
+    "llvm-bc" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/test_entry_point.bc",
+    "object" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/test_entry_point.o",
+    "swift-dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/test_entry_point.swiftdeps",
+    "swiftmodule" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/test_entry_point~partial.swiftmodule"
+  },
+  "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/Tests/ScholarStackTests/AdmissionsDataServiceTests.swift" : {
+    "const-values" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/AdmissionsDataServiceTests.swiftconstvalues",
+    "dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/AdmissionsDataServiceTests.d",
+    "diagnostics" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/AdmissionsDataServiceTests.dia",
+    "index-unit-output-path" : "/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/AdmissionsDataServiceTests.o",
+    "llvm-bc" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/AdmissionsDataServiceTests.bc",
+    "object" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/AdmissionsDataServiceTests.o",
+    "swift-dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/AdmissionsDataServiceTests.swiftdeps",
+    "swiftmodule" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/AdmissionsDataServiceTests~partial.swiftmodule"
+  },
+  "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/Tests/ScholarStackTests/PortfolioAdvisorTests.swift" : {
+    "const-values" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/PortfolioAdvisorTests.swiftconstvalues",
+    "dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/PortfolioAdvisorTests.d",
+    "diagnostics" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/PortfolioAdvisorTests.dia",
+    "index-unit-output-path" : "/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/PortfolioAdvisorTests.o",
+    "llvm-bc" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/PortfolioAdvisorTests.bc",
+    "object" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/PortfolioAdvisorTests.o",
+    "swift-dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/PortfolioAdvisorTests.swiftdeps",
+    "swiftmodule" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/PortfolioAdvisorTests~partial.swiftmodule"
+  },
+  "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/Tests/ScholarStackTests/TranscriptAuditorTests.swift" : {
+    "const-values" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/TranscriptAuditorTests.swiftconstvalues",
+    "dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/TranscriptAuditorTests.d",
+    "diagnostics" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/TranscriptAuditorTests.dia",
+    "index-unit-output-path" : "/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/TranscriptAuditorTests.o",
+    "llvm-bc" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/TranscriptAuditorTests.bc",
+    "object" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/TranscriptAuditorTests.o",
+    "swift-dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/TranscriptAuditorTests.swiftdeps",
+    "swiftmodule" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStackTests-p.build/Objects-normal/arm64/TranscriptAuditorTests~partial.swiftmodule"
+  }
+}

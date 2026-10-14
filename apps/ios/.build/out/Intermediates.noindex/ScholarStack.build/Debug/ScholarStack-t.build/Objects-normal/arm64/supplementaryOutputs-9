@@ -1,0 +1,23 @@
+{
+  "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/ScholarStack/Views/Portfolio/PortfolioView.swift" : {
+    "const-values" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/PortfolioView.swiftconstvalues",
+    "dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/PortfolioView.d",
+    "diagnostics" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/PortfolioView.dia",
+    "object" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/PortfolioView.o",
+    "swift-dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/PortfolioView.swiftdeps"
+  },
+  "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/ScholarStack/Views/Transcript/CourseRowView.swift" : {
+    "const-values" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CourseRowView.swiftconstvalues",
+    "dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CourseRowView.d",
+    "diagnostics" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CourseRowView.dia",
+    "object" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CourseRowView.o",
+    "swift-dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/CourseRowView.swiftdeps"
+  },
+  "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/ScholarStack/Views/Transcript/RequirementBadgeView.swift" : {
+    "const-values" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/RequirementBadgeView.swiftconstvalues",
+    "dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/RequirementBadgeView.d",
+    "diagnostics" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/RequirementBadgeView.dia",
+    "object" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/RequirementBadgeView.o",
+    "swift-dependencies" : "/Volumes/Crucial X9/AI/ScholarStack/apps/scholarstack-ios/.build/out/Intermediates.noindex/ScholarStack.build/Debug/ScholarStack-t.build/Objects-normal/arm64/RequirementBadgeView.swiftdeps"
+  }
+}

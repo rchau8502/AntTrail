@@ -1,0 +1,4 @@
+module ScholarStack {
+header "ScholarStack-Swift.h"
+export *
+}

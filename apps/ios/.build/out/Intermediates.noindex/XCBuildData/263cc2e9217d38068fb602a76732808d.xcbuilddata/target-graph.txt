@@ -1,0 +1,15 @@
+Target dependency graph (5 targets)
+Target 'AllIncludingTests' in project 'Aggregate'
+➜ Explicit dependency on target 'ScholarStackTests-product' in project 'ScholarStack'
+➜ Dependency on target 'ScholarStackTests-product' in project 'ScholarStack' via transitive dependency through 'ScholarStackTests-test-runner'
+➜ Explicit dependency on target 'ScholarStack-product' in project 'ScholarStack'
+➜ Explicit dependency on target 'ScholarStack' in project 'ScholarStack'
+➜ Explicit dependency on target 'ScholarStack_ScholarStack' in project 'ScholarStack'
+Target 'ScholarStack-product' in project 'ScholarStack'
+➜ Explicit dependency on target 'ScholarStack' in project 'ScholarStack'
+➜ Explicit dependency on target 'ScholarStack_ScholarStack' in project 'ScholarStack'
+Target 'ScholarStackTests-product' in project 'ScholarStack'
+➜ Explicit dependency on target 'ScholarStack' in project 'ScholarStack'
+Target 'ScholarStack' in project 'ScholarStack'
+➜ Explicit dependency on target 'ScholarStack_ScholarStack' in project 'ScholarStack'
+Target 'ScholarStack_ScholarStack' in project 'ScholarStack' (no dependencies)
