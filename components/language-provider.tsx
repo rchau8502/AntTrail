@@ -73,8 +73,16 @@ export function useLanguage() {
   const context = useContext(LanguageContext);
 
   if (!context) {
-    throw new Error("useLanguage must be used inside LanguageProvider");
+    const locale = defaultLocale;
+    return {
+      locale,
+      setLocale: () => {},
+      t: (key: TranslationKey) => translate(locale, key),
+      courseLabel: (title: string) => translateCourseTitle(locale, title),
+      difficultyLabel: (difficulty: string) => translateDifficulty(locale, difficulty),
+    };
   }
 
   return context;
 }
+
