@@ -33,6 +33,7 @@ import {
   AlertTriangle,
   Clock,
   Flame,
+  GraduationCap,
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -134,6 +135,119 @@ export default function HomePage() {
 
       {/* Main Container */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24">
+        {/* Quad-Core Super-Hub Bento */}
+        <section className="-mt-6 sm:-mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {/* 1. Academic Planner */}
+            <Link
+              href="/degree-planning"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-sky-100 bg-gradient-to-br from-white to-sky-50/50 p-6 shadow-xs hover:border-[#0064a4]/40 hover:shadow-md transition-all"
+            >
+              <div>
+                <div className="flex items-center justify-between">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#0064a4] text-white shadow-xs group-hover:scale-105 transition-transform">
+                    <GraduationCap className="w-5 h-5" />
+                  </div>
+                  <span className="rounded-full bg-sky-100 text-[#0064a4] border border-sky-200/80 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider">
+                    Planner
+                  </span>
+                </div>
+                <h3 className="mt-4 text-lg font-extrabold text-slate-900 group-hover:text-[#0064a4] transition-colors">
+                  Degree &amp; Prerequisite Engine
+                </h3>
+                <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                  Deterministic prerequisite DAG evaluator, major audits (CS, DS, SWE, Math), and UCI repeat GPA simulator.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-sky-100/60 flex items-center justify-between text-xs font-bold text-[#0064a4]">
+                <span>Launch Planner</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+            {/* 2. Canvas LMS Workstation */}
+            <Link
+              href="/canvas"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-amber-100 bg-gradient-to-br from-white to-amber-50/50 p-6 shadow-xs hover:border-amber-400/40 hover:shadow-md transition-all"
+            >
+              <div>
+                <div className="flex items-center justify-between">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-500 text-white shadow-xs group-hover:scale-105 transition-transform">
+                    <Clock className="w-5 h-5" />
+                  </div>
+                  <span className="rounded-full bg-amber-100 text-amber-800 border border-amber-200/80 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider">
+                    ZotCanvas
+                  </span>
+                </div>
+                <h3 className="mt-4 text-lg font-extrabold text-slate-900 group-hover:text-amber-700 transition-colors">
+                  Canvas LMS Command Center
+                </h3>
+                <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                  Eisenhower urgency matrix, burnout fatigue guard, Pomodoro timer, and zero-storage private Canvas sync.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-amber-100/60 flex items-center justify-between text-xs font-bold text-amber-700">
+                <span>Open Workstation</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+            {/* 3. STEM Bubble Cards */}
+            <Link
+              href="/study"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-indigo-100 bg-gradient-to-br from-white to-indigo-50/50 p-6 shadow-xs hover:border-indigo-400/40 hover:shadow-md transition-all"
+            >
+              <div>
+                <div className="flex items-center justify-between">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-indigo-600 text-white shadow-xs group-hover:scale-105 transition-transform">
+                    <Sparkles className="w-5 h-5" />
+                  </div>
+                  <span className="rounded-full bg-indigo-100 text-indigo-700 border border-indigo-200/80 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider">
+                    Bubble
+                  </span>
+                </div>
+                <h3 className="mt-4 text-lg font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                  STEM Pattern Recognition
+                </h3>
+                <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                  349 retrieval cards &amp; drills for MATH 2E, 3A, 130A, 140A. Attempt → Diagnose → Retry exam training.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-indigo-100/60 flex items-center justify-between text-xs font-bold text-indigo-600">
+                <span>Start Practice</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+            {/* 4. Campus Guides & Deadlines */}
+            <Link
+              href="/guides"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-emerald-100 bg-gradient-to-br from-white to-emerald-50/50 p-6 shadow-xs hover:border-emerald-400/40 hover:shadow-md transition-all"
+            >
+              <div>
+                <div className="flex items-center justify-between">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-xs group-hover:scale-105 transition-transform">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                  <span className="rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200/80 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider">
+                    Survival Hub
+                  </span>
+                </div>
+                <h3 className="mt-4 text-lg font-extrabold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                  42+ Guides &amp; Deadlines
+                </h3>
+                <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                  Drop deadlines with 1-click Google Cal/.ics export, easy courses (水课), and multi-lingual campus guidance.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-emerald-100/60 flex items-center justify-between text-xs font-bold text-emerald-700">
+                <span>Explore Guides</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+          </div>
+        </section>
+
         {/* Section 1: Major Categories */}
         <section id="categories">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
