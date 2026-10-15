@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useMemo, useEffect } from 'react'
 import { Navbar, NavigationTab } from './components/Navbar'
 import { PersonaSelector } from './components/PersonaSelector'
@@ -94,14 +96,16 @@ const DEFAULT_INITIAL_QUARTERS: PlannedQuarter[] = [
 
 export const App: React.FC = () => {
   // --- Navigation & View Tab ---
-  const [activeTab, setActiveTab] = useState<NavigationTab>('ELIGIBILITY')
+  const [activeTab, setActiveTab] = useState<NavigationTab>('PLANNER')
 
   // --- Persona & Profile State ---
   const [selectedPersonaId, setSelectedPersonaId] = useState<string>('freshman')
   const [profile, setProfile] = useState<StudentProfile>(() => {
     try {
-      const saved = localStorage.getItem(PROFILE_STORAGE_KEY)
-      if (saved) return JSON.parse(saved)
+      if (typeof window !== 'undefined') {
+        const saved = localStorage.getItem(PROFILE_STORAGE_KEY)
+        if (saved) return JSON.parse(saved)
+      }
     } catch {
       // Fallback
     }
@@ -111,8 +115,10 @@ export const App: React.FC = () => {
   // --- Planned Quarters State ---
   const [plannedQuarters, setPlannedQuarters] = useState<PlannedQuarter[]>(() => {
     try {
-      const saved = localStorage.getItem(QUARTERS_STORAGE_KEY)
-      if (saved) return JSON.parse(saved)
+      if (typeof window !== 'undefined') {
+        const saved = localStorage.getItem(QUARTERS_STORAGE_KEY)
+        if (saved) return JSON.parse(saved)
+      }
     } catch {
       // Fallback
     }
@@ -122,7 +128,9 @@ export const App: React.FC = () => {
   // LocalStorage sync
   useEffect(() => {
     try {
-      localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile))
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile))
+      }
     } catch {
       // Ignore
     }
@@ -130,7 +138,9 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     try {
-      localStorage.setItem(QUARTERS_STORAGE_KEY, JSON.stringify(plannedQuarters))
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(QUARTERS_STORAGE_KEY, JSON.stringify(plannedQuarters))
+      }
     } catch {
       // Ignore
     }
@@ -146,14 +156,18 @@ export const App: React.FC = () => {
   const [isExportModalOpen, setIsExportModalOpen] = useState(false)
   const [googleUser, setGoogleUser] = useState<GoogleUser | null>(() => {
     try {
-      const saved = sessionStorage.getItem('anttrail_google_user')
-      if (saved) return JSON.parse(saved)
+      if (typeof window !== 'undefined') {
+        const saved = sessionStorage.getItem('anttrail_google_user')
+        if (saved) return JSON.parse(saved)
+      }
     } catch {}
     return null
   })
   const [accessToken, setAccessToken] = useState<string | null>(() => {
     try {
-      return sessionStorage.getItem('anttrail_google_token') || null
+      if (typeof window !== 'undefined') {
+        return sessionStorage.getItem('anttrail_google_token') || null
+      }
     } catch {}
     return null
   })
