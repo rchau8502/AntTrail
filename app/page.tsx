@@ -34,6 +34,7 @@ import {
   Clock,
   Flame,
   GraduationCap,
+  School,
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -135,9 +136,9 @@ export default function HomePage() {
 
       {/* Main Container */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24">
-        {/* Quad-Core Super-Hub Bento */}
+        {/* Five-Core Super-Hub Bento */}
         <section className="-mt-6 sm:-mt-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {/* 1. Academic Planner */}
             <Link
               href="/degree-planning"
@@ -165,7 +166,34 @@ export default function HomePage() {
               </div>
             </Link>
 
-            {/* 2. Canvas LMS Workstation */}
+            {/* 2. CCC Transfer Articulation Workstation */}
+            <Link
+              href="/transfer"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-teal-100 bg-gradient-to-br from-white to-teal-50/50 p-6 shadow-xs hover:border-teal-400/40 hover:shadow-md transition-all"
+            >
+              <div>
+                <div className="flex items-center justify-between">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-teal-600 text-white shadow-xs group-hover:scale-105 transition-transform">
+                    <School className="w-5 h-5" />
+                  </div>
+                  <span className="rounded-full bg-teal-100 text-teal-800 border border-teal-200/80 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider">
+                    Scholar
+                  </span>
+                </div>
+                <h3 className="mt-4 text-lg font-extrabold text-slate-900 group-hover:text-teal-700 transition-colors">
+                  CCC Transfer Articulation
+                </h3>
+                <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                  ASSIST.org equivalency matrix, 60-unit junior threshold tracker, and 1-click bridge into AntTrail degree planner.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-teal-100/60 flex items-center justify-between text-xs font-bold text-teal-700">
+                <span>Audit Courses</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+            {/* 3. Canvas LMS Workstation */}
             <Link
               href="/canvas"
               className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-amber-100 bg-gradient-to-br from-white to-amber-50/50 p-6 shadow-xs hover:border-amber-400/40 hover:shadow-md transition-all"
