@@ -161,6 +161,7 @@ export default function Footer() {
             <Link href="/i-need-to" className="hover:text-slate-600">{t.nav.iNeedTo}</Link>
             <Link href="/tools" className="hover:text-slate-600">{t.nav.uciTools}</Link>
             <Link href="/degree-planning" className="hover:text-slate-600">{t.nav.degreePlanning}</Link>
+            <Link href="/transfer" className="hover:text-[#0064a4] font-semibold text-sky-700">Transfer Prep</Link>
           </div>
         </div>
       </div>

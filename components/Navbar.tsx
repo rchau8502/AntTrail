@@ -44,6 +44,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: t.nav.degreePlanning, href: '/degree-planning', badge: 'Planner' },
+    { label: 'Transfer Prep', href: '/transfer', badge: 'Scholar' },
     { label: 'Canvas LMS', href: '/canvas', badge: 'Live' },
     { label: t.nav.exploreGuides, href: '/guides' },
     { label: t.nav.courses, href: '/courses' },

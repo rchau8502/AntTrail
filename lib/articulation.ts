@@ -525,6 +525,175 @@ export const CAMPUS_MAJOR_REQUIREMENTS: Record<string, Record<string, TargetMajo
         description: 'Logic, sets, relations, and combinatorics.'
       }
     ],
+    'Software Engineering': [
+      {
+        id: 'calc_1',
+        category: 'calculus',
+        name: 'Calculus I',
+        targetCourseCode: 'MATH 2A',
+        targetCourseTitle: 'Calculus I',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 210',
+        description: 'Differential calculus and optimization.'
+      },
+      {
+        id: 'calc_2',
+        category: 'calculus_2',
+        name: 'Calculus II',
+        targetCourseCode: 'MATH 2B',
+        targetCourseTitle: 'Calculus II',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 220',
+        description: 'Integration methods and infinite series.'
+      },
+      {
+        id: 'lin_alg',
+        category: 'linear_algebra',
+        name: 'Introduction to Linear Algebra',
+        targetCourseCode: 'MATH 3A',
+        targetCourseTitle: 'Introduction to Linear Algebra',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 250',
+        description: 'Systems of equations, matrices, and linear transformations.'
+      },
+      {
+        id: 'prog_1',
+        category: 'programming_intro',
+        name: 'Introduction to Programming',
+        targetCourseCode: 'I&C SCI 31',
+        targetCourseTitle: 'Introduction to Programming',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID COMP 122',
+        description: 'Programming fundamentals in Python.'
+      },
+      {
+        id: 'prog_2',
+        category: 'programming_intermediate',
+        name: 'Programming with Software Libraries',
+        targetCourseCode: 'I&C SCI 32',
+        targetCourseTitle: 'Programming with Software Libraries',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID COMP 122',
+        description: 'Intermediate programming and standard libraries.'
+      },
+      {
+        id: 'data_struct',
+        category: 'data_structures',
+        name: 'Intermediate Programming & Data Structures',
+        targetCourseCode: 'I&C SCI 33',
+        targetCourseTitle: 'Intermediate Programming',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID COMP 132',
+        description: 'Data structures, testing, and algorithmic performance.'
+      },
+      {
+        id: 'discrete_math',
+        category: 'discrete_math',
+        name: 'Discrete Mathematics',
+        targetCourseCode: 'I&C SCI 6B',
+        targetCourseTitle: 'Boolean Logic and Discrete Structures',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID COMP 152',
+        description: 'Logic, sets, relations, and combinatorics.'
+      }
+    ],
+    'Data Science': [
+      {
+        id: 'calc_1',
+        category: 'calculus',
+        name: 'Calculus I',
+        targetCourseCode: 'MATH 2A',
+        targetCourseTitle: 'Calculus I',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 210',
+        description: 'Differential calculus and optimization.'
+      },
+      {
+        id: 'calc_2',
+        category: 'calculus_2',
+        name: 'Calculus II',
+        targetCourseCode: 'MATH 2B',
+        targetCourseTitle: 'Calculus II',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 220',
+        description: 'Integration methods and infinite series.'
+      },
+      {
+        id: 'multi_calc',
+        category: 'multivariable',
+        name: 'Multivariable Calculus',
+        targetCourseCode: 'MATH 2D',
+        targetCourseTitle: 'Multivariable Calculus I',
+        units: 4,
+        isCritical: false,
+        cIdEquivalent: 'C-ID MATH 230',
+        description: 'Vectors and partial derivatives.'
+      },
+      {
+        id: 'lin_alg',
+        category: 'linear_algebra',
+        name: 'Introduction to Linear Algebra',
+        targetCourseCode: 'MATH 3A',
+        targetCourseTitle: 'Introduction to Linear Algebra',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 250',
+        description: 'Systems of equations, matrices, and linear transformations.'
+      },
+      {
+        id: 'stat',
+        category: 'statistics',
+        name: 'Introduction to Probability and Statistics',
+        targetCourseCode: 'STATS 7',
+        targetCourseTitle: 'Basic Statistics',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 110',
+        description: 'Statistical estimation and data analysis.'
+      },
+      {
+        id: 'prog_1',
+        category: 'programming_intro',
+        name: 'Introduction to Programming',
+        targetCourseCode: 'I&C SCI 31',
+        targetCourseTitle: 'Introduction to Programming',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID COMP 122',
+        description: 'Programming fundamentals in Python.'
+      },
+      {
+        id: 'prog_2',
+        category: 'programming_intermediate',
+        name: 'Programming with Software Libraries',
+        targetCourseCode: 'I&C SCI 32',
+        targetCourseTitle: 'Programming with Software Libraries',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID COMP 122',
+        description: 'Intermediate programming and standard libraries.'
+      },
+      {
+        id: 'data_struct',
+        category: 'data_structures',
+        name: 'Intermediate Programming & Data Structures',
+        targetCourseCode: 'I&C SCI 33',
+        targetCourseTitle: 'Intermediate Programming',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID COMP 132',
+        description: 'Data structures, testing, and algorithmic performance.'
+      }
+    ],
     'Business Administration': [
       {
         id: 'calc_1',
@@ -1087,96 +1256,179 @@ export function getGenericMajorRequirements(major: string): TargetMajorRequireme
  * Intelligent course classifier to identify which canonical requirement
  * a California Community College course code matches.
  */
-export function classifyCccCourse(courseCode: string, courseTitle?: string): TargetMajorRequirement['category'] | 'ge_writing' | 'ge_oral_comm' | 'ge_critical_thinking' | 'general' {
+export function classifyCccCourse(
+  courseCode: string,
+  courseTitle?: string
+): TargetMajorRequirement['category'] | 'ge_writing' | 'ge_oral_comm' | 'ge_critical_thinking' | 'general' {
   const code = courseCode.toUpperCase().replace(/\s+/g, ' ').trim()
   const title = (courseTitle || '').toUpperCase().trim()
 
-  // 1. Calculus & Advanced Math
-  if (code.match(/\b(MATH|MATHEMATICS)\b/)) {
-    // Multivariable / Calc III
-    if (/\b(MULTIVARIABLE|CALCULUS (III|3))\b/.test(title) || code.match(/\b(3|1C|2C|2D|3C|230|32|143|5C|290|53)\b/)) {
+  // 1. Math title checks (highest precedence because title is descriptive)
+  if (title.length > 0) {
+    if (
+      /\b(MULTIVARIABLE|VECTOR CALCULUS|CALCULUS\s*(III|3))\b/i.test(title) ||
+      (title === 'CALCULUS' && code.match(/\b(1C|2C|2D|3C|4A|280|005C)\b/))
+    ) {
       return 'multivariable'
     }
-    // Differential Equations
-    if (title.includes('DIFFERENTIAL EQUATION') || code.match(/\b(4B|240|33B)\b/)) {
-      return 'diff_equations'
-    }
-    // Linear Algebra
-    if (title.includes('LINEAR ALGEBRA') || code.match(/\b(3A|4A|250|33A|18|54|244)\b/)) {
+    if (title.includes('LINEAR ALGEBRA')) {
       return 'linear_algebra'
     }
-    // Calculus II
-    if (/\bCALCULUS (II|2)\b/.test(title) || code.match(/\b(2|1B|2B|3B|220|31|142|5B|191|151)\b/)) {
+    if (title.includes('DIFFERENTIAL EQUATION')) {
+      return 'diff_equations'
+    }
+    if (
+      /\bCALCULUS\s*(II|2)\b/i.test(title) ||
+      (title === 'CALCULUS' && code.match(/\b(1B|2B|3B|185|181|193|005B)\b/))
+    ) {
       return 'calculus_2'
     }
-    // Calculus I
-    if (/\bCALCULUS (I|1)\b/.test(title) || (title.includes('CALCULUS') && !/\b(II|III|2|3)\b/.test(title)) || code.match(/\b(1|1A|2A|3A|210|30|141|5A|190|150)\b/)) {
+    if (
+      /\bCALCULUS\s*(I|1)\b/i.test(title) ||
+      (title === 'CALCULUS' && code.match(/\b(1A|2A|3A|180|192|005A|7)\b/)) ||
+      (title.includes('CALCULUS') && !/\b(II|III|2|3)\b/i.test(title) && !code.match(/\b(1B|1C|2B|2C|3B|3C)\b/))
+    ) {
       return 'calculus'
     }
-    // Statistics
-    if (title.includes('STATISTICS') || title.includes('PROBABILITY') || code.match(/\b(STAT|STATS|STATISTICS|10|110)\b/)) {
+    if (
+      title.includes('DISCRETE') &&
+      (code.match(/\b(MATH|CS|CIS|COMP|COMSC|CSCI)\b/) || title.includes('LOGIC') || title.includes('STRUCTURES'))
+    ) {
+      return 'discrete_math'
+    }
+    if (title.includes('STATISTIC') || title.includes('PROBABILITY')) {
       return 'statistics'
     }
   }
 
-  // 2. Computer Science / Programming
-  if (code.match(/\b(CS|CIS|COMPSC|COMSC|CSE|COMP|ICS|PROG)\b/)) {
-    if (title.includes('DISCRETE') || code.match(/\b(42|6B|6D|70|152|20)\b/)) {
+  // 2. Math code checks if title didn't resolve
+  if (code.match(/\b(MATH|MATHEMATICS)\b/)) {
+    if (code.match(/\b(4A|280|1C|2C|2D|3C|230|32|143|5C|292|005C|53)\b/)) {
+      return 'multivariable'
+    }
+    if (code.match(/\b(24|2A|4B|240|290|294|33B)\b/)) {
+      return 'diff_equations'
+    }
+    if (code.match(/\b(26|2B|13|260|194|250|33A|18|244)\b/)) {
+      return 'linear_algebra'
+    }
+    if (code.match(/\b(285|010|54)\b/)) {
+      return 'linear_algebra'
+    }
+    if (code.match(/\b(3B|185|1B|220|31|142|5B|181|193|005B|31B|20B|151)\b/)) {
+      return 'calculus_2'
+    }
+    if (code.match(/\b(3A|180|1A|210|30|141|5A|192|005A|7|31A|20A|150)\b/)) {
+      return 'calculus'
+    }
+    if (code.match(/\b(STAT|STATS|STATISTICS|10|110|7|67)\b/)) {
+      return 'statistics'
+    }
+  }
+
+  // 3. Computer Science / Programming title checks
+  if (title.length > 0) {
+    if (
+      title.includes('DISCRETE') &&
+      (code.match(/\b(CS|CIS|COMPSC|COMSC|CSE|COMP|ICS|PROG|CSCI|MATH)\b/) ||
+        title.includes('LOGIC') ||
+        title.includes('STRUCTURES'))
+    ) {
       return 'discrete_math'
     }
-    if (title.includes('DATA STRUCTURE') || title.includes('METHODOLOGY II') || title.includes('INTERMEDIATE PROGRAMMING') || code.match(/\b(2|132|1B|61B|32|33|46B|202|22C|36)\b/)) {
+    if (title.includes('DATA STRUCTURE') || title.includes('DATA ABSTRACTION') || title.includes('ALGORITHMS')) {
       return 'data_structures'
     }
-    if (title.includes('ARCHITECTURE') || title.includes('ORGANIZATION') || title.includes('MACHINE') || code.match(/\b(3|142|61C|51|21)\b/)) {
+    if (
+      title.includes('ARCHITECTURE') ||
+      title.includes('ORGANIZATION') ||
+      title.includes('ASSEMBLY') ||
+      title.includes('MACHINE')
+    ) {
       return 'computer_architecture'
     }
-    if (title.includes('PROGRAMMING') || title.includes('COMPUTER SCIENCE') || title.includes('METHODOLOGY I') || code.match(/\b(1|10|11|122|1A|31|46A|101|22A|22B|35)\b/)) {
+    if (
+      title.includes('INTERMEDIATE PROGRAMMING') ||
+      title.includes('METHODOLOGY II') ||
+      title.includes('PROGRAMMING II') ||
+      title.includes('SOFTWARE')
+    ) {
+      return 'programming_intermediate'
+    }
+    if (
+      title.includes('PROGRAMMING') ||
+      title.includes('COMPUTER SCIENCE') ||
+      title.includes('PYTHON') ||
+      title.includes('JAVA') ||
+      title.includes('C++') ||
+      title.includes('METHODOLOGY I') ||
+      title.includes('PROGRAMMING I')
+    ) {
       return 'programming_intro'
     }
   }
 
-  // 3. Physics
-  if (code.match(/\b(PHYS|PHYSICS)\b/)) {
-    if (title.includes('MECHANICS') || code.match(/\b(1A|4A|205|141|1|40)\b/)) {
+  // 4. Computer Science / Programming code checks
+  if (code.match(/\b(CS|CIS|COMPSC|COMSC|CSE|COMP|ICS|PROG|CSCI)\b/)) {
+    if (code.match(/\b(6B|6D|42|22|20|70|152)\b/)) {
+      return 'discrete_math'
+    }
+    if (code.match(/\b(37|A200|22C|20A|220|1C|210|003A|132|61B|33|46B|202)\b/)) {
+      return 'data_structures'
+    }
+    if (code.match(/\b(40A|A216|21JA|17|10|260|045|142|61C|51|21)\b/)) {
+      return 'computer_architecture'
+    }
+    if (code.match(/\b(22B|1B|32)\b/)) {
+      return 'programming_intermediate'
+    }
+    if (code.match(/\b(36|41|A150|22A|50|110|140|1A|165|002|122|31|46A|101|35)\b/)) {
+      return 'programming_intro'
+    }
+  }
+
+  // 5. Physics
+  if (code.match(/\b(PHYS|PHYSICS|PHYSCS)\b/) || title.includes('PHYSICS')) {
+    if (title.includes('MECHANIC') || code.match(/\b(4A|A185|21|130|001A|1A|205|141|1|40)\b/)) {
       return 'physics_mechanics'
     }
-    if (title.includes('ELECTRIC') || title.includes('MAGNET') || code.match(/\b(1B|4B|210|142|2|41)\b/)) {
+    if (title.includes('ELECTRIC') || title.includes('MAGNET') || code.match(/\b(4B|A280|22|001B|1B|210|142|2|41)\b/)) {
       return 'physics_em'
     }
   }
 
-  // 4. Chemistry & Biology
-  if (code.match(/\b(CHEM|CHEMISTRY)\b/)) {
+  // 6. Chemistry & Biology
+  if (code.match(/\b(CHEM|CHEMISTRY)\b/) || title.includes('CHEMISTRY')) {
     return 'chemistry'
   }
-  if (code.match(/\b(BIO|BIOL|BIOLOGY)\b/)) {
+  if (code.match(/\b(BIO|BIOL|BIOLOGY)\b/) || title.includes('BIOLOGY')) {
     return 'biology'
   }
 
-  // 5. Economics & Business
-  if (code.match(/\b(ECON|ECONOMICS)\b/)) {
-    if (title.includes('MICRO') || code.match(/\b(1|1A|20A|202|102)\b/)) {
+  // 7. Economics & Business
+  if (code.match(/\b(ECON|ECONOMICS)\b/) || title.includes('ECONOMICS')) {
+    if (title.includes('MICRO') || code.match(/\b(1|1A|A170|20A|202|102)\b/)) {
       return 'microeconomics'
     }
-    if (title.includes('MACRO') || code.match(/\b(2|1B|20B|201|101)\b/)) {
+    if (title.includes('MACRO') || code.match(/\b(2|1B|A175|20B|201|101)\b/)) {
       return 'macroeconomics'
     }
   }
-  if (code.match(/\b(ACCT|ACCOUNTING)\b/)) {
-    if (title.includes('FINANCIAL') || code.match(/\b(1|1A|110|30A|101)\b/)) {
+  if (code.match(/\b(ACCT|ACCOUNTING)\b/) || title.includes('ACCOUNTING')) {
+    if (title.includes('FINANCIAL') || code.match(/\b(1A|1|110|30A|101)\b/)) {
       return 'accounting_financial'
     }
-    if (title.includes('MANAGERIAL') || code.match(/\b(2|1B|120|30B|102)\b/)) {
+    if (title.includes('MANAGERIAL') || code.match(/\b(1B|2|120|30B|102)\b/)) {
       return 'accounting_managerial'
     }
   }
 
-  // 6. General Education Foundations
-  if (code.match(/\b(COMM|SPEECH)\b/)) {
+  // 8. General Education Foundations
+  if (code.match(/\b(COMM|SPEECH)\b/) || title.includes('COMMUNICATION') || title.includes('SPEECH')) {
     return 'ge_oral_comm'
   }
-  if (code.match(/\b(ENGL|ENGLISH|WRIT)\b/)) {
-    if (title.includes('CRITICAL') || code.match(/\b(1B|1C|2|7|105)\b/)) {
+  if (code.match(/\b(ENGL|ENGLISH|WRIT|WR)\b/) || title.includes('WRITING') || title.includes('COMPOSITION')) {
+    if (title.includes('CRITICAL') || code.match(/\b(WR 2|1B|1C|2|7|105)\b/)) {
       return 'ge_critical_thinking'
     }
     return 'ge_writing'
@@ -1216,9 +1468,16 @@ export function auditCourseArticulation(params: {
       ['IP', 'PL', 'IN PROGRESS', 'PLANNED', '--'].includes(course.grade.toUpperCase().trim())
 
     // Find if it fulfills a major preparation requirement
-    const matchedReq = requirementsList.find(
+    let matchedReq = requirementsList.find(
       (req) => req.category === category && !satisfiedRequirementIds.has(req.id)
     )
+
+    // Sequence fallback: if category is programming_intro and prog_1 is already satisfied, try prog_2 (programming_intermediate)
+    if (!matchedReq && category === 'programming_intro') {
+      matchedReq = requirementsList.find(
+        (req) => req.category === 'programming_intermediate' && !satisfiedRequirementIds.has(req.id)
+      )
+    }
 
     if (matchedReq) {
       if (isPlanned) {
@@ -1347,3 +1606,152 @@ export function auditCourseArticulation(params: {
     recommendations
   }
 }
+
+/**
+ * Summary metrics for transferable units toward the 60 semester / 90 quarter threshold.
+ */
+export interface TransferUnitsSummary {
+  originTermSystem: 'semester' | 'quarter'
+  completedOriginUnits: number
+  plannedOriginUnits: number
+  totalOriginUnits: number
+  completedQuarterUnits: number
+  plannedQuarterUnits: number
+  totalQuarterUnits: number
+  targetThresholdQuarterUnits: number
+  targetThresholdSemesterUnits: number
+  progressPercentage: number
+  isThresholdMet: boolean
+}
+
+/**
+ * Calculate transferable units and quarter-unit equivalents toward junior standing transfer.
+ */
+export function calculateTransferableUnits(
+  courses: Array<{ units?: number; grade?: string }>,
+  termSystem: 'semester' | 'quarter' = 'semester'
+): TransferUnitsSummary {
+  let completedOriginUnits = 0
+  let plannedOriginUnits = 0
+
+  courses.forEach((c) => {
+    const units = typeof c.units === 'number' && !isNaN(c.units) ? c.units : 3
+    const isPlanned =
+      !c.grade || ['IP', 'PL', 'IN PROGRESS', 'PLANNED', '--'].includes(c.grade.toUpperCase().trim())
+    if (isPlanned) {
+      plannedOriginUnits += units
+    } else {
+      completedOriginUnits += units
+    }
+  })
+
+  const totalOriginUnits = completedOriginUnits + plannedOriginUnits
+  const multiplier = termSystem === 'semester' ? 1.5 : 1.0
+
+  const completedQuarterUnits = Math.round(completedOriginUnits * multiplier * 10) / 10
+  const plannedQuarterUnits = Math.round(plannedOriginUnits * multiplier * 10) / 10
+  const totalQuarterUnits = Math.round(totalOriginUnits * multiplier * 10) / 10
+
+  const targetThresholdQuarterUnits = 90
+  const targetThresholdSemesterUnits = 60
+
+  const targetUnits = termSystem === 'semester' ? targetThresholdSemesterUnits : targetThresholdQuarterUnits
+  const currentUnits = completedOriginUnits
+  const progressPercentage = Math.min(100, Math.round((currentUnits / targetUnits) * 100))
+  const isThresholdMet = currentUnits >= targetUnits
+
+  return {
+    originTermSystem: termSystem,
+    completedOriginUnits,
+    plannedOriginUnits,
+    totalOriginUnits,
+    completedQuarterUnits,
+    plannedQuarterUnits,
+    totalQuarterUnits,
+    targetThresholdQuarterUnits,
+    targetThresholdSemesterUnits,
+    progressPercentage,
+    isThresholdMet
+  }
+}
+
+/**
+ * Bridge articulated courses into the AntTrail Degree Planner profile format.
+ */
+export function bridgeArticulatedToStudentProfile(params: {
+  audit: MajorPreparationAudit
+  originCollegeName: string
+  existingProfile?: any
+}): {
+  updatedProfile: any
+  bridgedCount: number
+  bridgedRecords: any[]
+} {
+  const { audit, originCollegeName, existingProfile } = params
+
+  const baseProfile = existingProfile || {
+    studentId: 'TRANSFER-STUDENT',
+    major: `${audit.targetMajor} B.S.`,
+    catalogYear: '2026-27',
+    classStanding: 'JUNIOR',
+    completedUnits: 0,
+    courseHistory: []
+  }
+
+  const existingHistory: any[] = Array.isArray(baseProfile.courseHistory)
+    ? [...baseProfile.courseHistory]
+    : []
+
+  const bridgedRecords: any[] = []
+
+  audit.articulatedCourses.forEach((match) => {
+    // Only bridge courses that actually map to a specific target course code (not generic electives)
+    if (!match.targetCourseCode || match.targetCourseCode.includes('Elective')) {
+      return
+    }
+
+    const alreadyExists = existingHistory.some(
+      (c) => c.courseCode === match.targetCourseCode || c.courseCode === match.originCourseCode
+    )
+
+    const isPlanned =
+      !match.originGrade ||
+      ['IP', 'PL', 'IN PROGRESS', 'PLANNED', '--'].includes(match.originGrade.toUpperCase().trim())
+
+    const record = {
+      id: `transfer-${match.originCourseCode.replace(/\s+/g, '_')}-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      courseCode: match.targetCourseCode,
+      institution: originCollegeName,
+      term: match.originTerm || 'Transfer Credit',
+      units: match.targetUnits || match.originUnits || 4,
+      grade: isPlanned ? 'PL' : match.originGrade?.toUpperCase().trim() || 'A',
+      status: isPlanned ? 'PLANNED' : 'COMPLETED'
+    }
+
+    bridgedRecords.push(record)
+
+    if (!alreadyExists) {
+      existingHistory.push(record)
+    }
+  })
+
+  // Calculate updated completedUnits
+  const completedUnits = existingHistory
+    .filter((c) => c.status === 'COMPLETED')
+    .reduce((sum, c) => sum + (Number(c.units) || 4), 0)
+
+  const updatedProfile = {
+    ...baseProfile,
+    major: baseProfile.major || `${audit.targetMajor} B.S.`,
+    classStanding: completedUnits >= 90 ? 'JUNIOR' : baseProfile.classStanding || 'SOPHOMORE',
+    completedUnits,
+    courseHistory: existingHistory
+  }
+
+  return {
+    updatedProfile,
+    bridgedCount: bridgedRecords.length,
+    bridgedRecords
+  }
+}
+
