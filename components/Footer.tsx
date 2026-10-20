@@ -162,6 +162,7 @@ export default function Footer() {
             <Link href="/tools" className="hover:text-slate-600">{t.nav.uciTools}</Link>
             <Link href="/degree-planning" className="hover:text-slate-600">{t.nav.degreePlanning}</Link>
             <Link href="/transfer" className="hover:text-[#0064a4] font-semibold text-sky-700">Transfer Prep</Link>
+            <Link href="/webreg" className="hover:text-amber-600 font-semibold text-amber-700">ZotSniper WebReg</Link>
           </div>
         </div>
       </div>
