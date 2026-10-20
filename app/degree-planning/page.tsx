@@ -66,27 +66,27 @@ export default function DegreePlanningPage() {
             </Link>
 
             {/* Mode Switcher Tabs */}
-            <div className="flex items-center gap-1 p-1 bg-slate-200/60 rounded-2xl shrink-0">
+            <div className="grid grid-cols-2 sm:flex items-center gap-1 p-1 bg-slate-200/60 rounded-2xl w-full sm:w-auto">
             <button
               onClick={() => setActiveMode('WORKSTATION')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center justify-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                 activeMode === 'WORKSTATION'
                   ? 'bg-white text-[#0064a4] shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <SlidersHorizontal className="w-3.5 h-3.5" />
+              <SlidersHorizontal className="w-3.5 h-3.5 shrink-0" />
               <span>Interactive Workstation</span>
             </button>
             <button
               onClick={() => setActiveMode('GUIDE')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center justify-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                 activeMode === 'GUIDE'
                   ? 'bg-white text-slate-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <BookOpen className="w-3.5 h-3.5" />
+              <BookOpen className="w-3.5 h-3.5 shrink-0" />
               <span>Planning Guide &amp; Rules</span>
             </button>
           </div>

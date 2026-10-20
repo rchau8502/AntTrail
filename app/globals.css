@@ -15,10 +15,26 @@
   --foreground: #0f172a;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  max-width: 100vw;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Ensure all embedded media respects viewport boundaries */
+img, svg, video, canvas, audio, iframe, embed, object {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Custom scrollbars */
