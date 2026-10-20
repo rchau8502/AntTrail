@@ -476,7 +476,7 @@ export default function WebRegTacticalPage() {
                           : 'border-slate-200/80 bg-white hover:border-slate-300'
                       }`}
                     >
-                      <div className="flex items-start justify-between gap-3">
+                      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                         <div>
                           <div className="flex items-center gap-2">
                             <span className="font-extrabold text-sm text-slate-900">
@@ -498,7 +498,7 @@ export default function WebRegTacticalPage() {
                         </div>
 
                         {/* Status Badge & Action */}
-                        <div className="flex flex-col items-end gap-2">
+                        <div className="flex flex-row sm:flex-col items-start sm:items-end justify-between sm:justify-start gap-2 w-full sm:w-auto">
                           <span
                             className={`rounded-full px-2.5 py-0.5 text-[10px] font-extrabold uppercase ${
                               isOpen

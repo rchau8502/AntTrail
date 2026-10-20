@@ -555,7 +555,7 @@ export default function TransferArticulationPage() {
                   />
                 </div>
 
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
                     <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
                       Status
@@ -652,7 +652,7 @@ export default function TransferArticulationPage() {
                     const isFulfilling = !!match && !match.targetCourseCode.includes('Elective')
 
                     return (
-                      <div key={course.id} className="py-2.5 flex items-center justify-between gap-3">
+                      <div key={course.id} className="py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3">
                         <div className="flex items-center gap-3">
                           <div className="flex flex-col">
                             <div className="flex items-center gap-2">
