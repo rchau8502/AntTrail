@@ -43,6 +43,13 @@ import {
   OfferingTerm
 } from './academic-engine/types'
 import {
+  getVaultItem,
+  setVaultItem,
+  migrateLocalStorageToIndexedDB,
+  safeLocalStorageSet,
+  safeLocalStorageGet
+} from '../lib/storage/indexed-db'
+import {
   Sparkles,
   BookOpen,
   CheckCircle2,
@@ -101,49 +108,62 @@ export const App: React.FC = () => {
   // --- Persona & Profile State ---
   const [selectedPersonaId, setSelectedPersonaId] = useState<string>('freshman')
   const [profile, setProfile] = useState<StudentProfile>(() => {
-    try {
-      if (typeof window !== 'undefined') {
-        const saved = localStorage.getItem(PROFILE_STORAGE_KEY)
-        if (saved) return JSON.parse(saved)
-      }
-    } catch {
-      // Fallback
-    }
+    const saved = safeLocalStorageGet<StudentProfile>(PROFILE_STORAGE_KEY)
+    if (saved) return saved
     return STUDENT_PERSONAS[0].profile
   })
 
   // --- Planned Quarters State ---
   const [plannedQuarters, setPlannedQuarters] = useState<PlannedQuarter[]>(() => {
-    try {
-      if (typeof window !== 'undefined') {
-        const saved = localStorage.getItem(QUARTERS_STORAGE_KEY)
-        if (saved) return JSON.parse(saved)
-      }
-    } catch {
-      // Fallback
-    }
+    const saved = safeLocalStorageGet<PlannedQuarter[]>(QUARTERS_STORAGE_KEY)
+    if (saved) return saved
     return DEFAULT_INITIAL_QUARTERS
   })
 
-  // LocalStorage sync
+  // IndexedDB Vault & LocalStorage dual-sync
   useEffect(() => {
-    try {
-      if (typeof window !== 'undefined') {
-        localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile))
+    // 1. Run migration from legacy localStorage to IndexedDB vault
+    migrateLocalStorageToIndexedDB([PROFILE_STORAGE_KEY, QUARTERS_STORAGE_KEY])
+
+    // 2. Hydrate from vault if vault has data
+    async function hydrateFromVault() {
+      try {
+        const vaultProfile = await getVaultItem<StudentProfile>(PROFILE_STORAGE_KEY)
+        if (vaultProfile && JSON.stringify(vaultProfile) !== JSON.stringify(profile)) {
+          setProfile(vaultProfile)
+        }
+        const vaultQuarters = await getVaultItem<PlannedQuarter[]>(QUARTERS_STORAGE_KEY)
+        if (vaultQuarters && JSON.stringify(vaultQuarters) !== JSON.stringify(plannedQuarters)) {
+          setPlannedQuarters(vaultQuarters)
+        }
+      } catch {
+        // Fallback already loaded
       }
-    } catch {
-      // Ignore
     }
+    hydrateFromVault()
+
+    // 3. Listen for cross-component vault updates (e.g. from transfer articulation page)
+    const handleVaultSync = async (e: Event) => {
+      const customEvt = e as CustomEvent<{ key?: string }>
+      if (customEvt.detail?.key === PROFILE_STORAGE_KEY) {
+        const updatedProfile = await getVaultItem<StudentProfile>(PROFILE_STORAGE_KEY)
+        if (updatedProfile) setProfile(updatedProfile)
+      }
+    }
+    if (typeof window !== 'undefined') {
+      window.addEventListener('anttrail_vault_sync', handleVaultSync)
+      return () => window.removeEventListener('anttrail_vault_sync', handleVaultSync)
+    }
+  }, [])
+
+  useEffect(() => {
+    safeLocalStorageSet(PROFILE_STORAGE_KEY, profile)
+    setVaultItem(PROFILE_STORAGE_KEY, profile).catch(() => {})
   }, [profile])
 
   useEffect(() => {
-    try {
-      if (typeof window !== 'undefined') {
-        localStorage.setItem(QUARTERS_STORAGE_KEY, JSON.stringify(plannedQuarters))
-      }
-    } catch {
-      // Ignore
-    }
+    safeLocalStorageSet(QUARTERS_STORAGE_KEY, plannedQuarters)
+    setVaultItem(QUARTERS_STORAGE_KEY, plannedQuarters).catch(() => {})
   }, [plannedQuarters])
 
   // --- Filter & Drawer State ---

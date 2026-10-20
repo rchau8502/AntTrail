@@ -31,6 +31,7 @@ import {
   MajorPreparationAudit
 } from '@/lib/articulation'
 import { CCC_COLLEGES, CccCollege, CccPresetCourse } from '@/data/cccArticulations'
+import { safeLocalStorageSet, setVaultItem } from '@/lib/storage/indexed-db'
 
 interface UserCourseEntry {
   id: string
@@ -185,7 +186,8 @@ export default function TransferArticulationPage() {
       })
 
       if (typeof window !== 'undefined') {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedProfile))
+        safeLocalStorageSet(STORAGE_KEY, updatedProfile)
+        setVaultItem(STORAGE_KEY, updatedProfile).catch(() => {})
         window.dispatchEvent(new Event('anttrail_profile_updated'))
       }
 
