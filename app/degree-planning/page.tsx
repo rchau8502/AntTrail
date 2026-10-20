@@ -16,7 +16,8 @@ import {
   Clock,
   ShieldCheck,
   ChevronRight,
-  ExternalLink
+  ExternalLink,
+  Radar
 } from 'lucide-react';
 import AntTrailBanner from '@/components/AntTrailBanner';
 
@@ -55,8 +56,17 @@ export default function DegreePlanningPage() {
             </p>
           </div>
 
-          {/* Mode Switcher Tabs */}
-          <div className="flex items-center gap-1 p-1 bg-slate-200/60 rounded-2xl shrink-0">
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <Link
+              href="/webreg"
+              className="inline-flex items-center gap-1.5 rounded-2xl border border-amber-300 bg-amber-50 px-3.5 py-2 text-xs font-bold text-amber-950 shadow-2xs hover:bg-amber-100 transition-colors"
+            >
+              <Radar className="w-3.5 h-3.5 text-amber-600 animate-pulse" />
+              <span>Pre-load into WebReg →</span>
+            </Link>
+
+            {/* Mode Switcher Tabs */}
+            <div className="flex items-center gap-1 p-1 bg-slate-200/60 rounded-2xl shrink-0">
             <button
               onClick={() => setActiveMode('WORKSTATION')}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
@@ -81,6 +91,7 @@ export default function DegreePlanningPage() {
             </button>
           </div>
         </div>
+      </div>
 
         {/* MODE 1: Interactive Workstation */}
         {activeMode === 'WORKSTATION' && (

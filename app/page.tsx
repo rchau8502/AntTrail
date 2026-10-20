@@ -35,6 +35,7 @@ import {
   Flame,
   GraduationCap,
   School,
+  Radar,
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -136,9 +137,9 @@ export default function HomePage() {
 
       {/* Main Container */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24">
-        {/* Five-Core Super-Hub Bento */}
+        {/* Six-Core Super-Hub Bento */}
         <section className="-mt-6 sm:-mt-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {/* 1. Academic Planner */}
             <Link
               href="/degree-planning"
@@ -166,7 +167,34 @@ export default function HomePage() {
               </div>
             </Link>
 
-            {/* 2. CCC Transfer Articulation Workstation */}
+            {/* 2. ZotSniper WebReg Tactical Command */}
+            <Link
+              href="/webreg"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-amber-200 bg-gradient-to-br from-white to-amber-50/60 p-6 shadow-xs hover:border-amber-400 hover:shadow-md transition-all"
+            >
+              <div>
+                <div className="flex items-center justify-between">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-600 text-white shadow-xs group-hover:scale-105 transition-transform">
+                    <Radar className="w-5 h-5" />
+                  </div>
+                  <span className="rounded-full bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider">
+                    Sniper
+                  </span>
+                </div>
+                <h3 className="mt-4 text-lg font-extrabold text-slate-900 group-hover:text-amber-700 transition-colors">
+                  ZotSniper WebReg Command
+                </h3>
+                <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                  Open-seat drop radar with audio alerts, 1-click 5-digit WebReg pre-loader, and waitlist clearance odds solver.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-amber-100/60 flex items-center justify-between text-xs font-bold text-amber-700">
+                <span>Arm Sniper Radar</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+            {/* 3. CCC Transfer Articulation Workstation */}
             <Link
               href="/transfer"
               className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-teal-100 bg-gradient-to-br from-white to-teal-50/50 p-6 shadow-xs hover:border-teal-400/40 hover:shadow-md transition-all"
