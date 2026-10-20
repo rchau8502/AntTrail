@@ -16,16 +16,16 @@
 - Create: `lib/webreg-engine.ts`
 - Test: `tests/webreg-sniper.test.ts`
 
-- [ ] **Step 1: Define TypeScript interfaces for WebSoc sections, waitlist inputs, and calculation outputs**
+- [x] **Step 1: Define TypeScript interfaces for WebSoc sections, waitlist inputs, and calculation outputs**
   - `WebSocSection`, `WaitlistProbabilityParams`, `WaitlistProbabilityReport`, `EnrollmentChecklistItem`.
-- [ ] **Step 2: Implement `calculateWaitlistProbability` function**
+- [x] **Step 2: Implement `calculateWaitlistProbability` function**
   - Formula applying class capacity, position, department attrition rate, and timing multipliers.
   - Return probability (0-100), tier (`HIGH`, `MODERATE`, `LOW`), expected drops, and tactical advice text.
-- [ ] **Step 3: Implement `generateWebRegBookmarklet` helper**
+- [x] **Step 3: Implement `generateWebRegBookmarklet` helper**
   - Produce encoded `javascript:(function(){...})()` that safely populates WebReg form inputs with 5-digit codes.
-- [ ] **Step 4: Implement `generateEnrollmentIcs` helper**
+- [x] **Step 4: Implement `generateEnrollmentIcs` helper**
   - Produce valid iCalendar (`.ics`) format with 10-minute alarm and WebReg direct link.
-- [ ] **Step 5: Provide preloaded WebSoc course catalog for high-demand UCI courses**
+- [x] **Step 5: Provide preloaded WebSoc course catalog for high-demand UCI courses**
   - Sections for `ICS 46`, `MATH 3A`, `COMPSCI 161`, `STATS 67`, `I&C SCI 33`, `ECON 20A`, `WRITING 60`.
 
 ---
@@ -35,16 +35,16 @@
 **Files:**
 - Create: `tests/webreg-sniper.test.ts`
 
-- [ ] **Step 1: Write unit tests for `calculateWaitlistProbability`**
+- [x] **Step 1: Write unit tests for `calculateWaitlistProbability`**
   - Test boundary conditions (Position 1 on 250-person class -> HIGH probability > 90%).
   - Test deep waitlist (Position 35 on 50-person class -> LOW probability < 20%).
   - Test department drop rate variations (Math vs Bio Sci vs ICS).
   - Test timing phase multipliers (Fee deadline spike vs Week 2 late drop).
-- [ ] **Step 2: Write unit tests for `generateWebRegBookmarklet`**
+- [x] **Step 2: Write unit tests for `generateWebRegBookmarklet`**
   - Verify script includes course codes and handles empty inputs safely.
-- [ ] **Step 3: Write unit tests for `generateEnrollmentIcs`**
+- [x] **Step 3: Write unit tests for `generateEnrollmentIcs`**
   - Verify VCALENDAR headers, alarm triggers, and ISO date formatting.
-- [ ] **Step 4: Run Vitest and verify all pass**
+- [x] **Step 4: Run Vitest and verify all pass**
   - Run: `npx vitest run tests/webreg-sniper.test.ts`
   - Expected: 100% pass rate.
 
@@ -55,26 +55,26 @@
 **Files:**
 - Create: `app/webreg/page.tsx`
 
-- [ ] **Step 1: Build Header & Hero with Audio Chime synthesizer**
+- [x] **Step 1: Build Header & Hero with Audio Chime synthesizer**
   - Anteater Blue (`#0064a4`), Gold (`#ffd200`), and Tactical Amber styling.
   - Badge: `ZotSniper WebReg Tactical Command`.
   - Title: `UCI Course Sniper & WebReg Fast-Action Hub`.
   - Built-in Web Audio API Anteater chime generator for seat alerts.
-- [ ] **Step 2: Build Module 1: WebSoc Live Seat Radar & Watchlist**
+- [x] **Step 2: Build Module 1: WebSoc Live Seat Radar & Watchlist**
   - Search filter by department and course code.
   - Section cards with live status badges (`OPEN`, `Waitlist`, `FULL`), enroll count, time, room, instructor.
   - "+ Watch Section" button.
   - Active Watchlist with toggles for Browser Push notifications, audio chime, Discord Webhook URL input, and "Simulate Open Seat Drop" test trigger.
-- [ ] **Step 3: Build Module 2: WebReg Fast Copy & 1-Click Bookmarklet**
+- [x] **Step 3: Build Module 2: WebReg Fast Copy & 1-Click Bookmarklet**
   - Sequence display of 5-digit course codes (e.g. `34010 34025 44100 12050`).
   - "1-Click Copy All Codes" with visual feedback.
   - Draggable Bookmarklet button for instant form autofill.
   - 3-step visual instruction guide for WebReg window execution.
-- [ ] **Step 4: Build Module 3: Waitlist Probability Calculator**
+- [x] **Step 4: Build Module 3: Waitlist Probability Calculator**
   - Real-time sliders for Class Capacity, Waitlist Position, Department, and Timing Phase.
   - Color-coded probability gauge (High, Moderate, Low).
   - Tactical advice callout (Hold position vs switch discussion section).
-- [ ] **Step 5: Build Module 4: Window Countdown & Pre-flight Checklist**
+- [x] **Step 5: Build Module 4: Window Countdown & Pre-flight Checklist**
   - Real-time countdown timer to enrollment window opening.
   - One-click `.ics` Calendar export with 10-minute warning.
   - Interactive pre-flight checklist (ZotAccount financial hold, prerequisite clearance, backup sections) with `localStorage` persistence.
@@ -89,13 +89,13 @@
 - Modify: `app/page.tsx`
 - Modify: `app/degree-planning/page.tsx`
 
-- [ ] **Step 1: Update `components/Navbar.tsx`**
+- [x] **Step 1: Update `components/Navbar.tsx`**
   - Add `{ label: 'ZotSniper', href: '/webreg', badge: 'Radar' }` to desktop and mobile navigation.
-- [ ] **Step 2: Update `components/Footer.tsx`**
+- [x] **Step 2: Update `components/Footer.tsx`**
   - Add `/webreg` link under Academic Planning.
-- [ ] **Step 3: Update `app/page.tsx`**
+- [x] **Step 3: Update `app/page.tsx`**
   - Update Bento Grid to feature ZotSniper Tactical Command.
-- [ ] **Step 4: Update `app/degree-planning/page.tsx`**
+- [x] **Step 4: Update `app/degree-planning/page.tsx`**
   - Add a direct launch button into `/webreg` to bridge planned courses into 5-digit codes.
 
 ---
@@ -105,11 +105,11 @@
 **Files:**
 - All touched files
 
-- [ ] **Step 1: Run full Vitest suite**
+- [x] **Step 1: Run full Vitest suite**
   - Run: `npm test`
   - Verify all 15 test files pass.
-- [ ] **Step 2: Run Next.js production build**
+- [x] **Step 2: Run Next.js production build**
   - Run: `npm run build`
   - Verify `/webreg` route builds cleanly.
-- [ ] **Step 3: Git commit**
+- [x] **Step 3: Git commit**
   - Commit all changes with clear descriptive message.
