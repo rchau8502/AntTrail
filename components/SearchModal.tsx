@@ -1,11 +1,63 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, X, BookOpen, ArrowRight, CornerDownLeft } from 'lucide-react';
+import { Search, X, BookOpen, ArrowRight, CornerDownLeft, Zap, Radar, GraduationCap, LayoutGrid } from 'lucide-react';
 import { searchGuides, SearchResult } from '@/lib/search';
 import { CATEGORIES } from '@/data/categories';
 import { CategoryId } from '@/types/guide';
+
+interface WorkstationItem {
+  name: string;
+  description: string;
+  href: string;
+  keywords: string[];
+  badge: string;
+  iconType: 'radar' | 'transfer' | 'planner' | 'grid' | 'zap';
+}
+
+const WORKSTATIONS: WorkstationItem[] = [
+  {
+    name: 'ZotSniper WebReg Drop Radar',
+    description: 'Real-time open-seat drop monitor & waitlist odds calculator',
+    href: '/webreg',
+    keywords: ['webreg', 'sniper', 'seat', 'radar', 'drop', 'waitlist', 'register', 'enroll', 'code', 'window', '抢课', '选课'],
+    badge: 'Radar',
+    iconType: 'radar',
+  },
+  {
+    name: 'CC Transfer Articulation Tray',
+    description: 'Instant 1.5x semester-to-quarter credit evaluation for 8 CA CCs (IVC, OCC, De Anza)',
+    href: '/transfer',
+    keywords: ['transfer', 'cc', 'community college', 'ivc', 'occ', 'assist', 'de anza', 'smc', 'articulation', 'credit', '转学', '学分'],
+    badge: 'Scholar',
+    iconType: 'transfer',
+  },
+  {
+    name: '4-Year Degree & Prereq Engine',
+    description: 'Deterministic prerequisite boolean AST solver & repeat GPA simulator',
+    href: '/degree-planning',
+    keywords: ['planner', 'plan', 'degree', 'prereq', 'prerequisite', 'schedule', 'ast', 'audit', 'gpa', 'repeat', 'cs', 'swe', 'math', '排课', '毕业'],
+    badge: 'Planner',
+    iconType: 'planner',
+  },
+  {
+    name: 'Canvas LMS Command Center',
+    description: 'Eisenhower priority deadline matrix & final exam grade simulator',
+    href: '/canvas',
+    keywords: ['canvas', 'ddl', 'deadline', 'task', 'homework', 'assignment', 'grade', 'what-if', 'priority', '作业'],
+    badge: 'Matrix',
+    iconType: 'zap',
+  },
+  {
+    name: 'Alumni-Vetted Water Courses',
+    description: 'Top GPA booster courses reviewed by Anteater alumni',
+    href: '/courses',
+    keywords: ['course', 'courses', 'water', 'booster', 'easy', 'gpa', 'ge', 'drama 10', 'earthss 3', 'dance 3', '水课'],
+    badge: 'Booster',
+    iconType: 'grid',
+  },
+];
 
 export default function SearchModal() {
   const router = useRouter();
@@ -13,6 +65,17 @@ export default function SearchModal() {
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<CategoryId | undefined>(undefined);
   const [results, setResults] = useState<SearchResult[]>([]);
+
+  // Filter workstations matching the query
+  const matchedWorkstations = useMemo(() => {
+    if (!query.trim()) return [];
+    const q = query.toLowerCase().trim();
+    return WORKSTATIONS.filter(w =>
+      w.name.toLowerCase().includes(q) ||
+      w.description.toLowerCase().includes(q) ||
+      w.keywords.some(k => k.includes(q) || q.includes(k))
+    );
+  }, [query]);
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -132,6 +195,51 @@ export default function SearchModal() {
 
         {/* Results List */}
         <div className="max-h-96 overflow-y-auto p-2 divide-y divide-slate-100">
+          {/* Workstation Quick Jump */}
+          {matchedWorkstations.length > 0 && (
+            <div className="pb-2 mb-2">
+              <div className="px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-[#0064a4] flex items-center gap-1.5">
+                <Zap className="w-3 h-3 text-amber-500 fill-amber-500" />
+                <span>Workstation Quick Access</span>
+              </div>
+              <div className="space-y-1">
+                {matchedWorkstations.map(ws => (
+                  <div
+                    key={ws.href}
+                    onClick={() => {
+                      setIsOpen(false);
+                      router.push(ws.href);
+                    }}
+                    className="group flex items-center justify-between gap-3 p-2.5 rounded-xl bg-sky-50/70 hover:bg-[#0064a4] hover:text-white cursor-pointer transition-all border border-sky-100"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white shadow-2xs group-hover:bg-white/20">
+                        {ws.iconType === 'radar' && <Radar className="w-4 h-4 text-amber-600 group-hover:text-white" />}
+                        {ws.iconType === 'transfer' && <GraduationCap className="w-4 h-4 text-emerald-600 group-hover:text-white" />}
+                        {ws.iconType === 'planner' && <Zap className="w-4 h-4 text-[#0064a4] group-hover:text-white" />}
+                        {ws.iconType === 'grid' && <LayoutGrid className="w-4 h-4 text-orange-600 group-hover:text-white" />}
+                        {ws.iconType === 'zap' && <Zap className="w-4 h-4 text-rose-600 group-hover:text-white" />}
+                      </div>
+                      <div>
+                        <div className="text-xs font-extrabold text-slate-900 group-hover:text-white">
+                          {ws.name}
+                        </div>
+                        <div className="text-[11px] text-slate-500 group-hover:text-sky-100 line-clamp-1">
+                          {ws.description}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="shrink-0 flex items-center gap-2">
+                      <span className="text-[10px] font-bold text-[#0064a4] bg-white group-hover:bg-white/20 group-hover:text-white rounded-md px-2 py-0.5 shadow-2xs">
+                        {ws.badge} →
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {results.length > 0 ? (
             results.map(({ guide, matchReason }) => (
               <div
@@ -161,14 +269,14 @@ export default function SearchModal() {
                 </div>
               </div>
             ))
-          ) : (
+          ) : matchedWorkstations.length === 0 ? (
             <div className="p-8 text-center text-slate-500">
               <p className="text-sm font-medium">No direct guides found for &ldquo;{query}&rdquo;</p>
               <p className="text-xs text-slate-400 mt-1">
                 Try searching for broader terms like &ldquo;parking&rdquo;, &ldquo;major&rdquo;, &ldquo;aid&rdquo;, or &ldquo;drop&rdquo;.
               </p>
             </div>
-          )}
+          ) : null}
         </div>
 
         {/* Footer */}
