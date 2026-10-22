@@ -132,6 +132,59 @@ export default function HomePage() {
             <span>{t.hero.tailorPrompt}</span>
             <PersonaSelector current={studentType} onChange={handleStudentTypeChange} compact />
           </div>
+
+          {/* Quick-Jump Tactical Actions for New Visitors */}
+          <div className="mt-8 pt-6 border-t border-slate-200/60 max-w-4xl mx-auto">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+              <span>What are you here for today? (Instant 1-Tap Workstations)</span>
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+              <Link
+                href="/webreg"
+                className="inline-flex items-center gap-2 rounded-2xl border border-amber-200 bg-white/90 px-3.5 py-2 text-xs font-extrabold text-amber-950 shadow-xs hover:border-amber-400 hover:bg-amber-50/70 transition-all hover:-translate-y-0.5"
+              >
+                <Radar className="w-3.5 h-3.5 text-amber-600 animate-pulse" />
+                <span>WebReg Seat Radar</span>
+                <span className="rounded-md bg-amber-100 px-1.5 py-0.2 text-[9px] font-bold text-amber-800">
+                  Open Drops
+                </span>
+              </Link>
+
+              <Link
+                href="/transfer"
+                className="inline-flex items-center gap-2 rounded-2xl border border-emerald-200 bg-white/90 px-3.5 py-2 text-xs font-extrabold text-emerald-950 shadow-xs hover:border-emerald-400 hover:bg-emerald-50/70 transition-all hover:-translate-y-0.5"
+              >
+                <GraduationCap className="w-3.5 h-3.5 text-emerald-600" />
+                <span>CC Transfer Tray</span>
+                <span className="rounded-md bg-emerald-100 px-1.5 py-0.2 text-[9px] font-bold text-emerald-800">
+                  IVC / OCC 1.5x
+                </span>
+              </Link>
+
+              <Link
+                href="/degree-planning"
+                className="inline-flex items-center gap-2 rounded-2xl border border-sky-200 bg-white/90 px-3.5 py-2 text-xs font-extrabold text-[#0064a4] shadow-xs hover:border-sky-400 hover:bg-sky-50/70 transition-all hover:-translate-y-0.5"
+              >
+                <Zap className="w-3.5 h-3.5 text-[#0064a4]" />
+                <span>4-Year Prereq Planner</span>
+                <span className="rounded-md bg-sky-100 px-1.5 py-0.2 text-[9px] font-bold text-[#0064a4]">
+                  AST Solver
+                </span>
+              </Link>
+
+              <Link
+                href="/courses"
+                className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white/90 px-3.5 py-2 text-xs font-extrabold text-slate-800 shadow-xs hover:border-slate-300 hover:bg-slate-50 transition-all hover:-translate-y-0.5"
+              >
+                <Flame className="w-3.5 h-3.5 text-orange-500" />
+                <span>Easy GE Water Courses</span>
+                <span className="rounded-md bg-orange-100 px-1.5 py-0.2 text-[9px] font-bold text-orange-800">
+                  水课 GPA
+                </span>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
