@@ -37,8 +37,23 @@ export default function Footer() {
               The unified academic planning engine, Canvas LMS command center, and campus guide for UC Irvine. Zot zot zot! Built by Anteaters for Anteaters.
             </p>
 
-            <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-slate-500">
-              <span>Open Source &amp; Student-Owned Academic Workstation.</span>
+            <div className="mt-4 flex flex-wrap items-center gap-2.5 text-xs">
+              <a
+                href="https://github.com/rchau8502/AntTrail"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-100 px-3 py-1 font-bold text-slate-800 hover:bg-slate-200 transition-colors shadow-2xs"
+              >
+                <span>⭐ Star on GitHub</span>
+              </a>
+              <a
+                href="https://github.com/rchau8502/AntTrail/issues/new"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-amber-300 bg-amber-50 px-3 py-1 font-bold text-amber-900 hover:bg-amber-100 transition-colors shadow-2xs"
+              >
+                <span>💡 Report Missing Course / Feedback</span>
+              </a>
             </div>
           </div>
 
@@ -152,7 +167,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <div>
-            © {new Date().getFullYear()} everyUCI. Independent student reference guide.
+            © {new Date().getFullYear()} AntTrail. 100% Free &amp; Open-Source Academic Operating System for UC Irvine.
           </div>
           <div className="flex flex-wrap items-center gap-4">
             <Link href="/guides" className="hover:text-slate-600">{t.nav.exploreGuides}</Link>

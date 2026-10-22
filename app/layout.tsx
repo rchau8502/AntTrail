@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SearchModal from '@/components/SearchModal';
+import FeedbackFloatingBadge from '@/components/FeedbackFloatingBadge';
 import { LanguageProvider } from '@/lib/i18n/LanguageContext';
 import { StorageProvider } from '@/context/storage-context';
 
@@ -26,16 +27,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'AntTrail — The Master Academic Planner & Campus Workstation for UC Irvine',
+  metadataBase: new URL('https://anttrail.vercel.app'),
+  title: 'AntTrail — Privacy-First Academic Operating System for UC Irvine',
   description:
-    'AntTrail is the unified academic operating system for UC Irvine: degree audits, deterministic prerequisite planner, Canvas LMS workstation, campus survival guides, easy courses (水课), transfer articulation, and STEM Bubble cards.',
+    'AntTrail is the unified academic workstation for UC Irvine: deterministic prerequisite AST solver, WebReg seat drop radar, California CC transfer articulation, and Canvas task matrix. 100% free and open-source with zero server retention.',
   keywords: [
     'AntTrail',
     'UCI',
     'UC Irvine',
     'everyUCI',
+    'ZotSniper',
     'ZotCanvas',
-    'Bubble',
     'Degree Planning',
     'Canvas LMS',
     'Prerequisite Engine',
@@ -43,8 +45,52 @@ export const metadata: Metadata = {
     'DegreeWorks',
     'UCI GPA Calculator',
     'Transfer Articulation',
-    'STEM Study Cards'
+    'STEM Study Cards',
+    'IVC to UCI',
+    'OCC to UCI'
   ],
+  authors: [{ name: 'AntTrail Community', url: 'https://github.com/rchau8502/AntTrail' }],
+  creator: 'AntTrail Team',
+  publisher: 'AntTrail',
+  openGraph: {
+    title: 'AntTrail — Academic Operating System for UC Irvine',
+    description:
+      'Deterministic prerequisite tree solver, WebReg seat drop radar, CC transfer calculator & Canvas tactical dashboard.',
+    url: 'https://anttrail.vercel.app',
+    siteName: 'AntTrail',
+    images: [
+      {
+        url: '/marketing/anttrail-instagram-promo.jpg',
+        width: 1024,
+        height: 1024,
+        alt: 'AntTrail — Academic Operating System for UC Irvine',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AntTrail — Academic Operating System for UC Irvine',
+    description:
+      'WebReg Tactical Drop Radar, 4-Year Schedule Engine & Transfer Articulation.',
+    images: ['/marketing/anttrail-instagram-promo.jpg'],
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon.svg', type: 'image/svg+xml' }
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
+    ],
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'AntTrail',
+  },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
@@ -63,6 +109,7 @@ export default function RootLayout({
             <SearchModal />
             <main className="flex-1">{children}</main>
             <Footer />
+            <FeedbackFloatingBadge />
           </LanguageProvider>
         </StorageProvider>
       </body>
