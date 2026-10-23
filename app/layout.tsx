@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SearchModal from '@/components/SearchModal';
 import FeedbackFloatingBadge from '@/components/FeedbackFloatingBadge';
+import ServiceWorkerRegister from '@/components/ServiceWorkerRegister';
 import { LanguageProvider } from '@/lib/i18n/LanguageContext';
 import { StorageProvider } from '@/context/storage-context';
 
@@ -110,6 +111,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <Footer />
             <FeedbackFloatingBadge />
+            <ServiceWorkerRegister />
           </LanguageProvider>
         </StorageProvider>
       </body>

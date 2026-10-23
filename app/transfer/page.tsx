@@ -21,7 +21,8 @@ import {
   School,
   Building,
   Compass,
-  ArrowUpRight
+  ArrowUpRight,
+  Copy
 } from 'lucide-react'
 import {
   auditCourseArticulation,
@@ -72,6 +73,7 @@ export default function TransferArticulationPage() {
   // --- Modal & Bridge State ---
   const [isBridgeModalOpen, setIsBridgeModalOpen] = useState(false)
   const [bridgeSuccessBanner, setBridgeSuccessBanner] = useState<string | null>(null)
+  const [copiedReport, setCopiedReport] = useState(false)
 
   // Selected College Object
   const currentCollege = useMemo(() => {
@@ -159,6 +161,28 @@ export default function TransferArticulationPage() {
   // --- Clear Roster ---
   const handleClearAll = () => {
     setCourses([])
+  }
+
+  // --- Copy Formatted Transfer Report ---
+  const handleCopyReport = () => {
+    if (courses.length === 0 || typeof navigator === 'undefined') return
+    const lines = [
+      `🎓 AntTrail CC Transfer Articulation Report`,
+      `Origin: ${currentCollege.name} (${currentCollege.termSystem.toUpperCase()})`,
+      `Target: ${selectedCampus} — ${selectedMajor}`,
+      `-----------------------------------------`,
+      `• Total Transferable Units: ${unitsSummary.totalOriginUnits} ${currentCollege.termSystem === 'semester' ? `Semester Units (approx. ${unitsSummary.totalQuarterUnits} Quarter Units)` : 'Quarter Units'}`,
+      `• Major Prep Completion: ${audit.satisfiedCount} / ${audit.totalRequirements} (${audit.completionPercentage}%)`,
+      `• Articulated Courses (${audit.articulatedCourses.length}):`,
+      ...audit.articulatedCourses.map(
+        (c) => `  - ${c.originCourseCode} ➔ ${c.targetCourseCode} (${c.originUnits} units)`
+      ),
+      `-----------------------------------------`,
+      `Evaluated via AntTrail: https://anttrail.vercel.app/transfer`
+    ]
+    navigator.clipboard.writeText(lines.join('\n'))
+    setCopiedReport(true)
+    setTimeout(() => setCopiedReport(false), 2500)
   }
 
   // --- Reset to Demo ---
@@ -625,13 +649,32 @@ export default function TransferArticulationPage() {
                   </p>
                 </div>
                 {courses.length > 0 && (
-                  <button
-                    onClick={handleClearAll}
-                    className="text-xs font-semibold text-rose-600 hover:text-rose-700 transition-colors flex items-center gap-1"
-                  >
-                    <Trash2 className="h-3.5 w-3.5" />
-                    <span>Clear Tray</span>
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={handleCopyReport}
+                      className="inline-flex items-center gap-1.5 rounded-xl border border-sky-200 bg-sky-50 px-2.5 py-1 text-xs font-bold text-[#0064a4] hover:bg-sky-100 transition-colors shadow-2xs"
+                      title="Copy formatted transfer evaluation summary"
+                    >
+                      {copiedReport ? (
+                        <>
+                          <Check className="h-3.5 w-3.5 text-emerald-600" />
+                          <span className="text-emerald-700">Report Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="h-3.5 w-3.5" />
+                          <span>Copy Report</span>
+                        </>
+                      )}
+                    </button>
+                    <button
+                      onClick={handleClearAll}
+                      className="text-xs font-semibold text-rose-600 hover:text-rose-700 transition-colors flex items-center gap-1 px-1.5 py-1"
+                    >
+                      <Trash2 className="h-3.5 w-3.5" />
+                      <span>Clear</span>
+                    </button>
+                  </div>
                 )}
               </div>
 
