@@ -54,6 +54,19 @@ export default function DegreePlanningPage() {
             <p className="mt-1 text-sm text-slate-600">
               Interactive 4-year schedule solver, prerequisite chain validator, and official degree requirements.
             </p>
+            <div className="flex flex-wrap items-center gap-2 mt-2.5">
+              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 text-[11px] font-bold">
+                <GraduationCap className="w-3 h-3 text-emerald-600" />
+                85 Undergraduate Programs (13 Schools)
+              </span>
+              <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-0.5 text-[11px] font-bold">
+                <Layers className="w-3 h-3 text-blue-600" />
+                UCI GE Breadth Core (Cat I–VIII)
+              </span>
+              <span className="inline-flex items-center gap-1 rounded-full bg-purple-50 text-purple-700 border border-purple-200 px-2.5 py-0.5 text-[11px] font-bold">
+                Double Major &amp; Minor Ready
+              </span>
+            </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">

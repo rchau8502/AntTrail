@@ -259,6 +259,28 @@ export const App: React.FC = () => {
     setProfile(persona.profile)
   }
 
+  const handleSelectMajor = (majorName: string) => {
+    setSelectedPersonaId('custom')
+    setProfile((prev) => ({
+      ...prev,
+      major: majorName
+    }))
+  }
+
+  const handleSelectSecondaryMajor = (secMajor: string) => {
+    setProfile((prev) => ({
+      ...prev,
+      secondaryMajor: secMajor || undefined
+    }))
+  }
+
+  const handleSelectMinor = (minorName: string) => {
+    setProfile((prev) => ({
+      ...prev,
+      minor: minorName || undefined
+    }))
+  }
+
   const handleResetProfile = () => {
     const fresh = STUDENT_PERSONAS[0].profile
     setSelectedPersonaId('freshman')
@@ -743,11 +765,14 @@ export const App: React.FC = () => {
 
       {/* Main Container */}
       <main className="flex-1 mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8 space-y-6">
-        {/* Persona Selector (Global across tabs) */}
+        {/* Persona & Degree Program Selector (Global across tabs) */}
         <PersonaSelector
           selectedPersonaId={selectedPersonaId}
           onSelectPersona={handleSelectPersona}
           activeProfile={profile}
+          onSelectMajor={handleSelectMajor}
+          onSelectSecondaryMajor={handleSelectSecondaryMajor}
+          onSelectMinor={handleSelectMinor}
         />
 
         {/* ============================================================== */}
