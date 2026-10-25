@@ -17,7 +17,7 @@ export function SiteHeader() {
   const { t } = useLanguage();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[color:var(--line)] bg-[rgba(248,245,240,0.86)] backdrop-blur-xl">
+    <header className="sticky top-16 z-30 border-b border-[color:var(--line)] bg-[rgba(248,245,240,0.86)] backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex items-start justify-between gap-4">
           <Link href="/" className="flex min-w-0 items-start gap-4">
