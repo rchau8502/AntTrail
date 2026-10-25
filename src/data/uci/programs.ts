@@ -4228,8 +4228,2053 @@ export const UCI_DEGREE_PROGRAMS: DegreeProgram[] = [
         ]
       }
     ]
+  },
+
+  // =========================================================================
+  // Film and Media Studies B.A. (School of Humanities)
+  // =========================================================================
+  {
+    id: 'FILM_MEDIA_BA_2026',
+    name: 'Film and Media Studies B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Humanities',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'film_lower_div',
+        category: 'LOWER_DIVISION',
+        name: 'Film & Visual Foundations',
+        requirements: [
+          {
+            id: 'film_intro',
+            name: 'Visual Analysis & Production',
+            description: 'Film aesthetics, media histories, and introduction to film analysis.',
+            type: 'ALL_OF',
+            courses: ['FLM&MDA 85A', 'FLM&MDA 85B', 'FLM&MDA 85C']
+          }
+        ]
+      },
+      {
+        id: 'film_upper_core',
+        category: 'UPPER_DIVISION',
+        name: 'Film Theory & Global Cinemas',
+        requirements: [
+          {
+            id: 'film_theory_req',
+            name: 'Theory, Directing & Genres',
+            description: 'Film theory, international cinema traditions, and television studies.',
+            type: 'ALL_OF',
+            courses: ['FLM&MDA 101A', 'FLM&MDA 110', 'FLM&MDA 130', 'FLM&MDA 160']
+          }
+        ]
+      },
+      {
+        id: 'film_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'film_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'film_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // African American Studies B.A. (School of Humanities)
+  // =========================================================================
+  {
+    id: 'AFAM_BA_2026',
+    name: 'African American Studies B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Humanities',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'afam_lower_div',
+        category: 'LOWER_DIVISION',
+        name: 'African American Foundations',
+        requirements: [
+          {
+            id: 'afam_intro',
+            name: 'Diaspora, History & Culture',
+            description: 'Black diaspora history, social movements, and cultural expression.',
+            type: 'ALL_OF',
+            courses: ['AFAM 40A', 'AFAM 40B']
+          }
+        ]
+      },
+      {
+        id: 'afam_upper_core',
+        category: 'UPPER_DIVISION',
+        name: 'Black Intellectual Thought',
+        requirements: [
+          {
+            id: 'afam_theory_req',
+            name: 'Critical Race, Literature & Colloquium',
+            description: 'Black feminist theory, African American literature, and senior colloquium.',
+            type: 'ALL_OF',
+            courses: ['AFAM 100A', 'AFAM 102', 'AFAM 190']
+          }
+        ]
+      },
+      {
+        id: 'afam_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'afam_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'afam_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Asian American Studies B.A. (School of Humanities)
+  // =========================================================================
+  {
+    id: 'ASIANAM_BA_2026',
+    name: 'Asian American Studies B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Humanities',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'asianam_lower_div',
+        category: 'LOWER_DIVISION',
+        name: 'Asian American Foundations',
+        requirements: [
+          {
+            id: 'asianam_intro',
+            name: 'Migration, Labor & Communities',
+            description: 'Asian American history, transpacific migration, and community politics.',
+            type: 'ALL_OF',
+            courses: ['ASIANAM 50', 'ASIANAM 51', 'ASIANAM 52']
+          }
+        ]
+      },
+      {
+        id: 'asianam_upper_core',
+        category: 'UPPER_DIVISION',
+        name: 'Cultural Studies & Senior Thesis',
+        requirements: [
+          {
+            id: 'asianam_theory_req',
+            name: 'Racialization & Community Research',
+            description: 'Critical Asian American theory, media representations, and senior thesis.',
+            type: 'ALL_OF',
+            courses: ['ASIANAM 100W', 'ASIANAM 130', 'ASIANAM 190']
+          }
+        ]
+      },
+      {
+        id: 'asianam_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'asianam_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'asianam_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Chicano/Latino Studies B.A. (School of Social Sciences)
+  // =========================================================================
+  {
+    id: 'CHICANO_BA_2026',
+    name: 'Chicano/Latino Studies B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Social Sciences',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'chicano_lower_div',
+        category: 'LOWER_DIVISION',
+        name: 'Chicano/Latino Foundations',
+        requirements: [
+          {
+            id: 'chicano_intro',
+            name: 'History, Culture & Demographics',
+            description: 'Borderlands history, Latinx cultural production, and contemporary social issues.',
+            type: 'ALL_OF',
+            courses: ['CHC/LAT 61', 'CHC/LAT 62', 'CHC/LAT 63']
+          }
+        ]
+      },
+      {
+        id: 'chicano_upper_core',
+        category: 'UPPER_DIVISION',
+        name: 'Immigration, Law & Capstone',
+        requirements: [
+          {
+            id: 'chicano_theory_req',
+            name: 'Immigration Policy & Field Research',
+            description: 'Transnational migration, educational equity, and senior seminar.',
+            type: 'ALL_OF',
+            courses: ['CHC/LAT 101', 'CHC/LAT 150', 'CHC/LAT 180']
+          }
+        ]
+      },
+      {
+        id: 'chicano_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'chicano_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'chicano_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Gender and Sexuality Studies B.A. (School of Humanities)
+  // =========================================================================
+  {
+    id: 'GEN_SEX_BA_2026',
+    name: 'Gender and Sexuality Studies B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Humanities',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'gen_sex_lower_div',
+        category: 'LOWER_DIVISION',
+        name: 'Gender & Sexuality Foundations',
+        requirements: [
+          {
+            id: 'gen_sex_intro',
+            name: 'Gender, Race & Queer Theories',
+            description: 'Introduction to gender studies and queer histories.',
+            type: 'ALL_OF',
+            courses: ['GEN&SEX 50A', 'GEN&SEX 50B']
+          }
+        ]
+      },
+      {
+        id: 'gen_sex_upper_core',
+        category: 'UPPER_DIVISION',
+        name: 'Transnational Feminisms & Methodologies',
+        requirements: [
+          {
+            id: 'gen_sex_theory_req',
+            name: 'Feminist Theory & Research Colloquium',
+            description: 'Feminist epistemologies, queer of color critique, and senior seminar.',
+            type: 'ALL_OF',
+            courses: ['GEN&SEX 100A', 'GEN&SEX 100B', 'GEN&SEX 190']
+          }
+        ]
+      },
+      {
+        id: 'gen_sex_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'gen_sex_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'gen_sex_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // East Asian Studies B.A. (School of Humanities)
+  // =========================================================================
+  {
+    id: 'EAST_ASIAN_BA_2026',
+    name: 'East Asian Studies B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Humanities',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'east_asian_lower_div',
+        category: 'LOWER_DIVISION',
+        name: 'East Asian Traditions',
+        requirements: [
+          {
+            id: 'east_asian_intro',
+            name: 'Civilizations of East Asia',
+            description: 'Historical and cultural survey of China, Japan, and Korea.',
+            type: 'ALL_OF',
+            courses: ['EAST ASIAN 20', 'EAST ASIAN 21']
+          }
+        ]
+      },
+      {
+        id: 'east_asian_upper_core',
+        category: 'UPPER_DIVISION',
+        name: 'Modern East Asia & Senior Thesis',
+        requirements: [
+          {
+            id: 'east_asian_theory_req',
+            name: 'Media, Politics & Senior Seminar',
+            description: 'Modern East Asian literature, visual culture, and capstone thesis.',
+            type: 'ALL_OF',
+            courses: ['EAST ASIAN 110', 'EAST ASIAN 120', 'EAST ASIAN 190']
+          }
+        ]
+      },
+      {
+        id: 'east_asian_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'east_asian_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'east_asian_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Chinese Studies B.A. (School of Humanities)
+  // =========================================================================
+  {
+    id: 'CHINESE_BA_2026',
+    name: 'Chinese Studies B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Humanities',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'chinese_lower_div',
+        category: 'LOWER_DIVISION',
+        name: 'Chinese Language Core',
+        requirements: [
+          {
+            id: 'chinese_lang_intro',
+            name: 'Intermediate Chinese',
+            description: 'Intermediate Mandarin reading, grammar, and conversation.',
+            type: 'ALL_OF',
+            courses: ['CHINESE 2A', 'CHINESE 2B', 'CHINESE 2C']
+          }
+        ]
+      },
+      {
+        id: 'chinese_upper_core',
+        category: 'UPPER_DIVISION',
+        name: 'Advanced Chinese & Literature',
+        requirements: [
+          {
+            id: 'chinese_lit_req',
+            name: 'Advanced Reading & Classical Chinese',
+            description: 'Classical Chinese grammar, modern fiction, and advanced composition.',
+            type: 'ALL_OF',
+            courses: ['CHINESE 100A', 'CHINESE 100B', 'CHINESE 115']
+          }
+        ]
+      },
+      {
+        id: 'chinese_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'chinese_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'chinese_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Japanese Language and Literature B.A. (School of Humanities)
+  // =========================================================================
+  {
+    id: 'JAPANESE_BA_2026',
+    name: 'Japanese Language and Literature B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Humanities',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'japanese_lower_div',
+        category: 'LOWER_DIVISION',
+        name: 'Japanese Language Core',
+        requirements: [
+          {
+            id: 'japanese_lang_intro',
+            name: 'Intermediate Japanese',
+            description: 'Intermediate Japanese syntax, kanji, and listening comprehension.',
+            type: 'ALL_OF',
+            courses: ['JAPANSE 2A', 'JAPANSE 2B', 'JAPANSE 2C']
+          }
+        ]
+      },
+      {
+        id: 'japanese_upper_core',
+        category: 'UPPER_DIVISION',
+        name: 'Advanced Japanese & Literary Masterpieces',
+        requirements: [
+          {
+            id: 'japanese_lit_req',
+            name: 'Advanced Japanese & Literary Survey',
+            description: 'Third-year Japanese language and classical/modern literary texts.',
+            type: 'ALL_OF',
+            courses: ['JAPANSE 100A', 'JAPANSE 100B', 'JAPANSE 115']
+          }
+        ]
+      },
+      {
+        id: 'japanese_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'japanese_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'japanese_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Korean Literature and Culture B.A. (School of Humanities)
+  // =========================================================================
+  {
+    id: 'KOREAN_BA_2026',
+    name: 'Korean Literature and Culture B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Humanities',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'korean_lower_div',
+        category: 'LOWER_DIVISION',
+        name: 'Korean Language Core',
+        requirements: [
+          {
+            id: 'korean_lang_intro',
+            name: 'Intermediate Korean',
+            description: 'Intermediate Korean grammar, hanja, and conversational discourse.',
+            type: 'ALL_OF',
+            courses: ['KOREAN 2A', 'KOREAN 2B', 'KOREAN 2C']
+          }
+        ]
+      },
+      {
+        id: 'korean_upper_core',
+        category: 'UPPER_DIVISION',
+        name: 'Modern Korean Media & Literature',
+        requirements: [
+          {
+            id: 'korean_lit_req',
+            name: 'Advanced Korean & Hallyu Cultural Studies',
+            description: 'Advanced Korean, modern literature, and contemporary media analysis.',
+            type: 'ALL_OF',
+            courses: ['KOREAN 100A', 'KOREAN 100B', 'KOREAN 120']
+          }
+        ]
+      },
+      {
+        id: 'korean_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'korean_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'korean_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Spanish B.A. (School of Humanities)
+  // =========================================================================
+  {
+    id: 'SPANISH_BA_2026',
+    name: 'Spanish B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Humanities',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'spanish_lower_div',
+        category: 'LOWER_DIVISION',
+        name: 'Intermediate Spanish',
+        requirements: [
+          {
+            id: 'spanish_lang_intro',
+            name: 'Intermediate Spanish Sequence',
+            description: 'Grammar synthesis, composition, and oral communication.',
+            type: 'ALL_OF',
+            courses: ['SPANISH 2A', 'SPANISH 2B', 'SPANISH 2C']
+          }
+        ]
+      },
+      {
+        id: 'spanish_upper_core',
+        category: 'UPPER_DIVISION',
+        name: 'Hispanic Literatures & Linguistics',
+        requirements: [
+          {
+            id: 'spanish_lit_ling',
+            name: 'Spanish Literature & Linguistics',
+            description: 'Introduction to literary analysis, phonetics, and Golden Age/Latin American literature.',
+            type: 'ALL_OF',
+            courses: ['SPANISH 101A', 'SPANISH 101B', 'SPANISH 110', 'SPANISH 113']
+          }
+        ]
+      },
+      {
+        id: 'spanish_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'spanish_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'spanish_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // French B.A. (School of Humanities)
+  // =========================================================================
+  {
+    id: 'FRENCH_BA_2026',
+    name: 'French B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Humanities',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'french_lower_div',
+        category: 'LOWER_DIVISION',
+        name: 'Intermediate French',
+        requirements: [
+          {
+            id: 'french_lang_intro',
+            name: 'Intermediate French Sequence',
+            description: 'Intermediate syntax, francophone readings, and conversational skills.',
+            type: 'ALL_OF',
+            courses: ['FRENCH 2A', 'FRENCH 2B', 'FRENCH 2C']
+          }
+        ]
+      },
+      {
+        id: 'french_upper_core',
+        category: 'UPPER_DIVISION',
+        name: 'Francophone Literature & Culture',
+        requirements: [
+          {
+            id: 'french_lit_req',
+            name: 'Advanced Composition & Literature',
+            description: 'Advanced composition, Enlightenment thought, and Francophone cinema.',
+            type: 'ALL_OF',
+            courses: ['FRENCH 101A', 'FRENCH 101B', 'FRENCH 115']
+          }
+        ]
+      },
+      {
+        id: 'french_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'french_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'french_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // German Studies B.A. (School of Humanities)
+  // =========================================================================
+  {
+    id: 'GERMAN_BA_2026',
+    name: 'German Studies B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Humanities',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'german_lower_div',
+        category: 'LOWER_DIVISION',
+        name: 'Intermediate German',
+        requirements: [
+          {
+            id: 'german_lang_intro',
+            name: 'Intermediate German Sequence',
+            description: 'Intermediate German grammar, translation, and cultural history.',
+            type: 'ALL_OF',
+            courses: ['GERMAN 2A', 'GERMAN 2B', 'GERMAN 2C']
+          }
+        ]
+      },
+      {
+        id: 'german_upper_core',
+        category: 'UPPER_DIVISION',
+        name: 'German Intellectual History & Modern Culture',
+        requirements: [
+          {
+            id: 'german_lit_req',
+            name: 'German Philosophy, Film & Literature',
+            description: 'German literary movements from Romanticism to Weimar and modern Berlin.',
+            type: 'ALL_OF',
+            courses: ['GERMAN 101', 'GERMAN 102', 'GERMAN 115']
+          }
+        ]
+      },
+      {
+        id: 'german_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'german_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'german_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // European Studies B.A. (School of Humanities)
+  // =========================================================================
+  {
+    id: 'EUROPEAN_BA_2026',
+    name: 'European Studies B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Humanities',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'european_lower_div',
+        category: 'LOWER_DIVISION',
+        name: 'European History & Politics',
+        requirements: [
+          {
+            id: 'european_intro',
+            name: 'European Civilization',
+            description: 'Historical evolution of modern Europe, European Union, and nation states.',
+            type: 'ALL_OF',
+            courses: ['HISTORY 21A', 'HISTORY 21B', 'POL SCI 51A']
+          }
+        ]
+      },
+      {
+        id: 'european_upper_core',
+        category: 'UPPER_DIVISION',
+        name: 'European Union Politics & Cultural Studies',
+        requirements: [
+          {
+            id: 'european_core_req',
+            name: 'EU Integration, Culture & Senior Seminar',
+            description: 'European political integration, post-war migrations, and senior thesis.',
+            type: 'ALL_OF',
+            courses: ['EURO ST 101', 'EURO ST 102', 'EURO ST 190']
+          }
+        ]
+      },
+      {
+        id: 'european_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'european_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'european_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Classics B.A. (School of Humanities)
+  // =========================================================================
+  {
+    id: 'CLASSICS_BA_2026',
+    name: 'Classics B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Humanities',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'classics_lower_div',
+        category: 'LOWER_DIVISION',
+        name: 'Greek and Roman Civilization',
+        requirements: [
+          {
+            id: 'classics_intro',
+            name: 'Classical Mythology & Civilizations',
+            description: 'Mythology, ancient Greece, and Republican/Imperial Rome.',
+            type: 'ALL_OF',
+            courses: ['CLASSIC 36A', 'CLASSIC 36B', 'CLASSIC 36C']
+          }
+        ]
+      },
+      {
+        id: 'classics_upper_core',
+        category: 'UPPER_DIVISION',
+        name: 'Ancient Languages & Historiography',
+        requirements: [
+          {
+            id: 'classics_core_req',
+            name: 'Classical Literature, Archaeology & Thesis',
+            description: 'Homeric epics, Roman historians, classical philosophy, and senior thesis.',
+            type: 'ALL_OF',
+            courses: ['CLASSIC 110', 'CLASSIC 120', 'CLASSIC 190']
+          }
+        ]
+      },
+      {
+        id: 'classics_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'classics_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'classics_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Religious Studies B.A. (School of Humanities)
+  // =========================================================================
+  {
+    id: 'RELIGIOUS_BA_2026',
+    name: 'Religious Studies B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Humanities',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'relig_lower_div',
+        category: 'LOWER_DIVISION',
+        name: 'World Religions',
+        requirements: [
+          {
+            id: 'relig_intro',
+            name: 'Introduction to World Religions',
+            description: 'Abrahamic traditions, Dharmic religions, and indigenous spiritualities.',
+            type: 'ALL_OF',
+            courses: ['REL STD 5A', 'REL STD 5B', 'REL STD 5C']
+          }
+        ]
+      },
+      {
+        id: 'relig_upper_core',
+        category: 'UPPER_DIVISION',
+        name: 'Comparative Religion & Senior Seminar',
+        requirements: [
+          {
+            id: 'relig_core_req',
+            name: 'Religious Theory & Sacred Texts',
+            description: 'Sociology of religion, scriptural interpretation, and capstone research.',
+            type: 'ALL_OF',
+            courses: ['REL STD 100', 'REL STD 110', 'REL STD 190']
+          }
+        ]
+      },
+      {
+        id: 'relig_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'relig_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'relig_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Quantitative Economics B.S. (School of Social Sciences)
+  // =========================================================================
+  {
+    id: 'QUANT_ECON_BS_2026',
+    name: 'Quantitative Economics B.S.',
+    catalogYear: '2026-27',
+    school: 'School of Social Sciences',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'quant_econ_lower',
+        category: 'LOWER_DIVISION',
+        name: 'Calculus, Linear Algebra & Econ',
+        requirements: [
+          {
+            id: 'quant_econ_foundations',
+            name: 'Micro/Macro, Multivariable & Proofs',
+            description: 'Micro/macro economics, multivariable calculus, and linear algebra.',
+            type: 'ALL_OF',
+            courses: ['ECON 20A', 'ECON 20B', 'MATH 2A', 'MATH 2B', 'MATH 2D', 'MATH 3A', 'STATS 67']
+          }
+        ]
+      },
+      {
+        id: 'quant_econ_upper',
+        category: 'UPPER_DIVISION',
+        name: 'Advanced Mathematical Economics & Econometrics',
+        requirements: [
+          {
+            id: 'quant_econ_theory',
+            name: 'Micro, Macro, Econometrics & Game Theory',
+            description: 'Intermediate economic theory, two quarters of econometrics, and game theory.',
+            type: 'ALL_OF',
+            courses: ['ECON 100A', 'ECON 100B', 'ECON 100C', 'ECON 122A', 'ECON 122B', 'ECON 145L']
+          }
+        ]
+      },
+      {
+        id: 'quant_econ_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'quant_econ_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'quant_econ_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Language Science B.S. (School of Social Sciences)
+  // =========================================================================
+  {
+    id: 'LANG_SCI_BS_2026',
+    name: 'Language Science B.S.',
+    catalogYear: '2026-27',
+    school: 'School of Social Sciences',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'lang_sci_lower',
+        category: 'LOWER_DIVISION',
+        name: 'Linguistics, Python & Logic',
+        requirements: [
+          {
+            id: 'lang_sci_foundations',
+            name: 'Introduction to Linguistics & Programming',
+            description: 'Phonetics/phonology, syntax, Python programming, and discrete math.',
+            type: 'ALL_OF',
+            courses: ['LSCI 3', 'LSCI 10', 'ICS 31', 'MATH 2A']
+          }
+        ]
+      },
+      {
+        id: 'lang_sci_upper',
+        category: 'UPPER_DIVISION',
+        name: 'Formal Syntax, Semantics & Computational Linguistics',
+        requirements: [
+          {
+            id: 'lang_sci_core_req',
+            name: 'Theoretical & Computational Linguistics',
+            description: 'Syntactic theory, formal semantics, phonological analysis, and NLP.',
+            type: 'ALL_OF',
+            courses: ['LSCI 111', 'LSCI 121', 'LSCI 141', 'LSCI 165']
+          }
+        ]
+      },
+      {
+        id: 'lang_sci_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'lang_sci_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'lang_sci_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Social Policy and Public Service B.A. (School of Social Sciences)
+  // =========================================================================
+  {
+    id: 'SOC_POLICY_BA_2026',
+    name: 'Social Policy and Public Service B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Social Sciences',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'soc_policy_lower',
+        category: 'LOWER_DIVISION',
+        name: 'Social Policy & Government',
+        requirements: [
+          {
+            id: 'soc_policy_intro',
+            name: 'Government, Sociology & Economics',
+            description: 'American government, introduction to sociology, and microeconomics.',
+            type: 'ALL_OF',
+            courses: ['POL SCI 21A', 'SOCIOL 1', 'ECON 20A']
+          }
+        ]
+      },
+      {
+        id: 'soc_policy_upper',
+        category: 'UPPER_DIVISION',
+        name: 'Policy Evaluation & Community Fieldwork',
+        requirements: [
+          {
+            id: 'soc_policy_core_req',
+            name: 'Policy Analysis, Nonprofit Leadership & Internship',
+            description: 'Social policy analysis, leadership in public service, and fieldwork.',
+            type: 'ALL_OF',
+            courses: ['SPPS 110', 'SPPS 115', 'SPPS 195A', 'SPPS 195B']
+          }
+        ]
+      },
+      {
+        id: 'soc_policy_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'soc_policy_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'soc_policy_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Applied Mathematics B.S. (School of Physical Sciences)
+  // =========================================================================
+  {
+    id: 'APPL_MATH_BS_2026',
+    name: 'Applied Mathematics B.S.',
+    catalogYear: '2026-27',
+    school: 'School of Physical Sciences',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'appl_math_lower',
+        category: 'LOWER_DIVISION',
+        name: 'Calculus, Linear Algebra & Differential Equations',
+        requirements: [
+          {
+            id: 'appl_math_calc_series',
+            name: 'Calculus & Proofs Core',
+            description: 'Calculus, linear algebra, proofs, and differential equations.',
+            type: 'ALL_OF',
+            courses: ['MATH 2A', 'MATH 2B', 'MATH 2D', 'MATH 3A', 'MATH 3D', 'MATH 13']
+          }
+        ]
+      },
+      {
+        id: 'appl_math_upper',
+        category: 'UPPER_DIVISION',
+        name: 'Numerical Analysis, Modeling & Optimization',
+        requirements: [
+          {
+            id: 'appl_math_core_req',
+            name: 'Numerical Methods, PDEs & Complex Variables',
+            description: 'Numerical analysis, partial differential equations, and complex analysis.',
+            type: 'ALL_OF',
+            courses: ['MATH 105A', 'MATH 112A', 'MATH 115', 'MATH 140A']
+          }
+        ]
+      },
+      {
+        id: 'appl_math_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'appl_math_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'appl_math_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Mathematics for Biology B.S. (School of Physical Sciences)
+  // =========================================================================
+  {
+    id: 'MATH_BIO_BS_2026',
+    name: 'Mathematics for Biology B.S.',
+    catalogYear: '2026-27',
+    school: 'School of Physical Sciences',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'math_bio_lower',
+        category: 'LOWER_DIVISION',
+        name: 'Math, Biology & Chemistry Core',
+        requirements: [
+          {
+            id: 'math_bio_foundations',
+            name: 'Calculus, Linear Algebra & Cell Bio',
+            description: 'Calculus sequence, differential equations, and general biology.',
+            type: 'ALL_OF',
+            courses: ['MATH 2A', 'MATH 2B', 'MATH 2D', 'MATH 3A', 'MATH 3D', 'BIO SCI 93', 'BIO SCI 94']
+          }
+        ]
+      },
+      {
+        id: 'math_bio_upper',
+        category: 'UPPER_DIVISION',
+        name: 'Mathematical Modeling in Biology',
+        requirements: [
+          {
+            id: 'math_bio_core_req',
+            name: 'Biomathematics, Dynamical Systems & Genetics',
+            description: 'Mathematical biology, genetics, and dynamical population models.',
+            type: 'ALL_OF',
+            courses: ['MATH 113A', 'MATH 113B', 'BIO SCI 97', 'MATH 105A']
+          }
+        ]
+      },
+      {
+        id: 'math_bio_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'math_bio_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'math_bio_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Mathematics for Education B.S. (School of Physical Sciences)
+  // =========================================================================
+  {
+    id: 'MATH_EDUC_BS_2026',
+    name: 'Mathematics for Education B.S.',
+    catalogYear: '2026-27',
+    school: 'School of Physical Sciences',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'math_educ_lower',
+        category: 'LOWER_DIVISION',
+        name: 'Calculus & Proofs Core',
+        requirements: [
+          {
+            id: 'math_educ_foundations',
+            name: 'Calculus, Linear Algebra & Education',
+            description: 'Calculus sequence, linear algebra, foundations of education.',
+            type: 'ALL_OF',
+            courses: ['MATH 2A', 'MATH 2B', 'MATH 2D', 'MATH 3A', 'MATH 13', 'EDUC 50']
+          }
+        ]
+      },
+      {
+        id: 'math_educ_upper',
+        category: 'UPPER_DIVISION',
+        name: 'Abstract Algebra, Geometry & Teaching',
+        requirements: [
+          {
+            id: 'math_educ_core_req',
+            name: 'Abstract Algebra, Modern Geometry & Methods',
+            description: 'Abstract algebra, classical/modern geometry, and secondary math pedagogy.',
+            type: 'ALL_OF',
+            courses: ['MATH 120A', 'MATH 130A', 'MATH 161', 'EDUC 100']
+          }
+        ]
+      },
+      {
+        id: 'math_educ_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'math_educ_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'math_educ_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Environmental Science B.S. (School of Physical Sciences)
+  // =========================================================================
+  {
+    id: 'ENVR_SCI_BS_2026',
+    name: 'Environmental Science B.S.',
+    catalogYear: '2026-27',
+    school: 'School of Physical Sciences',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'envr_sci_lower',
+        category: 'LOWER_DIVISION',
+        name: 'Earth System, Chemistry, Physics & Math',
+        requirements: [
+          {
+            id: 'envr_sci_foundations',
+            name: 'Earth Science, Chemistry & Calculus',
+            description: 'Earth system science, general chemistry, and calculus series.',
+            type: 'ALL_OF',
+            courses: ['EARTHSS 1', 'EARTHSS 51', 'CHEM 1A', 'CHEM 1B', 'CHEM 1C', 'MATH 2A', 'MATH 2B']
+          }
+        ]
+      },
+      {
+        id: 'envr_sci_upper',
+        category: 'UPPER_DIVISION',
+        name: 'Atmospheric, Ocean & Soil Sciences',
+        requirements: [
+          {
+            id: 'envr_sci_core_req',
+            name: 'Climate, Oceanography & Field Methods',
+            description: 'Global climate change, oceanography, biogeochemistry, and field measurements.',
+            type: 'ALL_OF',
+            courses: ['EARTHSS 114', 'EARTHSS 124', 'EARTHSS 144', 'EARTHSS 170']
+          }
+        ]
+      },
+      {
+        id: 'envr_sci_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'envr_sci_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'envr_sci_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Human Biology B.S. (School of Biological Sciences)
+  // =========================================================================
+  {
+    id: 'HUMAN_BIO_BS_2026',
+    name: 'Human Biology B.S.',
+    catalogYear: '2026-27',
+    school: 'School of Biological Sciences',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'human_bio_lower',
+        category: 'LOWER_DIVISION',
+        name: 'General Biology & Chemistry Core',
+        requirements: [
+          {
+            id: 'human_bio_prep',
+            name: 'Biology & Chemistry Series',
+            description: 'General biology sequence, general chemistry, and organic chemistry.',
+            type: 'ALL_OF',
+            courses: ['BIO SCI 93', 'BIO SCI 94', 'BIO SCI 97', 'BIO SCI 98', 'CHEM 1A', 'CHEM 1B', 'CHEM 51A']
+          }
+        ]
+      },
+      {
+        id: 'human_bio_upper',
+        category: 'UPPER_DIVISION',
+        name: 'Human Anatomy, Physiology & Pathology',
+        requirements: [
+          {
+            id: 'human_bio_core_req',
+            name: 'Human Physiology & Molecular Mechanisms',
+            description: 'Human physiology, human anatomy with lab, and pathophysiology.',
+            type: 'ALL_OF',
+            courses: ['BIO SCI E109', 'BIO SCI D170', 'BIO SCI M122', 'BIO SCI N110']
+          }
+        ]
+      },
+      {
+        id: 'human_bio_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'human_bio_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'human_bio_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Exercise Sciences B.S. (School of Biological Sciences)
+  // =========================================================================
+  {
+    id: 'EXERCISE_SCI_BS_2026',
+    name: 'Exercise Sciences B.S.',
+    catalogYear: '2026-27',
+    school: 'School of Biological Sciences',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'exercise_sci_lower',
+        category: 'LOWER_DIVISION',
+        name: 'Biology, Chemistry & Physics Core',
+        requirements: [
+          {
+            id: 'exercise_sci_prep',
+            name: 'Biology, Chemistry & Mechanics',
+            description: 'General biology, general chemistry, and physics mechanics.',
+            type: 'ALL_OF',
+            courses: ['BIO SCI 93', 'BIO SCI 94', 'CHEM 1A', 'CHEM 1B', 'PHYSICS 7C']
+          }
+        ]
+      },
+      {
+        id: 'exercise_sci_upper',
+        category: 'UPPER_DIVISION',
+        name: 'Kinesiology, Exercise Physiology & Biomechanics',
+        requirements: [
+          {
+            id: 'exercise_sci_core_req',
+            name: 'Exercise Physiology & Biomechanics',
+            description: 'Exercise physiology, kinesiology, cardiovascular adaptations, and nutrition.',
+            type: 'ALL_OF',
+            courses: ['BIO SCI E109', 'BIO SCI E136', 'BIO SCI E155', 'BIO SCI E179']
+          }
+        ]
+      },
+      {
+        id: 'exercise_sci_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'exercise_sci_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'exercise_sci_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Genetics B.S. (School of Biological Sciences)
+  // =========================================================================
+  {
+    id: 'GENETICS_BS_2026',
+    name: 'Genetics B.S.',
+    catalogYear: '2026-27',
+    school: 'School of Biological Sciences',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'genetics_lower',
+        category: 'LOWER_DIVISION',
+        name: 'General Biology & Chemistry Core',
+        requirements: [
+          {
+            id: 'genetics_prep',
+            name: 'Biology, Genetics & Organic Chemistry',
+            description: 'DNA, ecosystems, genetics, biochemistry, and organic chemistry.',
+            type: 'ALL_OF',
+            courses: ['BIO SCI 93', 'BIO SCI 94', 'BIO SCI 97', 'BIO SCI 98', 'CHEM 1A', 'CHEM 1B', 'CHEM 51A']
+          }
+        ]
+      },
+      {
+        id: 'genetics_upper',
+        category: 'UPPER_DIVISION',
+        name: 'Molecular Genetics, Genomics & Bioinformatics',
+        requirements: [
+          {
+            id: 'genetics_core_req',
+            name: 'Genomics, Gene Regulation & Lab',
+            description: 'Human genetics, molecular biology of gene expression, and genomics lab.',
+            type: 'ALL_OF',
+            courses: ['BIO SCI M116', 'BIO SCI M123', 'BIO SCI M124A', 'BIO SCI M118']
+          }
+        ]
+      },
+      {
+        id: 'genetics_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'genetics_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'genetics_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Biomedical Engineering: Premedical B.S. (The Henry Samueli School of Engineering)
+  // =========================================================================
+  {
+    id: 'BME_PREMED_BS_2026',
+    name: 'Biomedical Engineering: Premedical B.S.',
+    catalogYear: '2026-27',
+    school: 'The Henry Samueli School of Engineering',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'bme_premed_lower',
+        category: 'LOWER_DIVISION',
+        name: 'Engineering Math, Physics & Pre-Med Bio/Chem',
+        requirements: [
+          {
+            id: 'bme_premed_foundations',
+            name: 'Calculus, Physics, Bio & Organic Chem',
+            description: 'Calculus, physics, cell biology, and organic chemistry.',
+            type: 'ALL_OF',
+            courses: ['MATH 2A', 'MATH 2B', 'MATH 2D', 'PHYSICS 7C', 'PHYSICS 7D', 'CHEM 1A', 'CHEM 1B', 'CHEM 51A', 'BIO SCI 93']
+          }
+        ]
+      },
+      {
+        id: 'bme_premed_upper',
+        category: 'UPPER_DIVISION',
+        name: 'Biomechanics, Physiological Systems & Senior Design',
+        requirements: [
+          {
+            id: 'bme_premed_core_req',
+            name: 'Biomechanics, Bioinstrumentation & Capstone',
+            description: 'Biomechanics, sensory systems, bioinstrumentation, and senior design.',
+            type: 'ALL_OF',
+            courses: ['BME 110A', 'BME 120', 'BME 140', 'BME 180A', 'BME 180B']
+          }
+        ]
+      },
+      {
+        id: 'bme_premed_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'bme_premed_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'bme_premed_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Environmental Science and Policy B.A. (School of Social Ecology)
+  // =========================================================================
+  {
+    id: 'ENVR_POL_BA_2026',
+    name: 'Environmental Science and Policy B.A.',
+    catalogYear: '2026-27',
+    school: 'School of Social Ecology',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'envr_pol_lower',
+        category: 'LOWER_DIVISION',
+        name: 'Social Ecology & Environmental Science',
+        requirements: [
+          {
+            id: 'envr_pol_intro',
+            name: 'Social Ecology, Earth System & Urban Design',
+            description: 'Social ecology fundamentals, Earth systems, and environmental design.',
+            type: 'ALL_OF',
+            courses: ['SOCECOL 10', 'EARTHSS 1', 'UPPP 8']
+          }
+        ]
+      },
+      {
+        id: 'envr_pol_upper',
+        category: 'UPPER_DIVISION',
+        name: 'Environmental Law, Climate Policy & Field Study',
+        requirements: [
+          {
+            id: 'envr_pol_core_req',
+            name: 'Environmental Policy, Climate Justice & Fieldwork',
+            description: 'Environmental law, sustainable cities, and mandatory field study.',
+            type: 'ALL_OF',
+            courses: ['UPPP 115', 'SOCECOL 195', 'ENVE 114']
+          }
+        ]
+      },
+      {
+        id: 'envr_pol_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'envr_pol_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'envr_pol_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Dance B.F.A. (Claire Trevor School of the Arts)
+  // =========================================================================
+  {
+    id: 'DANCE_BFA_2026',
+    name: 'Dance B.F.A.',
+    catalogYear: '2026-27',
+    school: 'Claire Trevor School of the Arts',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'dance_bfa_lower',
+        category: 'LOWER_DIVISION',
+        name: 'Ballet, Modern, Jazz & Composition',
+        requirements: [
+          {
+            id: 'dance_bfa_technique',
+            name: 'Intensive Technique Series',
+            description: 'Ballet, modern dance, jazz, and choreography.',
+            type: 'ALL_OF',
+            courses: ['DANCE 60A', 'DANCE 70A', 'DANCE 80A', 'DANCE 90A']
+          }
+        ]
+      },
+      {
+        id: 'dance_bfa_upper',
+        category: 'UPPER_DIVISION',
+        name: 'Choreographic Studio & Concert Performance',
+        requirements: [
+          {
+            id: 'dance_bfa_performance',
+            name: 'Advanced Performance, Kinesiology & Capstone',
+            description: 'Performance showcase, kinesiology, and senior choreographic thesis.',
+            type: 'ALL_OF',
+            courses: ['DANCE 100', 'DANCE 160A', 'DANCE 170A', 'DANCE 190']
+          }
+        ]
+      },
+      {
+        id: 'dance_bfa_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'dance_bfa_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'dance_bfa_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Music Performance B.Mus. (Claire Trevor School of the Arts)
+  // =========================================================================
+  {
+    id: 'MUSIC_PERF_BMUS_2026',
+    name: 'Music Performance B.Mus.',
+    catalogYear: '2026-27',
+    school: 'Claire Trevor School of the Arts',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'music_perf_lower',
+        category: 'LOWER_DIVISION',
+        name: 'Harmony, Musicianship & Private Instruction',
+        requirements: [
+          {
+            id: 'music_perf_prep',
+            name: 'Musicianship, Harmony & Music Tech',
+            description: 'Three quarters of harmony and music technology.',
+            type: 'ALL_OF',
+            courses: ['MUSIC 16A', 'MUSIC 16B', 'MUSIC 16C', 'MUSIC 51']
+          }
+        ]
+      },
+      {
+        id: 'music_perf_upper',
+        category: 'UPPER_DIVISION',
+        name: 'Orchestration, Ensembles & Solo Recital',
+        requirements: [
+          {
+            id: 'music_perf_recital',
+            name: 'Advanced Theory, Large Ensemble & Senior Recital',
+            description: 'Music history, form/analysis, ensemble, and solo recital.',
+            type: 'ALL_OF',
+            courses: ['MUSIC 100', 'MUSIC 140A', 'MUSIC 160', 'MUSIC 190']
+          }
+        ]
+      },
+      {
+        id: 'music_perf_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'music_perf_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'music_perf_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // Music Theatre B.F.A. (Claire Trevor School of the Arts)
+  // =========================================================================
+  {
+    id: 'MUSIC_THEATRE_BFA_2026',
+    name: 'Music Theatre B.F.A.',
+    catalogYear: '2026-27',
+    school: 'Claire Trevor School of the Arts',
+    totalUnitsRequired: 180,
+    minUpperDivisionUnits: 60,
+    sections: [
+      {
+        id: 'music_theatre_lower',
+        category: 'LOWER_DIVISION',
+        name: 'Acting, Voice & Musical Theatre Dance',
+        requirements: [
+          {
+            id: 'music_theatre_prep',
+            name: 'Acting, Musicianship & Dance Fundamentals',
+            description: 'Acting fundamentals, harmony, stagecraft, and jazz dance.',
+            type: 'ALL_OF',
+            courses: ['DRAMA 30A', 'DRAMA 40A', 'MUSIC 16A', 'DANCE 80A']
+          }
+        ]
+      },
+      {
+        id: 'music_theatre_upper',
+        category: 'UPPER_DIVISION',
+        name: 'Music Theatre Workshop & Mainstage Production',
+        requirements: [
+          {
+            id: 'music_theatre_core_req',
+            name: 'Advanced Acting, Audition & Mainstage Performance',
+            description: 'Advanced acting workshop, directing, and mainstage production.',
+            type: 'ALL_OF',
+            courses: ['DRAMA 120A', 'DRAMA 130', 'DRAMA 101', 'DRAMA 190']
+          }
+        ]
+      },
+      {
+        id: 'music_theatre_university',
+        category: 'UNIVERSITY',
+        name: 'University & Unit Minimums',
+        requirements: [
+          {
+            id: 'music_theatre_min_total_units',
+            name: '180 Total Units Graduation Threshold',
+            description: 'A minimum of 180 quarter units is required for the bachelor degree.',
+            type: 'MIN_TOTAL_UNITS',
+            targetCount: 180
+          },
+          {
+            id: 'music_theatre_min_upper_div_units',
+            name: '60 Upper-Division Units Minimum',
+            description: 'At least 60 units must be completed in upper-division courses (numbered 100-199).',
+            type: 'MIN_UPPER_DIV_UNITS',
+            targetCount: 60
+          }
+        ]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // UCI General Education (GE Breadth) (Division of Undergraduate Education)
+  // =========================================================================
+  {
+    id: 'UCI_GE_CORE_2026',
+    name: 'UCI General Education (GE Breadth)',
+    catalogYear: '2026-27',
+    school: 'Division of Undergraduate Education',
+    totalUnitsRequired: 68,
+    minUpperDivisionUnits: 4,
+    sections: [
+      {
+        id: 'ge_cat_1',
+        category: 'GENERAL_EDUCATION',
+        name: 'Category I: Writing',
+        requirements: [
+          {
+            id: 'ge_1a_lower_writing',
+            name: 'GE Ia: Lower-Division Writing',
+            description: 'Two courses in academic rhetoric and composition (WRITING 39B and WRITING 39C).',
+            type: 'ALL_OF',
+            courses: ['WRITING 39B', 'WRITING 39C']
+          },
+          {
+            id: 'ge_1b_upper_writing',
+            name: 'GE Ib: Upper-Division Writing',
+            description: 'One upper-division course with writing-intensive designation.',
+            type: 'CHOOSE_N_COURSES',
+            targetCount: 1,
+            courses: ['ENGLISH 101W', 'HISTORY 100W', 'SOCECOL 194W', 'PUBHLTH 195W', 'ASIANAM 100W']
+          }
+        ]
+      },
+      {
+        id: 'ge_cat_2',
+        category: 'GENERAL_EDUCATION',
+        name: 'Category II: Science and Technology',
+        requirements: [
+          {
+            id: 'ge_2_science',
+            name: 'Science and Technology Breadth',
+            description: 'Complete at least 3 courses in physical or biological sciences.',
+            type: 'CHOOSE_N_COURSES',
+            targetCount: 3,
+            courses: ['BIO SCI 93', 'BIO SCI 94', 'CHEM 1A', 'PHYSICS 7C', 'EARTHSS 1']
+          }
+        ]
+      },
+      {
+        id: 'ge_cat_3',
+        category: 'GENERAL_EDUCATION',
+        name: 'Category III: Social and Behavioral Sciences',
+        requirements: [
+          {
+            id: 'ge_3_social_behavioral',
+            name: 'Social and Behavioral Sciences',
+            description: 'Complete at least 3 courses in economics, psychology, sociology, politics, or anthropology.',
+            type: 'CHOOSE_N_COURSES',
+            targetCount: 3,
+            courses: ['ECON 20A', 'POL SCI 21A', 'PSYCH 9A', 'SOCIOL 1', 'ANTHRO 2A', 'SOCECOL 10']
+          }
+        ]
+      },
+      {
+        id: 'ge_cat_4',
+        category: 'GENERAL_EDUCATION',
+        name: 'Category IV: Arts and Humanities',
+        requirements: [
+          {
+            id: 'ge_4_arts_humanities',
+            name: 'Arts and Humanities',
+            description: 'Complete at least 3 courses in literature, philosophy, history, visual arts, music, or drama.',
+            type: 'CHOOSE_N_COURSES',
+            targetCount: 3,
+            courses: ['ART 1A', 'DRAMA 10', 'MUSIC 16A', 'PHILOS 1', 'HISTORY 21A', 'ENGLISH 8']
+          }
+        ]
+      },
+      {
+        id: 'ge_cat_5',
+        category: 'GENERAL_EDUCATION',
+        name: 'Category V: Quantitative, Symbolic, and Computational Reasoning',
+        requirements: [
+          {
+            id: 'ge_5_quantitative',
+            name: 'Quantitative and Computational Reasoning',
+            description: 'Complete at least 3 courses in calculus, linear algebra, statistics, or programming.',
+            type: 'CHOOSE_N_COURSES',
+            targetCount: 3,
+            courses: ['MATH 2A', 'MATH 2B', 'STATS 67', 'ICS 31']
+          }
+        ]
+      },
+      {
+        id: 'ge_cat_6',
+        category: 'GENERAL_EDUCATION',
+        name: 'Category VI: Language Other Than English (LOTE)',
+        requirements: [
+          {
+            id: 'ge_6_lote',
+            name: 'Language Other Than English (Level 1C or Equivalent)',
+            description: 'Demonstrate competence through intermediate language course or AP/SAT II.',
+            type: 'CHOOSE_N_COURSES',
+            targetCount: 1,
+            courses: ['SPANISH 2A', 'FRENCH 2A', 'CHINESE 2A', 'JAPANSE 2A', 'KOREAN 2A']
+          }
+        ]
+      },
+      {
+        id: 'ge_cat_7',
+        category: 'GENERAL_EDUCATION',
+        name: 'Category VII: Multicultural Studies',
+        requirements: [
+          {
+            id: 'ge_7_multicultural',
+            name: 'Multicultural Studies',
+            description: 'Complete at least 1 course examining diverse ethnic or cultural identities in the US.',
+            type: 'CHOOSE_N_COURSES',
+            targetCount: 1,
+            courses: ['ASIANAM 50', 'AFAM 40A', 'CHC/LAT 61', 'GEN&SEX 50A', 'EDUC 160']
+          }
+        ]
+      },
+      {
+        id: 'ge_cat_8',
+        category: 'GENERAL_EDUCATION',
+        name: 'Category VIII: International/Global Issues',
+        requirements: [
+          {
+            id: 'ge_8_international',
+            name: 'International and Global Issues',
+            description: 'Complete at least 1 course analyzing transnational, geopolitical, or global cultural phenomena.',
+            type: 'CHOOSE_N_COURSES',
+            targetCount: 1,
+            courses: ['INTL ST 1', 'GLOBAL 1', 'PUBHLTH 2', 'HISTORY 21B', 'COM LIT 60A']
+          }
+        ]
+      }
+    ]
   }
 ]
+export const UCI_GE_PROGRAM: DegreeProgram = UCI_DEGREE_PROGRAMS.find((p) => p.id === 'UCI_GE_CORE_2026')!
+
+export const UCI_MINORS: Array<{ id: string; name: string; school: string; courses: string[] }> = [
+  { id: 'MINOR_CS', name: 'Computer Science Minor', school: 'Donald Bren School of Information and Computer Sciences', courses: ['ICS 31', 'ICS 32', 'ICS 33', 'ICS 45C', 'ICS 46', 'ICS 6B', 'ICS 6D'] },
+  { id: 'MINOR_IN4MATX', name: 'Informatics Minor', school: 'Donald Bren School of Information and Computer Sciences', courses: ['ICS 31', 'ICS 32', 'IN4MATX 43', 'IN4MATX 113', 'IN4MATX 121'] },
+  { id: 'MINOR_MGMT', name: 'Management Minor', school: 'The Paul Merage School of Business', courses: ['MGMT 1', 'MGMT 30A', 'MGMT 30B', 'MGMT 101', 'MGMT 105'] },
+  { id: 'MINOR_ECON', name: 'Economics Minor', school: 'School of Social Sciences', courses: ['ECON 20A', 'ECON 20B', 'MATH 2A', 'ECON 100A', 'ECON 100B'] },
+  { id: 'MINOR_MATH', name: 'Mathematics Minor', school: 'School of Physical Sciences', courses: ['MATH 2A', 'MATH 2B', 'MATH 2D', 'MATH 3A', 'MATH 120A'] },
+  { id: 'MINOR_DIGITAL_ARTS', name: 'Digital Arts Minor', school: 'Claire Trevor School of the Arts', courses: ['ART 9A', 'ART 100', 'ART 106A', 'ART 150'] },
+  { id: 'MINOR_PSYCH_SCI', name: 'Psychological Science Minor', school: 'School of Social Ecology', courses: ['SOCECOL 10', 'PSYC SCI 9A', 'PSYC SCI 9B', 'PSYC SCI 102C'] },
+  { id: 'MINOR_EDUC', name: 'Education Minor', school: 'School of Education', courses: ['EDUC 50', 'EDUC 30', 'EDUC 100', 'EDUC 124'] },
+  { id: 'MINOR_PUBHLTH', name: 'Public Health Minor', school: 'Program in Public Health', courses: ['PUBHLTH 1', 'PUBHLTH 2', 'PUBHLTH 101', 'PUBHLTH 122'] }
+]
+
 export function getDegreeProgramById(id: string): DegreeProgram | undefined {
   return UCI_DEGREE_PROGRAMS.find((p) => p.id === id)
 }

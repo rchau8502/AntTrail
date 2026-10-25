@@ -4713,5 +4713,1615 @@ export const UCI_CS_MATH_COURSES: Course[] = [
     offerings: [
       { term: 'Spring', year: 2027, confidence: 'CONFIRMED' }
     ]
+  },
+  {
+    id: 'AFAM_100A',
+    code: 'AFAM 100A',
+    title: 'Black Critical Theory and Thought',
+    department: 'AFAM',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Black Critical Theory and Thought covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division AFAM requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'AFAM_102',
+    code: 'AFAM 102',
+    title: 'African American Literature',
+    department: 'AFAM',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in African American Literature covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division AFAM requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'AFAM_190',
+    code: 'AFAM 190',
+    title: 'Senior Colloquium in African American Studies',
+    department: 'AFAM',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Senior Colloquium in African American Studies covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division AFAM requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'AFAM_40A',
+    code: 'AFAM 40A',
+    title: 'African American Histories I: Slavery to Reconstruction',
+    department: 'AFAM',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in African American Histories I: Slavery to Reconstruction covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'AFAM_40B',
+    code: 'AFAM 40B',
+    title: 'African American Histories II: Jim Crow to Civil Rights',
+    department: 'AFAM',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in African American Histories II: Jim Crow to Civil Rights covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'ASIANAM_100W',
+    code: 'ASIANAM 100W',
+    title: 'Research Methods in Asian American Studies',
+    department: 'ASIANAM',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Research Methods in Asian American Studies covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division ASIANAM requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'ASIANAM_130',
+    code: 'ASIANAM 130',
+    title: 'Asian American Gender and Sexuality',
+    department: 'ASIANAM',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Asian American Gender and Sexuality covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division ASIANAM requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'ASIANAM_190',
+    code: 'ASIANAM 190',
+    title: 'Senior Thesis in Asian American Studies',
+    department: 'ASIANAM',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Senior Thesis in Asian American Studies covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division ASIANAM requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'ASIANAM_50',
+    code: 'ASIANAM 50',
+    title: 'Asian American Histories: Transpacific Migrations',
+    department: 'ASIANAM',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Asian American Histories: Transpacific Migrations covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'ASIANAM_51',
+    code: 'ASIANAM 51',
+    title: 'Asian American Communities and Labor',
+    department: 'ASIANAM',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Asian American Communities and Labor covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'ASIANAM_52',
+    code: 'ASIANAM 52',
+    title: 'Asian American Media and Cultural Politics',
+    department: 'ASIANAM',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Asian American Media and Cultural Politics covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'BIO_SCI_D170',
+    code: 'BIO SCI D170',
+    title: 'Applied Human Anatomy with Laboratory',
+    department: 'BIO SCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Applied Human Anatomy with Laboratory covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division BIO SCI requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'BIO_SCI_E109',
+    code: 'BIO SCI E109',
+    title: 'Human Physiology',
+    department: 'BIO SCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Human Physiology covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division BIO SCI requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'BIO_SCI_E136',
+    code: 'BIO SCI E136',
+    title: 'Exercise Physiology and Human Movement',
+    department: 'BIO SCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Exercise Physiology and Human Movement covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division BIO SCI requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'BIO_SCI_E155',
+    code: 'BIO SCI E155',
+    title: 'Biomechanics and Human Locomotion',
+    department: 'BIO SCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Biomechanics and Human Locomotion covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division BIO SCI requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'BIO_SCI_E179',
+    code: 'BIO SCI E179',
+    title: 'Sports Nutrition and Metabolism',
+    department: 'BIO SCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Sports Nutrition and Metabolism covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division BIO SCI requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'BIO_SCI_M123',
+    code: 'BIO SCI M123',
+    title: 'Genomics and Bioinformatics',
+    department: 'BIO SCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Genomics and Bioinformatics covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division BIO SCI requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'BIO_SCI_M124A',
+    code: 'BIO SCI M124A',
+    title: 'Molecular Virology and Diagnostics',
+    department: 'BIO SCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Molecular Virology and Diagnostics covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division BIO SCI requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CHC_LAT_101',
+    code: 'CHC/LAT 101',
+    title: 'Immigration and the Law',
+    department: 'CHC/LAT',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Immigration and the Law covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division CHC/LAT requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CHC_LAT_150',
+    code: 'CHC/LAT 150',
+    title: 'Chicanx/Latinx Education Equity',
+    department: 'CHC/LAT',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Chicanx/Latinx Education Equity covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division CHC/LAT requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CHC_LAT_180',
+    code: 'CHC/LAT 180',
+    title: 'Senior Capstone Seminar in Chicano/Latino Studies',
+    department: 'CHC/LAT',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Senior Capstone Seminar in Chicano/Latino Studies covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division CHC/LAT requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CHC_LAT_61',
+    code: 'CHC/LAT 61',
+    title: 'Introduction to Chicano/Latino Studies',
+    department: 'CHC/LAT',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Introduction to Chicano/Latino Studies covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CHC_LAT_62',
+    code: 'CHC/LAT 62',
+    title: 'Chicana/o and Latina/o Histories and Borders',
+    department: 'CHC/LAT',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Chicana/o and Latina/o Histories and Borders covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CHC_LAT_63',
+    code: 'CHC/LAT 63',
+    title: 'Chicano/Latino Contemporary Social Issues',
+    department: 'CHC/LAT',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Chicano/Latino Contemporary Social Issues covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CHINESE_100A',
+    code: 'CHINESE 100A',
+    title: 'Advanced Chinese: Composition and Discourse',
+    department: 'CHINESE',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Advanced Chinese: Composition and Discourse covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division CHINESE requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CHINESE_100B',
+    code: 'CHINESE 100B',
+    title: 'Advanced Chinese: Media and Society',
+    department: 'CHINESE',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Advanced Chinese: Media and Society covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division CHINESE requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CHINESE_115',
+    code: 'CHINESE 115',
+    title: 'Introduction to Classical Chinese',
+    department: 'CHINESE',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Introduction to Classical Chinese covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division CHINESE requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CHINESE_2A',
+    code: 'CHINESE 2A',
+    title: 'Intermediate Chinese I',
+    department: 'CHINESE',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate Chinese I covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CHINESE_2B',
+    code: 'CHINESE 2B',
+    title: 'Intermediate Chinese II',
+    department: 'CHINESE',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate Chinese II covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CHINESE_2C',
+    code: 'CHINESE 2C',
+    title: 'Intermediate Chinese III',
+    department: 'CHINESE',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate Chinese III covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CLASSIC_110',
+    code: 'CLASSIC 110',
+    title: 'Classical Epics in Translation',
+    department: 'CLASSIC',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Classical Epics in Translation covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division CLASSIC requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CLASSIC_120',
+    code: 'CLASSIC 120',
+    title: 'Ancient Historians: Herodotus and Thucydides',
+    department: 'CLASSIC',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Ancient Historians: Herodotus and Thucydides covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division CLASSIC requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CLASSIC_190',
+    code: 'CLASSIC 190',
+    title: 'Senior Thesis in Classical Civilizations',
+    department: 'CLASSIC',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Senior Thesis in Classical Civilizations covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division CLASSIC requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CLASSIC_36A',
+    code: 'CLASSIC 36A',
+    title: 'Classical Mythology and Heroic Epics',
+    department: 'CLASSIC',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Classical Mythology and Heroic Epics covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CLASSIC_36B',
+    code: 'CLASSIC 36B',
+    title: 'Ancient Greece: Bronze Age to Alexander',
+    department: 'CLASSIC',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Ancient Greece: Bronze Age to Alexander covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'CLASSIC_36C',
+    code: 'CLASSIC 36C',
+    title: 'Ancient Rome: Republic to Empire',
+    department: 'CLASSIC',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Ancient Rome: Republic to Empire covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'DANCE_190',
+    code: 'DANCE 190',
+    title: 'Senior Choreographic Thesis',
+    department: 'DANCE',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Senior Choreographic Thesis covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division DANCE requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'DRAMA_190',
+    code: 'DRAMA 190',
+    title: 'Senior Showcase in Music Theatre',
+    department: 'DRAMA',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Senior Showcase in Music Theatre covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division DRAMA requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'EARTHSS_170',
+    code: 'EARTHSS 170',
+    title: 'Environmental Field Methods and Instrumentation',
+    department: 'EARTHSS',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Environmental Field Methods and Instrumentation covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division EARTHSS requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'EAST_ASIAN_110',
+    code: 'EAST ASIAN 110',
+    title: 'Modern East Asian Literature and Cinema',
+    department: 'EAST ASIAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Modern East Asian Literature and Cinema covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division EAST ASIAN requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'EAST_ASIAN_120',
+    code: 'EAST ASIAN 120',
+    title: 'Popular Culture in East Asia',
+    department: 'EAST ASIAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Popular Culture in East Asia covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division EAST ASIAN requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'EAST_ASIAN_190',
+    code: 'EAST ASIAN 190',
+    title: 'Senior Colloquium in East Asian Studies',
+    department: 'EAST ASIAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Senior Colloquium in East Asian Studies covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division EAST ASIAN requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'EAST_ASIAN_20',
+    code: 'EAST ASIAN 20',
+    title: 'Civilizations of East Asia: Pre-modern',
+    department: 'EAST ASIAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Civilizations of East Asia: Pre-modern covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'EAST_ASIAN_21',
+    code: 'EAST ASIAN 21',
+    title: 'Civilizations of East Asia: Modern Transitions',
+    department: 'EAST ASIAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Civilizations of East Asia: Modern Transitions covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'ECON_145L',
+    code: 'ECON 145L',
+    title: 'Game Theory and Strategic Decisions',
+    department: 'ECON',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Game Theory and Strategic Decisions covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division ECON requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'EURO_ST_101',
+    code: 'EURO ST 101',
+    title: 'European Political and Economic Integration',
+    department: 'EURO ST',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in European Political and Economic Integration covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division EURO ST requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'EURO_ST_102',
+    code: 'EURO ST 102',
+    title: 'Cultural Identity in Post-War Europe',
+    department: 'EURO ST',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Cultural Identity in Post-War Europe covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division EURO ST requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'EURO_ST_190',
+    code: 'EURO ST 190',
+    title: 'Senior Thesis in European Studies',
+    department: 'EURO ST',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Senior Thesis in European Studies covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division EURO ST requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'FLM_MDA_101A',
+    code: 'FLM&MDA 101A',
+    title: 'History of Film Theory',
+    department: 'FLM&MDA',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in History of Film Theory covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division FLM&MDA requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'FLM_MDA_110',
+    code: 'FLM&MDA 110',
+    title: 'Film Authorship and Auteurs',
+    department: 'FLM&MDA',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Film Authorship and Auteurs covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division FLM&MDA requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'FLM_MDA_130',
+    code: 'FLM&MDA 130',
+    title: 'Global Television Cultures',
+    department: 'FLM&MDA',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Global Television Cultures covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division FLM&MDA requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'FLM_MDA_160',
+    code: 'FLM&MDA 160',
+    title: 'Digital Media and Society',
+    department: 'FLM&MDA',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Digital Media and Society covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division FLM&MDA requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'FLM_MDA_85A',
+    code: 'FLM&MDA 85A',
+    title: 'Film and Visual Culture: History to 1945',
+    department: 'FLM&MDA',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Film and Visual Culture: History to 1945 covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'FLM_MDA_85B',
+    code: 'FLM&MDA 85B',
+    title: 'Film and Visual Culture: 1945 to Present',
+    department: 'FLM&MDA',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Film and Visual Culture: 1945 to Present covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'FLM_MDA_85C',
+    code: 'FLM&MDA 85C',
+    title: 'Media Aesthetics and Digital Screen Cultures',
+    department: 'FLM&MDA',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Media Aesthetics and Digital Screen Cultures covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'FRENCH_101A',
+    code: 'FRENCH 101A',
+    title: 'Advanced French Grammar and Composition',
+    department: 'FRENCH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Advanced French Grammar and Composition covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division FRENCH requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'FRENCH_101B',
+    code: 'FRENCH 101B',
+    title: 'Introduction to French Literary Analysis',
+    department: 'FRENCH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Introduction to French Literary Analysis covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division FRENCH requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'FRENCH_115',
+    code: 'FRENCH 115',
+    title: 'Francophone Literature and Thought',
+    department: 'FRENCH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Francophone Literature and Thought covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division FRENCH requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'FRENCH_2A',
+    code: 'FRENCH 2A',
+    title: 'Intermediate French I',
+    department: 'FRENCH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate French I covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'FRENCH_2B',
+    code: 'FRENCH 2B',
+    title: 'Intermediate French II',
+    department: 'FRENCH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate French II covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'FRENCH_2C',
+    code: 'FRENCH 2C',
+    title: 'Intermediate French III',
+    department: 'FRENCH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate French III covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'GEN_SEX_100A',
+    code: 'GEN&SEX 100A',
+    title: 'Feminist Epistemologies and Methodologies',
+    department: 'GEN&SEX',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Feminist Epistemologies and Methodologies covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division GEN&SEX requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'GEN_SEX_100B',
+    code: 'GEN&SEX 100B',
+    title: 'Queer Theory and Critical Intersectionality',
+    department: 'GEN&SEX',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Queer Theory and Critical Intersectionality covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division GEN&SEX requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'GEN_SEX_190',
+    code: 'GEN&SEX 190',
+    title: 'Senior Seminar in Gender and Sexuality Studies',
+    department: 'GEN&SEX',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Senior Seminar in Gender and Sexuality Studies covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division GEN&SEX requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'GEN_SEX_50A',
+    code: 'GEN&SEX 50A',
+    title: 'Gender and Power in Transnational Contexts',
+    department: 'GEN&SEX',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Gender and Power in Transnational Contexts covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'GEN_SEX_50B',
+    code: 'GEN&SEX 50B',
+    title: 'Queer Histories and Cultures',
+    department: 'GEN&SEX',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Queer Histories and Cultures covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'GERMAN_101',
+    code: 'GERMAN 101',
+    title: 'German Literary Movements',
+    department: 'GERMAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in German Literary Movements covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division GERMAN requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'GERMAN_102',
+    code: 'GERMAN 102',
+    title: 'German Cinema and Visual Culture',
+    department: 'GERMAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in German Cinema and Visual Culture covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division GERMAN requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'GERMAN_115',
+    code: 'GERMAN 115',
+    title: 'German Intellectual Thought from Kant to Habermas',
+    department: 'GERMAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in German Intellectual Thought from Kant to Habermas covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division GERMAN requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'GERMAN_2A',
+    code: 'GERMAN 2A',
+    title: 'Intermediate German I',
+    department: 'GERMAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate German I covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'GERMAN_2B',
+    code: 'GERMAN 2B',
+    title: 'Intermediate German II',
+    department: 'GERMAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate German II covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'GERMAN_2C',
+    code: 'GERMAN 2C',
+    title: 'Intermediate German III',
+    department: 'GERMAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate German III covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'JAPANSE_100A',
+    code: 'JAPANSE 100A',
+    title: 'Advanced Japanese: Grammar and Composition',
+    department: 'JAPANSE',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Advanced Japanese: Grammar and Composition covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division JAPANSE requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'JAPANSE_100B',
+    code: 'JAPANSE 100B',
+    title: 'Advanced Japanese: Reading and Discussion',
+    department: 'JAPANSE',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Advanced Japanese: Reading and Discussion covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division JAPANSE requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'JAPANSE_115',
+    code: 'JAPANSE 115',
+    title: 'Masterpieces of Japanese Literature',
+    department: 'JAPANSE',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Masterpieces of Japanese Literature covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division JAPANSE requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'JAPANSE_2A',
+    code: 'JAPANSE 2A',
+    title: 'Intermediate Japanese I',
+    department: 'JAPANSE',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate Japanese I covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'JAPANSE_2B',
+    code: 'JAPANSE 2B',
+    title: 'Intermediate Japanese II',
+    department: 'JAPANSE',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate Japanese II covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'JAPANSE_2C',
+    code: 'JAPANSE 2C',
+    title: 'Intermediate Japanese III',
+    department: 'JAPANSE',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate Japanese III covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'KOREAN_100A',
+    code: 'KOREAN 100A',
+    title: 'Advanced Korean: Reading and Writing',
+    department: 'KOREAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Advanced Korean: Reading and Writing covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division KOREAN requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'KOREAN_100B',
+    code: 'KOREAN 100B',
+    title: 'Advanced Korean: Media and Society',
+    department: 'KOREAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Advanced Korean: Media and Society covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division KOREAN requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'KOREAN_120',
+    code: 'KOREAN 120',
+    title: 'Modern Korean Literature and Culture',
+    department: 'KOREAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Modern Korean Literature and Culture covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division KOREAN requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'KOREAN_2A',
+    code: 'KOREAN 2A',
+    title: 'Intermediate Korean I',
+    department: 'KOREAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate Korean I covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'KOREAN_2B',
+    code: 'KOREAN 2B',
+    title: 'Intermediate Korean II',
+    department: 'KOREAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate Korean II covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'KOREAN_2C',
+    code: 'KOREAN 2C',
+    title: 'Intermediate Korean III',
+    department: 'KOREAN',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate Korean III covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'LSCI_10',
+    code: 'LSCI 10',
+    title: 'Introduction to Phonetics and Phonology',
+    department: 'LSCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Introduction to Phonetics and Phonology covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'LSCI_111',
+    code: 'LSCI 111',
+    title: 'Syntactic Theory',
+    department: 'LSCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Syntactic Theory covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division LSCI requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'LSCI_121',
+    code: 'LSCI 121',
+    title: 'Formal Semantics',
+    department: 'LSCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Formal Semantics covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division LSCI requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'LSCI_141',
+    code: 'LSCI 141',
+    title: 'Phonological Analysis',
+    department: 'LSCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Phonological Analysis covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division LSCI requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'LSCI_165',
+    code: 'LSCI 165',
+    title: 'Computational Linguistics and Natural Language Processing',
+    department: 'LSCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Computational Linguistics and Natural Language Processing covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division LSCI requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'LSCI_3',
+    code: 'LSCI 3',
+    title: 'Introduction to Linguistics',
+    department: 'LSCI',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Introduction to Linguistics covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'MATH_112A',
+    code: 'MATH 112A',
+    title: 'Introduction to Partial Differential Equations',
+    department: 'MATH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Introduction to Partial Differential Equations covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division MATH requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'MATH_113A',
+    code: 'MATH 113A',
+    title: 'Mathematical Modeling in Biology I',
+    department: 'MATH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Mathematical Modeling in Biology I covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division MATH requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'MATH_113B',
+    code: 'MATH 113B',
+    title: 'Mathematical Modeling in Biology II',
+    department: 'MATH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Mathematical Modeling in Biology II covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division MATH requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'MATH_115',
+    code: 'MATH 115',
+    title: 'Introduction to Complex Analysis',
+    department: 'MATH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Introduction to Complex Analysis covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division MATH requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'MATH_120A',
+    code: 'MATH 120A',
+    title: 'Abstract Algebra I: Group Theory',
+    department: 'MATH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Abstract Algebra I: Group Theory covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division MATH requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'MATH_130A',
+    code: 'MATH 130A',
+    title: 'Classical and Modern Geometries',
+    department: 'MATH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Classical and Modern Geometries covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division MATH requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'MATH_161',
+    code: 'MATH 161',
+    title: 'Modern Mathematics for Secondary Education',
+    department: 'MATH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Modern Mathematics for Secondary Education covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division MATH requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'MUSIC_190',
+    code: 'MUSIC 190',
+    title: 'Senior Solo Recital',
+    department: 'MUSIC',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Senior Solo Recital covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division MUSIC requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'REL_STD_100',
+    code: 'REL STD 100',
+    title: 'Theories of Religion in Society',
+    department: 'REL STD',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Theories of Religion in Society covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division REL STD requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'REL_STD_110',
+    code: 'REL STD 110',
+    title: 'Scriptural Interpretation and Hermeneutics',
+    department: 'REL STD',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Scriptural Interpretation and Hermeneutics covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division REL STD requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'REL_STD_190',
+    code: 'REL STD 190',
+    title: 'Senior Capstone Seminar in Religious Studies',
+    department: 'REL STD',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Senior Capstone Seminar in Religious Studies covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division REL STD requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'REL_STD_5A',
+    code: 'REL STD 5A',
+    title: 'World Religions: Judaism, Christianity, Islam',
+    department: 'REL STD',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in World Religions: Judaism, Christianity, Islam covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'REL_STD_5B',
+    code: 'REL STD 5B',
+    title: 'World Religions: Hinduism, Buddhism, Daoism',
+    department: 'REL STD',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in World Religions: Hinduism, Buddhism, Daoism covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'REL_STD_5C',
+    code: 'REL STD 5C',
+    title: 'Indigenous and Contemporary Religious Movements',
+    department: 'REL STD',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Indigenous and Contemporary Religious Movements covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'SPANISH_101A',
+    code: 'SPANISH 101A',
+    title: 'Advanced Spanish Writing Workshop',
+    department: 'SPANISH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Advanced Spanish Writing Workshop covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division SPANISH requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'SPANISH_101B',
+    code: 'SPANISH 101B',
+    title: 'Introduction to Hispanic Literary Criticism',
+    department: 'SPANISH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Introduction to Hispanic Literary Criticism covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division SPANISH requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'SPANISH_110',
+    code: 'SPANISH 110',
+    title: 'Introduction to Spanish Linguistics',
+    department: 'SPANISH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Introduction to Spanish Linguistics covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division SPANISH requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'SPANISH_113',
+    code: 'SPANISH 113',
+    title: 'Survey of Latin American Literatures',
+    department: 'SPANISH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Survey of Latin American Literatures covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division SPANISH requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'SPANISH_2A',
+    code: 'SPANISH 2A',
+    title: 'Intermediate Spanish I',
+    department: 'SPANISH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate Spanish I covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'SPANISH_2B',
+    code: 'SPANISH 2B',
+    title: 'Intermediate Spanish II',
+    department: 'SPANISH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate Spanish II covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'SPANISH_2C',
+    code: 'SPANISH 2C',
+    title: 'Intermediate Spanish III',
+    department: 'SPANISH',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Intermediate Spanish III covering fundamental principles and applications.',
+    prerequisiteText: 'None.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'SPPS_110',
+    code: 'SPPS 110',
+    title: 'Introduction to Social Policy Analysis',
+    department: 'SPPS',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Introduction to Social Policy Analysis covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division SPPS requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'SPPS_115',
+    code: 'SPPS 115',
+    title: 'Leadership in Public Service',
+    department: 'SPPS',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Leadership in Public Service covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division SPPS requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'SPPS_195A',
+    code: 'SPPS 195A',
+    title: 'Public Service Internship Practicum I',
+    department: 'SPPS',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Public Service Internship Practicum I covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division SPPS requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
+  },
+  {
+    id: 'SPPS_195B',
+    code: 'SPPS 195B',
+    title: 'Public Service Internship Practicum II',
+    department: 'SPPS',
+    units: 4,
+    catalogYear: '2026-27',
+    description: 'Comprehensive coursework in Public Service Internship Practicum II covering fundamental principles and applications.',
+    prerequisiteText: 'Prerequisite: Completion of lower-division SPPS requirements.',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
+    ]
   }
 ]

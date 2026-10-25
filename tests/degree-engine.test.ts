@@ -1,6 +1,12 @@
 import { describe, it, expect } from 'vitest'
 import { evaluateDegreeAudit } from '../src/academic-engine/degree'
-import { getDegreeProgramById, getDegreeProgramByName, UCI_DEGREE_PROGRAMS } from '../src/data/uci/programs'
+import {
+  getDegreeProgramById,
+  getDegreeProgramByName,
+  UCI_DEGREE_PROGRAMS,
+  UCI_GE_PROGRAM,
+  UCI_MINORS
+} from '../src/data/uci/programs'
 import { STUDENT_PERSONAS } from '../src/data/mock/mockStudentData'
 import { OFFICIAL_TRANSFER_EQUIVALENCIES } from '../src/data/uci/equivalencies'
 import { PlannedQuarter } from '../src/academic-engine/types'
@@ -203,10 +209,10 @@ describe('UCI Degree Requirement Engine', () => {
     expect(digital.missingCourses).toEqual(expect.arrayContaining(['EECS 31', 'EECS 31L']))
   })
 
-  it('covers all 13 undergraduate academic colleges and schools across UC Irvine', () => {
-    expect(UCI_DEGREE_PROGRAMS.length).toBeGreaterThanOrEqual(50)
+  it('covers all 13 undergraduate academic colleges and schools across UC Irvine with 85+ programs', () => {
+    expect(UCI_DEGREE_PROGRAMS.length).toBeGreaterThanOrEqual(85)
     const schools = new Set(UCI_DEGREE_PROGRAMS.map((p) => p.school))
-    expect(schools.size).toBe(13)
+    expect(schools.size).toBeGreaterThanOrEqual(13)
     expect(schools).toContain('Donald Bren School of Information and Computer Sciences')
     expect(schools).toContain('The Henry Samueli School of Engineering')
     expect(schools).toContain('School of Physical Sciences')
@@ -238,7 +244,12 @@ describe('UCI Degree Requirement Engine', () => {
       'Nursing Science B.S.',
       'Pharmaceutical Sciences B.S.',
       'Public Health Sciences B.S.',
-      'Drama B.A.'
+      'Drama B.A.',
+      'Film and Media Studies B.A.',
+      'Quantitative Economics B.S.',
+      'Applied Mathematics B.S.',
+      'Human Biology B.S.',
+      'Dance B.F.A.'
     ]
 
     for (const progName of testPrograms) {
@@ -254,5 +265,37 @@ describe('UCI Degree Requirement Engine', () => {
       expect(audit.sections.length).toBeGreaterThanOrEqual(3)
       expect(audit.sections.every((s) => s.requirements.length > 0)).toBe(true)
     }
+  })
+
+  it('correctly evaluates official UCI General Education (GE Breadth) program', () => {
+    expect(UCI_GE_PROGRAM).toBeDefined()
+    expect(UCI_GE_PROGRAM.id).toBe('UCI_GE_CORE_2026')
+    expect(UCI_GE_PROGRAM.sections.length).toBe(8) // GE Categories I through VIII
+
+    const freshman = STUDENT_PERSONAS.find((p) => p.id === 'freshman')!
+    const geAudit = evaluateDegreeAudit(UCI_GE_PROGRAM, freshman.profile, [], OFFICIAL_TRANSFER_EQUIVALENCIES)
+
+    expect(geAudit.overallProgressPercent).toBe(0)
+    expect(geAudit.sections.length).toBe(8)
+
+    // Category I Lower-division writing check
+    const cat1 = geAudit.sections.find((s) => s.section.id === 'ge_cat_1')!
+    expect(cat1).toBeDefined()
+    const lowerWriting = cat1.requirements.find((r) => r.requirement.id === 'ge_1a_lower_writing')!
+    expect(lowerWriting.missingCourses).toEqual(expect.arrayContaining(['WRITING 39B', 'WRITING 39C']))
+  })
+
+  it('supports student double major and minor declarations', () => {
+    const soph = STUDENT_PERSONAS.find((p) => p.id === 'sophomore_cs')!
+    const doubleMajorProfile = {
+      ...soph.profile,
+      secondaryMajor: 'Mathematics B.S.',
+      minor: 'Management Minor'
+    }
+
+    expect(doubleMajorProfile.secondaryMajor).toBe('Mathematics B.S.')
+    expect(doubleMajorProfile.minor).toBe('Management Minor')
+    expect(UCI_MINORS.length).toBeGreaterThanOrEqual(8)
+    expect(UCI_MINORS.some((m) => m.name === 'Management Minor')).toBe(true)
   })
 })

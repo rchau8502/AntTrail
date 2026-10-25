@@ -14,7 +14,8 @@ import {
   ChevronUp,
   Plus,
   Calendar,
-  Layers
+  Layers,
+  Printer
 } from 'lucide-react'
 
 interface DegreeAuditViewProps {
@@ -91,6 +92,29 @@ export const DegreeAuditView: React.FC<DegreeAuditViewProps> = ({
                   </select>
                 </div>
               )}
+
+              <div className="flex flex-wrap items-center gap-2 print:hidden">
+                <button
+                  type="button"
+                  onClick={() => window.print()}
+                  className="inline-flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-800/90 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-700 transition-colors cursor-pointer"
+                  title="Print official academic advising sheet"
+                >
+                  <Printer className="h-3.5 w-3.5 text-sky-400" />
+                  <span>Print Advising Sheet</span>
+                </button>
+                {onSelectProgram && program.name !== 'UCI General Education (GE Breadth)' && (
+                  <button
+                    type="button"
+                    onClick={() => onSelectProgram('UCI General Education (GE Breadth)')}
+                    className="inline-flex items-center gap-1.5 rounded-xl border border-amber-500/30 bg-amber-950/30 px-3 py-1.5 text-xs font-semibold text-amber-300 hover:bg-amber-900/40 transition-colors cursor-pointer"
+                    title="Audit UCI General Education Requirements"
+                  >
+                    <Layers className="h-3.5 w-3.5 text-amber-400" />
+                    <span>Audit GE Breadth</span>
+                  </button>
+                )}
+              </div>
             </div>
 
             <p className="text-sm text-slate-400 max-w-xl">
