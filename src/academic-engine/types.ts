@@ -118,6 +118,8 @@ export interface StudentCourseRecord {
 export interface StudentProfile {
   studentId?: string
   major: string // e.g. "Computer Science B.S.", "Mathematics B.S."
+  secondaryMajor?: string // Optional double major
+  minor?: string // Optional declared minor
   catalogYear: string // "2026-27"
   classStanding: ClassStanding
   completedUnits: number

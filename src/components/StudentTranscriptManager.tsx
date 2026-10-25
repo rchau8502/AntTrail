@@ -3,7 +3,7 @@ import { StudentProfile, StudentCourseRecord, GradeLetter } from '../academic-en
 import { STUDENT_PERSONAS } from '../data/mock/mockStudentData'
 import { UCI_CS_MATH_COURSES } from '../data/uci/courses'
 import { OFFICIAL_TRANSFER_EQUIVALENCIES } from '../data/uci/equivalencies'
-import { UCI_DEGREE_PROGRAMS } from '../data/uci/programs'
+import { UCI_DEGREE_PROGRAMS, UCI_MINORS } from '../data/uci/programs'
 import {
   User,
   Plus,
@@ -149,12 +149,44 @@ export const StudentTranscriptManager: React.FC<StudentTranscriptManagerProps> =
             <select
               value={profile.major}
               onChange={(e) => onUpdateProfile({ ...profile, major: e.target.value })}
-              className="bg-transparent font-semibold text-anteater-gold cursor-pointer focus:outline-none max-w-[220px] truncate"
-              title="Click to switch major"
+              className="bg-transparent font-semibold text-anteater-gold cursor-pointer focus:outline-none max-w-[200px] truncate"
+              title="Click to switch primary major"
             >
               {UCI_DEGREE_PROGRAMS.map((prog) => (
                 <option key={prog.id} value={prog.name} className="bg-slate-900 text-white font-normal">
                   {prog.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex items-center gap-1.5 rounded-lg bg-slate-800/80 px-2.5 py-1 text-xs border border-slate-700/60">
+            <span className="text-slate-400">2nd Major: </span>
+            <select
+              value={profile.secondaryMajor || ''}
+              onChange={(e) => onUpdateProfile({ ...profile, secondaryMajor: e.target.value || undefined })}
+              className="bg-transparent font-medium text-emerald-400 cursor-pointer focus:outline-none max-w-[170px] truncate"
+              title="Optional double major"
+            >
+              <option value="" className="bg-slate-900 text-slate-400">None</option>
+              {UCI_DEGREE_PROGRAMS.filter(p => p.name !== profile.major).map((prog) => (
+                <option key={prog.id} value={prog.name} className="bg-slate-900 text-white font-normal">
+                  {prog.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex items-center gap-1.5 rounded-lg bg-slate-800/80 px-2.5 py-1 text-xs border border-slate-700/60">
+            <span className="text-slate-400">Minor: </span>
+            <select
+              value={profile.minor || ''}
+              onChange={(e) => onUpdateProfile({ ...profile, minor: e.target.value || undefined })}
+              className="bg-transparent font-medium text-amber-300 cursor-pointer focus:outline-none max-w-[150px] truncate"
+              title="Optional declared minor"
+            >
+              <option value="" className="bg-slate-900 text-slate-400">None</option>
+              {UCI_MINORS.map((m) => (
+                <option key={m.id} value={m.name} className="bg-slate-900 text-white font-normal">
+                  {m.name}
                 </option>
               ))}
             </select>
