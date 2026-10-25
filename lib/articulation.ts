@@ -761,6 +761,313 @@ export const CAMPUS_MAJOR_REQUIREMENTS: Record<string, Record<string, TargetMajo
         cIdEquivalent: 'C-ID ACCT 120',
         description: 'Managerial cost analysis and budgeting.'
       }
+    ],
+    'Mechanical Engineering': [
+      {
+        id: 'calc_1',
+        category: 'calculus',
+        name: 'Calculus I',
+        targetCourseCode: 'MATH 2A',
+        targetCourseTitle: 'Calculus I',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 210',
+        description: 'Differential calculus and optimization.'
+      },
+      {
+        id: 'calc_2',
+        category: 'calculus_2',
+        name: 'Calculus II',
+        targetCourseCode: 'MATH 2B',
+        targetCourseTitle: 'Calculus II',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 220',
+        description: 'Integral calculus and series.'
+      },
+      {
+        id: 'multi_calc',
+        category: 'multivariable',
+        name: 'Multivariable Calculus',
+        targetCourseCode: 'MATH 2D',
+        targetCourseTitle: 'Multivariable Calculus I',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 230',
+        description: 'Vectors and partial derivatives.'
+      },
+      {
+        id: 'lin_alg',
+        category: 'linear_algebra',
+        name: 'Linear Algebra',
+        targetCourseCode: 'MATH 3A',
+        targetCourseTitle: 'Introduction to Linear Algebra',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 250',
+        description: 'Linear systems and matrices.'
+      },
+      {
+        id: 'diff_eq',
+        category: 'diff_equations',
+        name: 'Differential Equations',
+        targetCourseCode: 'MATH 3D',
+        targetCourseTitle: 'Elementary Differential Equations',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 240',
+        description: 'Linear ordinary differential equations.'
+      },
+      {
+        id: 'phys_mech',
+        category: 'physics_mechanics',
+        name: 'Classical Physics: Mechanics',
+        targetCourseCode: 'PHYSICS 7C',
+        targetCourseTitle: 'Classical Physics',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID PHYS 205',
+        description: 'Calculus-based physics mechanics.'
+      },
+      {
+        id: 'phys_em',
+        category: 'physics_em',
+        name: 'Classical Physics: Electricity & Magnetism',
+        targetCourseCode: 'PHYSICS 7D',
+        targetCourseTitle: 'Classical Physics: Electricity and Magnetism',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID PHYS 210',
+        description: 'Electric and magnetic fields.'
+      },
+      {
+        id: 'gen_chem',
+        category: 'chemistry',
+        name: 'General Chemistry',
+        targetCourseCode: 'CHEM 1A',
+        targetCourseTitle: 'General Chemistry',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID CHEM 110',
+        description: 'Chemical principles and stoichiometry.'
+      }
+    ],
+    'Biological Sciences': [
+      {
+        id: 'gen_bio_1',
+        category: 'biology',
+        name: 'General Biology: DNA to Organisms',
+        targetCourseCode: 'BIO SCI 93',
+        targetCourseTitle: 'DNA to Organisms',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID BIOL 190',
+        description: 'Cell biology and genetics.'
+      },
+      {
+        id: 'gen_bio_2',
+        category: 'biology',
+        name: 'General Biology: Organisms to Ecosystems',
+        targetCourseCode: 'BIO SCI 94',
+        targetCourseTitle: 'Organisms to Ecosystems',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID BIOL 140',
+        description: 'Organismal diversity and ecology.'
+      },
+      {
+        id: 'gen_chem_1',
+        category: 'chemistry',
+        name: 'General Chemistry I',
+        targetCourseCode: 'CHEM 1A',
+        targetCourseTitle: 'General Chemistry I',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID CHEM 110',
+        description: 'Chemical bonding, stoichiometry, and gases.'
+      },
+      {
+        id: 'gen_chem_2',
+        category: 'chemistry',
+        name: 'General Chemistry II with Lab',
+        targetCourseCode: 'CHEM 1B',
+        targetCourseTitle: 'General Chemistry II',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID CHEM 120S',
+        description: 'Thermodynamics, equilibria, and kinetics.'
+      },
+      {
+        id: 'calc_1',
+        category: 'calculus',
+        name: 'Calculus for Life Sciences I',
+        targetCourseCode: 'MATH 2A',
+        targetCourseTitle: 'Calculus I',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 210',
+        description: 'Differential calculus.'
+      },
+      {
+        id: 'calc_2',
+        category: 'calculus_2',
+        name: 'Calculus for Life Sciences II',
+        targetCourseCode: 'MATH 2B',
+        targetCourseTitle: 'Calculus II',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 220',
+        description: 'Integral calculus and modeling.'
+      }
+    ],
+    'Economics': [
+      {
+        id: 'micro_econ',
+        category: 'microeconomics',
+        name: 'Introduction to Economics: Microeconomics',
+        targetCourseCode: 'ECON 20A',
+        targetCourseTitle: 'Basic Economics I',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID ECON 202',
+        description: 'Microeconomics principles.'
+      },
+      {
+        id: 'macro_econ',
+        category: 'macroeconomics',
+        name: 'Introduction to Economics: Macroeconomics',
+        targetCourseCode: 'ECON 20B',
+        targetCourseTitle: 'Basic Economics II',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID ECON 201',
+        description: 'Macroeconomics principles.'
+      },
+      {
+        id: 'calc_1',
+        category: 'calculus',
+        name: 'Calculus I',
+        targetCourseCode: 'MATH 2A',
+        targetCourseTitle: 'Calculus I',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 210',
+        description: 'Differential calculus.'
+      },
+      {
+        id: 'calc_2',
+        category: 'calculus_2',
+        name: 'Calculus II',
+        targetCourseCode: 'MATH 2B',
+        targetCourseTitle: 'Calculus II',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 220',
+        description: 'Integral calculus.'
+      },
+      {
+        id: 'stats',
+        category: 'statistics',
+        name: 'Basic Statistics',
+        targetCourseCode: 'STATS 7',
+        targetCourseTitle: 'Basic Statistics',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 110',
+        description: 'Probability and statistical inferences.'
+      }
+    ],
+    'Mathematics': [
+      {
+        id: 'calc_1',
+        category: 'calculus',
+        name: 'Calculus I',
+        targetCourseCode: 'MATH 2A',
+        targetCourseTitle: 'Calculus I',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 210',
+        description: 'Differential calculus.'
+      },
+      {
+        id: 'calc_2',
+        category: 'calculus_2',
+        name: 'Calculus II',
+        targetCourseCode: 'MATH 2B',
+        targetCourseTitle: 'Calculus II',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 220',
+        description: 'Integral calculus and series.'
+      },
+      {
+        id: 'multi_calc',
+        category: 'multivariable',
+        name: 'Multivariable Calculus',
+        targetCourseCode: 'MATH 2D',
+        targetCourseTitle: 'Multivariable Calculus I',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 230',
+        description: 'Vectors and partial derivatives.'
+      },
+      {
+        id: 'lin_alg',
+        category: 'linear_algebra',
+        name: 'Linear Algebra',
+        targetCourseCode: 'MATH 3A',
+        targetCourseTitle: 'Introduction to Linear Algebra',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 250',
+        description: 'Linear systems and matrices.'
+      },
+      {
+        id: 'diff_eq',
+        category: 'diff_equations',
+        name: 'Differential Equations',
+        targetCourseCode: 'MATH 3D',
+        targetCourseTitle: 'Elementary Differential Equations',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 240',
+        description: 'Ordinary differential equations.'
+      }
+    ],
+    'Informatics': [
+      {
+        id: 'prog_1',
+        category: 'programming_intro',
+        name: 'Introduction to Programming I',
+        targetCourseCode: 'ICS 31',
+        targetCourseTitle: 'Introduction to Programming I',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID COMP 122',
+        description: 'Python fundamentals and software construction.'
+      },
+      {
+        id: 'prog_2',
+        category: 'programming_intermediate',
+        name: 'Programming with Software Libraries',
+        targetCourseCode: 'ICS 32',
+        targetCourseTitle: 'Programming with Software Libraries',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID COMP 132',
+        description: 'Software libraries, APIs, and GUI design.'
+      },
+      {
+        id: 'stats',
+        category: 'statistics',
+        name: 'Basic Statistics',
+        targetCourseCode: 'STATS 7',
+        targetCourseTitle: 'Basic Statistics',
+        units: 4,
+        isCritical: true,
+        cIdEquivalent: 'C-ID MATH 110',
+        description: 'Probability and statistics.'
+      }
     ]
   },
   'UC San Diego': {

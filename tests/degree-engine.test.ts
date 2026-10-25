@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { evaluateDegreeAudit } from '../src/academic-engine/degree'
-import { getDegreeProgramById } from '../src/data/uci/programs'
+import { getDegreeProgramById, getDegreeProgramByName, UCI_DEGREE_PROGRAMS } from '../src/data/uci/programs'
 import { STUDENT_PERSONAS } from '../src/data/mock/mockStudentData'
 import { OFFICIAL_TRANSFER_EQUIVALENCIES } from '../src/data/uci/equivalencies'
 import { PlannedQuarter } from '../src/academic-engine/types'
@@ -201,5 +201,58 @@ describe('UCI Degree Requirement Engine', () => {
     const digital = lowerDiv.requirements.find((r) => r.requirement.id === 'cpe_digital_logic')!
     expect(digital.isComplete).toBe(false)
     expect(digital.missingCourses).toEqual(expect.arrayContaining(['EECS 31', 'EECS 31L']))
+  })
+
+  it('covers all 13 undergraduate academic colleges and schools across UC Irvine', () => {
+    expect(UCI_DEGREE_PROGRAMS.length).toBeGreaterThanOrEqual(50)
+    const schools = new Set(UCI_DEGREE_PROGRAMS.map((p) => p.school))
+    expect(schools.size).toBe(13)
+    expect(schools).toContain('Donald Bren School of Information and Computer Sciences')
+    expect(schools).toContain('The Henry Samueli School of Engineering')
+    expect(schools).toContain('School of Physical Sciences')
+    expect(schools).toContain('School of Biological Sciences')
+    expect(schools).toContain('The Paul Merage School of Business')
+    expect(schools).toContain('School of Social Sciences')
+    expect(schools).toContain('School of Social Ecology')
+    expect(schools).toContain('School of Humanities')
+    expect(schools).toContain('School of Education')
+    expect(schools).toContain('Sue & Bill Gross School of Nursing')
+    expect(schools).toContain('School of Pharmacy and Pharmaceutical Sciences')
+    expect(schools).toContain('Program in Public Health')
+    expect(schools).toContain('Claire Trevor School of the Arts')
+  })
+
+  it('correctly audits expanded degree programs across non-ICS schools', () => {
+    const freshman = STUDENT_PERSONAS.find((p) => p.id === 'freshman')!
+
+    const testPrograms = [
+      'Informatics B.S.',
+      'Mechanical Engineering B.S.',
+      'Physics B.S.',
+      'Biological Sciences B.S.',
+      'Business Administration B.A.',
+      'Economics B.A.',
+      'Criminology, Law and Society B.A.',
+      'English B.A.',
+      'Education Sciences B.A.',
+      'Nursing Science B.S.',
+      'Pharmaceutical Sciences B.S.',
+      'Public Health Sciences B.S.',
+      'Drama B.A.'
+    ]
+
+    for (const progName of testPrograms) {
+      const prog = getDegreeProgramByName(progName)
+      expect(prog, `Expected program ${progName} to exist`).toBeDefined()
+      expect(prog!.name).toBe(progName)
+      expect(prog!.totalUnitsRequired).toBe(180)
+      expect(prog!.minUpperDivisionUnits).toBe(60)
+
+      const audit = evaluateDegreeAudit(prog!, freshman.profile, [], OFFICIAL_TRANSFER_EQUIVALENCIES)
+      expect(audit.program.id).toBe(prog!.id)
+      expect(audit.overallProgressPercent).toBe(0)
+      expect(audit.sections.length).toBeGreaterThanOrEqual(3)
+      expect(audit.sections.every((s) => s.requirements.length > 0)).toBe(true)
+    }
   })
 })
