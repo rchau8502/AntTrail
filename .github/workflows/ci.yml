@@ -27,6 +27,9 @@ jobs:
       - name: TypeScript Typecheck
         run: npx tsc --noEmit
 
+      - name: ESLint Code Quality
+        run: npm run lint
+
       - name: Vitest Engine Suite
         run: npm test
 

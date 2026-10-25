@@ -33,7 +33,7 @@ export function Navbar({
 
   return (
     <>
-      <header className="sticky top-3 z-40 px-4 sm:px-6 mb-6">
+      <header className="sticky top-18 z-30 px-4 sm:px-6 mb-6">
         <div className="max-w-6xl mx-auto">
           {/* Refined floating glass navbar */}
           <div className="px-3 py-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.04),0_1px_2px_rgba(0,0,0,0.02)] flex items-center justify-between transition-all">

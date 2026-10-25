@@ -22,7 +22,7 @@ export default function Footer() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-slate-100">
           {/* Col 1 & 2: Brand & Mission */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 group">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#0064a4] to-[#0c2340] text-white shadow-xs">
                 <span className="font-extrabold text-base tracking-tighter">AT</span>
@@ -33,16 +33,16 @@ export default function Footer() {
               </span>
             </Link>
 
-            <p className="mt-3 text-sm text-slate-600 leading-relaxed max-w-sm">
+            <p className="mt-3 text-xs text-slate-600 leading-relaxed">
               The unified academic planning engine, Canvas LMS command center, and campus guide for UC Irvine. Zot zot zot! Built by Anteaters for Anteaters.
             </p>
 
-            <div className="mt-4 flex flex-wrap items-center gap-2.5 text-xs">
+            <div className="mt-4 flex flex-col gap-2 text-xs">
               <a
                 href="https://github.com/rchau8502/AntTrail"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-100 px-3 py-1 font-bold text-slate-800 hover:bg-slate-200 transition-colors shadow-2xs"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-100 px-3 py-1 font-bold text-slate-800 hover:bg-slate-200 transition-colors shadow-2xs w-fit"
               >
                 <span>⭐ Star on GitHub</span>
               </a>
@@ -50,17 +50,56 @@ export default function Footer() {
                 href="https://github.com/rchau8502/AntTrail/issues/new"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-xl border border-amber-300 bg-amber-50 px-3 py-1 font-bold text-amber-900 hover:bg-amber-100 transition-colors shadow-2xs"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-amber-300 bg-amber-50 px-3 py-1 font-bold text-amber-900 hover:bg-amber-100 transition-colors shadow-2xs w-fit"
               >
-                <span>💡 Report Missing Course / Feedback</span>
+                <span>💡 Report Course / Feedback</span>
               </a>
             </div>
           </div>
 
-          {/* Col 3: Browse Categories */}
+          {/* Col 2: Flagship Workstations */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-3.5">
-              {t.sections.majorCategories}
+              Workstations
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <Link href="/degree-planning" className="hover:text-[#0064a4] transition-colors font-medium">
+                  Degree &amp; Prereq Planner
+                </Link>
+              </li>
+              <li>
+                <Link href="/webreg" className="hover:text-amber-700 transition-colors font-medium text-amber-900">
+                  ZotSniper WebReg Radar
+                </Link>
+              </li>
+              <li>
+                <Link href="/transfer" className="hover:text-emerald-700 transition-colors font-medium text-emerald-900">
+                  CC Transfer Articulation
+                </Link>
+              </li>
+              <li>
+                <Link href="/canvas" className="hover:text-rose-700 transition-colors font-medium">
+                  Canvas LMS Command Center
+                </Link>
+              </li>
+              <li>
+                <Link href="/study" className="hover:text-indigo-700 transition-colors font-medium">
+                  STEM Study Cards (Bubble)
+                </Link>
+              </li>
+              <li>
+                <Link href="/courses" className="hover:text-orange-700 transition-colors font-medium">
+                  Alumni Water Courses (水课)
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: Campus Survival Guides */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-3.5">
+              Survival Guides
             </h4>
             <ul className="space-y-2 text-xs">
               {CATEGORIES.slice(0, 5).map(cat => (
@@ -70,25 +109,48 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li className="pt-1">
+                <Link href="/guides" className="font-semibold text-[#0064a4] hover:underline">
+                  All 42+ Campus Guides →
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Col 4: More Categories */}
+          {/* Col 4: Deadlines & Tools */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-3.5">
-              {t.nav.categories}
+              Deadlines &amp; Tools
             </h4>
             <ul className="space-y-2 text-xs">
-              {CATEGORIES.slice(5).map(cat => (
-                <li key={cat.id}>
-                  <Link href={`/categories/${cat.id}`} className="hover:text-[#0064a4] transition-colors">
-                    {cat.name}
-                  </Link>
-                </li>
-              ))}
-              <li className="pt-1">
-                <Link href="/i-need-to" className="font-semibold text-[#0064a4] hover:underline">
-                  {t.sections.iNeedToHub} →
+              <li>
+                <Link href="/deadlines" className="hover:text-[#0064a4] transition-colors">
+                  Registrar Deadlines &amp; iCal
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools" className="hover:text-[#0064a4] transition-colors">
+                  UCI Official Tools Index
+                </Link>
+              </li>
+              <li>
+                <Link href="/i-need-to" className="hover:text-[#0064a4] transition-colors">
+                  &quot;I Need To...&quot; Task Solver
+                </Link>
+              </li>
+              <li>
+                <Link href="/bubblegum" className="hover:text-[#0064a4] transition-colors">
+                  Bubblegum Speed Drills
+                </Link>
+              </li>
+              <li>
+                <Link href="/memory-hooks" className="hover:text-[#0064a4] transition-colors">
+                  STEM Memory Hooks
+                </Link>
+              </li>
+              <li>
+                <Link href="/saved" className="hover:text-[#0064a4] transition-colors">
+                  Saved Bookmarks
                 </Link>
               </li>
             </ul>

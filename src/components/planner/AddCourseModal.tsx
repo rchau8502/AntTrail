@@ -23,9 +23,8 @@ export const AddCourseModal: React.FC<AddCourseModalProps> = ({
   const [customCode, setCustomCode] = useState('')
   const [customUnits, setCustomUnits] = useState(4)
 
-  if (!isOpen) return null
-
   const filteredCatalog = useMemo(() => {
+    if (!isOpen) return []
     if (!searchQuery.trim()) return catalogCourses
     const q = searchQuery.toLowerCase().trim()
     return catalogCourses.filter(
@@ -34,12 +33,13 @@ export const AddCourseModal: React.FC<AddCourseModalProps> = ({
         c.title.toLowerCase().includes(q) ||
         c.department.toLowerCase().includes(q)
     )
-  }, [catalogCourses, searchQuery])
+  }, [isOpen, catalogCourses, searchQuery])
 
   const eligibleCatalogMatches = useMemo(() => {
+    if (!isOpen) return []
     const set = new Set(eligibleCourses.map((c) => c.toUpperCase()))
     return filteredCatalog.filter((c) => set.has(c.code.toUpperCase()))
-  }, [filteredCatalog, eligibleCourses])
+  }, [isOpen, filteredCatalog, eligibleCourses])
 
   const handleCustomAdd = (e: React.FormEvent) => {
     e.preventDefault()
@@ -48,6 +48,8 @@ export const AddCourseModal: React.FC<AddCourseModalProps> = ({
     setCustomCode('')
     onClose()
   }
+
+  if (!isOpen) return null
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4 animate-fade-in">

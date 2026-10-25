@@ -129,12 +129,12 @@ export const App: React.FC = () => {
     async function hydrateFromVault() {
       try {
         const vaultProfile = await getVaultItem<StudentProfile>(PROFILE_STORAGE_KEY)
-        if (vaultProfile && JSON.stringify(vaultProfile) !== JSON.stringify(profile)) {
-          setProfile(vaultProfile)
+        if (vaultProfile) {
+          setProfile((prev) => (JSON.stringify(vaultProfile) !== JSON.stringify(prev) ? vaultProfile : prev))
         }
         const vaultQuarters = await getVaultItem<PlannedQuarter[]>(QUARTERS_STORAGE_KEY)
-        if (vaultQuarters && JSON.stringify(vaultQuarters) !== JSON.stringify(plannedQuarters)) {
-          setPlannedQuarters(vaultQuarters)
+        if (vaultQuarters) {
+          setPlannedQuarters((prev) => (JSON.stringify(vaultQuarters) !== JSON.stringify(prev) ? vaultQuarters : prev))
         }
       } catch {
         // Fallback already loaded

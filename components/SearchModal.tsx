@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, X, BookOpen, ArrowRight, CornerDownLeft, Zap, Radar, GraduationCap, LayoutGrid } from 'lucide-react';
+import { Search, X, BookOpen, ArrowRight, CornerDownLeft, Zap, Radar, GraduationCap, LayoutGrid, Sparkles, Calendar } from 'lucide-react';
 import { searchGuides, SearchResult } from '@/lib/search';
 import { CATEGORIES } from '@/data/categories';
 import { CategoryId } from '@/types/guide';
@@ -13,7 +13,7 @@ interface WorkstationItem {
   href: string;
   keywords: string[];
   badge: string;
-  iconType: 'radar' | 'transfer' | 'planner' | 'grid' | 'zap';
+  iconType: 'radar' | 'transfer' | 'planner' | 'grid' | 'zap' | 'sparkles' | 'calendar';
 }
 
 const WORKSTATIONS: WorkstationItem[] = [
@@ -48,6 +48,22 @@ const WORKSTATIONS: WorkstationItem[] = [
     keywords: ['canvas', 'ddl', 'deadline', 'task', 'homework', 'assignment', 'grade', 'what-if', 'priority', '作业'],
     badge: 'Matrix',
     iconType: 'zap',
+  },
+  {
+    name: 'STEM Pattern Recognition & Drills',
+    description: '349 retrieval cards & exam drills for MATH 2E, 3A, 130A, 140A',
+    href: '/study',
+    keywords: ['study', 'stem', 'bubble', 'math', '2e', '3a', '130a', '140a', 'probability', 'linear algebra', 'calculus', 'flashcard', 'drill', 'quiz', '刷题', '数学'],
+    badge: 'Bubble',
+    iconType: 'sparkles',
+  },
+  {
+    name: 'Registrar Deadlines & Calendar Sync',
+    description: 'Academic calendar deadlines with 1-click Google Calendar & .ics export',
+    href: '/deadlines',
+    keywords: ['deadline', 'deadlines', 'calendar', 'drop', 'fee', 'tuition', 'webreg', 'finals', 'quarter', 'registration', 'ics', '校历', '截止日期'],
+    badge: 'Deadlines',
+    iconType: 'calendar',
   },
   {
     name: 'Alumni-Vetted Water Courses',
@@ -219,6 +235,8 @@ export default function SearchModal() {
                         {ws.iconType === 'planner' && <Zap className="w-4 h-4 text-[#0064a4] group-hover:text-white" />}
                         {ws.iconType === 'grid' && <LayoutGrid className="w-4 h-4 text-orange-600 group-hover:text-white" />}
                         {ws.iconType === 'zap' && <Zap className="w-4 h-4 text-rose-600 group-hover:text-white" />}
+                        {ws.iconType === 'sparkles' && <Sparkles className="w-4 h-4 text-indigo-600 group-hover:text-white" />}
+                        {ws.iconType === 'calendar' && <Calendar className="w-4 h-4 text-teal-600 group-hover:text-white" />}
                       </div>
                       <div>
                         <div className="text-xs font-extrabold text-slate-900 group-hover:text-white">

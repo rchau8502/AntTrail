@@ -29,7 +29,7 @@ export default function PersonaSelector({ current, onChange, compact = false }: 
     if (saved && saved !== current && current === 'all') {
       onChange(saved);
     }
-  }, []);
+  }, [current, onChange]);
 
   const handleSelect = (type: StudentType) => {
     onChange(type);
