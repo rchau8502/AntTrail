@@ -20,6 +20,7 @@ import {
   Radar
 } from 'lucide-react';
 import AntTrailBanner from '@/components/AntTrailBanner';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 const InteractiveAntTrailApp = dynamic(
   () => import('@/src/App').then((mod) => mod.App),
@@ -36,6 +37,7 @@ const InteractiveAntTrailApp = dynamic(
 );
 
 export default function DegreePlanningPage() {
+  const { t } = useLanguage();
   const [activeMode, setActiveMode] = useState<'WORKSTATION' | 'GUIDE'>('WORKSTATION');
 
   return (
@@ -49,10 +51,10 @@ export default function DegreePlanningPage() {
               <span>Academic Architecture</span>
             </div>
             <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              UCI Degree &amp; Prerequisite Workstation
+              {t.degreePlanningHub.workstationTitle}
             </h1>
             <p className="mt-1 text-sm text-slate-600">
-              Interactive 4-year schedule solver, prerequisite chain validator, and official degree requirements.
+              {t.degreePlanningHub.workstationSubtitle}
             </p>
             <div className="flex flex-wrap items-center gap-2 mt-2.5">
               <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 text-[11px] font-bold">
@@ -89,7 +91,7 @@ export default function DegreePlanningPage() {
               }`}
             >
               <SlidersHorizontal className="w-3.5 h-3.5 shrink-0" />
-              <span>Interactive Workstation</span>
+              <span>{t.degreePlanningHub.modeWorkstation}</span>
             </button>
             <button
               onClick={() => setActiveMode('GUIDE')}
@@ -100,7 +102,7 @@ export default function DegreePlanningPage() {
               }`}
             >
               <BookOpen className="w-3.5 h-3.5 shrink-0" />
-              <span>Planning Guide &amp; Rules</span>
+              <span>{t.degreePlanningHub.modeGuide}</span>
             </button>
           </div>
         </div>

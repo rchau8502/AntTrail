@@ -2,6 +2,7 @@ import React from 'react'
 import { ShieldCheck, BookOpen, Calendar, Award, Calculator, Download, RefreshCw, PlusCircle, FileText } from 'lucide-react'
 import { GoogleAuthButton } from './auth/GoogleAuthButton'
 import { GoogleUser, SyncStatus } from '../services/drive/types'
+import { useLanguage } from '../../lib/i18n/LanguageContext'
 
 export type NavigationTab = 'ELIGIBILITY' | 'PLANNER' | 'DEGREE' | 'GPA'
 
@@ -30,6 +31,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onConnectGoogle,
   onOpenSyncModal
 }) => {
+  const { t } = useLanguage()
+
   return (
     <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-y-3 px-4 py-3 sm:px-6">
@@ -62,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <BookOpen className="h-3.5 w-3.5" />
-            <span>Eligibility</span>
+            <span>{t.degreePlanningHub.tabEligibility}</span>
           </button>
 
           <button
@@ -74,7 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <Calendar className="h-3.5 w-3.5" />
-            <span>Quarter Planner</span>
+            <span>{t.degreePlanningHub.tabPlanner}</span>
           </button>
 
           <button
@@ -86,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <Award className="h-3.5 w-3.5" />
-            <span>Degree Audit</span>
+            <span>{t.degreePlanningHub.tabDegreeAudit}</span>
           </button>
 
           <button
@@ -98,7 +101,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <Calculator className="h-3.5 w-3.5" />
-            <span>GPA Calculator</span>
+            <span>{t.degreePlanningHub.tabGpa}</span>
           </button>
         </nav>
 

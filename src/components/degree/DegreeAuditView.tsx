@@ -4,6 +4,7 @@ import {
   EvaluatedRequirement,
   DegreeProgram
 } from '../../academic-engine/types'
+import { useLanguage } from '../../../lib/i18n/LanguageContext'
 import {
   Award,
   CheckCircle2,
@@ -31,6 +32,7 @@ export const DegreeAuditView: React.FC<DegreeAuditViewProps> = ({
   onSelectProgram,
   availablePrograms
 }) => {
+  const { t } = useLanguage()
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({})
 
   const programsBySchool = React.useMemo(() => {
@@ -101,7 +103,7 @@ export const DegreeAuditView: React.FC<DegreeAuditViewProps> = ({
                   title="Print official academic advising sheet"
                 >
                   <Printer className="h-3.5 w-3.5 text-sky-400" />
-                  <span>Print Advising Sheet</span>
+                  <span>{t.degreePlanningHub.advisingSheetBtn}</span>
                 </button>
                 {onSelectProgram && program.name !== 'UCI General Education (GE Breadth)' && (
                   <button
@@ -111,7 +113,7 @@ export const DegreeAuditView: React.FC<DegreeAuditViewProps> = ({
                     title="Audit UCI General Education Requirements"
                   >
                     <Layers className="h-3.5 w-3.5 text-amber-400" />
-                    <span>Audit GE Breadth</span>
+                    <span>{t.degreePlanningHub.auditGeBreadthBtn}</span>
                   </button>
                 )}
               </div>
@@ -237,7 +239,7 @@ export const DegreeAuditView: React.FC<DegreeAuditViewProps> = ({
                         : 'bg-slate-800 text-slate-400 border border-slate-700'
                     }`}
                   >
-                    {isComplete ? 'Complete' : isPlannedComplete ? 'Planned' : 'In Progress'}
+                    {isComplete ? t.degreePlanningHub.statusCompleted : isPlannedComplete ? t.degreePlanningHub.statusPlanned : t.degreePlanningHub.statusUnsatisfied}
                   </span>
                   {isExpanded ? (
                     <ChevronUp className="h-4 w-4 text-slate-400" />
@@ -269,6 +271,7 @@ interface RequirementCardProps {
 }
 
 const RequirementCard: React.FC<RequirementCardProps> = ({ evaluated, onPlanCourse }) => {
+  const { t } = useLanguage()
   const { requirement, isComplete, isPlannedComplete, completedCourses, plannedCourses, missingCourses, eligibleToSatisfy } = evaluated
 
   return (
@@ -302,7 +305,7 @@ const RequirementCard: React.FC<RequirementCardProps> = ({ evaluated, onPlanCour
               : 'bg-rose-500/20 text-rose-300'
           }`}
         >
-          {isComplete ? 'Complete' : isPlannedComplete ? 'Planned' : 'Remaining'}
+          {isComplete ? t.degreePlanningHub.statusCompleted : isPlannedComplete ? t.degreePlanningHub.statusPlanned : t.degreePlanningHub.statusUnsatisfied}
         </span>
       </div>
 
