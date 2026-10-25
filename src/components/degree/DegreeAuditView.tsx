@@ -32,6 +32,16 @@ export const DegreeAuditView: React.FC<DegreeAuditViewProps> = ({
 }) => {
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({})
 
+  const programsBySchool = React.useMemo(() => {
+    if (!availablePrograms) return {}
+    const map: Record<string, DegreeProgram[]> = {}
+    for (const prog of availablePrograms) {
+      if (!map[prog.school]) map[prog.school] = []
+      map[prog.school].push(prog)
+    }
+    return map
+  }, [availablePrograms])
+
   const toggleSection = (sectionId: string) => {
     setExpandedSections((prev) => ({
       ...prev,
@@ -67,12 +77,16 @@ export const DegreeAuditView: React.FC<DegreeAuditViewProps> = ({
                     id="major-switcher"
                     value={program.name}
                     onChange={(e) => onSelectProgram(e.target.value)}
-                    className="rounded-xl border border-slate-700 bg-slate-900/90 px-3 py-1.5 text-xs font-bold text-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-500 hover:border-slate-600 transition-colors cursor-pointer"
+                    className="rounded-xl border border-slate-700 bg-slate-900/90 px-3 py-1.5 text-xs font-bold text-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-500 hover:border-slate-600 transition-colors cursor-pointer max-w-xs sm:max-w-md truncate"
                   >
-                    {availablePrograms.map((p) => (
-                      <option key={p.id} value={p.name}>
-                        {p.name}
-                      </option>
+                    {Object.entries(programsBySchool).map(([schoolName, progs]) => (
+                      <optgroup key={schoolName} label={schoolName} className="bg-slate-900 text-slate-400 font-bold">
+                        {progs.map((p) => (
+                          <option key={p.id} value={p.name} className="text-white font-normal">
+                            {p.name}
+                          </option>
+                        ))}
+                      </optgroup>
                     ))}
                   </select>
                 </div>

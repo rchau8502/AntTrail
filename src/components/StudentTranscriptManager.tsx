@@ -3,6 +3,7 @@ import { StudentProfile, StudentCourseRecord, GradeLetter } from '../academic-en
 import { STUDENT_PERSONAS } from '../data/mock/mockStudentData'
 import { UCI_CS_MATH_COURSES } from '../data/uci/courses'
 import { OFFICIAL_TRANSFER_EQUIVALENCIES } from '../data/uci/equivalencies'
+import { UCI_DEGREE_PROGRAMS } from '../data/uci/programs'
 import {
   User,
   Plus,
@@ -143,9 +144,20 @@ export const StudentTranscriptManager: React.FC<StudentTranscriptManagerProps> =
             <span className="text-slate-400">Completed Units: </span>
             <span className="font-semibold text-emerald-400">{profile.completedUnits}</span>
           </div>
-          <div className="rounded-lg bg-slate-800/80 px-2.5 py-1 text-xs border border-slate-700/60">
+          <div className="flex items-center gap-1.5 rounded-lg bg-slate-800/80 px-2.5 py-1 text-xs border border-slate-700/60">
             <span className="text-slate-400">Major: </span>
-            <span className="font-semibold text-anteater-gold">{profile.major}</span>
+            <select
+              value={profile.major}
+              onChange={(e) => onUpdateProfile({ ...profile, major: e.target.value })}
+              className="bg-transparent font-semibold text-anteater-gold cursor-pointer focus:outline-none max-w-[220px] truncate"
+              title="Click to switch major"
+            >
+              {UCI_DEGREE_PROGRAMS.map((prog) => (
+                <option key={prog.id} value={prog.name} className="bg-slate-900 text-white font-normal">
+                  {prog.name}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </div>
