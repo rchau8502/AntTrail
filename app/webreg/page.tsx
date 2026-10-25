@@ -161,6 +161,12 @@ export default function WebRegTacticalPage() {
     return () => clearInterval(timer)
   }, [targetWindowTime])
 
+  // --- Available Departments from Loaded WebSoc Sections ---
+  const availableDepartments = useMemo(() => {
+    const depts = Array.from(new Set(sections.map((s) => s.dept))).sort()
+    return ['ALL', ...depts]
+  }, [sections])
+
   // --- Filtered WebSoc Sections ---
   const filteredSections = useMemo(() => {
     return sections.filter((sec) => {
@@ -439,25 +445,34 @@ export default function WebRegTacticalPage() {
                   onChange={(e) => setSelectedDeptFilter(e.target.value)}
                   className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-700"
                 >
-                  <option value="ALL">All Departments</option>
-                  <option value="I&C SCI">I&C SCI</option>
-                  <option value="MATH">MATH</option>
-                  <option value="COMPSCI">COMPSCI</option>
-                  <option value="STATS">STATS</option>
-                  <option value="ECON">ECON</option>
-                  <option value="WRITING">WRITING</option>
+                  <option value="ALL">All Departments ({sections.length} Sections)</option>
+                  {availableDepartments
+                    .filter((d) => d !== 'ALL')
+                    .map((dept) => (
+                      <option key={dept} value={dept}>
+                        {dept}
+                      </option>
+                    ))}
                 </select>
               </div>
 
-              {/* Search Bar */}
-              <div className="mb-4">
+              {/* Search Bar & Department Stats */}
+              <div className="mb-4 space-y-2">
                 <input
                   type="text"
-                  placeholder="Search by 5-digit code, course name, or instructor (e.g. 46, 3A, Pattis)..."
+                  placeholder="Search by 5-digit code, course name, department, or instructor (e.g. 46, CHEM, 93, Pattis)..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50/70 px-4 py-2.5 text-xs font-semibold text-slate-900 focus:border-[#0064a4] focus:bg-white focus:outline-hidden"
                 />
+                <div className="flex items-center justify-between text-[11px] text-slate-500 px-1">
+                  <span>
+                    Showing <strong className="text-slate-800">{filteredSections.length}</strong> of {sections.length} live sections
+                  </span>
+                  <span>
+                    Across <strong className="text-[#0064a4]">{availableDepartments.length - 1}</strong> UCI departments
+                  </span>
+                </div>
               </div>
 
               {/* Sections List */}
