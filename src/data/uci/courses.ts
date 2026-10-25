@@ -6323,5 +6323,2345 @@ export const UCI_CS_MATH_COURSES: Course[] = [
       { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
       { term: 'Winter', year: 2027, confidence: 'CONFIRMED' }
     ]
+  },
+  {
+    id: 'WRITING_40',
+    code: 'WRITING 40',
+    title: 'Academic English / Writing for Multilingual Students',
+    department: 'WRITING',
+    units: 4,
+    description: 'Focuses on complex rhetorical reading and academic writing strategies for multilingual writers at the university level.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: C- or better in entry-level writing requirement',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'WRITING_50',
+    code: 'WRITING 50',
+    title: 'Critical Reading and Rhetoric I',
+    department: 'WRITING',
+    units: 4,
+    description: 'Intensive rhetoric and analytical writing focused on contemporary cultural, political, and academic texts.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Completion of lower-division writing prerequisite',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'WRITING_60',
+    code: 'WRITING 60',
+    title: 'Critical Reading and Rhetoric II',
+    department: 'WRITING',
+    units: 4,
+    description: 'Advanced research paper composition, evidence evaluation, academic argumentation, and scholarly discourse.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Satisfactory score on placement or C or better in WRITING 50',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'WRITING_101W',
+    code: 'WRITING 101W',
+    title: 'Upper-Division Writing for Engineers',
+    department: 'WRITING',
+    units: 4,
+    description: 'Professional technical communication, formal engineering design proposals, technical memos, and peer review.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Upper-division standing and lower-division writing requirement satisfied',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ICS_6N',
+    code: 'ICS 6N',
+    title: 'Computational Linear Algebra',
+    department: 'ICS',
+    units: 4,
+    description: 'Linear systems, matrix algebra, determinants, eigenvalues, eigenvectors, vector spaces, and numerical matrix methods.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None; recommended: programming experience',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COMPSCI_162',
+    code: 'COMPSCI 162',
+    title: 'Formal Languages and Automata',
+    department: 'COMPSCI',
+    units: 4,
+    description: 'Regular languages, context-free languages, Turing machines, computability, decidability, and NP-completeness.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: COMPSCI 161 or ICS 6D',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COMPSCI_165',
+    code: 'COMPSCI 165',
+    title: 'Project in Data Structures and Algorithms',
+    department: 'COMPSCI',
+    units: 4,
+    description: 'Advanced algorithm engineering, performance benchmarking, graph algorithms, and cache-oblivious designs.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: COMPSCI 161',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COMPSCI_175',
+    code: 'COMPSCI 175',
+    title: 'Project in Artificial Intelligence',
+    department: 'COMPSCI',
+    units: 4,
+    description: 'Hands-on construction of reinforcement learning agents, game playing engines, and neural planning systems.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: COMPSCI 171',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COMPSCI_177',
+    code: 'COMPSCI 177',
+    title: 'Applications of Probability in Computer Science',
+    department: 'COMPSCI',
+    units: 4,
+    description: 'Randomized algorithms, Markov chains, probabilistic analysis of hash tables, queueing theory, and page rank.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: STATS 67 or MATH 130A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COMPSCI_184A',
+    code: 'COMPSCI 184A',
+    title: 'Representations and Algorithms for Molecular Biology',
+    department: 'COMPSCI',
+    units: 4,
+    description: 'Computational genomics, sequence alignment, hidden Markov models, phylogenetic trees, and protein structural modeling.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: COMPSCI 161 or BIO SCI 99',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'IN4MATX_133',
+    code: 'IN4MATX 133',
+    title: 'User Interaction Software',
+    department: 'IN4MATX',
+    units: 4,
+    description: 'Interactive UI architecture, windowing toolkits, event dispatch, mobile touch event lifecycles, and reactive frameworks.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: IN4MATX 131 or ICS 45C',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'STATS_8',
+    code: 'STATS 8',
+    title: 'Introduction to Biological Statistics',
+    department: 'STATS',
+    units: 4,
+    description: 'Hypothesis testing, confidence intervals, two-sample tests, ANOVA, chi-square, and regression applied to biological data.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'STATS_110',
+    code: 'STATS 110',
+    title: 'Statistical Methods for Data Science I',
+    department: 'STATS',
+    units: 4,
+    description: 'Exploratory data analysis, multivariate transformations, generalized linear models, and bootstrap inference.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: STATS 120A or STATS 67',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'STATS_111',
+    code: 'STATS 111',
+    title: 'Statistical Methods for Data Science II',
+    department: 'STATS',
+    units: 4,
+    description: 'Nonparametric regression, spline smoothing, logistic classification, model diagnostics, and cross-validation.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: STATS 110',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'STATS_112',
+    code: 'STATS 112',
+    title: 'Statistical Methods for Data Science III',
+    department: 'STATS',
+    units: 4,
+    description: 'Time series decomposition, ARMA modeling, spectral density, and spatial data analytics.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: STATS 111',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MATH_1B',
+    code: 'MATH 1B',
+    title: 'Precalculus',
+    department: 'MATH',
+    units: 4,
+    description: 'Functions and graphs, polynomial, rational, exponential, logarithmic, and trigonometric equations.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None or placement test',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MATH_121A',
+    code: 'MATH 121A',
+    title: 'Linear Algebra I',
+    department: 'MATH',
+    units: 4,
+    description: 'Rigorous vector spaces, linear transformations, dual spaces, characteristic polynomials, and Jordan canonical form.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MATH 13 and MATH 3A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MATH_170A',
+    code: 'MATH 170A',
+    title: 'Numerical Analysis I',
+    department: 'MATH',
+    units: 4,
+    description: 'Root-finding for nonlinear equations, polynomial interpolation, numerical differentiation, and quadrature integration.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MATH 3A and MATH 3D',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'CHEM_1LD',
+    code: 'CHEM 1LD',
+    title: 'General Chemistry Laboratory II',
+    department: 'CHEM',
+    units: 3,
+    description: 'Spectroscopic analysis, synthesis of coordination complexes, kinetics experiments, and qualitative inorganic analysis.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: CHEM 1LC and CHEM 1C',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'CHEM_51LA',
+    code: 'CHEM 51LA',
+    title: 'Organic Chemistry Laboratory I',
+    department: 'CHEM',
+    units: 3,
+    description: 'Techniques of organic synthesis, recrystallization, distillation, thin-layer chromatography, and IR spectroscopy.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: CHEM 1C and CHEM 1LC; Corequisite: CHEM 51A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'CHEM_131C',
+    code: 'CHEM 131C',
+    title: 'Statistical Mechanics and Chemical Dynamics',
+    department: 'CHEM',
+    units: 4,
+    description: 'Boltzmann distribution, partition functions, transition state theory, and photochemical reaction mechanisms.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: CHEM 131A and CHEM 131B',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'CHEM_138',
+    code: 'CHEM 138',
+    title: 'Introduction to Computational Chemistry',
+    department: 'CHEM',
+    units: 4,
+    description: 'Molecular mechanics, Hartree-Fock ab initio methods, density functional theory (DFT), and conformational search.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: CHEM 51C or CHEM 131B',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'CHEM_156',
+    code: 'CHEM 156',
+    title: 'Biophysical Chemistry',
+    department: 'CHEM',
+    units: 4,
+    description: 'Physical techniques for macromolecular characterization, X-ray crystallography, NMR, and folding kinetics.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: CHEM 51C and MATH 2B',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PHYSICS_3C',
+    code: 'PHYSICS 3C',
+    title: 'Basic Physics III (Electricity & Modern Physics)',
+    department: 'PHYSICS',
+    units: 4,
+    description: 'Electric and magnetic fields, DC/AC circuits, electromagnetic waves, atomic physics, and radioactivity for life sciences.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: PHYSICS 3B',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PHYSICS_3LB',
+    code: 'PHYSICS 3LB',
+    title: 'Basic Physics Laboratory I',
+    department: 'PHYSICS',
+    units: 1.5,
+    description: 'Laboratory experiments illustrating kinematics, dynamics, friction, oscillatory motion, and thermal properties.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: PHYSICS 3A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PHYSICS_3LC',
+    code: 'PHYSICS 3LC',
+    title: 'Basic Physics Laboratory II',
+    department: 'PHYSICS',
+    units: 1.5,
+    description: 'Laboratory experiments covering electric circuits, resistors, capacitors, magnetic induction, and optics.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: PHYSICS 3B and PHYSICS 3LB',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PHYSICS_7LD',
+    code: 'PHYSICS 7LD',
+    title: 'Classical Physics Laboratory II',
+    department: 'PHYSICS',
+    units: 1,
+    description: 'Laboratory investigations in DC/AC circuit analysis, Faraday induction, geometric optics, and interference patterns.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: PHYSICS 7D and PHYSICS 7LC',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PHYSICS_20A',
+    code: 'PHYSICS 20A',
+    title: 'Introduction to Astronomy: The Solar System',
+    department: 'PHYSICS',
+    units: 4,
+    description: 'Origin and evolution of planets, orbital dynamics, planetary atmospheres, asteroids, and space exploration.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PHYSICS_20B',
+    code: 'PHYSICS 20B',
+    title: 'Introduction to Astronomy: Stars and Galaxies',
+    department: 'PHYSICS',
+    units: 4,
+    description: 'Stellar structure, nucleosynthesis, black holes, galactic dynamics, quasars, and modern cosmology.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PHYSICS_50',
+    code: 'PHYSICS 50',
+    title: 'Math Methods for Physics',
+    department: 'PHYSICS',
+    units: 4,
+    description: 'Complex numbers, vector calculus in curvilinear coordinates, Fourier series, and partial differential equations.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MATH 3D and PHYSICS 7E',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PHYSICS_60',
+    code: 'PHYSICS 60',
+    title: 'Thermal Physics',
+    department: 'PHYSICS',
+    units: 4,
+    description: 'Equilibrium thermodynamics, entropy, engines, chemical potential, Fermi-Dirac and Bose-Einstein distributions.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: PHYSICS 50',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'BIO_SCI_M118L',
+    code: 'BIO SCI M118L',
+    title: 'Microbiology Laboratory',
+    department: 'BIO SCI',
+    units: 3,
+    description: 'Sterile microbiological techniques, isolation of environmental bacteria, staining, and biochemical profiling.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: BIO SCI M122',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'BIO_SCI_N115A',
+    code: 'BIO SCI N115A',
+    title: 'Cognitive Neuroscience',
+    department: 'BIO SCI',
+    units: 4,
+    description: 'Neural substrates of memory, perception, language, decision making, and executive function.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: BIO SCI N110 or PSYCH 9A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ECON_13',
+    code: 'ECON 13',
+    title: 'Global Economy',
+    department: 'ECON',
+    units: 4,
+    description: 'Introduction to international trade agreements, exchange rates, foreign investment, and global economic disparity.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ECON_15A',
+    code: 'ECON 15A',
+    title: 'Probability and Statistics in Economics I',
+    department: 'ECON',
+    units: 4,
+    description: 'Discrete and continuous probability, expectation, joint distributions, and sampling error for econometrics.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MATH 2A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ECON_15B',
+    code: 'ECON 15B',
+    title: 'Probability and Statistics in Economics II',
+    department: 'ECON',
+    units: 4,
+    description: 'Hypothesis testing, maximum likelihood estimation, confidence intervals, and introductory bivariate regression.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: ECON 15A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ECON_25',
+    code: 'ECON 25',
+    title: 'Economics of Accounting Decisions',
+    department: 'ECON',
+    units: 4,
+    description: 'Economic analysis of managerial accounting systems, cost drivers, cost allocations, and transfer pricing.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: ECON 20A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ECON_140',
+    code: 'ECON 140',
+    title: 'Managerial Economics',
+    department: 'ECON',
+    units: 4,
+    description: 'Application of microeconomic models to strategic business pricing, competitive positioning, and internal incentives.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: ECON 100A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ECON_157',
+    code: 'ECON 157',
+    title: 'Economic Development',
+    department: 'ECON',
+    units: 4,
+    description: 'Theories of structural change, microfinance, rural-urban migration, human capital accumulation, and institutional reforms.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: ECON 20A and ECON 20B',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ECON_161A',
+    code: 'ECON 161A',
+    title: 'International Money',
+    department: 'ECON',
+    units: 4,
+    description: 'Balance of payments, foreign exchange markets, macroeconomic policy under floating and fixed exchange rate regimes.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: ECON 100B',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MGMT_131A',
+    code: 'MGMT 131A',
+    title: 'Intermediate Accounting I',
+    department: 'MGMT',
+    units: 4,
+    description: 'FASB conceptual framework, revenue recognition standards, valuation of inventory, and operational asset reporting.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MGMT 30B',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MGMT_131B',
+    code: 'MGMT 131B',
+    title: 'Intermediate Accounting II',
+    department: 'MGMT',
+    units: 4,
+    description: 'Accounting for current and long-term liabilities, stockholders equity, leases, pensions, and statement of cash flows.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MGMT 131A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MGMT_141',
+    code: 'MGMT 141',
+    title: 'Investments',
+    department: 'MGMT',
+    units: 4,
+    description: 'Modern portfolio theory, equity valuation, fixed-income bond valuation, duration matching, and mutual fund performance attribution.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MGMT 30B',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MGMT_178',
+    code: 'MGMT 178',
+    title: 'Data Analytics for Business Decisions',
+    department: 'MGMT',
+    units: 4,
+    description: 'Predictive analytics, customer segmentation, data visualization with Tableau, and data-driven marketing optimization.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MGMT 105 and STATS 7',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'EECS_112L',
+    code: 'EECS 112L',
+    title: 'Organization of Digital Computers Laboratory',
+    department: 'EECS',
+    units: 3,
+    description: 'MIPS/RISC-V pipeline CPU implementation in Verilog, memory cache simulation, and hazard resolution.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Corequisite: EECS 112',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'EECS_113',
+    code: 'EECS 113',
+    title: 'Processor Hardware/Software Interfaces',
+    department: 'EECS',
+    units: 4,
+    description: 'Microcontroller architecture, interrupt controllers, timers, analog-to-digital converters (ADC), and SPI/I2C communication.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: EECS 31 and EECS 70A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'EECS_145',
+    code: 'EECS 145',
+    title: 'Electrical Engineering Analysis',
+    department: 'EECS',
+    units: 4,
+    description: 'Fourier transforms, Laplace transforms, Z-transforms, convolution, and frequency response analysis for signals and systems.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: EECS 70A and MATH 3D',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'EECS_148',
+    code: 'EECS 148',
+    title: 'Computer Networks',
+    department: 'EECS',
+    units: 4,
+    description: 'OSI and TCP/IP stack layers, routing algorithms, congestion control, socket programming, and media access control.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: EECS 112 or COMPSCI 143A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ENGRMAE_60',
+    code: 'ENGRMAE 60',
+    title: 'Electric Circuits for Mechanical Engineers',
+    department: 'ENGRMAE',
+    units: 4,
+    description: 'Circuit theorems, transient RC/RL circuit responses, operational amplifiers, and electromechanical actuators.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: PHYSICS 7D and MATH 2D',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ENGRMAE_91',
+    code: 'ENGRMAE 91',
+    title: 'Introduction to Thermodynamics',
+    department: 'ENGRMAE',
+    units: 4,
+    description: 'First and second laws of thermodynamics, closed and open system energy balances, ideal gases, and heat pump cycles.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MATH 2D and PHYSICS 7C',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ENGRMAE_115',
+    code: 'ENGRMAE 115',
+    title: 'Applied Engineering Thermodynamics',
+    department: 'ENGRMAE',
+    units: 4,
+    description: 'Gas turbine power cycles, Rankine steam cycles, refrigeration, psychrometric charts, and combustion stoichiometry.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: ENGRMAE 91',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ENGRMAE_145',
+    code: 'ENGRMAE 145',
+    title: 'Theory of Machines and Mechanisms',
+    department: 'ENGRMAE',
+    units: 4,
+    description: 'Kinematic synthesis of planar linkages, cams, gear trains, and static/dynamic force balancing.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: ENGRMAE 80',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ENGRMAE_170',
+    code: 'ENGRMAE 170',
+    title: 'Introduction to Control Systems',
+    department: 'ENGRMAE',
+    units: 4,
+    description: 'Transfer functions, block diagram reduction, root locus design, Bode plots, and PID feedback controllers.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: ENGRMAE 80 and MATH 3D',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ENGRCEE_30',
+    code: 'ENGRCEE 30',
+    title: 'Statics for Civil Engineers',
+    department: 'ENGRCEE',
+    units: 4,
+    description: 'Equilibrium of coplanar and three-dimensional force systems, trusses, frames, centroids, and moments of inertia.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MATH 2B and PHYSICS 7C',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ENGRCEE_80',
+    code: 'ENGRCEE 80',
+    title: 'Dynamics for Civil Engineers',
+    department: 'ENGRCEE',
+    units: 4,
+    description: 'Particle and rigid body dynamics, energy methods, momentum formulations, and introductory structural vibration.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: ENGRCEE 30 and MATH 2D',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ENGRCEE_151A',
+    code: 'ENGRCEE 151A',
+    title: 'Structural Analysis',
+    department: 'ENGRCEE',
+    units: 4,
+    description: 'Deflections of determinate and indeterminate structures, slope-deflection method, and moment distribution.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: ENGRCEE 150',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'BME_50B',
+    code: 'BME 50B',
+    title: 'Biomaterials',
+    department: 'BME',
+    units: 4,
+    description: 'Biocompatibility, protein adsorption, host response to foreign materials, degradation of polymers and metals.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: BME 50A and CHEM 51A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'BME_110',
+    code: 'BME 110',
+    title: 'Biomechanics',
+    department: 'BME',
+    units: 4,
+    description: 'Viscoelasticity of soft tissues, bone mechanics, muscular contraction mechanics, and vascular fluid dynamics.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: ENGRMAE 30 and MATH 3D',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'CBE_40B',
+    code: 'CBE 40B',
+    title: 'Chemical Process Principles',
+    department: 'CBE',
+    units: 4,
+    description: 'Transient material and energy balances, vapor-liquid phase equilibrium, humidity, and energy balances with reaction.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: CBE 40A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MSE_50L',
+    code: 'MSE 50L',
+    title: 'Materials Science Laboratory',
+    department: 'MSE',
+    units: 2,
+    description: 'Hardness testing, tensile stress-strain curves, metallographic polishing, optical microscopy, and phase diagram analysis.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Corequisite: MSE 50',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PSYCH_120D',
+    code: 'PSYCH 120D',
+    title: 'Developmental Psychology',
+    department: 'PSYCH',
+    units: 4,
+    description: 'Physical, cognitive, and socioemotional changes from infancy through adolescence.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: PSYCH 9A or PSCI 9',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PSYCH_140C',
+    code: 'PSYCH 140C',
+    title: 'Cognitive Psychology',
+    department: 'PSYCH',
+    units: 4,
+    description: 'Information processing models, selective attention, working memory, mental imagery, and problem solving.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: PSYCH 9B or COGS 14P',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PSYCH_160D',
+    code: 'PSYCH 160D',
+    title: 'Social Psychology',
+    department: 'PSYCH',
+    units: 4,
+    description: 'Attitude change, social influence, conformity, obedience, prejudice, stereotyping, and prosocial behavior.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: PSYCH 9A or PSCI 9',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COGS_14P',
+    code: 'COGS 14P',
+    title: 'Introduction to Programming for Cognitive Scientists',
+    department: 'COGS',
+    units: 4,
+    description: 'Python scripting, computational experiments, psychophysics stimuli generation, and automated response collection.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COGS_106',
+    code: 'COGS 106',
+    title: 'Computational Models of Cognition',
+    department: 'COGS',
+    units: 4,
+    description: 'Bayesian cognitive models, associative learning models, neural network architectures, and decision making simulations.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: COGS 14P and STATS 7',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COGS_107',
+    code: 'COGS 107',
+    title: 'Cognitive Neuroscience of Perception',
+    department: 'COGS',
+    units: 4,
+    description: 'Visual and auditory sensory pathways, receptive field mapping, cortical organization, and perceptual illusions.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: BIO SCI 93 or PSYCH 9A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COGS_109',
+    code: 'COGS 109',
+    title: 'Cognitive Neuromodeling',
+    department: 'COGS',
+    units: 4,
+    description: 'Hodgkin-Huxley equations, integrate-and-fire models, dynamical systems in neural circuits, and attractor networks.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MATH 3D and COGS 14P',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COGS_130A',
+    code: 'COGS 130A',
+    title: 'Language and the Brain',
+    department: 'COGS',
+    units: 4,
+    description: 'Neurolinguistics, aphasias, Broca and Wernicke language areas, ERP and fMRI investigations of syntax and semantics.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: PSYCH 9B or LSCI 3',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PSCI_11',
+    code: 'PSCI 11',
+    title: 'Introduction to Psychology and Social Behavior',
+    department: 'PSCI',
+    units: 4,
+    description: 'Introduction to the psychological study of human adaptation, interpersonal relationships, and lifespan growth.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PSCI_192B',
+    code: 'PSCI 192B',
+    title: 'Health Psychology',
+    department: 'PSCI',
+    units: 4,
+    description: 'Psychoneuroimmunology, stress-coping mechanisms, health disparities, and behavioral medicine interventions.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: PSCI 9 or PSYCH 9A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ENGLISH_101',
+    code: 'ENGLISH 101',
+    title: 'Literary Theory and Criticism',
+    department: 'ENGLISH',
+    units: 4,
+    description: 'Introduction to formalist, structuralist, post-structuralist, feminist, psychoanalytic, and postcolonial literary critiques.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: ENGLISH 100',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'HISTORY_21C',
+    code: 'HISTORY 21C',
+    title: 'World History III (Modern Era)',
+    department: 'HISTORY',
+    units: 4,
+    description: 'Industrialization, imperial expansions, world wars, decolonization, Cold War conflicts, and globalization.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'HISTORY_40B',
+    code: 'HISTORY 40B',
+    title: 'Nineteenth-Century United States',
+    department: 'HISTORY',
+    units: 4,
+    description: 'Jacksonian democracy, westward expansion, slavery and abolitionism, Civil War, and Reconstruction era.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'HISTORY_40C',
+    code: 'HISTORY 40C',
+    title: 'Twentieth-Century United States',
+    department: 'HISTORY',
+    units: 4,
+    description: 'Progressivism, Great Depression, New Deal, World War II, civil rights movements, and contemporary American history.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'HISTORY_70B',
+    code: 'HISTORY 70B',
+    title: 'History of East Asia: Modern Transitions',
+    department: 'HISTORY',
+    units: 4,
+    description: 'East Asian responses to Western imperialism, revolutions, modern nation-building, and economic resurgence.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PHILOS_29',
+    code: 'PHILOS 29',
+    title: 'Philosophy of Technology',
+    department: 'PHILOS',
+    units: 4,
+    description: 'Ethical, metaphysical, and political ramifications of artificial intelligence, biotechnology, and digital ubiquity.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ART_30',
+    code: 'ART 30',
+    title: 'Introduction to Painting',
+    department: 'ART',
+    units: 4,
+    description: 'Color mixing, medium handling, composition, value relationships, and personal thematic explorations in acrylic and oil.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: ART 1A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ART_40',
+    code: 'ART 40',
+    title: 'Basic Video Production and Art',
+    department: 'ART',
+    units: 4,
+    description: 'Time-based art strategies, single-channel video, multi-camera staging, sound design, and non-linear digital editing.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MUSIC_40',
+    code: 'MUSIC 40',
+    title: 'Music Theory I',
+    department: 'MUSIC',
+    units: 4,
+    description: 'Diatonic harmony, voice leading, four-part chorale writing, Roman numeral analysis, and cadential structures.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None or placement exam',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MUSIC_42',
+    code: 'MUSIC 42',
+    title: 'Musicianship I',
+    department: 'MUSIC',
+    units: 2,
+    description: 'Sight-singing in movable-do solfege, rhythmic dictation, interval recognition, and melodic ear training.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Corequisite: MUSIC 40',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'DRAMA_40',
+    code: 'DRAMA 40',
+    title: 'Development of Drama: Ancient to Modern',
+    department: 'DRAMA',
+    units: 4,
+    description: 'Critical survey of dramatic literature, stagecraft innovations, and theatrical conventions across world cultures.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: Lower-division writing satisfied',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'DRAMA_50',
+    code: 'DRAMA 50',
+    title: 'Costume Design for the Stage',
+    department: 'DRAMA',
+    units: 4,
+    description: 'Figure drawing for theater, fabric selection, color symbolism, period silhouettes, and costume rendering techniques.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'DANCE_50',
+    code: 'DANCE 50',
+    title: 'History of World Dance',
+    department: 'DANCE',
+    units: 4,
+    description: 'Anthropological and historical survey of ritual, classical, court, folk, and contemporary social dance traditions.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PUBHLTH_60',
+    code: 'PUBHLTH 60',
+    title: 'Environmental Health Sciences',
+    department: 'PUBHLTH',
+    units: 4,
+    description: 'Toxicology, water sanitation, ambient air pollution, occupational hazards, and climate change health impacts.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PUBHLTH_80',
+    code: 'PUBHLTH 80',
+    title: 'Health Policy and Management',
+    department: 'PUBHLTH',
+    units: 4,
+    description: 'Structure of the United States healthcare delivery system, Medicare/Medicaid financing, and health economics.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PUBHLTH_90',
+    code: 'PUBHLTH 90',
+    title: 'Natural Disasters and Disaster Health',
+    department: 'PUBHLTH',
+    units: 4,
+    description: 'Public health emergency preparedness, triage protocols, epidemic outbreaks during natural crises, and FEMA frameworks.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PHRMSCI_42',
+    code: 'PHRMSCI 42',
+    title: 'Life Sciences Careers and Professional Development',
+    department: 'PHRMSCI',
+    units: 2,
+    description: 'Exploration of career paths in pharmaceutical sciences, biotechnology, clinical trials, and regulatory affairs.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PHRMSCI_170B',
+    code: 'PHRMSCI 170B',
+    title: 'Molecular Pharmacology II',
+    department: 'PHRMSCI',
+    units: 4,
+    description: 'Receptor theory, pharmacodynamics, neuropharmacology, cardiovascular medications, and chemotherapy agents.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: PHRMSCI 170A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'EDUC_104',
+    code: 'EDUC 104',
+    title: 'Teaching English Learners in K-12 Classrooms',
+    department: 'EDUC',
+    units: 4,
+    description: 'Second language acquisition theories, SDAIE instructional strategies, and bilingual pedagogical frameworks.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'LSCI_1',
+    code: 'LSCI 1',
+    title: 'Introduction to Linguistics',
+    department: 'LSCI',
+    units: 4,
+    description: 'Introduction to the scientific study of language structure, syntax, semantics, phonetics, and historical linguistics.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'LSCI_2',
+    code: 'LSCI 2',
+    title: 'Discovering Language',
+    department: 'LSCI',
+    units: 4,
+    description: 'Exploration of language variation, dialects, sociolinguistics, language acquisition, and writing systems.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'LSCI_20',
+    code: 'LSCI 20',
+    title: 'Syntax',
+    department: 'LSCI',
+    units: 4,
+    description: 'Generative phrase structure, X-bar theory, transformational grammar, movement constraints, and universal grammar.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: LSCI 1',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'LSCI_43',
+    code: 'LSCI 43',
+    title: 'Phonetics and Phonology',
+    department: 'LSCI',
+    units: 4,
+    description: 'Acoustic and articulatory phonetics, International Phonetic Alphabet (IPA), phonological rules, and distinctive features.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: LSCI 1',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'LSCI_102',
+    code: 'LSCI 102',
+    title: 'Formal Semantics',
+    department: 'LSCI',
+    units: 4,
+    description: 'Truth-conditional semantics, lambda calculus, quantification, presupposition, and modal logic applications to natural language.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: LSCI 20 or ICS 6B',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'POL_SCI_31A',
+    code: 'POL SCI 31A',
+    title: 'Introduction to Political Theory',
+    department: 'POL SCI',
+    units: 4,
+    description: 'Classical, modern, and contemporary political philosophy regarding justice, liberty, power, and democratic legitimacy.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'POL_SCI_61A',
+    code: 'POL SCI 61A',
+    title: 'Introduction to Race and Ethnicity in Politics',
+    department: 'POL SCI',
+    units: 4,
+    description: 'Systemic racial disparities, voting rights, immigration policies, social movements, and ethnic coalition building.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'POL_SCI_121A',
+    code: 'POL SCI 121A',
+    title: 'Constitutional Law: Federalism and Separation of Powers',
+    department: 'POL SCI',
+    units: 4,
+    description: 'Supreme Court jurisprudence interpreting executive power, legislative commerce clause, and judicial review.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: POL SCI 21A or POL SCI 71A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'POL_SCI_121B',
+    code: 'POL SCI 121B',
+    title: 'Constitutional Law: Civil Liberties and Rights',
+    department: 'POL SCI',
+    units: 4,
+    description: 'First Amendment speech, religion, Fourteenth Amendment equal protection, due process, and fundamental privacy rights.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: POL SCI 21A or POL SCI 71A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'POL_SCI_141A',
+    code: 'POL SCI 141A',
+    title: 'International Political Economy',
+    department: 'POL SCI',
+    units: 4,
+    description: 'Global trade regimes (WTO), multinational corporations, international monetary systems (IMF), and financial crises.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: POL SCI 41A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'POL_SCI_142A',
+    code: 'POL SCI 142A',
+    title: 'United States Foreign Policy',
+    department: 'POL SCI',
+    units: 4,
+    description: 'Historical diplomacy, foreign policy decision-making, nuclear deterrence, post-9/11 defense strategy, and diplomacy.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: POL SCI 41A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'SOCIOL_10',
+    code: 'SOCIOL 10',
+    title: 'Sociological Research Methods',
+    department: 'SOCIOL',
+    units: 4,
+    description: 'Survey research design, qualitative interviewing, field ethnography, coding, and ethical research protocols.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: SOCIOL 1',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'SOCIOL_31',
+    code: 'SOCIOL 31',
+    title: 'Self-Identity and Society',
+    department: 'SOCIOL',
+    units: 4,
+    description: 'Symbolic interactionism, social construction of identity, role performance, and interpersonal stigma.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'SOCIOL_41',
+    code: 'SOCIOL 41',
+    title: 'Small Group Dynamics',
+    department: 'SOCIOL',
+    units: 4,
+    description: 'Social influence, group polarization, leadership structures, collective decision making, and status hierarchies.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'SOCIOL_62',
+    code: 'SOCIOL 62',
+    title: 'Families and Society',
+    department: 'SOCIOL',
+    units: 4,
+    description: 'Historical shifts in family formation, marriage, divorce, domestic labor divisions, and kinship structures.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'SOCIOL_161',
+    code: 'SOCIOL 161',
+    title: 'Social Inequality and Stratification',
+    department: 'SOCIOL',
+    units: 4,
+    description: 'Theories of class reproduction, wealth accumulation, prestige hierarchies, social mobility, and intersectional oppression.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: SOCIOL 1',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ANTHRO_125A',
+    code: 'ANTHRO 125A',
+    title: 'Environmental Anthropology',
+    department: 'ANTHRO',
+    units: 4,
+    description: 'Indigenous ecological knowledge, political ecology, resource extraction struggles, and climate resilience.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: ANTHRO 2A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ANTHRO_134A',
+    code: 'ANTHRO 134A',
+    title: 'Medical Anthropology',
+    department: 'ANTHRO',
+    units: 4,
+    description: 'Cultural concepts of illness, structural violence, global health interventions, and clinical biomedicine critique.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: ANTHRO 2A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'EARTHSS_3',
+    code: 'EARTHSS 3',
+    title: 'Oceanography',
+    department: 'EARTHSS',
+    units: 4,
+    description: 'Physical oceanography, thermohaline circulation, ocean wave mechanics, marine biology ecosystems, and acidification.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'EARTHSS_5',
+    code: 'EARTHSS 5',
+    title: 'Atmosphere and Global Climate',
+    department: 'EARTHSS',
+    units: 4,
+    description: 'Atmospheric composition, radiative transfer, greenhouse effect, Hadley cells, Coriolis effect, and cyclones.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'EARTHSS_7',
+    code: 'EARTHSS 7',
+    title: 'Physical Geology',
+    department: 'EARTHSS',
+    units: 4,
+    description: 'Plate tectonics, mineralogy, igneous and metamorphic rock cycles, earthquakes, volcanism, and mountain building.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'EARTHSS_19',
+    code: 'EARTHSS 19',
+    title: 'Global Climate Change',
+    department: 'EARTHSS',
+    units: 4,
+    description: 'Scientific evidence for anthropogenic climate change, paleoclimate proxies, ice cores, and mitigation strategies.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'CRIM_C10',
+    code: 'CRIM C10',
+    title: 'Introduction to Crime and Deviance',
+    department: 'CRIM',
+    units: 4,
+    description: 'Criminological theories of anomie, differential association, labeling theory, routine activities, and social control.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'CRIM_C100',
+    code: 'CRIM C100',
+    title: 'Domestic and Intimate Partner Violence',
+    department: 'CRIM',
+    units: 4,
+    description: 'Legal responses, psychological dynamics, cycles of violence, and trauma-informed survivor intervention services.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: CRIM C7',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'CRIM_C122',
+    code: 'CRIM C122',
+    title: 'Constitutional Rights in Criminal Justice',
+    department: 'CRIM',
+    units: 4,
+    description: 'Fourth, Fifth, and Sixth Amendment search and seizure, Miranda warnings, right to counsel, and exclusionary rule.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: CRIM C7',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'CRIM_C142',
+    code: 'CRIM C142',
+    title: 'White-Collar and Corporate Crime',
+    department: 'CRIM',
+    units: 4,
+    description: 'Corporate fraud, securities violations, insider trading, environmental crime, and federal regulatory enforcement.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: CRIM C7',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'UPPP_107',
+    code: 'UPPP 107',
+    title: 'Urban and Regional Transportation',
+    department: 'UPPP',
+    units: 4,
+    description: 'Transportation modeling, transit-oriented development, active mobility planning, and freeway congestion pricing.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: UPPP 4',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'CHINESE_1A',
+    code: 'CHINESE 1A',
+    title: 'Fundamental Mandarin Chinese I',
+    department: 'CHINESE',
+    units: 5,
+    description: 'Pinyin romanization, fundamental Chinese characters, tone discrimination, basic syntax, and situational conversation.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: Placement test or no prior knowledge',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'CHINESE_1B',
+    code: 'CHINESE 1B',
+    title: 'Fundamental Mandarin Chinese II',
+    department: 'CHINESE',
+    units: 5,
+    description: 'Continuation of grammar patterns, character stroke orders, reading comprehension, and communicative tasks.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: CHINESE 1A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'CHINESE_1C',
+    code: 'CHINESE 1C',
+    title: 'Fundamental Mandarin Chinese III',
+    department: 'CHINESE',
+    units: 5,
+    description: 'Consolidation of fundamental grammar, expanded vocabulary, paragraph reading, and cultural presentations.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: CHINESE 1B',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'JAPANSE_1A',
+    code: 'JAPANSE 1A',
+    title: 'First-Year Japanese I',
+    department: 'JAPANSE',
+    units: 5,
+    description: 'Hiragana and Katakana syllabaries, fundamental Kanji, basic grammatical particles, and daily communicative expressions.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: Placement test or no prior knowledge',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'JAPANSE_1B',
+    code: 'JAPANSE 1B',
+    title: 'First-Year Japanese II',
+    department: 'JAPANSE',
+    units: 5,
+    description: 'Te-form verb conjugations, adjective inflections, conversational fluency, and Kanji reading development.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: JAPANSE 1A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'JAPANSE_1C',
+    code: 'JAPANSE 1C',
+    title: 'First-Year Japanese III',
+    department: 'JAPANSE',
+    units: 5,
+    description: 'Honorific expressions, relative clauses, conditional statements, and intermediate reading comprehension.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: JAPANSE 1B',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'KOREAN_1A',
+    code: 'KOREAN 1A',
+    title: 'First-Year Korean I',
+    department: 'KOREAN',
+    units: 5,
+    description: 'Hangul alphabet, phonological rules, basic sentence structure, polite speech styles, and everyday conversation.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: Placement test or no prior knowledge',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'KOREAN_1B',
+    code: 'KOREAN 1B',
+    title: 'First-Year Korean II',
+    department: 'KOREAN',
+    units: 5,
+    description: 'Honorifics, past and future tense markers, compound sentences, and practical situational listening/speaking.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: KOREAN 1A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'KOREAN_1C',
+    code: 'KOREAN 1C',
+    title: 'First-Year Korean III',
+    department: 'KOREAN',
+    units: 5,
+    description: 'Connecting suffixes, complex descriptive sentences, short reading passages, and cultural context exploration.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: KOREAN 1B',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'SPANISH_1A',
+    code: 'SPANISH 1A',
+    title: 'Fundamental Spanish I',
+    department: 'SPANISH',
+    units: 5,
+    description: 'Grammatical gender, present tense verb conjugations, noun-adjective agreement, and Hispanic cultural insights.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: Placement test or no prior knowledge',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'SPANISH_1B',
+    code: 'SPANISH 1B',
+    title: 'Fundamental Spanish II',
+    department: 'SPANISH',
+    units: 5,
+    description: 'Preterite and imperfect past tense contrasts, direct and indirect object pronouns, and conversational practice.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: SPANISH 1A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'SPANISH_1C',
+    code: 'SPANISH 1C',
+    title: 'Fundamental Spanish III',
+    department: 'SPANISH',
+    units: 5,
+    description: 'Present subjunctive mood, conditional clauses, commands, and intermediate reading/composition.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: SPANISH 1B',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'FRENCH_1A',
+    code: 'FRENCH 1A',
+    title: 'Fundamental French I',
+    department: 'FRENCH',
+    units: 5,
+    description: 'Pronunciation, basic grammar, everyday communication, and cultural discovery of the Francophone world.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'FRENCH_1B',
+    code: 'FRENCH 1B',
+    title: 'Fundamental French II',
+    department: 'FRENCH',
+    units: 5,
+    description: 'Passe compose, imperfect tense, object pronouns, and French cultural literacy development.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: FRENCH 1A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'GERMAN_1A',
+    code: 'GERMAN 1A',
+    title: 'Fundamental German I',
+    department: 'GERMAN',
+    units: 5,
+    description: 'Four-case system (nominative, accusative, dative, genitive), verb conjugation, and introductory communication.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'GEN_SEX_60A',
+    code: 'GEN&SEX 60A',
+    title: 'Gender and Pop Culture',
+    department: 'GEN&SEX',
+    units: 4,
+    description: 'Critical analysis of gender, race, and sexuality in television, popular music, video games, and social media.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COMPSCI_134',
+    code: 'COMPSCI 134',
+    title: 'Computer and Network Security',
+    department: 'COMPSCI',
+    units: 4,
+    description: 'Applied cryptography, symmetric/asymmetric ciphers, public key infrastructure (PKI), TLS protocol, buffer overflows, and firewalls.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: COMPSCI 132 or COMPSCI 143A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COMPSCI_142A',
+    code: 'COMPSCI 142A',
+    title: 'Compilers and Interpreters',
+    department: 'COMPSCI',
+    units: 4,
+    description: 'Lexical analysis (lex), LL/LR parsing (yacc/bison), abstract syntax tree generation, intermediate representations, and register allocation.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: COMPSCI 141',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'COMPSCI_179',
+    code: 'COMPSCI 179',
+    title: 'Algorithms for Genomic Data Analysis',
+    department: 'COMPSCI',
+    units: 4,
+    description: 'Burrows-Wheeler transform, de Bruijn graphs for genome assembly, RNA-seq quantification, and variant discovery algorithms.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: COMPSCI 161',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MATH_4',
+    code: 'MATH 4',
+    title: 'Mathematics for Economists',
+    department: 'MATH',
+    units: 4,
+    description: 'Matrix algebra, partial differentiation, unconstrained and constrained optimization with Lagrange multipliers in economic theory.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MATH 2A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MATH_120B',
+    code: 'MATH 120B',
+    title: 'Introduction to Abstract Algebra II',
+    department: 'MATH',
+    units: 4,
+    description: 'Rings, integral domains, ideals, quotient rings, maximal ideals, polynomial rings, field extensions, and finite fields.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MATH 120A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MATH_140B',
+    code: 'MATH 140B',
+    title: 'Elementary Analysis II',
+    department: 'MATH',
+    units: 4,
+    description: 'Differentiation on the real line, Riemann-Stieltjes integration, uniform convergence of function sequences, and equicontinuity.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MATH 140A',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MATH_175',
+    code: 'MATH 175',
+    title: 'Combinatorics and Graph Theory',
+    department: 'MATH',
+    units: 4,
+    description: 'Generating functions, recurrence relations, inclusion-exclusion principle, Eulerian and Hamiltonian graphs, planar graphs, and graph coloring.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MATH 13 or ICS 6D',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ART_12',
+    code: 'ART 12',
+    title: 'Color and Design',
+    department: 'ART',
+    units: 4,
+    description: 'Additive and subtractive color theory, Johannes Itten contrast modes, Josef Albers color interaction, and two-dimensional composition.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ART_14',
+    code: 'ART 14',
+    title: 'Introduction to Ceramic Sculpture',
+    department: 'ART',
+    units: 4,
+    description: 'Hand-building clay techniques (pinch, coil, slab), glaze chemistry, kiln firing cycles, and three-dimensional ceramic forms.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'ART_65A',
+    code: 'ART 65A',
+    title: 'Foundations in Media Art: Interactive Tools',
+    department: 'ART',
+    units: 4,
+    description: 'Creative coding in Processing/p5.js, generative patterns, Arduino physical computing sensors, and interactive video installations.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'DRAMA_20A',
+    code: 'DRAMA 20A',
+    title: 'Voice and Speech for the Actor',
+    department: 'DRAMA',
+    units: 4,
+    description: 'Linklater vocal progression, diaphragmatic breath support, resonance, articulation of International Phonetic Alphabet, and scansion.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: DRAMA 10',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'DRAMA_30',
+    code: 'DRAMA 30',
+    title: 'Introduction to Stage Management',
+    department: 'DRAMA',
+    units: 4,
+    description: 'Prompt book assembly, rehearsal coordination, cue calling, theatrical union contracts (AEA), and backstage technical operations.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'DRAMA_45',
+    code: 'DRAMA 45',
+    title: 'Musical Theatre History',
+    department: 'DRAMA',
+    units: 4,
+    description: 'Evolution of the American musical theater genre from minstrelsy and vaudeville through Rodgers & Hammerstein and modern Stephen Sondheim.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'DRAMA_120',
+    code: 'DRAMA 120',
+    title: 'Directing for the Stage',
+    department: 'DRAMA',
+    units: 4,
+    description: 'Script analysis for directors, stage composition, picturization, blocking dynamics, audition casting, and rehearsal pacing.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: DRAMA 10 and DRAMA 40',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MUSIC_8',
+    code: 'MUSIC 8',
+    title: 'Introduction to Jazz History',
+    department: 'MUSIC',
+    units: 4,
+    description: 'Socio-historical development of jazz from New Orleans ragtime and Dixieland through swing, bebop, cool jazz, hard bop, and fusion.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MUSIC_15A',
+    code: 'MUSIC 15A',
+    title: 'Beginning Piano for Non-Majors',
+    department: 'MUSIC',
+    units: 2,
+    description: 'Elementary keyboard geography, five-finger patterns, reading treble and bass clefs, primary triads, and basic pedal technique.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MUSIC_44',
+    code: 'MUSIC 44',
+    title: 'Musicianship II',
+    department: 'MUSIC',
+    units: 2,
+    description: 'Ear training in chromatic alterations, secondary dominants, modulation recognition, melodic dictation, and four-part error detection.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MUSIC 42; Corequisite: MUSIC 41',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'MUSIC_150',
+    code: 'MUSIC 150',
+    title: 'Advanced Orchestration',
+    department: 'MUSIC',
+    units: 4,
+    description: 'Instrumental ranges, timbral color blending, transpositions, string bowings, woodwind articulations, and full orchestral score formatting.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: MUSIC 40',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'DANCE_40',
+    code: 'DANCE 40',
+    title: 'Choreographic Composition I',
+    department: 'DANCE',
+    units: 4,
+    description: 'Spatial design, choreographic devices (retrograde, inversion, canon), movement phrasing, kinetic pacing, and small ensemble staging.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: DANCE 3',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'DANCE_60',
+    code: 'DANCE 60',
+    title: 'Dance Somatics and Kinesiology',
+    department: 'DANCE',
+    units: 4,
+    description: 'Musculoskeletal anatomy, safe body alignment principles, injury prevention for dancers, and Feldenkrais/Alexander somatic methods.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PUBHLTH_120',
+    code: 'PUBHLTH 120',
+    title: 'Health Behavior Theory',
+    department: 'PUBHLTH',
+    units: 4,
+    description: 'Health belief model, theory of planned behavior, transtheoretical stages of change, and social cognitive behavioral interventions.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: PUBHLTH 1',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PUBHLTH_140',
+    code: 'PUBHLTH 140',
+    title: 'Global Health in Developing Nations',
+    department: 'PUBHLTH',
+    units: 4,
+    description: 'Tropical medicine, malaria transmission, waterborne parasitic diseases, low-cost community health worker models, and WHO frameworks.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: PUBHLTH 1 and PUBHLTH 2',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PHRMSCI_76',
+    code: 'PHRMSCI 76',
+    title: 'Ethics in Medicine and Clinical Research',
+    department: 'PHRMSCI',
+    units: 4,
+    description: 'Bioethical principles (autonomy, beneficence, non-maleficence, justice), Belmont Report, informed consent, and clinical trial ethics.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: None',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
+  },
+  {
+    id: 'PHRMSCI_175',
+    code: 'PHRMSCI 175',
+    title: 'Biomedical Nanotechnology and Drug Delivery',
+    department: 'PHRMSCI',
+    units: 4,
+    description: 'Liposomes, polymeric nanoparticles, antibody-drug conjugates (ADCs), targeted delivery across the blood-brain barrier, and EPR effect.',
+    catalogYear: '2026-27',
+    prerequisiteText: 'Prerequisites: Prerequisite: PHRMSCI 170A and CHEM 51C',
+    offerings: [
+      { term: 'Fall', year: 2026, confidence: 'CONFIRMED' },
+      { term: 'Winter', year: 2027, confidence: 'EXPECTED' },
+      { term: 'Spring', year: 2027, confidence: 'EXPECTED' }
+    ]
   }
 ]

@@ -66,6 +66,19 @@ export interface CoursesHubTranslations {
   cardTips: string;
   cardWebSoc: string;
   cardGuideFooter: string;
+
+  // Catalog Explorer Mode
+  tabCatalog: string;
+  tabBoosters: string;
+  catalogSearchPlaceholder: string;
+  allDepartments: string;
+  allLevels: string;
+  lowerDiv: string;
+  upperDiv: string;
+  prereqLabel: string;
+  noPrereqs: string;
+  viewInWebRegRadar: string;
+  planCourseBtn: string;
 }
 
 export const COURSES_TRANSLATIONS: Record<LanguageCode, CoursesHubTranslations> = {
@@ -135,6 +148,17 @@ export const COURSES_TRANSLATIONS: Record<LanguageCode, CoursesHubTranslations> 
     cardTips: 'Insider Tips for Securing an A',
     cardWebSoc: 'WebSoc',
     cardGuideFooter: 'UCI Course Guide',
+    tabCatalog: '🎓 Complete UCI Catalog (601 Courses)',
+    tabBoosters: '🔥 Curated GPA Boosters & High-A (25 Courses)',
+    catalogSearchPlaceholder: 'Search 601 courses by code, title, department, or description (e.g. COMPSCI 161, CHEM 51A, ECON 100A)...',
+    allDepartments: 'All Departments',
+    allLevels: 'All Levels',
+    lowerDiv: 'Lower-Division (1–99)',
+    upperDiv: 'Upper-Division (100–199)',
+    prereqLabel: 'Prerequisites',
+    noPrereqs: 'No prerequisite requirements',
+    viewInWebRegRadar: 'Live Radar',
+    planCourseBtn: 'Add to Plan',
   },
 
   // 2. SIMPLIFIED CHINESE (Rank #1 non-English)
@@ -204,6 +228,17 @@ export const COURSES_TRANSLATIONS: Record<LanguageCode, CoursesHubTranslations> 
     cardTips: '稳拿 A 避坑高分秘籍',
     cardWebSoc: 'WebSoc 实时课表',
     cardGuideFooter: 'UCI 课程与名师指南',
+    tabCatalog: '🎓 UCI 全校课程目录 (601 门)',
+    tabBoosters: '🔥 精选高分水课 & 易拿A推荐 (25 门)',
+    catalogSearchPlaceholder: '搜索全校 601 门课程：课号、课名、系所或描述 (例如 COMPSCI 161, CHEM 51A, ECON 100A)...',
+    allDepartments: '全部系所',
+    allLevels: '全部课程层级',
+    lowerDiv: '低年级基础课 (1–99)',
+    upperDiv: '高年级专业课 (100–199)',
+    prereqLabel: '先修要求',
+    noPrereqs: '无先修课要求',
+    viewInWebRegRadar: '实时选课雷达',
+    planCourseBtn: '加入培养方案',
   },
 
   // 3. SPANISH (Rank #2: ~27% Anteater population)
@@ -273,6 +308,17 @@ export const COURSES_TRANSLATIONS: Record<LanguageCode, CoursesHubTranslations> 
     cardTips: 'Consejos clave para asegurar una A',
     cardWebSoc: 'WebSoc',
     cardGuideFooter: 'Guía de Cursos UCI',
+    tabCatalog: '🎓 Catálogo Completo UCI (601 Cursos)',
+    tabBoosters: '🔥 Cursos Fáciles Seleccionados y Alto % A (25)',
+    catalogSearchPlaceholder: 'Buscar 601 cursos por código, título, departamento o descripción...',
+    allDepartments: 'Todos los Departamentos',
+    allLevels: 'Todos los Niveles',
+    lowerDiv: 'División Inferior (1–99)',
+    upperDiv: 'División Superior (100–199)',
+    prereqLabel: 'Prerrequisitos',
+    noPrereqs: 'Sin prerrequisitos requeridos',
+    viewInWebRegRadar: 'Radar WebReg',
+    planCourseBtn: 'Añadir al Plan',
   },
 
   // 4. VIETNAMESE (Rank #3: Orange County Little Saigon Anteater community)
@@ -341,6 +387,17 @@ export const COURSES_TRANSLATIONS: Record<LanguageCode, CoursesHubTranslations> 
     cardTips: 'Bí quyết để chắc chắn đạt điểm A',
     cardWebSoc: 'WebSoc',
     cardGuideFooter: 'Cẩm Nang Môn Học UCI',
+    tabCatalog: '🎓 Toàn Bộ Danh Mục Khóa Học UCI (601 Môn)',
+    tabBoosters: '🔥 Khóa Học Dễ & Tỉ Lệ Điểm A Cao (25 Môn)',
+    catalogSearchPlaceholder: 'Tìm kiếm 601 môn học theo mã môn, tên, khoa hoặc mô tả...',
+    allDepartments: 'Tất cả các khoa',
+    allLevels: 'Tất cả cấp độ',
+    lowerDiv: 'Bậc Dưới (1–99)',
+    upperDiv: 'Bậc Trên (100–199)',
+    prereqLabel: 'Môn tiên quyết',
+    noPrereqs: 'Không yêu cầu môn tiên quyết',
+    viewInWebRegRadar: 'Radar WebReg',
+    planCourseBtn: 'Thêm vào Kế hoạch',
   },
 
   // 5. KOREAN (Rank #4: Prominent Irvine Korean Anteater community)
@@ -409,6 +466,17 @@ export const COURSES_TRANSLATIONS: Record<LanguageCode, CoursesHubTranslations> 
     cardTips: 'A 학점 공략 꿀팁',
     cardWebSoc: 'WebSoc',
     cardGuideFooter: 'UCI 강의 가이드',
+    tabCatalog: '🎓 UCI 전체 강의 카탈로그 (601개 강좌)',
+    tabBoosters: '🔥 꿀강 & 높은 A 비율 추천 강좌 (25개)',
+    catalogSearchPlaceholder: '과목 코드, 강의명, 학과 또는 설명으로 601개 강의 검색...',
+    allDepartments: '모든 학과',
+    allLevels: '모든 수준',
+    lowerDiv: '저학년 기초과정 (1–99)',
+    upperDiv: '고학년 심화과정 (100–199)',
+    prereqLabel: '선수과목',
+    noPrereqs: '선수과목 조건 없음',
+    viewInWebRegRadar: '실시간 레이더',
+    planCourseBtn: '플래너에 추가',
   },
 
   // 6. TRADITIONAL CHINESE (Rank #5: Taiwan, HK, and Cantonese/Traditional readers)
@@ -478,6 +546,17 @@ export const COURSES_TRANSLATIONS: Record<LanguageCode, CoursesHubTranslations> 
     cardTips: '穩拿 A 避雷高分秘笈',
     cardWebSoc: 'WebSoc 即時課表',
     cardGuideFooter: 'UCI 課程與名師指南',
+    tabCatalog: '🎓 UCI 全校課程目錄 (601 門)',
+    tabBoosters: '🔥 精選高分水課 & 易拿A推薦 (25 門)',
+    catalogSearchPlaceholder: '搜尋全校 601 門課程：課號、課名、系所或描述 (例如 COMPSCI 161, CHEM 51A, ECON 100A)...',
+    allDepartments: '全部系所',
+    allLevels: '全部課程層級',
+    lowerDiv: '低年級基礎課 (1–99)',
+    upperDiv: '高年級專業課 (100–199)',
+    prereqLabel: '先修要求',
+    noPrereqs: '無先修課要求',
+    viewInWebRegRadar: '即時選課雷達',
+    planCourseBtn: '加入培養方案',
   },
 
   // 7. TAGALOG (Rank #6: Large SoCal & Filipino Anteater community)
@@ -547,6 +626,17 @@ export const COURSES_TRANSLATIONS: Record<LanguageCode, CoursesHubTranslations> 
     cardTips: 'Mga sikretong tip para makakuha ng A',
     cardWebSoc: 'WebSoc',
     cardGuideFooter: 'Gabay sa Kurso ng UCI',
+    tabCatalog: '🎓 Buong Katalogo ng UCI (601 Kurso)',
+    tabBoosters: '🔥 Piniling Madaling Kurso at Mataas na A (25)',
+    catalogSearchPlaceholder: 'Maghanap sa 601 kurso ayon sa code, pamagat, kagawaran, o paglalarawan...',
+    allDepartments: 'Lahat ng Kagawaran',
+    allLevels: 'Lahat ng Antas',
+    lowerDiv: 'Mababang Dibisyon (1–99)',
+    upperDiv: 'Mataas na Dibisyon (100–199)',
+    prereqLabel: 'Mga Kinakailangang Kurso',
+    noPrereqs: 'Walang kinakailangang kurso',
+    viewInWebRegRadar: 'WebReg Radar',
+    planCourseBtn: 'Idagdag sa Plano',
   },
 
   // 8. JAPANESE (Rank #7: International exchange & Japanese community)
@@ -615,5 +705,16 @@ export const COURSES_TRANSLATIONS: Record<LanguageCode, CoursesHubTranslations> 
     cardTips: '確実に A を獲得するためのコツ',
     cardWebSoc: 'WebSoc',
     cardGuideFooter: 'UCI 履修科目ガイド',
+    tabCatalog: '🎓 UCI 全学公式コースカタログ (601科目)',
+    tabBoosters: '🔥 厳選 GPA 獲得科目 & 高A率講座 (25科目)',
+    catalogSearchPlaceholder: 'コースコード、講義名、学科、説明から601科目を検索...',
+    allDepartments: 'すべての学科',
+    allLevels: 'すべてのレベル',
+    lowerDiv: '低年次科目 (1–99)',
+    upperDiv: '高年次専門科目 (100–199)',
+    prereqLabel: '履修前提条件',
+    noPrereqs: '履修前提条件なし',
+    viewInWebRegRadar: 'WebReg レーダー',
+    planCourseBtn: '計画に追加',
   },
 };

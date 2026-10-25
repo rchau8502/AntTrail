@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import { STUDENT_PERSONAS, StudentPersona } from '../data/mock/mockStudentData'
 import { StudentProfile, DegreeProgram } from '../academic-engine/types'
 import { UCI_DEGREE_PROGRAMS, UCI_MINORS } from '../data/uci/programs'
+import { useLanguage } from '../../lib/i18n/LanguageContext'
 import {
   User,
   GraduationCap,
@@ -30,6 +31,8 @@ export const PersonaSelector: React.FC<PersonaSelectorProps> = ({
   onSelectSecondaryMajor,
   onSelectMinor
 }) => {
+  const { t } = useLanguage()
+
   // Group programs by school for organized navigation
   const programsBySchool = useMemo(() => {
     const map = new Map<string, DegreeProgram[]>()
@@ -49,20 +52,20 @@ export const PersonaSelector: React.FC<PersonaSelectorProps> = ({
           <div className="flex items-center gap-2">
             <GraduationCap className="h-5 w-5 text-anteater-gold" />
             <h2 className="text-sm font-extrabold uppercase tracking-wider text-slate-100 flex items-center gap-2">
-              <span>UCI Degree Goal &amp; Major Selection</span>
+              <span>{t.degreePlanningHub.majorSelectorTitle}</span>
               <span className="rounded-full bg-blue-500/20 text-sky-300 border border-sky-400/30 px-2 py-0.5 text-[10px] font-bold lowercase">
                 85 majors • 13 schools
               </span>
             </h2>
           </div>
           <p className="text-xs text-slate-400 mt-1">
-            Configure your Primary Major, Double Major, and Minor from the complete UC Irvine catalog, or test with pre-loaded student records.
+            {t.degreePlanningHub.majorSelectorSubtitle}
           </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2 text-xs">
           <span className="rounded-xl bg-slate-800/90 border border-slate-700 px-3 py-1 text-slate-200 font-mono">
-            {activeProfile.completedUnits} Units Done
+            {activeProfile.completedUnits} {t.degreePlanningHub.unitsDone}
           </span>
           <span className="rounded-xl bg-anteater-blue/20 text-sky-300 px-3 py-1 font-semibold border border-sky-500/30">
             {activeProfile.classStanding}
@@ -79,7 +82,7 @@ export const PersonaSelector: React.FC<PersonaSelectorProps> = ({
         <div className="space-y-1.5">
           <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
             <BookOpen className="h-3.5 w-3.5 text-blue-400" />
-            <span>Primary Major (85 Programs)</span>
+            <span>{t.degreePlanningHub.primaryMajorLabel}</span>
           </label>
           <select
             value={activeProfile.major}
@@ -102,7 +105,7 @@ export const PersonaSelector: React.FC<PersonaSelectorProps> = ({
         <div className="space-y-1.5">
           <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
             <GitBranch className="h-3.5 w-3.5 text-purple-400" />
-            <span>Secondary Major (Optional Double Major)</span>
+            <span>{t.degreePlanningHub.secondaryMajorLabel}</span>
           </label>
           <select
             value={activeProfile.secondaryMajor || ''}
@@ -110,7 +113,7 @@ export const PersonaSelector: React.FC<PersonaSelectorProps> = ({
             className="w-full rounded-xl border border-slate-700 bg-slate-950 px-3 py-2 text-xs font-semibold text-slate-100 shadow-inner focus:border-anteater-blue focus:ring-1 focus:ring-anteater-blue focus:outline-hidden transition-colors"
           >
             <option value="" className="bg-slate-950 text-slate-400">
-              None (Single Major)
+              {t.degreePlanningHub.noneSingleMajor}
             </option>
             {programsBySchool.map(([schoolName, progs]) => (
               <optgroup key={schoolName} label={schoolName} className="bg-slate-900 text-slate-400 font-bold">
@@ -130,7 +133,7 @@ export const PersonaSelector: React.FC<PersonaSelectorProps> = ({
         <div className="space-y-1.5">
           <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
             <Award className="h-3.5 w-3.5 text-emerald-400" />
-            <span>Minor (Optional)</span>
+            <span>{t.degreePlanningHub.minorLabel}</span>
           </label>
           <select
             value={activeProfile.minor || ''}
@@ -138,7 +141,7 @@ export const PersonaSelector: React.FC<PersonaSelectorProps> = ({
             className="w-full rounded-xl border border-slate-700 bg-slate-950 px-3 py-2 text-xs font-semibold text-slate-100 shadow-inner focus:border-anteater-blue focus:ring-1 focus:ring-anteater-blue focus:outline-hidden transition-colors"
           >
             <option value="" className="bg-slate-950 text-slate-400">
-              None
+              {t.degreePlanningHub.noneMinor}
             </option>
             {UCI_MINORS.map((m) => (
               <option key={m.id} value={m.name} className="bg-slate-950 text-slate-100 font-normal">
@@ -154,10 +157,10 @@ export const PersonaSelector: React.FC<PersonaSelectorProps> = ({
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-1.5 text-xs font-bold text-slate-400">
             <User className="h-3.5 w-3.5 text-slate-500" />
-            <span>Or Load Demo Student Persona (快速演示测试预设)</span>
+            <span>{t.degreePlanningHub.demoPersonasTitle}</span>
           </div>
           <span className="text-[10px] text-slate-500">
-            Loads pre-populated course records &amp; community college transfers
+            {t.degreePlanningHub.demoPersonasSub}
           </span>
         </div>
 
