@@ -90,7 +90,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/courses" className="hover:text-orange-700 transition-colors font-medium">
-                  Alumni Water Courses (水课)
+                  {t.nav.courses} (603 Catalog &amp; Boosters)
                 </Link>
               </li>
             </ul>
@@ -238,8 +238,8 @@ export default function Footer() {
             <Link href="/i-need-to" className="hover:text-slate-600">{t.nav.iNeedTo}</Link>
             <Link href="/tools" className="hover:text-slate-600">{t.nav.uciTools}</Link>
             <Link href="/degree-planning" className="hover:text-slate-600">{t.nav.degreePlanning}</Link>
-            <Link href="/transfer" className="hover:text-[#0064a4] font-semibold text-sky-700">Transfer Prep</Link>
-            <Link href="/webreg" className="hover:text-amber-600 font-semibold text-amber-700">ZotSniper WebReg</Link>
+            <Link href="/transfer" className="hover:text-[#0064a4] font-semibold text-sky-700">{t.nav.transferPrep}</Link>
+            <Link href="/webreg" className="hover:text-amber-600 font-semibold text-amber-700">{t.nav.zotSniper}</Link>
           </div>
         </div>
       </div>
