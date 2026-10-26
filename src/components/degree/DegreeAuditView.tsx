@@ -120,42 +120,42 @@ export const DegreeAuditView: React.FC<DegreeAuditViewProps> = ({
             </div>
 
             <p className="text-sm text-slate-400 max-w-xl">
-              Deterministic progress evaluation based on completed transcripts, verified transfer articulation, and future planned quarters.
+              {t.degreePlanningHub.descDeterministic}
             </p>
           </div>
 
           {/* Progress Meters */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 min-w-[120px]">
-              <div className="text-xs text-slate-400 font-medium">Earned Progress</div>
+              <div className="text-xs text-slate-400 font-medium">{t.degreePlanningHub.meterEarnedProgress}</div>
               <div className="text-3xl font-black text-white font-mono mt-1">
                 {overallProgressPercent}%
               </div>
-              <div className="text-[10px] text-emerald-400 mt-0.5">completed history</div>
+              <div className="text-[10px] text-emerald-400 mt-0.5">{t.degreePlanningHub.meterCompletedHistory}</div>
             </div>
 
             <div className="rounded-2xl border border-blue-500/30 bg-blue-950/30 p-4 min-w-[120px]">
-              <div className="text-xs text-sky-300 font-medium">With Planned</div>
+              <div className="text-xs text-sky-300 font-medium">{t.degreePlanningHub.meterWithPlanned}</div>
               <div className="text-3xl font-black text-sky-400 font-mono mt-1">
                 {plannedProgressPercent}%
               </div>
-              <div className="text-[10px] text-sky-300/80">+{plannedProgressPercent - overallProgressPercent}% future plan</div>
+              <div className="text-[10px] text-sky-300/80">+{plannedProgressPercent - overallProgressPercent}% {t.degreePlanningHub.meterFuturePlan}</div>
             </div>
 
             <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 min-w-[120px]">
-              <div className="text-xs text-slate-400 font-medium">Total Units</div>
+              <div className="text-xs text-slate-400 font-medium">{t.degreePlanningHub.meterTotalUnits}</div>
               <div className="text-2xl font-black text-white font-mono mt-1">
                 {totalUnitsEarned} <span className="text-xs font-normal text-slate-500">/ {program.totalUnitsRequired}</span>
               </div>
-              <div className="text-[10px] text-slate-400 mt-0.5">+{totalUnitsPlanned} planned</div>
+              <div className="text-[10px] text-slate-400 mt-0.5">+{totalUnitsPlanned} {t.degreePlanningHub.meterPlanned}</div>
             </div>
 
             <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 min-w-[120px]">
-              <div className="text-xs text-slate-400 font-medium">Upper-Division</div>
+              <div className="text-xs text-slate-400 font-medium">{t.degreePlanningHub.meterUpperDivision}</div>
               <div className="text-2xl font-black text-white font-mono mt-1">
                 {audit.upperDivisionUnitsEarned} <span className="text-xs font-normal text-slate-500">/ {program.minUpperDivisionUnits}</span>
               </div>
-              <div className="text-[10px] text-slate-400 mt-0.5">+{audit.upperDivisionUnitsPlanned} planned</div>
+              <div className="text-[10px] text-slate-400 mt-0.5">+{audit.upperDivisionUnitsPlanned} {t.degreePlanningHub.meterPlanned}</div>
             </div>
           </div>
         </div>
@@ -163,7 +163,7 @@ export const DegreeAuditView: React.FC<DegreeAuditViewProps> = ({
         {/* Global Progress Bar */}
         <div className="mt-6 pt-6 border-t border-slate-800/80">
           <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
-            <span>Overall Degree Progress</span>
+            <span>{t.degreePlanningHub.meterOverallProgress}</span>
             <span className="font-mono text-slate-200">
               {overallProgressPercent}% Complete ({plannedProgressPercent}% with schedule)
             </span>

@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useMemo, useEffect } from 'react'
+import { useLanguage } from '../lib/i18n/LanguageContext'
 import { Navbar, NavigationTab } from './components/Navbar'
 import { PersonaSelector } from './components/PersonaSelector'
 import { CourseFilters, FilterStatus } from './components/CourseFilters'
@@ -102,6 +103,7 @@ const DEFAULT_INITIAL_QUARTERS: PlannedQuarter[] = [
 ]
 
 export const App: React.FC = () => {
+  const { t } = useLanguage()
   // --- Navigation & View Tab ---
   const [activeTab, setActiveTab] = useState<NavigationTab>('PLANNER')
 
@@ -786,14 +788,13 @@ export const App: React.FC = () => {
                 <div className="max-w-2xl space-y-2">
                   <div className="inline-flex items-center gap-2 rounded-full bg-anteater-gold/15 px-3 py-1 text-xs font-bold text-anteater-gold ring-1 ring-anteater-gold/30">
                     <Sparkles className="h-3.5 w-3.5" />
-                    <span>Phase 1 — Prerequisite Boolean Engine</span>
+                    <span>{t.degreePlanningHub.eligibilityHeroBadge}</span>
                   </div>
                   <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                    What UCI courses can you take next?
+                    {t.degreePlanningHub.eligibilityHeroTitle}
                   </h1>
                   <p className="text-sm text-slate-300 leading-relaxed">
-                    AntTrail deterministically evaluates actual UCI catalog prerequisites, letter grade rules,
-                    and approved California Community College transfer equivalencies to show your exact course eligibility.
+                    {t.degreePlanningHub.eligibilityHeroDesc}
                   </p>
                 </div>
 
@@ -802,19 +803,19 @@ export const App: React.FC = () => {
                   <div className="rounded-2xl border border-emerald-500/30 bg-emerald-950/40 p-3.5 min-w-[120px]">
                     <div className="flex items-center gap-1.5 text-xs text-emerald-300 font-semibold mb-1">
                       <CheckCircle2 className="h-3.5 w-3.5" />
-                      Eligible Now
+                      {t.degreePlanningHub.metricEligibleNow}
                     </div>
                     <div className="text-2xl font-black text-white font-mono">{eligibleCount}</div>
-                    <div className="text-[10px] text-emerald-400/80">ready for enrollment</div>
+                    <div className="text-[10px] text-emerald-400/80">{t.degreePlanningHub.metricEligibleSub}</div>
                   </div>
 
                   <div className="rounded-2xl border border-rose-500/30 bg-rose-950/40 p-3.5 min-w-[120px]">
                     <div className="flex items-center gap-1.5 text-xs text-rose-300 font-semibold mb-1">
                       <AlertCircle className="h-3.5 w-3.5" />
-                      Prereqs Missing
+                      {t.degreePlanningHub.metricPrereqsMissing}
                     </div>
                     <div className="text-2xl font-black text-white font-mono">{missingCount}</div>
-                    <div className="text-[10px] text-rose-400/80">locked by chains</div>
+                    <div className="text-[10px] text-rose-400/80">{t.degreePlanningHub.metricPrereqsSub}</div>
                   </div>
 
                   <button
@@ -823,13 +824,13 @@ export const App: React.FC = () => {
                   >
                     <div className="flex items-center gap-1.5 text-xs text-blue-300 font-semibold mb-1">
                       <BookOpen className="h-3.5 w-3.5" />
-                      Course Record
+                      {t.degreePlanningHub.metricCourseRecord}
                     </div>
                     <div className="text-2xl font-black text-white font-mono">
                       {profile.courseHistory.length}
                     </div>
                     <div className="text-[10px] text-blue-300 flex items-center gap-0.5">
-                      Manage record <ChevronRight className="h-3 w-3" />
+                      {t.degreePlanningHub.metricManageRecord} <ChevronRight className="h-3 w-3" />
                     </div>
                   </button>
                 </div>
@@ -854,18 +855,18 @@ export const App: React.FC = () => {
               <div className="flex items-center justify-between">
                 <h2 className="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
                   <Layers className="h-4 w-4 text-blue-400" />
-                  <span>Catalog & Eligibility Matrix ({filteredResults.length})</span>
+                  <span>{t.degreePlanningHub.catalogMatrixTitle} ({filteredResults.length})</span>
                 </h2>
                 <p className="text-xs text-slate-400 hidden sm:block">
-                  Click the checkmark on any card to toggle completion and see real-time prerequisite updates.
+                  {t.degreePlanningHub.matrixCardHint}
                 </p>
               </div>
 
               {filteredResults.length === 0 ? (
                 <div className="rounded-2xl border border-dashed border-slate-800 p-12 text-center text-slate-400">
                   <AlertCircle className="mx-auto h-8 w-8 text-slate-500 mb-2" />
-                  <p className="text-sm font-semibold">No courses match the current search or filters.</p>
-                  <p className="text-xs text-slate-500 mt-1">Try resetting the department or status filter.</p>
+                  <p className="text-sm font-semibold">{t.degreePlanningHub.noMatchingCourses}</p>
+                  <p className="text-xs text-slate-500 mt-1">{t.degreePlanningHub.resetFilterHint}</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo, useRef } from 'react'
 import Link from 'next/link'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
 import {
   Radar,
   Bell,
@@ -87,6 +88,7 @@ function playAnteaterChime() {
 }
 
 export default function WebRegTacticalPage() {
+  const { t } = useLanguage()
   // --- Module 1: WebSoc Search & Watchlist State ---
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedDeptFilter, setSelectedDeptFilter] = useState('ALL')
@@ -310,21 +312,17 @@ export default function WebRegTacticalPage() {
             {/* Tactical Badge */}
             <div className="inline-flex items-center gap-2 rounded-full border border-amber-300/80 bg-white/90 px-3.5 py-1 text-xs font-semibold text-amber-900 shadow-2xs">
               <Radar className="h-3.5 w-3.5 text-amber-600 animate-pulse" />
-              <span>ZotSniper WebReg Tactical Command</span>
+              <span>{t.webregHub.badge}</span>
               <span className="text-slate-300">•</span>
               <span className="text-slate-600">Zero-Password 100% Policy Compliant</span>
             </div>
 
             {/* Title & Subtitle */}
             <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-              UCI Course Sniper &amp; <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-amber-600 via-[#0064a4] to-amber-700 bg-clip-text text-transparent">
-                WebReg Fast-Action Hub
-              </span>
+              {t.webregHub.title}
             </h1>
             <p className="max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
-              Beat the 8-minute session timeout. Listen for live WebSoc seat drops with local audio &amp; Discord notifications,
-              pre-load 5-digit course codes into WebReg with 1-click, and solve waitlist clearance probabilities with real UCI attrition models.
+              {t.webregHub.subtitle}
             </p>
 
             {/* Quick Stats Badges */}
@@ -378,7 +376,7 @@ export default function WebRegTacticalPage() {
             <div>
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 mb-1">
                 <Clock className="h-4 w-4" />
-                <span>Enrollment Window Countdown</span>
+                <span>{t.webregHub.countdownTitle}</span>
               </div>
               <h3 className="text-xl font-extrabold tracking-tight">
                 Winter 2027 Registration Window
@@ -418,7 +416,7 @@ export default function WebRegTacticalPage() {
               className="inline-flex items-center gap-2 rounded-2xl bg-amber-500 px-4 py-3 text-xs font-extrabold text-slate-950 shadow-md hover:bg-amber-400 transition-colors"
             >
               <Calendar className="h-4 w-4" />
-              <span>Add Alarm to Calendar (.ics)</span>
+              <span>{t.webregHub.downloadCalendar}</span>
             </button>
           </div>
         </div>
@@ -432,10 +430,10 @@ export default function WebRegTacticalPage() {
                 <div>
                   <h3 className="text-base font-extrabold text-slate-900 flex items-center gap-2">
                     <Radar className="h-5 w-5 text-[#0064a4]" />
-                    <span>WebSoc Live Course Radar</span>
+                    <span>{t.webregHub.radarTitle}</span>
                   </h3>
                   <p className="text-xs text-slate-500">
-                    Search sections to track open seats and drop alerts
+                    {t.webregHub.radarSubtitle}
                   </p>
                 </div>
 
@@ -445,7 +443,7 @@ export default function WebRegTacticalPage() {
                   onChange={(e) => setSelectedDeptFilter(e.target.value)}
                   className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-700"
                 >
-                  <option value="ALL">All Departments ({sections.length} Sections)</option>
+                  <option value="ALL">🏛️ {t.webregHub.allDepts} ({sections.length})</option>
                   {availableDepartments
                     .filter((d) => d !== 'ALL')
                     .map((dept) => (
@@ -460,7 +458,7 @@ export default function WebRegTacticalPage() {
               <div className="mb-4 space-y-2">
                 <input
                   type="text"
-                  placeholder="Search by 5-digit code, course name, department, or instructor (e.g. 46, CHEM, 93, Pattis)..."
+                  placeholder={t.webregHub.searchPlaceholder}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50/70 px-4 py-2.5 text-xs font-semibold text-slate-900 focus:border-[#0064a4] focus:bg-white focus:outline-hidden"
@@ -702,10 +700,10 @@ export default function WebRegTacticalPage() {
                 <div>
                   <h3 className="text-base font-extrabold text-slate-900 flex items-center gap-2">
                     <Bookmark className="h-5 w-5 text-[#0064a4]" />
-                    <span>WebReg 5-Digit Fast Copy &amp; Preloader</span>
+                    <span>{t.webregHub.bookmarkletTitle}</span>
                   </h3>
                   <p className="text-xs text-slate-500">
-                    Never type 5-digit course codes under time pressure
+                    {t.webregHub.bookmarkletDesc}
                   </p>
                 </div>
               </div>
@@ -797,10 +795,10 @@ export default function WebRegTacticalPage() {
                 <div>
                   <h3 className="text-base font-extrabold text-slate-900 flex items-center gap-2">
                     <SlidersHorizontal className="h-5 w-5 text-indigo-600" />
-                    <span>Waitlist Clearance Odds Calculator</span>
+                    <span>{t.webregHub.waitlistTitle}</span>
                   </h3>
                   <p className="text-xs text-slate-500">
-                    UCI historical attrition &amp; fee drop predictive model
+                    {t.webregHub.waitlistDesc}
                   </p>
                 </div>
               </div>
