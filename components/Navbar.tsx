@@ -45,17 +45,17 @@ export default function Navbar() {
 
   const primaryNavLinks = [
     { label: t.nav.degreePlanning, href: '/degree-planning', badge: 'Planner' },
-    { label: 'ZotSniper', href: '/webreg', badge: 'Radar' },
-    { label: 'Transfer Prep', href: '/transfer', badge: 'Scholar' },
-    { label: 'Canvas LMS', href: '/canvas', badge: 'Live' },
+    { label: t.nav.zotSniper, href: '/webreg', badge: 'Radar' },
+    { label: t.nav.transferPrep, href: '/transfer', badge: 'Scholar' },
+    { label: t.nav.canvasLms, href: '/canvas', badge: 'Live' },
     { label: t.nav.exploreGuides, href: '/guides' },
   ];
 
   const secondaryNavLinks = [
     { label: t.nav.courses, href: '/courses' },
     { label: t.nav.deadlines, href: '/deadlines' },
-    { label: 'Bubble Cards', href: '/study', badge: 'STEM' },
-    { label: 'Colleges', href: '/colleges' },
+    { label: t.nav.bubbleCards, href: '/study', badge: 'STEM' },
+    { label: t.nav.colleges, href: '/colleges' },
     { label: t.nav.uciTools, href: '/tools' },
   ];
 

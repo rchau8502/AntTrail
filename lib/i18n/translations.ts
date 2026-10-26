@@ -3,6 +3,7 @@ import { CoursesHubTranslations, COURSES_TRANSLATIONS } from './coursesTranslati
 import { DeadlinesHubTranslations, DEADLINES_TRANSLATIONS } from './deadlinesTranslations';
 import { DegreePlanningTranslations, DEGREE_PLANNING_TRANSLATIONS } from './degreePlanningTranslations';
 import { WebRegTranslations, WEBREG_TRANSLATIONS } from './webregTranslations';
+import { TransferTranslations, TRANSFER_TRANSLATIONS } from './transferTranslations';
 
 export interface TranslationDictionary {
   // Navigation
@@ -14,6 +15,11 @@ export interface TranslationDictionary {
     iNeedTo: string;
     uciTools: string;
     degreePlanning: string;
+    transferPrep: string;
+    zotSniper: string;
+    canvasLms: string;
+    bubbleCards: string;
+    colleges: string;
     categories: string;
     savedGuides: string;
     search: string;
@@ -115,6 +121,7 @@ export interface TranslationDictionary {
   deadlinesHub: DeadlinesHubTranslations;
   degreePlanningHub: DegreePlanningTranslations;
   webregHub: WebRegTranslations;
+  transferHub: TransferTranslations;
 }
 
 export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
@@ -128,6 +135,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       iNeedTo: 'I Need To...',
       uciTools: 'UCI Tools',
       degreePlanning: 'Degree Planning',
+      transferPrep: 'Transfer Prep',
+      zotSniper: 'ZotSniper',
+      canvasLms: 'Canvas LMS',
+      bubbleCards: 'Bubble Cards',
+      colleges: 'Colleges',
       categories: 'Categories',
       savedGuides: 'Saved Guides',
       search: 'Search...',
@@ -214,6 +226,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     deadlinesHub: DEADLINES_TRANSLATIONS.en,
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS.en,
     webregHub: WEBREG_TRANSLATIONS.en,
+    transferHub: TRANSFER_TRANSLATIONS.en,
   },
 
   // 2. SIMPLIFIED CHINESE (Rank #1 non-English: Largest international student body & Mandarin community)
@@ -226,6 +239,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       iNeedTo: '我想办理...',
       uciTools: 'UCI 系统工具',
       degreePlanning: '选课排课规划',
+      transferPrep: '转学与互认',
+      zotSniper: '抢课雷达',
+      canvasLms: 'Canvas 作业系统',
+      bubbleCards: '气泡卡片',
+      colleges: '院校黄页',
       categories: '分类导航',
       savedGuides: '我的收藏',
       search: '搜索...',
@@ -312,6 +330,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     deadlinesHub: DEADLINES_TRANSLATIONS['zh-CN'],
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS['zh-CN'],
     webregHub: WEBREG_TRANSLATIONS['zh-CN'],
+    transferHub: TRANSFER_TRANSLATIONS['zh-CN'],
   },
 
   // 3. SPANISH (Rank #2: UCI is a designated Hispanic-Serving Institution, ~27% of students)
@@ -324,6 +343,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       iNeedTo: 'Necesito...',
       uciTools: 'Herramientas UCI',
       degreePlanning: 'Planificación de Grado',
+      transferPrep: 'Preparación de Transferencia',
+      zotSniper: 'Radar de Cursos',
+      canvasLms: 'Canvas LMS',
+      bubbleCards: 'Tarjetas de Estudio',
+      colleges: 'Colegios',
       categories: 'Categorías',
       savedGuides: 'Guardados',
       search: 'Buscar...',
@@ -410,6 +434,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     deadlinesHub: DEADLINES_TRANSLATIONS.es,
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS.es,
     webregHub: WEBREG_TRANSLATIONS.es,
+    transferHub: TRANSFER_TRANSLATIONS.es,
   },
 
   // 4. VIETNAMESE (Rank #3: Orange County Little Saigon & large Vietnamese American Anteater community)
@@ -422,6 +447,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       iNeedTo: 'Tôi Cần...',
       uciTools: 'Hệ Thống UCI',
       degreePlanning: 'Kế Hoạch Tốt Nghiệp',
+      transferPrep: 'Chuẩn Bị Chuyển Tiếp',
+      zotSniper: 'Radar Đăng Ký',
+      canvasLms: 'Canvas LMS',
+      bubbleCards: 'Thẻ Ôn Tập',
+      colleges: 'Danh Sách Trường',
       categories: 'Danh Mục',
       savedGuides: 'Đã Lưu',
       search: 'Tìm kiếm...',
@@ -508,6 +538,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     deadlinesHub: DEADLINES_TRANSLATIONS.vi,
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS.vi,
     webregHub: WEBREG_TRANSLATIONS.vi,
+    transferHub: TRANSFER_TRANSLATIONS.vi,
   },
 
   // 5. KOREAN (Rank #4: Irvine Korean American community & prominent international student presence)
@@ -520,6 +551,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       iNeedTo: '필요한 작업...',
       uciTools: 'UCI 포털 도구',
       degreePlanning: '졸업 & 수강 계획',
+      transferPrep: '편입 준비 및 인정',
+      zotSniper: '수강신청 레이더',
+      canvasLms: 'Canvas LMS',
+      bubbleCards: '버블 스터디 카드',
+      colleges: '대학 목록',
       categories: '카테고리',
       savedGuides: '저장된 가이드',
       search: '검색...',
@@ -606,6 +642,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     deadlinesHub: DEADLINES_TRANSLATIONS.ko,
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS.ko,
     webregHub: WEBREG_TRANSLATIONS.ko,
+    transferHub: TRANSFER_TRANSLATIONS.ko,
   },
 
   // 6. TRADITIONAL CHINESE (Rank #5: Taiwan, HK, and Cantonese/Traditional readers)
@@ -618,6 +655,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       iNeedTo: '我想辦理...',
       uciTools: 'UCI 系統工具',
       degreePlanning: '排課與畢業規劃',
+      transferPrep: '轉學與互認',
+      zotSniper: '搶課雷達',
+      canvasLms: 'Canvas 作業系統',
+      bubbleCards: '氣泡卡片',
+      colleges: '院校黃頁',
       categories: '分類導航',
       savedGuides: '我的收藏',
       search: '搜尋...',
@@ -704,6 +746,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     deadlinesHub: DEADLINES_TRANSLATIONS['zh-TW'],
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS['zh-TW'],
     webregHub: WEBREG_TRANSLATIONS['zh-TW'],
+    transferHub: TRANSFER_TRANSLATIONS['zh-TW'],
   },
 
   // 7. TAGALOG (Rank #6: SoCal & Filipino Anteater community)
@@ -716,6 +759,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       iNeedTo: 'Kailangan Kong...',
       uciTools: 'UCI Tools',
       degreePlanning: 'Plano sa Kurso',
+      transferPrep: 'Paghahanda sa Paglipat',
+      zotSniper: 'Radar ng Kurso',
+      canvasLms: 'Canvas LMS',
+      bubbleCards: 'Study Cards',
+      colleges: 'Mga Kolehiyo',
       categories: 'Kategorya',
       savedGuides: 'Nai-save',
       search: 'Maghanap...',
@@ -802,6 +850,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     deadlinesHub: DEADLINES_TRANSLATIONS.tl,
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS.tl,
     webregHub: WEBREG_TRANSLATIONS.tl,
+    transferHub: TRANSFER_TRANSLATIONS.tl,
   },
 
   // 8. JAPANESE (Rank #7: International exchange & Japanese community)
@@ -814,6 +863,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       iNeedTo: '手続き・用事...',
       uciTools: 'UCI ツール一覧',
       degreePlanning: '履修・学位計画',
+      transferPrep: '編入準備・認定',
+      zotSniper: '履修登録レーダー',
+      canvasLms: 'Canvas LMS',
+      bubbleCards: '暗記カード',
+      colleges: '大学一覧',
       categories: 'カテゴリー',
       savedGuides: '保存済み',
       search: '検索...',
@@ -900,6 +954,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     deadlinesHub: DEADLINES_TRANSLATIONS.ja,
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS.ja,
     webregHub: WEBREG_TRANSLATIONS.ja,
+    transferHub: TRANSFER_TRANSLATIONS.ja,
   },
 };
 
