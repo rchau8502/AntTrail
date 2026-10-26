@@ -20,6 +20,7 @@ export interface TranslationDictionary {
     canvasLms: string;
     bubbleCards: string;
     colleges: string;
+    more: string;
     categories: string;
     savedGuides: string;
     search: string;
@@ -140,6 +141,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       canvasLms: 'Canvas LMS',
       bubbleCards: 'Bubble Cards',
       colleges: 'Colleges',
+      more: 'More',
       categories: 'Categories',
       savedGuides: 'Saved Guides',
       search: 'Search...',
@@ -244,6 +246,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       canvasLms: 'Canvas 作业系统',
       bubbleCards: '气泡卡片',
       colleges: '院校黄页',
+      more: '更多',
       categories: '分类导航',
       savedGuides: '我的收藏',
       search: '搜索...',
@@ -348,6 +351,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       canvasLms: 'Canvas LMS',
       bubbleCards: 'Tarjetas de Estudio',
       colleges: 'Colegios',
+      more: 'Más',
       categories: 'Categorías',
       savedGuides: 'Guardados',
       search: 'Buscar...',
@@ -452,6 +456,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       canvasLms: 'Canvas LMS',
       bubbleCards: 'Thẻ Ôn Tập',
       colleges: 'Danh Sách Trường',
+      more: 'Thêm',
       categories: 'Danh Mục',
       savedGuides: 'Đã Lưu',
       search: 'Tìm kiếm...',
@@ -556,6 +561,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       canvasLms: 'Canvas LMS',
       bubbleCards: '버블 스터디 카드',
       colleges: '대학 목록',
+      more: '더보기',
       categories: '카테고리',
       savedGuides: '저장된 가이드',
       search: '검색...',
@@ -660,6 +666,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       canvasLms: 'Canvas 作業系統',
       bubbleCards: '氣泡卡片',
       colleges: '院校黃頁',
+      more: '更多',
       categories: '分類導航',
       savedGuides: '我的收藏',
       search: '搜尋...',
@@ -764,6 +771,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       canvasLms: 'Canvas LMS',
       bubbleCards: 'Study Cards',
       colleges: 'Mga Kolehiyo',
+      more: 'Higit Pa',
       categories: 'Kategorya',
       savedGuides: 'Nai-save',
       search: 'Maghanap...',
@@ -868,6 +876,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
       canvasLms: 'Canvas LMS',
       bubbleCards: '暗記カード',
       colleges: '大学一覧',
+      more: 'その他',
       categories: 'カテゴリー',
       savedGuides: '保存済み',
       search: '検索...',
