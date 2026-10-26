@@ -18,10 +18,10 @@ interface WorkstationItem {
 
 const WORKSTATIONS: WorkstationItem[] = [
   {
-    name: 'ZotSniper WebReg Drop Radar',
-    description: 'Real-time open-seat drop monitor & waitlist odds calculator',
+    name: 'ZotSniper WebReg Drop Radar (41 Depts)',
+    description: '119 live WebSoc sections, 5ms bookmarklet script, and Markov waitlist admission calculator',
     href: '/webreg',
-    keywords: ['webreg', 'sniper', 'seat', 'radar', 'drop', 'waitlist', 'register', 'enroll', 'code', 'window', '抢课', '选课'],
+    keywords: ['webreg', 'sniper', 'seat', 'radar', 'drop', 'waitlist', 'register', 'enroll', 'code', 'window', 'markov', 'bookmarklet', '抢课', '选课'],
     badge: 'Radar',
     iconType: 'radar',
   },
@@ -34,10 +34,10 @@ const WORKSTATIONS: WorkstationItem[] = [
     iconType: 'transfer',
   },
   {
-    name: '4-Year Degree & Prereq Engine',
-    description: 'Deterministic prerequisite boolean AST solver & repeat GPA simulator',
+    name: '4-Year Degree & Prereq Engine (85 Majors)',
+    description: 'Deterministic prerequisite AST solver, 13 schools, 85 majors, double major & minor support',
     href: '/degree-planning',
-    keywords: ['planner', 'plan', 'degree', 'prereq', 'prerequisite', 'schedule', 'ast', 'audit', 'gpa', 'repeat', 'cs', 'swe', 'math', '排课', '毕业'],
+    keywords: ['planner', 'plan', 'degree', 'prereq', 'prerequisite', 'schedule', 'ast', 'audit', 'gpa', 'repeat', 'cs', 'swe', 'math', 'major', 'minor', '排课', '毕业', '专业'],
     badge: 'Planner',
     iconType: 'planner',
   },
@@ -66,11 +66,11 @@ const WORKSTATIONS: WorkstationItem[] = [
     iconType: 'calendar',
   },
   {
-    name: 'Alumni-Vetted Water Courses',
-    description: 'Top GPA booster courses reviewed by Anteater alumni',
+    name: 'UCI 603 Course Catalog & Water Courses',
+    description: 'Explore 603 official courses across 60+ departments & student-reviewed GPA boosters',
     href: '/courses',
-    keywords: ['course', 'courses', 'water', 'booster', 'easy', 'gpa', 'ge', 'drama 10', 'earthss 3', 'dance 3', '水课'],
-    badge: 'Booster',
+    keywords: ['course', 'courses', 'catalog', 'ics', 'cs', 'math', 'stats', 'physics', 'chem', 'bio', 'econ', 'water', 'booster', 'easy', 'gpa', 'ge', 'drama 10', 'earthss 3', 'dance 3', '选课', '课程', '水课', '全校课程'],
+    badge: '603 Catalog',
     iconType: 'grid',
   },
 ];
