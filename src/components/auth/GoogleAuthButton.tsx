@@ -51,6 +51,7 @@ export const GoogleAuthButton: React.FC<GoogleAuthButtonProps> = ({
       title={`Connected as ${user.email}. Click for sync settings.`}
     >
       {user.picture ? (
+        /* eslint-disable-next-line @next/next/no-img-element */
         <img
           src={user.picture}
           alt={user.name}
