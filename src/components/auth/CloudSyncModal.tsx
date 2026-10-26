@@ -122,6 +122,7 @@ export const CloudSyncModal: React.FC<CloudSyncModalProps> = ({
             <div className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-950/60 p-4">
               <div className="flex items-center gap-3">
                 {user.picture ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
                   <img
                     src={user.picture}
                     alt={user.name}
