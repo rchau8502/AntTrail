@@ -3,7 +3,19 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Search, Menu, X, Bookmark, ChevronDown, ExternalLink } from 'lucide-react';
+import {
+  Search,
+  Menu,
+  X,
+  Bookmark,
+  ChevronDown,
+  ExternalLink,
+  GraduationCap,
+  Calendar,
+  Sparkles,
+  School,
+  LayoutGrid
+} from 'lucide-react';
 import PersonaSelector from './PersonaSelector';
 import LanguageSelector from './LanguageSelector';
 import { StudentType } from '@/types/guide';
@@ -15,7 +27,6 @@ export default function Navbar() {
   const pathname = usePathname();
   const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [categoriesDropdownOpen, setCategoriesDropdownOpen] = useState(false);
   const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
   const [studentType, setStudentType] = useState<StudentType>('all');
   const [savedCount, setSavedCount] = useState(0);
@@ -46,24 +57,46 @@ export default function Navbar() {
   const primaryNavLinks = [
     { label: t.nav.degreePlanning, href: '/degree-planning', badge: 'Planner' },
     { label: t.nav.zotSniper, href: '/webreg', badge: 'Radar' },
+    { label: t.nav.courses, href: '/courses', badge: '603' },
     { label: t.nav.transferPrep, href: '/transfer', badge: 'Scholar' },
-    { label: t.nav.canvasLms, href: '/canvas', badge: 'Live' },
     { label: t.nav.exploreGuides, href: '/guides' },
   ];
 
-  const secondaryNavLinks = [
-    { label: t.nav.courses, href: '/courses' },
-    { label: t.nav.deadlines, href: '/deadlines' },
-    { label: t.nav.bubbleCards, href: '/study', badge: 'STEM' },
-    { label: t.nav.colleges, href: '/colleges' },
-    { label: t.nav.uciTools, href: '/tools' },
+  const moreNavLinks = [
+    {
+      label: t.nav.canvasLms,
+      href: '/canvas',
+      badge: 'Live',
+      icon: GraduationCap,
+    },
+    {
+      label: t.nav.deadlines,
+      href: '/deadlines',
+      icon: Calendar,
+    },
+    {
+      label: t.nav.bubbleCards,
+      href: '/study',
+      badge: 'STEM',
+      icon: Sparkles,
+    },
+    {
+      label: t.nav.uciTools,
+      href: '/tools',
+      icon: LayoutGrid,
+    },
+    {
+      label: t.nav.colleges,
+      href: '/colleges',
+      icon: School,
+    },
   ];
 
-  const allNavLinks = [...primaryNavLinks, ...secondaryNavLinks];
+  const allNavLinks = [...primaryNavLinks, ...moreNavLinks];
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-16 max-w-7xl 2xl:max-w-[1440px] items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Left: Brand Logo */}
         <div className="flex items-center gap-3 sm:gap-6 shrink-0">
           <Link href="/" className="flex items-center gap-2 group">
@@ -90,7 +123,7 @@ export default function Navbar() {
         </div>
 
         {/* Center: Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1">
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5">
           {primaryNavLinks.map(link => {
             const isActive = pathname === link.href;
             return (
@@ -113,42 +146,18 @@ export default function Navbar() {
             );
           })}
 
-          {/* Secondary links on very wide displays */}
-          <div className="hidden 2xl:flex items-center gap-1">
-            {secondaryNavLinks.map(link => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`relative px-2.5 py-1.5 rounded-xl text-xs xl:text-sm font-semibold transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-                    isActive
-                      ? 'text-[#0064a4] bg-sky-50'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                  }`}
-                >
-                  <span>{link.label}</span>
-                  {link.badge && (
-                    <span className="rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.2">
-                      {link.badge}
-                    </span>
-                  )}
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* More Dropdown (for lg to xl screens) */}
-          <div className="relative 2xl:hidden">
+          {/* More Dropdown (Unified Academic Portals & Categories) */}
+          <div className="relative">
             <button
-              onClick={() => {
-                setMoreDropdownOpen(!moreDropdownOpen);
-                setCategoriesDropdownOpen(false);
-              }}
+              onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}
               type="button"
-              className="px-2.5 py-1.5 rounded-xl text-xs xl:text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors flex items-center gap-1"
+              className={`px-2.5 xl:px-3 py-1.5 rounded-xl text-xs xl:text-sm font-semibold transition-colors flex items-center gap-1 whitespace-nowrap ${
+                moreNavLinks.some(l => pathname === l.href) || pathname === '/categories'
+                  ? 'text-[#0064a4] bg-sky-50'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+              }`}
             >
-              <span>More</span>
+              <span>{t.nav.more}</span>
               <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
             </button>
 
@@ -158,73 +167,67 @@ export default function Navbar() {
                   className="fixed inset-0 z-20"
                   onClick={() => setMoreDropdownOpen(false)}
                 />
-                <div className="absolute left-0 mt-2 w-52 rounded-2xl bg-white p-2 shadow-xl ring-1 ring-slate-900/10 z-30 divide-y divide-slate-100 animate-in fade-in zoom-in-95 duration-100">
-                  <div className="py-1">
-                    {secondaryNavLinks.map(link => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setMoreDropdownOpen(false)}
-                        className="flex items-center justify-between px-3 py-2 text-xs rounded-xl hover:bg-sky-50 text-slate-700 hover:text-[#0064a4] transition-colors"
-                      >
-                        <span className="font-semibold">{link.label}</span>
-                        {link.badge && (
-                          <span className="rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.2">
-                            {link.badge}
-                          </span>
-                        )}
-                      </Link>
-                    ))}
+                <div className="absolute right-0 mt-2 w-72 rounded-2xl bg-white p-2.5 shadow-xl ring-1 ring-slate-900/10 z-30 divide-y divide-slate-100 animate-in fade-in zoom-in-95 duration-100">
+                  {/* Secondary Tools */}
+                  <div className="pb-1.5 space-y-0.5">
+                    <div className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                      Academic Portals &amp; Tools
+                    </div>
+                    {moreNavLinks.map(link => {
+                      const Icon = link.icon;
+                      const isActive = pathname === link.href;
+                      return (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          onClick={() => setMoreDropdownOpen(false)}
+                          className={`flex items-center justify-between px-3 py-2 text-xs rounded-xl transition-colors ${
+                            isActive
+                              ? 'bg-sky-50 text-[#0064a4] font-bold'
+                              : 'text-slate-700 hover:bg-sky-50/70 hover:text-[#0064a4]'
+                          }`}
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <Icon className={`w-4 h-4 ${isActive ? 'text-[#0064a4]' : 'text-slate-400'}`} />
+                            <span className="font-semibold">{link.label}</span>
+                          </div>
+                          {link.badge && (
+                            <span className="rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.2">
+                              {link.badge}
+                            </span>
+                          )}
+                        </Link>
+                      );
+                    })}
                   </div>
-                </div>
-              </>
-            )}
-          </div>
 
-          {/* Categories dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => setCategoriesDropdownOpen(!categoriesDropdownOpen)}
-              type="button"
-              className="px-3 py-1.5 rounded-xl text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors flex items-center gap-1"
-            >
-              <span>{t.nav.categories}</span>
-              <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
-            </button>
-
-            {categoriesDropdownOpen && (
-              <>
-                <div
-                  className="fixed inset-0 z-20"
-                  onClick={() => setCategoriesDropdownOpen(false)}
-                />
-                <div className="absolute right-0 mt-2 w-64 rounded-2xl bg-white p-2 shadow-xl ring-1 ring-slate-900/10 z-30 divide-y divide-slate-100 animate-in fade-in zoom-in-95 duration-100">
-                  <div className="px-3 py-2 text-xs font-bold uppercase tracking-wider text-slate-400">
-                    {t.nav.categories}
-                  </div>
-                  <div className="py-1 max-h-72 overflow-y-auto">
-                    {CATEGORIES.map(cat => (
-                      <Link
-                        key={cat.id}
-                        href={`/categories/${cat.id}`}
-                        onClick={() => setCategoriesDropdownOpen(false)}
-                        className="flex items-center justify-between px-3 py-2 text-xs rounded-xl hover:bg-sky-50 text-slate-700 hover:text-[#0064a4] transition-colors"
-                      >
-                        <span className="font-medium">{cat.name}</span>
-                        <span
-                          className="w-2 h-2 rounded-full"
-                          style={{ backgroundColor: cat.color }}
-                        />
-                      </Link>
-                    ))}
-                  </div>
-                  <div className="pt-2 px-2 pb-1">
+                  {/* Categories Quick Access */}
+                  <div className="pt-2">
+                    <div className="px-3 pb-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                      {t.nav.categories}
+                    </div>
+                    <div className="grid grid-cols-2 gap-1 px-1 py-1">
+                      {CATEGORIES.slice(0, 6).map(cat => (
+                        <Link
+                          key={cat.id}
+                          href={`/categories/${cat.id}`}
+                          onClick={() => setMoreDropdownOpen(false)}
+                          className="flex items-center gap-1.5 px-2 py-1.5 text-[11px] rounded-lg hover:bg-sky-50 text-slate-600 hover:text-[#0064a4] transition-colors truncate"
+                        >
+                          <span
+                            className="w-1.5 h-1.5 rounded-full shrink-0"
+                            style={{ backgroundColor: cat.color }}
+                          />
+                          <span className="truncate">{cat.name}</span>
+                        </Link>
+                      ))}
+                    </div>
                     <Link
                       href="/categories"
-                      onClick={() => setCategoriesDropdownOpen(false)}
-                      className="block text-center py-1.5 rounded-lg text-xs font-semibold text-[#0064a4] bg-sky-50/70 hover:bg-sky-100/70"
+                      onClick={() => setMoreDropdownOpen(false)}
+                      className="mt-1 block text-center py-1.5 rounded-lg text-xs font-semibold text-[#0064a4] bg-sky-50/70 hover:bg-sky-100/70 transition-colors"
                     >
-                      All 10 Categories
+                      {t.sections.viewAllCategories}
                     </Link>
                   </div>
                 </div>
