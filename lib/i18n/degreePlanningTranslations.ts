@@ -68,6 +68,19 @@ export interface DegreePlanningTranslations {
   meterUpperDivision: string;
   meterOverallProgress: string;
   descDeterministic: string;
+
+  // GPA Calculator view
+  gpaHeaderTitle: string;
+  gpaHeaderDesc: string;
+  gpaOfficialBadge: string;
+  gpaUcCumulative: string;
+  gpaAcademicStanding: string;
+  gpaGoodStanding: string;
+  gpaProbation: string;
+  gpaUnitsTowardDegree: string;
+  gpaDeansList: string;
+  gpaTargetTitle: string;
+  gpaTargetDesc: string;
 }
 
 export const DEGREE_PLANNING_TRANSLATIONS: Record<LanguageCode, DegreePlanningTranslations> = {
@@ -134,6 +147,17 @@ export const DEGREE_PLANNING_TRANSLATIONS: Record<LanguageCode, DegreePlanningTr
     meterUpperDivision: 'Upper-Division',
     meterOverallProgress: 'Overall Degree Progress',
     descDeterministic: 'Deterministic progress evaluation based on completed transcripts, verified transfer articulation, and future planned quarters.',
+    gpaHeaderTitle: 'UCI GPA Projection & What-If Modeler',
+    gpaHeaderDesc: 'Computed strictly under official UC Irvine Academic Senate regulations (A340 grade points, A345 repeat policy, and non-UC transfer exclusion).',
+    gpaOfficialBadge: 'Official UCI Regulations',
+    gpaUcCumulative: 'UC Cumulative GPA',
+    gpaAcademicStanding: 'Academic Standing',
+    gpaGoodStanding: 'Good Standing',
+    gpaProbation: 'Academic Probation',
+    gpaUnitsTowardDegree: 'Units Toward Degree',
+    gpaDeansList: "Dean's Honor List",
+    gpaTargetTitle: 'Target Cumulative GPA Calculator',
+    gpaTargetDesc: 'Determine the average grade needed across your planned units to hit your academic goals.',
   },
 
   // 2. Simplified Chinese
@@ -199,6 +223,17 @@ export const DEGREE_PLANNING_TRANSLATIONS: Record<LanguageCode, DegreePlanningTr
     meterUpperDivision: '高年级专业学分',
     meterOverallProgress: '学位总修读进度',
     descDeterministic: '基于已修成绩单、官方认可的转学学分以及未来计划学期的确定性学位进度评估。',
+    gpaHeaderTitle: 'UCI GPA 测算与未来成绩推演模拟器',
+    gpaHeaderDesc: '严格遵循 UCI 教授评议会官方规章（A340 绩点标准、A345 课程重修绩点替代政策、非加州大学转学学分绩点排除规则）。',
+    gpaOfficialBadge: '遵循 UCI 官方学籍条例',
+    gpaUcCumulative: '加州大学累计 GPA',
+    gpaAcademicStanding: '当前学业状态',
+    gpaGoodStanding: '学业良好 (Good Standing)',
+    gpaProbation: '学业留校察看 (Probation)',
+    gpaUnitsTowardDegree: '毕业修读学分',
+    gpaDeansList: "院长荣誉名单 (Dean's List)",
+    gpaTargetTitle: '目标毕业 GPA 倒推计算器',
+    gpaTargetDesc: '精准计算为了达到目标毕业 GPA，在剩余计划选修课程中每门课需要达到的平均成绩等级。',
   },
 
   // 3. Spanish
@@ -264,6 +299,17 @@ export const DEGREE_PLANNING_TRANSLATIONS: Record<LanguageCode, DegreePlanningTr
     meterUpperDivision: 'División Superior',
     meterOverallProgress: 'Progreso Total de Grado',
     descDeterministic: 'Evaluación determinista basada en transcripciones completadas, articulación de transferencia y trimestres planificados.',
+    gpaHeaderTitle: 'Proyección de GPA de UCI y Modelo What-If',
+    gpaHeaderDesc: 'Calculado bajo las regulaciones oficiales del Senado Académico de UCI (A340, repetición A345 y exclusión de transferencias no-UC).',
+    gpaOfficialBadge: 'Regulaciones Oficiales de UCI',
+    gpaUcCumulative: 'GPA Acumulado de UC',
+    gpaAcademicStanding: 'Estado Académico',
+    gpaGoodStanding: 'Buen Estado Académico',
+    gpaProbation: 'Probatoria Académica',
+    gpaUnitsTowardDegree: 'Unidades para el Título',
+    gpaDeansList: 'Lista de Honor del Decano',
+    gpaTargetTitle: 'Calculadora de GPA Acumulado Objetivo',
+    gpaTargetDesc: 'Determine la calificación promedio necesaria en sus unidades planificadas para alcanzar sus metas.',
   },
 
   // 4. Vietnamese
@@ -329,6 +375,17 @@ export const DEGREE_PLANNING_TRANSLATIONS: Record<LanguageCode, DegreePlanningTr
     meterUpperDivision: 'Bậc Trên (Upper-Div)',
     meterOverallProgress: 'Tổng Tiến Độ Tốt Nghiệp',
     descDeterministic: 'Đánh giá tiến độ dựa trên bảng điểm đã hoàn thành, tín chỉ chuyển tiếp và các học kỳ tương lai.',
+    gpaHeaderTitle: 'Dự Báo Điểm GPA UCI & Mô Phỏng Điểm Tương Lai',
+    gpaHeaderDesc: 'Được tính toán nghiêm ngặt theo quy định của Thượng viện Học thuật UCI (A340, quy chế học lại A345 và loại trừ tín chỉ ngoài UC).',
+    gpaOfficialBadge: 'Quy Định Chính Thức Của UCI',
+    gpaUcCumulative: 'Điểm GPA Tích Lũy UC',
+    gpaAcademicStanding: 'Tình Trạng Học Tập',
+    gpaGoodStanding: 'Học Lực Tốt (Good Standing)',
+    gpaProbation: 'Cảnh Báo Học Tập (Probation)',
+    gpaUnitsTowardDegree: 'Tín Chỉ Tích Lũy Tốt Nghiệp',
+    gpaDeansList: 'Danh Sách Khen Thưởng Của Trưởng Khoa',
+    gpaTargetTitle: 'Máy Tính GPA Tích Lũy Mục Tiêu',
+    gpaTargetDesc: 'Xác định điểm trung bình cần đạt trong các tín chỉ đã lên kế hoạch để hoàn thành mục tiêu học tập.',
   },
 
   // 5. Korean
@@ -394,6 +451,17 @@ export const DEGREE_PLANNING_TRANSLATIONS: Record<LanguageCode, DegreePlanningTr
     meterUpperDivision: '고학년 심화 학점',
     meterOverallProgress: '학위 종합 진행률',
     descDeterministic: '기이수 성적표, 학점 인정 내역 및 미래 수강 계획을 기반으로 산출된 확실한 학위 진행도 평가입니다.',
+    gpaHeaderTitle: 'UCI GPA 예측 및 미래 학점 시뮬레이터',
+    gpaHeaderDesc: 'UCI 교수회 공식 규정(A340 성적 평점, A345 재수강 평점 대체 정책, 비UC 편입 학점 제외)에 따라 정확하게 산출됩니다.',
+    gpaOfficialBadge: 'UCI 공식 학사 규정 준수',
+    gpaUcCumulative: 'UC 누적 GPA',
+    gpaAcademicStanding: '학사 학적 상태',
+    gpaGoodStanding: '우수/정상 (Good Standing)',
+    gpaProbation: '학사 경고 (Probation)',
+    gpaUnitsTowardDegree: '졸업 인정 학점',
+    gpaDeansList: '딘스 리스트 (Dean\'s Honor List)',
+    gpaTargetTitle: '목표 누적 GPA 역산 계산기',
+    gpaTargetDesc: '원하는 목표 졸업 평점을 달성하기 위해 남은 수강 과목에서 요구되는 평균 학점을 계산합니다.',
   },
 
   // 6. Traditional Chinese
@@ -459,6 +527,17 @@ export const DEGREE_PLANNING_TRANSLATIONS: Record<LanguageCode, DegreePlanningTr
     meterUpperDivision: '高年級專業學分',
     meterOverallProgress: '學位總修讀進度',
     descDeterministic: '基於已修成績單、官方認可的轉學學分以及未來計劃學期的確定性學位進度評估。',
+    gpaHeaderTitle: 'UCI GPA 測算與未來成績推演模擬器',
+    gpaHeaderDesc: '嚴格遵循 UCI 教授評議會官方規章（A340 績點標準、A345 課程重修績點替代政策、非加州大學轉學學分績點排除規則）。',
+    gpaOfficialBadge: '遵循 UCI 官方學籍條例',
+    gpaUcCumulative: '加州大學累計 GPA',
+    gpaAcademicStanding: '當前學業狀態',
+    gpaGoodStanding: '學業良好 (Good Standing)',
+    gpaProbation: '學業留校察看 (Probation)',
+    gpaUnitsTowardDegree: '畢業修讀學分',
+    gpaDeansList: "院長榮譽名單 (Dean's List)",
+    gpaTargetTitle: '目標畢業 GPA 倒推計算器',
+    gpaTargetDesc: '精準計算為了達到目標畢業 GPA，在剩餘計劃選修課程中每門課需要達到的平均成績等級。',
   },
 
   // 7. Tagalog / Filipino
@@ -524,6 +603,17 @@ export const DEGREE_PLANNING_TRANSLATIONS: Record<LanguageCode, DegreePlanningTr
     meterUpperDivision: 'Mataas na Dibisyon',
     meterOverallProgress: 'Pangkalahatang Progreso ng Degree',
     descDeterministic: 'Deterministikong pagsusuri ng progreso batay sa mga nakumpletong transcript at transfer articulation.',
+    gpaHeaderTitle: 'UCI GPA Projection & What-If Modeler',
+    gpaHeaderDesc: 'Kinakalkula nang mahigpit alinsunod sa opisyal na mga regulasyon ng UCI Academic Senate (A340, A345 repeat policy, at non-UC exclusion).',
+    gpaOfficialBadge: 'Opisyal na Regulasyon ng UCI',
+    gpaUcCumulative: 'UC Kumulatibong GPA',
+    gpaAcademicStanding: 'Katayuan sa Akademiko',
+    gpaGoodStanding: 'Mabuting Katayuan (Good Standing)',
+    gpaProbation: 'Academic Probation',
+    gpaUnitsTowardDegree: 'Yunit Patungo sa Titulo',
+    gpaDeansList: "Dean's Honor List",
+    gpaTargetTitle: 'Target na Kumulatibong GPA Calculator',
+    gpaTargetDesc: 'Tukuyin ang karaniwang markang kailangan sa iyong mga nakaplanong yunit upang maabot ang iyong mga layunin.',
   },
 
   // 8. Japanese
@@ -589,5 +679,16 @@ export const DEGREE_PLANNING_TRANSLATIONS: Record<LanguageCode, DegreePlanningTr
     meterUpperDivision: '高年次専門科目単位',
     meterOverallProgress: '学位総合進捗率',
     descDeterministic: '修得済み成績記録、認定単位互換、および将来の履修計画に基づく確定的な学位進捗評価です。',
+    gpaHeaderTitle: 'UCI GPA 予測＆ What-If シミュレーター',
+    gpaHeaderDesc: 'UCI 教授会公式規則（A340 評価基準、A345 再履修評価置換、非 UC 単位除外）に完全準拠して算出されます。',
+    gpaOfficialBadge: 'UCI 公式学則準拠',
+    gpaUcCumulative: 'UC 累積 GPA',
+    gpaAcademicStanding: '学業成績ステータス',
+    gpaGoodStanding: '良好（Good Standing）',
+    gpaProbation: '学業指導・警告（Probation）',
+    gpaUnitsTowardDegree: '卒業要件修得単位',
+    gpaDeansList: '学部長名誉リスト（Dean\'s List）',
+    gpaTargetTitle: '目標累積 GPA 逆算カリキュレーター',
+    gpaTargetDesc: '目標 GPA を達成するために今後の計画科目で必要とされる平均成績水準を算出します。',
   },
 };

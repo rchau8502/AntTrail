@@ -4,6 +4,7 @@ import {
   PlannedQuarter,
   GradeLetter
 } from '../../academic-engine/types'
+import { useLanguage } from '../../../lib/i18n/LanguageContext'
 import {
   calculateUciGpaReport,
   calculateTargetGpaRequirement,
@@ -37,6 +38,7 @@ export const GpaCalculatorView: React.FC<GpaCalculatorViewProps> = ({
   profile,
   plannedQuarters
 }) => {
+  const { t } = useLanguage()
   // Target GPA State
   const [targetGpa, setTargetGpa] = useState<number>(3.5)
 
@@ -99,18 +101,18 @@ export const GpaCalculatorView: React.FC<GpaCalculatorViewProps> = ({
               <Calculator className="h-4 w-4" />
             </span>
             <h1 className="text-xl font-bold tracking-tight text-white">
-              UCI GPA Projection & What-If Modeler
+              {t.degreePlanningHub.gpaHeaderTitle}
             </h1>
           </div>
           <p className="mt-1 text-xs text-slate-400">
-            Computed strictly under official UC Irvine Academic Senate regulations (A340 grade points, A345 repeat policy, and non-UC transfer exclusion).
+            {t.degreePlanningHub.gpaHeaderDesc}
           </p>
         </div>
 
         <div className="flex items-center gap-2">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-sky-500/30 bg-sky-950/30 px-3 py-1 text-xs font-semibold text-sky-300">
             <Award className="h-3.5 w-3.5" />
-            <span>Official UCI Regulations</span>
+            <span>{t.degreePlanningHub.gpaOfficialBadge}</span>
           </span>
         </div>
       </div>
@@ -121,7 +123,7 @@ export const GpaCalculatorView: React.FC<GpaCalculatorViewProps> = ({
         <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 shadow-lg relative overflow-hidden">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-              UC Cumulative GPA
+              {t.degreePlanningHub.gpaUcCumulative}
             </span>
             <span
               className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${
@@ -152,7 +154,7 @@ export const GpaCalculatorView: React.FC<GpaCalculatorViewProps> = ({
         <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 shadow-lg">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-              Academic Standing
+              {t.degreePlanningHub.gpaAcademicStanding}
             </span>
             {gpaReport.academicStanding === 'GOOD_STANDING' ? (
               <CheckCircle className="h-4 w-4 text-emerald-400" />
@@ -169,8 +171,8 @@ export const GpaCalculatorView: React.FC<GpaCalculatorViewProps> = ({
               }`}
             >
               {gpaReport.academicStanding === 'GOOD_STANDING'
-                ? 'Good Standing'
-                : 'Academic Probation'}
+                ? t.degreePlanningHub.gpaGoodStanding
+                : t.degreePlanningHub.gpaProbation}
             </span>
           </div>
           <p className="mt-2 text-[11px] text-slate-400">
@@ -184,7 +186,7 @@ export const GpaCalculatorView: React.FC<GpaCalculatorViewProps> = ({
         <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 shadow-lg">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-              Units Toward Degree
+              {t.degreePlanningHub.gpaUnitsTowardDegree}
             </span>
             <BookOpen className="h-4 w-4 text-sky-400" />
           </div>
@@ -205,7 +207,7 @@ export const GpaCalculatorView: React.FC<GpaCalculatorViewProps> = ({
         <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 shadow-lg">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-              Dean's Honor List
+              {t.degreePlanningHub.gpaDeansList}
             </span>
             <Award className="h-4 w-4 text-amber-400" />
           </div>
@@ -227,10 +229,10 @@ export const GpaCalculatorView: React.FC<GpaCalculatorViewProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <Sparkles className="h-4 w-4 text-sky-400" />
-              <h2 className="text-base font-bold text-white">Target Cumulative GPA Calculator</h2>
+              <h2 className="text-base font-bold text-white">{t.degreePlanningHub.gpaTargetTitle}</h2>
             </div>
             <p className="text-xs text-slate-400 mt-0.5">
-              Determine the average grade needed across your {totalPlannedUnits} planned units to hit your academic goals.
+              {t.degreePlanningHub.gpaTargetDesc}
             </p>
           </div>
 
