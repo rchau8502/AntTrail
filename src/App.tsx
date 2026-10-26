@@ -171,6 +171,10 @@ export const App: React.FC = () => {
   // --- Filter & Drawer State ---
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedDepartment, setSelectedDepartment] = useState('ALL')
+  const availableDepartments = useMemo(() => {
+    const depts = Array.from(new Set(UCI_CS_MATH_COURSES.map((c) => c.department))).sort()
+    return ['ALL', ...depts]
+  }, [])
   const [filterStatus, setFilterStatus] = useState<FilterStatus>('ALL')
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const [isAutoPlanOpen, setIsAutoPlanOpen] = useState(false)
@@ -848,6 +852,7 @@ export const App: React.FC = () => {
               totalCount={filteredResults.length}
               eligibleCount={eligibleCount}
               missingCount={missingCount}
+              availableDepartments={availableDepartments}
             />
 
             {/* Course Cards Grid */}

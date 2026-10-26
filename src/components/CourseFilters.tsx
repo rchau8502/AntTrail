@@ -1,5 +1,6 @@
 import React from 'react'
-import { Search, CheckCircle, AlertTriangle, Layers, X } from 'lucide-react'
+import { Search, CheckCircle, AlertTriangle, Layers, X, School } from 'lucide-react'
+import { useLanguage } from '../../lib/i18n/LanguageContext'
 
 export type FilterStatus = 'ALL' | 'ELIGIBLE_ONLY' | 'MISSING_ONLY' | 'TRANSFER_ONLY'
 
@@ -13,7 +14,25 @@ interface CourseFiltersProps {
   totalCount: number
   eligibleCount: number
   missingCount: number
+  availableDepartments?: string[]
 }
+
+const DEFAULT_TOP_DEPTS = [
+  'ALL',
+  'COMPSCI',
+  'IN4MATX',
+  'I&C SCI',
+  'MATH',
+  'STATS',
+  'BIO SCI',
+  'CHEM',
+  'PHYSICS',
+  'ECON',
+  'MGMT',
+  'EECS',
+  'ENGRMAE',
+  'WRITING'
+]
 
 export const CourseFilters: React.FC<CourseFiltersProps> = ({
   searchQuery,
@@ -24,8 +43,12 @@ export const CourseFilters: React.FC<CourseFiltersProps> = ({
   onSelectFilterStatus,
   totalCount,
   eligibleCount,
-  missingCount
+  missingCount,
+  availableDepartments
 }) => {
+  const { t } = useLanguage()
+  const depts = availableDepartments && availableDepartments.length > 0 ? availableDepartments : DEFAULT_TOP_DEPTS
+
   return (
     <div className="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-4 sm:p-5 backdrop-blur-sm">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
@@ -49,28 +72,46 @@ export const CourseFilters: React.FC<CourseFiltersProps> = ({
           )}
         </div>
 
-        {/* Department Chips */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0">
-          <span className="text-xs font-semibold text-slate-400 mr-1 hidden sm:inline">
-            Dept:
-          </span>
-          {['ALL', 'ICS', 'MATH'].map((dept) => {
-            const isSelected = selectedDepartment === dept
-            return (
-              <button
-                key={dept}
-                onClick={() => onSelectDepartment(dept)}
-                className={`rounded-lg px-3 py-1.5 text-xs font-bold transition-colors ${
-                  isSelected
-                    ? 'bg-blue-600 text-white shadow-sm'
-                    : 'border border-slate-800 bg-slate-900 text-slate-400 hover:border-slate-700 hover:text-slate-200'
-                }`}
-              >
-                {dept === 'ALL' ? 'All Departments' : dept}
-              </button>
-            )
-          })}
+        {/* Department Select & Chips */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0">
+          <select
+            value={selectedDepartment}
+            onChange={(e) => onSelectDepartment(e.target.value)}
+            className="rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 text-xs font-bold text-slate-200 focus:border-blue-500 focus:outline-none"
+          >
+            <option value="ALL">🏛️ {t.coursesHub.allDepartments}</option>
+            {depts
+              .filter((d) => d !== 'ALL')
+              .map((dept) => (
+                <option key={dept} value={dept}>
+                  {dept}
+                </option>
+              ))}
+          </select>
         </div>
+      </div>
+
+      {/* Quick Pills for Top Departments */}
+      <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
+        <span className="text-slate-400 text-[11px] font-bold uppercase mr-1 shrink-0">
+          Top Depts:
+        </span>
+        {DEFAULT_TOP_DEPTS.slice(0, 10).map((dept) => {
+          const isSelected = selectedDepartment === dept
+          return (
+            <button
+              key={dept}
+              onClick={() => onSelectDepartment(dept)}
+              className={`rounded-lg px-2.5 py-1 text-xs font-bold transition-colors shrink-0 ${
+                isSelected
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'border border-slate-800 bg-slate-900 text-slate-400 hover:border-slate-700 hover:text-slate-200'
+              }`}
+            >
+              {dept === 'ALL' ? t.coursesHub.allDepartments : dept}
+            </button>
+          )
+        })}
       </div>
 
       {/* Status Filter Chips & Summary */}
@@ -99,7 +140,7 @@ export const CourseFilters: React.FC<CourseFiltersProps> = ({
             }`}
           >
             <CheckCircle className="h-3 w-3" />
-            <span>Eligible ({eligibleCount})</span>
+            <span>{t.degreePlanningHub.metricEligibleNow} ({eligibleCount})</span>
           </button>
 
           <button
@@ -111,7 +152,7 @@ export const CourseFilters: React.FC<CourseFiltersProps> = ({
             }`}
           >
             <AlertTriangle className="h-3 w-3" />
-            <span>Missing Prereqs ({missingCount})</span>
+            <span>{t.degreePlanningHub.metricPrereqsMissing} ({missingCount})</span>
           </button>
         </div>
 
