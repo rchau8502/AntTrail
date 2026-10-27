@@ -4,14 +4,14 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { getInstitutionDirectoryStatus, searchInstitutions } from '@/lib/api'
 import type { Institution, InstitutionDirectoryStatus } from '@/lib/types'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
+import { School, Search, MapPin, ArrowRight, ExternalLink, Sparkles, Building2 } from 'lucide-react'
 
 const US_STATES = [
   'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY',
   'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH',
   'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY'
 ]
-
-const CONTROL_OPTIONS = ['Public', 'Private nonprofit', 'Private for-profit']
 
 function formatInteger(value?: number | null) {
   return value == null ? 'N/A' : new Intl.NumberFormat('en-US').format(value)
@@ -26,6 +26,9 @@ function formatCurrency(value?: number | null) {
 }
 
 export default function CollegesPage() {
+  const { t } = useLanguage()
+  const loc = t.collegesHub
+
   const [query, setQuery] = useState('')
   const [state, setState] = useState('')
   const [control, setControl] = useState('')
@@ -94,41 +97,55 @@ export default function CollegesPage() {
   const totalPages = Math.max(1, Math.ceil(total / 24))
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-10">
-      <header className="glass-panel rounded-[1.75rem] p-6 md:p-8">
-        <p className="text-xs uppercase tracking-[0.24em] text-slate-400">National Directory</p>
-        <h1 className="mt-3 text-3xl font-semibold text-white">College explorer</h1>
-        <p className="mt-2 max-w-3xl text-sm text-slate-300">
-          Browse a national institution layer backed by official College Scorecard fields. This sits alongside
-          ScholarStack&apos;s California admissions metrics instead of replacing them.
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-8 sm:py-10">
+      {/* Header */}
+      <header className="rounded-3xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-xs">
+        <div className="inline-flex items-center gap-1.5 rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#0064a4]">
+          <School className="w-3.5 h-3.5" />
+          <span>{loc.badge}</span>
+        </div>
+        <h1 className="mt-3 text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+          {loc.title}
+        </h1>
+        <p className="mt-2 max-w-3xl text-sm sm:text-base text-slate-600 leading-relaxed">
+          {loc.subtitle}
         </p>
       </header>
 
-      <section className="glass-panel rounded-3xl p-4 md:p-5">
-        <div className="flex flex-wrap items-end gap-3">
-          <label className="flex min-w-[220px] flex-1 flex-col gap-2">
-            <span className="text-xs uppercase tracking-[0.18em] text-slate-400">Search</span>
-            <input
-              value={query}
-              onChange={(event) => {
-                setPage(1)
-                setQuery(event.target.value)
-              }}
-              placeholder="Search college name"
-              className="rounded-2xl border border-white/10 bg-[var(--panel-strong)] px-4 py-3 text-white"
-            />
+      {/* Filter Toolbar */}
+      <section className="rounded-2xl border border-slate-200/80 bg-white p-4 sm:p-6 shadow-xs">
+        <div className="flex flex-wrap items-end gap-3 sm:gap-4">
+          <label className="flex min-w-[220px] flex-1 flex-col gap-1.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+              {loc.searchLabel}
+            </span>
+            <div className="relative">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <input
+                value={query}
+                onChange={(event) => {
+                  setPage(1)
+                  setQuery(event.target.value)
+                }}
+                placeholder={loc.searchPlaceholder}
+                className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-4 text-sm text-slate-900 placeholder-slate-400 shadow-2xs focus:outline-none focus:ring-2 focus:ring-[#0064a4]/20 focus:border-[#0064a4]"
+              />
+            </div>
           </label>
-          <label className="flex min-w-[160px] flex-col gap-2">
-            <span className="text-xs uppercase tracking-[0.18em] text-slate-400">State</span>
+
+          <label className="flex min-w-[130px] flex-col gap-1.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+              {loc.stateLabel}
+            </span>
             <select
               value={state}
               onChange={(event) => {
                 setPage(1)
                 setState(event.target.value)
               }}
-              className="rounded-2xl border border-white/10 bg-[var(--panel-strong)] px-4 py-3 text-slate-100"
+              className="rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 shadow-2xs focus:outline-none focus:ring-2 focus:ring-[#0064a4]/20 focus:border-[#0064a4]"
             >
-              <option value="">All states</option>
+              <option value="">{loc.allStates}</option>
               {US_STATES.map((option) => (
                 <option key={option} value={option}>
                   {option}
@@ -136,165 +153,178 @@ export default function CollegesPage() {
               ))}
             </select>
           </label>
-          <label className="flex min-w-[220px] flex-col gap-2">
-            <span className="text-xs uppercase tracking-[0.18em] text-slate-400">Control</span>
+
+          <label className="flex min-w-[200px] flex-col gap-1.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+              {loc.controlLabel}
+            </span>
             <select
               value={control}
               onChange={(event) => {
                 setPage(1)
                 setControl(event.target.value)
               }}
-              className="rounded-2xl border border-white/10 bg-[var(--panel-strong)] px-4 py-3 text-slate-100"
+              className="rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 shadow-2xs focus:outline-none focus:ring-2 focus:ring-[#0064a4]/20 focus:border-[#0064a4]"
             >
-              <option value="">All institution types</option>
-              {CONTROL_OPTIONS.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
+              <option value="">{loc.allControls}</option>
+              <option value="Public">{loc.public}</option>
+              <option value="Private nonprofit">{loc.privateNonprofit}</option>
+              <option value="Private for-profit">{loc.privateForProfit}</option>
             </select>
           </label>
         </div>
-        <div className="mt-4 flex flex-wrap gap-2 text-xs text-slate-300">
-          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-            {loading ? 'Loading…' : `${total} colleges matched`}
+
+        {/* Status badges */}
+        <div className="mt-4 flex flex-wrap items-center gap-2 text-xs">
+          <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-semibold text-slate-700">
+            {loading ? loc.loading : `${total} ${loc.collegesMatched}`}
           </span>
-          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">Source: College Scorecard</span>
+          <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-semibold text-slate-500">
+            {loc.sourceText}
+          </span>
           {status && (
-            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-              {status.is_fallback ? 'Curated CA Directory' : `Directory rows: ${status.institution_count}`}
+            <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-semibold text-slate-600">
+              {status.is_fallback ? loc.curatedBadge : `Directory: ${status.institution_count}`}
             </span>
           )}
           {status?.is_fallback && (
-            <span className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-emerald-300">
-              Zero-config mode active
+            <span className="inline-flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 font-semibold text-emerald-800">
+              <Sparkles className="w-3 h-3 text-emerald-600" />
+              {loc.zeroConfigActive}
             </span>
           )}
         </div>
       </section>
 
+      {/* Fallback info banner */}
       {status?.is_fallback && (
-        <section className="glass-panel rounded-3xl border border-sky-400/20 bg-[var(--cyan-soft)] p-4 text-xs text-slate-200">
-          <span className="font-semibold text-white">Curated Zero-Config Mode:</span> Showing {status.institution_count} top California universities and feeder community colleges. To search all 6,000+ national institutions, connect Supabase credentials and sync the College Scorecard dataset.
+        <section className="rounded-2xl border border-sky-200 bg-sky-50/70 p-4 text-xs text-sky-900 flex items-start gap-2.5">
+          <Building2 className="w-4 h-4 text-[#0064a4] shrink-0 mt-0.5" />
+          <div>
+            <span className="font-bold">{loc.zeroConfigBannerTitle}</span>{' '}
+            <span>{loc.zeroConfigBannerDesc}</span>
+          </div>
         </section>
       )}
 
-      {status && !status.configured && !status.is_fallback && (
-        <section className="glass-panel rounded-3xl border border-amber-400/20 bg-[var(--accent-soft)] p-6 text-sm text-slate-100">
-          Local college-directory reads are not configured. Missing env: {status.missing_env.join(', ')}.
-        </section>
-      )}
-
-      {status?.configured && status.missing_table && !status.is_fallback && (
-        <section className="glass-panel rounded-3xl border border-amber-400/20 bg-[var(--accent-soft)] p-6 text-sm text-slate-100">
-          The `institution` table is not available yet. Run the institution migration before using the college explorer.
-        </section>
-      )}
-
-      {status?.configured && !status.missing_table && !status.is_fallback && status.institution_count === 0 && (
-        <section className="glass-panel rounded-3xl border border-sky-400/20 bg-[var(--cyan-soft)] p-6 text-sm text-slate-100">
-          The directory is configured but empty. Run the College Scorecard sync to populate national college records.
-        </section>
-      )}
-
+      {/* No results message */}
       {!loading && !results.length && (
-        <section className="glass-panel rounded-3xl p-6 text-sm text-slate-300">
-          No colleges are available yet for this filter.
+        <section className="rounded-2xl border border-slate-200 bg-white p-8 text-center text-sm text-slate-600 shadow-xs">
+          {loc.noResults}
         </section>
       )}
 
+      {/* College Cards Grid */}
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {results.map((institution) => (
-          <article key={institution.external_id} className="double-bezel-outer transition-spring hover:-translate-y-1">
-            <div className="double-bezel-inner flex h-full flex-col justify-between p-6">
-              <div>
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <h3 className="text-lg font-bold tracking-tight text-white">{institution.name}</h3>
-                    <p className="mt-0.5 text-xs font-mono text-slate-400">
-                      {institution.city}, {institution.state}
-                    </p>
-                  </div>
-                  <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-xs font-mono text-slate-300">
-                    {institution.control ?? 'Unknown'}
-                  </span>
+          <article
+            key={institution.external_id}
+            className="flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-5 shadow-xs hover:border-[#0064a4]/40 hover:shadow-md transition-all group"
+          >
+            <div>
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <h3 className="text-base sm:text-lg font-bold tracking-tight text-slate-900 group-hover:text-[#0064a4] transition-colors truncate">
+                    {institution.name}
+                  </h3>
+                  <p className="mt-0.5 text-xs font-medium text-slate-500 flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <span>{institution.city}, {institution.state}</span>
+                  </p>
                 </div>
-
-                <div className="mt-5 grid grid-cols-2 gap-2.5 text-sm text-slate-300">
-                  <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-3">
-                    <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500">Students</div>
-                    <div className="mt-1 font-mono text-base font-bold text-white">{formatInteger(institution.student_size)}</div>
-                  </div>
-                  <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-3">
-                    <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500">Admit rate</div>
-                    <div className="mt-1 font-mono text-base font-bold text-emerald-400">{formatPercent(institution.admission_rate)}</div>
-                  </div>
-                  <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-3">
-                    <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500">Net price</div>
-                    <div className="mt-1 font-mono text-base font-bold text-amber-300">{formatCurrency(institution.avg_net_price)}</div>
-                  </div>
-                  <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-3">
-                    <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500">Completion</div>
-                    <div className="mt-1 font-mono text-base font-bold text-sky-300">{formatPercent(institution.completion_rate)}</div>
-                  </div>
-                </div>
-
-                <p className="mt-4 text-xs text-slate-400 leading-relaxed">
-                  {institution.highest_degree ?? 'Degree profile unavailable'}{institution.locale ? ` • ${institution.locale}` : ''}
-                  {institution.carnegie_basic ? ` • ${institution.carnegie_basic}` : ''}
-                </p>
+                <span className="shrink-0 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-xs font-semibold text-slate-600">
+                  {institution.control ?? 'Unknown'}
+                </span>
               </div>
 
-              <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-4">
-                <Link
-                  href={`/colleges/${encodeURIComponent(institution.external_id)}`}
-                  className="group inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 pl-3.5 pr-1.5 py-1 text-xs font-semibold text-amber-200 transition-spring hover:border-amber-400 hover:bg-amber-400/20 active:scale-95"
+              {/* 4 Key Metrics */}
+              <div className="mt-4 grid grid-cols-2 gap-2 text-sm">
+                <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-2.5">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    {loc.students}
+                  </div>
+                  <div className="mt-0.5 font-mono text-base font-bold text-slate-900">
+                    {formatInteger(institution.student_size)}
+                  </div>
+                </div>
+                <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-2.5">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    {loc.admitRate}
+                  </div>
+                  <div className="mt-0.5 font-mono text-base font-bold text-emerald-700">
+                    {formatPercent(institution.admission_rate)}
+                  </div>
+                </div>
+                <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-2.5">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    {loc.netPrice}
+                  </div>
+                  <div className="mt-0.5 font-mono text-base font-bold text-[#0064a4]">
+                    {formatCurrency(institution.avg_net_price)}
+                  </div>
+                </div>
+                <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-2.5">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    {loc.completion}
+                  </div>
+                  <div className="mt-0.5 font-mono text-base font-bold text-sky-700">
+                    {formatPercent(institution.completion_rate)}
+                  </div>
+                </div>
+              </div>
+
+              <p className="mt-3 text-xs text-slate-500 leading-relaxed line-clamp-2">
+                {institution.highest_degree ?? loc.degreeProfileUnavailable}
+                {institution.locale ? ` • ${institution.locale}` : ''}
+                {institution.carnegie_basic ? ` • ${institution.carnegie_basic}` : ''}
+              </p>
+            </div>
+
+            {/* Card Footer Actions */}
+            <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-3.5">
+              <Link
+                href={`/colleges/${encodeURIComponent(institution.external_id)}`}
+                className="inline-flex items-center gap-1.5 rounded-full bg-sky-50 border border-sky-200 px-3.5 py-1.5 text-xs font-bold text-[#0064a4] hover:bg-[#0064a4] hover:text-white transition-colors"
+              >
+                <span>{loc.viewProfile}</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+              {institution.website && (
+                <a
+                  href={institution.website}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-[#0064a4] transition-colors"
                 >
-                  <span>View profile</span>
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-400 text-slate-950 transition-spring group-hover:scale-105">
-                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </span>
-                </Link>
-                {institution.website && (
-                  <a
-                    href={institution.website}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-mono text-slate-400 transition-spring hover:text-white"
-                  >
-                    <span>Official site</span>
-                    <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
-                )}
-              </div>
+                  <span>{loc.officialSite}</span>
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+              )}
             </div>
           </article>
         ))}
       </div>
 
-      <div className="flex items-center justify-between gap-3">
+      {/* Pagination */}
+      <div className="flex items-center justify-between gap-3 border-t border-slate-200/80 pt-4">
         <button
           type="button"
           onClick={() => setPage((current) => Math.max(1, current - 1))}
           disabled={page === 1 || loading}
-          className="rounded-2xl border border-white/10 px-4 py-2 text-sm text-slate-200 disabled:opacity-50"
+          className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:hover:bg-white transition-colors shadow-2xs"
         >
-          Previous
+          {loc.previous}
         </button>
-        <p className="text-sm text-slate-400">
-          Page {page} of {totalPages}
+        <p className="text-xs font-semibold text-slate-500">
+          {loc.pageOf.replace('{page}', String(page)).replace('{total}', String(totalPages))}
         </p>
         <button
           type="button"
           onClick={() => setPage((current) => Math.min(totalPages, current + 1))}
           disabled={page >= totalPages || loading}
-          className="rounded-2xl border border-white/10 px-4 py-2 text-sm text-slate-200 disabled:opacity-50"
+          className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:hover:bg-white transition-colors shadow-2xs"
         >
-          Next
+          {loc.next}
         </button>
       </div>
     </div>

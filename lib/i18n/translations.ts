@@ -4,6 +4,7 @@ import { DeadlinesHubTranslations, DEADLINES_TRANSLATIONS } from './deadlinesTra
 import { DegreePlanningTranslations, DEGREE_PLANNING_TRANSLATIONS } from './degreePlanningTranslations';
 import { WebRegTranslations, WEBREG_TRANSLATIONS } from './webregTranslations';
 import { TransferTranslations, TRANSFER_TRANSLATIONS } from './transferTranslations';
+import { CollegesHubTranslations, COLLEGES_TRANSLATIONS } from './collegesTranslations';
 
 export interface TranslationDictionary {
   // Navigation
@@ -123,6 +124,7 @@ export interface TranslationDictionary {
   degreePlanningHub: DegreePlanningTranslations;
   webregHub: WebRegTranslations;
   transferHub: TransferTranslations;
+  collegesHub: CollegesHubTranslations;
 }
 
 export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
@@ -229,6 +231,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS.en,
     webregHub: WEBREG_TRANSLATIONS.en,
     transferHub: TRANSFER_TRANSLATIONS.en,
+    collegesHub: COLLEGES_TRANSLATIONS.en,
   },
 
   // 2. SIMPLIFIED CHINESE (Rank #1 non-English: Largest international student body & Mandarin community)
@@ -334,6 +337,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS['zh-CN'],
     webregHub: WEBREG_TRANSLATIONS['zh-CN'],
     transferHub: TRANSFER_TRANSLATIONS['zh-CN'],
+    collegesHub: COLLEGES_TRANSLATIONS['zh-CN'],
   },
 
   // 3. SPANISH (Rank #2: UCI is a designated Hispanic-Serving Institution, ~27% of students)
@@ -439,6 +443,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS.es,
     webregHub: WEBREG_TRANSLATIONS.es,
     transferHub: TRANSFER_TRANSLATIONS.es,
+    collegesHub: COLLEGES_TRANSLATIONS.es,
   },
 
   // 4. VIETNAMESE (Rank #3: Orange County Little Saigon & large Vietnamese American Anteater community)
@@ -544,6 +549,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS.vi,
     webregHub: WEBREG_TRANSLATIONS.vi,
     transferHub: TRANSFER_TRANSLATIONS.vi,
+    collegesHub: COLLEGES_TRANSLATIONS.vi,
   },
 
   // 5. KOREAN (Rank #4: Irvine Korean American community & prominent international student presence)
@@ -649,6 +655,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS.ko,
     webregHub: WEBREG_TRANSLATIONS.ko,
     transferHub: TRANSFER_TRANSLATIONS.ko,
+    collegesHub: COLLEGES_TRANSLATIONS.ko,
   },
 
   // 6. TRADITIONAL CHINESE (Rank #5: Taiwan, HK, and Cantonese/Traditional readers)
@@ -754,6 +761,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS['zh-TW'],
     webregHub: WEBREG_TRANSLATIONS['zh-TW'],
     transferHub: TRANSFER_TRANSLATIONS['zh-TW'],
+    collegesHub: COLLEGES_TRANSLATIONS['zh-TW'],
   },
 
   // 7. TAGALOG (Rank #6: SoCal & Filipino Anteater community)
@@ -859,6 +867,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS.tl,
     webregHub: WEBREG_TRANSLATIONS.tl,
     transferHub: TRANSFER_TRANSLATIONS.tl,
+    collegesHub: COLLEGES_TRANSLATIONS.tl,
   },
 
   // 8. JAPANESE (Rank #7: International exchange & Japanese community)
@@ -964,6 +973,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     degreePlanningHub: DEGREE_PLANNING_TRANSLATIONS.ja,
     webregHub: WEBREG_TRANSLATIONS.ja,
     transferHub: TRANSFER_TRANSLATIONS.ja,
+    collegesHub: COLLEGES_TRANSLATIONS.ja,
   },
 };
 

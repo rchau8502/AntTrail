@@ -73,6 +73,14 @@ const WORKSTATIONS: WorkstationItem[] = [
     badge: '603 Catalog',
     iconType: 'grid',
   },
+  {
+    name: 'National College & Feeder Directory',
+    description: 'Official U.S. College Scorecard database & California CC transfer feeder metrics',
+    href: '/colleges',
+    keywords: ['college', 'colleges', 'scorecard', 'university', 'universities', 'admit rate', 'tuition', 'ivc', 'occ', 'ucla', 'berkeley', '院校', '大学', '黄页', '全美高校'],
+    badge: 'Directory',
+    iconType: 'transfer',
+  },
 ];
 
 export default function SearchModal() {
@@ -258,43 +266,72 @@ export default function SearchModal() {
             </div>
           )}
 
-          {results.length > 0 ? (
-            results.map(({ guide, matchReason }) => (
-              <div
-                key={guide.id}
-                onClick={() => handleSelectGuide(guide.slug)}
-                className="group flex items-start justify-between gap-3 p-3 rounded-xl hover:bg-sky-50 cursor-pointer transition-colors"
-              >
-                <div className="flex items-start gap-3">
-                  <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-sky-100/70 text-[#0064a4]">
-                    <BookOpen className="w-3.5 h-3.5" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-bold text-slate-900 group-hover:text-[#0064a4]">
-                      {guide.title}
+          {query ? (
+            results.length > 0 ? (
+              results.map(({ guide, matchReason }) => (
+                <div
+                  key={guide.id}
+                  onClick={() => handleSelectGuide(guide.slug)}
+                  className="group flex items-start justify-between gap-3 p-3 rounded-xl hover:bg-sky-50 cursor-pointer transition-colors"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-sky-100/70 text-[#0064a4]">
+                      <BookOpen className="w-3.5 h-3.5" />
                     </div>
-                    <div className="text-xs text-slate-500 line-clamp-1 mt-0.5">
-                      {guide.shortDescription}
+                    <div>
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-[#0064a4]">
+                        {guide.title}
+                      </div>
+                      <div className="text-xs text-slate-500 line-clamp-1 mt-0.5">
+                        {guide.shortDescription}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="shrink-0 flex items-center gap-2">
-                  <span className="text-[10px] font-medium text-slate-500 bg-slate-100 rounded-md px-2 py-0.5">
-                    {matchReason || 'Guide'}
-                  </span>
-                  <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#0064a4] transition-transform group-hover:translate-x-0.5" />
+                  <div className="shrink-0 flex items-center gap-2">
+                    <span className="text-[10px] font-medium text-slate-500 bg-slate-100 rounded-md px-2 py-0.5">
+                      {matchReason || 'Guide'}
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#0064a4] transition-transform group-hover:translate-x-0.5" />
+                  </div>
                 </div>
+              ))
+            ) : matchedWorkstations.length === 0 ? (
+              <div className="p-8 text-center text-slate-500">
+                <p className="text-sm font-medium">No direct guides found for &ldquo;{query}&rdquo;</p>
+                <p className="text-xs text-slate-400 mt-1">
+                  Try searching for &ldquo;scooter&rdquo;, &ldquo;parking&rdquo;, &ldquo;uship&rdquo;, &ldquo;print&rdquo;, or &ldquo;drop&rdquo;.
+                </p>
               </div>
-            ))
-          ) : matchedWorkstations.length === 0 ? (
-            <div className="p-8 text-center text-slate-500">
-              <p className="text-sm font-medium">No direct guides found for &ldquo;{query}&rdquo;</p>
-              <p className="text-xs text-slate-400 mt-1">
-                Try searching for broader terms like &ldquo;parking&rdquo;, &ldquo;major&rdquo;, &ldquo;aid&rdquo;, or &ldquo;drop&rdquo;.
-              </p>
+            ) : null
+          ) : (
+            <div className="p-4 space-y-3">
+              <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
+                Frequent Anteater Searches
+              </div>
+              <div className="flex flex-wrap gap-1.5 text-xs">
+                {[
+                  { label: '🛴 Scooter & Dismount Rules', q: 'scooter' },
+                  { label: '🚗 Zone 4 Parking & 3PM', q: 'parking' },
+                  { label: '🏥 Waive UC SHIP ($2,000+)', q: 'uship' },
+                  { label: '🖨️ WEPA Printing Kiosks', q: 'print' },
+                  { label: '💳 Digital ZotCard & ARC', q: 'zotcard' },
+                  { label: '🍉 Water & GPA Boosters', q: 'water' },
+                  { label: '🚌 Anteater Express Shuttles', q: 'shuttle' },
+                  { label: '⚠️ Drop Class Deadline', q: 'drop' },
+                ].map(item => (
+                  <button
+                    key={item.q}
+                    type="button"
+                    onClick={() => setQuery(item.q)}
+                    className="rounded-full border border-slate-200 bg-slate-50 hover:bg-sky-50 hover:border-sky-300 hover:text-[#0064a4] px-3 py-1 font-semibold text-slate-700 transition-colors"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
             </div>
-          ) : null}
+          )}
         </div>
 
         {/* Footer */}
