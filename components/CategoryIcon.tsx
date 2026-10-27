@@ -25,6 +25,10 @@ import {
   CreditCard,
   Smartphone,
   Wifi,
+  Sun,
+  PhoneCall,
+  Newspaper,
+  ShieldAlert,
   HelpCircle,
   LucideIcon
 } from 'lucide-react';
@@ -56,6 +60,10 @@ const ICON_MAP: Record<string, LucideIcon> = {
   CreditCard,
   Smartphone,
   Wifi,
+  Sun,
+  PhoneCall,
+  Newspaper,
+  ShieldAlert,
 };
 
 export default function CategoryIcon({
