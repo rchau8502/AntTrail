@@ -19,6 +19,12 @@ import {
   Mail,
   FileText,
   CheckCircle2,
+  Shield,
+  ShieldCheck,
+  Printer,
+  CreditCard,
+  Smartphone,
+  Wifi,
   HelpCircle,
   LucideIcon
 } from 'lucide-react';
@@ -44,6 +50,12 @@ const ICON_MAP: Record<string, LucideIcon> = {
   Mail,
   FileText,
   CheckCircle2,
+  Shield,
+  ShieldCheck,
+  Printer,
+  CreditCard,
+  Smartphone,
+  Wifi,
 };
 
 export default function CategoryIcon({

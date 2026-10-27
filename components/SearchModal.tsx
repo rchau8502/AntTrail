@@ -311,11 +311,13 @@ export default function SearchModal() {
               </div>
               <div className="flex flex-wrap gap-1.5 text-xs">
                 {[
+                  { label: '📱 iPhone Duo & 2FA', q: 'duo' },
                   { label: '🛴 Scooter & Dismount Rules', q: 'scooter' },
                   { label: '🚗 Zone 4 Parking & 3PM', q: 'parking' },
                   { label: '🏥 Waive UC SHIP ($2,000+)', q: 'uship' },
                   { label: '🖨️ WEPA Printing Kiosks', q: 'print' },
                   { label: '💳 Digital ZotCard & ARC', q: 'zotcard' },
+                  { label: '📶 eduroam Wi-Fi', q: 'wifi' },
                   { label: '🍉 Water & GPA Boosters', q: 'water' },
                   { label: '🚌 Anteater Express Shuttles', q: 'shuttle' },
                   { label: '⚠️ Drop Class Deadline', q: 'drop' },
