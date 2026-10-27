@@ -237,7 +237,7 @@ export default function Navbar() {
         </nav>
 
         {/* Right Actions: Language Switcher, Search trigger, Saved items, Mobile menu */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {/* Multilingual Selector (Prioritized by UCI Demographics) */}
           <LanguageSelector compact />
 
@@ -245,12 +245,12 @@ export default function Navbar() {
           <button
             onClick={openSearchModal}
             type="button"
-            className="hidden sm:flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50/80 px-3 py-1.5 text-xs text-slate-500 hover:border-slate-300 hover:bg-slate-100 transition-colors"
+            className="hidden sm:flex shrink-0 whitespace-nowrap items-center gap-2 rounded-full border border-slate-200 bg-slate-50/80 px-3 py-1.5 text-xs text-slate-500 hover:border-slate-300 hover:bg-slate-100 transition-colors"
             title="Search guides (⌘K)"
           >
-            <Search className="w-3.5 h-3.5 text-slate-400" />
-            <span>{t.nav.search}</span>
-            <kbd className="rounded border border-slate-200 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-slate-400 shadow-2xs">
+            <Search className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+            <span className="whitespace-nowrap">{t.nav.search}</span>
+            <kbd className="shrink-0 rounded border border-slate-200 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-slate-400 shadow-2xs">
               {t.nav.searchShortcut}
             </kbd>
           </button>
